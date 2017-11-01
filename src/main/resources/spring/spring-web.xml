@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--配置spring mvc-->
+    <!--1,开启springmvc注解模式
+    a.自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+    b.默认提供一系列的功能:数据绑定，数字和日期的format@NumberFormat,@DateTimeFormat
+    c:xml,json的默认读写支持-->
+    <mvc:annotation-driven/>
+
+    <!--2.静态资源默认servlet配置-->
+    <!--
+        1).加入对静态资源处理：js,gif,png
+        2).允许使用 "/" 做整体映射
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!--3：配置JSP 显示ViewResolver  默认提供返回json格式的内容-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--会在jsp中用到一些jstl标签-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--4:扫描web相关的controller-->
+    <context:component-scan base-package="com.xq.controller"/>
+
+
+    <!--配置拦截器, 多个拦截器,顺序执行 -->
+    <!--<mvc:interceptors>-->
+        <!--<mvc:interceptor>-->
+            <!--&lt;!&ndash;-->
+                <!--/**的意思是所有文件夹及里面的子文件夹-->
+                <!--/*是所有文件夹，不含子文件夹-->
+                <!--/是web项目的根目录-->
+                <!--exclude-mapping 不拦截的url-->
+            <!--&ndash;&gt;-->
+            <!--<mvc:mapping path="/center/*" />-->
+            <!--&lt;!&ndash;<mvc:exclude-mapping path="/index"/>&ndash;&gt;-->
+            <!--<bean class="com.xq.interceptor.LoginInterceptor"></bean>-->
+        <!--</mvc:interceptor>-->
+        <!--&lt;!&ndash; 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 &ndash;&gt;-->
+    <!--</mvc:interceptors>-->
+
+    <!--<mvc:cors>-->
+        <!--<mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800" allowed-methods="GET,POST,OPTIONS"/>-->
+    <!--</mvc:cors>-->
+
+
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSizePerFile" value="500000000" />
+        <property name="defaultEncoding" value="utr-8"/>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+</beans>
