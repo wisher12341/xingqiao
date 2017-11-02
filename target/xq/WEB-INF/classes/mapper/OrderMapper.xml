@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.OrderDao">
+
+    <select id="getOrder" resultType="com.xq.model.Order">
+        SELECT id FROM orders WHERE demand_id=#{demandId} AND teacher_id=#{teacherId} AND status_p &gt;=3 AND status_t &gt;=2
+    </select>
+
+    <insert id="addOrder" useGeneratedKeys="true" keyProperty="id" parameterType="com.xq.model.Order">
+        INSERT INTO orders(teacher_id,parent_id,demand_id,way,preferential,recover_ob,server_time,remark,totalpay,s_time,status_p,status_t,amount,id,trace,is_first,period)
+        VALUE (#{teacher.id},#{parentId},#{demandId},#{way},#{preferential},#{recoverOb},#{serverTime},#{remark},#{totalpay},#{sTime},#{statusP},#{statusT},#{amount},#{id},#{trace},#{isFirst},#{period})
+    </insert>
+
+    <select id="getOrderById" resultType="com.xq.model.Order">
+        SELECT recover_ob,server_time,remark,totalpay,id,trade_no FROM orders o WHERE id=#{orderId}
+    </select>
+
+    <select id="getOrderPayByOid" resultType="com.xq.model.Order">
+        SELECT o.id,o.trade_no,p.userId uidP,t.user_id uidT,t.name tname,p.realName pname FROM orders o,parent p,teacher t WHERE o.id=#{orderId} AND o.teacher_id=t.id AND o.parent_id=p.id
+    </select>
+
+    <update id="addComment">
+        UPDATE orders SET cid=#{cid} WHERE id=#{oid}
+    </update>
+    <select id="getUserIdByOid" resultType="java.lang.Integer">
+        SELECT t.user_id FROM orders o,teacher t WHERE o.id=#{id} AND o.teacher_id=t.id
+    </select>
+
+    <update id="updateTrace">
+        UPDATE orders SET trace= CONCAT(trace,#{trace}) WHERE id=#{id}
+    </update>
+
+    <select id="getServerTime" resultType="com.xq.model.Order">
+        SELECT o.id,o.server_time,p.realName pname,o.period FROM orders o,parent p,teacher t WHERE o.parent_id=p.id and o.teacher_id=t.id and t.user_id=#{id} and o.status_t=3
+    </select>
+
+    <select id="getTodayServiceTime" resultType="com.xq.model.Order">
+        SELECT id,server_time FROM orders WHERE teacher_id=#{tid} AND server_time like concat('%',#{time},'%') AND status_t=3
+    </select>
+</mapper>
