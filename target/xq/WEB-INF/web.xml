@@ -64,7 +64,7 @@
   </filter-mapping>
 
   <!--<welcome-file-list>-->
-    <!--<welcome-file>/WEB-INF/pages/index.html</welcome-file>-->
+    <!--<welcome-file>/WEB-INF/paorder.htmlhtml</welcome-file>-->
   <!--</welcome-file-list>-->
 
   <error-page>

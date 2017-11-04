@@ -1,0 +1,43 @@
+<#include "/order/var.ftl" />
+<html>
+<head>
+    <title>我的订单</title>
+    <#include "/order/head.ftl" />
+    <link href="${path}/static/css/order/order.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#wait" data-toggle="tab">
+                    待处理
+                </a>
+            </li>
+            <li>
+                <a href="#doing" data-toggle="tab">
+                    进行中
+                </a>
+            </li>
+            <li>
+                <a href="#history" data-toggle="tab">
+                    历史
+                </a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in active" id="wait">
+
+                <#list orders.orderList_wait as order>
+                    ${order.id}
+                </#list>
+            </div>
+            <div class="tab-pane fade" id="doing">
+
+            </div>
+            <div class="tab-pane fade" id="history">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
