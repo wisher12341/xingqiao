@@ -12,17 +12,84 @@
         <result property="cid" column="cid"/>
         <result property="realpay" column="realpay"/>
         <result property="isFirst" column="is_first"/>
+        <result property="amount" column="amount" />
+        <result property="serverTime" column="server_time"/>
         <association property="teacher" javaType="com.xq.model.Teacher">
             <id property="id" column="tid"/>
             <result property="name" column="tName"/>
         </association>
     </resultMap>
 
+    <resultMap id="resultOrder" type="com.xq.model.Order">
+        <id property="id" column="id"/>
+        <result property="recoverOb" column="recover_ob"/>
+        <result property="way" column="way"/>
+        <result property="totalpay" column="totalpay"/>
+        <result property="realpay" column="realpay"/>
+        <result property="sTime" column="s_time"/>
+        <result property="serverTime" column="server_time"/>
+        <result property="remark" column="remark"/>
+        <result property="statusT" column="status_t"/>
+        <result property="pay" column="pay"/>
+        <result property="payWay" column="pay_way"/>
+        <result property="cid" column="cid"/>
+        <result property="amount" column="amount"/>
+        <result property="trace" column="trace" />
+        <result property="isFirst" column="is_first"/>
+        <result property="statusP" column="status_p"/>
+        <association property="parent" javaType="com.xq.model.Parent">
+            <id property="id" column="pid"/>
+            <result property="realName" column="realName"/>
+        </association>
+        <association property="teacher" javaType="com.xq.model.Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tName"/>
+            <result property="pid" column="tPid"/>
+            <result property="detailAddress" column="detailAddress"/>
+            <result property="unit" column="unit"/>
+            <association property="user" javaType="com.xq.model.User">
+                <id property="id" column="uid"/>
+                <result property="headimgurl" column="headimgurl"/>
+            </association>
+        </association>
+        <association property="demand" javaType="com.xq.model.Demand">
+            <id property="id" column="did"/>
+            <result property="name" column="name"/>
+            <result property="gender" column="gender"/>
+            <result property="disease" column="disease"/>
+            <result property="birthday" column="birthday"/>
+            <result property="report" column="report"/>
+            <result property="diseaseHis" column="disease_his"/>
+            <result property="recoveryHis" column="recovery_his"/>
+            <result property="allergyHis" column="allergy_his"/>
+            <result property="remark" column="dremark"/>
+        </association>
+        <association property="preferentialE" javaType="com.xq.model.Preferential">
+            <id property="id" column="preid"/>
+            <result property="name" column="prename"/>
+            <result property="allAmount" column="all_amount"/>
+            <result property="amount" column="amount"/>
+            <result property="classes" column="classes"/>
+            <result property="sTime" column="s_time"/>
+            <result property="eTime" column="e_time"/>
+        </association>
+    </resultMap>
 
     <select id="getAllOrderByOpenid" resultMap="resultAllOrder">
-        SELECT o.id,o.recover_ob,o.status_p,o.way,o.totalpay,o.s_time,t.id tid,t.name tName,o.cid,o.realpay,o.is_first
+        SELECT o.id,o.recover_ob,o.status_p,o.way,o.totalpay,o.s_time,t.id tid,t.name tName,o.cid,o.realpay,o.is_first,o.amount,o.server_time
         FROM orders o,parent p,sysuser u,teacher t
         WHERE u.openid=#{openid} AND u.id=p.userId AND t.id=o.teacher_id AND o.parent_id=p.id
         ORDER by s_time DESC
     </select>
+
+    <select id="getOrderByOid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.trace,o.is_first,o.status_p,
+        d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
+        pre.id preid,pre.name prename,pre.all_amount,pre.amount,pre.classes,pre.s_time,pre.e_time,
+        t.id tid,t.name tName,t.pid tPid,t.detailAddress,t.unit,u.headimgurl
+        FROM orders o,parent p,sysuser u,demand d,preferentials pre,teacher t
+        WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential AND t.id=o.teacher_id AND t.user_id=u.id
+    </select>
+
+
 </mapper>

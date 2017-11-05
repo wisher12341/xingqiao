@@ -1,6 +1,8 @@
 package com.xq.service;
 
 import com.xq.dto.AllTypeOrder;
+import com.xq.dto.OrderDto;
+import com.xq.model.Order;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,4 +11,6 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface OrderService {
     AllTypeOrder getAllOrder(HttpServletRequest request);
+
+    OrderDto getOrderByOid(String oid);
 }

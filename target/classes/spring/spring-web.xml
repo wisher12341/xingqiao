@@ -44,12 +44,7 @@
     <!-- 配置freeMarker的模板路径 -->
     <bean class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="freemarkerSettings" ref="freemarkerConfiguration"/>
-        <property name="templateLoaderPaths">
-            <list>
-                <value>/WEB-INF/pages/</value>
-                <value>/WEB-INF/ftl/</value>
-            </list>
-        </property>
+        <property name="templateLoaderPaths" value="/WEB-INF/pages/" />
         <property name="freemarkerVariables">
             <map>
                 <entry key="xml_escape" value-ref="fmXmlEscape" />
@@ -63,7 +58,7 @@
         <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
         <property name="contentType" value="text/html; charset=utf-8"/>
         <property name="cache" value="true"/>
-        <property name="suffix" value=".html" />
+        <property name="suffix" value=".ftl" />
         <property name="order" value="0" />
         <property name="exposeRequestAttributes" value="true" />
         <property name="exposeSessionAttributes" value="true" />

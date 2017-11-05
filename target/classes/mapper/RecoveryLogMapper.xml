@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.RecoveryLogDao">
+
+    <select id="getLogByOrderId" resultType="com.xq.model.RecoveryLog">
+        SELECT id,order_id,time,confirm_time,confirm_status,content,remind_status FROM recovery_log WHERE order_id=#{id}
+        order by id DESC
+    </select>
+
+    <select id="getConfirmCountByOid" resultType="java.lang.Integer">
+        SELECT count(1) FROM recovery_log WHERE order_id=#{oid} AND confirm_status=1
+    </select>
+
+
+</mapper>

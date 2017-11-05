@@ -9,4 +9,6 @@ import java.util.List;
  */
 public interface OrderDao {
     List<Order> getAllOrderByOpenid(String openid);
+
+    Order getOrderByOid(String oid);
 }

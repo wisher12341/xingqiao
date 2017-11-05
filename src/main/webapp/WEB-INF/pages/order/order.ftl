@@ -1,8 +1,9 @@
-<#include "/order/var.ftl" />
+<#include "common/const.ftl" />
+<#include "common/var.ftl" />
 <html>
 <head>
     <title>我的订单</title>
-    <#include "/order/head.ftl" />
+    <#include "common/head.ftl" />
     <link href="${path}/static/css/order/order.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
@@ -26,16 +27,18 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="wait">
-
-                <#list orders.orderList_wait as order>
-                    ${order.id}
-                </#list>
+                <@orderlist param1=orders.orderList_wait />
             </div>
             <div class="tab-pane fade" id="doing">
-
+                <@orderlist param1=orders.orderList_doing />
             </div>
             <div class="tab-pane fade" id="history">
-
+                <div style="margin-bottom: 50px">
+                    <div class="comment">待评价</div>
+                    <@orderlist param1=orders.orderList_history_noComment />
+                </div>
+                <div class="comment">历史订单</div>
+                <@orderlist param1=orders.orderList_history />
             </div>
         </div>
     </div>

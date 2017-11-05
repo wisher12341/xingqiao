@@ -65,6 +65,7 @@ public class Teacher {
     private User user;
     private List<Demand> demandList;
 
+
     public Integer getPeriod() {
         return period;
     }

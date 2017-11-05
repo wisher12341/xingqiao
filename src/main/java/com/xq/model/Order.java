@@ -23,7 +23,7 @@ public class Order {
     private Integer preferential;//优惠 ID  方便插入
     private String integral;
     private String remark;
-    private Double realpay;
+    private Double realpay;//待处理订单 显示totalpay  正在进行和历史订单 显示realpay
     private String serverTime;
     private String way;
     private Double totalpay;
@@ -34,7 +34,7 @@ public class Order {
     private Integer cid;//评论ID
 
     private Integer period;//课时
-    private Integer isFirst;//是否享受  首次 预约
+    private Integer isFirst;//是否享受  首次 预约 0否 1是
 
     private Integer uidP;//用于消息中心  订单 家长的账号Id
     private Integer uidT;//订单 老师的账号Id
@@ -45,7 +45,7 @@ public class Order {
 
     private List<RecoveryHis> recoveryHisList;//康复史
 
-    private String trace;//订单追踪 #时间@内容#时间@内容
+    private String trace;//订单追踪 时间@内容#时间@内容
 
     private String statusDesc;//订单状态描述
 
