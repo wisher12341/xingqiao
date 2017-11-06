@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xq.dao.OrganCommentDao">
+    <update id="updateGRCount" parameterType="com.xq.model.UserGoodReport">
+        UPDATE organ_comment SET good=good+#{good},report=report+#{report} WHERE id=#{id}
+    </update>
+
+    <select id="getCommentById" resultType="com.xq.model.OrganComment">
+        SELECT id,pic_urls FROM organ_comment WHERE id=#{cid}
+    </select>
+</mapper>
