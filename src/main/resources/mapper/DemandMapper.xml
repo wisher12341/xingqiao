@@ -2,7 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xq.dao.DemandDao">
 
+
     <select id="getMyDemandsByOpenid" resultType="com.xq.model.Demand">
         SELECT d.id,d.name FROM demand d,sysuser u WHERE d.user_id=u.id AND u.openid=#{openid}
+    </select>
+
+    <select id="getDemandByUserId" resultType="com.xq.model.Demand">
+        SELECT * FROM demand WHERE user_id=#{id}
+    </select>
+
+
+    <resultMap id="resultDemand" type="com.xq.model.Demand">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="gender" column="gender"/>
+        <result property="disease" column="disease"/>
+        <result property="birthday" column="birthday"/>
+        <result property="report" column="report"/>
+        <result property="diseaseHis" column="disease_his"/>
+        <result property="recoveryHis" column="recovery_his"/>
+        <result property="allergyHis" column="allergy_his"/>
+        <result property="remark" column="remark"/>
+        <result property="userId" column="user_id"/>
+        <result property="way" column="way"/>
+        <association property="parent" javaType="com.xq.model.Parent">
+            <id property="id" column="pid"/>
+            <result property="realName" column="realName"/>
+        </association>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid"/>
+            <result property="phone" column="phone"/>
+        </association>
+    </resultMap>
+    
+    <select id="getDemandByIds" resultMap="resultDemand">
+    SELECT d.id,d.name,d.disease,u.id uid,u.phone,p.id pid,p.realName
+    FROM demand d,sysuser u,parent p WHERE d.user_id=u.id AND p.userId=u.id AND d.id in
+    <foreach collection="list" item="dids"
+             open="(" close=")" separator=",">
+        #{dids}
+    </foreach>
+</select>
+
+    <select id="getDemandById" resultMap="resultDemand">
+        SELECT id,name,disease,gender,birthday,disease_his,report,recovery_his,allergy_his,remark,user_id
+        FROM demand WHERE id=#{id}
+    </select>
+
+
+    <update id="editorDemand" parameterType="com.xq.model.Demand">
+        UPDATE demand SET name=#{name},gender=#{gender},birthday=#{birthday},disease=#{disease},
+        report=#{report},disease_his=#{diseaseHis},allergy_his=#{allergyHis},recovery_his=#{recoveryHis},remark=#{remark}
+        WHERE id=#{id}
+    </update>
+
+    <insert id="addDemand" parameterType="com.xq.model.Demand">
+        INSERT INTO demand(name,gender,birthday,disease, report,disease_his,allergy_his,recovery_his,remark,user_id)
+        VALUES (#{name},#{gender},#{birthday},#{disease}, #{report},#{diseaseHis},#{allergyHis},#{recoveryHis},#{remark},#{userId})
+    </insert>
+
+    <select id="getParenntNameByUid" resultType="java.lang.String">
+        SELECT realName FROM parent WHERE userId=#{id}
     </select>
 </mapper>

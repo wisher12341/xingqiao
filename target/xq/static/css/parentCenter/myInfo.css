@@ -1,0 +1,31 @@
+.myInfoDiv p{
+    font-size: 50px;
+    margin-left: 20px;
+    color: #5bc0de;
+    margin-bottom: 20px;
+}
+
+.info-part-item{
+    margin-bottom: 60px;
+}
+
+.list-item-div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.list-item-div span i{
+    float: right;
+}
+
+.list-item-title{
+    font-weight: bold;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 40px;
+}
+.list-item-text{
+    display: inline;
+    font-size: 40px;
+    color: #737373;
+}

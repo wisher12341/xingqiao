@@ -1,6 +1,8 @@
 package com.xq.service.impl;
 
+import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
+import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.service.WxPayService;
 import com.xq.util.HttpRequestor;
@@ -26,6 +28,8 @@ public class WxPayServiceImpl implements WxPayService{
 
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    MessageDao messageDao;
 
     public WxSendData pay(String oid, HttpServletRequest request) {
         Order order=orderDao.getOrderPayByOid(oid);
@@ -151,31 +155,31 @@ public class WxPayServiceImpl implements WxPayService{
             order.setTrace("#"+dateNowStr+"@支付成功");
             order.setRealpay(order.getTotalpay());
 
-//            Message messageP=new Message();
-//            messageP.setTime(dateNowStr);
-//            messageP.setUserId(order.getUidP());
-//            messageP.setMessage("<p>\n" +
-//                    "<span style=\"color:red;\">系统消息：</span>\n" +
-//                    "</p>\n" +
-//                    "<p>\n" +
-//                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                    "    您的预约单（"+out_trade_no+"），已支付。"+
-//                    "</p>");
-//
-//            messageDao.addMessage(messageP);
-//
-//            Message messageT=new Message();
-//            messageT.setTime(dateNowStr);
-//            messageT.setUserId(order.getUidT());
-//            messageT.setMessage("<p>\n" +
-//                    "<span style=\"color:red;\">系统消息：</span>\n" +
-//                    "</p>\n" +
-//                    "<p>\n" +
-//                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                    "    您的预约单（"+out_trade_no+"），家长已支付。"+
-//                    "</p>");
-//
-//            messageDao.addMessage(messageT);
+            Message messageP=new Message();
+            messageP.setTime(dateNowStr);
+            messageP.setUserId(order.getUidP());
+            messageP.setMessage("<p>\n" +
+                    "<span style=\"color:red;\">系统消息：</span>\n" +
+                    "</p>\n" +
+                    "<p>\n" +
+                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                    "    您的预约单（"+out_trade_no+"），已支付。"+
+                    "</p>");
+
+            messageDao.addMessage(messageP);
+
+            Message messageT=new Message();
+            messageT.setTime(dateNowStr);
+            messageT.setUserId(order.getUidT());
+            messageT.setMessage("<p>\n" +
+                    "<span style=\"color:red;\">系统消息：</span>\n" +
+                    "</p>\n" +
+                    "<p>\n" +
+                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                    "    您的预约单（"+out_trade_no+"），家长已支付。"+
+                    "</p>");
+
+            messageDao.addMessage(messageT);
 
             orderDao.orderPay(order);
         }

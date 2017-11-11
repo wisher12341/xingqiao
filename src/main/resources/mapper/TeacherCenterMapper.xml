@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.TeacherCenterDao">
+
+    <select id="getDemandsByTeacherUserId" resultType="com.xq.model.Demand">
+        SELECT DISTINCT demand.* FROM orders,demand WHERE orders.teacher_id=#{userId} and orders.demand_id=demand.id
+    </select>
+
+    <select id="getNameByUserId" resultType="java.lang.String">
+        SELECT teacher.name FROM teacher WHERE user_id=#{userId}
+    </select>
+
+    <select id="getUserById" resultType="com.xq.model.User">
+        SELECT * FROM sysuser WHERE id=#{userId}
+    </select>
+
+    <select id="getTeacherByUserId" resultType="com.xq.model.Teacher">
+        SELECT * FROM teacher WHERE user_id=#{userId}
+    </select>
+
+</mapper>

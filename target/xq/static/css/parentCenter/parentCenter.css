@@ -1,0 +1,54 @@
+/**
+用户头像
+ */
+.img-circle{
+    width: 30%;
+}
+.imgDiv{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+.imgDiv p{
+    font-size: 40px;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+
+/**
+跳转按钮
+ */
+.buttonDiv{
+    border-radius:100%;
+}
+
+
+
+
+th,td{
+    text-align: center;
+}
+
+
+/**
+子页标题栏
+ */
+#title{
+    height: 10%;
+    background: #5bc0de;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+}
+#title p{
+    color: white;
+    font-size: 60px;
+    margin-top: 50%;
+    margin-bottom: 50%;
+}
+

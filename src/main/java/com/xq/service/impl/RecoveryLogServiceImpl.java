@@ -1,14 +1,8 @@
 package com.xq.service.impl;
 
-import com.xq.dao.DemandDao;
-import com.xq.dao.OrderDao;
-import com.xq.dao.RecoveryLogDao;
-import com.xq.dao.TeacherDao_sp;
+import com.xq.dao.*;
 import com.xq.dto.RecoveryLogDto;
-import com.xq.model.Demand;
-import com.xq.model.Order;
-import com.xq.model.RecoveryLog;
-import com.xq.model.Teacher;
+import com.xq.model.*;
 import com.xq.service.RecoveryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +28,8 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     DemandDao demandDao;
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    MessageDao messageDao;
 
     public Integer getConfirmCountByOid(String orderId) {
         return recoveryLogDao.getConfirmCountByOid(orderId);
@@ -69,18 +65,18 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         String dateNowStr = sdf.format(d);
         recoveryLogDao.allConfirmByOrderId(orderId,dateNowStr);
         Order order=orderDao.getOrderPayByOid(orderId);
-//        Message messageT=new Message();
-//        messageT.setTime(dateNowStr);
-//        messageT.setUserId(order.getUidT());
-//        messageT.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    家长（"+order.getPname()+"）已确认康复日志。"+
-//                "</p>");
-//
-//        messageDao.addMessage(messageT);
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(order.getUidT());
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    家长（"+order.getPname()+"）已确认康复日志。"+
+                "</p>");
+
+        messageDao.addMessage(messageT);
         orderDao.updateTrace(orderId,"#"+dateNowStr+"@家长确认当前全部康复日志");
     }
 
@@ -94,18 +90,18 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         recoveryLogDao.confirmById(id,dateNowStr);
 
         Order order=orderDao.getOrderPayByOid(oid);
-//        Message messageT=new Message();
-//        messageT.setTime(dateNowStr);
-//        messageT.setUserId(order.getUidT());
-//        messageT.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    家长（"+order.getPname()+"）已确认康复日志。"+
-//                "</p>");
-//
-//        messageDao.addMessage(messageT);
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(order.getUidT());
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    家长（"+order.getPname()+"）已确认康复日志。"+
+                "</p>");
+
+        messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长确认康复日志");
     }
 }

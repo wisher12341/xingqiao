@@ -1,9 +1,11 @@
 package com.xq.service.impl;
 
+import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.RecoveryLogDao;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
+import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.model.RecoveryHis;
 import com.xq.model.RecoveryLog;
@@ -29,6 +31,8 @@ public class OrderServiceImpl implements OrderService{
     RecoveryLogService recoveryService;
     @Autowired
     RecoveryLogDao recoveryLogDao;
+    @Autowired
+    MessageDao messageDao;
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
 //        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
@@ -191,19 +195,19 @@ public class OrderServiceImpl implements OrderService{
         String dateNowStr = sdf.format(d);
 
         Order order=orderDao.getOrderPayByOid(oid);
-//        Message messageT=new Message();
-//        messageT.setTime(dateNowStr);
-//        messageT.setUserId(order.getUidT());
-//        messageT.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
-//                "</p><a href='${path}/teacher/order/"+oid+"/agree'>同意" +
-//                "</a>");
-//
-//        messageDao.addMessage(messageT);
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(order.getUidT());
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
+                "</p><a href='${path}/teacher/order/"+oid+"/agree'>同意" +
+                "</a>");
+
+        messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长终止订单");
     }
 
@@ -217,30 +221,30 @@ public class OrderServiceImpl implements OrderService{
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长同意治疗师的终止订单");
         //通知后台管理员
         Order order=orderDao.getOrderPayByOid(oid);
-//        Message message=new Message();
-//        message.setTime(dateNowStr);
-//        message.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止。"+
-//                "</p>");
-//
-//        messageDao.addMessageAdmin(message);
+        Message message=new Message();
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止。"+
+                "</p>");
 
-//        Message messageT=new Message();
-//        messageT.setTime(dateNowStr);
-//        messageT.setUserId(order.getUidT());
-//        messageT.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    您的订单（"+oid+"），家长（"+order.getPname()+"）同意终止."+
-//                "</p>");
-//
-//        messageDao.addMessage(messageT);
+        messageDao.addMessageAdmin(message);
+
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(order.getUidT());
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），家长（"+order.getPname()+"）同意终止."+
+                "</p>");
+
+        messageDao.addMessage(messageT);
     }
 
     public void setStatusDesc(List<Order> orders){

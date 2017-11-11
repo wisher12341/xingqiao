@@ -1,0 +1,18 @@
+.demand-table{
+    margin-top: 40px;
+}
+
+.demand-table thead tr th{
+    font-size: 60px;
+}
+
+.demand-table tbody tr td{
+    font-size: 50px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.demand-table tbody tr td button{
+    font-size: 40px;
+    padding: 20px;
+}
+

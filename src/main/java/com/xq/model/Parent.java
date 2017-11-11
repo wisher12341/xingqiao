@@ -8,6 +8,15 @@ public class Parent {
 
     private Integer id;
     private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     private String realName;
     private String pid;
     private String pidFrontUrl;//身份证正面照
@@ -64,13 +73,6 @@ public class Parent {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
 
     public String getRealName() {
         return realName;

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.ParentCenterDao">
+
+    <select id="getParentByUserId" resultType="com.xq.model.Parent">
+        SELECT * FROM parent WHERE userId=#{userId}
+    </select>
+
+    <select id="getUserNameById" resultType="java.lang.String">
+        SELECT username FROM sysuser WHERE id=#{userId}
+    </select>
+
+
+</mapper>
