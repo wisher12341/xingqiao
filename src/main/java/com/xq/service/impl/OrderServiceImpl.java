@@ -8,15 +8,14 @@ import com.xq.model.Order;
 import com.xq.model.RecoveryHis;
 import com.xq.model.RecoveryLog;
 import com.xq.service.OrderService;
-import com.xq.service.RecoveryService;
+import com.xq.service.RecoveryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by netlab606 on 2017/11/2.
@@ -27,11 +26,10 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     OrderDao orderDao;
     @Autowired
-    RecoveryService recoveryService;
+    RecoveryLogService recoveryService;
     @Autowired
     RecoveryLogDao recoveryLogDao;
 
-    @Override
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
 //        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
         String openid="123";
@@ -65,7 +63,7 @@ public class OrderServiceImpl implements OrderService{
         return allTypeOrder;
     }
 
-    @Override
+
     public OrderDto getOrderByOid(String oid) {
         OrderDto orderDto=new OrderDto();
 
@@ -133,16 +131,116 @@ public class OrderServiceImpl implements OrderService{
         orderDto.setRecoveryLogList(recoveryLogList);
         orderDto.setCount(count);
 
-        List<String> serverTimes= Arrays.asList(order.getServerTime().split("#"));
-        Collections.sort(serverTimes);
-        for(int i=0;i<serverTimes.size();i++){
-            if(count==i){
-                orderDto.setNextTime(serverTimes.get(i));
-                break;
+        if(order.getStatusP()==3) {
+            List<String> serverTimes = Arrays.asList(order.getServerTime().split("#"));
+            Collections.sort(serverTimes);
+            for (int i = 0; i < serverTimes.size(); i++) {
+                if (count == i) {
+                    orderDto.setNextTime(serverTimes.get(i));
+                    break;
+                }
             }
+            orderDto.setPercent((count * 100) / Double.parseDouble(order.getAmount()) + "%");
         }
-        orderDto.setPercent((count*100)/Double.parseDouble(order.getAmount())+"%");
         return orderDto;
+    }
+
+    public void orderCancel(String oid) {
+        orderDao.orderCancel(oid);
+
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+
+        Order order=orderDao.getOrderPayByOid(oid);
+//        Message messageP=new Message();
+//        messageP.setTime(dateNowStr);
+//        messageP.setUserId(order.getUidP());
+//        messageP.setMessage("<p>\n" +
+//                "<span style=\"color:red;\">系统消息：</span>\n" +
+//                "</p>\n" +
+//                "<p>\n" +
+//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+//                "    您已取消预约单（"+oid+"）。"+
+//                "</p>");
+
+//        messageDao.addMessage(messageP);
+//
+//        Message messageT=new Message();
+//        messageT.setTime(dateNowStr);
+//        messageT.setUserId(order.getUidT());
+//        messageT.setMessage("<p>\n" +
+//                "<span style=\"color:red;\">系统消息：</span>\n" +
+//                "</p>\n" +
+//                "<p>\n" +
+//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+//                "    家长已取消预约单（"+oid+"）。"+
+//                "</p>");
+//
+//        messageDao.addMessage(messageT);
+        orderDao.updateTrace(oid,"#"+dateNowStr+"@家长取消预约");
+    }
+
+    @Transactional
+    public void orderStop(String oid, String reason) {
+        orderDao.stop(oid,reason);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+
+        Order order=orderDao.getOrderPayByOid(oid);
+//        Message messageT=new Message();
+//        messageT.setTime(dateNowStr);
+//        messageT.setUserId(order.getUidT());
+//        messageT.setMessage("<p>\n" +
+//                "<span style=\"color:red;\">系统消息：</span>\n" +
+//                "</p>\n" +
+//                "<p>\n" +
+//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+//                "    您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
+//                "</p><a href='${path}/teacher/order/"+oid+"/agree'>同意" +
+//                "</a>");
+//
+//        messageDao.addMessage(messageT);
+        orderDao.updateTrace(oid,"#"+dateNowStr+"@家长终止订单");
+    }
+
+    @Transactional
+    public void agree(String oid) {
+        orderDao.agree(oid);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        orderDao.updateTrace(oid,"#"+dateNowStr+"@家长同意治疗师的终止订单");
+        //通知后台管理员
+        Order order=orderDao.getOrderPayByOid(oid);
+//        Message message=new Message();
+//        message.setTime(dateNowStr);
+//        message.setMessage("<p>\n" +
+//                "<span style=\"color:red;\">系统消息：</span>\n" +
+//                "</p>\n" +
+//                "<p>\n" +
+//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+//                "    订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止。"+
+//                "</p>");
+//
+//        messageDao.addMessageAdmin(message);
+
+//        Message messageT=new Message();
+//        messageT.setTime(dateNowStr);
+//        messageT.setUserId(order.getUidT());
+//        messageT.setMessage("<p>\n" +
+//                "<span style=\"color:red;\">系统消息：</span>\n" +
+//                "</p>\n" +
+//                "<p>\n" +
+//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+//                "    您的订单（"+oid+"），家长（"+order.getPname()+"）同意终止."+
+//                "</p>");
+//
+//        messageDao.addMessage(messageT);
     }
 
     public void setStatusDesc(List<Order> orders){

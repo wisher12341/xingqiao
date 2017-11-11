@@ -83,7 +83,7 @@
     </select>
 
     <select id="getOrderByOid" resultMap="resultOrder">
-        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.trace,o.is_first,o.status_p,
+        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.trace,o.is_first,o.status_p,o.cid,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
         pre.id preid,pre.name prename,pre.all_amount,pre.amount,pre.classes,pre.s_time,pre.e_time,
         t.id tid,t.name tName,t.pid tPid,t.detailAddress,t.unit,u.headimgurl
@@ -91,5 +91,28 @@
         WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential AND t.id=o.teacher_id AND t.user_id=u.id
     </select>
 
+    <select id="getOrderPayByOid" resultType="com.xq.model.Order">
+        SELECT o.id,o.trade_no_wx,p.userId uidP,t.user_id uidT,t.name tname,p.realName pname,o.recover_ob,o.totalpay FROM orders o,parent p,teacher t WHERE o.id=#{oid} AND o.teacher_id=t.id AND o.parent_id=p.id
+    </select>
+
+    <update id="updateTrace">
+        UPDATE orders SET trace= CONCAT(trace,#{trace}) WHERE id=#{id}
+    </update>
+
+    <update id="orderCancel">
+        UPDATE orders SET status_t=11,status_p=11 WHERE id=#{oid}
+    </update>
+    <update id="orderPay" parameterType="com.xq.model.Order">
+        UPDATE orders SET status_p=#{statusP},status_t=#{statusT},pay_way=#{payWay},trade_no_wx=#{tradeNoWx},trace= CONCAT(trace,#{trace}),realpay=#{realpay} WHERE id=#{id}
+    </update>
+    <update id="agree">
+        UPDATE orders SET status_t=4,status_p=4 WHERE id=#{oid}
+    </update>
+    <update id="addCommentId" parameterType="com.xq.model.Comment">
+        update lejianshop.order set cid=#{id} WHERE id=#{order.id}
+    </update>
+    <update id="stop">
+        UPDATE orders SET status_t=8,status_p=8,reason=#{reason} WHERE id=#{oid}
+    </update>
 
 </mapper>

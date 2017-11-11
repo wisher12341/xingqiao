@@ -12,4 +12,32 @@
     </select>
 
 
+
+    <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">
+        SELECT r.id,r.order_id,r.time,r.confirm_time,r.confirm_status,r.content,r.remind_status,t.name teacherName,o.recover_ob
+        FROM recovery_log r,orders o,teacher t
+        WHERE  o.demand_id=#{demand.id} AND o.id=r.order_id AND o.teacher_id=t.id AND o.recover_ob IN
+        <foreach collection="ob" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="teacher!=null and teacher.id!=null and teacher.id!=0">
+            AND o.teacher_id=#{teacher.id}
+        </if>
+        <if test="startTime!=null and startTime!='' and endTime!=null and endTime!=''">
+            AND r.time &gt;=#{startTime} AND r.time &lt;=#{endTime}
+        </if>
+        <if test="isConfirm!=null and isConfirm!=2">
+            AND r.confirm_status=#{isConfirm}
+        </if>
+        order by r.id DESC
+    </select>
+
+    <update id="allConfirmByOrderId">
+        UPDATE recovery_log SET confirm_status=1,confirm_time=#{time} WHERE order_id=#{oid}
+    </update>
+
+    <update id="confirmById">
+        UPDATE recovery_log SET confirm_status=1,confirm_time=#{time} WHERE id=#{id}
+    </update>
+
 </mapper>

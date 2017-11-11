@@ -13,7 +13,7 @@ public class Order {
     private Integer demandId;
     private String recoverOb;
     private Integer statusP;// (1：待治疗师确认， 2：代付款（治疗师已确认）， 3：进行中， 4.家长终止审核中  5.治疗师终止审核中，6.家长终止退款处理中  9.治疗师终止退款处理中   7.治疗师终止待同意 8.家长终止待治疗师同意 11：家长已取消的订单 12：治疗师逾期未处理的订单 13：被治疗师终止的历史订单，14：被家长中途终止的历史订单，15：完成的历史订单 16：治疗师拒绝的订单）
-    private Integer statusT;//（1：待处理， 2-治疗师已确认 3：进行中，4.家长终止审核中 5.治疗师终止审核中 6.家长终止退款处理中 9.治疗师终止退款处理中  7.治疗师终止待家长同意 8.治疗师终止待家长同意  11：家长已取消的订单 12：治疗师逾期未处理的订单，13：被治疗师终止的历史订单， 14：被家长中途终止的历史订单，15：完成的历史订单，16：治疗师拒绝的订单）
+    private Integer statusT;//（1：待处理， 2-治疗师已确认 3：进行中，4.家长终止审核中 5.治疗师终止审核中 6.家长终止退款处理中 9.治疗师终止退款处理中  7.治疗师终止待家长同意 8.家长终止待治疗师同意  11：家长已取消的订单 12：治疗师逾期未处理的订单，13：被治疗师终止的历史订单， 14：被家长中途终止的历史订单，15：完成的历史订单，16：治疗师拒绝的订单）
     private String sTime;
     private String eTime;
     private String isdeleted;
@@ -29,6 +29,7 @@ public class Order {
     private Double totalpay;
     private String complete;
     private String tradeNo;//支付宝交易号
+    private String tradeNoWx;//微信交易号
     private Integer pay;
     private String payWay;//支付方式
     private Integer cid;//评论ID
@@ -62,49 +63,12 @@ public class Order {
 
     private List<String> timeline;//用于 订单追踪的 时间轴的 刻度
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id='" + id + '\'' +
-                ", teacherId=" + teacherId +
-                ", parentId=" + parentId +
-                ", demandId=" + demandId +
-                ", recoverOb='" + recoverOb + '\'' +
-                ", statusP=" + statusP +
-                ", statusT=" + statusT +
-                ", sTime='" + sTime + '\'' +
-                ", eTime='" + eTime + '\'' +
-                ", isdeleted='" + isdeleted + '\'' +
-                ", initialevaluated='" + initialevaluated + '\'' +
-                ", effectevaluated='" + effectevaluated + '\'' +
-                ", amount='" + amount + '\'' +
-                ", preferential=" + preferential +
-                ", integral='" + integral + '\'' +
-                ", remark='" + remark + '\'' +
-                ", realpay=" + realpay +
-                ", serverTime='" + serverTime + '\'' +
-                ", way='" + way + '\'' +
-                ", totalpay=" + totalpay +
-                ", complete='" + complete + '\'' +
-                ", tradeNo='" + tradeNo + '\'' +
-                ", pay=" + pay +
-                ", payWay='" + payWay + '\'' +
-                ", cid=" + cid +
-                ", isFirst=" + isFirst +
-                ", uidP=" + uidP +
-                ", uidT=" + uidT +
-                ", pname='" + pname + '\'' +
-                ", tname='" + tname + '\'' +
-                ", reason='" + reason + '\'' +
-                ", recoveryHisList=" + recoveryHisList +
-                ", trace='" + trace + '\'' +
-                ", statusDesc='" + statusDesc + '\'' +
-                ", parent=" + parent +
-                ", teacher=" + teacher +
-                ", preferentialE=" + preferentialE +
-                ", demand=" + demand +
-                ", timeline=" + timeline +
-                '}';
+    public String getTradeNoWx() {
+        return tradeNoWx;
+    }
+
+    public void setTradeNoWx(String tradeNoWx) {
+        this.tradeNoWx = tradeNoWx;
     }
 
     public Integer getPeriod() {

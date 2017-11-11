@@ -1,0 +1,137 @@
+body{
+    background-color: #f5f5f5;
+}
+#search{
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+#log{
+    background-color: white;
+}
+
+.date{
+    font-size: 35px;
+    color: grey;
+}
+.txt{
+    margin-left: -1px;
+    border-left: solid 1px #e8e8e8;
+    padding-left: 26px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    font-size: 42px;
+    color: grey;
+}
+.search_title{
+    font-size: 40px;
+    margin-left: 5px;
+    color: grey;
+}
+.input_button{
+     /*float: right;*/
+     font-size: 40px;
+     padding: 4px;
+     border: none;
+     background-color: white;
+    color: grey;
+ }
+.input_button_search{
+    /*float: right;*/
+    font-size: 50px;
+    padding: 4px;
+    border: none;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: grey;
+}
+
+.search_div{
+    padding: 30px;
+}
+.select_teacher,.select_demand,.select_confirm,.search_time{
+    font-size: 40px;
+    padding: 4px;
+    color: grey;
+}
+.search_time{
+    width: 40%;
+    border-radius: 10px;
+    border: solid 1px grey;
+}
+
+.search_label{
+    background-color: #56c078;
+    font-size: 35px;
+    color: white;
+    padding: 5px;
+    margin-right: 10px;
+    border: solid 1px #56c078;
+    border-radius: 5px;
+}
+.search_label_title{
+    font-size: 40px;
+    color: grey;
+}
+.search_factor_title{
+    font-size: 40px;
+    text-align: center;
+    color: grey;
+}
+.search_factor{
+    background-color: white;
+    margin-bottom: 30px;
+}
+.ob_no_select{
+    opacity: 0.5;
+    display: inline;
+    margin-bottom: 20px;
+}
+.ob_select{
+    display: inline;
+    margin-bottom: 20px;
+}
+.ob_title{
+    padding: 10px;
+    font-size: 40px;
+    text-align: center;
+    background-color: #f5f5f5;
+    color: grey;
+ }
+.ob{
+    background-color: white;
+    margin-bottom: 20px;
+}
+.ob_select span,.ob_no_select span{
+    font-size: 35px;
+    color: grey;
+}
+.select_teacher,.select_demand,.select_confirm{
+    -webkit-appearance:none; /*去除系统默认的样式*/
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);   /* 点击高亮的颜色*/
+    border: none;
+    text-align: center;
+}
+.search_div span{
+    font-size: 40px;
+}
+.col-xs-3{
+    width: 30%;!important;
+}
+.ob_table{
+    width: 100%;
+}
+.ob_p{
+    padding: 10px;
+    font-size: 40px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.search_factor_table{
+    width: 95%;
+}
+.search_factor_table td{
+    padding-bottom: 10px;
+    width: 300px;
+}

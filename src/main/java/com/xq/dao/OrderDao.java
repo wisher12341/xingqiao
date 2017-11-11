@@ -1,6 +1,8 @@
 package com.xq.dao;
 
+import com.xq.model.Comment;
 import com.xq.model.Order;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,4 +13,18 @@ public interface OrderDao {
     List<Order> getAllOrderByOpenid(String openid);
 
     Order getOrderByOid(String oid);
+
+    void orderCancel(String oid);
+
+    Order getOrderPayByOid(String oid);
+
+    void updateTrace(@Param("id")String oid, @Param("trace")String s);
+
+    void orderPay(Order order);
+
+    void stop(@Param("oid") String oid,@Param("reason") String reason);
+
+    void agree(String oid);
+
+    void addCommentId(Comment comment);
 }

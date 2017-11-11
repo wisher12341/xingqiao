@@ -14,6 +14,15 @@ public class RecoveryLog {
     private Integer remindStatus; //0未提醒 1已提醒
 
     private String teacherName;//治疗师 姓名  在家长个人中心的需求管理的  需求详情的康复日志 显示 治疗师的姓名，表明哪个治疗师写的
+    private String recoverOb;//康复领域
+
+    public String getRecoverOb() {
+        return recoverOb;
+    }
+
+    public void setRecoverOb(String recoverOb) {
+        this.recoverOb = recoverOb;
+    }
 
     public String getTeacherName() {
         return teacherName;

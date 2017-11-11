@@ -13,4 +13,10 @@ public interface OrderService {
     AllTypeOrder getAllOrder(HttpServletRequest request);
 
     OrderDto getOrderByOid(String oid);
+
+    void orderCancel(String oid);
+
+    void orderStop(String oid, String reason);
+
+    void agree(String oid);
 }

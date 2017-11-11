@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.TeacherDao_sp">
+
+
+    <select id="getMyTeachersByOpenid" resultType="com.xq.model.Teacher">
+        SELECT distinct t.id,t.name
+        FROM teacher t,sysuser u,orders o,parent p
+        WHERE u.openid=#{openid} AND o.teacher_id=t.id AND p.userId=u.id AND o.parent_id=p.id AND (o.status_t!=1 and o.status_t!=2 and o.status_t!=11 and o.status_t!=12 and o.status_t!=16)
+    </select>
+
+</mapper>
