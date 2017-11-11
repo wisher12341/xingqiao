@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.TeacherDao">
+
+    <select id="getTeacher" resultType="com.xq.model.Teacher">
+        SELECT t.id,t.user_id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.level,t.t_ground,t.s_ground,t.domain,
+        t.question,t.object,t.project,t.experience_age,t.way,u.gender,t.school,t.recovery_his,t.success_case,u.phone,u.email
+       FROM teacher t,sysuser u WHERE t.user_id=u.id AND t.id=#{id}
+    </select>
+
+
+    <resultMap id="resultTeacher" type="com.xq.model.Teacher">
+        <id property="id" column="id"/>
+        <result property="name" column="tname"/>
+        <result property="way" column="way"/>
+        <result property="schedule" column="schedule"/>
+        <association property="user" javaType="com.xq.model.User">
+        <id property="userId" column="uid"/>
+        <result property="phone" column="uphone"/>
+        </association>
+        <collection property="demandList" ofType="com.xq.model.Demand">
+            <id property="id" column="did"/>
+            <result property="name" column="name"/>
+            <result property="disease" column="disease"/>
+        </collection>
+    </resultMap>
+
+    <select id="getTeachersByUserId" resultMap="resultTeacher">
+        SELECT t.id,t.name tname,t.way,t.schedule,u.id uid,u.phone uphone,d.id did,d.name,d.disease
+        FROM teacher t,sysuser u,demand d,orders o,parent p
+        WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id AND o.demand_id=d.id AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
+    </select>
+
+
+</mapper>

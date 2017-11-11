@@ -10,6 +10,8 @@ public class Teacher {
 
     private Integer id;
     private Integer userId;
+
+
     private String name;
     private String pid;
     private String address; //没用
@@ -105,6 +107,14 @@ public class Teacher {
 
     public void setSchedule(String schedule) {
         this.schedule = schedule;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public void setCommentList(List<Comment> commentList) {
@@ -387,15 +397,6 @@ public class Teacher {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
 
 
     public String getAvailableTime() {

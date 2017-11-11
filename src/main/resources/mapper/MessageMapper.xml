@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.MessageDao">
+
+    <select id="getMessagesByUserId" resultType="com.xq.model.Message">
+        SELECT id,message,is_read,time FROM message WHERE user_id=#{userId}
+    </select>
+
+</mapper>
