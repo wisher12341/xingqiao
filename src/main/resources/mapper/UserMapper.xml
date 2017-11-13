@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.UserDao">
+
+
+    <select id="findUserByNameType" resultType="com.xq.model.User">
+        select u.id, u.username , u.password,u.status,t.name tName,p.realName pName
+        from sysuser u LEFT join teacher t on t.user_id=u.id LEFT JOIN parent p on p.userId=u.id
+        where u.username = #{username} and u.status=#{type}
+    </select>
+
+    <select id="findUserByName" resultType="com.xq.model.User">
+        select u.id, u.username , u.password,u.status,t.name tName,p.realName pName
+        from sysuser u LEFT join teacher t on t.user_id=u.id LEFT JOIN parent p on p.userId=u.id
+        where u.username = #{username}
+    </select>
+
+    <select id="getParentNameById" resultType="java.lang.String">
+        select realName from parent where userId=#{id}
+    </select>
+
+    <select id="getTeacherNameById" resultType="java.lang.String">
+        select name from teacher where user_id=#{id}
+    </select>
+
+    <select id="getUserByUid" resultType="com.xq.model.User">
+        SELECT id,username,password,phone,gender,email FROM sysuser WHERE id=#{id}
+    </select>
+
+    <update id="save">
+        UPDATE sysuser SET id=id
+        <if test="username!=null and username!=''">
+            ,username=#{username}
+        </if>
+        <if test="gender!=null">
+            ,gender=#{gender}
+        </if>
+        <if test="phone!=null and phone!=''">
+            ,phone=#{phone}
+        </if>
+        <if test="email!=null and email!=''">
+            ,email=#{email}
+        </if>
+        WHERE id=#{id}
+    </update>
+
+</mapper>
