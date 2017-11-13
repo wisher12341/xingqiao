@@ -35,9 +35,9 @@ a:hover ,a:focus{
 .show-nav {transform:translateX(0);}
 .hide-nav {transform:translateX(-220px);} /*侧滑关键*/
 .mobile-nav-taggle {
-    height:35px;
-    line-height:35px;
-    width:35px;
+    height:3.5rem;
+    line-height:3.5rem;
+    width:5.5rem;
     background-color:#9acfea;
     color:#ffffff;
     display:inline-block;

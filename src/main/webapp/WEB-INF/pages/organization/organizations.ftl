@@ -42,7 +42,7 @@
 
         <div class="col-xs-6 col-md-6" >
             <select class="form-control" ng-model="vm.dis"
-                    ng-options="c.label for c in addr.provinces[0].districts">
+                    ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
                 <option value="">-- 请选择区 --</option>
             </select>
         </div>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="alert alert-dismissable alert-warning" ng-if = "NewOrgItems.length==0">
-            <div style=" text-align: center;">
+            <div style="text-align: center;">
                 <p>没有搜索结果</p>
             </div>
         </div>

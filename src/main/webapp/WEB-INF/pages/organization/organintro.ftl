@@ -5,8 +5,10 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>星桥</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
-    <script type="text/javascript" src="${base}/static/js/common/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="${base}/static/css/common/bootstrap.min.css">
+
+    <script type="text/javascript" src="${base}/static/bootstrap/js/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
 </head>
 <body class="base">
@@ -429,7 +431,7 @@
             data: {
                 type: 1,
                 cid: $("input[name='cid']").val(),
-                flag: 1, //0表示  机构评论   1表示治疗师评论
+                flag: 0, //0表示  机构评论   1表示治疗师评论
                 reason:$("textarea[name='reason']").val()
             },
             success: function (data) {

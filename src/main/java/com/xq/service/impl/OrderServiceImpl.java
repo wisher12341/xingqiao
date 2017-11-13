@@ -1,22 +1,22 @@
 package com.xq.service.impl;
 
+import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
+import com.xq.dao.ParentCenterDao;
 import com.xq.dao.RecoveryLogDao;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
-import com.xq.model.Order;
-import com.xq.model.RecoveryHis;
-import com.xq.model.RecoveryLog;
+import com.xq.model.*;
 import com.xq.service.OrderService;
 import com.xq.service.RecoveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by netlab606 on 2017/11/2.
@@ -30,6 +30,10 @@ public class OrderServiceImpl implements OrderService{
     RecoveryService recoveryService;
     @Autowired
     RecoveryLogDao recoveryLogDao;
+    @Autowired
+    MessageDao messageDao;
+    @Autowired
+    ParentCenterDao parentCenterDao;
 
     @Override
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
@@ -192,5 +196,55 @@ public class OrderServiceImpl implements OrderService{
                     break;
             }
         }
+    }
+
+
+    @Transactional
+    public String addOrder(Order order, HttpSession session) {
+        User user = (User) session.getAttribute("USER");
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+
+        Parent parent=parentCenterDao.getParentByuserId(user.getId());
+
+        Date date=new Date();
+
+        order.setId(date.getTime()+"");
+        order.setPreferential(1);
+        order.setsTime(dateNowStr);
+        order.setParentId(parent.getId());
+        order.setStatusP(1);
+        order.setStatusT(1);
+        order.setTrace(dateNowStr+"@下预约单");
+        orderDao.addOrder(order);
+
+        Message messageP=new Message();
+        messageP.setTime(dateNowStr);
+        messageP.setUserId(user.getId());
+        messageP.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的预约单已发给治疗师（"+order.getTeacher().getName()+"），请耐心等待治疗师回复。"+
+                "</p>");
+
+        messageDao.addMessage(messageP);
+
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(orderDao.getUserIdByOid(order.getId()));
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您收到一份预约单。"+
+                "</p>");
+
+        messageDao.addMessage(messageT);
+        return order.getId();
     }
 }

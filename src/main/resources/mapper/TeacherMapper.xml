@@ -4,7 +4,7 @@
 
     <select id="getTeachers" resultType="com.xq.model.Teacher">
         SELECT t.id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.price_min,t.price_max,t.price_mid,t.level,t.t_ground,t.s_ground,t.domain,
-        t.question,t.object,t.project,t.experience_age,t.way,u.gender
+        t.question,t.object,t.project,t.experience_age,t.way,u.gender,u.headimgurl
         FROM teacher t,sysuser u WHERE t.user_id=u.id
         <if test="teacher.object != null and teacher.object != '' and teacher.object != '不限'">
             and (t.object like concat('%',#{teacher.object},'%') OR t.object='不限')
@@ -44,7 +44,7 @@
 
     <select id="getTeacher" resultType="com.xq.model.Teacher">
         SELECT t.id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.level,t.t_ground,t.s_ground,t.domain,
-        t.question,t.object,t.project,t.experience_age,t.way,u.gender,t.school,t.recovery_his,t.success_case,u.phone,u.email
+        t.question,t.object,t.project,t.experience_age,t.way,u.gender,t.school,t.recovery_his,t.success_case,u.phone,u.email,u.headimgurl
         FROM teacher t,sysuser u WHERE t.user_id=u.id AND t.id=#{id}
     </select>
 
@@ -126,6 +126,7 @@
         <association property="user" javaType="com.xq.model.User">
             <id property="id" column="uid"/>
             <result property="phone" column="phone"/>
+            <result property="email" column="email"/>
         </association>
         <collection property="demandList" ofType="com.xq.model.Demand">
             <id property="id" column="did"/>

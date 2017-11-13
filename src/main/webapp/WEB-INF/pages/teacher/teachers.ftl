@@ -20,9 +20,9 @@
 </head>
 <body ng-app="testapp" ng-controller="teacherCtrl" ng-init="getTeacher()">
 
-<div class="nav-btn visible-xs visible-sm">
+<div class="nav-btn visible-xs visible-sm" style="font-size: 1.2rem">
     <a href="#" class="mobile-nav-taggle" id="mobile-nav-taggle">
-        <span class="glyphicon glyphicon-search"></span></a>
+        <span class="glyphicon glyphicon-search"></span>&nbsp筛选</a>
 </div>
 <div id="mobile-menu" class="mobile-nav visible-xs visible-sm hide-nav">
     <div class="container my-slider-container offset-15">
@@ -98,7 +98,7 @@
     <div ng-repeat="temp in teachers" ng-cloak>
         <div class="row row-wrapper list-item-content pointable" ng-click="get_teacher_more(temp['id'])">
             <div class="col-xs-3 col-md-2" align="center">
-                <img ng-src="${base}/##temp.headimgurl##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
+                <img ng-src="${base}/##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
             </div>
             <div class="col-xs-9 col-md-7">
                 <div class="row">
@@ -118,24 +118,8 @@
                     <span>##temp['domain']##</span>
                 </div>
                 <div class="row padding-left-15">
-                    <strong>问题类型:</strong>
-                    <a>##temp['question']##</a>
-                </div>
-                <div class="row padding-left-15">
                     <strong>康复对象:</strong>
                     <span>##temp['object']##</span>
-                </div>
-                <div class="row padding-left-15">
-                    <strong ng-if="(temp['way'].indexOf('治疗师上门')!=-1)||(temp['way'].indexOf('不限')!=-1)" >治疗师上门区域:</strong>
-                    <span ng-if="(temp['way'].indexOf('治疗师上门')!=-1)||(temp['way'].indexOf('不限')!=-1)" >##temp['sGround']##</span>
-                </div>
-                <div class="row padding-left-15">
-                    <strong ng-if="(temp['way'].indexOf('学生上门')!=-1)||(temp['way'].indexOf('不限')!=-1)" >学生上门地址:</strong>
-                    <span ng-if="(temp['way'].indexOf('学生上门')!=-1)||(temp['way'].indexOf('不限')!=-1)" >##temp['tGround']##</span>
-                </div>
-                <div class="row padding-left-15">
-                    <strong>简介:</strong>
-                    <span>##temp['abstractTeacher']##</span>
                 </div>
             </div>
         </div>
@@ -240,7 +224,9 @@
         //更多老师介绍
         $scope.get_teacher_more = function(teacher_id){
             ipCookie('teacherId', teacher_id, {path: '/', expires: 14});
-            $window.location = ${base}+'/teacher/'+teacher_id+'/detail';
+            alert(teacher_id);
+            alert('${base}'+'/teacher/'+teacher_id+'/detail');
+            $window.location = '${base}'+'/teacher/'+teacher_id+'/detail';
         };
 
     }]);

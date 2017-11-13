@@ -152,4 +152,6 @@ public class User {
     public void setHeadimgurl(String headimgurl) {
         this.headimgurl = headimgurl;
     }
+
+
 }

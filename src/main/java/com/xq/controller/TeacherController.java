@@ -50,12 +50,15 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = "/{teacher_id}/detail",method = RequestMethod.GET)
-    public String organintro(@PathVariable("teacher_id") Integer teacher_id, Model model, HttpServletRequest request) {
+    public String teacherIntro(@PathVariable("teacher_id") Integer teacher_id, Model model, HttpServletRequest request) {
+        if (request.getSession().getAttribute("USER") == null){
+            TmpLogin.tmpLogin(request);
+        }
         Teacher teacher=teachersService.getTeacher(teacher_id);
         model.addAttribute("teacher",teacher);
         UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
         model.addAttribute("usergoodreport",userGoodReport);
-        return "teacherMore";
+        return "teacher/teacher";
     }
 
 
