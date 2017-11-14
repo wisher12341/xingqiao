@@ -1,14 +1,16 @@
 package com.xq.controller;
 
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.TeacherDto;
 import com.xq.model.Demand;
 import com.xq.service.ParentCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by 86761 on 2017/11/5.
@@ -91,6 +93,26 @@ public class ParentCenterController {
         mv.addObject("parent",parentCenterService.getParentByUserId(userId));
         mv.addObject("user",parentCenterService.getUserById(userId));
         return mv;
+    }
+
+
+    @RequestMapping(value = "/{userId}/{uiName}/{oldValue}/{fieldName}/modifyPage")
+    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName)
+    {
+        ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
+        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,userId);
+        mv.addObject("modifyPageDto",modifyPageDto);
+        return mv;
+    }
+
+
+
+    @RequestMapping(value = "/saveModify")
+    @ResponseBody
+    public Map saveModify(@RequestParam("fieldName") String fieldName,@RequestParam("userId") Integer userId,@RequestParam("newValue") String newValue){
+        Map map=new HashMap();
+        parentCenterService.modifyParentInfo(userId,newValue,fieldName);
+        return map;
     }
 
 }

@@ -21,7 +21,7 @@
         <p>基本信息</p>
         <ul class="list-group">
             <li class="list-group-item">
-                <div class="list-item-div">
+                <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${user.id}/${"姓名"}/${parent.realName}/${"realName"}/modifyPage">
                     <div class="list-item-title">姓名</div>
                     <div class="list-item-text">${(parent.realName)!}</div>
                     <span><i class="fa fa-angle-right fa-4x"></i></span>

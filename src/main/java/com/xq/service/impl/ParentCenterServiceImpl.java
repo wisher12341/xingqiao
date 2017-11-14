@@ -2,23 +2,18 @@ package com.xq.service.impl;
 
 import com.xq.dao.*;
 import com.xq.dto.TeacherDto;
-import com.xq.model.Demand;
-import com.xq.model.Parent;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
 import com.xq.service.ParentCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.xq.model.Message;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by 86761 on 2017/11/5.
  */
 @Service
-public class ParentCenterServiceImpl implements ParentCenterService{
+public class ParentCenterServiceImpl implements ParentCenterService {
     @Autowired
     ParentCenterDao parentCenterDao;
     @Autowired
@@ -76,5 +71,11 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     @Override
     public String getUserNameById(int userId){
         return parentCenterDao.getUserNameById(userId);
+    }
+
+    @Override
+    public void modifyParentInfo(int userId,String value,String fieldName){
+        if(fieldName.equals("realName")) parentCenterDao.updateRealName(value,userId);
+
     }
 }

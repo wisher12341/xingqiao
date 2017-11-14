@@ -10,5 +10,8 @@
         SELECT username FROM sysuser WHERE id=#{userId}
     </select>
 
+    <update id="updateRealName">
+        UPDATE parent SET realName=#{realName} WHERE userId=#{userId}
+    </update>
 
 </mapper>

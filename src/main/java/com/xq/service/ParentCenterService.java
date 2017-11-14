@@ -24,4 +24,7 @@ public interface ParentCenterService {
     User getUserById(int userId);
 
     String getUserNameById(int userId);
+
+    void modifyParentInfo(int userId, String value, String fieldName);
+
 }
