@@ -13,5 +13,21 @@
     <update id="updateRealName">
         UPDATE parent SET realName=#{realName} WHERE userId=#{userId}
     </update>
+    <update id="updateGender">
+        UPDATE sysuser SET gender=#{gender} WHERE id=#{userId}
+    </update>
+    <update id="updatePhone">
+        UPDATE sysuser SET phone=#{phone} WHERE id=#{userId}
+    </update>
+    <update id="updateEmail">
+        UPDATE sysuser SET email=#{email} WHERE id=#{userId}
+    </update>
+    <update id="updatePid">
+        UPDATE sysuser SET pid=#{pid} WHERE id=#{userId}
+    </update>
+    <update id="updateGroundAndAddr">
+        UPDATE parent SET ground=#{ground}, address=#{address} WHERE userId=#{userId}
+    </update>
+
 
 </mapper>

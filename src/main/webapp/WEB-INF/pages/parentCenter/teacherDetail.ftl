@@ -4,12 +4,15 @@
     <title>个人资料</title>
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
+    <link href="${path}/static/css/parentCenter/myInfo.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
 <div id="main">
 
-    <div id="title">
-        <p>治疗师详情</p>
+    <div id="title" class="row">
+        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter/${userId}/myTeacher"></a></div>
+        <div class="col-sm-8 titleText"><p>治疗师详情</p></div>
+        <div class="col-sm-2"></div>
     </div>
     <div class="imgDiv">
         <img src="../../../static/img/parentCenter/parentIcon.jpg" class="img-circle">

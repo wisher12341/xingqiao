@@ -76,6 +76,32 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     @Override
     public void modifyParentInfo(int userId,String value,String fieldName){
         if(fieldName.equals("realName")) parentCenterDao.updateRealName(value,userId);
+        else if(fieldName.equals("phone")) parentCenterDao.updatePhone(value,userId);
+        else if(fieldName.equals("email")) parentCenterDao.updateEmail(value,userId);
+        else if(fieldName.equals("pid")) parentCenterDao.updatePid(value,userId);
+        else if(fieldName.equals("ground")) {
+            String[] values=value.split(" ");
+            parentCenterDao.updateGroundAndAddr(values[0],values[1],userId);
+        }
+        else if(fieldName.equals("gender")) {
+            if(value.equals("0")) parentCenterDao.updateGender(0,userId);
+            else  parentCenterDao.updateGender(1,userId);
+        }
+
+    }
+
+    @Override
+    public void modifyDemand(int demandId,String newValue,String fieldName){
+        if(fieldName.equals("name")) demandDao.updateName(newValue,demandId);
+        else if(fieldName.equals("gender")){
+            if(newValue.equals("0")) demandDao.updateGender(0,demandId);
+            else demandDao.updateGender(1,demandId);
+        }
+        else if(fieldName.equals("birthday")) demandDao.updateBirthday(newValue,demandId);
+        else if(fieldName.equals("diseaseHis")) demandDao.updateDiseaseHis(newValue,demandId);
+        else if(fieldName.equals("allergyHis")) demandDao.updateAllergyHis(newValue,demandId);
+        else if(fieldName.equals("report")) demandDao.updateReport(newValue,demandId);
+        else if(fieldName.equals("remark")) demandDao.updateRemark(newValue,demandId);
 
     }
 }

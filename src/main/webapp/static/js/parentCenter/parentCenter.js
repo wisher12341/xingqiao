@@ -20,3 +20,24 @@ function saveModify(userId,fieldName){
         }
     });
 }
+
+function saveDemandModify(userId,demandId,fieldName){
+    var newValue= $("input").val();
+
+    $.ajax({
+        url: "/wx/parentCenter/saveDemandModify",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            "newValue": newValue,
+            "demandId": demandId,
+            "fieldName":fieldName
+        },
+        success: function(){
+            window.location.href="/wx/parentCenter/"+userId+"/myDemands/"+demandId+"/demandDetail";
+        },
+        error: function(){
+
+        }
+    });
+}

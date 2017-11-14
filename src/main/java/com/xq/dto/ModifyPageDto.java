@@ -7,13 +7,13 @@ public class ModifyPageDto {
     private String oldValue;
     private String fieldName;
     private String uiName;
-    private int userId;
+    private int objId;
 
-    public ModifyPageDto(String oldValue, String fieldName, String uiName, int userId) {
+    public ModifyPageDto(String oldValue, String fieldName, String uiName, int objId) {
         this.oldValue = oldValue;
         this.fieldName = fieldName;
         this.uiName=uiName;
-        this.userId = userId;
+        this.objId = objId;
     }
 
     public String getOldValue() {
@@ -40,12 +40,12 @@ public class ModifyPageDto {
         this.uiName = uiName;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getObjId() {
+        return objId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setObjId(int objId) {
+        this.objId = objId;
     }
 
 

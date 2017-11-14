@@ -10,9 +10,9 @@
 <body>
 <div id="main">
     <div id="title" class="row">
-        <div class="col-sm-3"><button type="button" id="backBtn" class="btn btn-default btn-lg btn-block" onclick=location.href="${path}/wx/parentCenter/${modifyPageDto.userId}/myInfo">返回</button></div>
-        <div class="col-sm-6 titleText"><p>修改</p></div>
-        <div class="col-sm-3"><button type="button" id="saveBtn" class="btn btn-default btn-lg btn-block" onclick="saveModify('${modifyPageDto.userId}','${modifyPageDto.fieldName}');">保存</button></div>
+        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter/${modifyPageDto.objId}/myInfo"></a></div>
+        <div class="col-sm-8 titleText"><p>修改</p></div>
+        <div class="col-sm-2" style="text-align: center"><a id="saveBtn" class="fa fa-save fa-4x" onclick="saveModify('${modifyPageDto.objId}','${modifyPageDto.fieldName}');"></a></div>
     </div>
     <div class="modifyDiv">
       <label for="input" class="col-sm-2 control-label">${modifyPageDto.uiName}</label>

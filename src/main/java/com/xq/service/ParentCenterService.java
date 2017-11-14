@@ -27,4 +27,6 @@ public interface ParentCenterService {
 
     void modifyParentInfo(int userId, String value, String fieldName);
 
+    void modifyDemand(int demandId,String newValue,String fieldName);
+
 }
