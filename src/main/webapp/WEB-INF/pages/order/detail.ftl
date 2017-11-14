@@ -165,7 +165,11 @@
                         <#list order.recoveryLogList as log>
                             <li style=" list-style-type: none;">
                                 <div>
-                                    <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
+                                    <#if log_index==0>
+                                        <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: red;font-size: 40px"></span>
+                                    <#else>
+                                        <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
+                                    </#if>
                                     <span class="date" style="margin-left: 20px">${log.time}</span>
 
                                     <#if log.confirmStatus==0>

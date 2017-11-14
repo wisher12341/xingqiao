@@ -40,4 +40,7 @@
         UPDATE recovery_log SET confirm_status=1,confirm_time=#{time} WHERE id=#{id}
     </update>
 
+    <update id="remind">
+        UPDATE recovery_log SET remind_status=1 WHERE id=#{lid}
+    </update>
 </mapper>

@@ -11,5 +11,5 @@ import java.util.List;
 public interface TeacherDao {
     Teacher getTeacher(int id);
     List<Teacher> getTeachersByUserId(@Param(value="id") Integer id);
-
+    List<Teacher> getMyTeachersByOpenid(String openid);
 }

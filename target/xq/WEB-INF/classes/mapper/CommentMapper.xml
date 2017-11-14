@@ -47,5 +47,9 @@
         VALUE(#{detail},#{isOpen},#{time},#{type},#{pid},#{uid})
     </insert>
 
+    <insert id="addReply"  parameterType="com.xq.model.Comment">
+        INSERT INTO comment(detail,time,type,pid)
+        VALUE(#{detail},#{time},#{type},#{pid})
+    </insert>
 
 </mapper>

@@ -1,9 +1,12 @@
 package com.xq.service.impl;
 
 import com.xq.dao.CommentDao;
+import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.UserDao;
 import com.xq.model.Comment;
+import com.xq.model.Message;
+import com.xq.model.Order;
 import com.xq.model.User;
 import com.xq.service.CommentService;
 import com.xq.util.ConstOrder;
@@ -33,6 +36,8 @@ public class CommentServiceImpl implements CommentService {
 //    CommonService commonService;
     @Autowired
     UserDao userDao;
+    @Autowired
+    MessageDao messageDao;
 
     @Transactional
     public void addComment(Comment comment, HttpServletRequest request, MultipartFile[] pics) {
@@ -73,5 +78,34 @@ public class CommentServiceImpl implements CommentService {
     public Comment getCommentByOid(String oid) {
         return commentDao.getCommentByOid(oid);
     }
+    @Transactional
+    public void addReply(String reply, String oid, Integer pid) {
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
 
+
+        Comment comment=new Comment();
+        comment.setTime(dateNowStr);
+        comment.setType(2);
+        comment.setDetail(reply);
+        comment.setPid(pid);
+        commentDao.addReply(comment);
+
+
+        Order order=orderDao.getOrderPayByOid(oid);
+        Message message=new Message();
+        message.setUserId(order.getUidP());
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），治疗师（"+order.getPname()+"）已回复。"+
+                "</p>");
+
+        messageDao.addMessage(message);
+    }
 }

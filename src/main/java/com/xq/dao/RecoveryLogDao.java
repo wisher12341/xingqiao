@@ -18,4 +18,6 @@ public interface RecoveryLogDao {
     void allConfirmByOrderId(@Param("oid") String orderId, @Param("time") String dateNowStr);
 
     void confirmById(@Param("id") Integer id,@Param("time") String dateNowStr);
+
+    void remind(Integer lid);
 }

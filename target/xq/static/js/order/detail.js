@@ -14,10 +14,6 @@ $(".ts_mask").click(function () {
     $('.tishi').html("");
 });
 
-$("#logUl li").eq(0).addClass("first");
-$(".first span").eq(0).css("color","red");
-
-
 function allLogConfirm(orderId) {
     $.ajax({
         type: "POST",

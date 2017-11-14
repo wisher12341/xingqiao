@@ -1,5 +1,4 @@
 <#include "common/const.ftl" />
-<#include "common/var.ftl" />
 <html>
 <head>
     <title>个人中心</title>
@@ -23,7 +22,7 @@
             <i class="fa fa-user-circle fa-5x"></i><p style="font-size: 50px; display: inline;"> 个人资料</p></button>
         <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="teacherCenter/${userId}/myDemands" style="height:12%">
             <i class="fa fa-id-card fa-5x"></i><p style="font-size: 50px; display: inline;"> 我的患者</p></button>
-        <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="" style="height:12%">
+        <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="${path}/wx/teacherCenter/${userId}/order" style="height:12%">
             <i class="fa fa-users fa-5x"></i><p style="font-size: 50px; display: inline;"> 我的订单</p></button>
         <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="teacherCenter/${userId}/myMessages" style="height:12%">
             <i class="fa fa-envelope-o fa-5x"></i><p style="font-size: 50px; display: inline;"> 消息中心</p></button>

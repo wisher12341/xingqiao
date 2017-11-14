@@ -27,4 +27,6 @@ public interface OrderDao {
     void agree(String oid);
 
     void addCommentId(Comment comment);
+
+    List<Order> getAllOrderByUid(String uid);
 }

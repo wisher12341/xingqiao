@@ -15,4 +15,5 @@ public interface CommentService {
 
     Comment getCommentByOid(String oid);
 
+    void addReply(String reply, String oid, Integer pid);
 }

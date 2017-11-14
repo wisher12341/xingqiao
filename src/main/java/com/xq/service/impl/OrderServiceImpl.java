@@ -128,24 +128,24 @@ public class OrderServiceImpl implements OrderService{
         }
         order.setRecoveryHisList(recoveryHisList);
 
-        List<RecoveryLog> recoveryLogList=recoveryLogDao.getLogByOrderId(oid);
-        Integer count=recoveryService.getConfirmCountByOid(oid);//该订单康复日志已确认的数量
-
-        orderDto.setOrder(order);
-        orderDto.setRecoveryLogList(recoveryLogList);
-        orderDto.setCount(count);
-
-        if(order.getStatusP()==3) {
-            List<String> serverTimes = Arrays.asList(order.getServerTime().split("#"));
-            Collections.sort(serverTimes);
-            for (int i = 0; i < serverTimes.size(); i++) {
-                if (count == i) {
-                    orderDto.setNextTime(serverTimes.get(i));
-                    break;
+        if(!(order.getStatusP()==1 || order.getStatusP()==2 || order.getStatusP()==16 || order.getStatusP()==11 || order.getStatusP()==12)) {
+            List<RecoveryLog> recoveryLogList = recoveryLogDao.getLogByOrderId(oid);
+            orderDto.setRecoveryLogList(recoveryLogList);
+            if(order.getStatusP()==3) {
+                Integer count = recoveryService.getConfirmCountByOid(oid);//该订单康复日志已确认的数量
+                orderDto.setCount(count);
+                List<String> serverTimes = Arrays.asList(order.getServerTime().split("#"));
+                Collections.sort(serverTimes);
+                for (int i = 0; i < serverTimes.size(); i++) {
+                    if (count == i) {
+                        orderDto.setNextTime(serverTimes.get(i));
+                        break;
+                    }
                 }
+                orderDto.setPercent((count * 100) / Double.parseDouble(order.getAmount()) + "%");
             }
-            orderDto.setPercent((count * 100) / Double.parseDouble(order.getAmount()) + "%");
         }
+        orderDto.setOrder(order);
         return orderDto;
     }
 
@@ -245,6 +245,7 @@ public class OrderServiceImpl implements OrderService{
                 "</p>");
 
         messageDao.addMessage(messageT);
+        orderDao.updateTrace(oid,"#"+dateNowStr+"@家长同意终止");
     }
 
     public void setStatusDesc(List<Order> orders){

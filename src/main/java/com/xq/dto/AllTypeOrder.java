@@ -13,8 +13,8 @@ public class AllTypeOrder {
 
     private List<Order> orderList_wait;//待处理
     private List<Order> orderList_doing;//进行中
-    private List<Order> orderList_history;//历史（不包括未评价的）
-    private List<Order> orderList_history_noComment;//未评价的历史
+    private List<Order> orderList_history;//历史（不包括未评价的） 治疗师的订单 包括
+    private List<Order> orderList_history_noComment;//未评价的历史  治疗师的订单不用
 
     public List<Order> getOrderList_wait() {
         return orderList_wait;

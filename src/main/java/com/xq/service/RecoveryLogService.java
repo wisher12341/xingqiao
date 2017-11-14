@@ -19,4 +19,6 @@ public interface RecoveryLogService {
     void allConfirmByOrderId(String orderId);
 
     void confirmById(Integer id, String oid);
+
+    void remind(Integer lid, String oid);
 }

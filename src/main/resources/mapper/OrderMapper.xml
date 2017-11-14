@@ -6,6 +6,7 @@
         <id property="id" column="id"/>
         <result property="recoverOb" column="recover_ob"/>
         <result property="statusP" column="status_p"/>
+        <result property="statusT" column="status_t"/>
         <result property="way" column="way"/>
         <result property="totalpay" column="totalpay"/>
         <result property="sTime" column="s_time"/>
@@ -14,6 +15,7 @@
         <result property="isFirst" column="is_first"/>
         <result property="amount" column="amount" />
         <result property="serverTime" column="server_time"/>
+        <result property="pname" column="pname"/>
         <association property="teacher" javaType="com.xq.model.Teacher">
             <id property="id" column="tid"/>
             <result property="name" column="tName"/>
@@ -37,6 +39,7 @@
         <result property="trace" column="trace" />
         <result property="isFirst" column="is_first"/>
         <result property="statusP" column="status_p"/>
+        <result property="statusT" column="status_t"/>
         <association property="parent" javaType="com.xq.model.Parent">
             <id property="id" column="pid"/>
             <result property="realName" column="realName"/>
@@ -82,6 +85,7 @@
         ORDER by s_time DESC
     </select>
 
+
     <select id="getOrderByOid" resultMap="resultOrder">
         SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.trace,o.is_first,o.status_p,o.cid,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
@@ -109,7 +113,7 @@
         UPDATE orders SET status_t=4,status_p=4 WHERE id=#{oid}
     </update>
     <update id="addCommentId" parameterType="com.xq.model.Comment">
-        update lejianshop.order set cid=#{id} WHERE id=#{order.id}
+        update orders set cid=#{id} WHERE id=#{order.id}
     </update>
     <update id="stop">
         UPDATE orders SET status_t=8,status_p=8,reason=#{reason} WHERE id=#{oid}

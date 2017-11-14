@@ -19,7 +19,7 @@
          <table class="ob_table">
              <tr>
                  <td rowspan="2" style="background-color: #56c078">
-                     <p class="ob_p">筛选<br>康复领域</p>
+                     <p class="ob_p">筛选<br>康复<br>领域</p>
                  </td>
                  <td>
                      <div class="row" style="margin-top:20px ">

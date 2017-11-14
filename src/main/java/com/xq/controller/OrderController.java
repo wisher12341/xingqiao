@@ -99,4 +99,6 @@ public class OrderController {
         ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
         return mv;
     }
+
+
 }

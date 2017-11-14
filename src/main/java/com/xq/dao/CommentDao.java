@@ -15,4 +15,5 @@ public interface CommentDao {
 
     Comment getCommentByOid(String oid);
 
+    void addReply(Comment comment);
 }

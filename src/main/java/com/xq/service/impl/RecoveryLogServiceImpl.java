@@ -6,6 +6,7 @@ import com.xq.model.*;
 import com.xq.service.RecoveryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
@@ -23,7 +24,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     @Autowired
     RecoveryLogDao recoveryLogDao;
     @Autowired
-    TeacherDao_sp teacherDao_sp;
+    TeacherDao teacherDao;
     @Autowired
     DemandDao demandDao;
     @Autowired
@@ -38,7 +39,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     public RecoveryLogDto getLogsByDto(RecoveryLogDto recoveryLogDto, HttpServletRequest request) {
 //        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
         String openid="123";
-        List<Teacher> teacherList=teacherDao_sp.getMyTeachersByOpenid(openid);
+        List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         recoveryLogDto.setTeacherList(teacherList);
         recoveryLogDto.setDemandList(demandList);
@@ -50,7 +51,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     public RecoveryLogDto getMyTeachersAndDemandsByUid(HttpServletRequest request) {
 //        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
         String openid="123";
-        List<Teacher> teacherList=teacherDao_sp.getMyTeachersByOpenid(openid);
+        List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();
         recoveryLogDto.setTeacherList(teacherList);
@@ -103,5 +104,27 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长确认康复日志");
+    }
+
+    @Transactional
+    public void remind(Integer lid, String oid) {
+        recoveryLogDao.remind(lid);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        Order order=orderDao.getOrderPayByOid(oid);
+        Message message=new Message();
+        message.setUserId(order.getUidP());
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），治疗师（"+order.getTname()+"）提醒您确认康复日志。"+
+                "</p>");
+
+        messageDao.addMessage(message);
     }
 }

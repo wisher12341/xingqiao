@@ -5,11 +5,15 @@
 <#macro orderlist param1>
     <#list param1 as order>
         <div class="line">
+            <#if teacher??>
+            <div class="container" onclick=location.href="${path}/wx/teacherCenter/order/${order.id}/detail">
+            <#else>
             <div class="container" onclick=location.href="${path}/wx/order/${order.id}/detail">
+            </#if>
                 <div class="row name">
                     <h>订单号：${(order.id)!}<span class="count">${(order.amount)!}</span></h>
                     <span class="price_span">
-                        <#if order.statusP<3>
+                        <#if ((order.statusP)?? && order.statusP<3 )||((order.statusT)?? && order.statusT<3 )>
                             总价：￥${(order.totalpay)!}
                         <#else>
                             实付：￥${(order.realpay)!}
@@ -27,7 +31,11 @@
                     </#list>
                 </div>
                 <div class="row serviceaddress">
-                    <p>治疗师：${(order.teacher.name)!}</p>
+                    <#if teacher??>
+                        <p>客户：${order.pname}</p>
+                    <#else>
+                        <p>治疗师：${order.teacher.name}</p>
+                    </#if>
                     <p>康复项目：${(order.recoverOb)!}</p>
                     <p>上门方式：${(order.way)!}</p>
                 </div>

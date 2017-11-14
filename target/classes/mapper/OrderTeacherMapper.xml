@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.OrderTeacherDao">
+
+    <resultMap id="resultAllOrder" type="com.xq.model.Order">
+        <id property="id" column="id"/>
+        <result property="recoverOb" column="recover_ob"/>
+        <result property="statusP" column="status_p"/>
+        <result property="statusT" column="status_t"/>
+        <result property="way" column="way"/>
+        <result property="totalpay" column="totalpay"/>
+        <result property="sTime" column="s_time"/>
+        <result property="cid" column="cid"/>
+        <result property="realpay" column="realpay"/>
+        <result property="isFirst" column="is_first"/>
+        <result property="amount" column="amount" />
+        <result property="serverTime" column="server_time"/>
+        <result property="pname" column="pname"/>
+        <association property="teacher" javaType="com.xq.model.Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tName"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="resultOrder" type="com.xq.model.Order">
+        <id property="id" column="id"/>
+        <result property="recoverOb" column="recover_ob"/>
+        <result property="way" column="way"/>
+        <result property="totalpay" column="totalpay"/>
+        <result property="pay" column="pay"/>
+        <result property="sTime" column="s_time"/>
+        <result property="serverTime" column="server_time"/>
+        <result property="remark" column="remark"/>
+        <result property="statusT" column="status_t"/>
+        <result property="trace" column="trace"/>
+        <result property="payWay" column="pay_way"/>
+        <result property="cid" column="cid"/>
+        <result property="amount" column="amount"/>
+        <result property="realpay" column="realpay"/>
+        <result property="isFirst" column="is_first"/>
+        <association property="parent" javaType="com.xq.model.Parent">
+            <id property="id" column="pid"/>
+            <result property="realName" column="realName"/>
+            <result property="ground" column="ground"/>
+        </association>
+        <association property="demand" javaType="com.xq.model.Demand">
+            <id property="id" column="did"/>
+            <result property="name" column="name"/>
+            <result property="gender" column="gender"/>
+            <result property="disease" column="disease"/>
+            <result property="birthday" column="birthday"/>
+            <result property="report" column="report"/>
+            <result property="diseaseHis" column="disease_his"/>
+            <result property="recoveryHis" column="recovery_his"/>
+            <result property="allergyHis" column="allergy_his"/>
+            <result property="remark" column="dremark"/>
+        </association>
+        <association property="preferentialE" javaType="com.xq.model.Preferential">
+            <id property="id" column="preid"/>
+            <result property="name" column="prename"/>
+            <result property="allAmount" column="all_amount"/>
+            <result property="amount" column="amount"/>
+            <result property="classes" column="classes"/>
+            <result property="sTime" column="s_time"/>
+            <result property="eTime" column="e_time"/>
+        </association>
+    </resultMap>
+
+    <select id="getAllOrderByUid" resultMap="resultAllOrder">
+        SELECT o.id,o.recover_ob,o.status_t,o.way,o.totalpay,o.s_time,p.id tid,p.realName pname,o.cid,o.realpay,o.is_first,o.amount,o.server_time
+        FROM orders o,parent p,sysuser u,teacher t
+        WHERE u.id=#{uid} AND u.id=t.user_id AND t.id=o.teacher_id AND o.parent_id=p.id
+        ORDER by s_time DESC
+    </select>
+
+    <select id="getOrderByOid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,p.id pid,p.realName,p.ground,o.status_t,o.realpay,o.trace,o.pay_way,o.amount,o.is_first,o.cid,
+        d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
+        pre.id preid,pre.name prename,pre.all_amount,pre.amount,pre.classes,pre.s_time,pre.e_time
+        FROM orders o,parent p,sysuser u,demand d,preferentials pre
+        WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential
+    </select>
+
+    <update id="orderAffirm">
+        UPDATE orders SET status_t=2,status_p=2 WHERE id=#{id}
+    </update>
+
+
+    <update id="orderReject">
+        UPDATE orders SET status_t=16,status_p=16,reason=#{reason} WHERE id=#{id}
+    </update>
+
+    <update id="orderFinish">
+        UPDATE orders SET status_t=15,status_p=15 WHERE id=#{oid}
+    </update>
+
+
+    <update id="orderStop">
+        UPDATE orders SET status_t=7,status_p=7,reason=#{reason} WHERE id=#{oid}
+    </update>
+
+    <update id="agree">
+        UPDATE orders SET status_t=4,status_p=4 WHERE id=#{oid}
+    </update>
+
+</mapper>
