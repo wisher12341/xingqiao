@@ -1,7 +1,6 @@
 package com.xq.dao;
 
 import com.xq.model.Message;
-
 import java.util.List;
 
 /**
@@ -11,6 +10,7 @@ public interface MessageDao {
     List<Message> getMessagesByUserId(int userId);
 
     void addMessage(Message messageT);
+
 
     void addMessageAdmin(Message message);
 }

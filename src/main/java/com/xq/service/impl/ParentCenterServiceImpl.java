@@ -1,16 +1,27 @@
 package com.xq.service.impl;
 
+
 import com.xq.dao.*;
 import com.xq.dto.TeacherDto;
 import com.xq.model.Demand;
 import com.xq.model.Parent;
 import com.xq.model.Teacher;
+
+import com.xq.dao.DemandDao;
+import com.xq.dao.OrderDao;
+import com.xq.dao.ParentCenterDao;
+import com.xq.model.Demand;
+import com.xq.model.Order;
+import com.xq.model.Parent;
+
 import com.xq.model.User;
 import com.xq.service.ParentCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.xq.model.Message;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +30,8 @@ import java.util.List;
  */
 @Service
 public class ParentCenterServiceImpl implements ParentCenterService{
+
+
     @Autowired
     ParentCenterDao parentCenterDao;
     @Autowired
@@ -77,4 +90,28 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     public String getUserNameById(int userId){
         return parentCenterDao.getUserNameById(userId);
     }
+
+
+    OrderDao orderDao;
+
+    public List<Demand> isexisted(HttpSession session, Integer teacheId) {
+        User user=(User) session.getAttribute("USER");
+        Parent parent=parentCenterDao.getParentByUserId(user.getId());
+        if(parent==null){
+            return null;
+        }else{
+            List<Demand> demandList=demandDao.getDemandByuserId(user.getId());
+            for(Demand demand:demandList){
+                //查询该订单的  需求简历   是不是第一次交易
+                List<Order> orderList=orderDao.getOrder(demand.getId(),teacheId);
+                if(orderList.size()>0){
+                    demand.setFirst("no");
+                }else{
+                    demand.setFirst("yes");
+                }
+            }
+            return demandList;
+        }
+    }
 }
+

@@ -63,10 +63,19 @@ public class Teacher {
     //手机和邮箱字段是在user表  为了方便 就直接在这里也加了
     private String phone;
     private String email;
+
+    private String headimgurl;//公众号添加-jcy
     //家长-我的治疗师
     private User user;
     private List<Demand> demandList;
 
+    public String getHeadimgurl() {
+        return headimgurl;
+    }
+
+    public void setHeadimgurl(String headimgurl) {
+        this.headimgurl = headimgurl;
+    }
 
     public Integer getPeriod() {
         return period;

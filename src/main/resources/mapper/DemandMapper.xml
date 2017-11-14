@@ -2,13 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xq.dao.DemandDao">
 
-
     <select id="getMyDemandsByOpenid" resultType="com.xq.model.Demand">
         SELECT d.id,d.name FROM demand d,sysuser u WHERE d.user_id=u.id AND u.openid=#{openid}
     </select>
 
     <select id="getDemandByUserId" resultType="com.xq.model.Demand">
-        SELECT * FROM demand WHERE user_id=#{id}
+        SELECT id,name,disease FROM demand WHERE user_id=#{id}
     </select>
 
 

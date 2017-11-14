@@ -15,5 +15,15 @@ public interface CommentDao {
 
     Comment getCommentByOid(String oid);
 
+    void add(Comment comment);
+
+
+    List<Comment> getCommentByTid(Integer id);
+
+    void updateGRCount(@Param("id") Integer cid, @Param("good") int good_add, @Param("report") int report_add);
+
+
+    Comment getCommentById(Integer cid);
+
     void addReply(Comment comment);
 }

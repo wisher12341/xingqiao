@@ -159,37 +159,39 @@
                 </div>
                 <div class="track-list" style="width: 100%; border: solid 1px #e8e8e8; margin-bottom: 20px">
                     <ul style="margin-top: 10px" id="logUl">
-                        <#list order.recoveryLogList as log>
-                            <li style=" list-style-type: none;">
-                                <div>
-                                    <#if log_index==0>
-                                        <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: red;font-size: 40px"></span>
-                                    <#else>
-                                        <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
-                                    </#if>
-                                    <span class="date" style="margin-left: 20px">${log.time}</span>
+                        <#if (order.recoveryLogList)??>
+                            <#list order.recoveryLogList as log>
+                                <li style=" list-style-type: none;">
+                                    <div>
+                                        <#if log_index==0>
+                                            <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: red;font-size: 40px"></span>
+                                        <#else>
+                                            <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
+                                        </#if>
+                                        <span class="date" style="margin-left: 20px">${log.time}</span>
                                     <span  style="border: 1px solid #dcdcdc;margin-left: 480px;width: 50px;height: 20px; color: #aaa;font-size:80%">
-                                    <#if log.confirmStatus==0>
-                                        未确认</span>
-                                        <#if log.remindStatus==0>
-                                            <button   style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;" onclick="remind(${log.id},this,'${order.order.id}')">提醒</button>
-                                        </#if>
-                                        <#if log.remindStatus==1>
-                                            <span  style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;">已提醒</span>
-                                        </#if>
+                                        <#if log.confirmStatus==0>
+                                            未确认</span>
+                                            <#if log.remindStatus==0>
+                                                <button   style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;" onclick="remind(${log.id},this,'${order.order.id}')">提醒</button>
+                                            </#if>
+                                            <#if log.remindStatus==1>
+                                                <span  style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;">已提醒</span>
+                                            </#if>
 
-                                    </#if>
-                                    <#if log.confirmStatus==1>已确认</span></#if>
-                                    <#if log.confirmStatus==2>逾期确认</span></#if>
-                                    <br>
-                                    <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px">
+                                        </#if>
+                                        <#if log.confirmStatus==1>已确认</span></#if>
+                                        <#if log.confirmStatus==2>逾期确认</span></#if>
+                                        <br>
+                                        <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px">
                                         ${log.content}
+                                        </div>
                                     </div>
-                                </div>
 
-                            </li>
+                                </li>
 
-                        </#list>
+                            </#list>
+                        </#if>
                     </ul>
                 </div>
             </div>

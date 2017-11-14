@@ -20,6 +20,9 @@ public class Comment {
 
     private User user;//对应的用户
 
+    private String username;//公众号添加-jcy
+    private String headimgurl;//公众号添加-jcy
+
     private Integer type;//评论的类型 1主动评论  0跟帖 2该治疗师回帖
     private Integer good;//赞数
     private Integer report;//举报数
@@ -33,6 +36,22 @@ public class Comment {
 
     public MultipartFile[] getPics() {
         return pics;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getHeadimgurl() {
+        return headimgurl;
+    }
+
+    public void setHeadimgurl(String headimgurl) {
+        this.headimgurl = headimgurl;
     }
 
     public void setPics(MultipartFile[] pics) {

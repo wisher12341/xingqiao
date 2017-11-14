@@ -1,8 +1,10 @@
 package com.xq.service;
 
+
 import com.xq.dto.TeacherDto;
 import com.xq.model.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -24,4 +26,7 @@ public interface ParentCenterService {
     User getUserById(int userId);
 
     String getUserNameById(int userId);
+
+    List<Demand> isexisted(HttpSession session, Integer teacheId);
+
 }

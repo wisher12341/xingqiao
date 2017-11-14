@@ -2,6 +2,7 @@ package com.xq.controller;
 
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
+import com.xq.dto.Result;
 import com.xq.model.Order;
 import com.xq.model.User;
 import com.xq.service.OrderService;
@@ -12,9 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +59,7 @@ public class OrderController {
     }
 
     /**
+<<<<<<< HEAD
      * 取消 预约
      * @return
      */
@@ -100,5 +105,27 @@ public class OrderController {
         return mv;
     }
 
+
+    /**
+     * 订单提交
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/submit",method = RequestMethod.POST)
+    public Result submit(Order order, HttpSession session){
+        String order_id=orderService.addOrder(order,session);
+        return new Result(true,order_id);
+    }
+
+    /**
+     * 订单提交成功
+     * @return
+     */
+    @RequestMapping(value = "/{orderId}/success",method = RequestMethod.GET)
+    public String success(Model model,@PathVariable("orderId") String orderId){
+        OrderDto order=orderService.getOrderByOid(orderId);
+        model.addAttribute("order",order);
+        return "order_submit_success";
+    }
 
 }

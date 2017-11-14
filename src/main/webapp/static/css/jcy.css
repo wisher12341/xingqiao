@@ -1,0 +1,209 @@
+html {font-size: 62.5%;
+    font-family: "微软雅黑 Light";/*10 ÷ 16 × 100% = 62.5%*/}
+.base{
+    text-align: center;
+    background-color: #F0F0F0;
+}
+.offset-5{
+    margin-top: 0.5rem;
+}
+
+.offset-15{
+    margin-top: 1.5rem;
+}
+
+.offset-20{
+    margin-top: 2rem;
+}
+
+.margin-5{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.gray-line{
+    background-color: #F0F0F0;
+    height: 0.1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.dot-line{
+    height: 2rem;
+    width: 100%;
+    background: url("../img/dot-line.png") repeat-x;
+    background-size: contain;
+}
+.org-name-title{
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.my-modal-dialog{
+    width: 90%;
+    height: 50%;
+    vertical-align: middle;
+}
+
+.my-modal-content{
+    width: 100%;
+    height: 100%;
+}
+
+.my-modal-title{
+    font-size: 1.6rem;
+    color: #8c8c8c;
+    text-align: left;
+}
+
+.my-modal-body{
+    padding: 1.5rem 4.5rem;
+    font-size: 1.2rem;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.my-modal-textarea{
+    height: 26rem;
+    width: 27.6rem;
+}
+
+.my-panel{
+    text-align: left;
+    background-color: #FFFFFF;
+    margin: 0.4rem 0;
+    padding: 1.5rem ;
+}
+
+.my-panel-title{
+    font-size: 1.2rem;
+    color: #000000;
+}
+
+.my-panel-content{
+    font-size: 1.0rem;
+    color: #8c8c8c;
+    line-height: 1.6rem;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.headimg{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.headimg-lg{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.sub-comment-list{
+    padding: 0;
+}
+
+.img-wrap{
+    width: 45%; /* 这里设置占屏幕宽度百分比 */
+    display: flex;
+    flex-wrap: wrap;
+}
+/* 创建一个正方形容器 */
+.img-container{
+    width: 100%;
+    height: 0px;
+    padding-bottom: 100%;
+    overflow:hidden;
+    margin: 0;
+    position:relative;
+}
+
+/* 采用绝对定位 */
+.img-wrap img{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.comment-pics{}
+
+.inline-wrapper{
+    width: 100%;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-content: flex-start;
+    align-content: flex-start;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.list-container-white{
+    background-color: #ffffff;
+    padding: 1rem;
+}
+
+.my-page-header{
+    padding: 3rem;
+}
+
+.my-page-title{
+    font-size: 1.4rem;
+    color: #000000;
+}
+
+.row-wrapper{
+    background-color: #ffffff;
+    padding: 1rem;
+}
+
+.list-item-content{
+    font-size: 1.2rem;
+    color: #737373;
+    font-weight: normal;
+    font-family: "微软雅黑";
+    line-height: 2.4rem;
+}
+
+.list-item-content-title{
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: black;
+}
+
+
+.no-padding{
+    padding: 0rem;
+}
+
+.no-padding-right{
+    padding-right: 0rem;
+}
+
+.no-padding-left{
+    padding-left: 0rem;
+}
+
+.padding-left-15{
+    padding-left: 1.5rem;
+}
+.pointable{
+    cursor: pointer;
+}
+
+.btn-order{
+    border-radius: 0.5rem;
+    background-color: #ff7709;
+    color: #ffffff;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: none;
+}

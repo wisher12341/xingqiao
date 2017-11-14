@@ -1,6 +1,5 @@
 package com.xq.dao;
 
-
 import com.xq.model.Demand;
 import com.xq.model.Parent;
 import org.apache.ibatis.annotations.Param;
@@ -13,6 +12,7 @@ import java.util.List;
 public interface DemandDao {
 
 
+
     List<Demand> getMyDemandsByOpenid(String openid);
 
     List<Demand> getDemandByUserId(Integer id);
@@ -20,6 +20,8 @@ public interface DemandDao {
     List<Demand> getDemandByIds(List<Integer> dids);
 
     Demand getDemandById(@Param("id") Integer demandId);
+
+    List<Demand> getDemandByuserId(Integer id);
 
     void editorDemand(Demand demand);
 

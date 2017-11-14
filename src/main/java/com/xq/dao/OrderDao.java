@@ -14,6 +14,7 @@ public interface OrderDao {
 
     Order getOrderByOid(String oid);
 
+
     void orderCancel(String oid);
 
     Order getOrderPayByOid(String oid);
@@ -29,4 +30,11 @@ public interface OrderDao {
     void addCommentId(Comment comment);
 
     List<Order> getAllOrderByUid(String uid);
+
+    List<Order> getOrder(@Param("demandId") Integer id, @Param("teacherId") Integer teacherId);
+
+    void addOrder(Order order);
+
+    Integer getUserIdByOid(String id);
+
 }
