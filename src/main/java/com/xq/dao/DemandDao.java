@@ -29,4 +29,12 @@ public interface DemandDao {
 
     String getParenntNameByUid(Integer id);
 
+    void updateName(@Param("name") String name,@Param("demandId") int demandId);
+    void updateGender(@Param("gender") int gender,@Param("demandId") int demandId);
+    void updateBirthday(@Param("birthday") String birthday,@Param("demandId") int demandId);
+    void updateDiseaseHis(@Param("diseaseHis") String diseaseHis,@Param("demandId") int demandId);
+    void updateRemark(@Param("remark") String name,@Param("remark") int demandId);
+    void updateReport(@Param("report") String name,@Param("report") int demandId);
+    void updateAllergyHis(@Param("allergyHis") String allergyHis,@Param("demandId") int demandId);
+
 }

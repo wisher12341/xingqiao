@@ -15,6 +15,7 @@
         <p>消息中心</p>
     </div>
 
+
     <div>
         <ul class="list-group">
             <#list messages as m>

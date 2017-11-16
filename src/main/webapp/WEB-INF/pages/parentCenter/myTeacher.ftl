@@ -7,8 +7,10 @@
 </head>
 <body>
 <div id="main">
-    <div id="title">
-        <p>我的治疗师</p>
+    <div id="title" class="row">
+        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter"></a></div>
+        <div class="col-sm-8 titleText"><p>我的治疗师</p></div>
+        <div class="col-sm-2"></div>
     </div>
     <div class="panel panel-default">
 
@@ -26,7 +28,7 @@
                 <tr>
                     <td>${teacher.name!}</td>
                     <td>${teacher.user.phone!}</td>
-                    <td><button type="button" class="btn btn-default" onclick=location.href="${path}/wx/parentCenter/${teacher.id}/teacherDetail">查看详情</td>
+                    <td><button type="button" class="btn btn-default" onclick=location.href="${path}/wx/parentCenter//${userId}/myTeacher/${teacher.id}/teacherDetail">查看详情</td>
                 </tr>
                 </#list>
             </#if>

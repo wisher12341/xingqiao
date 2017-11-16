@@ -5,12 +5,15 @@
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myDemands.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
 <div id="main">
 
-    <div id="title">
-        <p>我的需求简历</p>
+    <div id="title" class="row">
+        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter"></a></div>
+        <div class="col-sm-8 titleText"><p>我的需求简历</p></div>
+        <div class="col-sm-2"></div>
     </div>
     <div class="panel panel-default">
 
@@ -28,7 +31,7 @@
         <tr>
             <td>${demand.name!}</td>
             <td>${demand.disease!}</td>
-            <td><button type="button" class="btn btn-default"  onclick=location.href="${path}/wx/parentCenter/${demand.id}/demandDetail">查看详情</td>
+            <td><a class="more"  href="${path}/wx/parentCenter/${userId}/myDemands/${demand.id}/demandDetail">更多...</a></td>
         </tr>
         </#list>
         </#if>

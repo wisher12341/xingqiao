@@ -63,4 +63,28 @@
     <select id="getParenntNameByUid" resultType="java.lang.String">
         SELECT realName FROM parent WHERE userId=#{id}
     </select>
+
+
+    <update id="updateName">
+        UPDATE demand SET name=#{name} WHERE id=#{demandId}
+    </update>
+    <update id="updateGender">
+        UPDATE demand SET birthday=#{gender} WHERE id=#{demandId}
+    </update>
+    <update id="updateBirthday">
+        UPDATE demand SET birthday=#{birthday} WHERE id=#{demandId}
+    </update>
+    <update id="updateDiseaseHis">
+        UPDATE demand SET disease_his=#{diseaseHis} WHERE id=#{demandId}
+    </update>
+    <update id="updateAllergyHis">
+        UPDATE demand SET allergy_his=#{allergyHis} WHERE id=#{demandId}
+    </update>
+    <update id="updateRemark">
+        UPDATE demand SET remark=#{remark} WHERE id=#{demandId}
+    </update>
+    <update id="updateReport">
+        UPDATE demand SET report=#{report} WHERE id=#{demandId}
+    </update>
+
 </mapper>

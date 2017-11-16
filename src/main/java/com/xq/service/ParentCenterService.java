@@ -27,6 +27,12 @@ public interface ParentCenterService {
 
     String getUserNameById(int userId);
 
+
     List<Demand> isexisted(HttpSession session, Integer teacheId);
+
+    void modifyParentInfo(int userId, String value, String fieldName);
+
+    void modifyDemand(int demandId,String newValue,String fieldName);
+
 
 }
