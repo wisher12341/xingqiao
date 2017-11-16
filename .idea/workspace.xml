@@ -1,53 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/ModifyPageDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/modifyPage.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/parentCenter/parentCenter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/DemandDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/DemandDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/DemandDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/DemandDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/ParentCenterDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/ParentCenterDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/DemandDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/DemandDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/ParentCenterDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/ParentCenterDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/DemandMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/DemandMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/demandDetail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/demandDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myTeacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myTeacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/teacherDetail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/teacherDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myDemands.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myDemands.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myInfo.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myInfo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/DemandMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/DemandMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/DemandMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/DemandMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/demandDetail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/demandDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myTeacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myTeacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/teacherDetail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/teacherDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myDemands.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myDemands.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myInfo.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myInfo.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" />
-    </list>
+    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,8 +33,8 @@
       <file leaf-file-name="ParentCenterController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="94" column="51" lean-forward="true" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+            <state relative-caret-position="551">
+              <caret line="109" column="18" lean-forward="true" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1334,7 +1288,7 @@
       <workItem from="1510407747242" duration="25667000" />
       <workItem from="1510632521256" duration="115000" />
       <workItem from="1510634218108" duration="41124000" />
-      <workItem from="1510792956832" duration="2584000" />
+      <workItem from="1510792956832" duration="2610000" />
     </task>
     <task id="LOCAL-00003" summary="治疗师查询页面完成（跳转有问题，拿不到治疗师ID）">
       <created>1510055226968</created>
@@ -1354,11 +1308,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215290000" />
+    <option name="totallyTimeSpent" value="215316000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1372,7 +1325,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.40127388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40127388" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1880,8 +1833,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="94" column="51" lean-forward="true" selection-start-line="94" selection-start-column="51" selection-end-line="94" selection-end-column="51" />
+        <state relative-caret-position="551">
+          <caret line="109" column="18" lean-forward="true" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
