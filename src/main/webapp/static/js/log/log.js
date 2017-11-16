@@ -1,10 +1,6 @@
 /**
  * Created by netlab606 on 2017/11/7.
  */
-$(function () {
-    $("#logUl li").eq(0).addClass("first");
-    $(".first span").eq(0).css("color","red");
-});
 
 function addName() {
     var teacher_name=$(".select_teacher option:selected").html();
@@ -13,19 +9,68 @@ function addName() {
     $("input[name='demand.name']").val(demand_name);
 }
 
-function exact() {
-    $('.search_exact').show();
-    $('input[name="isExactSearch"]').val(1);
-}
-
 function ob_select(obj) {
     if($(obj).attr("class").indexOf("ob_select")!=-1) {
-        $(obj).find("input").removeAttr("checked");
         $(obj).removeClass("ob_select");
         $(obj).addClass("ob_no_select");
     }else{
-        $(obj).find("input").prop("checked","true");
         $(obj).removeClass("ob_no_select");
         $(obj).addClass("ob_select");
     }
+}
+function selectObs() {
+    $("#ob_div").html("");
+    $('.ob_select').each(function () {
+        var $input=$('<input  type="hidden" value="'+$(this).find("span").html()+'" name="ob">');
+        var $span=$('<span class="search_label">'+$(this).find("span").html()+'</span>');
+        $("#ob_div").append($input);
+        $("#ob_div").append($span);
+    });
+    $("#obSelect").modal("hide");
+}
+
+$(function () {
+    // $('#calendarMultiday-demo').mobiscroll().calendar({
+    //     theme: "bootstrap",                                                                          // Specify theme like: theme: 'ios' or omit setting to use default
+    //     lang: 'zh',                                                                        // Specify language like: lang: 'pl' or omit setting to use default
+    //     display: "bottom",                                                                      // Specify display mode like: display: 'bottom' or omit setting to use default
+    //     mode: 'scroller',                                                                            // More info about mode: http://docs.mobiscroll.com/2-17-1/calendar#!opt-mode
+    //     counter: true,                                                                                     // More info about counter: http://docs.mobiscroll.com/2-17-1/calendar#!opt-counter
+    //     multiSelect: true
+    // });
+    $('#calendarMultiday-demo').mobiscroll().range({
+        theme: 'mobiscroll',
+        lang: 'zh',
+        display: 'bottom',
+        controls: ['calendar'],
+        defaultValue: [ new Date(), new Date()],
+        startInput: '#startDate',
+        endInput: '#endDate',
+        endYear:(new Date()).getFullYear()
+    });
+
+});
+
+function selectTime() {
+    $('#calendarMultiday-demo').mobiscroll('show');
+    $(".dw-cal-prev").append($('<i class="glyphicon glyphicon-chevron-left" style="font-size: 40px;color: grey;margin-top: -30px;"></i>'));
+    $(".dw-cal-next").append($('<i class="glyphicon glyphicon-chevron-right" style="font-size: 40px;color: grey;margin-top: -30px;"></i>'));
+    $(".dwbc").eq(-1).html($('<div class="dwbw dwb-c"><div tabindex="0" role="button" class="dwb2 dwb-e dwb" onclick="selectTimeCancel()">取消</div></div><div class="dwbw dwb-c"><div tabindex="0" role="button" class="dwb1 dwb-e dwb" onclick="selectTimeNoLimit()">不限</div></div><div class="dwbw dwb-s"><div tabindex="0" role="button" class="dwb0 dwb-e dwb" onclick="selectTimeAffirm()">确定</div></div>'));
+}
+
+function selectTimeCancel() {
+    $('#calendarMultiday-demo').mobiscroll('hide');
+}
+function selectTimeAffirm() {
+    var time=$('.dw-drv0').html()+"—"+$('.dw-drv1').html();
+    $(".search_exact_time").html(time);
+    $('input[name="startTime"]').val($('.dw-drv0').html());
+    $('input[name="endTime"]').val($('.dw-drv1').html());
+    $('#calendarMultiday-demo').mobiscroll('hide');
+}
+function selectTimeNoLimit() {
+    $(".search_exact_time").html("不限");
+    $('input[name="startTime"]').val("");
+    $('input[name="endTime"]').val("");
+    $('#calendarMultiday-demo').mobiscroll('hide');
 }

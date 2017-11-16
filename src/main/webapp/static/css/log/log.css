@@ -2,13 +2,12 @@ body{
     background-color: #f5f5f5;
 }
 #search{
-    background-color: white;
-    margin-bottom: 20px;
+    overflow-x: hidden;
+    margin-bottom: 30px;
 }
 
 #log{
     background-color: white;
-    padding-top: 10px;
 }
 
 .date{
@@ -42,13 +41,17 @@ body{
     font-size: 50px;
     padding: 4px;
     border: none;
-    background-color: #f5f5f5;
     font-weight: bold;
-    color: grey;
+    color: white;
+    background-color: #56c078;
 }
 
 .search_div{
     padding: 30px;
+    margin-bottom: 5px;
+    background-color: white;
+    overflow-x: hidden;
+    border-bottom: solid 1px lightgray;
 }
 .select_teacher,.select_demand,.select_confirm,.search_time{
     font-size: 40px;
@@ -56,20 +59,21 @@ body{
     color: grey;
 }
 .search_time{
-    width: 40%;
+    width: 45%;
     border-radius: 10px;
     border: solid 1px grey;
 }
 
 .search_label{
     background-color: #56c078;
-    font-size: 35px;
+    font-size: 42px;
     color: white;
     padding: 5px;
     margin-right: 10px;
     border: solid 1px #56c078;
     border-radius: 5px;
 }
+
 .search_label_title{
     font-size: 40px;
     color: grey;
@@ -77,34 +81,30 @@ body{
 .search_factor_title{
     font-size: 45px;
     text-align: center;
-    color: grey;
+    color: white;
     font-weight: bold;
+    background-color: #56c078;
 }
 .search_factor{
     background-color: white;
     margin-bottom: 30px;
     padding-bottom: 10px;
-    padding-top: 10px;
+
 }
 .ob_no_select{
     opacity: 0.5;
-    display: inline;
-    margin-bottom: 20px;
+    margin: 30px 50px;
 }
 .ob_select{
-    display: inline;
-    margin-bottom: 20px;
+    margin: 30px 50px;
 }
 .ob_title{
     padding: 10px;
     font-size: 40px;
     text-align: center;
-    background-color: #f5f5f5;
-    color: grey;
  }
 .ob{
-    background-color: white;
-    margin-bottom: 20px;
+    background-color: #56c078;
 }
 .ob_select span,.ob_no_select span{
     font-size: 35px;
@@ -134,9 +134,94 @@ body{
 }
 .search_factor_table{
     width: 95%;
-    margin-bottom: 30px;
 }
 .search_factor_table td{
     padding-bottom: 20px;
-    width: 300px;
+}
+.search_exact{
+    background-color: white;
+}
+.search_exact_div{
+    padding: 20px;
+    border-bottom: solid 1px lightgray;
+}
+.ob_title_top{
+    font-size: 45px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    margin-left: 40%;
+    top:1%;
+}
+.modal-dialog{
+    width: 90%!important;
+    text-align: center;
+}
+.modal-header{
+    background-color: #56c078;
+}
+.modal-header h4{
+    font-size: 40px!important;
+    color: white;
+}
+.btn{
+    font-size: 40px!important;
+    margin: 20px 50px;
+}
+.btn-primary{
+    background-color: #56c078;
+}
+
+
+
+.icon{
+    font-size: 30px!important;
+}
+.mbsc-bootstrap .dwv{
+    min-height: 70px !important;
+    line-height: 70px !important;
+}
+.popover-title{
+    font-size: 40px!important;
+}
+.dw-cal-btnc{
+    font-size: 50px!important;
+    line-height: 70px!important;
+}
+.mbsc-bootstrap .dw-cal-day .dw-i{
+    line-height: 60px!important;
+}
+.mbsc-cal-m .dw-cal{
+    font-size: 40px!important;
+}
+.dw-cal th{
+    line-height: 60px!important;
+    font-size: 40px!important;
+}
+.dw-cal-btnw{
+    height: 70px!important;
+}
+.dw-cal .dw-cal-btn{
+    width: 100px!important;
+    height: 60px!important;
+}
+.mbsc-mobiscroll .dw-dr{
+    font-size: 40px!important;
+}
+.dw-dr{
+    line-height: 60px!important;
+}
+.mbsc-mobiscroll .dwb{
+    font-size: 45px;
+}
+
+.mbsc-mobiscroll .dw-dr{
+    border:none!important;
+}
+.dwb0,.dwb1,.dwb2{
+    color: white!important;
+    background-color: #56c078!important;
+    margin: 10px 20px;
+    border-radius: 5px;
 }

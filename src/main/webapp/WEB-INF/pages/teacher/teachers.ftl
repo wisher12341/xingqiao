@@ -41,8 +41,9 @@
         <div class="row" align="center">
             <div class="nav-title col-xs-12">康复对象</div>
             <div class="active nav-pill col-xs-4" ng-click="search_factor('o不限')">##"不限"##</div>
-            <div class="nav-pill col-xs-4" ng-click="search_factor('o6岁以下')" >##"6岁以下"##</div>
-            <div class="nav-pill col-xs-4" ng-click="search_factor('o7-18岁')" >##"7-18岁"##</div>
+            <div class="nav-pill col-xs-4" ng-click="search_factor('o3岁以下')" >##"3岁以下"##</div>
+            <div class="nav-pill col-xs-4" ng-click="search_factor('o3-6岁')" >##"3-6岁"##</div>
+            <div class="nav-pill col-xs-4" ng-click="search_factor('o6-18岁')" >##"6-18岁"##</div>
             <div class="nav-pill col-xs-4" ng-click="search_factor('o成人')" >##"成人"##</div>
 
             <div class="col-xs-12 gray-line"></div>

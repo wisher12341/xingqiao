@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -43,8 +44,22 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         recoveryLogDto.setTeacherList(teacherList);
         recoveryLogDto.setDemandList(demandList);
+
+        if(recoveryLogDto.getStartTime()!=null && !recoveryLogDto.getStartTime().equals("")) {
+            recoveryLogDto.setStartTime(recoveryLogDto.getStartTime().replaceAll("/", "-"));
+            recoveryLogDto.setEndTime(recoveryLogDto.getEndTime().replaceAll("/", "-") + " 23:59:59");
+        }
         List<RecoveryLog> recoveryLogList=recoveryLogDao.getLogsByDto(recoveryLogDto);
         recoveryLogDto.setRecoveryLogList(recoveryLogList);
+
+        List<String> obs=orderDao.getAllRecoveryObsByOpenid(openid);
+        recoveryLogDto.setObs(obs);
+
+
+        if(recoveryLogDto.getStartTime()!=null && !recoveryLogDto.getStartTime().equals("")) {
+            recoveryLogDto.setStartTime(recoveryLogDto.getStartTime().replaceAll("-", "/"));
+            recoveryLogDto.setEndTime(recoveryLogDto.getEndTime().replaceAll("-", "/").split(" ")[0]);
+        }
         return recoveryLogDto;
     }
 
@@ -56,6 +71,8 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();
         recoveryLogDto.setTeacherList(teacherList);
         recoveryLogDto.setDemandList(demandList);
+        List<String> obs=orderDao.getAllRecoveryObsByOpenid(openid);
+        recoveryLogDto.setObs(obs);
         return recoveryLogDto;
     }
 

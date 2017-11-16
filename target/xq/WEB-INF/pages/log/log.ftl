@@ -4,93 +4,46 @@
     <title>康复日志</title>
 <#include "../order/common/head.ftl" />
     <link href="${path}/static/css/log/log.css" type="text/css" rel="stylesheet" />
+    <link href="${path}/static/common/calendar/css/mobiscroll.custom-2.17.1.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="${path}/static/common/calendar/js/mobiscroll.custom-2.17.1.min.js"></script>
     <script type="text/javascript" src="${path}/static/js/log/log.js"></script>
 </head>
 <body>
+<div id="main">
     <form action="${path}/wx/log" method="post">
         <div class="ob">
+            <i class="glyphicon glyphicon-circle-arrow-left" onclick="history.go(-1)" style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+            <span class="ob_title_top">条件筛选</span>
             <div class="ob_title">
                 <div style="display: inline;position: relative;left: 30%;">
-                    <i class="glyphicon glyphicon-search" style="font-size: 40px;color: grey"></i>
+                    <i class="glyphicon glyphicon-search" style="font-size: 40px;color: white"></i>
                     <input type="submit" value="查找" onclick="addName()" class="input_button_search"/>
                 </div>
             </div>
 
-         <table class="ob_table">
-             <tr>
-                 <td rowspan="2" style="background-color: #56c078">
-                     <p class="ob_p">筛选<br>康复<br>领域</p>
-                 </td>
-                 <td>
-                     <div class="row" style="margin-top:20px ">
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>言语</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="言语">
-                         </div>
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>听觉</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="听觉">
-                         </div>
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>认知</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="认知">
-                         </div>
-                     </div>
-                 </td>
-             </tr>
-             <tr>
-                 <td>
-                     <div class="row">
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>情绪行为</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="情绪行为">
-                         </div>
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>运动</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="运动">
-                         </div>
-                         <div class="ob_select col-xs-4" align="center" onclick="ob_select(this)">
-                             <img src="${path}/static/img/log/icon.png" width="150px"><br>
-                             <span>心理</span>
-                             <input type="checkbox" name="ob" style="display: none" checked value="心理">
-                         </div>
-                     </div>
-                 </td>
-             </tr>
-         </table>
-
         </div>
-
-
         <div id="search">
             <div class="search_div row">
-                <div class="col-xs-3" align="center">
+                <div class="col-xs-5" align="center" style="width: 48%!important;">
                     <select name="teacher.id" class="select_teacher" onclick="$('.select_teacher .select_hide').remove();">
                         <option class="select_hide" selected>选择治疗师</option>
-                        <#if (recoveryLogDto.teacherList)??>
-                            <option value="0">不限</option>
-                            <#list recoveryLogDto.teacherList as teacher>
-                                <option value="${teacher.id}">${teacher.name}</option>
-                            </#list>
-                        </#if>
+                    <#if (recoveryLogDto.teacherList)??>
+                        <option value="0">不限</option>
+                        <#list recoveryLogDto.teacherList as teacher>
+                            <option value="${teacher.id}">${teacher.name}</option>
+                        </#list>
+                    </#if>
                     </select>
                     <i class="glyphicon glyphicon-chevron-down" style="font-size: 30px;color: grey;"></i>
                 </div>
                 <input type="hidden" name="teacher.name" />
-                <div class="col-xs-1" style="width: 3.1%">
+                <div class="col-xs-1" style="width: 3%">
                     <span style="border-right:solid 1px black"></span>
                 </div>
-            <#--</div>-->
-            <#--<div class="search_div">-->
-                <div class="col-xs-3" align="center">
+                <div class="col-xs-5" align="center" style="width: 48%!important;">
                     <select name="demand.id" class="select_demand" onclick="$('.select_demand .select_hide').remove();">
                         <option class="select_hide" selected>选择简历</option>
-                        <#if (recoveryLogDto.demandList)??>
+                    <#if (recoveryLogDto.demandList)??>
                         <#list recoveryLogDto.demandList as demand>
                             <option value="${demand.id}">${demand.name}</option>
                         </#list>
@@ -98,26 +51,35 @@
                     </select>
                     <i class="glyphicon glyphicon-chevron-down" style="font-size: 30px;color: grey;"></i>
                 </div>
-                <div class="col-xs-1" style="width: 3.1%">
-                    <span style="border-right:solid 1px black"></span>
-                </div>
                 <input type="hidden" name="demand.name" />
-                <div class="col-xs-3" align="center">
-                    <input type="button" value="精确查找" onclick="exact()" class="input_button"/>
-                    <i class="glyphicon glyphicon-hand-up" style="font-size: 30px;color: grey;"></i>
-                </div>
-                <#--<div class="col-xs-1" style="width: 3.1%">-->
-                    <#--<span style="border-right:solid 1px black"></span>-->
-                <#--</div>-->
             </div>
-            <div style="display: none" class="search_exact">
-                <input type="hidden" name="isExactSearch" value="0">
-                <div style="margin: 20px">
-                    <span class="search_title">时间段：</span>
-                    <input name="startTime" type="text" class="search_time">—
-                    <input name="endTime" type="text" class="search_time">
+
+            <div class="search_exact">
+
+                <div class="search_exact_div" onclick="$('#obModal').modal()">
+                    <span class="search_title">康复领域：</span>
+                    <div style="display: inline" id="ob_div">
+                    <#list (recoveryLogDto.obs)! as ob>
+                        <input  type="hidden" value="${ob}" name="ob">
+                        <span class="search_label">${ob}</span>
+                    </#list>
+                    </div>
+                    <i class="glyphicon glyphicon-chevron-right" style="font-size: 40px;float: right"></i>
                 </div>
-                <div style="margin: 20px">
+                <div class="search_exact_div" onclick="selectTime()">
+                    <span class="search_title">时间段：<span class="search_exact_time">不限</span></span>
+                    <i class="glyphicon glyphicon-chevron-right" style="font-size: 40px;float: right"></i>
+                <#--<div align="center">-->
+                <input name="startTime" type="hidden" >
+                <input name="endTime" type="hidden" >
+                <#--</div>-->
+                </div>
+            <#--<div class="search_exact_div">-->
+            <#--<span class="search_title">结束时间：</span>-->
+            <#--<input name="endTime" type="text" class="search_time">-->
+            <#--<i class="glyphicon glyphicon-chevron-right" style="font-size: 40px;float: right"></i>-->
+            <#--</div>-->
+                <div class="search_exact_div">
                     <span class="search_title">是否确认：</span>
                     <select name="isConfirm" class="select_confirm">
                         <option value="2" >不限</option>
@@ -130,18 +92,18 @@
         </div>
     </form>
 
-    <#if (recoveryLogDto.demand.id)??>
-        <div class="search_factor">
-            <p class="search_factor_title" style="text-align: center">查找条件</p>
-            <table align="center" class="search_factor_table">
-                <tr>
-                    <td>
-                        <span class="search_label_title">治疗师：</span><span class="search_label">${recoveryLogDto.teacher.name}</span>
-                    </td>
-                    <td>
-                        <span class="search_label_title">简历：</span><span class="search_label">${recoveryLogDto.demand.name}</span>
-                    </td>
-                    <#if (recoveryLogDto.isConfirm)?? && (recoveryLogDto.isExactSearch)?? && recoveryLogDto.isExactSearch==1>
+<#if (recoveryLogDto.demand.id)??>
+    <div class="search_factor">
+        <p class="search_factor_title">查找条件</p>
+        <table align="center" class="search_factor_table">
+            <tr>
+                <td>
+                    <span class="search_label_title">治疗师：</span><span class="search_label">${recoveryLogDto.teacher.name}</span>
+                </td>
+                <td>
+                    <span class="search_label_title">简历：</span><span class="search_label">${recoveryLogDto.demand.name}</span>
+                </td>
+                <#if (recoveryLogDto.isConfirm)??>
                     <td>
                         <span class="search_label_title">是否确认：</span>
                         <#switch recoveryLogDto.isConfirm>
@@ -156,55 +118,111 @@
                                 <#break>
                         </#switch>
                     </td>
-                    </#if>
-                </tr>
+                </#if>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <span class="search_label_title">康复领域：</span>
+                    <#list (recoveryLogDto.ob)! as ob>
+                        <span class="search_label">${ob}</span>
+                    </#list>
+                </td>
+            </tr>
+            <#if (recoveryLogDto.startTime)?? && (recoveryLogDto.endTime)?? && recoveryLogDto.startTime!="" && recoveryLogDto.endTime!="">
                 <tr>
                     <td colspan="3">
-                        <span class="search_label_title">康复领域：</span>
-                        <#list (recoveryLogDto.ob)! as ob>
-                            <span class="search_label">${ob}</span>
-                        </#list>
+                        <span class="search_label_title">时间段：</span><span class="search_label">${recoveryLogDto.startTime}</span><span class="search_label_title">&nbsp;—&nbsp;</span><span class="search_label">${recoveryLogDto.endTime}</span>
                     </td>
                 </tr>
-                <#if (recoveryLogDto.startTime)?? && (recoveryLogDto.endTime)?? && recoveryLogDto.startTime!="" && recoveryLogDto.endTime!="">
-                    <tr>
-                        <td colspan="3">
-                            <span class="search_label_title">查询时间段：</span>${recoveryLogDto.startTime}--${recoveryLogDto.endTime}
-                        </td>
-                    </tr>
-                </#if>
-            </table>
-        </div>
-    </#if>
-
+            <#else >
+                <tr>
+                    <td colspan="3">
+                        <span class="search_label_title">时间段：</span><span class="search_label">不限</span>
+                    </td>
+                </tr>
+            </#if>
+        </table>
+    </div>
+</#if>
+<#if (recoveryLogDto.recoveryLogList)??>
     <div id="log">
-        <div class="track-list" style="width: 100%; margin-bottom: 20px">
-            <ul style="margin-top: 10px;padding-top: 10px" id="logUl">
-                <#if (recoveryLogDto.recoveryLogList)??>
-                    <#list recoveryLogDto.recoveryLogList as log>
-                        <li style=" list-style-type: none;">
-                            <div>
+        <p class="search_factor_title">康复日志</p>
+        <div class="track-list" style="width: 100%; margin-bottom: 20px;background-color: white">
+            <ul id="logUl">
+                <#list recoveryLogDto.recoveryLogList as log>
+                    <li style=" list-style-type: none;">
+                        <div>
+                            <#if log_index==0>
+                                <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: red;font-size: 40px"></span>
+                            <#else>
                                 <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
-                                <span class="date" style="margin-left: 20px">${log.time}
-                                    <#if recoveryLogDto.teacher.id==0>
-                                        ${log.teacherName}（${log.recoverOb}）
-                                    </#if>
+                            </#if>
+                            <span class="date" style="margin-left: 20px">${log.time}
+                                <#if recoveryLogDto.teacher.id==0>
+                                ${log.teacherName}（${log.recoverOb}）
+                                </#if>
                                 </span>
-                            <#--<#if log.confirmStatus==0>-->
-                            <#--<input class="btn btn-default" onclick="logConfirm(${log.id},'${order.order.id}')" value="确认" style="float: right;margin-right: 20px;width: 15%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;">-->
-                            <#--<#else>-->
-                            <#--<span  style="float: right;margin-right: 20px;width: 15%; color: #aaa;font-size:40px">已确认</span>-->
-                            <#--</#if>-->
-                                <div class="txt" >
-                                    ${log.content}
-                                </div>
+                            <div class="txt" >
+                            ${log.content}
                             </div>
-                        </li>
-                    </#list>
-                </#if>
+                        </div>
+                    </li>
+                </#list>
             </ul>
         </div>
     </div>
+</#if>
+
+    <div class="modal fade"  id="obModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">
+                        筛选康复领域
+                    </h4>
+
+                </div>
+                <div class="modal-body" id="divContent">
+                    <table align="center">
+                        <tr>
+                        <#list (recoveryLogDto.obs)! as ob>
+                            <#if ob_index&lt;3>
+                                <td>
+                                    <div class="ob_select" align="center" onclick="ob_select(this)">
+                                        <img src="${path}/static/img/log/icon.png" width="150px"><br>
+                                        <span>${ob}</span>
+                                    </div>
+                                </td>
+                            </#if>
+                        </#list>
+                        </tr>
+                        <tr>
+                        <#list (recoveryLogDto.obs)! as ob>
+                            <#if ob_index&gt;2>
+                                <td>
+                                    <div class="ob_select" align="center" onclick="ob_select(this)">
+                                        <img src="${path}/static/img/log/icon.png" width="150px"><br>
+                                        <span>${ob}</span>
+                                    </div>
+                                </td>
+                            </#if>
+                        </#list>
+                        </tr>
+                    </table>
+
+                    <button  class="btn btn-primary" onclick="selectObs()">确定</button>
+                    <button  class="btn btn-default" data-dismiss="modal">关闭</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+    <input id="calendarMultiday-demo" style="display: none"/>
+
 </body>
 
 

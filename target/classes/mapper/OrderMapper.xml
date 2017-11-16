@@ -132,4 +132,8 @@
         SELECT t.user_id FROM orders o,teacher t WHERE o.id=#{id} AND o.teacher_id=t.id
     </select>
 
+    <select id="getAllRecoveryObsByOpenid" resultType="java.lang.String">
+        SELECT distinct(o.recover_ob) FROM orders o,sysuser u,parent p WHERE u.openid=#{openid} AND p.userId=u.id AND o.parent_id=p.id
+    </select>
+
 </mapper>

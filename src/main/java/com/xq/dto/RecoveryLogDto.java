@@ -20,12 +20,22 @@ public class RecoveryLogDto {
     private String endTime;//结束时间
     private Integer isConfirm;//是否确认  0未确认  1确认  2 表示不限
 
-    private Integer isExactSearch;//标记是否是精确查找  0否 1是
 
     private List<Teacher> teacherList;//我的治疗师
     private List<Demand> demandList;//我的需求简历
 
     private String[] ob;//康复领域
+
+    private List<String> obs;//该家长所有孩子 有过的康复领域
+
+
+    public List<String> getObs() {
+        return obs;
+    }
+
+    public void setObs(List<String> obs) {
+        this.obs = obs;
+    }
 
     public String[] getOb() {
         return ob;
@@ -97,13 +107,5 @@ public class RecoveryLogDto {
 
     public void setDemandList(List<Demand> demandList) {
         this.demandList = demandList;
-    }
-
-    public Integer getIsExactSearch() {
-        return isExactSearch;
-    }
-
-    public void setIsExactSearch(Integer isExactSearch) {
-        this.isExactSearch = isExactSearch;
     }
 }

@@ -37,4 +37,5 @@ public interface OrderDao {
 
     Integer getUserIdByOid(String id);
 
+    List<String> getAllRecoveryObsByOpenid(String openid);
 }
