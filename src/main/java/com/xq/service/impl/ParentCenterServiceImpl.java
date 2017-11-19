@@ -2,27 +2,24 @@ package com.xq.service.impl;
 
 
 import com.xq.dao.*;
+import com.xq.dto.RecoveryHisDto;
 import com.xq.dto.TeacherDto;
 
-import com.xq.model.Demand;
-import com.xq.model.Parent;
-import com.xq.model.Teacher;
+import com.xq.model.*;
 
 import com.xq.dao.DemandDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.ParentCenterDao;
-import com.xq.model.Order;
 
 
-import com.xq.model.User;
 import com.xq.service.ParentCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.xq.model.Message;
-
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -116,6 +113,12 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     }
 
     @Override
+    public void modifyFeild(int objId,String newValue,String fieldName,String table){
+        if(table.equals("parent")) modifyParentInfo(objId,newValue, fieldName);
+        else if(table.equals("demand")) modifyDemand(objId,newValue,fieldName);
+    }
+
+    @Override
     public void modifyParentInfo(int userId,String value,String fieldName){
         if(fieldName.equals("realName")) parentCenterDao.updateRealName(value,userId);
         else if(fieldName.equals("phone")) parentCenterDao.updatePhone(value,userId);
@@ -129,6 +132,8 @@ public class ParentCenterServiceImpl implements ParentCenterService{
             if(value.equals("0")) parentCenterDao.updateGender(0,userId);
             else  parentCenterDao.updateGender(1,userId);
         }
+
+        parentCenterDao.updateUserStatus(3,userId);
 
     }
 
@@ -145,6 +150,45 @@ public class ParentCenterServiceImpl implements ParentCenterService{
         else if(fieldName.equals("report")) demandDao.updateReport(newValue,demandId);
         else if(fieldName.equals("remark")) demandDao.updateRemark(newValue,demandId);
 
+        parentCenterDao.updateUserStatus(3,demandDao.getParentUserId(demandId));
+    }
+
+    @Override
+    public List<RecoveryHisDto> getRecoveryHisList(String recoveryHis){
+        List<RecoveryHisDto> recoveryHisDtos=new ArrayList<RecoveryHisDto>();
+        String[] strs=recoveryHis.split("@");
+        for(int i=0;i<strs.length;i++){
+            String[] feilds=strs[i].split("#");
+            RecoveryHisDto recoveryHisDto=new RecoveryHisDto(i,feilds[0],feilds[1],feilds[2],feilds[3]);
+            recoveryHisDtos.add(recoveryHisDto);
+        }
+        return recoveryHisDtos;
+    }
+
+    @Override
+    public void addRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId){
+        String recoveryHisStr=demandDao.getRecoveryHis(demandId);
+        String newRecoveryHis="@"+recoveryHisDto.getName()+"#"+recoveryHisDto.getTime()+"#"+recoveryHisDto.getCount()+"#"+recoveryHisDto.getDetail();
+        recoveryHisStr+=newRecoveryHis;
+        demandDao.updateRecoveryHis(recoveryHisStr,demandId);
+    }
+
+    @Override
+    public void modifyRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId){
+        String recoveryHisStr=demandDao.getRecoveryHis(demandId);
+        List<String> strs= Arrays.asList(recoveryHisStr.split("@"));
+        String newRecoveryHis=recoveryHisDto.toFeildStr();
+        for(int j=0;j<strs.size();j++){
+            System.out.println(strs.get(j));
+        }
+        strs.set(recoveryHisDto.getIndex(),newRecoveryHis);
+        StringBuilder stringBuilder=new StringBuilder();
+        for(int i=0;i<strs.size()-1;i++){
+            stringBuilder.append(strs.get(i));
+            stringBuilder.append("@");
+        }
+        stringBuilder.append(strs.get(strs.size()-1));
+        demandDao.updateRecoveryHis(stringBuilder.toString(),demandId);
     }
 }
 

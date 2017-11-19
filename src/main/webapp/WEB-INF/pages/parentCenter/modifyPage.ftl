@@ -10,9 +10,9 @@
 <body>
 <div id="main">
     <div id="title" class="row">
-        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter/${modifyPageDto.objId}/myInfo"></a></div>
+        <div class="col-sm-2" style="text-align: center"></div>
         <div class="col-sm-8 titleText"><p>修改</p></div>
-        <div class="col-sm-2" style="text-align: center"><a id="saveBtn" class="fa fa-save fa-4x" onclick="saveModify('${modifyPageDto.objId}','${modifyPageDto.fieldName}');"></a></div>
+        <div class="col-sm-2" style="text-align: center"><a id="saveBtn" class="fa fa-save fa-4x" onclick="saveModify('${modifyPageDto.objId}','${modifyPageDto.fieldName}','${modifyPageDto.table}');"></a></div>
     </div>
     <div class="modifyDiv">
       <label for="input" class="col-sm-2 control-label">${modifyPageDto.uiName}</label>

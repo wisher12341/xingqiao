@@ -3,18 +3,21 @@ package com.xq.controller;
 
 import com.xq.dto.ModifyPageDto;
 
+import com.xq.dto.RecoveryHisDto;
 import com.xq.dto.TeacherDto;
 
 import com.xq.dto.Result;
 
 import com.xq.model.Demand;
 import com.xq.service.ParentCenterService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -85,6 +88,7 @@ public class ParentCenterController {
         Demand demand=parentCenterService.getDemandDetail(id);
         ModelAndView mv=new ModelAndView("parentCenter/demandDetail");
         mv.addObject("demand",demand);
+        mv.addObject("recoveryHisList",parentCenterService.getRecoveryHisList(demand.getRecoveryHis()));
         mv.addObject("userId",userId);
         return mv;
     }
@@ -144,51 +148,78 @@ public class ParentCenterController {
 
     /**
      *
-     * 修改个人资料
+     * 修改字段
      */
-    @RequestMapping(value = "/{userId}/{uiName}/{oldValue}/{fieldName}/modifyPage")
-    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName)
+    @RequestMapping(value = "/{objId}/{uiName}/{oldValue}/{fieldName}/{table}/modifyPage")
+    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName,@PathVariable String table)
     {
         ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
-        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,userId);
+        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,objId,table);
         mv.addObject("modifyPageDto",modifyPageDto);
         return mv;
     }
 
 
     /**
-     *保存个人资料修改
+     *保存字段修改
      */
     @RequestMapping(value = "/saveModify")
     @ResponseBody
-    public Map saveModify(@RequestParam("fieldName") String fieldName,@RequestParam("userId") Integer userId,@RequestParam("newValue") String newValue){
+    public Map saveModify(@RequestParam("fieldName") String fieldName,@RequestParam("objId") Integer objId,@RequestParam("newValue") String newValue,@RequestParam("table") String table){
         Map map=new HashMap();
-        parentCenterService.modifyParentInfo(userId,newValue,fieldName);
+        parentCenterService.modifyFeild(objId,newValue,fieldName,table);
+        return map;
+    }
+
+
+    /**
+     *
+     * 修改康复史页面
+     */
+    @RequestMapping(value = "/{userId}/myDemands/{demandId}/demandDetail/{recoveryHis}/modifyRecoveryHis")
+    public ModelAndView toModifyRecovery(@PathVariable int userId,@PathVariable int demandId,@PathVariable String recoveryHis)
+    {
+        ModelAndView mv=new ModelAndView("parentCenter/recoveryHisSingle");
+        RecoveryHisDto recoveryHisDto=new RecoveryHisDto(recoveryHis);
+        mv.addObject("recoveryHis",recoveryHisDto);
+        mv.addObject("demandId",demandId);
+        return mv;
+    }
+    /**
+     *
+     * 添加康复史页面
+     */
+    @RequestMapping(value = "/{userId}/myDemands/{demandId}/demandDetail/addRecoveryHis")
+    public ModelAndView toAddRecoveryHis(@PathVariable int demandId){
+        ModelAndView mv=new ModelAndView("parentCenter/recoveryHisSingle");
+        mv.addObject("demandId",demandId);
+        return mv;
+    }
+
+    /**
+     *添加康复史
+     */
+    @RequestMapping(value = "/addRecoveryHis")
+    @ResponseBody
+    public Map addRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("name") String name,@RequestParam("time") String time,
+                          @RequestParam("count") String count,@RequestParam("detail") String detail){
+        Map map=new HashMap();
+        RecoveryHisDto recoveryHisDto=new RecoveryHisDto( name, time,count,detail);
+        parentCenterService.addRecoveryHis(recoveryHisDto,demandId);
         return map;
     }
 
     /**
-     * 修改需求简历
+     *修改康复史
      */
-    @RequestMapping(value = "/{userId}/{demandId}/{uiName}/{oldValue}/{fieldValue}/demandModify")
-    public ModelAndView demandModify(@PathVariable int userId,@PathVariable int demandId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName)
-    {
-        ModelAndView mv=new ModelAndView("parentCenter/demandModify");
-        System.out.println(fieldName);
-        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,demandId);
-        mv.addObject("modifyPageDto",modifyPageDto);
-        mv.addObject("userId",userId);
-        return mv;
-    }
-
-    /**
-     *保存需求简历修改
-     */
-    @RequestMapping(value = "/saveDemandModify")
+    @RequestMapping(value = "/modifyRecoveryHis")
     @ResponseBody
-    public Map saveDemandModify(@RequestParam("fieldName") String fieldName,@RequestParam("demandId") Integer demandId,@RequestParam("newValue") String newValue){
+    public Map modifyRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("index") int index,@RequestParam("name") String name,@RequestParam("time") String time,
+                              @RequestParam("count") String count,@RequestParam("detail") String detail){
         Map map=new HashMap();
-        parentCenterService.modifyDemand(demandId,newValue,fieldName);
+        System.out.println("index"+index);
+        RecoveryHisDto recoveryHisDto=new RecoveryHisDto( index,name, time,count,detail);
+        parentCenterService.modifyRecoveryHis(recoveryHisDto,demandId);
         return map;
     }
 

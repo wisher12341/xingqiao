@@ -86,5 +86,16 @@
     <update id="updateReport">
         UPDATE demand SET report=#{report} WHERE id=#{demandId}
     </update>
+    <update id="updateRecoveryHis">
+        UPDATE demand SET recovery_his=#{recoveryHis} WHERE id=#{demandId}
+    </update>
+    <select id="getParentUserId" resultType="java.lang.Integer">
+        SELECT user_id FROM demand WHERE id=#{demandId}
+    </select>
+    <select id="getRecoveryHis" resultType="java.lang.String">
+        SELECT recovery_his FROM demand WHERE id=#{demandId}
+    </select>
+
+
 
 </mapper>

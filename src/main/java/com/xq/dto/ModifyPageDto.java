@@ -8,14 +8,25 @@ public class ModifyPageDto {
     private String fieldName;
     private String uiName;
     private int objId;
+    private String table;
 
-    public ModifyPageDto(String oldValue, String fieldName, String uiName, int objId) {
+
+
+    public ModifyPageDto(String oldValue, String fieldName, String uiName, int objId,String table) {
         this.oldValue = oldValue;
         this.fieldName = fieldName;
         this.uiName=uiName;
         this.objId = objId;
+        this.table=table;
     }
 
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
     public String getOldValue() {
         return oldValue;
     }

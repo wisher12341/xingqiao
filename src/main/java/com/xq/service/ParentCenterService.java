@@ -1,6 +1,7 @@
 package com.xq.service;
 
 
+import com.xq.dto.RecoveryHisDto;
 import com.xq.dto.TeacherDto;
 import com.xq.model.*;
 
@@ -30,9 +31,16 @@ public interface ParentCenterService {
 
     List<Demand> isexisted(HttpSession session, Integer teacheId);
 
+    void modifyFeild(int objId,String newValue,String fieldName,String table);
+
     void modifyParentInfo(int userId, String value, String fieldName);
 
     void modifyDemand(int demandId,String newValue,String fieldName);
 
+    List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
+
+    void addRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId);
+
+    void modifyRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId);
 
 }

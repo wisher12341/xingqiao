@@ -22,3 +22,34 @@
     font-weight: bold;
 }
 
+.recoveryHis-table{
+    margin-top: 40px;
+}
+
+.recoveryHis-table thead tr th{
+    font-size: 40px;
+}
+
+.recoveryHis-table tbody tr td{
+    font-size: 40px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.demandModifyDiv{
+    padding: 10px;
+    margin-top: 20px;
+    height: 120px;
+}
+.demandModifyDiv label{
+
+    margin-top: 40px;
+    font-size: 40px;
+    font-weight: bold;
+    display: inline;
+}
+.demandModifyDiv input{
+    margin-top: 20px;
+    height: 120px;
+    font-size: 50px;
+    display: inline;
+}
