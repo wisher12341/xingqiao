@@ -1,5 +1,6 @@
 package com.xq.controller;
 
+import com.xq.dto.CalendarDto;
 import com.xq.dto.Result;
 import com.xq.model.Comment;
 import com.xq.model.Teacher;
@@ -9,19 +10,17 @@ import com.xq.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
 
 /**
  * Created by joy12 on 2017/11/6.
  */
 @Controller
-@RequestMapping("/teacher")
+@RequestMapping("/wx/teacher")
 public class TeacherController {
     @Autowired
     TeacherService teachersService;
@@ -71,7 +70,7 @@ public class TeacherController {
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public String comment(Comment comment, HttpServletRequest request, Integer tid){
         teachersService.addComment(comment,request);
-        return "redirect:/teacher/"+tid+"/detail";
+        return "redirect:/wx/teacher/"+tid+"/detail";
     }
 
     /**
@@ -87,5 +86,38 @@ public class TeacherController {
         model.addAttribute("pics",pics);
         model.addAttribute("index",index);
         return "picture";
+    }
+
+    /**
+     * 下预约单 显示级别：月份
+     * @param tid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{tid}/orderTime/month",method = RequestMethod.GET)
+    public Result order_time_month(@PathVariable Integer tid){
+        List<String> starts=teachersService.order_time_month(tid);
+        return new Result(true,starts);
+    }
+
+    /**
+     * 下预约单 显示级别：日
+     * @param tid
+     * @param date
+     * @return
+     * @throws ParseException
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{tid}/orderTime/day",method = RequestMethod.POST)
+    public Result order_time_day(@PathVariable Integer tid,@RequestParam String date) throws ParseException {
+        CalendarDto calendar=teachersService.order_time_day(tid,date);
+        return new Result(true,calendar);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="orderTime",method = RequestMethod.POST)
+    public Result order_time(@RequestParam String start,@RequestParam String end) throws ParseException {
+        String time=teachersService.order_time(start,end);
+        return new Result(true,time);
     }
 }

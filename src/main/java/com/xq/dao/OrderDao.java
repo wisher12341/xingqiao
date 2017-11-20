@@ -29,7 +29,6 @@ public interface OrderDao {
 
     void addCommentId(Comment comment);
 
-    List<Order> getAllOrderByUid(String uid);
 
     List<Order> getOrder(@Param("demandId") Integer id, @Param("teacherId") Integer teacherId);
 
@@ -38,4 +37,8 @@ public interface OrderDao {
     Integer getUserIdByOid(String id);
 
     List<String> getAllRecoveryObsByOpenid(String openid);
+
+    List<Order> getServerTime(Integer id);
+
+    List<Order> getTodayServiceTime(@Param("time") String dateNowStr,@Param("tid") Integer id);
 }

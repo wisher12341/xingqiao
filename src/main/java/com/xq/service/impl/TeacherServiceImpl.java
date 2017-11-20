@@ -1,8 +1,11 @@
 package com.xq.service.impl;
 
 import com.xq.dao.CommentDao;
+import com.xq.dao.OrderDao;
 import com.xq.dao.TeacherDao;
+import com.xq.dto.CalendarDto;
 import com.xq.model.Comment;
+import com.xq.model.Order;
 import com.xq.model.Teacher;
 import com.xq.model.User;
 import com.xq.service.TeacherService;
@@ -10,11 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 
 /**
  * Created by joy12 on 2017/11/6.
@@ -26,6 +27,8 @@ public class TeacherServiceImpl implements TeacherService{
     TeacherDao teachersDao;
     @Autowired
     CommentDao commentDao;
+    @Autowired
+    OrderDao orderDao;
 
 
     public List<Teacher> getTeachers(Teacher teacher, String years, String priceSelect) {
@@ -126,5 +129,198 @@ public class TeacherServiceImpl implements TeacherService{
             pics.add(str[i]);
         }
         return pics;
+    }
+
+    @Override
+    public List<String> order_time_month(Integer tid) {
+        List<String> starts=new ArrayList<String>();
+        Teacher teacher=teachersDao.getTeacher(tid);
+
+        Date today = new Date();
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+
+        //接下来一个月的时间
+        for(int i=1;i<=30;i++){
+            String schedule=teacher.getSchedule();//获得治疗师一周安排表
+
+            c.setTime(today);
+            c.add(Calendar.DAY_OF_MONTH,i);
+            Date day = c.getTime();
+            String dateNowStr = sdf.format(day);//该天日期
+
+            c.setTime(day);
+            int week=c.get(Calendar.DAY_OF_WEEK);//该天周几  1为周日
+            if(week==1){
+                week=7;
+            }else{
+                week=week-1;
+            }
+            String today_schedule=schedule.split("#")[week-1];//今日的工作安排
+            if(today_schedule.equals("0")){
+                //该天 一周安排表 未安排 时间
+                continue;
+            }
+
+            /**
+             * 以课时为单位
+             * 判断各个课时是否已被安排
+             */
+
+
+            List<Order> orderList=orderDao.getTodayServiceTime(dateNowStr,teacher.getId());//获取当天 正在进行的订单 匹配日期
+            if(orderList.size()==0){
+                //该天没有 订单
+                starts.add(dateNowStr);
+                continue;
+            }
+            List<String> service_time=new ArrayList<String>(); //存储 当天已预约的 起%止  时间
+            //只取该天的  服务的时分
+            for(Order order:orderList){
+                for(String time:order.getServerTime().split("#")){
+                    if(time.split(" ")[0].equals(dateNowStr)){
+                        service_time.add(time.split(" ")[1]);
+                    }
+                }
+            }
+
+            Boolean flag=false;//用于标记 今天是否可预约
+            //分析一周安排表中 当天的各个时间段  每个时间段是一课时 看订单是否 已安排的
+            for(String time:today_schedule.split("@")){
+//                Boolean f = false;//用于标记是否从内层循环break
+                for(String ser:service_time){
+//                    if(time.replace("-","%").equals(ser)){
+//                        //起止时间一致（期间没修改过一周安排表）
+//                        flag=false;
+//                        break;
+//                    }
+                    if(inTime(time,ser)){
+                        //起止时间不一致（期间修改过）  则分别判断 开始时间和结束时间  是否在该时间段内 只要有一个在 则该时间段 就不可预约
+                        flag=false;
+                        break;
+                    }
+                    flag=true;
+                }
+                if(flag) break; //只需要得到 至少有一次课时 没有占用 即可， 该天就可预约
+            }
+
+            if(flag){
+                starts.add(dateNowStr);
+            }
+
+        }
+
+        return starts;
+    }
+
+    @Override
+    public CalendarDto order_time_day(Integer tid, String d) throws ParseException {
+        CalendarDto calendarDto = new CalendarDto();
+        List<String> start = new ArrayList<String>();
+        List<String> title = new ArrayList<String>();
+        List<String> end = new ArrayList<String>();
+        List<String> className = new ArrayList<String>();
+
+
+        Teacher teacher=teachersDao.getTeacher(tid);
+
+        d=d.split("GMT")[0];
+
+        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
+        Date date = sf1.parse(d);
+        SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
+        String now=sf2.format(date);
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(date);
+        int week=c.get(Calendar.DAY_OF_WEEK);//该天周几  1为周日
+        if(week==1){
+            week=7;
+        }else{
+            week=week-1;
+        }
+        String schedule=teacher.getSchedule();//获得治疗师一周安排表
+        String today_schedule=schedule.split("#")[week-1];//今日的工作安排
+
+        List<Order> orderList=orderDao.getTodayServiceTime(now,teacher.getId());//获取当天 正在进行的订单 匹配日期
+        List<String> service_time=new ArrayList<String>(); //存储 当天已预约的 起%止  时间
+        //只取该天的  服务的时分
+        for(Order order:orderList){
+            for(String time:order.getServerTime().split("#")){
+                if(time.split(" ")[0].equals(now)){
+                    service_time.add(time.split(" ")[1]);
+                }
+            }
+        }
+
+        //分析一周安排表中 当天的各个时间段  每个时间段是一课时 看订单是否 已安排的
+        for(String time:today_schedule.split("@")){
+
+            if(service_time.size()==0){
+                start.add(now+"T"+time.split("-")[0]);
+                title.add("可预约");
+                end.add(now+"T"+time.split("-")[1]);
+                className.add("orderY");
+                continue;
+            }
+
+            for(int i=0;i<service_time.size();i++){
+                if(inTime(time,service_time.get(i))){
+                    //判断 开始时间和结束时间  是否在该时间段内 只要有一个在 则该时间段 就不可预约
+                    start.add(now+"T"+time.split("-")[0]);
+                    title.add("已预约");
+                    end.add(now+"T"+time.split("-")[1]);
+                    className.add("orderN");
+                    break;
+                }
+                if(i==service_time.size()-1){
+                    //遍历到最后  则该节课可预约
+                    start.add(now+"T"+time.split("-")[0]);
+                    title.add("可预约");
+                    end.add(now+"T"+time.split("-")[1]);
+                    className.add("orderY");
+                }
+
+            }
+
+        }
+        calendarDto.setStart(start);
+        calendarDto.setEnd(end);
+        calendarDto.setTitle(title);
+        calendarDto.setClassName(className);
+        return calendarDto;
+    }
+
+    private boolean inTime(String time, String ser) {
+        String start=ser.split("%")[0];
+        String end=ser.split("%")[1];
+
+        String start_time=time.split("-")[0];
+        String end_time=time.split("-")[1];
+        if(start.compareTo(start_time)>=0 && start.compareTo(end_time)<=0){
+            return true;
+        }
+        if(end.compareTo(start_time)>=0 && end.compareTo(end_time)<=0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String order_time(String start, String end) throws ParseException {
+        start=start.split("GMT")[0];
+
+        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
+        Date date_start = sf1.parse(start);
+        SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        String time_start=sf2.format(date_start);
+
+        end=end.split("GMT")[0];
+        Date date_end=sf1.parse(end);
+        SimpleDateFormat sf3 = new SimpleDateFormat("hh:mm");
+        String time_end=sf3.format(date_end);
+
+        return time_start+"-"+time_end;
     }
 }

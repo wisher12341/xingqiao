@@ -21,27 +21,34 @@
             display: none !important;
         }
 
+        .form-control{
+            border: none;
+            border-radius: 0;
+            height: 3.5rem;
+        }
+
     </style>
 </head>
 <body ng-app="testapp" ng-controller="organizationCtrl" ng-init="getOrganization()">
 <div class="container list-container-white">
-    <div class="row row-wrapper">
-        <div class="my-page-title col-xs-12">机构查询</div>
-        <div class="col-xs-12 gray-line"></div>
-    </div>
 
     <div class="input-group row row-wrapper" style="padding: 0rem 2.5rem">
-        <input type="text" class="form-control input-default" ng-model="orgName"><span class="input-group-addon btn btn-primary" ng-click="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">搜索</span>
+        <input type="text"
+               style="margin-top: 0.2rem;border-radius: 20px 0px 0px 20px;"
+               class="form-control input-default" ng-model="orgName">
+        <span class="glyphicon glyphicon-search input-group-addon"
+              style="border-radius: 0 20px 20px 0px; color: #337fc0; background-color: #d9edf7;border: none;"
+              ng-click="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)"></span>
     </div>
-    <div class="row row-wrapper">
-        <div class="col-xs-6 col-md-6">
-            <select class="form-control">
+    <div class="row row-wrapper" style="padding: 1.5rem 0rem 0rem 0rem">
+        <div class="col-xs-6 col-md-6 no-padding">
+            <select class="form-control" style="height: 4.5rem">
                 <option>上海市:</option>
             </select>
         </div>
 
-        <div class="col-xs-6 col-md-6" >
-            <select class="form-control" ng-model="vm.dis"
+        <div class="col-xs-6 col-md-6 no-padding">
+            <select class="form-control" ng-model="vm.dis" style="height: 4.5rem"
                     ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
                 <option value="">-- 请选择区 --</option>
             </select>
@@ -114,7 +121,7 @@
         $scope.getOrganization = function() {
             $http({
                 method: 'GET',
-                url: pathJs+'/organization/get_organizations'
+                url: pathJs+'/wx/organization/get_organizations'
 
             }).success(function (data, status, headers, config) {
 //                console.log(data);
@@ -184,7 +191,7 @@
 
         //更多机构介绍
         $scope.get_org_intro = function(orgId){
-            $window.location = pathJs+'/organization/'+orgId+'/organintro';
+            $window.location = pathJs+'/wx/organization/'+orgId+'/organintro';
         };
 
 

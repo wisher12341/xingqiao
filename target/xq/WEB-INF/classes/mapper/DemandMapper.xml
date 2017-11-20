@@ -63,6 +63,9 @@
     <select id="getParenntNameByUid" resultType="java.lang.String">
         SELECT realName FROM parent WHERE userId=#{id}
     </select>
+    <select id="getDemandByuserId" resultType="com.xq.model.Demand">
+        SELECT id,name,disease FROM demand WHERE user_id=#{id}
+    </select>
 
 
     <update id="updateName">
