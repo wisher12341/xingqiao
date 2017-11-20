@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService{
     ParentCenterDao parentCenterDao;
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
-//        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
+//        String openid= CookieUtil.checkCookie(request, Const.OPENID);
         String openid="123";
         List<Order> orderList=orderDao.getAllOrderByOpenid(openid);
         setStatusDesc(orderList);

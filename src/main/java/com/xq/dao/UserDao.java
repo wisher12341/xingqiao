@@ -1,6 +1,7 @@
 package com.xq.dao;
 
 import com.xq.model.User;
+import com.xq.model.WxUserInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -16,4 +17,8 @@ public interface UserDao {
     User getUserByUid(Integer id);
     void save(User user);
     User findUserByName(String username);
+
+    void addOpenid(User user);
+
+    void saveNewUser(WxUserInfo wxUserInfo);
 }

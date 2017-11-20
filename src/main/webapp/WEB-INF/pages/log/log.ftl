@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="main">
-    <form action="${path}/wx/log" method="post">
+    <form action="${path}/wx/log/index" method="post">
         <div class="ob">
             <i class="glyphicon glyphicon-circle-arrow-left" onclick="history.go(-1)" style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
             <span class="ob_title_top">条件筛选</span>

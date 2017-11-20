@@ -6,9 +6,9 @@ package com.xq.wxpay.config;
  */
 public class WxConfig {
 
-    public static String APPID="wx255912e9320a8f27";
+    public static String APPID="wx41aea10976e1038a";
     public static String REDIRECT_URI="";
-    public static String APPSECRET="cddde403d09e16863f1ecee25aa46914";
+    public static String APPSECRET="0d301b2f8efda8e27379fe2354c776b9";
     public static String ACCESS_TOKEN_URL="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid="+APPID+"&secret="+APPSECRET;
     public static String ACCESS_TOKEN="";
     public static String UPLOADIMG="https://api.weixin.qq.com/cgi-bin/media/uploadimg?access_token=";//上传图文消息内的图片获取URL

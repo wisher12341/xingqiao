@@ -1,0 +1,25 @@
+body{
+    background-color: #f5f5f5;
+}
+#accountBind{
+    margin: 70% auto;
+}
+.la{
+    font-size: 45px;
+}
+.textInput{
+    font-size: 45px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.group{
+    margin-bottom: 40px;
+}
+.submit{
+    font-size: 45px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #56c078;
+    color: white;
+    width: 70%;
+}

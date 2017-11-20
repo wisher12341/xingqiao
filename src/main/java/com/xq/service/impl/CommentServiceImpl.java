@@ -9,17 +9,14 @@ import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.model.User;
 import com.xq.service.CommentService;
-import com.xq.util.ConstOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.TimeZone;
 
 /**
@@ -42,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
     @Transactional
     public void addComment(Comment comment, HttpServletRequest request, MultipartFile[] pics) {
 
-//        String openid=commonService.checkCookie(request, ConstOrder.OPENID);
+//        String openid=commonService.checkCookie(request, Const.OPENID);
         String openid="123";
         User user=userDao.getUserByOpenid(openid);
 

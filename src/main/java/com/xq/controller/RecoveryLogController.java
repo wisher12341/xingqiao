@@ -29,7 +29,7 @@ public class RecoveryLogController {
      * 康复日志页面
      * @return
      */
-    @RequestMapping(value = "",method = RequestMethod.GET)
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView log_get(HttpServletRequest request){
         RecoveryLogDto recoveryLogDto=recoveryLogService.getMyTeachersAndDemandsByUid(request);
         ModelAndView mv=new ModelAndView("log/log");
@@ -43,7 +43,7 @@ public class RecoveryLogController {
      * @param request
      * @return
      */
-    @RequestMapping(value = "",method = RequestMethod.POST)
+    @RequestMapping(value = "/index",method = RequestMethod.POST)
     public ModelAndView log_post(RecoveryLogDto recoveryLogDto,HttpServletRequest request){
         RecoveryLogDto recoveryLogDtoResult=recoveryLogService.getLogsByDto(recoveryLogDto,request);
         ModelAndView mv=new ModelAndView("log/log");
