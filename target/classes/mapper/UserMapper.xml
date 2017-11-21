@@ -4,7 +4,7 @@
 
 
     <select id="getUserByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
-        SELECT id FROM sysuser WHERE openid=#{openid}
+        SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid}
     </select>
 
     <select id="getUserById" resultType="com.xq.model.User">
