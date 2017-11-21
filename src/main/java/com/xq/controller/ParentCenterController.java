@@ -8,13 +8,18 @@ import com.xq.dto.TeacherDto;
 import com.xq.dto.Result;
 
 import com.xq.model.Demand;
+import com.xq.model.User;
 import com.xq.service.ParentCenterService;
+import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -31,15 +36,18 @@ public class ParentCenterController {
 
     @Autowired
     ParentCenterService parentCenterService;
+    @Autowired
+    UserService userService;
 
     /**
     * 个人中心首页
     */
     @RequestMapping(value = "")
-    public ModelAndView parentCenter(){
+    public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-        mv.addObject("userId",2);
-        mv.addObject("userName",parentCenterService.getUserNameById(2));
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        User user=userService.getUserByOpenid(openid);
+        mv.addObject("user",user);
         return mv;
     }
 

@@ -61,8 +61,7 @@ public class WxController {
     @RequestMapping(value = "/new")
     public ModelAndView reg(HttpServletRequest request,HttpServletResponse response){
         WxUserInfo wxUserInfo=wxService.getUserInfo(request,response);
-        ModelAndView mv=new ModelAndView("info");
-        mv.addObject("info",wxUserInfo);
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter");
         return mv;
     }
 
