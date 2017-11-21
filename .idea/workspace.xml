@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="" />
+    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/logo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/login.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,9 +28,12 @@
       <file leaf-file-name="login_parent.ftl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-              <folding />
+            <state relative-caret-position="275">
+              <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#2;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -129,7 +137,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xq/util/Const.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/util/WxConfig.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/login.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/WxService.java" />
@@ -146,12 +153,13 @@
         <option value="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/RecoveryLogController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/interceptor/WxInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/WxServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
       </list>
     </option>
   </component>
@@ -797,11 +805,12 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\wx\log" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages\order\common" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\ftl\order" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\jsp" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\img" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar\js" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar\css" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.xq.controller" />
@@ -813,12 +822,11 @@
       <recent name="com.xq.dao" />
       <recent name="com.xq.model" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar\js" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar\css" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\common\calendar" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages\teacherCenter\order" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\wx\log" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages\order\common" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\ftl\order" />
+      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\jsp" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1359,7 +1367,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265686000" />
+    <option name="totallyTimeSpent" value="265725000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1540,7 +1548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1570,13 +1577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1802,18 +1802,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="6" column="37" lean-forward="false" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="37" />
-          <folding>
-            <marker date="1511272663952" expanded="true" signature="296:361" ph="SELECT id,he... sysuser" />
-            <marker date="1511272663952" expanded="true" signature="446:482" ph="SELECT * FRO... sysuser" />
-            <marker date="1511272663952" expanded="true" signature="575:807" ph="select u.id,... sysuser" />
-            <marker date="1511272663952" expanded="true" signature="895:1106" ph="select u.id,... sysuser" />
-            <marker date="1511272663952" expanded="true" signature="1196:1242" ph="select realN... parent" />
-            <marker date="1511272663952" expanded="true" signature="1333:1377" ph="select name teacher" />
-            <marker date="1511272663952" expanded="true" signature="1463:1537" ph="SELECT id,us... sysuser" />
-            <marker date="1511272663952" expanded="true" signature="1584:1984" ph="UPDATE sysus... " />
-            <marker date="1511272663952" expanded="true" signature="2035:2085" ph="UPDATE sysus... " />
-            <marker date="1511272663952" expanded="true" signature="2179:2321" ph="INSERT into sysuser... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1857,11 +1846,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="642">
+          <caret line="44" column="1" lean-forward="false" selection-start-line="44" selection-start-column="1" selection-end-line="44" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="275">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#2;n#form#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
