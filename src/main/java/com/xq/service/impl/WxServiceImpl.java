@@ -70,7 +70,7 @@ public class WxServiceImpl implements WxService{
         int start_acc=json.indexOf("access_token")+15;
         int end_acc=json.indexOf(",",start)-1;
         String access_token=json.substring(start_acc,end_acc);//提取access_token
-        String infoUrl = "https://api.weixin.qq.com/sns/sns/userinfo?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
+        String infoUrl = "https://api.weixin.qq.com/sns/userinfo?access_token="+access_token+"&openid="+openid+"&lang=zh_CN";
         String  info="";
         try {
             info = new HttpRequestor().doGet(infoUrl);
