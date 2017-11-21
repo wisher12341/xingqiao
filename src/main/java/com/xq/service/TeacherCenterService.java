@@ -1,9 +1,7 @@
 package com.xq.service;
 
-import com.xq.model.Demand;
-import com.xq.model.Message;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.dto.RecoveryHisDto;
+import com.xq.model.*;
 
 import java.util.List;
 
@@ -20,8 +18,13 @@ public interface TeacherCenterService {
 
    Teacher getTeacherByUserId(int userId);
 
-   List<Demand> getDemands(int userId);
+   List<Demand> getDemands(int teacherId);
 
    List<Message> getMessagesByUserId(int userId);
 
+   Demand getDemandDetail(int demandId);
+
+   List<RecoveryLog> getRecoveryLogs(int demandId,int userId);
+
+   List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
 }

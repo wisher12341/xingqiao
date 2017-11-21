@@ -43,4 +43,7 @@ public interface ParentCenterService {
 
     void modifyRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId);
 
+    void addDemand( int userId,String name,int gender,String birthday,String report,String diseaseHis,
+                    String allergyHis,String remark);
+
 }

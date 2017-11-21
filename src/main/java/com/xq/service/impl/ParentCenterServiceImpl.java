@@ -155,6 +155,7 @@ public class ParentCenterServiceImpl implements ParentCenterService{
 
     @Override
     public List<RecoveryHisDto> getRecoveryHisList(String recoveryHis){
+        if(recoveryHis==null) return null;
         List<RecoveryHisDto> recoveryHisDtos=new ArrayList<RecoveryHisDto>();
         String[] strs=recoveryHis.split("@");
         for(int i=0;i<strs.length;i++){
@@ -189,6 +190,12 @@ public class ParentCenterServiceImpl implements ParentCenterService{
         }
         stringBuilder.append(strs.get(strs.size()-1));
         demandDao.updateRecoveryHis(stringBuilder.toString(),demandId);
+    }
+
+    @Override
+    public void addDemand( int userId,String name,int gender,String birthday,String report,String diseaseHis,
+                    String allergyHis,String remark){
+        demandDao.addDemand(userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
     }
 }
 

@@ -60,10 +60,10 @@ public class ParentCenterController {
     /**
      *治疗师详情
      */
-    @RequestMapping(value = "/{userId}/myTeacher/{tid}/teacherDetail",method = RequestMethod.GET)
+    @RequestMapping(value = "/{userId}/myTeacher/{tid}/teachersDetail",method = RequestMethod.GET)
     public ModelAndView toTeacherDetail(@PathVariable Integer userId,@PathVariable Integer tid){
         TeacherDto teacher=parentCenterService.getTeacherDetail(tid);
-        ModelAndView mv=new ModelAndView("parentCenter/teacherDetail");
+        ModelAndView mv=new ModelAndView("parentCenter/teachersDetail");
         mv.addObject("teacher",teacher);
         mv.addObject("userId",userId);
         return mv;
@@ -92,6 +92,31 @@ public class ParentCenterController {
         mv.addObject("userId",userId);
         return mv;
     }
+
+
+    /**
+     *添加简历页面
+     */
+    @RequestMapping(value = "/{userId}/addDemandPage",method = RequestMethod.GET)
+    public ModelAndView toAddDemandPage(@PathVariable int userId){
+        ModelAndView mv=new ModelAndView("parentCenter/addDemandPage");
+        mv.addObject("userId",userId);
+        return mv;
+    }
+
+    /**
+     *添加简历
+     */
+    @RequestMapping(value = "/addDemand")
+    @ResponseBody
+    public Map addRecoveryHis(@RequestParam("userId") Integer userId, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
+                              @RequestParam("birthday") String birthday,@RequestParam("report") String report, @RequestParam("diseaseHis") String diseaseHis,
+                              @RequestParam("allergyHis") String allergyHis, @RequestParam("remark") String remark){
+        Map map=new HashMap();
+        parentCenterService.addDemand( userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
+        return map;
+    }
+
 
     /**
      *消息中心

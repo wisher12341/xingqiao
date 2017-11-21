@@ -1,6 +1,7 @@
 package com.xq.controller;
 
 import com.xq.model.Demand;
+import com.xq.model.RecoveryLog;
 import com.xq.service.TeacherCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by 86761 on 2017/11/10.
@@ -27,29 +30,37 @@ public class TeacherCenterController {
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
         mv.addObject("userId",1);
         mv.addObject("name",teacherCenterService.getNameByUserId(1));
+        mv.addObject("teacherId",1);
         return mv;
     }
 
     /**
      *我的患者
      */
-    @RequestMapping(value = "/{userId}/myDemands")
-    public ModelAndView toMyDemands(@PathVariable Integer userId){
+    @RequestMapping(value = "/{teacherId}/myDemands")
+    public ModelAndView toMyDemands(@PathVariable Integer teacherId){
         ModelAndView mv=new ModelAndView("teacherCenter/myDemands");
-        mv.addObject("demands",teacherCenterService.getDemands(userId));
+        mv.addObject("demands",teacherCenterService.getDemands(teacherId));
+        mv.addObject("teacherId",teacherId);
         return mv;
     }
 
     /**
      *简历详情
      */
-//    @RequestMapping(value = "/{id}/demandDetail",method = RequestMethod.GET)
-//    public ModelAndView toDemandDetail(@PathVariable Integer id){
-//        Demand demand=teacherCenterService.getDemandDetail(id);
-//        ModelAndView mv=new ModelAndView("parentCenter/demandDetail");
-//        mv.addObject("demand",demand);
-//        return mv;
-//    }
+    @RequestMapping(value = "/{teacherId}/{id}/demandDetail",method = RequestMethod.GET)
+    public ModelAndView toDemandDetail(@PathVariable Integer id,@PathVariable Integer teacherId){
+        Demand demand=teacherCenterService.getDemandDetail(id);
+        List<RecoveryLog> recoveryLogList=teacherCenterService.getRecoveryLogs(id,teacherId);
+        for(RecoveryLog recoveryLog:recoveryLogList){
+            System.out.println(recoveryLog.getOrderId());
+        }
+        ModelAndView mv=new ModelAndView("teacherCenter/demandDetail");
+        mv.addObject("demand",demand);
+        mv.addObject("recoveryHisList",teacherCenterService.getRecoveryHisList(demand.getRecoveryHis()));
+        mv.addObject("recoveryLogList",recoveryLogList);
+        return mv;
+    }
 
     /**
      *消息中心

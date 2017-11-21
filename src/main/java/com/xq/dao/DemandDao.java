@@ -25,7 +25,6 @@ public interface DemandDao {
 
     void editorDemand(Demand demand);
 
-    void addDemand(Demand demand);
 
     String getParenntNameByUid(Integer id);
 
@@ -39,5 +38,7 @@ public interface DemandDao {
     int getParentUserId(@Param("demandId") int demandId);
     String getRecoveryHis(@Param("demandId") int demandId);
     void updateRecoveryHis(@Param("recoveryHis") String recoveryHis,@Param("demandId") int demandId);
+    void addDemand(@Param("userId") int userId,@Param("name") String name,@Param("gender") int gender, @Param("birthday") String birthday,
+                   @Param("report") String report, @Param("diseaseHis") String diseaseHis, @Param("allergyHis") String allergyHis,@Param("remark") String remark);
 
 }
