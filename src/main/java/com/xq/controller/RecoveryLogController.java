@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.logging.Logger;
 
 /**
  * 康复日志
@@ -24,6 +25,8 @@ public class RecoveryLogController {
 
     @Autowired
     RecoveryLogService recoveryLogService;
+
+    public static Logger logger;
 
     /**
      * 康复日志页面

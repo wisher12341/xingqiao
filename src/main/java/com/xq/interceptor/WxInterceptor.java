@@ -13,6 +13,12 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 /**
  *
@@ -24,6 +30,8 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 
 	@Autowired
 	UserDao userDao;
+
+	public static Logger logger;
 
 	/*
 	 * 利用正则映射到需要拦截的路径    
@@ -50,6 +58,29 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request,
             HttpServletResponse response, Object handler) throws Exception {
+
+		if(logger==null){
+            logger= Logger.getLogger("com.horstmann.corejava");
+            FileHandler fh;
+            try {
+                File f=new File("log.txt");
+                if(!f.exists()){
+                    f.createNewFile();
+                }
+
+                fh = new FileHandler("log.txt",true);
+              logger.addHandler(fh);//日志输出文件
+                fh.setFormatter(new SimpleFormatter());//输出格式
+            } catch (SecurityException e) {
+               logger.log(Level.SEVERE, "安全性错误", e);
+            } catch (IOException e) {
+                System.out.println("IO异常");
+                logger.log(Level.SEVERE, "读取文件日志错误", e);
+            }
+        }
+
+
+
 
 		String redirect_url_parent="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ WxConfig.APPID+"&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fparent&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 		String redirect_url_teacher="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ WxConfig.APPID+"&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
