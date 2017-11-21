@@ -58,6 +58,6 @@
     </update>
 
     <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo">
-        INSERT into sysuser(opeind,gender,nickname,headimgurl,time,status,user_status) VALUES (#{opeind},#{sex},#{nickname},#{headimgurl},#{time},0,0)
+        INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{sex},#{nickname},#{headimgurl},#{time},0,0)
     </insert>
 </mapper>
