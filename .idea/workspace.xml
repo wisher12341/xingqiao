@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/WxServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/WxServiceImpl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,8 +56,8 @@
       <file leaf-file-name="WxServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/WxServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="467">
-              <caret line="69" column="54" lean-forward="true" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+            <state relative-caret-position="142">
+              <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -1229,7 +1230,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="262058000" />
+    <option name="totallyTimeSpent" value="262768000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1567,6 +1568,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="41" column="29" lean-forward="false" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+          <folding>
+            <element signature="e#794#795#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#866#867#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1717,8 +1723,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/WxServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="69" column="54" lean-forward="true" selection-start-line="69" selection-start-column="54" selection-end-line="69" selection-end-column="54" />
+        <state relative-caret-position="142">
+          <caret line="86" column="19" lean-forward="true" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
           <folding />
         </state>
       </provider>

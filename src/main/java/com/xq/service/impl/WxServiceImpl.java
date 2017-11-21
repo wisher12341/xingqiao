@@ -82,7 +82,14 @@ public class WxServiceImpl implements WxService{
         WxUserInfo wxUserInfo=new WxUserInfo();
         wxUserInfo.setHeadimgurl((String) mapTypes.get("headimgurl"));
         wxUserInfo.setNickname((String) mapTypes.get("nickname"));
-        wxUserInfo.setSex(((String) mapTypes.get("sex")).equals("1")?"0":"1");//微信是 1男2女  系统是0男1女
+        Integer sex= (Integer) mapTypes.get("sex");
+        //微信是 1男2女  系统是0男1女
+        if(sex==1){
+            sex=0;
+        }else{
+            sex=1;
+        }
+        wxUserInfo.setSex(sex.toString());
         wxUserInfo.setOpenid((String) mapTypes.get("openid"));
 
         // 保存用openid到cookie
