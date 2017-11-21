@@ -27,7 +27,6 @@
                         <span style="color: red;text-align: center">${message!}</span>
                     </div>
                 <input type="hidden" name="openid" value="${openid!}">
-                <%--<input type="hidden" name="openid" value="12341234">--%>
                 <input type="submit" value="登录"  class="submit">
             </form>
     </div>

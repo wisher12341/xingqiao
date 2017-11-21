@@ -46,6 +46,7 @@ public class WxServiceImpl implements WxService{
         int start=json.indexOf("openid")+9;
         int end=json.indexOf(",",start)-1;
         String openid=json.substring(start,end);//提取openid
+
         return  openid;
     }
 

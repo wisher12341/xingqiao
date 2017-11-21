@@ -1,6 +1,7 @@
 package com.xq.controller;
 
 
+import com.xq.interceptor.WxInterceptor;
 import com.xq.model.User;
 import com.xq.model.WxUserInfo;
 import com.xq.service.UserService;
