@@ -1,6 +1,6 @@
 
 
-function saveModify(userId,fieldName){
+function saveModify(objId,fieldName,table){
     var newValue= $("input").val();
 
     $.ajax({
@@ -9,11 +9,12 @@ function saveModify(userId,fieldName){
         dataType: 'json',
         data: {
             "newValue": newValue,
-            "userId": userId,
-            "fieldName":fieldName
+            "objId": objId,
+            "fieldName":fieldName,
+            "table":table
         },
         success: function(){
-            window.location.href="/wx/parentCenter/"+userId+"/myInfo";
+            window.location.href=document.referrer;
         },
         error: function(){
 
@@ -21,23 +22,58 @@ function saveModify(userId,fieldName){
     });
 }
 
-function saveDemandModify(userId,demandId,fieldName){
-    var newValue= $("input").val();
+function modifyRecoveryHis(demandId,index) {
+    var name= $("#name").val();
+    var time= $("#time").val();
+    var count= $("#count").val();
+    var detail= $("#detail").val();
 
     $.ajax({
-        url: "/wx/parentCenter/saveDemandModify",
+        url: "/wx/parentCenter/modifyRecoveryHis",
         type: 'post',
         dataType: 'json',
         data: {
-            "newValue": newValue,
-            "demandId": demandId,
-            "fieldName":fieldName
+            "demandId":demandId,
+            "name": name,
+            "time": time,
+            "count":count,
+            "detail":detail,
+            "index":index
         },
         success: function(){
-            window.location.href="/wx/parentCenter/"+userId+"/myDemands/"+demandId+"/demandDetail";
+            window.location.href=document.referrer;
         },
         error: function(){
 
         }
     });
 }
+
+function addRecoveryHis(demandId) {
+    var name= $("#name").val();
+    var time= $("#time").val();
+    var count= $("#count").val();
+    var detail= $("#detail").val();
+
+    $.ajax({
+        url: "/wx/parentCenter/addRecoveryHis",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            "demandId":demandId,
+            "name": name,
+            "time": time,
+            "count":count,
+            "detail":detail,
+        },
+        success: function(){
+            window.location.href=document.referrer;
+        },
+        error: function(){
+
+        }
+    });
+}
+
+
+

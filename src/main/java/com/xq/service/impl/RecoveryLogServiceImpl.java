@@ -4,6 +4,8 @@ import com.xq.dao.*;
 import com.xq.dto.RecoveryLogDto;
 import com.xq.model.*;
 import com.xq.service.RecoveryLogService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,8 +40,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     }
 
     public RecoveryLogDto getLogsByDto(RecoveryLogDto recoveryLogDto, HttpServletRequest request) {
-//        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
-        String openid="123";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         recoveryLogDto.setTeacherList(teacherList);
@@ -64,8 +65,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     }
 
     public RecoveryLogDto getMyTeachersAndDemandsByUid(HttpServletRequest request) {
-//        String openid= CookieUtil.checkCookie(request, ConstOrder.OPENID);
-        String openid="123";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();

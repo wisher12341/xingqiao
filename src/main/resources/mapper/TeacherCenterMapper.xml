@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xq.dao.TeacherCenterDao">
 
-    <select id="getDemandsByTeacherUserId" resultType="com.xq.model.Demand">
-        SELECT DISTINCT demand.* FROM orders,demand WHERE orders.teacher_id=#{userId} and orders.demand_id=demand.id
+    <select id="getDemandsByTeacherId" resultType="com.xq.model.Demand">
+        SELECT DISTINCT demand.* FROM orders,demand WHERE orders.teacher_id=#{teacherId} and orders.demand_id=demand.id
     </select>
 
     <select id="getNameByUserId" resultType="java.lang.String">
@@ -17,5 +17,50 @@
     <select id="getTeacherByUserId" resultType="com.xq.model.Teacher">
         SELECT * FROM teacher WHERE user_id=#{userId}
     </select>
+
+    <select id="getRecoveryLogs"  resultType="com.xq.model.RecoveryLog">
+        SELECT r.*
+        FROM recovery_log r,orders o
+        WHERE r.order_id =o.id and o.teacher_id=#{teacherId} and o.demand_id=#{demandId}
+    </select>
+
+
+    <update id="updateName">
+        UPDATE teacher SET name=#{name} WHERE user_id=#{userId}
+    </update>
+    <update id="updateGender">
+        UPDATE sysuser SET gender=#{gender} WHERE user_id=#{userId}
+    </update>
+    <update id="updatePhone">
+        UPDATE sysuser SET phone=#{phone} WHERE user_id=#{userId}
+    </update>
+    <update id="updateEmail">
+        UPDATE sysuser SET email=#{email} WHERE user_id=#{userId}
+    </update>
+    <update id="updateSchool">
+        UPDATE teacher SET school=#{school} WHERE user_id=#{userId}
+    </update>
+    <update id="updateDomain">
+        UPDATE teacher SET domain=#{domain} WHERE user_id=#{userId}
+    </update>
+    <update id="updateObject">
+        UPDATE teacher SET object=#{object} WHERE user_id=#{userId}
+    </update>
+    <update id="updateWay">
+        UPDATE teacher SET way=#{way} WHERE user_id=#{userId}
+    </update>
+    <update id="updateTGround">
+        UPDATE teacher SET tGround=#{tGround} WHERE user_id=#{userId}
+    </update>
+    <update id="updateSGround">
+        UPDATE teacher SET sGround=#{sGround} WHERE user_id=#{userId}
+    </update>
+    <update id="updatePid">
+        UPDATE teacher SET pid=#{pid} WHERE user_id=#{userId}
+    </update>
+
+    <update id="updateUserStatus">
+        UPDATE sysuser SET user_status=#{status} WHERE id=#{userId}
+    </update>
 
 </mapper>

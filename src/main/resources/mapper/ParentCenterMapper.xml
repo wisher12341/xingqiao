@@ -29,6 +29,8 @@
     <update id="updateGroundAndAddr">
         UPDATE parent SET ground=#{ground}, address=#{address} WHERE userId=#{userId}
     </update>
-
+    <update id="updateUserStatus">
+        UPDATE sysuser SET user_status=#{status} WHERE id=#{userId}
+    </update>
 
 </mapper>

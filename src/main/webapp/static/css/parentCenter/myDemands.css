@@ -22,3 +22,92 @@
     font-weight: bold;
 }
 
+.recoveryHis-table{
+    margin-top: 40px;
+}
+
+.recoveryHis-table thead tr th{
+    font-size: 40px;
+}
+
+.recoveryHis-table tbody tr td{
+    font-size: 40px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+.demandModifyDiv{
+    padding: 20px 50px;
+
+
+}
+.demandModifyDiv label{
+    margin-top: 20px;
+    font-size: 50px;
+    font-weight: bold;
+    display: inline;
+}
+.demandModifyDiv input{
+    margin-top: 20px;
+    height: 110px;
+    font-size: 50px;
+    display: inline;
+}
+
+.demandAddDiv{
+    padding: 10px;
+    margin-top: 20px;
+    height: 100px;
+}
+.demandAddDiv label{
+
+    margin-top: 40px;
+    font-size: 45px;
+    font-weight: bold;
+    display: inline;
+}
+.demandAddDiv .text-input input{
+    margin-top: 20px;
+    height: 100px;
+    font-size: 50px;
+    display: inline;
+}
+.demandAddDiv .radio-input{
+    margin-top: 30px;
+    font-size: 50px;
+
+}
+.demandAddDiv .radio-input input{
+
+    height: 50px;
+    width: 50px;
+}
+
+#log{
+    background-color: white;
+}
+
+.date{
+    font-size: 35px;
+    color: grey;
+}
+.txt{
+    margin-left: -1px;
+    border-left: solid 1px #e8e8e8;
+    padding-left: 26px;
+    padding-bottom: 20px;
+    margin-bottom: 0px;
+    font-size: 42px;
+    color: grey;
+}
+
+.addBtn{
+    text-align: center;
+    font-size: 50px;
+}
+.addBtn button{
+    font-size:50px;
+    height: 100px;
+    background-color: #00b0ff;
+    color: white;
+    margin: 20px;
+}

@@ -11,11 +11,6 @@
 <body>
 <div id="main">
 
-    <div id="title" class="row">
-        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter"></a></div>
-        <div class="col-sm-8 titleText"><p>消息中心</p></div>
-        <div class="col-sm-2"></div>
-    </div>
 
     <div>
         <ul class="list-group">
