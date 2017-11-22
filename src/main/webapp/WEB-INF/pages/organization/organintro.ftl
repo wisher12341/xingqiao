@@ -66,98 +66,172 @@
     </div>
 
     <div class="my-panel">
-        <div class="inline-wrapper">
-            <div class="my-panel-title">机构评论 ${organization.organCommentList?size}</div>
+        <div class="inline-wrapper pointable" onclick="location='${base}/wx/organization/toOrganCommentList?orgId=${organization.id}'">
+            <div class="my-panel-title">机构评论 (${organization.organCommentList?size})</div>
+            <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
         </div>
         <div class="gray-line"></div>
         <div class="my-panel-content container line-height-24">
          <#if organization.organCommentList??>
-                <#list organization.organCommentList as comm>
-                    <div class="row">
+                <#if organization.organCommentList?size gt 0>
+                <#assign comm=organization.organCommentList[0]>
+                    <div class="row row-wrapper">
                         <div class="col-xs-2 no-padding">
                             <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
                         </div>
-                        <div class="col-xs-9">
-                            <div class="user-name">${comm.user.username!""}</div>
-                            <div class="comment-content">
-                                <#if comm.detail?length gt 60>
-                                    <#assign s=comm.detail>
-                                    <div class="comment-detail">
-                                        ${comm.detail?substring(0,60)}……
-                                    </div>
-                                    <a onclick="showFullComment('${s}',this)">更多</a>
-                                    <a onclick="showBriefComment('${s}',this)" style="display: none">隐藏</a>
-                                <#else>
+                        <div class="col-xs-10">
+                            <div>
+                                <div class="user-name">${comm.user.username!""}</div>
+                                <div class="comment-content">
+                                    <#if comm.detail?length gt 40>
+                                        <#assign s=comm.detail>
+                                        <div class="comment-detail">
+                                        ${comm.detail?substring(0,40)}……
+                                        </div>
+                                        <a onclick="showFullComment('${s}',this)">全文</a>
+                                        <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                    <#else>
                                     ${comm.detail}
-                                </#if>
-                            </div>
-                            <div class="comment-pics">
-                                <#if comm.picurls??>
-                                    <#assign picList = comm.picurls?split("#")>
-                                    <div class="img-wrap">
-                                        <div class="img-container">
-                                            <img src="${base}/${picList[0]}">
-                                        </div>
-                                    </div>
-                                <#if picList?size gt 1>
-                                    <a onclick="showMorePics(this)">查看全部${picList?size}张</a>
-                                    <a onclick="hideMorePics(this)" style="display: none">隐藏</a>
-                                </#if>
-                                    <div class="img-wrap" style="display: none">
-                                    <#list picList as pic>
-                                        <div class="img-container">
-                                            <img src="${base}/${pic}">
-                                        </div>
-                                    </#list>
-                                    </div>
-                                </#if>
+                                    </#if>
+                                </div>
+                                <#--<div class="comment-pics">-->
+                                    <#--<#if comm.picurls??>-->
+                                        <#--<#assign picList = comm.picurls?split("#")>-->
+                                        <#--<div class="img-wrap">-->
+                                            <#--<img src="${base}/${picList[0]}">-->
+                                            <#--<#if picList?size gt 1>-->
+                                                <#--<img src="${base}/${picList[1]}">-->
+                                            <#--</#if>-->
+                                            <#--<#if picList?size gt 2>-->
+                                                <#--<img src="${base}/${picList[2]}">-->
+                                            <#--</#if>-->
+                                        <#--</div>-->
+                                    <#--</#if>-->
+                                <#--</div>-->
                             </div>
                             <div class="time">
-                                ${comm.time}
+                            ${comm.time}
                             </div>
                             <div class="comment-btns inline-wrapper">
-                                <a onclick="reply(${comm.id})">回复</a>
-                                <a onclick="changeCount(0,'${comm.id}',0,this)"><span>赞（<span class="count">${comm.good}</span>）</span><span class="glyphicon glyphicon-heart-empty"></span></a>
-                                <a onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span>赞（<span class="count">${comm.good}</span>）</span><span class="glyphicon glyphicon-heart"></span></a>
-                                <a onclick="changeCount(1,'${comm.id}',0,this)">举报(${comm.report})</a>
-                                <p style="display: none">已举报</p>
+                                <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
+                                <div class="btn-pill" style="display: none">已举报</div>
                             </div>
-                            <#if comm.organCommentChildList??>
-                                <a onclick="showSubComments(this)">显示跟帖</a>
-                                <a onclick="hideSubComments(this)" style="display: none">隐藏跟帖</a>
-                                <div class="sub-comment-list container" style="display: none">
-                                <#list comm.organCommentChildList as subComm>
-                                    <div class="dot-line"></div>
-                                    <div class="row padding-left-15">
-                                        <div class="col-xs-2 no-padding">
-                                            <img class="headimg" src='${base}/${subComm.user.headimgurl!""}'/>
-                                        </div>
-                                        <div class="col-xs-10">
-                                            <div class="user-name">${subComm.user.username!""}</div>
-                                            <div class="comment-content">
-                                                <#if subComm.detail?length gt 60>
-                                                    <#assign s=subComm.detail>
-                                                        <div class="comment-detail">
-                                                            ${subComm.detail?substring(0,60)}……
-                                                        </div>
-                                                        <a onclick="showFullComment('${s}',this)">更多</a>
-                                                        <a onclick="showBriefComment('${s}',this)" style="display: none">隐藏</a>
-                                                        <#else>
-                                                            ${subComm.detail}
-                                                </#if>
-                                                <div class="time">${subComm.time}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </#list>
-                                </div>
 
-                            </#if>
 
                         </div>
+
                     </div>
-                    <hr style="margin: 1.4rem -1.4rem;">
-                </#list>
+                    <hr style="margin: 0.4rem -1.4rem;">
+                </#if>
+             <#if organization.organCommentList?size gt 1>
+                 <#assign comm=organization.organCommentList[1]>
+                 <div class="row row-wrapper">
+                     <div class="col-xs-2 no-padding">
+                         <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                     </div>
+                     <div class="col-xs-10">
+                         <div>
+                             <div class="user-name">${comm.user.username!""}</div>
+                             <div class="comment-content">
+                                 <#if comm.detail?length gt 40>
+                                     <#assign s=comm.detail>
+                                     <div class="comment-detail">
+                                     ${comm.detail?substring(0,40)}……
+                                     </div>
+                                     <a onclick="showFullComment('${s}',this)">全文</a>
+                                     <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                 <#else>
+                                 ${comm.detail}
+                                 </#if>
+                             </div>
+                             <#--<div class="comment-pics">-->
+                                 <#--<#if comm.picurls??>-->
+                                     <#--<#assign picList = comm.picurls?split("#")>-->
+                                     <#--<div class="img-wrap">-->
+                                         <#--<img src="${base}/${picList[0]}">-->
+                                         <#--<#if picList?size gt 1>-->
+                                             <#--<img src="${base}/${picList[1]}">-->
+                                         <#--</#if>-->
+                                         <#--<#if picList?size gt 2>-->
+                                             <#--<img src="${base}/${picList[2]}">-->
+                                         <#--</#if>-->
+                                     <#--</div>-->
+                                 <#--</#if>-->
+                             <#--</div>-->
+                         </div>
+                         <div class="time">
+                         ${comm.time}
+                         </div>
+                         <div class="comment-btns inline-wrapper">
+                             <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
+                             <div class="btn-pill" style="display: none">已举报</div>
+                         </div>
+
+
+                     </div>
+
+                 </div>
+                 <hr style="margin: 1.4rem -1.4rem;">
+             </#if>
+             <#if organization.organCommentList?size gt 2>
+                 <#assign comm=organization.organCommentList[2]>
+                 <div class="row row-wrapper">
+                     <div class="col-xs-2 no-padding">
+                         <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                     </div>
+                     <div class="col-xs-10">
+                         <div>
+                             <div class="user-name">${comm.user.username!""}</div>
+                             <div class="comment-content">
+                                 <#if comm.detail?length gt 40>
+                                     <#assign s=comm.detail>
+                                     <div class="comment-detail">
+                                     ${comm.detail?substring(0,40)}……
+                                     </div>
+                                     <a onclick="showFullComment('${s}',this)">全文</a>
+                                     <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                 <#else>
+                                 ${comm.detail}
+                                 </#if>
+                             </div>
+                             <#--<div class="comment-pics">-->
+                                 <#--<#if comm.picurls??>-->
+                                     <#--<#assign picList = comm.picurls?split("#")>-->
+                                     <#--<div class="img-wrap">-->
+                                         <#--<img src="${base}/${picList[0]}">-->
+                                         <#--<#if picList?size gt 1>-->
+                                             <#--<img src="${base}/${picList[1]}">-->
+                                         <#--</#if>-->
+                                         <#--<#if picList?size gt 2>-->
+                                             <#--<img src="${base}/${picList[2]}">-->
+                                         <#--</#if>-->
+                                     <#--</div>-->
+                                 <#--</#if>-->
+                             <#--</div>-->
+                         </div>
+                         <div class="time">
+                         ${comm.time}
+                         </div>
+                         <div class="comment-btns inline-wrapper">
+                             <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
+                             <div class="btn-pill" style="display: none">已举报</div>
+                         </div>
+
+
+                     </div>
+
+                 </div>
+                 <hr style="margin: 1.4rem -1.4rem;">
+             </#if>
             </#if>
         </div>
     </div>

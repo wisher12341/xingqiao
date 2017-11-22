@@ -4,10 +4,7 @@ import com.xq.dao.CommentDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.TeacherDao;
 import com.xq.dto.CalendarDto;
-import com.xq.model.Comment;
-import com.xq.model.Order;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
 import com.xq.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -322,5 +319,15 @@ public class TeacherServiceImpl implements TeacherService{
         String time_end=sf3.format(date_end);
 
         return time_start+"-"+time_end;
+    }
+
+    @Override
+    public List<Comment> getTeacherComments(Integer id) {
+        return commentDao.getMainTeacherCommentsByTid(id);
+    }
+
+    @Override
+    public Comment getTeacherCommentByCid(Integer cid) {
+        return commentDao.getCommentByCid(cid);
     }
 }

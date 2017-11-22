@@ -7,10 +7,12 @@ import com.xq.model.Teacher;
 import com.xq.model.UserGoodReport;
 import com.xq.service.GoodReportService;
 import com.xq.service.TeacherService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -58,6 +60,32 @@ public class TeacherController {
         UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
         model.addAttribute("usergoodreport",userGoodReport);
         return "teacher/teacher";
+    }
+
+    /**
+     * 所有治疗师评论展示页面
+     * @param teacherId
+     * @return
+     */
+    @RequestMapping(value = "/toTeacherCommentList",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentList(@Param("teacherId") Integer teacherId) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_list");
+        mv.addObject("teacherId",teacherId);
+        mv.addObject("teacherCommentList",teachersService.getTeacherComments(teacherId));
+        return mv;
+    }
+
+    /**
+     * 单条治疗师评论展示页面
+     * @param cid 主评论id
+     * @return
+     */
+    @RequestMapping(value = "/toTeacherCommentSingle",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid,@Param("tid") Integer tid) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_single");
+        mv.addObject("teacherId",tid);
+        mv.addObject("comm",teachersService.getTeacherCommentByCid(cid));
+        return mv;
     }
 
 

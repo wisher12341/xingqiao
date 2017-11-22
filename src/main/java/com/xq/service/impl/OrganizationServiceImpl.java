@@ -29,10 +29,12 @@ public class OrganizationServiceImpl implements OrganizationService{
     @Autowired
     OrganCommentDao organCommentDao;
 
+    @Override
     public List<Organization> getOrganizations() {
         return organizationDao.getOrganizations();
     }
 
+    @Override
     public Organization getOrganization(Integer id) {
         return organizationDao.getOrganization(id);
     }
@@ -84,6 +86,16 @@ public class OrganizationServiceImpl implements OrganizationService{
             pics.add(str[i]);
         }
         return pics;
+    }
+
+    @Override
+    public List<OrganComment> getOrganizationComments(Integer oid){
+        return organCommentDao.getMainOrgCommentsByOid(oid);
+    }
+
+    @Override
+    public OrganComment getOrganCommentByCid(Integer cid){
+        return organCommentDao.getOrgCommentByCid(cid);
     }
 
 }

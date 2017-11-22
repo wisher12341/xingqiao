@@ -2,6 +2,7 @@ package com.xq.service;
 
 import com.xq.dto.CalendarDto;
 import com.xq.model.Comment;
+import com.xq.model.OrganComment;
 import com.xq.model.Teacher;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,4 +26,8 @@ public interface TeacherService {
     CalendarDto order_time_day(Integer tid, String date) throws ParseException;
 
     String order_time(String start, String end) throws ParseException;
+
+    List<Comment> getTeacherComments(Integer id);
+
+    Comment getTeacherCommentByCid(Integer cid);
 }

@@ -36,6 +36,22 @@
         </collection>
     </resultMap>
 
+    <resultMap id="mainComment" type="com.xq.model.Comment">
+        <id property="id" column="id"/>
+        <result property="detail" column="detail"/>
+        <result property="time" column="time"/>
+        <result property="level" column="level" />
+        <result property="isOpen" column="is_open"/>
+        <result property="picUrls" column="pic_urls"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+    </resultMap>
+
 
     <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.xq.model.Comment">
         INSERT INTO comment(detail,level,time,is_open,type)
@@ -77,4 +93,18 @@
         SELECT id,pic_urls FROM comment WHERE id=#{cid}
     </select>
 
+
+    <select id="getMainTeacherCommentsByTid" resultMap="mainComment">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls
+        FROM comment c, orders o,teacher t,sysuser u,parent p
+        WHERE t.id=#{id} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1
+    </select>
+
+    <select id="getCommentByCid" resultMap="resultComment">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls,
+        cc.id cid,cc.time ctime,cc.detail cdetail,cc.is_open cis_open,uu.id cuid,uu.username cusername,uu.headimgurl cheadimgurl,
+        ct.id ctid,ct.detail ctdetail,ct.good ctgood,ct.report ctreport,ct.time cttime
+        FROM comment c LEFT JOIN comment cc on cc.pid=c.id AND cc.type=0 LEFT JOIN comment ct on ct.pid=c.id and ct.type=2 left join sysuser uu on uu.id=cc.uid,orders o,teacher t,sysuser u,parent p
+        WHERE c.id=#{cid} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1
+    </select>
 </mapper>

@@ -76,7 +76,7 @@ public class OrganizationController {
 
 
     /**
-     * 机构评论页面
+     * 编写机构评论页面
      * @param orgId
      * @return
      */
@@ -100,6 +100,31 @@ public class OrganizationController {
         }
         organizationService.addComment(organComment,request,pics);
         return "redirect:/organization/"+organComment.getOid()+"/organintro";
+    }
+
+    /**
+     * 所有机构评论展示页面
+     * @param orgId
+     * @return
+     */
+    @RequestMapping(value = "/toOrganCommentList",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId) {
+        ModelAndView mv = new ModelAndView("organization/organ_comment_list");
+        mv.addObject("orgId",orgId);
+        mv.addObject("organCommentList",organizationService.getOrganizationComments(orgId));
+        return mv;
+    }
+
+    /**
+     * 单条机构评论展示页面
+     * @param cid 主评论id
+     * @return
+     */
+    @RequestMapping(value = "/toOrganCommentSingle",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid) {
+        ModelAndView mv = new ModelAndView("organization/organ_comment_single");
+        mv.addObject("comm",organizationService.getOrganCommentByCid(cid));
+        return mv;
     }
 
     /**
