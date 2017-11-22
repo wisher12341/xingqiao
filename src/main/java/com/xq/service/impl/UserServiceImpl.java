@@ -46,12 +46,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean checkLogin(User user, HttpServletRequest request, HttpServletResponse response) {
         User user_re = userDao.findUserByName(user.getUsername());
-        if (user == null) {
+        if (user_re == null) {
             return false;
         }else {
             if (user_re.getPassword().equals(user.getPassword())) {
                 user_re.setOpenid(user.getOpenid());
-                userDao.addOpenid(user);
+                userDao.addOpenid(user_re);
 
                 // 保存用openid到cookie
                 Cookie cookie = new Cookie(Const.OPENID_PARENT,user.getOpenid());

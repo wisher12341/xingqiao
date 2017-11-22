@@ -20,6 +20,14 @@
     <url-pattern>/static/img/*</url-pattern>
   </servlet-mapping>
 
+  <!--要有 不然部署到服务器 会出现找不到配置文件-->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:spring/spring-*.xml</param-value>
+  </context-param>
 
   <!--用maven创建的web-app需要修改servlet的版本为3.0-->
   <!--配置DispatcherServlet-->

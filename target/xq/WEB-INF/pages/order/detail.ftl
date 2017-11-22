@@ -199,7 +199,7 @@
             <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 90% !important;">取消预约</button>
         <#elseif order.order.statusP==2>
             <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 45% !important;">取消预约</button>
-            <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}/pay'" style="width: 45% !important;">付款</button>
+            <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 45% !important;">付款</button>
         <#elseif order.order.statusP==3>
             <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 90% !important;">终止订单</button>
         <#elseif order.order.cid!=0 && order.order.statusP==15>

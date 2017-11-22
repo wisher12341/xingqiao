@@ -31,7 +31,7 @@ public class WxPayController {
      * 支付
      * @return
      */
-    @RequestMapping(value = "/{oid}/pay",method = RequestMethod.GET)
+    @RequestMapping(value = "/{oid}",method = RequestMethod.GET)
     public ModelAndView pay(@PathVariable String oid,HttpServletRequest request){
         WxSendData wxSendData=wxPayService.pay(oid,request);
         ModelAndView mv=new ModelAndView("order/wx_pay");
