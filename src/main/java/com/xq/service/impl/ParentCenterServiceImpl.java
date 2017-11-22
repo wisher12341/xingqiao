@@ -3,7 +3,6 @@ package com.xq.service.impl;
 
 import com.xq.dao.*;
 import com.xq.dto.RecoveryHisDto;
-import com.xq.dto.TeacherDto;
 
 import com.xq.model.*;
 
@@ -58,16 +57,9 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     }
 
     @Override
-    public TeacherDto getTeacherDetail(int teacherId){
-        Teacher teacher=teacherDao.getTeacher(teacherId);
-        TeacherDto teacherDto=new TeacherDto(teacher);
-        System.out.println("userId:" +teacher.getUserId());
-        User user=userDao.getUserById(teacher.getUserId());
-        if(user==null){ System.out.println("user空");}
-        else{
-        teacherDto.setHeadimgurl(user.getHeadimgurl());
-        }
-        return teacherDto;
+    public Teacher getTeacherDetail(int teacherId){
+        Teacher teacher=teacherDao.getTeacherDetail(teacherId);
+        return teacher;
     }
 
     @Override
@@ -149,8 +141,6 @@ public class ParentCenterServiceImpl implements ParentCenterService{
         else if(fieldName.equals("allergyHis")) demandDao.updateAllergyHis(newValue,demandId);
         else if(fieldName.equals("report")) demandDao.updateReport(newValue,demandId);
         else if(fieldName.equals("remark")) demandDao.updateRemark(newValue,demandId);
-
-        parentCenterDao.updateUserStatus(3,demandDao.getParentUserId(demandId));
     }
 
     @Override

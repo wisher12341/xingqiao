@@ -4,11 +4,12 @@ package com.xq.controller;
 import com.xq.dto.ModifyPageDto;
 
 import com.xq.dto.RecoveryHisDto;
-import com.xq.dto.TeacherDto;
+
 
 import com.xq.dto.Result;
 
 import com.xq.model.Demand;
+import com.xq.model.Teacher;
 import com.xq.service.ParentCenterService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,9 @@ public class ParentCenterController {
     @RequestMapping(value = "/{userId}/myTeacher")
     public ModelAndView toMyTeacher(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myTeacher");
-        mv.addObject("teachers",parentCenterService.getTeachersByParent(userId));
+        List<Teacher> teachers=parentCenterService.getTeachersByParent(userId);
+        mv.addObject("teachers",teachers);
+        System.out.println(teachers.get(0).getName()+","+teachers.get(0).getUser().getPhone());
         mv.addObject("userId",userId);
         return mv;
     }
@@ -62,7 +65,7 @@ public class ParentCenterController {
      */
     @RequestMapping(value = "/{userId}/myTeacher/{tid}/teachersDetail",method = RequestMethod.GET)
     public ModelAndView toTeacherDetail(@PathVariable Integer userId,@PathVariable Integer tid){
-        TeacherDto teacher=parentCenterService.getTeacherDetail(tid);
+        Teacher teacher=parentCenterService.getTeacherDetail(tid);
         ModelAndView mv=new ModelAndView("parentCenter/teachersDetail");
         mv.addObject("teacher",teacher);
         mv.addObject("userId",userId);

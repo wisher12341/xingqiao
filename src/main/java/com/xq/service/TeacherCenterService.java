@@ -27,4 +27,6 @@ public interface TeacherCenterService {
    List<RecoveryLog> getRecoveryLogs(int demandId,int userId);
 
    List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
+
+   void modifyFeild(int userId,String value,String fieldName);
 }

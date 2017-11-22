@@ -2,7 +2,6 @@ package com.xq.service;
 
 
 import com.xq.dto.RecoveryHisDto;
-import com.xq.dto.TeacherDto;
 import com.xq.model.*;
 
 import javax.servlet.http.HttpSession;
@@ -18,7 +17,7 @@ public interface ParentCenterService {
 
     List<Teacher> getTeachersByParent(int userId);
 
-    TeacherDto getTeacherDetail(int teacherId);
+    Teacher getTeacherDetail(int teacherId);
 
     Demand getDemandDetail(int demandId);
 

@@ -11,8 +11,9 @@
 <div id="main">
 
     <div class="imgDiv">
-        <img src="../../../static/img/parentCenter/parentIcon.jpg" class="img-circle">
+        <img src="../../../${user.headimgurl}" class="img-circle">
     </div>
+
     <div class="myInfoDiv">
         <div class="info-part-item">
         <p>基本信息</p>

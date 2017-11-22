@@ -55,10 +55,7 @@
         WHERE id=#{id}
     </update>
 
-    <insert id="addDemand" parameterType="com.xq.model.Demand">
-        INSERT INTO demand(name,gender,birthday,disease, report,disease_his,allergy_his,recovery_his,remark,user_id)
-        VALUES (#{name},#{gender},#{birthday},#{disease}, #{report},#{diseaseHis},#{allergyHis},#{recoveryHis},#{remark},#{userId})
-    </insert>
+
 
     <select id="getParenntNameByUid" resultType="java.lang.String">
         SELECT realName FROM parent WHERE userId=#{id}
@@ -95,7 +92,10 @@
     <select id="getRecoveryHis" resultType="java.lang.String">
         SELECT recovery_his FROM demand WHERE id=#{demandId}
     </select>
-
+    <insert id="addDemand">
+        INSERT INTO demand(user_id,name,gender,birthday,report,disease_his,allergy_his,remark)
+        VALUE(#{userId},#{name},#{gender},#{birthday},#{report},#{diseaseHis},#{allergyHis},#{remark})
+    </insert>
 
 
 </mapper>

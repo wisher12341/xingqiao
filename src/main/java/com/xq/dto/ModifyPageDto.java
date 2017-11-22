@@ -12,6 +12,12 @@ public class ModifyPageDto {
 
 
 
+    public ModifyPageDto(String oldValue, String fieldName, String uiName, int objId) {
+        this.oldValue = oldValue;
+        this.fieldName = fieldName;
+        this.uiName=uiName;
+        this.objId = objId;
+    }
     public ModifyPageDto(String oldValue, String fieldName, String uiName, int objId,String table) {
         this.oldValue = oldValue;
         this.fieldName = fieldName;

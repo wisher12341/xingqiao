@@ -16,6 +16,7 @@ public interface TeacherDao {
 
     List<Teacher> getTeachers(@Param("teacher") Teacher teacher, @Param("minY") Integer minY, @Param("minP") Integer minP, @Param("maxP") Integer maxP, @Param("maxY") Integer maxY, @Param("flag") Integer y);
 
+    Teacher getTeacherDetail(Integer teacherId);
     Teacher getTeacher(Integer id);
 
     Teacher getTeacherByUid(Integer id);

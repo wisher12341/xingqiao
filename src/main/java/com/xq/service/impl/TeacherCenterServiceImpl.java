@@ -70,4 +70,25 @@ TeacherCenterDao teacherCenterDao;
         }
         return recoveryHisDtos;
     }
+
+
+    @Override
+    public void modifyFeild(int userId,String value,String fieldName){
+        if(fieldName.equals("name")) teacherCenterDao.updateName(value,userId);
+        else if(fieldName.equals("gender")){
+            Integer integerValue=Integer.parseInt(value);
+            teacherCenterDao.updateGender(integerValue,userId);
+        }
+        else if(fieldName.equals("phone")) teacherCenterDao.updatePhone(value,userId);
+        else if(fieldName.equals("email")) teacherCenterDao.updateEmail(value,userId);
+        else if(fieldName.equals("school")) teacherCenterDao.updateSchool(value,userId);
+        else if(fieldName.equals("domain")) teacherCenterDao.updateDomain(value,userId);
+        else if(fieldName.equals("object")) teacherCenterDao.updateObject(value,userId);
+        else if(fieldName.equals("way")) teacherCenterDao.updateWay(value,userId);
+        else if(fieldName.equals("tGround")) teacherCenterDao.updateTGround(value,userId);
+        else if(fieldName.equals("sGround")) teacherCenterDao.updateSGround(value,userId);
+        else if(fieldName.equals("pid")) teacherCenterDao.updatePid(value,userId);
+
+        teacherCenterDao.updateUserStatus(3,userId);
+    }
 }

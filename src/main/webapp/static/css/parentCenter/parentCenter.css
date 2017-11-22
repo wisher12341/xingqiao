@@ -68,3 +68,15 @@ th,td{
 .titleText{
     text-align: center;
 }
+
+.saveBtn{
+    text-align: center;
+    font-size: 50px;
+}
+.saveBtn button{
+    font-size:50px;
+    height: 100px;
+    background-color: #00b0ff;
+    color: white;
+    margin: 20px;
+}
