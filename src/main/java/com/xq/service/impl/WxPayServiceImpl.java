@@ -5,6 +5,8 @@ import com.xq.dao.OrderDao;
 import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.service.WxPayService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import com.xq.util.HttpRequestor;
 import com.xq.wxpay.config.WxConfig;
 import com.xq.wxpay.config.WxSendData;
@@ -36,8 +38,8 @@ public class WxPayServiceImpl implements WxPayService{
         String out_trade_no = order.getId();
         String subject="康复项目"+order.getRecoverOb();
         Double total=order.getTotalpay();
-//        String openid=commonService.checkCookie(request, ConstOrder.OPENID);
-        String openid="123";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="123";
         WxSendData wxSendData=wx_pay(subject,out_trade_no,openid,request,total);
         return wxSendData;
     }
@@ -131,7 +133,7 @@ public class WxPayServiceImpl implements WxPayService{
             BufferedReader in = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             while ((s = in.readLine()) != null) {
                 sb.append(s);
-                System.out.println(s);
+//                System.out.println(s);
             }
             String data=sb.toString();
             Map<String,String> map=WXPayUtil.xmlToMap(data);

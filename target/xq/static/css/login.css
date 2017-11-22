@@ -1,14 +1,14 @@
 body{
-    background-color: #f5f5f5;
+    background-color: white;
 }
 #accountBind{
-    margin: 70% auto;
+    margin-top: 20%;
 }
 .la{
-    font-size: 45px;
+    font-size: 18px;
 }
 .textInput{
-    font-size: 45px;
+    font-size: 18px;
     border: 1px solid grey;
     border-radius: 5px;
 }
@@ -16,10 +16,30 @@ body{
     margin-bottom: 40px;
 }
 .submit{
-    font-size: 45px;
+    font-size: 18px;
     padding: 10px;
     border-radius: 10px;
     background-color: #56c078;
     color: white;
-    width: 70%;
+    width: 40%;
+    border: none;
+}
+
+#select{
+    margin-top: 20%;
+}
+
+#select .but{
+    width: 80%;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #56c078;
+    color: white;
+    padding: 10px;
+    margin: 20px;
+    font-weight: bold;
+}
+#logo{
+    margin-top: 15%;
 }

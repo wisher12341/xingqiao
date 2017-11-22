@@ -35,13 +35,13 @@ public class WxServiceImpl implements WxService{
         String secret = WxConfig.APPSECRET;
         String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + appid + "&secret=" + secret + "&code=" + code + "&grant_type=authorization_code";
         String  json="";
-        WxInterceptor.logger.info(code);
+//        WxInterceptor.logger.info(code);
         try {
             json = new HttpRequestor().doGet(requestUrl);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        WxInterceptor.logger.info(json);
+//        WxInterceptor.logger.info(json);
 //        json="{'dsad':'dasdsa','dsfsa':'cdsvs','openid':'3543csdcuuwd89','cds':'cdcs'}";
         int start=json.indexOf("openid")+9;
         int end=json.indexOf(",",start)-1;
@@ -62,7 +62,7 @@ public class WxServiceImpl implements WxService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        WxInterceptor.logger.info(json);
+//        WxInterceptor.logger.info(json);
 //        json="{'dsad':'dasdsa','dsfsa':'cdsvs','openid':'3543csdcuuwd89','cds':'cdcs'}";
         int start=json.indexOf("openid")+9;
         int end=json.indexOf(",",start)-1;
@@ -77,7 +77,7 @@ public class WxServiceImpl implements WxService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        WxInterceptor.logger.info(info);
+//        WxInterceptor.logger.info(info);
         Map mapTypes = JSON.parseObject(info);
         WxUserInfo wxUserInfo=new WxUserInfo();
         wxUserInfo.setHeadimgurl((String) mapTypes.get("headimgurl"));

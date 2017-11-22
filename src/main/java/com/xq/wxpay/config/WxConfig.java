@@ -32,8 +32,8 @@ public class WxConfig {
     //微信公众号支付
     public static String NOTIFY_URL="http://www.aa.com/wx/order/wxpay/notify_url";//微信公众号支付 异步通知回调
     public static String PAY_URL="https://api.mch.weixin.qq.com/pay/unifiedorder";
-    public static String MCHID="1449388802";//微信支付分配的商户号
-    public static String PAY_KEY="shanghaisibeikejiyouxiangongsi17";//公众号支付时 生成前面用到的KEY  key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置
+    public static String MCHID="1489977072";//微信支付分配的商户号
+    public static String PAY_KEY="xingqiaoxingqiaonizuibanghaoyu88";//公众号支付时 生成前面用到的KEY  key设置路径：微信商户平台(pay.weixin.qq.com)-->账户设置-->API安全-->密钥设置
 
 
     public static String SEND="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=";//客服发送消息
