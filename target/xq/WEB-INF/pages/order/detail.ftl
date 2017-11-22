@@ -162,7 +162,7 @@
                 </div>
                 <div class="track-list" style="width: 100%; border: solid 1px #e8e8e8; margin-bottom: 20px">
                     <ul style="margin-top: 10px" id="logUl">
-                        <#list order.recoveryLogList as log>
+                        <#list (order.recoveryLogList)! as log>
                             <li style=" list-style-type: none;">
                                 <div>
                                     <#if log_index==0>

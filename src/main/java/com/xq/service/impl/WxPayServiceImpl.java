@@ -40,6 +40,7 @@ public class WxPayServiceImpl implements WxPayService{
         Double total=order.getTotalpay();
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         WxSendData wxSendData=wx_pay(subject,out_trade_no,openid,request,total);
         return wxSendData;
     }
