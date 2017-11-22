@@ -5,70 +5,73 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>机构评论</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
-
     <script type="text/javascript" src="${base}/static/bootstrap/js/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${base}/static/js/teacher/mescroll.min.js"></script>
 
     <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
+    <link rel="stylesheet" href="${base}/static/css/teacher/mescroll.min.css">
 </head>
 <body class="base">
-<div class="container no-padding">
-    <#if organCommentList??>
-        <#list organCommentList as comm>
-        <#--<div class="my-panel container line-height-24">-->
-            <div class="my-panel row row-wrapper pointable">
-                <div class="col-xs-2 no-padding">
-                    <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
-                </div>
-                <div class="col-xs-10">
-                <div onclick="location='${base}/wx/organization/toOrganCommentSingle?cid=${comm.id}'">
-                    <div class="user-name">${comm.user.username!""}</div>
-                    <div class="comment-content">
-                        <#if comm.detail?length gt 60>
-                            <#assign s=comm.detail>
-                            <div class="comment-detail">
-                            ${comm.detail?substring(0,60)}……
-                            </div>
-                            <a onclick="showFullComment('${s}',this)">全文</a>
-                            <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
-                        <#else>
-                        ${comm.detail}
-                        </#if>
-                    </div>
-                    <div class="comment-pics">
-                        <#if comm.picurls??>
-                            <#assign picList = comm.picurls?split("#")>
-                            <div class="img-wrap">
-                                <img src="${base}/${picList[0]}">
-                                <#if picList?size gt 1>
-                                    <img src="${base}/${picList[1]}">
-                                </#if>
-                                <#if picList?size gt 2>
-                                    <img src="${base}/${picList[2]}">
-                                </#if>
-                            </div>
-                        </#if>
-                    </div>
-                </div>
-                    <div class="time">
-                    ${comm.time}
-                    </div>
-                    <div class="comment-btns inline-wrapper">
-                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
-                        <div class="btn-pill" style="display: none">已举报</div>
-                    </div>
+<div class="container no-padding mescroll" id="mescroll">
+    <ul id="dataList" class="data-list">
+    </ul>
+    <#--<#if organCommentList??>-->
+        <#--<#list organCommentList as comm>-->
+        <#--&lt;#&ndash;<div class="my-panel container line-height-24">&ndash;&gt;-->
+            <#--<div class="my-panel row row-wrapper pointable">-->
+                <#--<div class="col-xs-2 no-padding">-->
+                    <#--<img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>-->
+                <#--</div>-->
+                <#--<div class="col-xs-10">-->
+                <#--<div onclick="location='${base}/wx/organization/toOrganCommentSingle?cid=${comm.id}'">-->
+                    <#--<div class="user-name">${comm.user.username!""}</div>-->
+                    <#--<div class="comment-content">-->
+                        <#--<#if comm.detail?length gt 60>-->
+                            <#--<#assign s=comm.detail>-->
+                            <#--<div class="comment-detail">-->
+                            <#--${comm.detail?substring(0,60)}……-->
+                            <#--</div>-->
+                            <#--<a onclick="showFullComment('${s}',this)">全文</a>-->
+                            <#--<a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>-->
+                        <#--<#else>-->
+                        <#--${comm.detail}-->
+                        <#--</#if>-->
+                    <#--</div>-->
+                    <#--<div class="comment-pics">-->
+                        <#--<#if comm.picurls??>-->
+                            <#--<#assign picList = comm.picurls?split("#")>-->
+                            <#--<div class="img-wrap">-->
+                                <#--<img src="${base}/${picList[0]}">-->
+                                <#--<#if picList?size gt 1>-->
+                                    <#--<img src="${base}/${picList[1]}">-->
+                                <#--</#if>-->
+                                <#--<#if picList?size gt 2>-->
+                                    <#--<img src="${base}/${picList[2]}">-->
+                                <#--</#if>-->
+                            <#--</div>-->
+                        <#--</#if>-->
+                    <#--</div>-->
+                <#--</div>-->
+                    <#--<div class="time">-->
+                    <#--${comm.time}-->
+                    <#--</div>-->
+                    <#--<div class="comment-btns inline-wrapper">-->
+                        <#--<div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>-->
+                        <#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
+                        <#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
+                        <#--<div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>-->
+                        <#--<div class="btn-pill" style="display: none">已举报</div>-->
+                    <#--</div>-->
 
 
-                </div>
+                <#--</div>-->
 
-            </div>
-        </#list>
-    </#if>
+            <#--</div>-->
+        <#--</#list>-->
+    <#--</#if>-->
     </div>
 </div>
 
@@ -137,6 +140,106 @@
 </body>
 </html>
 <script>
+    $(function(){
+        //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
+        var mescroll = new MeScroll("mescroll", {
+            up: {
+                clearEmptyId: "dataList", //1.下拉刷新时会自动先清空此列表,再加入数据; 2.无任何数据时会在此列表自动提示空
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+            }
+        });
+
+        /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+        function getListData(page){
+            //联网加载数据
+            console.log("page.num=="+page.num);
+            getListDataFromNet(page.num, page.size, function(data){
+                //联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+                mescroll.endSuccess(data.length);//传参:数据的总数; mescroll会自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+                //设置列表数据,因为配置了emptyClearId,第一页会清空dataList的数据,所以setListData应该写在最后;
+                setListData(data);
+            }, function(){
+                //联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+                mescroll.endErr();
+            });
+        }
+
+        /*设置列表数据*/
+        function setListData(data){
+            var listDom=document.getElementById("dataList");
+            for (var i = 0; i < data.length; i++) {
+                var comm=data[i];
+                if (comm.detail.length > 60){
+                    comm.detail = comm.detail.substr(0,59)+"……";
+                }
+                var pics = new Array();
+                if (comm.picurls!=null){
+                    pics = comm.picurls.split("#");
+        //            alert(pics.length);
+                }
+
+                var str='<div class="my-panel row row-wrapper pointable">' +
+                        '<div class="col-xs-2 no-padding"> ' +
+                        '<img class="headimg" src="';
+                if(comm.user.headimgurl.substr(0,4)=="http"){
+                    str += comm.user.headimgurl;
+                }else{
+                    str +='${base}/' + comm.user.headimgurl;
+                }
+                str +='"/></div>' +
+                        '<div class="col-xs-10">' +
+                        '<div onclick="location=\'${base}/wx/organization/toOrganCommentSingle?cid=' + comm.id + '\'"> ' +
+                        '<div class="user-name">'+ comm.user.username + '</div>' +
+                        '<div class="comment-content">' + comm.detail +'</div>' +
+                        '<div class="comment-pics"><div class="img-wrap">';
+                for (var m=0; m<pics.length && m<3; m++){
+                    str += '<img src="${base}/'+ pics[m] +'">'
+                }
+
+                str += '</div></div></div><div class="time">' + comm.time +'</div>' +
+                        '<div class="comment-btns inline-wrapper"> ' +
+                        '<div class="btn-pill" onclick="reply(' + comm.id + '})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good + '</span>)</span></div>' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+comm.good+'</span>)</span></div> ' +
+                        '<div class="btn-pill" onclick="changeCount(1,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报('+ comm.report +')</div> ' +
+                        '<div class="btn-pill" style="display: none">已举报</div></div></div></div>';
+
+
+                var liDom=document.createElement("li");
+                liDom.innerHTML=str;
+                listDom.appendChild(liDom);
+            }
+        }
+
+
+        /*联网加载列表数据*/
+        function getListDataFromNet(pageNum,pageSize,successCallback,errorCallback) {
+            //延时一秒,模拟联网
+            setTimeout(function () {
+//                alert(pageNum);
+                $.ajax({
+                    type: 'POST',
+                    url: '${base}/wx/organization/getOrgCommentByPage',
+                    data:{
+                        page:pageNum,
+                        size:pageSize,
+                        orgId:${orgId}
+                    },
+                    dataType: 'json',
+                    success: function(data){
+                        var listData=data;
+                //        alert(listData.length);
+                        successCallback(listData);
+                    },
+                    error: errorCallback
+                });
+            },500)
+        }
+
+        document.ondragstart=function() {return false;}
+
+    });
+
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");

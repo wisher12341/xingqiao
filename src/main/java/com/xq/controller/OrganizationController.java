@@ -99,7 +99,7 @@ public class OrganizationController {
             TmpLogin.tmpLogin(request);
         }
         organizationService.addComment(organComment,request,pics);
-        return "redirect:/organization/"+organComment.getOid()+"/organintro";
+        return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
     }
 
     /**
@@ -111,8 +111,21 @@ public class OrganizationController {
     public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId) {
         ModelAndView mv = new ModelAndView("organization/organ_comment_list");
         mv.addObject("orgId",orgId);
-        mv.addObject("organCommentList",organizationService.getOrganizationComments(orgId));
+//        mv.addObject("organCommentList",organizationService.getOrganizationComments(orgId));
         return mv;
+    }
+
+    /**
+     * 机构评论分页
+     * @param orgId
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/getOrgCommentByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public List<OrganComment> getOrgCommentByPage(@Param("orgId") Integer orgId,@Param("page") Integer page,@Param("size") Integer size) {
+        return organizationService.getOrganizationCommentsByPage(orgId,page,size);
     }
 
     /**

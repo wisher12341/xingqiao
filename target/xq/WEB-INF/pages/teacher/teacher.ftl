@@ -18,15 +18,18 @@
         #calendar_month,#calendar_day {
             max-width: 900px;
             margin: 0 auto;
-            position: absolute;
             z-index: 10000;
             background-color: white;
-            top:4rem;
             padding: 0.5rem 1.6rem 6rem 1.6rem;
             height: 65%;
             transition:all 0.3s ease-in;
-            border-radius: 10px;
             line-height: 1.4rem;
+
+            position: fixed;
+            overflow-y: scroll;
+            bottom: 0;
+            left: 0;
+            width: 100%;
         }
 
         .fc-toolbar.fc-header-toolbar{
@@ -481,8 +484,8 @@
 </div>
 
 <div class="mask" id="mask" style="z-index:10000;display: none"></div>
-<div id="calendar_month" class="hide-nav-top"></div>
-<div id="calendar_day" class="hide-nav-top"></div>
+<div id="calendar_month" class="hide-nav-bottom"></div>
+<div id="calendar_day" class="hide-nav-bottom"></div>
 
 <!-- 模态框（Modal） 未完成个人资料-->
 <div class="modal fade"  id="noInf_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -884,7 +887,7 @@
         $("#mask").show();
         if( $("#calendar_month").html().trim()!=""){
             $("body").css("overflow-y","hidden");
-            $("#calendar_month").addClass("show-nav-top").removeClass("hide-nav-top");
+            $("#calendar_month").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             return;
         }
         $.ajax({
@@ -926,7 +929,7 @@
                             },
                             success: function (data) {
                                 $("body").children("#calendar_day").remove();
-                                $("body").append($("<div id='calendar_day' class='show-nav-top'></div>"));
+                                $("body").append($("<div id='calendar_day' class='show-nav-bottom'></div>"));
                                 var events_day=[];
                                 var defaultDate;
                                 for(var i=0;i<data.data.start.length;i++){
@@ -971,7 +974,7 @@
                                                 },
                                                 success: function (data) {
                                                     $(obj_var).val(data.data);
-                                                    $("#calendar_day").addClass("hide-nav-top").removeClass("show-nav-top");
+                                                    $("#calendar_day").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                                                     $("#mask").hide();
                                                 }});
                                         }
@@ -979,29 +982,31 @@
 
                                 });
 
-                                $("#calendar_month").addClass("hide-nav-top").removeClass("show-nav-top");
+                                $("#calendar_month").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                                 if (!$($("#calendar_day").children("div").get(0)).hasClass("close-time")) {
                                     $("#calendar_day").prepend('<div class="close-time">×</div>');
                                     $("#calendar_day > .close-time").bind("click", function () {
-                                        $("#calendar_day").addClass("hide-nav-top").removeClass("show-nav-top");
+                                        $("#calendar_day").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                                         $("#mask").hide();
                                         $("body").css("overflow-y","scroll");
                                     });
+                                    $(".fc-scroller").css("height","100%");
                                 }
 //                                $("#calendar_day").children(".fc-header-toolbar").children(".fc-right").css("float","left");
 //                                var ele = $("#calendar_day").children(".fc-header-toolbar").children(".fc-center");
 //                                $("#calendar_day").children(".fc-header-toolbar").after(ele);
 //                                $("#calendar_day").children(".fc-header-toolbar").remove(".fc-center");
                                 $("body").css("overflow-y","hidden");
-                                $("#calendar_day").addClass("show-nav-top").removeClass("hide-nav-top");
+                                $("#calendar_day").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
                             }
                         });
                     }
                 });
+                $(".fc-scroller").css("height","100%");
                 if (!$($("#calendar_month").children("div").get(0)).hasClass("close-time")) {
                     $("#calendar_month").prepend('<div class="close-time">×</div>');
                     $("#calendar_month > .close-time").bind("click",function () {
-                        $("#calendar_month").addClass("hide-nav-top").removeClass("show-nav-top");
+                        $("#calendar_month").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                         $("#mask").hide();
                         $("body").css("overflow-y","scroll");
                     });
@@ -1011,13 +1016,13 @@
 //                $("#calendar_month").children(".fc-header-toolbar").after(ele);
 //                $("#calendar_month").children(".fc-header-toolbar").remove(".fc-center");
                 $("body").css("overflow-y","hidden");
-                $("#calendar_month").addClass("show-nav-top").removeClass("hide-nav-top");
+                $("#calendar_month").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             }
         });
     }
 
     function hideTime () {
-        $(this).parents("show-nav-top").addClass("hide-nav-top").removeClass("show-nav-top");
+        $(this).parents("show-nav-bottom").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
         $("#mask").hide();
         $("body").css("overflow-y","scroll");
     }

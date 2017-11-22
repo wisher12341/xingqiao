@@ -19,7 +19,15 @@
     <#if comm??>
         <div class="row">
             <div class="col-xs-2 no-padding">
-                <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                <#if comm.user.headimgurl??>
+                    <#if comm.user.headimgurl?starts_with("http")>
+                        <img class="headimg" src='${comm.user.headimgurl!""}'/>
+                    <#else>
+                        <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                    </#if>
+                <#else>
+                    <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                </#if>
             </div>
             <div class="col-xs-10">
                 <div class="user-name">${comm.user.username!""}</div>
@@ -82,7 +90,15 @@
                             <div class="col-xs-2 no-padding">
                                 <div class="inline-wrapper">
                                     <img class="col-xs-3 no-padding" src="${base}/static/img/reply.svg"/>
-                                    <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                    <#if subComm.user.headimgurl??>
+                                        <#if subComm.user.headimgurl?starts_with("http")>
+                                            <img class="headimg-round col-xs-7 no-padding" src='${subComm.user.headimgurl!""}'/>
+                                        <#else>
+                                            <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                        </#if>
+                                    <#else>
+                                        <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                    </#if>
                                 </div>
                             </div>
                             <div class="col-xs-10">

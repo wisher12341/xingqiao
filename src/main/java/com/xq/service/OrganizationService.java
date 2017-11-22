@@ -22,4 +22,6 @@ public interface OrganizationService {
     List<OrganComment> getOrganizationComments(Integer id);
 
     OrganComment getOrganCommentByCid(Integer cid);
+
+    List<OrganComment> getOrganizationCommentsByPage(Integer oid, Integer page, Integer size);
 }

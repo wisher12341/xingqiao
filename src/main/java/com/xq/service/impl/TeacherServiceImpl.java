@@ -330,4 +330,10 @@ public class TeacherServiceImpl implements TeacherService{
     public Comment getTeacherCommentByCid(Integer cid) {
         return commentDao.getCommentByCid(cid);
     }
+
+    @Override
+    public List<Comment> getCommentsByPage(Integer teacherId, Integer page, Integer size){
+        Integer start = (page-1)*size;
+        return commentDao.getMainCommentsByTidAndPage(teacherId,start,size);
+    }
 }

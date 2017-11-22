@@ -30,4 +30,6 @@ public interface TeacherService {
     List<Comment> getTeacherComments(Integer id);
 
     Comment getTeacherCommentByCid(Integer cid);
+
+    List<Comment> getCommentsByPage(Integer teacherId, Integer page, Integer size);
 }

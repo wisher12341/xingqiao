@@ -94,6 +94,12 @@ public class OrganizationServiceImpl implements OrganizationService{
     }
 
     @Override
+    public List<OrganComment> getOrganizationCommentsByPage(Integer oid, Integer page, Integer size){
+        Integer start = (page-1)*size;
+        return organCommentDao.getMainOrgCommentsByOidAndPage(oid,start,size);
+    }
+
+    @Override
     public OrganComment getOrganCommentByCid(Integer cid){
         return organCommentDao.getOrgCommentByCid(cid);
     }

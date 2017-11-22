@@ -3,6 +3,7 @@ package com.xq.controller;
 import com.xq.dto.CalendarDto;
 import com.xq.dto.Result;
 import com.xq.model.Comment;
+import com.xq.model.OrganComment;
 import com.xq.model.Teacher;
 import com.xq.model.UserGoodReport;
 import com.xq.service.GoodReportService;
@@ -71,8 +72,21 @@ public class TeacherController {
     public ModelAndView toOrganCommentList(@Param("teacherId") Integer teacherId) {
         ModelAndView mv = new ModelAndView("teacher/teacher_comment_list");
         mv.addObject("teacherId",teacherId);
-        mv.addObject("teacherCommentList",teachersService.getTeacherComments(teacherId));
+        //mv.addObject("teacherCommentList",teachersService.getTeacherComments(teacherId));
         return mv;
+    }
+
+    /**
+     * 治疗师评论分页
+     * @param teacherId
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/getCommentByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Comment> getOrgCommentByPage(@Param("teacherId") Integer teacherId, @Param("page") Integer page, @Param("size") Integer size) {
+        return teachersService.getCommentsByPage(teacherId,page,size);
     }
 
     /**

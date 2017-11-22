@@ -78,4 +78,9 @@
         WHERE c.id=#{commentid} AND c.uid=sysuser.id
         ORDER BY c.time DESC;
     </select>
+    <select id="getMainOrgCommentsByOidAndPage" resultMap="MainOrganizationComment">
+        SELECT organ_comment.*,sysuser.id,sysuser.username,sysuser.headimgurl,sysuser.nickname FROM organ_comment,sysuser
+        WHERE organ_comment.oid=#{oid} AND organ_comment.type=1 AND organ_comment.uid=sysuser.id
+        ORDER BY organ_comment.time DESC limit #{start},#{size};
+    </select>
 </mapper>

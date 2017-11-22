@@ -19,15 +19,23 @@
     <#if comm??>
         <div class="row">
             <div class="col-xs-2 no-padding">
-                <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                <#if comm.user.headimgurl??>
+                    <#if comm.user.headimgurl?starts_with("http")>
+                        <img class="headimg" src='${comm.user.headimgurl!""}'/>
+                    <#else>
+                        <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                    </#if>
+                <#else>
+                    <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
+                </#if>
             </div>
             <div class="col-xs-10">
                 <div class="user-name">${comm.user.username!""}</div>
                 <div class="comment-content">
-                    <#if comm.detail?length gt 60>
+                    <#if comm.detail?length gt 30>
                         <#assign s=comm.detail>
                         <div class="comment-detail">
-                        ${comm.detail?substring(0,60)}……
+                        ${comm.detail?substring(0,30)}……
                         </div>
                         <a onclick="showFullComment('${s}',this)">全文</a>
                         <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
@@ -114,7 +122,6 @@
             </div>
             <div class="inline-wrapper col-xs-12">
                 <div class="my-panel-title padding-left-15">评论回复</div>
-                <div class="time">${comm.teacherComment.time!""}</div>
             </div>
             <div class="col-xs-12">
                 <hr style="margin-top: 1rem">
@@ -127,7 +134,15 @@
                             <div class="col-xs-2 no-padding">
                                 <div class="inline-wrapper">
                                     <img class="col-xs-3 no-padding" src="${base}/static/img/reply.svg"/>
-                                    <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                    <#if subComm.user.headimgurl??>
+                                        <#if subComm.user.headimgurl?starts_with("http")>
+                                            <img class="headimg-round col-xs-7 no-padding" src='${subComm.user.headimgurl!""}'/>
+                                        <#else>
+                                            <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                        </#if>
+                                    <#else>
+                                        <img class="headimg-round col-xs-7 no-padding" src='${base}/${subComm.user.headimgurl!""}'/>
+                                    </#if>
                                 </div>
                             </div>
                             <div class="col-xs-10">
@@ -160,7 +175,11 @@
                         <hr>
                     </#list>
                 </div>
+            <#else>
+                <p style="text-align: center">暂无评论</p>
             </#if>
+        <#else>
+            <p style="text-align: center">暂无评论</p>
         </#if>
     </#if>
     </div>

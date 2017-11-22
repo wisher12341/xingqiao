@@ -15,5 +15,7 @@ public interface OrganCommentDao {
 
     List<OrganComment> getMainOrgCommentsByOid(Integer oid);
 
+    List<OrganComment> getMainOrgCommentsByOidAndPage(@Param("oid") Integer oid, @Param("start") Integer start,@Param("size")  Integer size);
+
     OrganComment getOrgCommentByCid(Integer commentid);
 }

@@ -29,4 +29,6 @@ public interface CommentDao {
     List<Comment> getMainTeacherCommentsByTid(Integer tid);
 
     Comment getCommentByCid(Integer cid);
+
+    List<Comment> getMainCommentsByTidAndPage(@Param("tid") Integer tId,@Param("start") Integer start,@Param("size") Integer size);
 }
