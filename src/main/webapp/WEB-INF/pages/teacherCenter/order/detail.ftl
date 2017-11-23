@@ -129,33 +129,54 @@
                         </div>
                         <div class="faline">
                             <p class="ptitle">康复史</p>
-                            <table class="recoveryHis_table">
+                        <#if (order.order.recoveryHisList)??>
+                            <table class="table recoveryHis-table table-striped">
                                 <thead>
-                                    <tr>
-                                       <th>历史康复机构</th>
-                                        <th>康复起止时间</th>
-                                        <th>康复频次(周)</th>
-                                        <th>康复形式及康复内容</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <#list order.order.recoveryHisList as his>
                                 <tr>
-                                    <td><span>${his.name}</span></td>
-                                    <td><span>${his.time}</span></td>
-                                    <td ><span>${his.count}</span></td>
-                                    <td><span>${his.detail}</span></td>
+                                    <th>历史康复机构</th>
+                                    <th>康复起止时间</th>
+                                    <th>康复频次(周)</th>
+                                    <th>康复形式及康复内容</th>
                                 </tr>
+                                </thead>
+
+                                <tbody> <#list order.order.recoveryHisList as recoveryHis>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.name}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.time}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.count}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.detail}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 </#list>
                                 </tbody>
                             </table>
+                        <#else>
+                            <div style="text-align: center"><p style="color: #1a1a1a">您还没有添加过康复史</p></div>
+                        </#if>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tab-pane fade" id="log" style="font-size: 40px">
                 <div style="background-color: white;width: 100%; height: 80px;">
-                    <div style="float: right; "><a href="${path}/wx/teacherCenter/${order.order.id}/updateLog" class="btn btn-default"  style="float: right;margin-right: 20px;width: 60px;height: 36px;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 14px;font-weight: 400;">更新</a></div>
+                    <div style="float: right; "><input onclick="location.href='${path}/wx/teacherCenter/${order.order.id}/updateLog'" class="btn btn-default"  style="float: right;margin-right: 20px;width: 40%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;" value="更新"></div>
                 </div>
                 <div class="track-list" style="width: 100%; border: solid 1px #e8e8e8; margin-bottom: 20px">
                     <ul style="margin-top: 10px" id="logUl">

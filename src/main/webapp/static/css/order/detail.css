@@ -1,8 +1,4 @@
-#main li.title_li{
-    width: 25% !important;
-    height: 5%;
-    text-align: center;
-}
+
 #img{
     padding: 20px;
 }
@@ -49,14 +45,7 @@
     border-radius: 15px;
     height:6%
 }
-#mytab li.active a{
-    font-size: 35px;
-    height: 80px;
-}
-#mytab li a{
-    font-size: 35px;
-    height:80px;
-}
+
 .ts_mask{
     width:100%;
     height:100%;
@@ -161,9 +150,7 @@ button {
     margin-left: 3%;
     padding: 0 5px;
 }
-#myTab .active {
-    border-bottom: 5px solid #56c078;
-}
+
 .timee{
     /*margin-left: 160px;*/
     border-top: 1px solid #e0e0e0;
@@ -280,4 +267,38 @@ button {
 }
 body{
     background-color: #f5f5f5;
+}
+#mytab li{
+    width:25%;
+    text-align: center;
+}
+
+#mytab li a{
+    font-size: 48px;
+    padding-top:15px;
+    color: #56c078 !important;
+    opacity: 0.7;
+    height:110px;
+}
+
+#mytab li.active a{
+    font-size: 48px;
+    padding-top:15px;
+    color: #56c078 !important;
+    opacity: 1;
+    height:110px;
+}
+#myTab .active{
+    border-bottom:5px solid #56c078;
+}
+.recoveryHis-table thead tr th{
+    font-size: 40px;
+    color: grey;
+}
+
+.recoveryHis-table tbody tr td{
+    font-size: 40px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    color: #9d9d9d;
 }

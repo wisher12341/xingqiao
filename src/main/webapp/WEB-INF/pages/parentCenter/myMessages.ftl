@@ -2,7 +2,7 @@
 
 <html>
 <head>
-    <title>个人资料</title>
+    <title>消息中心</title>
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myMessages.css" type="text/css" rel="stylesheet" />
@@ -10,8 +10,6 @@
 </head>
 <body>
 <div id="main">
-
-
     <div>
         <ul class="list-group">
             <#list messages as m>

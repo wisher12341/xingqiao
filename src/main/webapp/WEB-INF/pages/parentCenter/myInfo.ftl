@@ -11,7 +11,7 @@
 <div id="main">
 
     <div class="imgDiv">
-        <img src="${(user.headimgurl)!}" class="img-circle">
+        <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
     </div>
 
     <div class="myInfoDiv">

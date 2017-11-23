@@ -10,7 +10,7 @@
     <div id="main">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active title_li" ><a href="#order" data-toggle="tab">订单详情</a></li>
-            <li class="title_li"><a href="#teacher" data-toggle="tab">治疗师详情</a></li>
+            <li class="title_li"><a href="#teacher" data-toggle="tab">治疗师</a></li>
             <li class="title_li"><a href="#patient" data-toggle="tab">患者简历</a></li>
             <li class="title_li"><a href="#log" data-toggle="tab">康复计划</a></li>
         </ul>
@@ -132,32 +132,55 @@
                         </div>
                         <div class="faline">
                             <p class="ptitle">康复史</p>
-                            <table class="recoveryHis_table">
+                        <#if (order.order.recoveryHisList)??>
+                            <table class="table recoveryHis-table table-striped">
                                 <thead>
-                                    <tr>
-                                       <th>历史康复机构</th>
-                                        <th>康复起止时间</th>
-                                        <th>康复频次(周)</th>
-                                        <th>康复形式及康复内容</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <#list order.order.recoveryHisList as his>
                                 <tr>
-                                    <td><span>${his.name}</span></td>
-                                    <td><span>${his.time}</span></td>
-                                    <td ><span>${his.count}</span></td>
-                                    <td><span>${his.detail}</span></td>
+                                    <th>历史康复机构</th>
+                                    <th>康复起止时间</th>
+                                    <th>康复频次(周)</th>
+                                    <th>康复形式及康复内容</th>
                                 </tr>
+                                </thead>
+
+                                <tbody> <#list order.order.recoveryHisList as recoveryHis>
+                                <tr>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.name}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.time}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.count}</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <span>${recoveryHis.detail}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
                                 </#list>
                                 </tbody>
                             </table>
+                        <#else>
+                            <div style="text-align: center"><p style="color: #1a1a1a">您还没有添加过康复史</p></div>
+                        </#if>
+
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="log" style="font-size: 40px">
-                <div style="background-color: white;width: 100%; height: 80px;">
+            <div class="tab-pane fade" id="log" style="font-size: 40px;min-height: 90%;background-color: white">
+                <div style="background-color: white;width: 100%; height: 80px;margin-top: 30px">
                     <div style="float: right; "><input class="btn btn-default" value="全部确认" style="float: right;margin-right: 20px;width: 40%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;" onclick="allLogConfirm(${order.order.id})"></div>
                 </div>
                 <div class="track-list" style="width: 100%; border: solid 1px #e8e8e8; margin-bottom: 20px">
@@ -178,7 +201,7 @@
                                         <span  style="float: right;margin-right: 20px;width: 15%; color: #aaa;font-size:40px">已确认</span>
                                     </#if>
 
-                                    <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px;font-size: 50px">
+                                    <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px;font-size: 43px">
                                     ${log.content}
                                     </div>
                                 </div>

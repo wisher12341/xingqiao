@@ -29,13 +29,13 @@
         UPDATE teacher SET name=#{name} WHERE user_id=#{userId}
     </update>
     <update id="updateGender">
-        UPDATE sysuser SET gender=#{gender} WHERE user_id=#{userId}
+        UPDATE sysuser SET gender=#{gender} WHERE id=#{userId}
     </update>
     <update id="updatePhone">
-        UPDATE sysuser SET phone=#{phone} WHERE user_id=#{userId}
+        UPDATE sysuser SET phone=#{phone} WHERE id=#{userId}
     </update>
     <update id="updateEmail">
-        UPDATE sysuser SET email=#{email} WHERE user_id=#{userId}
+        UPDATE sysuser SET email=#{email} WHERE id=#{userId}
     </update>
     <update id="updateSchool">
         UPDATE teacher SET school=#{school} WHERE user_id=#{userId}

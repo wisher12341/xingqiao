@@ -76,6 +76,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         return recoveryLogDto;
     }
 
+    @Transactional
     public void allConfirmByOrderId(String orderId) {
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -98,6 +99,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         orderDao.updateTrace(orderId,"#"+dateNowStr+"@家长确认当前全部康复日志");
     }
 
+    @Transactional
     public void confirmById(Integer id, String oid) {
 
         Date d = new Date();

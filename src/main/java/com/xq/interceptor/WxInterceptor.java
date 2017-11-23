@@ -83,7 +83,7 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 
 
 		String redirect_url_parent="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ WxConfig.APPID+"&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fparent&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
-		String redirect_url_teacher="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ WxConfig.APPID+"&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+		String redirect_url_teacher="https://open.weixin.qq.com/connect/oauth2/authorize?appid="+ WxConfig.APPID+"&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fteacher&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
 
 
 		String requestUri = request.getRequestURI();
@@ -106,7 +106,7 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 				response.sendRedirect(redirect_url_teacher);
 				return false;
 			}
-			user=userDao.getUserByOpenid(openid_teacher);
+			user=userDao.getUserByOpenidStatus(openid_teacher,"1");
 			if(user==null){
 				response.sendRedirect(redirect_url_teacher);
 				return false;
@@ -114,12 +114,12 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 		}else{
 //			用户登录
 			openid_parent=CookieUtil.checkCookie(request,Const.OPENID_PARENT);
-			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 			if(openid_parent==null){
 				response.sendRedirect(redirect_url_parent);
 				return false;
 			}
-			user=userDao.getUserByOpenid(openid_parent);
+			user=userDao.getUserByOpenidStatus(openid_parent,"0");
 			if(user==null){
 				response.sendRedirect(redirect_url_parent);
 				return false;

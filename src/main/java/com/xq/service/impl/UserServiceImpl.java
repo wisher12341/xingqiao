@@ -26,7 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean checkUserByOpenid(String openid, HttpServletResponse response, String type) {
-        User user=userDao.getUserByOpenid(openid);
+        String status=type.equals("parent")?"0":"1";
+        User user=userDao.getUserByOpenidStatus(openid,status);
         if(user==null){
             return false;
         }else{
@@ -52,9 +53,9 @@ public class UserServiceImpl implements UserService {
             if (user_re.getPassword().equals(user.getPassword())) {
                 user_re.setOpenid(user.getOpenid());
                 userDao.addOpenid(user_re);
-
+                String op=user.getStatus()==0?Const.OPENID_PARENT:Const.OPENID_TEACHER;
                 // 保存用openid到cookie
-                Cookie cookie = new Cookie(Const.OPENID_PARENT,user.getOpenid());
+                Cookie cookie = new Cookie(op,user.getOpenid());
                 // 设置过期时间，以秒为单位  设为100个星期
                 cookie.setMaxAge(60 * 60 * 24 * 7 * 100);
                 // cookie有效路径是网站根目录
@@ -71,5 +72,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-
+    @Override
+    public User getUserByOpenidStatus(String openid, String s) {
+        return userDao.getUserByOpenidStatus(openid,s);
+    }
 }

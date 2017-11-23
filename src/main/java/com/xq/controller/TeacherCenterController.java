@@ -3,12 +3,18 @@ package com.xq.controller;
 import com.xq.dto.ModifyPageDto;
 import com.xq.model.Demand;
 import com.xq.model.RecoveryLog;
+import com.xq.model.Teacher;
+import com.xq.model.User;
 import com.xq.service.TeacherCenterService;
+import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,16 +28,21 @@ import java.util.Map;
 public class TeacherCenterController {
     @Autowired
     TeacherCenterService teacherCenterService;
+    @Autowired
+    UserService userService;
 
     /**
      * 治疗师中心首页
      */
     @RequestMapping(value = "")
-    public ModelAndView teacherCenter(){
+    public ModelAndView teacherCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
-        mv.addObject("userId",1);
-        mv.addObject("name",teacherCenterService.getNameByUserId(1));
-        mv.addObject("teacherId",1);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,"1");
+        Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
+        mv.addObject("user",user);
+        mv.addObject("teacher",teacher);
         return mv;
     }
 
@@ -53,9 +64,9 @@ public class TeacherCenterController {
     public ModelAndView toDemandDetail(@PathVariable Integer id,@PathVariable Integer teacherId){
         Demand demand=teacherCenterService.getDemandDetail(id);
         List<RecoveryLog> recoveryLogList=teacherCenterService.getRecoveryLogs(id,teacherId);
-        for(RecoveryLog recoveryLog:recoveryLogList){
-            System.out.println(recoveryLog.getOrderId());
-        }
+//        for(RecoveryLog recoveryLog:recoveryLogList){
+//            System.out.println(recoveryLog.getOrderId());
+//        }
         ModelAndView mv=new ModelAndView("teacherCenter/demandDetail");
         mv.addObject("demand",demand);
         mv.addObject("recoveryHisList",teacherCenterService.getRecoveryHisList(demand.getRecoveryHis()));
@@ -78,7 +89,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{userId}/myLevel")
     public ModelAndView myLevel(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("parentCenter/myLevel");
+        ModelAndView mv=new ModelAndView("teacherCenter/myLevel");
         return mv;
     }
 

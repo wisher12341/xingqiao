@@ -8,6 +8,7 @@ import com.xq.model.*;
 import com.xq.service.TeacherCenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @Service
 public class TeacherCenterServiceImpl implements TeacherCenterService{
     @Autowired
-TeacherCenterDao teacherCenterDao;
+    TeacherCenterDao teacherCenterDao;
     @Autowired
     MessageDao messageDao;
     @Autowired
@@ -73,6 +74,7 @@ TeacherCenterDao teacherCenterDao;
 
 
     @Override
+    @Transactional
     public void modifyFeild(int userId,String value,String fieldName){
         if(fieldName.equals("name")) teacherCenterDao.updateName(value,userId);
         else if(fieldName.equals("gender")){

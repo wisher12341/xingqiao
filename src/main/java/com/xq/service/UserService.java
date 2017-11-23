@@ -17,4 +17,5 @@ public interface UserService {
     Boolean checkLogin(User user, HttpServletRequest request, HttpServletResponse response);
 
 
+    User getUserByOpenidStatus(String openid, String s);
 }

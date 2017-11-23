@@ -62,7 +62,6 @@ public class ParentCenterController {
         ModelAndView mv=new ModelAndView("parentCenter/myTeacher");
         List<Teacher> teachers=parentCenterService.getTeachersByParent(userId);
         mv.addObject("teachers",teachers);
-        System.out.println(teachers.get(0).getName()+","+teachers.get(0).getUser().getPhone());
         mv.addObject("userId",userId);
         return mv;
     }
