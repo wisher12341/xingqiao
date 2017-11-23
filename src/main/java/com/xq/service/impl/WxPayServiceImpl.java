@@ -2,6 +2,7 @@ package com.xq.service.impl;
 
 import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
+import com.xq.interceptor.WxInterceptor;
 import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.service.WxPayService;
@@ -40,7 +41,7 @@ public class WxPayServiceImpl implements WxPayService{
         Double total=order.getTotalpay();
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         WxSendData wxSendData=wx_pay(subject,out_trade_no,openid,request,total);
         return wxSendData;
     }
@@ -95,6 +96,7 @@ public class WxPayServiceImpl implements WxPayService{
 //        }
 
         String result=new HttpRequestor().postXml(WxConfig.PAY_URL,xml);
+//        WxInterceptor.logger.info(result);
         Map<String,String> resullt_map;
         String prepay_id="";
         String paySign="";//要重新生成 新的签名
@@ -118,7 +120,6 @@ public class WxPayServiceImpl implements WxPayService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return wxSendData;
     }
 

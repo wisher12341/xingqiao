@@ -21,4 +21,6 @@ public interface ParentCenterDao {
     void updateGroundAndAddr(@Param("ground") String ground,@Param("address") String address,@Param("userId") int userId);
     void updateGender(@Param("gender") int gender,@Param("userId") int userId);
 
+    void updateUserStatus(@Param("status") int status,@Param("userId") int userId);
+
 }

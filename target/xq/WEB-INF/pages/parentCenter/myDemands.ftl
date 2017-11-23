@@ -10,11 +10,6 @@
 <body>
 <div id="main">
 
-    <div id="title" class="row">
-        <div class="col-sm-2" style="text-align: center"><a id="backBtn" class="fa fa-mail-reply fa-4x" href="${path}/wx/parentCenter"></a></div>
-        <div class="col-sm-8 titleText"><p>我的需求简历</p></div>
-        <div class="col-sm-2"></div>
-    </div>
     <div class="panel panel-default">
 
     <table class="table demand-table">
@@ -38,6 +33,7 @@
         </tbody>
     </table>
     </div>
+    <div class="addBtn" style="text-align: center"><button class="btn btn-block btn-default" onclick=location.href="${path}/wx/parentCenter/${userId}/addDemandPage">添加需求简历</button></div>
 </div>
 </body>
 </html>

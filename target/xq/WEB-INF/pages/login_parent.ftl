@@ -30,6 +30,7 @@
             <span style="color: red;text-align: center">${message!}</span>
         </div>
         <input type="hidden" name="openid" value="${openid!}">
+        <input type="hidden" name="status" value="0">
         <input type="submit" value="登录"  class="submit">
         <input type="button" value="返回"  class="submit" onclick="$('#accountBind').hide();$('.textInput').val('');$('#select').show();">
     </form>

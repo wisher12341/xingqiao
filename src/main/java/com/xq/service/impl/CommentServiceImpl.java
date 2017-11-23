@@ -9,6 +9,8 @@ import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.model.User;
 import com.xq.service.CommentService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,8 +41,8 @@ public class CommentServiceImpl implements CommentService {
     @Transactional
     public void addComment(Comment comment, HttpServletRequest request, MultipartFile[] pics) {
 
-//        String openid=commonService.checkCookie(request, Const.OPENID);
-        String openid="123";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="123";
         User user=userDao.getUserByOpenid(openid);
 
         comment.setUser(user);

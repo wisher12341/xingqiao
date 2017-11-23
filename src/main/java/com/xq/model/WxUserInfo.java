@@ -11,6 +11,17 @@ public class WxUserInfo {
     private String headimgurl;
     private String time;//注册时间
 
+    private Integer id;
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getOpenid() {
         return openid;
     }

@@ -6,11 +6,17 @@
         <id property="id" column="id"/>
         <result property="name" column="tname"/>
         <result property="way" column="way"/>
+        <result property="domain" column="domain"/>
+        <result property="question" column="question"/>
+        <result property="object" column="object"/>
+        <result property="experienceAge" column="experienceAge"/>
         <result property="schedule" column="schedule"/>
         <association property="user" javaType="com.xq.model.User">
             <id property="id" column="uid"/>
             <result property="phone" column="phone"/>
             <result property="email" column="email"/>
+            <result property="gender" column="gender"/>
+            <result property="headimgurl" column="headimgurl"/>
         </association>
         <collection property="demandList" ofType="com.xq.model.Demand">
             <id property="id" column="did"/>
@@ -20,9 +26,15 @@
     </resultMap>
 
     <select id="getTeachersByUserId" resultMap="resultTeacher">
-        SELECT t.id,t.name tname,t.way,t.schedule,u.id uid,u.phone uphone,d.id did,d.name,d.disease
+        SELECT t.id,t.name tname,t.way,t.schedule,u.id uid,u.phone phone,u.email email,d.id did,d.name,d.disease
         FROM teacher t,sysuser u,demand d,orders o,parent p
         WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id AND o.demand_id=d.id AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
+    </select>
+
+    <select id="getTeacherDetail" resultMap="resultTeacher">
+        SELECT t.id,t.name tname,t.way,t.domain,t.question,t.object,t.experience_age experienceAge,t.schedule,u.id uid,u.phone phone,u.email email,u.gender gender,u.headimgurl headimgurl
+        FROM teacher t,sysuser u
+        WHERE t.id=#{teacherId} AND u.id=t.user_id
     </select>
 
     <select id="getMyTeachersByOpenid" resultType="com.xq.model.Teacher">

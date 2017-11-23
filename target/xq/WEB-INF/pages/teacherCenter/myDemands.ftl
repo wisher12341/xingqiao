@@ -15,7 +15,7 @@
     </div>
     <div class="panel panel-default">
 
-    <table class="table">
+    <table class="table demand-table">
         <thead>
         <tr>
             <th>姓名</th>
@@ -29,7 +29,8 @@
         <tr>
             <td>${demand.name!}</td>
             <td>${demand.disease!}</td>
-            <td><button type="button" class="btn btn-default"  onclick=location.href="${path}/wx/teacherCenter/${demand.id}/demandDetail">查看详情</td>
+            <td><a class="more"  href="${path}/wx/teacherCenter/${teacherId}/${demand.id}/demandDetail">更多...</a></td>
+
         </tr>
         </#list>
         </#if>

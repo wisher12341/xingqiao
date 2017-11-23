@@ -25,7 +25,6 @@ public interface DemandDao {
 
     void editorDemand(Demand demand);
 
-    void addDemand(Demand demand);
 
     String getParenntNameByUid(Integer id);
 
@@ -33,8 +32,13 @@ public interface DemandDao {
     void updateGender(@Param("gender") int gender,@Param("demandId") int demandId);
     void updateBirthday(@Param("birthday") String birthday,@Param("demandId") int demandId);
     void updateDiseaseHis(@Param("diseaseHis") String diseaseHis,@Param("demandId") int demandId);
-    void updateRemark(@Param("remark") String name,@Param("remark") int demandId);
-    void updateReport(@Param("report") String name,@Param("report") int demandId);
+    void updateRemark(@Param("remark") String name,@Param("demandId") int demandId);
+    void updateReport(@Param("report") String name,@Param("demandId") int demandId);
     void updateAllergyHis(@Param("allergyHis") String allergyHis,@Param("demandId") int demandId);
+    int getParentUserId(@Param("demandId") int demandId);
+    String getRecoveryHis(@Param("demandId") int demandId);
+    void updateRecoveryHis(@Param("recoveryHis") String recoveryHis,@Param("demandId") int demandId);
+    void addDemand(@Param("userId") int userId,@Param("name") String name,@Param("gender") int gender, @Param("birthday") String birthday,
+                   @Param("report") String report, @Param("diseaseHis") String diseaseHis, @Param("allergyHis") String allergyHis,@Param("remark") String remark);
 
 }

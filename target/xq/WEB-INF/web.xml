@@ -20,6 +20,7 @@
     <url-pattern>/static/img/*</url-pattern>
   </servlet-mapping>
 
+  <!--要有 不然部署到服务器 会出现找不到配置文件-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

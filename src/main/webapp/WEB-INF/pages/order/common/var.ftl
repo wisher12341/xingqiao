@@ -70,10 +70,10 @@
                     </div>
                 </div>
                 <div class="row timee">
-                    <div class="col-xs-5">
+                    <div class="col-xs-6" style="width: 55% !important;">
                         状态：<span style="color:orange;">${(order.statusDesc)!}</span>
                     </div>
-                    <div class="col-xs-6 ordertime">
+                    <div class="col-xs-5 ordertime" style="width: 45% !important;">
                         下单时间：${(order.sTime?split(" ")[0])!}
                     </div>
                 </div>

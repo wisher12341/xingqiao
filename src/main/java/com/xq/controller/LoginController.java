@@ -34,14 +34,23 @@ public class LoginController {
     public ModelAndView login(User user, HttpServletRequest request, HttpServletResponse response){
         String url= (String) request.getSession().getAttribute(Const.URL_BACK);
         if(url==null || url.equals("")){
-            url="/parentCenter/parentCenter";
+            if(user.getStatus()==0) {
+                url = "/wx/parentCenter";
+            }else{
+                url="/wx/teacherCenter";
+            }
         }
         Boolean success=userService.checkLogin(user,request,response);
         if(success) {
             ModelAndView mv = new ModelAndView("redirect:"+url);
             return mv;
         }else{
-            ModelAndView mv = new ModelAndView("login_parent");
+            ModelAndView mv;
+            if(user.getStatus()==0) {
+                mv = new ModelAndView("login_parent");
+            }else{
+                mv = new ModelAndView("login_teacher");
+            }
             mv.addObject("openid",user.getOpenid());
             mv.addObject("message","账号或密码错误");
             return mv;

@@ -13,6 +13,8 @@ import com.xq.model.RecoveryLog;
 import com.xq.model.*;
 import com.xq.service.OrderService;
 import com.xq.service.RecoveryLogService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,8 +42,8 @@ public class OrderServiceImpl implements OrderService{
     ParentCenterDao parentCenterDao;
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
-//        String openid= CookieUtil.checkCookie(request, Const.OPENID);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Order> orderList=orderDao.getAllOrderByOpenid(openid);
         setStatusDesc(orderList);
         AllTypeOrder allTypeOrder=new AllTypeOrder();
@@ -163,31 +165,31 @@ public class OrderServiceImpl implements OrderService{
         String dateNowStr = sdf.format(d);
 
         Order order=orderDao.getOrderPayByOid(oid);
-//        Message messageP=new Message();
-//        messageP.setTime(dateNowStr);
-//        messageP.setUserId(order.getUidP());
-//        messageP.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    您已取消预约单（"+oid+"）。"+
-//                "</p>");
+        Message messageP=new Message();
+        messageP.setTime(dateNowStr);
+        messageP.setUserId(order.getUidP());
+        messageP.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您已取消预约单（"+oid+"）。"+
+                "</p>");
 
-//        messageDao.addMessage(messageP);
-//
-//        Message messageT=new Message();
-//        messageT.setTime(dateNowStr);
-//        messageT.setUserId(order.getUidT());
-//        messageT.setMessage("<p>\n" +
-//                "<span style=\"color:red;\">系统消息：</span>\n" +
-//                "</p>\n" +
-//                "<p>\n" +
-//                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-//                "    家长已取消预约单（"+oid+"）。"+
-//                "</p>");
-//
-//        messageDao.addMessage(messageT);
+        messageDao.addMessage(messageP);
+
+        Message messageT=new Message();
+        messageT.setTime(dateNowStr);
+        messageT.setUserId(order.getUidT());
+        messageT.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    家长已取消预约单（"+oid+"）。"+
+                "</p>");
+
+        messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长取消预约");
     }
 

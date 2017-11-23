@@ -7,6 +7,11 @@
         SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid}
     </select>
 
+
+    <select id="getUserByOpenidStatus" resultType="com.xq.model.User" parameterType="java.lang.String">
+        SELECT id,headimgurl,nickname,username,user_status FROM sysuser WHERE openid=#{openid} AND status=#{status}
+    </select>
+
     <select id="getUserById" resultType="com.xq.model.User">
         SELECT * FROM sysuser WHERE id=#{id}
     </select>
@@ -57,7 +62,7 @@
       UPDATE sysuser set openid=#{openid} WHERE id=#{id}
     </update>
 
-    <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo">
+    <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo" useGeneratedKeys="true" keyProperty="id">
         INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{sex},#{nickname},#{headimgurl},#{time},0,0)
     </insert>
 </mapper>
