@@ -1,0 +1,133 @@
+* {margin:0;padding:0;}
+.mobile-menu {
+    position:fixed;
+    overflow-y: scroll;
+    top:0;
+    left:0;
+    width:22rem;
+    height:100%;
+    background-color:#f7f7f7;
+    z-index:9999;
+    overflow-y: scroll;
+    transition:all 0.3s ease-in;
+}
+
+.mobile-menu-bottom {
+    position:fixed;
+    overflow-y: scroll;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:30rem;
+    background-color:#f7f7f7;
+    z-index:9999;
+    transition:all 0.3s ease-in;
+}
+
+.mobile-menu-bottom-sm {
+    position:fixed;
+    overflow-y: scroll;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:20rem;
+    background-color:#f7f7f7;
+    z-index:9999;
+    transition:all 0.3s ease-in;
+}
+
+a:hover ,a:focus{
+    text-decoration:none
+}
+.mobile-nav ul li a {
+    color:gray;
+    display:block;
+    padding:1em 5%;
+    border-top:1px solid #4f4f4f;
+    border-bottom:1px solid #292929;
+    transition:all 0.2s ease-out;
+    cursor:pointer;}
+
+.mobile-nav ul li a:hover {
+    background-color: #23A1F6;
+    color: #ffffff;
+}
+.show-nav {transform:translateX(0);}
+.hide-nav {transform:translateX(-220px);} /*侧滑*/
+
+.show-nav-bottom {transform:translateY(0);}
+.hide-nav-bottom {transform:translateY(100%);} /*上滑*/
+
+.show-nav-top {transform:translateY(0);}
+.hide-nav-top {transform:translateY(-200%);} /*下滑*/
+
+.mobile-nav-taggle {
+
+}
+
+.btn-select{
+    padding: 0.2rem 0rem;
+    height:5.6rem;
+    width:2.8rem;
+    background-color:#9acfea;
+    color:#ffffff;
+    display:inline-block;
+    text-align:center;
+    cursor:pointer;
+    border-radius: 0 10px 10px 0;
+}
+.nav.avbar-inverse{position:relative;}
+.nav-btn {
+    position:fixed;
+    left:0rem;
+    top:0.5rem;
+    z-index:10000;
+}
+
+.nav-title{
+    font-size: 1.3rem;
+    color: #000000;
+    line-height: 3rem;
+}
+
+.nav-pill {
+    color: #8c8c8c;
+    font-size: 1.3rem;
+    padding: 0.2rem;
+    line-height: 3rem;
+}
+
+
+.active {
+    color: #269abc;
+}
+
+.my-slider-container{
+    width: 100%;
+}
+
+.slider-header{
+    font-size: 1.6rem;
+    font-family: "微软雅黑";
+    text-align: center;
+    color: #000000;
+    padding: 1.2rem 0rem;
+}
+
+.slider-body{
+    font-size: 1.4rem;
+    font-family: "微软雅黑";
+    text-align: left;
+    padding: 0rem 1.0rem;
+    color: #000000;
+}
+
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #73737354;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}

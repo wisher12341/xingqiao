@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="main">
+        <div class="title">
+            <span class="title_span" onclick="location.href='/wx/login/parent/changeAccount'">切换账号</span>
+        </div>
+
         <div class="imgDiv">
             <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
             <p>用户名：${user.nickname}</p>

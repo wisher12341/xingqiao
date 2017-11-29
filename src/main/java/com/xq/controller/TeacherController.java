@@ -1,27 +1,29 @@
 package com.xq.controller;
 
+import com.xq.dto.CalendarDto;
 import com.xq.dto.Result;
 import com.xq.model.Comment;
+import com.xq.model.OrganComment;
 import com.xq.model.Teacher;
 import com.xq.model.UserGoodReport;
 import com.xq.service.GoodReportService;
 import com.xq.service.TeacherService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
 
 /**
  * Created by joy12 on 2017/11/6.
  */
 @Controller
-@RequestMapping("/teacher")
+@RequestMapping("/wx/teacher")
 public class TeacherController {
     @Autowired
     TeacherService teachersService;
@@ -61,6 +63,45 @@ public class TeacherController {
         return "teacher/teacher";
     }
 
+    /**
+     * 所有治疗师评论展示页面
+     * @param teacherId
+     * @return
+     */
+    @RequestMapping(value = "/toTeacherCommentList",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentList(@Param("teacherId") Integer teacherId) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_list");
+        mv.addObject("teacherId",teacherId);
+        //mv.addObject("teacherCommentList",teachersService.getTeacherComments(teacherId));
+        return mv;
+    }
+
+    /**
+     * 治疗师评论分页
+     * @param teacherId
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/getCommentByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public List<Comment> getOrgCommentByPage(@Param("teacherId") Integer teacherId, @Param("page") Integer page, @Param("size") Integer size) {
+        return teachersService.getCommentsByPage(teacherId,page,size);
+    }
+
+    /**
+     * 单条治疗师评论展示页面
+     * @param cid 主评论id
+     * @return
+     */
+    @RequestMapping(value = "/toTeacherCommentSingle",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid,@Param("tid") Integer tid) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_single");
+        mv.addObject("teacherId",tid);
+        mv.addObject("comm",teachersService.getTeacherCommentByCid(cid));
+        return mv;
+    }
+
 
     /**
      * 治疗师评论 :跟帖
@@ -71,7 +112,7 @@ public class TeacherController {
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public String comment(Comment comment, HttpServletRequest request, Integer tid){
         teachersService.addComment(comment,request);
-        return "redirect:/teacher/"+tid+"/detail";
+        return "redirect:/wx/teacher/"+tid+"/detail";
     }
 
     /**
@@ -87,5 +128,38 @@ public class TeacherController {
         model.addAttribute("pics",pics);
         model.addAttribute("index",index);
         return "picture";
+    }
+
+    /**
+     * 下预约单 显示级别：月份
+     * @param tid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{tid}/orderTime/month",method = RequestMethod.GET)
+    public Result order_time_month(@PathVariable Integer tid){
+        List<String> starts=teachersService.order_time_month(tid);
+        return new Result(true,starts);
+    }
+
+    /**
+     * 下预约单 显示级别：日
+     * @param tid
+     * @param date
+     * @return
+     * @throws ParseException
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{tid}/orderTime/day",method = RequestMethod.POST)
+    public Result order_time_day(@PathVariable Integer tid,@RequestParam String date) throws ParseException {
+        CalendarDto calendar=teachersService.order_time_day(tid,date);
+        return new Result(true,calendar);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="orderTime",method = RequestMethod.POST)
+    public Result order_time(@RequestParam String start,@RequestParam String end) throws ParseException {
+        String time=teachersService.order_time(start,end);
+        return new Result(true,time);
     }
 }

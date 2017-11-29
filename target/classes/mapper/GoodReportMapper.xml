@@ -31,4 +31,8 @@
         </if>
         WHERE uid=#{id}
     </update>
+
+    <insert id="addUser">
+        INSERT INTO sysuser_good_report(uid) VALUES (#{id})
+    </insert>
 </mapper>

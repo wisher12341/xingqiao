@@ -29,7 +29,7 @@ p{
     font-size: 48px;
     padding-top:15px;
     height:110px;
-    color: #56c078 !important;
+    color: #20b49a !important;
     opacity: 0.7;
 }
 
@@ -37,8 +37,10 @@ p{
     font-size: 48px;
     padding-top:15px;
     height:110px;
-    color: #56c078 !important;
+    color: white !important;
     opacity: 1;
+    background-color:#20b49a ;
+    font-weight: bold;
 }
 .ordertime{
     text-align: right;
@@ -46,7 +48,7 @@ p{
 }
 .comment{
     height: 5%;
-    background-color: #56c078;
+    background-color: #20b49a;
     font-size: 45px;
     width: 100%;
     margin-bottom: -30px;
@@ -145,7 +147,7 @@ button {
     padding: 0 5px;
 }
 #myTab .active {
-    border-bottom: 5px solid #56c078;
+    border-bottom: 5px solid #20b49a;
 }
 
 .timee{

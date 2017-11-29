@@ -92,58 +92,7 @@
         </div>
     </form>
 
-<#if (recoveryLogDto.demand.id)??>
-    <div class="search_factor">
-        <p class="search_factor_title">查找条件</p>
-        <table align="center" class="search_factor_table">
-            <tr>
-                <td>
-                    <span class="search_label_title">治疗师：</span><span class="search_label">${recoveryLogDto.teacher.name}</span>
-                </td>
-                <td>
-                    <span class="search_label_title">简历：</span><span class="search_label">${recoveryLogDto.demand.name}</span>
-                </td>
-                <#if (recoveryLogDto.isConfirm)??>
-                    <td>
-                        <span class="search_label_title">是否确认：</span>
-                        <#switch recoveryLogDto.isConfirm>
-                            <#case 0>
-                                <span class="search_label">未确认</span>
-                                <#break>
-                            <#case 0>
-                                <span class="search_label">已确认</span>
-                                <#break>
-                            <#case 2>
-                                <span class="search_label">不限</span>
-                                <#break>
-                        </#switch>
-                    </td>
-                </#if>
-            </tr>
-            <tr>
-                <td colspan="3">
-                    <span class="search_label_title">康复领域：</span>
-                    <#list (recoveryLogDto.ob)! as ob>
-                        <span class="search_label">${ob}</span>
-                    </#list>
-                </td>
-            </tr>
-            <#if (recoveryLogDto.startTime)?? && (recoveryLogDto.endTime)?? && recoveryLogDto.startTime!="" && recoveryLogDto.endTime!="">
-                <tr>
-                    <td colspan="3">
-                        <span class="search_label_title">时间段：</span><span class="search_label">${recoveryLogDto.startTime}</span><span class="search_label_title">&nbsp;—&nbsp;</span><span class="search_label">${recoveryLogDto.endTime}</span>
-                    </td>
-                </tr>
-            <#else >
-                <tr>
-                    <td colspan="3">
-                        <span class="search_label_title">时间段：</span><span class="search_label">不限</span>
-                    </td>
-                </tr>
-            </#if>
-        </table>
-    </div>
-</#if>
+
 <#if (recoveryLogDto.recoveryLogList)??>
     <div id="log">
         <p class="search_factor_title">康复日志</p>

@@ -1,6 +1,7 @@
 package com.xq.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.xq.dao.GoodReportDao;
 import com.xq.dao.UserDao;
 import com.xq.interceptor.WxInterceptor;
 import com.xq.model.WxUserInfo;
@@ -12,6 +13,7 @@ import com.xq.wxpay.config.WxConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +31,8 @@ public class WxServiceImpl implements WxService{
 
     @Autowired
     UserDao userDao;
+    @Autowired
+    GoodReportDao goodReportDao;
 
     public String getOpenId(String code) {
         String appid= WxConfig.APPID;
@@ -51,6 +55,7 @@ public class WxServiceImpl implements WxService{
     }
 
     @Override
+    @Transactional
     public WxUserInfo getUserInfo(HttpServletRequest request, HttpServletResponse response) {
         String code = request.getParameter("code");
         String appid= WxConfig.APPID;
@@ -109,7 +114,7 @@ public class WxServiceImpl implements WxService{
         wxUserInfo.setTime(dateNowStr);
 
         userDao.saveNewUser(wxUserInfo);
-
+        goodReportDao.addUser(wxUserInfo.getId());
         return wxUserInfo;
     }
 }

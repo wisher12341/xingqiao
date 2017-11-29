@@ -18,4 +18,6 @@ public interface UserService {
 
 
     User getUserByOpenidStatus(String openid, String s);
+
+    User regTeacher(User user, HttpServletResponse response);
 }

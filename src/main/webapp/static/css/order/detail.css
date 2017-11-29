@@ -36,7 +36,7 @@
 }
 .foot button{
     /*background-color:#94e6c8 ;*/
-    background-color: #56c078;
+    background-color: #20b49a;
     color: white !important;
     font-size: 45px;
     font-weight: bold;
@@ -276,7 +276,7 @@ body{
 #mytab li a{
     font-size: 48px;
     padding-top:15px;
-    color: #56c078 !important;
+    color: #20b49a !important;
     opacity: 0.7;
     height:110px;
 }
@@ -284,12 +284,14 @@ body{
 #mytab li.active a{
     font-size: 48px;
     padding-top:15px;
-    color: #56c078 !important;
+    color: white !important;
     opacity: 1;
     height:110px;
+    background-color:#20b49a ;
+    font-weight: bold;
 }
 #myTab .active{
-    border-bottom:5px solid #56c078;
+    border-bottom:5px solid #20b49a;
 }
 .recoveryHis-table thead tr th{
     font-size: 40px;

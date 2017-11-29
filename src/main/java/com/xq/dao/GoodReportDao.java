@@ -13,4 +13,6 @@ public interface GoodReportDao {
     void del(@Param("str") String str, @Param("flag") Integer flag, @Param("id") Integer id);
 
     UserGoodReport getTeacherGoodReportByUid(Integer id);
+
+    void addUser(Integer id);
 }

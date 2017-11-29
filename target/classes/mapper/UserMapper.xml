@@ -65,4 +65,8 @@
     <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo" useGeneratedKeys="true" keyProperty="id">
         INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{sex},#{nickname},#{headimgurl},#{time},0,0)
     </insert>
+
+    <insert id="register" useGeneratedKeys="true" keyProperty="id">
+        INSERT into sysuser(username,password,status,user_status,time,openid) VALUES (#{username},#{password},#{status},#{userStatus},#{time},#{openid})
+    </insert>
 </mapper>

@@ -38,7 +38,7 @@ public class TeacherCenterController {
     public ModelAndView teacherCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);

@@ -23,4 +23,6 @@ public interface UserDao {
     void saveNewUser(WxUserInfo wxUserInfo);
 
     User getUserByOpenidStatus(@Param("openid") String openid,@Param("status") String status);
+
+    void register(User user);
 }

@@ -10,7 +10,6 @@ import java.util.List;
  */
 public interface CommentDao {
 
-
     void addComment(Comment comment);
 
     Comment getCommentByOid(String oid);
@@ -26,4 +25,10 @@ public interface CommentDao {
     Comment getCommentById(Integer cid);
 
     void addReply(Comment comment);
+
+    List<Comment> getMainTeacherCommentsByTid(Integer tid);
+
+    Comment getCommentByCid(Integer cid);
+
+    List<Comment> getMainCommentsByTidAndPage(@Param("tid") Integer tId,@Param("start") Integer start,@Param("size") Integer size);
 }

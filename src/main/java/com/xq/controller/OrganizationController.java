@@ -6,6 +6,7 @@ import com.xq.model.Organization;
 import com.xq.model.UserGoodReport;
 import com.xq.service.GoodReportService;
 import com.xq.service.OrganizationService;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,7 @@ import java.util.List;
  * Created by netlab606 on 2017/6/25.
  */
 @Controller
-@RequestMapping(value = "/organization")
+@RequestMapping(value = "/wx/organization")
 public class OrganizationController {
 
 
@@ -56,6 +57,9 @@ public class OrganizationController {
 
     /**
      * 机构具体信息界面
+     * @param orgId
+     * @param model
+     * @param request
      * @return
      */
     @RequestMapping(value = "/{orgId}/organintro",method = RequestMethod.GET)
@@ -70,16 +74,18 @@ public class OrganizationController {
         return "organization/organintro";
     }
 
-//    /**
-//     * 获得机构具体信息
-//     * @return
-//     */
-//    @RequestMapping(value = "/get_organization",method = RequestMethod.GET)
-//    @ResponseBody
-//    public Result get_organization(@RequestParam Integer id){
-//        Organization organization=organizationService.getOrganization(id);
-//        return new Result(true,organization);
-//    }
+
+    /**
+     * 编写机构评论页面
+     * @param orgId
+     * @return
+     */
+    @RequestMapping(value = "/toCommentPage",method = RequestMethod.GET)
+    public ModelAndView toOrganComment(@Param("orgId") Integer orgId) {
+        ModelAndView mv = new ModelAndView("organization/organ_comment");
+        mv.addObject("orgId",orgId);
+        return mv;
+    }
 
     /**
      * 机构评论
@@ -93,7 +99,45 @@ public class OrganizationController {
             TmpLogin.tmpLogin(request);
         }
         organizationService.addComment(organComment,request,pics);
-        return "redirect:/organization/"+organComment.getOid()+"/organintro";
+        return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
+    }
+
+    /**
+     * 所有机构评论展示页面
+     * @param orgId
+     * @return
+     */
+    @RequestMapping(value = "/toOrganCommentList",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId) {
+        ModelAndView mv = new ModelAndView("organization/organ_comment_list");
+        mv.addObject("orgId",orgId);
+//        mv.addObject("organCommentList",organizationService.getOrganizationComments(orgId));
+        return mv;
+    }
+
+    /**
+     * 机构评论分页
+     * @param orgId
+     * @param page
+     * @param size
+     * @return
+     */
+    @RequestMapping(value = "/getOrgCommentByPage",method = RequestMethod.POST)
+    @ResponseBody
+    public List<OrganComment> getOrgCommentByPage(@Param("orgId") Integer orgId,@Param("page") Integer page,@Param("size") Integer size) {
+        return organizationService.getOrganizationCommentsByPage(orgId,page,size);
+    }
+
+    /**
+     * 单条机构评论展示页面
+     * @param cid 主评论id
+     * @return
+     */
+    @RequestMapping(value = "/toOrganCommentSingle",method = RequestMethod.GET)
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid) {
+        ModelAndView mv = new ModelAndView("organization/organ_comment_single");
+        mv.addObject("comm",organizationService.getOrganCommentByCid(cid));
+        return mv;
     }
 
     /**

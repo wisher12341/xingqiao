@@ -44,3 +44,18 @@
     margin-top: 50%;
     margin-bottom: 50%;
 }
+p{
+    color: #20b49a;
+}
+
+.title{
+    height: 110px;
+    background-color: #20b49a;
+}
+.title_span{
+    color: white;
+    font-size: 40px;
+    float: right;
+    margin-top:20px;
+    margin-right: 30px;
+}

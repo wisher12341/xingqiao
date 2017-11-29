@@ -55,7 +55,7 @@
                         <div class="leftdiv">
                             <h3 class="progressbar-title" style="padding-left:50px;font-size: 40px!important;color: #9d9d9d!important;"><span class="now_cishu">${(order.count)!}</span>/${(order.order.amount)!}</h3>
                             <div class="progress" style="width: 90%;margin: 0 auto;">
-                                <div class="progress-bar" style="background:#56c078;">
+                                <div class="progress-bar" style="background:#20b49a;">
                                     <script>
                                         $(".progress-bar").css("width","${order.percent}");
                                     </script>

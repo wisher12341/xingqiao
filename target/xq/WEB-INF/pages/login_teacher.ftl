@@ -21,7 +21,7 @@
 <div id="accountBind" style="display: none" align="center">
     <form action="${path}/wx/login" method="post">
         <div class="group">
-            <span class="la">账号：</span><input type="text" name="username" class="textInput" placeholder="username"/>
+            <span class="la">账号：</span><input type="text" name="username" class="textInput" placeholder="手机号"/>
         </div>
         <div class="group">
             <span class="la">密码：</span><input type="password" name="password" class="textInput" placeholder="password"/>
@@ -35,21 +35,24 @@
         <input type="button" value="返回"  class="submit" onclick="$('#accountBind').hide();$('.textInput').val('');$('#select').show();">
     </form>
 </div>
-<div id="aregAcount" style="display: none" align="center">
-    <form action="${path}/wx/teacher/reg" method="post">
+<div id="regAccount" style="display: none" align="center">
+    <form action="${path}/wx/login/teacher/reg" method="post" id="regForm">
         <div class="group">
-            <span class="la">手机号：</span><input type="text" name="username" class="textInput" placeholder="username"/>
+            <span class="la">手机号：</span><input type="text" name="username" class="textInput" placeholder="手机号"/>
         </div>
         <div class="group">
-            <span class="la">验证码：</span><input type="password" name="password" class="textInput" placeholder="password"/>
+            <span class="la">验证码：</span><input class="textInput code"/>
+            <input type="button" onclick="sendphonecode()" class="btn btn-primary" value="获取验证码" id="sendCode">
         </div>
         <div class="group">
-            <span style="color: red;text-align: center">${message!}</span>
+            <span class="la">密码：</span><input type="password" name="password" class="textInput" />
+        </div>
+        <div class="group">
+            <span class="la">确认密码：</span><input type="password"  class="textInput pw" />
         </div>
         <input type="hidden" name="openid" value="${openid!}">
-        <input type="hidden" name="status" value="1">
-        <input type="submit" value="登录"  class="submit">
-        <input type="button" value="返回"  class="submit" onclick="$('#accountBind').hide();$('.textInput').val('');$('#select').show();">
+        <input onclick="reg()" type="button" value="注册"  class="submit">
+        <input type="button" value="返回"  class="submit" onclick="$('#regAccount').hide();$('.textInput').val('');$('#select').show();">
     </form>
 </div>
 
@@ -60,5 +63,72 @@
 </script>
 </#if>
 </body>
+<script type="text/javascript">
 
+    var number;//用于存储验证码
+
+        function sendphonecode() {
+
+            var second = 60,
+                    timePromise = undefined;
+            $('#sendCode').attr("class","btn btn-primary disabled");
+
+            $.ajax({
+                method: 'POST',
+                url: '/wx/login/getNumber',
+                data: {
+                    'phone': $('#regAccount input[name="username"]').val()
+                }
+            }).success(function (data) {
+                if(data.success==true) {
+                    number = data.data;
+                }else{
+                    alert("该手机号已注册");
+                }
+            }).error(function (data) {
+
+            });
+
+
+            timePromise = $interval(function(){
+                if(second<=0){
+                    $interval.cancel(timePromise);
+                    timePromise = undefined;
+
+                    second = 60;
+                    $('#sendCode').val("重发验证码");
+                    $('#sendCode').attr("class","btn btn-primary");
+                    $scope.paraevent = true;
+                }else{
+                    $('#sendCode').val(second + "秒后可重发");
+                    second--;
+
+                }
+            },1000,100);
+        };
+
+
+    function reg() {
+        var flag=0;
+        $("#regAccount .textInput").each(function () {
+            if($(this).val().trim()==""){
+                flag=1;
+            }
+        });
+        if(flag==1){
+            alert("信息填写不完整");
+            return;
+        }
+        if(number==null || number=='' || number!=$('#regAccount .code').val()){
+            alert("验证码错误");
+            return;
+        }
+        if($('#regAccount input[name="password"]').val()!=$('#regAccount .pw').val()){
+            alert("两次密码不一致");
+            return;
+        }
+        $("#regForm").submit();
+    }
+
+</script>
 </html>

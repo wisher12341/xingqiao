@@ -59,7 +59,6 @@ public class OrderController {
     }
 
     /**
-<<<<<<< HEAD
      * 取消 预约
      * @return
      */
@@ -122,10 +121,11 @@ public class OrderController {
      * @return
      */
     @RequestMapping(value = "/{orderId}/success",method = RequestMethod.GET)
-    public String success(Model model,@PathVariable("orderId") String orderId){
+    public ModelAndView success(@PathVariable("orderId") String orderId){
         OrderDto order=orderService.getOrderByOid(orderId);
-        model.addAttribute("order",order);
-        return "order_submit_success";
+        ModelAndView mv=new ModelAndView("order/success");
+        mv.addObject("order",order);
+        return mv;
     }
 
 }

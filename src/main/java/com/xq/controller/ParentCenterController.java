@@ -49,7 +49,8 @@ public class ParentCenterController {
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        User user=userService.getUserByOpenid(openid);
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,"0");
         mv.addObject("user",user);
         return mv;
     }

@@ -16,15 +16,16 @@
     <link rel="stylesheet" href="${base}/static/bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
-    <link rel="stylesheet" href="${base}/static/css/teacher/leftSlider.css">
+    <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
 </head>
 <body ng-app="testapp" ng-controller="teacherCtrl" ng-init="getTeacher()">
 
 <div class="nav-btn visible-xs visible-sm" style="font-size: 1.2rem">
-    <a href="#" class="mobile-nav-taggle" id="mobile-nav-taggle">
-        <span class="glyphicon glyphicon-search"></span>&nbsp筛选</a>
+    <a href="#" class="mobile-nav-taggle btn-select" id="mobile-nav-taggle">
+        <span class="glyphicon glyphicon-search"></span><br>筛<br>选</a>
 </div>
-<div id="mobile-menu" class="mobile-nav visible-xs visible-sm hide-nav">
+<div class="mask" id="mask" style="display: none"></div>
+<div id="mobile-menu" class="mobile-nav mobile-menu visible-xs visible-sm hide-nav">
     <div class="container my-slider-container offset-15">
         <div class="row" align="center">
             <div class="nav-title col-xs-12">康复领域</div>
@@ -91,40 +92,92 @@
 
     </div>
 </div>
-<div class="container list-container-white">
-    <div class="row row-wrapper">
-        <div class="my-page-title col-xs-12 text-center">治疗师查询</div>
-        <div class="col-xs-12 col-xs-12 gray-line"></div>
-    </div>
+<div class="container base no-padding">
     <div ng-repeat="temp in teachers" ng-cloak>
-        <div class="row row-wrapper list-item-content pointable" ng-click="get_teacher_more(temp['id'])">
-            <div class="col-xs-3 col-md-2" align="center">
+        <div class="row row-wrapper my-panel pointable" ng-click="get_teacher_more(temp['id'])">
+            <div class="no-padding col-xs-3 col-md-3" align="center">
                 <img ng-src="${base}/##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
             </div>
-            <div class="col-xs-9 col-md-7">
+            <div class="col-xs-9 col-md-9">
                 <div class="row">
-                    <div class="col-xs-4 list-item-content-title" ng-click="get_teacher_more(temp['id'])">##temp['name']##</div>
-                    <div class="col-xs-3">##temp['gender']##</div>
-                    <div class="col-xs-5 no-padding" style="float: right">¥##temp['price']##<span>元/小时</span></div>
+                    <div class="col-xs-4 no-padding-right list-item-content-title" ng-click="get_teacher_more(temp['id'])">##temp['name']##</div>
+                    <#--<div class="col-xs-3">##temp['gender']##</div>-->
+
+                    <div class="no-padding price" style="float: right">¥##temp['price']##</div>
 
                 </div>
-                <div class="row padding-left-15">
-                    <div class="col-xs-3 no-padding" ng-repeat="item in temp['way'].split('、')" style="display: inline">
+            <div class="row padding-left-15 ">
+            <#assign level=1>
+            <#if level??>
+                <#if level==1>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <#elseif level==2>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <#elseif level==3>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                <#elseif level==4>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                <#elseif level==5>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                    <img class="level-star" src="${base}/static/img/star-full.png"/>
+                <#else>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                    <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                </#if>
+            <#else>
+                <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <img class="level-star" src="${base}/static/img/star-empty.png"/>
+                <img class="level-star" src="${base}/static/img/star-empty.png"/>
+            </#if>
+            <#--${level!"暂无(星级)"}-->
+            </div>
+                <div class="row padding-left-15 list-item-content">
+                    <div class="col-xs-12 no-padding">
+                        <span>##temp['domain']##</span> | <span>##temp['object']##</span>
+                    </div>
+                </div>
+
+                <div class="row inline-wrapper padding-left-15 list-item-content" style="justify-content: flex-start; width: 24rem">
+                    <div class="way-border" ng-repeat="item in temp['way'].split('、')" style="margin-right: 0.2rem;">
                         <span>##item##</span>
                     </div>
                 </div>
 
-                <div class="row padding-left-15">
-                    <strong>康复领域:</strong>
-                    <span>##temp['domain']##</span>
-                </div>
-                <div class="row padding-left-15">
-                    <strong>康复对象:</strong>
-                    <span>##temp['object']##</span>
-                </div>
+                <#--<div class="row padding-left-15">-->
+                    <#--<strong>康复领域:</strong>-->
+                    <#--<span>##temp['domain']##</span>-->
+                <#--</div>-->
+                <#--<div class="row padding-left-15">-->
+                    <#--<strong>康复对象:</strong>-->
+                    <#--<span>##temp['object']##</span>-->
+                <#--</div>-->
             </div>
         </div>
-        <hr style="margin: 1rem">
+        <#--<hr style="margin: 1rem">-->
     </div>
 </div>
 
@@ -136,15 +189,30 @@
         var mobileMenu = $("#mobile-menu");
         if (mobileMenu.hasClass("hide-nav")) {
             setTimeout(function () {
+                $("#mask").show();
+            }, 50);
+            setTimeout(function () {
                 mobileMenu.addClass("show-nav").removeClass("hide-nav");
-            }, 100)
+            }, 100);
         }
         else {
+            setTimeout(function () {
+                $("#mask").hide();
+            }, 50);
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav").removeClass("show-nav");
-            }, 100)
+            }, 100);
         }
     });
+
+    $("#mask").click(function () {
+        setTimeout(function () {
+            $("#mask").hide();
+        }, 50);
+        setTimeout(function (){
+            $("#mobile-menu").addClass("hide-nav").removeClass("show-nav");
+        }, 100)
+    })
 
     $('.nav-pill').click(function(){
         $(this).addClass("active").siblings(".nav-pill").removeClass("active");
@@ -165,7 +233,7 @@
         $scope.getTeacher = function () {
             $http({
                 method: 'POST',
-                url: '/teacher/get_teacher'
+                url: '${base}/wx/teacher/get_teacher'
 
             }).success(function (data, status, headers, config) {
 //                console.log(data);
@@ -202,7 +270,7 @@
 
             $.ajax({
                 type: 'post',
-                url: '${base}/teacher/get_teacher',
+                url: '${base}/wx/teacher/get_teacher',
                 data:{
                     'object':$scope.sWord['obj'],
                     'domain':$scope.sWord['domain'],
@@ -225,9 +293,7 @@
         //更多老师介绍
         $scope.get_teacher_more = function(teacher_id){
             ipCookie('teacherId', teacher_id, {path: '/', expires: 14});
-            alert(teacher_id);
-            alert('${base}'+'/teacher/'+teacher_id+'/detail');
-            $window.location = '${base}'+'/teacher/'+teacher_id+'/detail';
+            $window.location = '${base}'+'/wx/teacher/'+teacher_id+'/detail';
         };
 
     }]);

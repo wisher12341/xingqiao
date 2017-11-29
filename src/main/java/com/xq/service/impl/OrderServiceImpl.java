@@ -43,7 +43,7 @@ public class OrderServiceImpl implements OrderService{
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Order> orderList=orderDao.getAllOrderByOpenid(openid);
         setStatusDesc(orderList);
         AllTypeOrder allTypeOrder=new AllTypeOrder();

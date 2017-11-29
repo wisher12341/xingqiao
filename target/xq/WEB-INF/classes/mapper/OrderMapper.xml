@@ -135,5 +135,11 @@
     <select id="getAllRecoveryObsByOpenid" resultType="java.lang.String">
         SELECT distinct(o.recover_ob) FROM orders o,sysuser u,parent p WHERE u.openid=#{openid} AND p.userId=u.id AND o.parent_id=p.id
     </select>
+    <select id="getServerTime" resultType="com.xq.model.Order">
+        SELECT o.id,o.server_time,p.realName pname,o.period FROM orders o,parent p,teacher t WHERE o.parent_id=p.id and o.teacher_id=t.id and t.user_id=#{id} and o.status_t=3
+    </select>
 
+    <select id="getTodayServiceTime" resultType="com.xq.model.Order">
+        SELECT id,server_time FROM orders WHERE teacher_id=#{tid} AND server_time like concat('%',#{time},'%') AND status_t=3
+    </select>
 </mapper>

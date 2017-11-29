@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by netlab606 on 2017/10/5.
  */
 @Controller
-@RequestMapping("/goodreport")
+@RequestMapping("/wx/goodreport")
 public class GoodReportController {
 
     @Autowired

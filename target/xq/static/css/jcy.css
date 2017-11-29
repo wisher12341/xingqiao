@@ -8,6 +8,10 @@ html {font-size: 62.5%;
     margin-top: 0.5rem;
 }
 
+.offset-10{
+    margin-top: 1.0rem;
+}
+
 .offset-15{
     margin-top: 1.5rem;
 }
@@ -36,7 +40,7 @@ html {font-size: 62.5%;
     background-size: contain;
 }
 .org-name-title{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #000000;
 }
 
@@ -59,7 +63,7 @@ html {font-size: 62.5%;
 
 .my-modal-body{
     padding: 1.5rem 4.5rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #000000;
     background-color: #ffffff;
 }
@@ -77,24 +81,27 @@ html {font-size: 62.5%;
 }
 
 .my-panel-title{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: #000000;
 }
 
 .my-panel-content{
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     color: #8c8c8c;
-    line-height: 1.6rem;
+    line-height: 1.8rem;
 }
 
 .text-center{
     text-align: center;
 }
 
+.headimg-round{
+    border-radius: 50%;
+}
+
 .headimg{
     border-radius: 50%;
-    width: 100%;
-    height: 100%;
+    width: 95%;
 }
 
 .headimg-lg{
@@ -108,7 +115,7 @@ html {font-size: 62.5%;
 }
 
 .img-wrap{
-    width: 45%; /* 这里设置占屏幕宽度百分比 */
+    width: 100%; /* 这里设置占屏幕宽度百分比 */
     display: flex;
     flex-wrap: wrap;
 }
@@ -124,9 +131,9 @@ html {font-size: 62.5%;
 
 /* 采用绝对定位 */
 .img-wrap img{
-    position:absolute;
-    width: 100%;
-    height: 100%;
+    width: 30%;
+    height: 7rem;
+    margin: 0.3rem;
 }
 
 .comment-pics{}
@@ -161,12 +168,13 @@ html {font-size: 62.5%;
 
 .row-wrapper{
     background-color: #ffffff;
-    padding: 1rem;
+    padding: 1.5rem 2rem;
+    line-height: 2.4rem;
 }
 
 .list-item-content{
-    font-size: 1.2rem;
-    color: #737373;
+    font-size: 1.3rem;
+    color: #646464;
     font-weight: normal;
     font-family: "微软雅黑";
     line-height: 2.4rem;
@@ -194,6 +202,10 @@ html {font-size: 62.5%;
 .padding-left-15{
     padding-left: 1.5rem;
 }
+
+.padding-right-15{
+    padding-left: 1.5rem;
+}
 .pointable{
     cursor: pointer;
 }
@@ -206,4 +218,113 @@ html {font-size: 62.5%;
     text-align: center;
     padding: 0.5rem 1rem;
     border: none;
+}
+.bottom-single-btn{
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: #00b0ff;
+    color: #ffffff;
+    font-size: 1.6rem;
+}
+
+.bottom-multiple-btn{
+    cursor: pointer;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: inherit;
+    font-size: 1.6rem;
+    border-top: solid 0.1rem #d0d0d0;
+}
+
+.bottom-btn-item{
+    cursor: pointer;
+    bottom: 0;
+    position: relative;
+    height: 5rem;
+    line-height: 5rem;
+    background-color: #00b0ff;
+    font-size: 1.6rem;
+    color: #ffffff;
+    border: none;
+}
+
+.user-name{
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #000000;
+}
+
+.line-height-24{
+    line-height: 2.4rem;
+}
+
+.my-textarea{
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0.8rem;
+    width: 94%;
+}
+
+.level-star{
+    height: 2rem;
+    width: 2rem;
+}
+
+.price{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ff7800;
+}
+
+.way-border{
+    border: 0.1rem solid #269abc;
+    color: #269abc;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0.3rem;
+    line-height: 1.8rem;
+}
+
+.btn-pill{
+    border: 0.1rem solid #269abc;
+    color: #269abc;
+    border-radius: 15px;
+    text-align: center;
+    padding: 0.1rem 1rem;
+    line-height: 2.4rem;
+    height: 2.6rem;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+}
+
+.btn-pill:focus, .btn-pill:hover, .btn-pill:active {
+    color: #23527c;
+    text-decoration: underline;
+}
+
+.btn-pill-icon-left{
+    margin-right: 0.4rem;
+    line-height: 2.2rem;
+}
+
+.time{
+    color: #8c8c8c;
+    font-size: 1.2rem;
+}
+
+.comment-content{
+    color: #000000;
+    font-size: 1.2rem;
+}
+.comment-btns{
+    justify-content: flex-end;
 }

@@ -18,4 +18,10 @@ public interface OrganizationService {
     void addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics);
 
     List<String> getCommentPics(Integer cid, Integer index);
+
+    List<OrganComment> getOrganizationComments(Integer id);
+
+    OrganComment getOrganCommentByCid(Integer cid);
+
+    List<OrganComment> getOrganizationCommentsByPage(Integer oid, Integer page, Integer size);
 }

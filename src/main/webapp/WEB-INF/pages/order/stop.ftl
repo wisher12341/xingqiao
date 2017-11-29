@@ -12,7 +12,7 @@
         }
         .foot input{
             /*background-color:#94e6c8 ;*/
-            background-color: #56c078;
+            background-color: #20b49a;
             color: white !important;
             font-size: 45px;
             font-weight: bold;
@@ -33,7 +33,7 @@
                 </div>
 
         <div align="center" class="foot">
-            <input type="submit" style="width:90%;padding: 20px; font-size: 40px;background-color: #56c078;color: white;border-radius: 10px" value="提交">
+            <input type="submit" style="width:90%;padding: 20px; font-size: 40px;background-color: #20b49a;color: white;border-radius: 10px" value="提交">
         </div>
 
 

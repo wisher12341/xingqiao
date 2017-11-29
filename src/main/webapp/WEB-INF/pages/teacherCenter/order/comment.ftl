@@ -20,7 +20,7 @@
         }
         .foot input{
             /*background-color:#94e6c8 ;*/
-            background-color: #56c078;
+            background-color: #20b49a;
             color: white !important;
             font-size: 45px;
             font-weight: bold;
