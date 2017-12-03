@@ -2,10 +2,13 @@ package com.xq.service.impl;
 
 import com.xq.dao.OrganCommentDao;
 import com.xq.dao.OrganizationDao;
+import com.xq.dao.UserDao;
 import com.xq.model.OrganComment;
 import com.xq.model.Organization;
 import com.xq.model.User;
 import com.xq.service.OrganizationService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,8 @@ public class OrganizationServiceImpl implements OrganizationService{
     OrganizationDao organizationDao;
     @Autowired
     OrganCommentDao organCommentDao;
+    @Autowired
+    UserDao userDao;
 
     @Override
     public List<Organization> getOrganizations() {
@@ -41,7 +46,11 @@ public class OrganizationServiceImpl implements OrganizationService{
 
     @Override
     public void addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
-        User user= (User) request.getSession().getAttribute("USER");
+//        User user= (User) request.getSession().getAttribute("USER");
+
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="123";
+        User user=userDao.getUserByOpenid(openid);
         organComment.setUid(user.getId());
 
 

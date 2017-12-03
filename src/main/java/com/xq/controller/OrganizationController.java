@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -63,9 +64,9 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/{orgId}/organintro",method = RequestMethod.GET)
-    public String organintro(@PathVariable("orgId") Integer orgId, Model model, HttpServletRequest request) {
+    public String organintro(@PathVariable("orgId") Integer orgId, Model model, HttpServletRequest request, HttpServletResponse response) {
         if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request);
+            TmpLogin.tmpLogin(request,response);
         }
         Organization organization=organizationService.getOrganization(orgId);
         model.addAttribute("organization",organization);
@@ -94,9 +95,9 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public String comment(OrganComment organComment, HttpServletRequest request, @RequestParam(required = false) MultipartFile[] pics){
+    public String comment(OrganComment organComment, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) MultipartFile[] pics){
         if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request);
+            TmpLogin.tmpLogin(request,response);
         }
         organizationService.addComment(organComment,request,pics);
         return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
@@ -108,8 +109,13 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/toOrganCommentList",method = RequestMethod.GET)
-    public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId) {
+    public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId, HttpServletRequest request, HttpServletResponse response) {
+        if (request.getSession().getAttribute("USER") == null){
+            TmpLogin.tmpLogin(request,response);
+        }
         ModelAndView mv = new ModelAndView("organization/organ_comment_list");
+        UserGoodReport userGoodReport=goodReportService.getOrganGoodReportByUid(request);
+        mv.addObject("usergoodreport",userGoodReport);
         mv.addObject("orgId",orgId);
 //        mv.addObject("organCommentList",organizationService.getOrganizationComments(orgId));
         return mv;
@@ -134,9 +140,11 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/toOrganCommentSingle",method = RequestMethod.GET)
-    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid) {
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid, HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("organization/organ_comment_single");
         mv.addObject("comm",organizationService.getOrganCommentByCid(cid));
+        UserGoodReport userGoodReport=goodReportService.getOrganGoodReportByUid(request);
+        mv.addObject("usergoodreport",userGoodReport);
         return mv;
     }
 
@@ -147,12 +155,12 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/reply",method = RequestMethod.POST)
-    public String reply(OrganComment organComment, HttpServletRequest request){
+    public String reply(OrganComment organComment, HttpServletRequest request, HttpServletResponse response){
         if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request);
+            TmpLogin.tmpLogin(request,response);
         }
         organizationService.addComment(organComment,request,null);
-        return "redirect:/organization/"+organComment.getOid()+"/organintro";
+        return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
     }
 
     /**

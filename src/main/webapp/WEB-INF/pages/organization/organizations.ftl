@@ -4,7 +4,7 @@
 <#assign fmt =JspTaglibs["http://java.sun.com/jsp/jstl/fmt"] />
 <html>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
 
     <title>机构查询</title>
 
@@ -27,6 +27,34 @@
             height: 3.5rem;
         }
 
+        select.form-select{
+            appearance: none;
+            -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
+            -moz-appearance: none;  /*去除Firefox浏览器的默认下拉图片*/
+            border: none;
+            border-top: #cccccc 1px solid;
+            border-radius: 0;
+            background: url("${base}/static/img/organization/arrow-down-b.svg") no-repeat scroll 80% transparent;
+            background-size: 2rem;
+            padding: 0rem 5rem;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: none;
+            -o-transition: none;
+        }
+
+        select.form-select:focus,
+        select.form-select:active,
+        select.form-select:hover{
+            border-color: none;
+            outline: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-transition: none;
+            -o-transition: none;
+        }
+
+
     </style>
 </head>
 <body ng-app="testapp" ng-controller="organizationCtrl" ng-init="getOrganization()">
@@ -34,7 +62,7 @@
 
     <div class="input-group row row-wrapper" style="padding: 0rem 2.5rem">
         <input type="text"
-               style="margin-top: 0.2rem;border-radius: 20px 0px 0px 20px;"
+               style="margin-top: 0.2rem;border-radius: 20px 0px 0px 20px;border: #cccccc solid 0.1rem"
                class="form-control input-default" ng-model="orgName">
         <span class="glyphicon glyphicon-search input-group-addon"
               style="border-radius: 0 20px 20px 0px; color: #337fc0; background-color: #d9edf7;border: none;"
@@ -42,13 +70,13 @@
     </div>
     <div class="row row-wrapper" style="padding: 1.5rem 0rem 0rem 0rem">
         <div class="col-xs-6 col-md-6 no-padding">
-            <select class="form-control" style="height: 4.5rem">
+            <select class="form-control form-select" style="height: 4.5rem">
                 <option>上海市:</option>
             </select>
         </div>
 
         <div class="col-xs-6 col-md-6 no-padding">
-            <select class="form-control" ng-model="vm.dis" style="height: 4.5rem"
+            <select class="form-control form-select" ng-model="vm.dis" style="height: 4.5rem"
                     ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
                 <option value="">-- 请选择区 --</option>
             </select>
@@ -134,14 +162,19 @@
 
 //选择结果
 
-
         $scope.selectOrg = function(aaa,bbb,ccc) {
             //地区选择;
             j=0;
             $scope.NewOrgItems=[];
-            for (i in $scope.organizations){
-                if($scope.organizations[i]['district']==ccc){
-                    $scope.NewOrgItems[j++]=$scope.organizations[i];
+            if (ccc=='不限'){
+                for (i in $scope.organizations) {
+                    $scope.NewOrgItems[j++] = $scope.organizations[i];
+                }
+            }else {
+                for (i in $scope.organizations) {
+                    if ($scope.organizations[i]['district'] == ccc) {
+                        $scope.NewOrgItems[j++] = $scope.organizations[i];
+                    }
                 }
             }
 
@@ -201,6 +234,9 @@
             {
                 label:'上海市',
                 districts:[
+                    {
+                        label:'不限'
+                    },
                     {
                         label:'普陀区'
                     },

@@ -7,6 +7,10 @@
         SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid}
     </select>
 
+    <select id="getParentByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
+        SELECT * FROM sysuser WHERE openid=#{openid} and status=0
+    </select>
+
 
     <select id="getUserByOpenidStatus" resultType="com.xq.model.User" parameterType="java.lang.String">
         SELECT id,headimgurl,nickname,username,user_status FROM sysuser WHERE openid=#{openid} AND status=#{status}

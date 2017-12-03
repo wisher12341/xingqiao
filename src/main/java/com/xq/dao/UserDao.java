@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserDao {
     User getUserByOpenid(String openid);
+    User getParentByOpenid(String openid);
     User getUserById(Integer id);
     User findUserByNameType(@Param("username") String username, @Param("type") Integer type);
     String getParentNameById(Integer id);
