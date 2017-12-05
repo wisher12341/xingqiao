@@ -2,95 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/Smile.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/add.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/earth.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/earth_s.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/favorite.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/pic.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/search.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment_read.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/awesome-bootstrap-checkbox.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/awesome-bootstrap-checkbox.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/awesome-bootstrap-checkbox.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/bootstrap.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/build.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/build.less" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/build.less.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/common/box/build.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/teacherCenter/updateLog.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/order/comment.ftl" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/comment.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/updateLog.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/CommentController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/CommentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterOrderController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Teacher.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/model/Teacher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/CommentService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/CommentService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrganizationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq.war" afterPath="$PROJECT_DIR$/target/xq.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/CommentController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/CommentController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterOrderController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/OrderDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/OrderDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/model/Teacher.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/model/Teacher.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/CommentService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/CommentService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/UserService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrganizationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/CommentController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/CommentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/OrderDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/OrderDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/CommentService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/CommentService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/CommentServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/CommentServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrganizationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrganizationServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/util/FileUpload.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/util/FileUpload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CommentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/detail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/detail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/login.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/order/detail.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/order/detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/order/detail.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/order/detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/CommentMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/CommentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/CommentMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/CommentMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/detail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/detail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/order/detail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/order/detail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/teacherCenter.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/teacherCenter.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/login.css" afterPath="$PROJECT_DIR$/target/xq/static/css/login.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/order/detail.css" afterPath="$PROJECT_DIR$/target/xq/static/css/order/detail.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/js/order/detail.js" afterPath="$PROJECT_DIR$/target/xq/static/js/order/detail.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -118,11 +30,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TeacherController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TeacherController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_parent.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="350">
+              <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_teacher.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="651">
+              <caret line="37" column="9" lean-forward="false" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -247,7 +199,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/teacherCenter/updateLog.css" />
@@ -272,6 +223,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/CommentController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/detail.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/login.css" />
       </list>
     </option>
   </component>
@@ -1329,10 +1281,9 @@
     </configuration>
     <configuration default="false" name="xq" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\sp\progrom\jdk1.7.0_17\jre">
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="xingqiao:war exploded">
+        <artifact name="xingqiao:war">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
@@ -1397,7 +1348,7 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="xingqiao:war exploded" />
+          <artifact name="xingqiao:war" />
         </option>
       </method>
     </configuration>
@@ -1440,7 +1391,7 @@
       <workItem from="1511446635626" duration="251000" />
       <workItem from="1511447264957" duration="21773000" />
       <workItem from="1511920082031" duration="2936000" />
-      <workItem from="1512084054156" duration="86539000" />
+      <workItem from="1512084054156" duration="88638000" />
     </task>
     <task id="LOCAL-00003" summary="治疗师查询页面完成（跳转有问题，拿不到治疗师ID）">
       <created>1510055226968</created>
@@ -1481,7 +1432,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="389772000" />
+    <option name="totallyTimeSpent" value="391871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1587,47 +1538,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="751">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="100" column="16" lean-forward="false" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="103" column="18" lean-forward="true" selection-start-line="103" selection-start-column="18" selection-end-line="103" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="52" column="57" lean-forward="true" selection-start-line="52" selection-start-column="57" selection-end-line="52" selection-end-column="57" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="90" column="0" lean-forward="false" selection-start-line="90" selection-start-column="0" selection-end-line="160" selection-end-column="9" />
-          <folding>
-            <element signature="n#div#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#3;n#div#0;n#form#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#script#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2074,8 +1989,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="37" column="9" lean-forward="false" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
           <folding />
         </state>
       </provider>

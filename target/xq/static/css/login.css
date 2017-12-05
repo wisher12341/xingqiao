@@ -4,21 +4,34 @@ body{
 #accountBind{
     margin-top: 20%;
 }
-.la{
+#regAccount .la{
     font-size: 18px;
     text-align: left;
     position: relative;
     left: 20px;
 }
-.textInput{
+#regAccount .textInput{
     font-size: 18px;
     border: 1px solid grey;
     border-radius: 5px;
     width: 100%;
 }
-.group{
+#regAccount .group{
     margin-bottom: 20px;
 }
+
+#accountBind .la{
+    font-size: 18px;
+}
+#accountBind .textInput{
+    font-size: 18px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+#accountBind .group{
+    margin-bottom: 40px;
+}
+
 .submit{
     font-size: 18px;
     padding: 10px;
