@@ -18,10 +18,11 @@
     bottom:0;
     left:0;
     width:100%;
-    height:30rem;
+    height:98%;
     background-color:#f7f7f7;
     z-index:9999;
     transition:all 0.3s ease-in;
+    box-shadow: 1px -2px 2px #e0e0e0;
 }
 
 .mobile-menu-bottom-sm {
@@ -67,20 +68,22 @@ a:hover ,a:focus{
 
 .btn-select{
     padding: 0.2rem 0rem;
-    height:5.6rem;
-    width:2.8rem;
-    background-color:#9acfea;
+    height:6rem;
+    line-height: 5.5rem;
+    width:6rem;
+    background-color:#20b49a;
     color:#ffffff;
     display:inline-block;
     text-align:center;
     cursor:pointer;
-    border-radius: 0 10px 10px 0;
+    border-radius: 50%;
+    font-size: 1.4rem;
 }
 .nav.avbar-inverse{position:relative;}
 .nav-btn {
     position:fixed;
-    left:0rem;
-    top:0.5rem;
+    right:2rem;
+    bottom:3rem;
     z-index:10000;
 }
 
@@ -123,7 +126,7 @@ a:hover ,a:focus{
 }
 
 .mask{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     background-color: #73737354;

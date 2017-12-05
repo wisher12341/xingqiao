@@ -21,6 +21,6 @@ public interface OrderService {
     void orderStop(String oid, String reason);
 
     void agree(String oid);
-    String addOrder(Order order, HttpSession session);
+    String addOrder(Order order, HttpServletRequest request);
 
 }
