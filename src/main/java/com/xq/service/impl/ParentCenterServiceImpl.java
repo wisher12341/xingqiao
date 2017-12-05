@@ -12,9 +12,13 @@ import com.xq.dao.ParentCenterDao;
 
 
 import com.xq.service.ParentCenterService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import java.util.ArrayList;
@@ -84,10 +88,12 @@ public class ParentCenterServiceImpl implements ParentCenterService{
 
 
 
-    public List<Demand> isexisted(HttpSession session, Integer teacheId) {
-        User user = (User) session.getAttribute("USER");
+    public List<Demand> isexisted(HttpServletRequest request, Integer teacheId) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="123";
+        User user=userDao.getParentByOpenid(openid);
         Parent parent = parentCenterDao.getParentByUserId(user.getId());
-        if (parent == null) {
+        if (parent == null || user==null || user.getUserStatus()!=2) {
             return null;
         } else {
             List<Demand> demandList = demandDao.getDemandByuserId(user.getId());

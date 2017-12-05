@@ -111,8 +111,8 @@ public class OrderController {
      */
     @ResponseBody
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
-    public Result submit(Order order, HttpSession session){
-        String order_id=orderService.addOrder(order,session);
+    public Result submit(Order order, HttpServletRequest request){
+        String order_id=orderService.addOrder(order,request);
         return new Result(true,order_id);
     }
 

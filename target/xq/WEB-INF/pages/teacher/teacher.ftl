@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <#assign base=request.contextPath />
-<html>
+<html style="height: 100%">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
     <title>星桥</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
     <script type="text/javascript" src="${base}/static/bootstrap/js/js/bootstrap.min.js"></script>
@@ -21,12 +21,12 @@
             z-index: 10000;
             background-color: white;
             padding: 0.5rem 1.6rem 6rem 1.6rem;
-            height: 65%;
+            height: 99%;
             transition:all 0.3s ease-in;
             line-height: 1.4rem;
 
             position: fixed;
-            overflow-y: scroll;
+            overflow-y: hidden;
             bottom: 0;
             left: 0;
             width: 100%;
@@ -56,40 +56,36 @@
             margin-top: 1rem;
         }
 
+        .teacher-name-title{
+            font-size: 1.4rem;
+            color: #000000;
+        }
+
 
     </style>
 </head>
-<body class="base">
+<body style="height: 100%;">
+<div id="base" class="base" style="height: 100%;">
 <div class="container my-panel" style="min-height: 20rem">
     <div class="row" style="height: 100%">
         <div class="col-xs-5 text-center" style="height: 12rem;">
             <img src="${base}/${teacher.headimgurl!''}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
         </div>
         <div class="col-xs-7" style="padding-left: 0rem">
-            <div class="org-name-title">${teacher.name!"暂无"}</div>
+            <div class="teacher-name-title">${teacher.name!"暂无"}</div>
             <div class="row my-panel-content offset-5">
                 <div class="col-xs-12 inline-wrapper" style="justify-content: flex-start">
                     <#if teacher.level??>
                         <#if teacher.level==1>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
                         <#elseif teacher.level==2>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
                         <#elseif teacher.level==3>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                         <#elseif teacher.level==4>
-                            <img class="level-star" src="${base}/static/img/star-empty.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
@@ -139,8 +135,8 @@
 
         <#if teacher.way??>
             <div class="container no-padding">
-                <#assign strs=teacher.way?split("、")>
-                <#if strs[0] == "不限">
+                <#assign teacherways=teacher.way?split("、")>
+                <#if teacherways[0] == "不限">
                     <#if teacher.priceO gt 0>
                         <div class="inline-wrapper">
                             <div>在线授课</div>
@@ -162,7 +158,7 @@
                         </div>
                     </#if>
                 <#else>
-                    <#list strs as str>
+                    <#list teacherways as str>
                         <div class="row">
                             <div class="col-xs-4 no-padding-right">${str}</div>
                             <#if str=="在线授课" && teacher.priceO gt 0>
@@ -177,6 +173,9 @@
                         </div>
                     </#list>
                 </#if>
+                <div class="col-xs-12 no-padding offset-5">
+                    注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟
+                </div>
             </div>
         <#else>
             <div class="my-panel-content row">
@@ -262,6 +261,8 @@
     </div>
     <div class="gray-line"></div>
     <div class="my-panel-content container line-height-24">
+    <#assign good=usergoodreport.teacherCommentGood>
+    <#assign report=usergoodreport.teacherCommentReport>
     <#if teacher.commentList??>
         <#if teacher.commentList?size gt 0>
             <#assign comm=teacher.commentList[0]>
@@ -269,7 +270,7 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
                         <div class="comment-content">
@@ -304,10 +305,20 @@
                     </div>
                     <div class="comment-btns inline-wrapper">
                         <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
-                        <div class="btn-pill" style="display: none">已举报</div>
+                        <#if good?contains("#${comm.id}#")>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        <#else>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        </#if>
+                        <#if report?contains("#${comm.id}#")>
+                            <div class="btn-pill">已举报</div>
+                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        <#else>
+                            <div class="btn-pill" style="display: none">已举报</div>
+                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        </#if>
                     </div>
 
 
@@ -322,7 +333,7 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
                         <div class="comment-content">
@@ -357,10 +368,20 @@
                     </div>
                     <div class="comment-btns inline-wrapper">
                         <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
-                        <div class="btn-pill" style="display: none">已举报</div>
+                        <#if good?contains("#${comm.id}#")>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        <#else>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        </#if>
+                        <#if report?contains("#${comm.id}#")>
+                            <div class="btn-pill">已举报</div>
+                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        <#else>
+                            <div class="btn-pill" style="display: none">已举报</div>
+                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        </#if>
                     </div>
 
 
@@ -375,7 +396,7 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10">
+                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
                         <div class="comment-content">
@@ -410,10 +431,20 @@
                     </div>
                     <div class="comment-btns inline-wrapper">
                         <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
-                        <div class="btn-pill" style="display: none">已举报</div>
+                        <#if good?contains("#${comm.id}#")>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        <#else>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                        </#if>
+                        <#if report?contains("#${comm.id}#")>
+                            <div class="btn-pill">已举报</div>
+                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        <#else>
+                            <div class="btn-pill" style="display: none">已举报</div>
+                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                        </#if>
                     </div>
 
 
@@ -425,6 +456,10 @@
     </#if>
     </div>
 </div>
+
+<div style="height: 6rem; width: 100%">
+</div>
+
 <!-- 预约 -->
 <div>
     <div class="bottom-single-btn" onclick="makeOrder()">
@@ -444,23 +479,85 @@
             </div>
             <hr style="margin-top: 0rem; margin-bottom: 1.2rem">
             <div class="slider-body" id="divContent">
-                <div class="form-group" style="height: 18.5rem; overflow-y: scroll">
-                    <div class="inline-wrapper" style="justify-content: flex-start">
-                        上门方式：<select id="waySelect"></select>
+                <div class="form-group" style="overflow-y: scroll">
+                    <div>
+                        上门方式：
+                        <div id="ways" class="inline-wrapper offset-15" style="justify-content: space-around">
+                            <#--<#if teacherways??>-->
+                                <#--<#if teacherways[0]??>-->
+                                    <#--<div class="way border-pill border-pill-active">-->
+                                        <#--${teacherways[0]}-->
+                                    <#--</div>-->
+                                <#--</#if>-->
+                                <#--<#if teacherways?size gt 1>-->
+                                    <#--<div class="way border-pill">-->
+                                        <#--${teacherways[1]}-->
+                                    <#--</div>-->
+                                    <#--<#if teacherways?size gt 2>-->
+                                        <#--<div class="way border-pill">-->
+                                            <#--${teacherways[2]}-->
+                                        <#--</div>-->
+                                    <#--</#if>-->
+                                <#--</#if>-->
+                            <#--</#if>-->
+                        </div>
+                        <#--<select id="waySelect"></select>-->
                     </div>
-                    <div class="offset-10 inline-wrapper" style="justify-content: flex-start">
-                        康复项目： <select id="domainSelect"></select>
+                    <div class="offset-20" style="justify-content: flex-start">
+                        <div>
+                            康复项目：
+                            <div id="domains" class="inline-wrapper offset-15" style="justify-content: space-around">
+                            <#--<#if teacher.domain??>-->
+                                <#--<#assign tdomains=teacher.domain?split("、")>-->
+                                <#--<#list tdomains as o>-->
+                                    <#--<#if tdomains[0]==o>-->
+                                        <#--<div class="domain border-pill border-pill-active">-->
+                                            <#--${o}-->
+                                        <#--</div>-->
+                                    <#--<#else>-->
+                                        <#--<div class="domain border-pill">-->
+                                        <#--${o}-->
+                                        <#--</div>-->
+                                    <#--</#if>-->
+                                <#--</#list>-->
+                            <#--</#if>-->
+                            </div>
+                        </div>
+                        <#--<select id="domainSelect"></select>-->
                     </div>
-                    <div id="time_div" class="offset-10 inline-wrapper" style="justify-content: flex-start">
-                        服务时间：<input id="serviceTime" class="serviceTime" type="text" onclick="selectTime(this)">
+                    <div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">
+                        服务时间：<input onfocus="this.blur();"  id="serviceTime" class="serviceTime" type="text" onclick="selectTime(this)">
                     </div>
-                    <div class="offset-10" style="justify-content: flex-start">
+                    <div class="offset-20" style="justify-content: flex-start">
                         备    注：<br><input id="remark" style="margin-top:0.2rem;width:99%;min-height: 4rem" type="text">
                     </div>
-                    <div class="offset-10 inline-wrapper" style="justify-content: flex-start">
-                        需求简历：<select id="demandSelect"></select>
+                    <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
+                        <div>
+                            需求简历：
+                            <div id="demands" class="inline-wrapper offset-15" style="justify-content: space-around">
+                            <#--<#if teacherways??>-->
+                                <#--<#if teacherways[0]??>-->
+                                    <#--<div class="way border-pill border-pill-active">-->
+                                    <#--${teacherways[0]}-->
+                                    <#--</div>-->
+                                <#--</#if>-->
+                                <#--<#if teacherways?size gt 1>-->
+                                    <#--<div class="way border-pill">-->
+                                    <#--${teacherways[1]}-->
+                                    <#--</div>-->
+                                    <#--<#if teacherways?size gt 2>-->
+                                        <#--<div class="way border-pill">-->
+                                        <#--${teacherways[2]}-->
+                                        <#--</div>-->
+                                    <#--</#if>-->
+                                <#--</#if>-->
+                            <#--</#if>-->
+                            </div>
+                        <#--<select id="waySelect"></select>-->
+                        </div>
+                        <#--<select id="demandSelect"></select>-->
                     </div>
-                    <div class="offset-10 inline-wrapper" style="justify-content: flex-start">
+                    <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
                         课程数量：
                         <div>
                             <button class="amount_button" onclick="subtract__fuction()">-</button>
@@ -472,7 +569,7 @@
                 </div>
             </div>
             <div class="bottom-multiple-btn inline-wrapper">
-                <div style="padding-left: 5%">
+                <div style="padding-left: 5%; color: #b47400">
                     总价：<span id="sumSpan"></span>元
                 </div>
                 <button class="bottom-btn-item" style="width: 30%" onclick="yuYue_fucntion()">
@@ -482,7 +579,7 @@
         </div>
     </div>
 </div>
-
+<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
 <div class="mask" id="mask" style="z-index:10000;display: none"></div>
 <div id="calendar_month" class="hide-nav-bottom"></div>
 <div id="calendar_day" class="hide-nav-bottom"></div>
@@ -580,34 +677,122 @@
 </body>
 </html>
 <script>
+    var waySelect = null;
+    var domainSelect = null;
+    var demandSelect = null;
+    if(waySelect=="治疗师上门"){
+        $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
+    }else if(waySelect=="学生上门"){
+        $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
+    }else if(waySelect=="在线授课"){
+        $("#sumSpan").html(parseInt("${teacher.priceO}")*parseInt($("#countSpan").html()));
+    }else{
+        $("#sumSpan").html("0");
+    }
+
+    var original = document.documentElement.clientHeight;
+    window.addEventListener("resize", function() {
+        var resizeHeight = document.documentElement.clientHeight;
+        if(resizeHeight != original) {
+            $('.bottom-multiple-btn').css('display', 'none');
+        } else {
+            $('.bottom-multiple-btn').css('display', '');
+        }
+    });
+
+//    $("#mobile-nav-taggle").click(function () {
+//        makeOrder();
+//    });
+
+    function masking() {
+        $("#maskbehind").show();
+        $("#base").css("overflow-x","hidden");
+        $("#base").css("overflow-y","hidden");
+        $("#base").css("position","absolute");
+  //      $("#base").bind("touchmove",function(event){event.preventDefault();});
+    }
+
+    function unmasking() {
+        $("#maskbehind").hide();
+        $("#base").css("overflow-x","scroll");
+        $("#base").css("overflow-y","scroll");
+        $("#base").css("position","");
+  //      $("#base").unbind("touchmove");
+    }
 
     $(".mobile-nav-taggle").click(function () {
         var mobileMenu = $(this).parent().next(".mobile-menu-bottom");//上拉框是下一个节点
         if (mobileMenu.hasClass("hide-nav-bottom")) {
-            setTimeout(function () {
-                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-            }, 100)
+            if(makeOrder()==true) {
+                masking();
+                setTimeout(function () {
+                    mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
+                }, 100)
+            }
         }
         else {
+            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100)
+
         }
     });
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");
         if (mobileMenu.hasClass("hide-nav-bottom")) {
+            masking();
             setTimeout(function () {
                 mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             }, 100)
         }
         else {
+            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-            }, 100)
+            }, 100);
         }
     });
+
+    $('.border-pill').click(pillClick);
+
+    function pillClick() {
+        $(this).addClass("border-pill-active");
+        if ($(this).hasClass("way")){
+            waySelect = $(this).text().trim();
+        } else if ($(this).hasClass("domain")){
+            domainSelect = $(this).text().trim();
+        } else if ($(this).hasClass("demand")){
+            demandSelect=$(this).data("first").split("#")[0];
+            var isFirst=$(this).data("first").split("#")[1];
+            if(isFirst=="yes"){
+                //该简历 第一次交易
+                $(".amount_button").attr("disabled", true);
+                $("#countSpan").html("1");
+            }else{
+                $(".amount_button").attr("disabled", false);
+            }
+        }
+        var sib = new Array();
+        sib = $(this).siblings(".border-pill-active");
+        $.each(sib, function(key, val) {
+            $(val).removeClass("border-pill-active");
+        });
+        calculateSum();
+    }
+
+    function calculateSum() {
+        if(waySelect=="治疗师上门"){
+            $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
+        }else if(waySelect=="学生上门"){
+            $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
+        }else if(waySelect=="在线授课"){
+            $("#sumSpan").html(parseInt("${teacher.priceO}")*parseInt($("#countSpan").html()));
+        }else{
+            $("#sumSpan").html("0");
+        }
+    }
 
     function showFullComment(str,ele) {
         ele.previousElementSibling.innerText = str;
@@ -688,7 +873,7 @@
                 //点赞
                 $.ajax({
                     method: 'POST',
-                    url: '/wx/goodreport/add',
+                    url: '${base}/wx/goodreport/add',
                     data: {
                         type: g_r,
                         cid: id,
@@ -713,7 +898,7 @@
             //取消点赞
             $.ajax({
                 method: 'POST',
-                url: '/wx/goodreport/del',
+                url: '${base}/wx/goodreport/del',
                 data: {
                     cid: id,
                     flag: 1 //0表示  机构评论   1表示治疗师评论
@@ -732,7 +917,7 @@
     function report() {
         $.ajax({
             method: 'POST',
-            url: '/wx/goodreport/add',
+            url: '${base}/wx/goodreport/add',
             data: {
                 type: 1,
                 cid: $("input[name='cid']").val(),
@@ -752,76 +937,74 @@
             method: 'POST',
             url: '${base}/wx/parentCenter/isexisted',
             data: {
-                'teacherId':getCookie("teacherId")
+                'teacherId':${teacher.id}
             },
-            success:function (data, status, headers, config) {
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+            success:function (data) {
                 if (data.success == true) {
                     //'已完成个人资料'-->预约,分为第一次预约和第二次购买。
+                    $('#domains').html("");
                     var domains ="${teacher.domain}".split("、");
                     if(domains[0]=='不限') {
                         domains = ['言语', '听觉', '认知', '情绪行为', '运动', '心理'];
                     }
-                    $('#domainSelect').html("");
-                    $('#domainSelect').append($("<option></option>"));
-                    for(var i=0;i<domains.length;i++){
-                        var $option=$('<option value="'+domains[i]+'">'+domains[i]+'</option>');
-                        $('#domainSelect').append($option);
+                    var $option=$('<div class="domain border-pill border-pill-active">'+domains[0]+'</div>');
+                    $('#domains').append($option);
+                    for(var i=1;i<domains.length;i++){
+                        $option=$('<div class="domain border-pill">'+domains[i]+'</div>');
+                        $('#domains').append($option);
                     }
+                    domainSelect = domains[0];
+
+                    $('#ways').html("");
                     var ways = "${teacher.way}".split("、");
-                    $('#waySelect').html("");
-                    $('#waySelect').append($("<option></option>"));
                     if(ways[0]=='不限') {
                         ways = ['治疗师上门', '学生上门', '在线授课'];
                     }
-                    for(var i=0;i<ways.length;i++){
-                        var $option=$('<option value="'+ways[i]+'">'+ways[i]+'</option>');
-                        $('#waySelect').append($option);
+                    $option=$('<div class="way border-pill border-pill-active">'+ways[0]+'</div>');
+                    $('#ways').append($option);
+                    for(var i=1;i<ways.length;i++){
+                        $option=$('<div class="way border-pill">'+ways[i]+'</div>');
+                        $('#ways').append($option);
                     }
+                    waySelect = ways[0];
 
                     var demands = data.data;
-                    $("#demandSelect").html("");
-                    for(var i=0;i<demands.length;i++){
-                        var $option=$('<option value="'+demands[i].id+'#'+demands[i].first+'">'+demands[i].name+'</option>');
-                        $('#demandSelect').append($option);
+                    $("#demands").html("");
+                    $option=$('<div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div>');
+                    $('#demands').append($option);
+                    demandSelect=demands[0].id;
+                    for(var i=1;i<demands.length;i++){
+                        $option=$('<div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div>');
+                        $('#demands').append($option);
                     }
-                    var isFirst=$("#demandSelect").val().split("#")[1];
+                    var isFirst=$("#demands > .border-pill-active").data("first").split("#")[1];
                     if(isFirst=="yes"){
                         //该简历 第一次交易
                         $(".amount_button").attr("disabled", true);
                     }else{
                         $(".amount_button").attr("disabled", false);
                     }
+                    $(".border-pill").bind("click", pillClick);
+                    calculateSum();
+                    return true;
                 } else {
-                    $('#noInf_Modal').modal();
+                    //$('#noInf_Modal').modal();
+                    alert("请先完善用户信息");
+                    location.reload();
                 }
+                return false;
             }
         });
     }
 
-    $('#demandSelect').change(function () {
-        var isFirst=$(this).val().split("#")[1];
-        if(isFirst=="yes"){
-            //该简历 第一次交易
-            $(".amount_button").attr("disabled", true);
-        }else{
-            $(".amount_button").attr("disabled", false);
-        }
-
-    });
-
-    $('#waySelect').change(function () {
-        var val=$(this).val();
-        if(val=="治疗师上门"){
-            $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
-        }else if(val=="学生上门"){
-            $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
-        }else if(val=="在线授课"){
-            $("#sumSpan").html(parseInt("${teacher.priceO}")*parseInt($("#countSpan").html()));
-        }else{
-            $("#sumSpan").html("0");
-        }
-
-    });
+//    $('#demandSelect').change(function () {
+//
+//
+//    });
 
 
     function yuYue_fucntion(){
@@ -835,9 +1018,9 @@
             data: {
                 'teacher.id': '${teacher.id}',
                 'teacher.name':'${teacher.name}',
-                'demandId':$('#demandSelect').val().split("#")[0],
-                'way':$('#waySelect').val(),
-                'recoverOb':$('#domainSelect').val().split("#")[0],
+                'demandId':$("#demands > .border-pill-active").data("first").split("#")[0],
+                'way':waySelect,
+                'recoverOb':domainSelect,
                 'serverTime':$('#serviceTime').val(),
                 'remark':$('#remark').val(),
                 'totalpay':$('#sumSpan').html(),
@@ -880,6 +1063,10 @@
         else {
             return null;
         }
+    }
+    
+    function showTypewriting() {
+        this.blur();
     }
 
     function selectTime(obj) {
@@ -929,7 +1116,7 @@
                             },
                             success: function (data) {
                                 $("body").children("#calendar_day").remove();
-                                $("body").append($("<div id='calendar_day' class='show-nav-bottom'></div>"));
+                                $("body").append($("<div id='calendar_day' class='hide-nav-bottom'></div>"));
                                 var events_day=[];
                                 var defaultDate;
                                 for(var i=0;i<data.data.start.length;i++){
@@ -939,6 +1126,7 @@
                                         defaultDate=data.data.start[i].split("T")[0];
                                     }
                                 }
+                                var day = $('#calendar_day');
 //                                alert(defaultDate);
 
                                 $('#calendar_day').fullCalendar({
@@ -990,7 +1178,7 @@
                                         $("#mask").hide();
                                         $("body").css("overflow-y","scroll");
                                     });
-                                    $(".fc-scroller").css("height","100%");
+                                    //$(".fc-scroller").css("height", h+'px');
                                 }
 //                                $("#calendar_day").children(".fc-header-toolbar").children(".fc-right").css("float","left");
 //                                var ele = $("#calendar_day").children(".fc-header-toolbar").children(".fc-center");
@@ -1002,7 +1190,8 @@
                         });
                     }
                 });
-                $(".fc-scroller").css("height","100%");
+
+                //$(".fc-scroller").css("height",h+'px');
                 if (!$($("#calendar_month").children("div").get(0)).hasClass("close-time")) {
                     $("#calendar_month").prepend('<div class="close-time">×</div>');
                     $("#calendar_month > .close-time").bind("click",function () {

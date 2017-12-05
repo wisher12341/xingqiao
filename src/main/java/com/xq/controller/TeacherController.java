@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.util.List;
 
@@ -42,7 +43,10 @@ public class TeacherController {
      */
     @RequestMapping(value = "/get_teacher",method = RequestMethod.POST)
     @ResponseBody
-    public Result get_teacher(Teacher teacher, String years, String priceSelect){
+    public Result get_teacher(Teacher teacher, String years, String priceSelect, HttpServletRequest request, HttpServletResponse response){
+        if (request.getSession().getAttribute("USER") == null){
+            TmpLogin.tmpLogin(request,response);
+        }
         List<Teacher> teacherList=teachersService.getTeachers(teacher,years,priceSelect);
         return new Result(true,teacherList);
     }
@@ -52,9 +56,9 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = "/{teacher_id}/detail",method = RequestMethod.GET)
-    public String teacherIntro(@PathVariable("teacher_id") Integer teacher_id, Model model, HttpServletRequest request) {
+    public String teacherIntro(@PathVariable("teacher_id") Integer teacher_id, Model model, HttpServletRequest request, HttpServletResponse response) {
         if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request);
+            TmpLogin.tmpLogin(request,response);
         }
         Teacher teacher=teachersService.getTeacher(teacher_id);
         model.addAttribute("teacher",teacher);
@@ -69,9 +73,11 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = "/toTeacherCommentList",method = RequestMethod.GET)
-    public ModelAndView toOrganCommentList(@Param("teacherId") Integer teacherId) {
+    public ModelAndView toOrganCommentList(@Param("teacherId") Integer teacherId,HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("teacher/teacher_comment_list");
         mv.addObject("teacherId",teacherId);
+        UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
+        mv.addObject("usergoodreport",userGoodReport);
         //mv.addObject("teacherCommentList",teachersService.getTeacherComments(teacherId));
         return mv;
     }
@@ -95,10 +101,12 @@ public class TeacherController {
      * @return
      */
     @RequestMapping(value = "/toTeacherCommentSingle",method = RequestMethod.GET)
-    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid,@Param("tid") Integer tid) {
+    public ModelAndView toOrganCommentSingle(@Param("cid") Integer cid,@Param("tid") Integer tid,HttpServletRequest request) {
         ModelAndView mv = new ModelAndView("teacher/teacher_comment_single");
         mv.addObject("teacherId",tid);
         mv.addObject("comm",teachersService.getTeacherCommentByCid(cid));
+        UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
+        mv.addObject("usergoodreport",userGoodReport);
         return mv;
     }
 
