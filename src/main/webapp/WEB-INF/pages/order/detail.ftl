@@ -109,9 +109,13 @@
                 <div class="div_1">
                     <div>
                         <div class="faline">
-                            <p class="ll"><img src="${path}/${order.order.teacher.user.headimgurl}" width="100" onclick="picAdd(this)"></p>
+                            <p class="ll" align="center"><img src="${order.order.teacher.user.headimgurl?contains("wx.qlogo.cn")?string("${order.order.teacher.user.headimgurl}","/${order.order.teacher.user.headimgurl}")}" width="200" onclick="picAdd(this)" style="margin: 0 auto;border-radius: 100px"></p>
                             <p class="ll">姓名：${(order.order.teacher.name)!}</p>
-                            <p class="ll">身份证：${(order.order.teacher.pid)!}</p>
+                            <p class="ll">星级：
+                                <#list 1..order.order.teacher.star as i>
+                                    <span class="glyphicon glyphicon-star" style="font-size: 38px;color: #20b49a"></span>
+                                </#list>
+                            </p>
                             <p class="ll">地址：${(order.order.teacher.detailAddress)!}</p>
                             <p class="llend">所属机构：${(order.order.teacher.unit)!}</p>
                         </div>
@@ -219,16 +223,16 @@
 
     <div class="foot" align="center">
         <#if order.order.statusP==1>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 90% !important;">取消预约</button>
+            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 100% !important;">取消预约</button>
         <#elseif order.order.statusP==2>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 45% !important;">取消预约</button>
-            <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 45% !important;">付款</button>
+            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 49.5% !important;">取消预约</button>
+            <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 49.5% !important;">付款</button>
         <#elseif order.order.statusP==3>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 90% !important;">终止订单</button>
+            <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
         <#elseif order.order.cid!=0 && order.order.statusP==15>
-            <button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid'" style="width: 90% !important;">查看评价</button>
+            <button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>
         <#elseif order.order.cid==0 && order.order.statusP==15>
-            <button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 90% !important;">评价</button>
+            <button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>
         </#if>
     </div>
 

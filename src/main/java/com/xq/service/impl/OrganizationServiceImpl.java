@@ -52,7 +52,7 @@ public class OrganizationServiceImpl implements OrganizationService{
                 int index = 0;
                 if (!pic.isEmpty()) {
                     try {
-                        path = FileUpload.uploadFile(pic, request);
+                        path = FileUpload.uploadFile(pic, request,FileUpload.COMMENT_ORGANIZATION_ROOT_PATH);
                         index = path.indexOf("img");
                     } catch (IOException e) {
                         e.printStackTrace();

@@ -95,3 +95,22 @@ p{
     margin-top:20px;
     margin-right: 30px;
 }
+
+.modal_p{
+    font-size: 40px;
+    color: grey;
+}
+.modal-footer .btn{
+    font-size: 40px;
+    width: 48%;
+}
+.modal-footer{
+    text-align: center!important;
+}
+.modal-title{
+    font-size: 45px;
+    color: orange;
+}
+.modal-dialog{
+    width: 90%!important;
+}

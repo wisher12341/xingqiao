@@ -7,7 +7,6 @@ import com.xq.service.UserService;
 import com.xq.util.Const;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -100,5 +99,24 @@ public class UserServiceImpl implements UserService {
         cookie.setPath("/");
         response.addCookie(cookie);
         return user;
+    }
+
+    @Override
+    public User bindAccount(User user) {
+        userDao.bindAccount(user);
+        User user_re=userDao.getUserByOpenid(user.getOpenid());
+        return user_re;
+    }
+
+    @Override
+    public void changeAccount(String openid, HttpServletResponse response, int status) {
+        String key=status==0?Const.OPENID_PARENT:Const.OPENID_TEACHER;
+        // 删除cookie
+        Cookie cookie = new Cookie(key,"no");
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        // 向客户端写入
+        response.addCookie(cookie);
+        userDao.clearOpenid(openid,status);
     }
 }

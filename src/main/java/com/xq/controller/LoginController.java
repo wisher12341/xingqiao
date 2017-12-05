@@ -89,50 +89,42 @@ public class LoginController {
     }
 
     /**
-     * 治疗师用户切换账号
+     * 用户切换账号
+     * 家长用户：如果家长没有绑定手机账号的话 跳转至绑定手机账号的页面
      * @param request
      * @param response
      * @return
      */
-    @RequestMapping(value = "/teacher/changeAccount",method = RequestMethod.GET)
-    public ModelAndView change_teacher(HttpServletRequest request, HttpServletResponse response, @PathVariable String type){
-//        String openid= CookieUtil.checkCookie(request,Const.OPENID_TEACHER);
-//        model.addAttribute("openid",openid);
-//        // 保存用openid到cookie
-//        Cookie cookie = new Cookie(Const.OPENID,"no");
-//        // 设置过期时间，以秒为单位  设为100个星期
-//        cookie.setMaxAge(0);
-////        cookie.setDomain("www.lj-service.com");
-//        // cookie有效路径是网站根目录
-//        cookie.setPath("/");
-//        // 向客户端写入
-//        response.addCookie(cookie);
-//        shopUserService.clearOpenidByUid(uid);
-        ModelAndView mv=new ModelAndView();
+    @RequestMapping(value = "/{status}/changeAccount",method = RequestMethod.GET)
+    public ModelAndView change_teacher(HttpServletRequest request, HttpServletResponse response,@PathVariable Integer status){
+        String openid= CookieUtil.checkCookie(request,status==1?Const.OPENID_TEACHER:Const.OPENID_PARENT);
+        userService.changeAccount(openid,response,status);
+        ModelAndView mv=new ModelAndView(status==1?"login_teacher":"login_parent");
+        mv.addObject("openid",openid);
         return mv;
     }
 
     /**
-     * 家长用户切换账号  如果家长没有绑定手机账号的话 跳转至绑定手机账号的页面
+     * 家长用户绑定账号页面
      * @param request
-     * @param response
      * @return
      */
-    @RequestMapping(value = "/parent/changeAccount",method = RequestMethod.GET)
-    public ModelAndView change_parent(HttpServletRequest request, HttpServletResponse response, @PathVariable String type){
-//        String openid= CookieUtil.checkCookie(request,Const.OPENID_TEACHER);
-//        model.addAttribute("openid",openid);
-//        // 保存用openid到cookie
-//        Cookie cookie = new Cookie(Const.OPENID,"no");
-//        // 设置过期时间，以秒为单位  设为100个星期
-//        cookie.setMaxAge(0);
-////        cookie.setDomain("www.lj-service.com");
-//        // cookie有效路径是网站根目录
-//        cookie.setPath("/");
-//        // 向客户端写入
-//        response.addCookie(cookie);
-//        shopUserService.clearOpenidByUid(uid);
-        ModelAndView mv=new ModelAndView();
+    @RequestMapping(value = "/parent/bindAccount",method = RequestMethod.GET)
+    public ModelAndView bind(HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request,Const.OPENID_PARENT);
+        ModelAndView mv=new ModelAndView("parent_bind");
+        mv.addObject("openid",openid);
+        return mv;
+    }
+
+    /**
+     * 家长用户绑定账号
+     * @return
+     */
+    @RequestMapping(value = "/parent/bindAccount",method = RequestMethod.POST)
+    public ModelAndView bind_post(User user){
+        User user_re=userService.bindAccount(user);
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+user_re.getId()+"myAccount");
         return mv;
     }
 

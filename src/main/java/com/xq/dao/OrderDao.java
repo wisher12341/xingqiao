@@ -41,4 +41,6 @@ public interface OrderDao {
     List<Order> getServerTime(Integer id);
 
     List<Order> getTodayServiceTime(@Param("time") String dateNowStr,@Param("tid") Integer id);
+
+    void addComment(@Param("oid") String oid,@Param("cid") Integer id);
 }

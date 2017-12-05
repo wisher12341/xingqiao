@@ -1,13 +1,11 @@
 package com.xq.controller;
+import com.xq.dto.Result;
 import com.xq.model.Comment;
 import com.xq.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,26 +35,47 @@ public class CommentController {
 
     /**
      * 评论
-     * @param comment
      * @return
      */
-    @RequestMapping(value = "",method = RequestMethod.POST)
-    public ModelAndView comment_post(Comment comment, @RequestParam("pics")MultipartFile[] pics, HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("redirect:order/order");
-        commentService.addComment(comment,request,pics);
+    @RequestMapping(value = "/{oid}",method = RequestMethod.POST)
+    public ModelAndView comment_post(Comment comment,@PathVariable String oid){
+        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+        commentService.addComment(comment,oid);
         return mv;
+    }
+
+    /**
+     * 治疗师回应评论
+     * @return
+     */
+    @RequestMapping(value = "/{oid}/teacherReply",method = RequestMethod.POST)
+    public ModelAndView comment_reply(Comment comment,@PathVariable String oid){
+        ModelAndView mv=new ModelAndView("redirect:/wx/comment/"+oid+"/getCommentByOid/teacher");
+        commentService.addReply(comment,oid);
+        return mv;
+    }
+
+    /**
+     *评论添加时先上传照片
+     */
+    @ResponseBody
+    @RequestMapping(value = "/img",method = RequestMethod.POST)
+    public Result comment_img(HttpServletRequest request){
+        return new Result(true,commentService.addCommentImg(request));
     }
 
     /**
      * 获取某一订单的 评论
      * @param oid
+     * @param type 用于标记 身份 家长 治疗师
      * @return
      */
-    @RequestMapping(value = "/{oid}/getCommentByOid",method = RequestMethod.GET)
-    public ModelAndView getCommentByOid(@PathVariable String oid){
+    @RequestMapping(value = "/{oid}/getCommentByOid/{type}",method = RequestMethod.GET)
+    public ModelAndView getCommentByOid(@PathVariable String oid,@PathVariable String type){
         Comment comment=commentService.getCommentByOid(oid);
-        ModelAndView mv=new ModelAndView("order/comment");
+        ModelAndView mv=new ModelAndView("order/comment_read");
         mv.addObject("comment",comment);
+        mv.addObject("type",type);//用于标志从家长身份
         return mv;
     }
 }

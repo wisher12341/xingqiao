@@ -69,4 +69,12 @@
     <insert id="register" useGeneratedKeys="true" keyProperty="id">
         INSERT into sysuser(username,password,status,user_status,time,openid) VALUES (#{username},#{password},#{status},#{userStatus},#{time},#{openid})
     </insert>
+
+    <update id="clearOpenid">
+        UPDATE sysuser set openid='' WHERE openid=#{openid} AND status=#{status}
+    </update>
+
+    <update id="bindAccount" parameterType="com.xq.model.User">
+        UPDATE sysuser set username=#{username},password=#{password} WHERE openid=#{openid} AND status='0'
+    </update>
 </mapper>

@@ -25,4 +25,8 @@ public interface UserDao {
     User getUserByOpenidStatus(@Param("openid") String openid,@Param("status") String status);
 
     void register(User user);
+
+    void clearOpenid(@Param("openid") String openid,@Param("status") int status);
+
+    void bindAccount(User user);
 }

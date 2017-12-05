@@ -54,8 +54,8 @@
 
 
     <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.xq.model.Comment">
-        INSERT INTO comment(detail,level,time,is_open,type)
-        VALUE(#{detail},#{level},#{time},#{isOpen},#{type})
+        INSERT INTO comment(detail,level,time,is_open,type,pic_urls)
+        VALUE(#{detail},#{level},#{time},#{isOpen},#{type},#{picUrls})
     </insert>
 
     <select id="getCommentByOid" resultMap="resultComment" parameterType="java.lang.String">

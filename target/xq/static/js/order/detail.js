@@ -14,6 +14,10 @@ $(".ts_mask").click(function () {
     $('.tishi').html("");
 });
 
+$("#input-22a").rating({
+    showClear: false
+});
+
 function allLogConfirm(orderId) {
     $.ajax({
         type: "POST",

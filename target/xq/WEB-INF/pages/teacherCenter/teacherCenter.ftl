@@ -9,11 +9,11 @@
 <body>
 <div id="main">
     <div class="title">
-        <span class="title_span" onclick="location.href='/wx/login/teacher/changeAccount'">切换账号</span>
+        <span class="title_span" onclick="location.href='/wx/login/1/changeAccount'">切换账号</span>
     </div>
 
     <div class="imgDiv">
-        <img src="/${user.headimgurl}" class="img-circle">
+        <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
         <p>${(teacher.name)!"${(user.username)!}"}</p>
     </div>
     <div>

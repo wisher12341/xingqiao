@@ -65,9 +65,20 @@ public class Teacher {
     private String email;
 
     private String headimgurl;//公众号添加-jcy
+
+    private Integer star;//星级
+
     //家长-我的治疗师
     private User user;
     private List<Demand> demandList;
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
 
     public String getHeadimgurl() {
         return headimgurl;

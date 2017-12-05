@@ -37,19 +37,44 @@
 </div>
 <div id="regAccount" style="display: none" align="center">
     <form action="${path}/wx/login/teacher/reg" method="post" id="regForm">
-        <div class="group">
-            <span class="la">手机号：</span><input type="text" name="username" class="textInput" placeholder="手机号"/>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 la_div">
+                    <span class="la">账号：</span>
+                </div>
+                <div class="col-xs-8">
+                    <input type="text" name="username" class="textInput" placeholder="手机号"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 la_div">
+                    <span class="la">验证码：</span>
+                </div>
+                <div class="col-xs-4">
+                    <input class="textInput code"/>
+                </div>
+                <div class="col-xs-4">
+                    <input type="button" onclick="sendphonecode()" class="btn btn-primary" value="获取验证码" id="sendCode">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 la_div">
+                    <span class="la">密码：</span>
+                </div>
+                <div class="col-xs-8">
+                    <input type="password" name="password" class="textInput" />
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px">
+                <div class="col-xs-4 la_div">
+                    <span class="la">确认密码：</span>
+                </div>
+                <div class="col-xs-8">
+                    <input type="password"  class="textInput pw" />
+                </div>
+            </div>
         </div>
-        <div class="group">
-            <span class="la">验证码：</span><input class="textInput code"/>
-            <input type="button" onclick="sendphonecode()" class="btn btn-primary" value="获取验证码" id="sendCode">
-        </div>
-        <div class="group">
-            <span class="la">密码：</span><input type="password" name="password" class="textInput" />
-        </div>
-        <div class="group">
-            <span class="la">确认密码：</span><input type="password"  class="textInput pw" />
-        </div>
+
         <input type="hidden" name="openid" value="${openid!}">
         <input onclick="reg()" type="button" value="注册"  class="submit">
         <input type="button" value="返回"  class="submit" onclick="$('#regAccount').hide();$('.textInput').val('');$('#select').show();">
@@ -66,11 +91,14 @@
 <script type="text/javascript">
 
     var number;//用于存储验证码
+    var second = 60,
+            timePromise = undefined;
 
         function sendphonecode() {
-
-            var second = 60,
-                    timePromise = undefined;
+            if($('input[name="username"]').val()==''){
+                alert("手机号不能为空");
+                return;
+            }
             $('#sendCode').attr("class","btn btn-primary disabled");
 
             $.ajax({
@@ -89,24 +117,24 @@
 
             });
 
+            timePromise=setInterval("daojishi()",1000,100);
+        }
 
-            timePromise = $interval(function(){
-                if(second<=0){
-                    $interval.cancel(timePromise);
-                    timePromise = undefined;
 
-                    second = 60;
-                    $('#sendCode').val("重发验证码");
-                    $('#sendCode').attr("class","btn btn-primary");
-                    $scope.paraevent = true;
-                }else{
-                    $('#sendCode').val(second + "秒后可重发");
-                    second--;
+    function daojishi() {
+        if(second<=0){
+            clearInterval(timePromise);
+            timePromise = undefined;
+            second = 60;
+            $('#sendCode').val("重发验证码");
+            $('#sendCode').attr("class","btn btn-primary");
 
-                }
-            },1000,100);
-        };
+        }else{
+            $('#sendCode').val(second + "秒后可重发");
+            second--;
 
+        }
+    }
 
     function reg() {
         var flag=0;

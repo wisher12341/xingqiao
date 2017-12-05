@@ -47,7 +47,7 @@
         <association property="teacher" javaType="com.xq.model.Teacher">
             <id property="id" column="tid"/>
             <result property="name" column="tName"/>
-            <result property="pid" column="tPid"/>
+            <result property="star" column="tStar"/>
             <result property="detailAddress" column="detailAddress"/>
             <result property="unit" column="unit"/>
             <association property="user" javaType="com.xq.model.User">
@@ -94,7 +94,7 @@
         SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.trace,o.is_first,o.status_p,o.cid,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
         pre.id preid,pre.name prename,pre.all_amount,pre.amount,pre.classes,pre.s_time,pre.e_time,
-        t.id tid,t.name tName,t.pid tPid,t.detailAddress,t.unit,u.headimgurl
+        t.id tid,t.name tName,t.star tStar,t.detailAddress,t.unit,u.headimgurl
         FROM orders o,parent p,sysuser u,demand d,preferentials pre,teacher t
         WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential AND t.id=o.teacher_id AND t.user_id=u.id
     </select>
@@ -142,4 +142,8 @@
     <select id="getTodayServiceTime" resultType="com.xq.model.Order">
         SELECT id,server_time FROM orders WHERE teacher_id=#{tid} AND server_time like concat('%',#{time},'%') AND status_t=3
     </select>
+
+    <update id="addComment">
+        UPDATE orders SET cid=#{cid} WHERE id=#{oid}
+    </update>
 </mapper>

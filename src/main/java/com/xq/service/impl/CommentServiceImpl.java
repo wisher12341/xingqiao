@@ -7,18 +7,18 @@ import com.xq.dao.UserDao;
 import com.xq.model.Comment;
 import com.xq.model.Message;
 import com.xq.model.Order;
-import com.xq.model.User;
 import com.xq.service.CommentService;
-import com.xq.util.Const;
-import com.xq.util.CookieUtil;
+import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.TimeZone;
 
 /**
@@ -38,40 +38,57 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     MessageDao messageDao;
 
+    @Override
     @Transactional
-    public void addComment(Comment comment, HttpServletRequest request, MultipartFile[] pics) {
-
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        String openid="123";
-        User user=userDao.getUserByOpenid(openid);
-
-        comment.setUser(user);
-        String picsUrl="";
-//        if(pics!=null && pics.length>0) {
-//            for (MultipartFile pic : pics) {
-//                String path = "";
-//                int index = 0;
-//                if (!pic.isEmpty()) {
-//                    try {
-//                        path = FileUpload.uploadFile(pic, request, "business");
-//                        index = path.indexOf("img");
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    picsUrl += path.substring(index, path.length()) + "#";
-//                }
-//            }
-//            picsUrl=picsUrl.substring(0,picsUrl.length()-1);
-//            comment.setPicsUrl(picsUrl);
-//        }
+    public void addComment(Comment comment, String oid) {
         Date d = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String dateNowStr = sdf.format(d);
         comment.setTime(dateNowStr);
-        commentDao.addComment(comment);
-        orderDao.addCommentId(comment);
+        comment.setType(1);
+
+        commentDao.add(comment);
+        orderDao.addComment(oid,comment.getId());
+
+
+        Order order=orderDao.getOrderPayByOid(oid);
+        Message message=new Message();
+        message.setUserId(order.getUidT());
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），家长（"+order.getPname()+"）已评论。"+
+                "</p>");
+
+        messageDao.addMessage(message);
     }
+
+    @Override
+    public String addCommentImg(HttpServletRequest request) {
+        String picsUrl="";
+        // 从请求中获取到文件信息需要将请求转换为MultipartHttpServletRequest类型
+        MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
+        Iterator<String> fileNames = MulRequest.getFileNames();
+        while(fileNames.hasNext()) { // 遍历请求中的信息
+            String fileName = fileNames.next(); //
+            //图片
+            try {
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.COMMENT_TEACHER_ROOT_PATH);
+                int index = path.indexOf("img");
+                picsUrl += path.substring(index, path.length()) + "#";
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        picsUrl=picsUrl.substring(0,picsUrl.length()-1);
+        return picsUrl;
+    }
+
+
 
 
     public Comment getCommentByOid(String oid) {
@@ -90,6 +107,36 @@ public class CommentServiceImpl implements CommentService {
         comment.setType(2);
         comment.setDetail(reply);
         comment.setPid(pid);
+        commentDao.addReply(comment);
+
+
+        Order order=orderDao.getOrderPayByOid(oid);
+        Message message=new Message();
+        message.setUserId(order.getUidP());
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+oid+"），治疗师（"+order.getPname()+"）已回复。"+
+                "</p>");
+
+        messageDao.addMessage(message);
+    }
+
+
+    @Override
+    @Transactional
+    public void addReply(Comment comment, String oid) {
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+
+        comment.setTime(dateNowStr);
+        comment.setType(2);
+
         commentDao.addReply(comment);
 
 

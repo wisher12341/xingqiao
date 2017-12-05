@@ -1,7 +1,6 @@
 package com.xq.service;
 
 import com.xq.model.User;
-import com.xq.model.WxUserInfo;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,4 +19,8 @@ public interface UserService {
     User getUserByOpenidStatus(String openid, String s);
 
     User regTeacher(User user, HttpServletResponse response);
+
+    void changeAccount(String openid, HttpServletResponse response, int status);
+
+    User bindAccount(User user);
 }

@@ -7,12 +7,18 @@ import com.xq.model.Comment;
 import com.xq.service.CommentService;
 import com.xq.service.OrderTeacherService;
 import com.xq.service.RecoveryLogService;
+import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 
 /**
  * 治疗师中心 我的订单
@@ -54,12 +60,36 @@ public class TeacherCenterOrderController {
     }
 
     /**
-     * 更新康复日志
+     * 更新康复日志页面
      */
     @RequestMapping(value = "/{oid}/updateLog",method = RequestMethod.GET)
     public ModelAndView updatelog(@PathVariable String oid){
-        ModelAndView mv=new ModelAndView();
+        ModelAndView mv=new ModelAndView("teacherCenter/order/updateLog");
         mv.addObject("oid",oid);
+        return mv;
+    }
+
+    /**
+     * 更新康复日志
+     */
+    @RequestMapping(value = "/updateLog",method = RequestMethod.POST)
+    public ModelAndView updatelog_post(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        // 从请求中获取到文件信息需要将请求转换为MultipartHttpServletRequest类型
+        MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
+//        request.getParameter("mobile");// 依然可以从请求中获取到除图片之外的参数
+        Iterator<String> fileNames = MulRequest.getFileNames();
+        while(fileNames.hasNext()) { // 遍历请求中的图片信息
+            String fileName = fileNames.next(); // 图片对应的参数名
+//            FileUpload.uploadFile(MulRequest.getFile(fileName),request);
+
+//            if (file != null) {
+//                log.debug("file.getSize():" + file.getSize()); // 图片大小
+//                file.getBytes();// 可以获取到图片的字节数组
+//                images.put(fileName,file.getBytes());// 获取到图片以字节数组形式保存在服务器内存中
+//            }
+        }
+        ModelAndView mv=new ModelAndView("teacherCenter/order/updateLog");
+//        mv.addObject("oid",oid);
         return mv;
     }
     /**
@@ -169,24 +199,25 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{oid}/comment",method = RequestMethod.GET)
     public ModelAndView comment(@PathVariable String oid){
         Comment comment=commentService.getCommentByOid(oid);
-        ModelAndView mv=new ModelAndView("teacherCenter/order/comment");
+        ModelAndView mv=new ModelAndView("order/comment_read");
         mv.addObject("oid",oid);
         mv.addObject("comment",comment);
+        mv.addObject("type","teacher");
         return mv;
     }
 
-    /**
-     * 回应提交
-     * @param reply
-     * @param oid
-     * @param pid
-     * @return
-     */
-    @RequestMapping(value = "/order/comment/addReply",method = RequestMethod.POST)
-    public ModelAndView reply(@RequestParam String reply,@RequestParam String oid,@RequestParam Integer pid){
-        commentService.addReply(reply,oid,pid);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
-        return mv;
-    }
+//    /**
+//     * 回应提交
+//     * @param reply
+//     * @param oid
+//     * @param pid
+//     * @return
+//     */
+//    @RequestMapping(value = "/order/comment/addReply",method = RequestMethod.POST)
+//    public ModelAndView reply(@RequestParam String reply,@RequestParam String oid,@RequestParam Integer pid){
+//        commentService.addReply(reply,oid,pid);
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+//        return mv;
+//    }
 
 }

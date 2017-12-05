@@ -180,7 +180,7 @@ button {
     background-color: #fff;
     width:100%;
     line-height: 40px;
-    padding: 20px 15px;
+    padding: 20px 50px;
     font-size: 40px;
     color: #9d9d9d;
 
@@ -189,12 +189,12 @@ button {
     background-color: #fff;
     width:100%;
     line-height: 40px;
-    padding: 15px 15px;
+    padding: 15px 50px;
     font-size: 40px;
     color: #9d9d9d;
 }
 .ptitle{
-    padding-left: 10px;
+    padding-left: 50px;
     font-size: 45px;
     padding-top: 30px;
     border-bottom:1px solid #e0e0e0 ;
@@ -295,7 +295,9 @@ body{
 }
 .recoveryHis-table thead tr th{
     font-size: 40px;
-    color: grey;
+    color: #9d9d9d;
+    font-weight: 100!important;
+    text-align: center;
 }
 
 .recoveryHis-table tbody tr td{
@@ -303,4 +305,5 @@ body{
     padding-bottom: 40px;
     padding-top: 40px;
     color: #9d9d9d;
+    text-align: center;
 }

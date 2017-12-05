@@ -223,17 +223,17 @@
 
     <div class="foot" align="center">
         <#if order.order.statusT==1>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/affirm'" style="width: 45% !important;">接受</button>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 45% !important;">拒绝</button>
+            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/affirm'" style="width: 49.5% !important;">接受</button>
+            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 49.5% !important;">拒绝</button>
         <#elseif order.order.statusT==3>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 45% !important;">订单终止</button>
+            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 49.5% !important;">订单终止</button>
             <#if count?? && count==order.order.amount>
-                <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/finish'" style="width: 45% !important;">订单完成</button>
+                <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/finish'" style="width: 49.5% !important;">订单完成</button>
             <#else>
-                <button style="width: 45%;opacity: 0.5 !important;">订单完成</button>
+                <button style="width: 49.5%;opacity: 0.5 !important;">订单完成</button>
             </#if>
         <#elseif order.order.cid!=0 && order.order.statusT==15>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/comment'" style="width: 90% !important;">查看评价</button>
+            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/comment'" style="width: 100% !important;">查看评价</button>
         </#if>
     </div>
 

@@ -6,14 +6,18 @@ body{
 }
 .la{
     font-size: 18px;
+    text-align: left;
+    position: relative;
+    left: 20px;
 }
 .textInput{
     font-size: 18px;
     border: 1px solid grey;
     border-radius: 5px;
+    width: 100%;
 }
 .group{
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .submit{
     font-size: 18px;
@@ -42,4 +46,10 @@ body{
 }
 #logo{
     margin-top: 15%;
+}
+.la_div{
+    text-align: left;
+}
+.row{
+    margin-top:20px;
 }
