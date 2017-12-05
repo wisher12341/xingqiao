@@ -163,8 +163,8 @@ public class ParentCenterController {
      */
     @ResponseBody
     @RequestMapping(value="/isexisted", method = RequestMethod.POST)
-    public Result isexisted(HttpServletRequest request, @RequestParam Integer teacherId){
-        List<Demand> demandList=parentCenterService.isexisted(request,teacherId);
+    public Result isexisted(HttpSession session, @RequestParam Integer teacherId){
+        List<Demand> demandList=parentCenterService.isexisted(session,teacherId);
         if(demandList==null) {
             return new Result(false);
         }else{

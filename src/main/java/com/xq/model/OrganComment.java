@@ -1,8 +1,6 @@
 package com.xq.model;
 
 
-import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
 
 /**
@@ -27,15 +25,6 @@ public class OrganComment {
     private Organization organization;//对应的机构
     private List<OrganComment> organCommentChildList;//如果是主动评论的话  其 跟帖
 
-    private MultipartFile[] pics;
-
-    public MultipartFile[] getPics() {
-        return pics;
-    }
-
-    public void setPics(MultipartFile[] pics) {
-        this.pics = pics;
-    }
 
     public Integer getOid() {
         return oid;

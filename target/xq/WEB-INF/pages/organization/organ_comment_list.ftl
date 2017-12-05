@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <#assign base=request.contextPath />
-<#assign good=usergoodreport.orgCommentGood>
-<#assign report=usergoodreport.orgCommentReport>
 <html>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>机构评论</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
     <script type="text/javascript" src="${base}/static/bootstrap/js/js/bootstrap.min.js"></script>
@@ -17,12 +15,9 @@
     <link rel="stylesheet" href="${base}/static/css/teacher/mescroll.min.css">
 </head>
 <body class="base">
-<div class="container no-padding mescroll" id="mescroll" style="height: 1100px">
-    <div class="mescroll-bounce">
-        <ul id="dataList" class="data-list">
-        </ul>
-    </div>
-
+<div class="container no-padding mescroll" id="mescroll">
+    <ul id="dataList" class="data-list">
+    </ul>
     <#--<#if organCommentList??>-->
         <#--<#list organCommentList as comm>-->
         <#--&lt;#&ndash;<div class="my-panel container line-height-24">&ndash;&gt;-->
@@ -77,6 +72,7 @@
             <#--</div>-->
         <#--</#list>-->
     <#--</#if>-->
+    </div>
 </div>
 
 <div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
@@ -132,47 +128,24 @@
                     <textarea class="my-textarea" style="height: 10rem;" placeholder="举报理由" name="reason"></textarea>
                 </div>
                 <input type="hidden" name="cid" >
-                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
+                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="report()">
                     举报
                 </button>
             </div>
         </div>
 
     </div>
-</div>>
+</div>
 
 </body>
 </html>
 <script>
-    var good= "${usergoodreport.orgCommentGood}";
-    var report="${usergoodreport.orgCommentReport}";
-    var h = document.documentElement.clientHeight;
-    function doreport() {
-        $.ajax({
-            method: 'POST',
-            url: '${base}/wx/goodreport/add',
-            data: {
-                type: 1,
-                cid: $("input[name='cid']").val(),
-                flag: 0, //0表示  机构评论   1表示治疗师评论
-                reason:$("textarea[name='reason']").val()
-            },
-            success: function (data) {
-                $(o).html("已举报");
-                $(o).attr("onclick","");
-                $("#mobile-menu-report").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-            }
-        });
-    }
-
     $(function(){
         //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
-        $("#mescroll").height(h);
         var mescroll = new MeScroll("mescroll", {
             up: {
-                offset:60,
                 clearEmptyId: "dataList", //1.下拉刷新时会自动先清空此列表,再加入数据; 2.无任何数据时会在此列表自动提示空
-                callback: getListData //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                callback: getListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
             }
         });
 
@@ -225,24 +198,13 @@
 
                 str += '</div></div></div><div class="time">' + comm.time +'</div>' +
                         '<div class="comment-btns inline-wrapper"> ' +
-                        '<div class="btn-pill" onclick="reply('+ comm.id +')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>';
-                var id = "#" + comm.id + "#";
-                if (good.indexOf(id) >= 0){
-                    str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +
-                            '<div class="btn-pill" onclick="changeCount(0,' + comm.id +',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>';
-                } else {
-                    str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +
-                            '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>';
-                }
-                if (report.indexOf(id) >= 0){
-                    str += '<div class="btn-pill">已举报</div>'+
-                            '<div class="btn-pill" style="display: none" onclick="changeCount(1,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>';
-                } else {
-                    str += '<div class="btn-pill" style="display: none">已举报</div>'+
-                            '<div class="btn-pill" onclick="changeCount(1,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>';
-                }
+                        '<div class="btn-pill" onclick="reply(' + comm.id + '})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good + '</span>)</span></div>' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+comm.good+'</span>)</span></div> ' +
+                        '<div class="btn-pill" onclick="changeCount(1,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报('+ comm.report +')</div> ' +
+                        '<div class="btn-pill" style="display: none">已举报</div></div></div></div>';
 
-                str += "</div></div></div>";
+
                 var liDom=document.createElement("li");
                 liDom.innerHTML=str;
                 listDom.appendChild(liDom);
@@ -350,7 +312,6 @@
 
     }
 
-
     var o;//用于存储当前被举报的 评论的 button
     //    g_r： 0赞  1举报      id:评论Id     type： 0增加点赞、举报   1取消点赞
     function changeCount(g_r,id,type,obj){
@@ -402,6 +363,22 @@
         }
     }
 
-
+    function report() {
+        $.ajax({
+            method: 'POST',
+            url: '${base}/wx/goodreport/add',
+            data: {
+                type: 1,
+                cid: $("input[name='cid']").val(),
+                flag: 0, //0表示  机构评论   1表示治疗师评论
+                reason:$("textarea[name='reason']").val()
+            },
+            success: function (data) {
+                $(o).html("已举报");
+                $(o).attr("onclick","");
+                $("#mobile-menu-report").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
+            }
+        });
+    }
 
 </script>

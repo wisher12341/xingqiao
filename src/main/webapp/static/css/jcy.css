@@ -40,11 +40,8 @@ html {font-size: 62.5%;
     background-size: contain;
 }
 .org-name-title{
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: 1.4rem;
     color: #000000;
-    text-align: center;
-    line-height: 5rem;
 }
 
 .my-modal-dialog{
@@ -230,7 +227,7 @@ html {font-size: 62.5%;
     width: 100%;
     height: 5rem;
     line-height: 5rem;
-    background-color: #20b49a;
+    background-color: #00b0ff;
     color: #ffffff;
     font-size: 1.6rem;
 }
@@ -239,7 +236,7 @@ html {font-size: 62.5%;
     cursor: pointer;
     bottom: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 5rem;
     line-height: 5rem;
@@ -254,7 +251,7 @@ html {font-size: 62.5%;
     position: relative;
     height: 5rem;
     line-height: 5rem;
-    background-color: #20b49a;
+    background-color: #00b0ff;
     font-size: 1.6rem;
     color: #ffffff;
     border: none;
@@ -278,15 +275,14 @@ html {font-size: 62.5%;
 }
 
 .level-star{
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2rem;
+    width: 2rem;
 }
 
 .price{
-    font-size: 1.6rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 500;
     color: #ff7800;
-    text-align: center;
 }
 
 .way-border{
@@ -320,31 +316,6 @@ html {font-size: 62.5%;
     line-height: 2.2rem;
 }
 
-.border-pill{
-    border: 0.1rem solid #888888;
-    color: #888888;
-    border-radius: 15px;
-    text-align: center;
-    padding: 0rem 1rem;
-    line-height: 2.4rem;
-    height: 2.6rem;
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-}
-.border-pill-active {
-    border: 0.1rem solid #20b49a;
-    color: #20b49a;
-    border-radius: 15px;
-    text-align: center;
-    padding: 0rem 1rem;
-    /*line-height: 2.4rem;*/
-    /*height: 2.6rem;*/
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-}
-
-
-
 .time{
     color: #8c8c8c;
     font-size: 1.2rem;
@@ -356,16 +327,4 @@ html {font-size: 62.5%;
 }
 .comment-btns{
     justify-content: flex-end;
-}
-
-.btn-usual{
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    color: #ffffff;
-    background-color: #20b49a;
-    font-size: 2.6rem;
-    border: none;
-    border-radius: 30px;
-    padding: 1rem 3rem;
 }

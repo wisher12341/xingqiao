@@ -2,7 +2,7 @@
 <#assign base=request.contextPath />
 <html>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>治疗师评论</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
 
@@ -15,22 +15,11 @@
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/mescroll.min.css">
-    <style>
-        ul,li{
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
 </head>
 <body class="base">
 <div class="container no-padding mescroll" id="mescroll">
-    <div class="mescroll-bounce">
-        <ul id="dataList" class="data-list">
-        </ul>
-    </div>
+    <ul id="dataList" class="data-list">
+    </ul>
 <#--<#if teacherCommentList??>-->
     <#--<#list teacherCommentList as comm>-->
     <#--&lt;#&ndash;<div class="my-panel container line-height-24">&ndash;&gt;-->
@@ -142,7 +131,7 @@
                     <textarea class="my-textarea" style="height: 10rem;" placeholder="举报理由" name="reason"></textarea>
                 </div>
                 <input type="hidden" name="cid" >
-                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
+                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="report()">
                     举报
                 </button>
             </div>
@@ -154,12 +143,9 @@
 </body>
 </html>
 <script>
-    var good= "${usergoodreport.teacherCommentGood}";
-    var report="${usergoodreport.teacherCommentReport}";
-    var h = document.documentElement.clientHeight;
+
     $(function(){
         //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
-        $("#mescroll").height(h);
         var mescroll = new MeScroll("mescroll", {
             up: {
                 clearEmptyId: "dataList", //1.下拉刷新时会自动先清空此列表,再加入数据; 2.无任何数据时会在此列表自动提示空
@@ -216,24 +202,13 @@
 
                 str += '</div></div></div><div class="time">' + comm.time +'</div>' +
                         '<div class="comment-btns inline-wrapper"> ' +
-                        '<div class="btn-pill" onclick="reply(' + comm.id + ')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ';
-                var id = "#" + comm.id + "#";
-                if (good.indexOf(id) >= 0){
-                    str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +
-                            '<div class="btn-pill" onclick="changeCount(0,' + comm.id +',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>';
-                } else {
-                    str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +
-                            '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>';
-                }
-                if (report.indexOf(id) >= 0){
-                    str += '<div class="btn-pill">已举报</div>'+
-                            '<div class="btn-pill" style="display: none" onclick="changeCount(1,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>';
-                } else {
-                    str += '<div class="btn-pill" style="display: none">已举报</div>'+
-                            '<div class="btn-pill" onclick="changeCount(1,'+ comm.id +',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>';
-                }
+                        '<div class="btn-pill" onclick="reply(' + comm.id + '})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good + '</span>)</span></div>' +
+                        '<div class="btn-pill" onclick="changeCount(0,' + comm.id + ',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+comm.good+'</span>)</span></div> ' +
+                        '<div class="btn-pill" onclick="changeCount(1,' + comm.id + ',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报('+ comm.report +')</div> ' +
+                        '<div class="btn-pill" style="display: none">已举报</div></div></div></div>';
 
-                str += "</div></div></div>";
+
                 var liDom=document.createElement("li");
                 liDom.innerHTML=str;
                 listDom.appendChild(liDom);
@@ -391,7 +366,7 @@
         }
     }
 
-    function doreport() {
+    function report() {
         $.ajax({
             method: 'POST',
             url: '${base}/wx/goodreport/add',

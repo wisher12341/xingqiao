@@ -3,12 +3,9 @@ package com.xq.service.impl;
 import com.xq.dao.CommentDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.TeacherDao;
-import com.xq.dao.UserDao;
 import com.xq.dto.CalendarDto;
 import com.xq.model.*;
 import com.xq.service.TeacherService;
-import com.xq.util.Const;
-import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +26,6 @@ public class TeacherServiceImpl implements TeacherService{
     CommentDao commentDao;
     @Autowired
     OrderDao orderDao;
-    @Autowired
-    UserDao userDao;
 
 
     public List<Teacher> getTeachers(Teacher teacher, String years, String priceSelect) {
@@ -109,10 +104,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public void addComment(Comment comment, HttpServletRequest request) {
-        //User user= (User) request.getSession().getAttribute("USER");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        String openid="123";
-        User user=userDao.getParentByOpenid(openid);
+        User user= (User) request.getSession().getAttribute("USER");
         comment.setUid(user.getId());
 
         Date d = new Date();

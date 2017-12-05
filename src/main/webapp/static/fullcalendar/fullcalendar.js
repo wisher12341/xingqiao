@@ -11167,7 +11167,7 @@ var Scroller = FC.Scroller = Class.extend({
 
 	// sets to natural height, unlocks overflow
 	clear: function() {
-		this.setHeight(Math.round(window.screen.availHeight*0.6));
+		this.setHeight('auto');
 		this.applyOverflow();
 	},
 
@@ -11225,8 +11225,7 @@ var Scroller = FC.Scroller = Class.extend({
 
 
 	setHeight: function(height) {
-		//this.scrollEl.height(height);
-        this.scrollEl.height(Math.round(window.screen.availHeight*0.6));
+		this.scrollEl.height(height);
 	},
 
 
@@ -12658,8 +12657,7 @@ Calendar.mixin({
 		if (this.suggestedViewHeight === null) {
 			this.calcSize();
 		}
-		//return this.suggestedViewHeight;
-		return window.screen.availHeight * 0.6;
+		return this.suggestedViewHeight;
 	},
 
 
@@ -12712,7 +12710,8 @@ Calendar.mixin({
 		}
 		else {
 			this.suggestedViewHeight = Math.round(
-                window.screen.availHeight * 0.6
+				this.contentEl.width() /
+				Math.max(this.opt('aspectRatio'), .5)
 			);
 		}
 	},

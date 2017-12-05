@@ -1,6 +1,9 @@
 package com.xq.service.impl;
 
-import com.xq.dao.*;
+import com.xq.dao.MessageDao;
+import com.xq.dao.OrderDao;
+import com.xq.dao.ParentCenterDao;
+import com.xq.dao.RecoveryLogDao;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
 import com.xq.model.Message;
@@ -37,8 +40,6 @@ public class OrderServiceImpl implements OrderService{
     MessageDao messageDao;
     @Autowired
     ParentCenterDao parentCenterDao;
-    @Autowired
-    UserDao userDao;
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
@@ -122,18 +123,15 @@ public class OrderServiceImpl implements OrderService{
                 order.setStatusDesc("治疗师拒绝");
                 break;
         }
-
-        List<RecoveryHis> recoveryHisList = new ArrayList<RecoveryHis>();
-        if (order.getDemand().getRecoveryHis()!=null) {
-            String[] data = order.getDemand().getRecoveryHis().split("@");
-            for (String s : data) {
-                RecoveryHis recoveryHis = new RecoveryHis();
-                recoveryHis.setName(s.split("#")[0]);
-                recoveryHis.setTime(s.split("#")[1]);
-                recoveryHis.setDetail(s.split("#")[3]);
-                recoveryHis.setCount(Integer.parseInt(s.split("#")[2]));
-                recoveryHisList.add(recoveryHis);
-            }
+        List<RecoveryHis> recoveryHisList=new ArrayList<RecoveryHis>();
+        String[] data=order.getDemand().getRecoveryHis().split("@");
+        for(String s:data){
+            RecoveryHis recoveryHis=new RecoveryHis();
+            recoveryHis.setName(s.split("#")[0]);
+            recoveryHis.setTime(s.split("#")[1]);
+            recoveryHis.setDetail(s.split("#")[3]);
+            recoveryHis.setCount(Integer.parseInt(s.split("#")[2]));
+            recoveryHisList.add(recoveryHis);
         }
         order.setRecoveryHisList(recoveryHisList);
 
@@ -308,10 +306,8 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Transactional
-    public String addOrder(Order order,HttpServletRequest request) {
-        //User user = (User) session.getAttribute("USER");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        User user=userDao.getParentByOpenid(openid);
+    public String addOrder(Order order, HttpSession session) {
+        User user = (User) session.getAttribute("USER");
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));

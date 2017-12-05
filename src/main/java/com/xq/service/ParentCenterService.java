@@ -4,7 +4,6 @@ package com.xq.service;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public interface ParentCenterService {
     String getUserNameById(int userId);
 
 
-    List<Demand> isexisted(HttpServletRequest request, Integer teacheId);
+    List<Demand> isexisted(HttpSession session, Integer teacheId);
 
     void modifyFeild(int objId,String newValue,String fieldName,String table);
 

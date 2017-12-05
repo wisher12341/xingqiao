@@ -2,7 +2,7 @@
 <#assign base=request.contextPath />
 <html>
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0"/>
     <title>星桥</title>
     <script type="text/javascript" src="${base}/static/js/common/jquery-1.12.2.js"></script>
 
@@ -16,6 +16,13 @@
 <body class="base">
     <div class="my-panel">
         <div class="org-name-title">${organization.name!"暂无"}</div>
+        <div class="my-panel-content offset-5">
+            ${organization.province!"暂无"} - ${organization.city!"暂无"} - ${organization.district!"暂无"}
+            <br>
+            电话：${organization.phone!"暂无"}
+            <br>
+            地址：${organization.address!"暂无"}
+        </div>
     </div>
 
     <div class="my-panel">
@@ -65,8 +72,6 @@
         </div>
         <div class="gray-line"></div>
         <div class="my-panel-content container line-height-24">
-        <#assign good=usergoodreport.orgCommentGood>
-        <#assign report=usergoodreport.orgCommentReport>
          <#if organization.organCommentList??>
                 <#if organization.organCommentList?size gt 0>
                 <#assign comm=organization.organCommentList[0]>
@@ -74,7 +79,7 @@
                         <div class="col-xs-2 no-padding">
                             <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
                         </div>
-                        <div class="col-xs-10" onclick="location='${base}/wx/organization/toOrganCommentSingle?cid=${comm.id}'">
+                        <div class="col-xs-10">
                             <div>
                                 <div class="user-name">${comm.user.username!""}</div>
                                 <div class="comment-content">
@@ -109,20 +114,10 @@
                             </div>
                             <div class="comment-btns inline-wrapper">
                                 <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                                <#if good?contains("#${comm.id}#")>
-                                    <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                    <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                <#else>
-                                    <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                    <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                </#if>
-                                <#if report?contains("#${comm.id}#")>
-                                    <div class="btn-pill">已举报</div>
-                                    <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                                <#else>
-                                    <div class="btn-pill" style="display: none">已举报</div>
-                                    <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                                </#if>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
+                                <div class="btn-pill" style="display: none">已举报</div>
                             </div>
 
 
@@ -137,7 +132,7 @@
                      <div class="col-xs-2 no-padding">
                          <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
                      </div>
-                     <div class="col-xs-10" onclick="location='${base}/wx/organization/toOrganCommentSingle?cid=${comm.id}'">
+                     <div class="col-xs-10">
                          <div>
                              <div class="user-name">${comm.user.username!""}</div>
                              <div class="comment-content">
@@ -172,20 +167,10 @@
                          </div>
                          <div class="comment-btns inline-wrapper">
                              <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                             <#if good?contains("#${comm.id}#")>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                             <#else>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                             </#if>
-                             <#if report?contains("#${comm.id}#")>
-                                 <div class="btn-pill">已举报</div>
-                                 <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                             <#else>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
                              <div class="btn-pill" style="display: none">已举报</div>
-                                 <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                             </#if>
                          </div>
 
 
@@ -200,7 +185,7 @@
                      <div class="col-xs-2 no-padding">
                          <img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>
                      </div>
-                     <div class="col-xs-10" onclick="location='${base}/wx/organization/toOrganCommentSingle?cid=${comm.id}'">
+                     <div class="col-xs-10">
                          <div>
                              <div class="user-name">${comm.user.username!""}</div>
                              <div class="comment-content">
@@ -235,20 +220,10 @@
                          </div>
                          <div class="comment-btns inline-wrapper">
                              <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                             <#if good?contains("#${comm.id}#")>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                             <#else>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                                 <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                             </#if>
-                             <#if report?contains("#${comm.id}#")>
-                                 <div class="btn-pill">已举报</div>
-                                 <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                             <#else>
-                                 <div class="btn-pill" style="display: none">已举报</div>
-                                 <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                             </#if>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                             <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>
+                             <div class="btn-pill" style="display: none">已举报</div>
                          </div>
 
 
@@ -260,8 +235,6 @@
             </#if>
         </div>
     </div>
-    <div style="height: 6rem; width: 100%">
-
     <div class="bottom-single-btn" onclick="location='${base}/wx/organization/toCommentPage?orgId=${organization.id}'">
         <a href="#" class="mobile-nav-taggle" id="mobile-nav-taggle" style="color: #ffffff">
             我要评论</a>
@@ -332,9 +305,6 @@
 </body>
 </html>
 <script>
-    var good = "${usergoodreport.orgCommentGood}";
-    var report = "${usergoodreport.orgCommentReport}";
-
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");
