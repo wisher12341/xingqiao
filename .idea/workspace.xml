@@ -1,48 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="1209">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_reply.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/teacher/autoresize.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/OrganizationController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/OrganizationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TmpLogin.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TmpLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/OrganizationService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/OrganizationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrganizationServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/OrganizationController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/OrganizationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TmpLogin.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TmpLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/OrganizationService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/OrganizationService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrganizationServiceImpl.class" />
+    <list default="true" id="1ef06b28-a17b-4210-a104-34bf770f1cc6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/OrganizationController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/OrganizationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TmpLogin.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TmpLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/OrganizationService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/OrganizationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrganizationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrganizationServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_list.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_single.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organintro.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organintro.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_list.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_single.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/teacher/slider.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/teacher/slider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_list.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_single.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organintro.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organintro.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_list.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_single.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/jcy.css" afterPath="$PROJECT_DIR$/target/xq/static/css/jcy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/teacher/slider.css" afterPath="$PROJECT_DIR$/target/xq/static/css/teacher/slider.css" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1809,7 +1769,7 @@
       <workItem from="1512473741665" duration="3978000" />
       <workItem from="1512532789317" duration="12502000" />
       <workItem from="1512718268291" duration="4409000" />
-      <workItem from="1512826902981" duration="233000" />
+      <workItem from="1512826902981" duration="395000" />
     </task>
     <task id="LOCAL-00003" summary="治疗师查询页面完成（跳转有问题，拿不到治疗师ID）">
       <created>1510055226968</created>
@@ -1860,11 +1820,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512277758635</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1209">
+      <created>1512827183159</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1512827183159</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="386767000" />
+    <option name="totallyTimeSpent" value="386929000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
@@ -2250,6 +2217,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="266" column="38" lean-forward="false" selection-start-line="266" selection-start-column="38" selection-end-line="266" selection-end-column="38" />
+          <folding>
+            <marker date="1512543276761" expanded="false" signature="9277:9309" ph="..." />
+            <marker date="1512543276761" expanded="false" signature="9511:9527" ph="..." />
+            <marker date="1512543276761" expanded="false" signature="9868:9875" ph="×" />
+            <marker date="1512543276761" expanded="false" signature="10098:10112" ph="..." />
+            <marker date="1512543276761" expanded="false" signature="10466:10478" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
