@@ -165,6 +165,7 @@ public class ParentCenterController {
     @RequestMapping(value="/isexisted", method = RequestMethod.POST)
     public Result isexisted(HttpServletRequest request, @RequestParam Integer teacherId){
         List<Demand> demandList=parentCenterService.isexisted(request,teacherId);
+        System.out.print("成功" + demandList.size());
         if(demandList==null) {
             return new Result(false);
         }else{

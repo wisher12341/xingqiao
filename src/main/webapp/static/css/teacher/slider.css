@@ -107,6 +107,7 @@ a:hover ,a:focus{
 
 .my-slider-container{
     width: 100%;
+    padding: 0rem;
 }
 
 .slider-header{
@@ -114,14 +115,16 @@ a:hover ,a:focus{
     font-family: "微软雅黑";
     text-align: center;
     color: #000000;
-    padding: 1.2rem 0rem;
+    padding: 0.5rem 1.5rem;
+    border-top: 0.1rem solid #dddddd;
+    border-bottom: 0.1rem solid #dddddd;
 }
 
 .slider-body{
     font-size: 1.4rem;
     font-family: "微软雅黑";
     text-align: left;
-    padding: 0rem 1.0rem;
+    padding: 0rem 0rem;
     color: #000000;
 }
 

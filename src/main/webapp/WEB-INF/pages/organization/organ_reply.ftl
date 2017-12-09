@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>评论机构</title>
+    <title>评论回复</title>
 <#include "../order/common/head.ftl" />
     <link type="text/css" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
@@ -81,73 +81,71 @@
     </style>
 </head>
 <body>
-
-<div id="main">
-    <div id="body">
-        <div align="center">
-            <form action="${path}//wx/organization/comment" method="post" id="formComment">
-                <textarea id="target" placeholder="填写评论..." name="detail"></textarea>
-                <input name="picUrls" type="hidden">
+<form action="${path}/wx/organization/reply" method="post" id="formComment">
+    <div id="main">
+        <div id="body">
+            <div align="center">
+                <textarea id="target" placeholder="填写回复..." name="detail"></textarea>
+            <#--<input name="picUrls" type="hidden">-->
                 <input name="isOpen" type="hidden">
-                <input name="level" type="hidden">
-                <input type="hidden" name="pid" value="0">
-                <input type="hidden" name="oid" value="${orgId}">
-                <input type="hidden" name="type" value="1">
-            </form>
-        </div>
-        <div id="pics">
-            <div class="ps" style="display: inline">
+                <input type="hidden" name="pid" value="${pid}">
+                <input type="hidden" name="oid" value="${commOid}">
+                <input type="hidden" name="type" value="0">
+            <#--<input name="level" type="hidden">-->
             </div>
-            <img src="/static/img/add.png" id="addImg" style="border: 2px dashed lightgray;width: 100px" onclick="$('#mulP').trigger('click');">
+        <#--<div id="pics">-->
+        <#--<div class="ps" style="display: inline">-->
+        <#--</div>-->
+        <#--<img src="/static/img/add.png" id="addImg" style="border: 2px dashed lightgray;width: 100px" onclick="$('#mulP').trigger('click');">-->
+        <#--</div>-->
         </div>
-    </div>
 
 
-    <div id="foot">
-        <div id="foot_play">
-            <div style="display: inline">
-                <input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="0" >
+        <div id="foot">
+            <div id="foot_play">
+                <div style="display: inline">
+                    <input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="0" >
+                </div>
+                <div class="nm">
+                    <img src="/static/img/earth_s.png" ><span class="nm_span">公开</span>
+                </div>
             </div>
-            <div class="nm">
-                <img src="/static/img/earth_s.png" ><span class="nm_span">公开</span>
-            </div>
-        </div>
-        <div id="foot_function">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
-                    </div>
-                    <div class="col-xs-3">
-                        <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px">
-                    </div>
-                    <div class="col-xs-3" onclick="selectOpen()">
-                        <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
-                    </div>
-                    <div class="col-xs-3">
-                        <input type="button" onclick="submit()" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="发表">
+            <div id="foot_function">
+                <div class="container">
+                    <div class="row">
+                    <#--<div class="col-xs-3">-->
+                    <#--<img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">-->
+                    <#--</div>-->
+                        <div class="col-xs-3">
+                            <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px">
+                        </div>
+                        <div class="col-xs-3" onclick="selectOpen()">
+                            <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="button" onclick="submit()" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="发表">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<input id="mulP" type="file" class="upfile"  multiple style="display: none">
-<div id="openSelect" style="display: none">
-    <div class="checkbox checkbox-success" onclick="selectOpenEnd('公开')">
-        <input type="radio" name="open" class="radio3" id="radio3" value="1" checked>
-        <label for="radio3" class="openSpan">
-            公开
-        </label>
+<#--<input id="mulP" type="file" class="upfile"  multiple style="display: none">-->
+    <div id="openSelect" style="display: none">
+        <div class="checkbox checkbox-success" onclick="selectOpenEnd('公开')">
+            <input type="radio" name="open" class="radio3" id="radio3" value="1" checked>
+            <label for="radio3" class="openSpan">
+                公开
+            </label>
+        </div>
+        <div class="checkbox checkbox-success" onclick="selectOpenEnd('匿名')">
+            <input type="radio" name="open" class="radio3" id="radio4" value="0" >
+            <label for="radio4" class="openSpan">
+                匿名
+            </label>
+        </div>
     </div>
-    <div class="checkbox checkbox-success" onclick="selectOpenEnd('匿名')">
-        <input type="radio" name="open" class="radio3" id="radio4" value="0" >
-        <label for="radio4" class="openSpan">
-            匿名
-        </label>
-    </div>
-</div>
-
+</form>
 
 </body>
 <script>
@@ -227,26 +225,26 @@
 
     }
 
-    function submit() {
-        //先上传图片
-        $.ajax({
-            type: "POST",
-            url:"/wx/comment/img",
-            data: fd,
-            //下面的一定要加
-            // 告诉jQuery不要去处理发送的数据
-            processData : false,
-            // 告诉jQuery不要去设置Content-Type请求头
-            contentType : false,
-            success: function (data) {
-                $('input[name="picUrls"]').val(data.data);
-                $('input[name="isOpen"]').val($('input[name="open"]').val());
-                $('input[name="level"]').val($('#input-22a').val());
-                $("#formComment").submit();
-            },error:function () {
-
-            }});
-    }
+    //    function submit() {
+    //        //先上传图片
+    //        $.ajax({
+    //            type: "POST",
+    //            url:"/wx/comment/img",
+    //            data: fd,
+    //            //下面的一定要加
+    //            // 告诉jQuery不要去处理发送的数据
+    //            processData : false,
+    //            // 告诉jQuery不要去设置Content-Type请求头
+    //            contentType : false,
+    //            success: function (data) {
+    //                $('input[name="picUrls"]').val(data.data);
+    //                $('input[name="isOpen"]').val($('input[name="open"]').val());
+    //                $('input[name="level"]').val($('#input-22a').val());
+    //                $("#formComment").submit();
+    //            },error:function () {
+    //
+    //            }});
+    //    }
 
 
 

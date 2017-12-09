@@ -79,67 +79,64 @@
     <#--</#if>-->
 </div>
 
-<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container">
-        <div class="slider-body" id="divContent">
-            <form action="${base}/wx/organization/reply" method="post">
-                <div class="row offset-10">
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                    </div>
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                    </div>
-                    <div class="col-xs-4 col-md-4"></div>
-                    <div class="col-xs-2 col-md-2">
-                        <button type="button" class="close mobile-close-taggle">
-                            &times;
-                        </button>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>
-                </div>
-                <input type="hidden" name="pid" >
-                <input type="hidden" name="oid" value="${orgId}">
-                <input type="hidden" name="type" value="0">
-                <input type="submit" class="bottom-single-btn" style="border: none" value="回复">
-            </form>
-        </div>
+<#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
+    <#--<div class="container my-slider-container">-->
+        <#--<div class="slider-body" id="divContent">-->
+            <#--<form action="${base}/wx/organization/reply" method="post">-->
+                <#--<div class="row offset-10">-->
+                    <#--<div class="col-xs-3 col-md-3">-->
+                        <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+                    <#--</div>-->
+                    <#--<div class="col-xs-3 col-md-3">-->
+                        <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+                    <#--</div>-->
+                    <#--<div class="col-xs-4 col-md-4"></div>-->
+                    <#--<div class="col-xs-2 col-md-2">-->
+                        <#--<button type="button" class="close mobile-close-taggle">-->
+                            <#--&times;-->
+                        <#--</button>-->
+                    <#--</div>-->
+                <#--</div>-->
+                <#--<div class="row text-center">-->
+                    <#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
+                <#--</div>-->
+                <#--<input type="hidden" name="pid" >-->
+                <#--<input type="hidden" name="oid" value="${orgId}">-->
+                <#--<input type="hidden" name="type" value="0">-->
+                <#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
+            <#--</form>-->
+        <#--</div>-->
 
-    </div>
-</div>
+    <#--</div>-->
+<#--</div>-->
 <!--举报-->
 <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container">
-        <div class="slider-body" id="divContent">
-            <div>
-                <div class="row offset-10">
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                    </div>
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                    </div>
-                    <div class="col-xs-4 col-md-4"></div>
-                    <div class="col-xs-2 col-md-2">
-                        <button type="button" class="close mobile-close-taggle">
-                            &times;
-                        </button>
-                    </div>
+    <div class="container my-slider-container no-padding">
+        <div class="slider-header">
+            <div class="row">
+                <div class="col-xs-3 col-md-3">
+                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
                 </div>
-                <div class="row text-center">
-                    <textarea class="my-textarea" style="height: 10rem;" placeholder="举报理由" name="reason"></textarea>
+                <div class="col-xs-3 col-md-3">
+                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
                 </div>
-                <input type="hidden" name="cid" >
-                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
-                    举报
-                </button>
+                <div class="col-xs-4 col-md-4"></div>
+                <div class="col-xs-2 col-md-2">
+                    <button type="button" class="close mobile-close-taggle">
+                        &times;
+                    </button>
+                </div>
             </div>
         </div>
-
+        <div class="slider-body" id="divContent">
+            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
+            <input type="hidden" name="cid" >
+            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
+                举报
+            </button>
+        </div>
     </div>
-</div>>
+</div>
 
 </body>
 </html>
@@ -215,9 +212,9 @@
                 }
                 str +='"/></div>' +
                         '<div class="col-xs-10">' +
-                        '<div onclick="location=\'${base}/wx/organization/toOrganCommentSingle?cid=' + comm.id + '\'"> ' +
+                        '<div>' +
                         '<div class="user-name">'+ comm.user.username + '</div>' +
-                        '<div class="comment-content">' + comm.detail +'</div>' +
+                        '<div class="comment-content" onclick="location=\'${base}/wx/organization/toOrganCommentSingle?cid=' + comm.id + '\'">' + comm.detail +'</div>' +
                         '<div class="comment-pics"><div class="img-wrap">';
                 for (var m=0; m<pics.length && m<3; m++){
                     str += '<img src="${base}/'+ pics[m] +'">'
@@ -318,11 +315,11 @@
 
 
     function reply(pid) {
-
-        $("#mobile-menu-reply textarea[name='detail']").val("");
-//        $("#replyModal input[name='oid']").val(oid);
-        $("#mobile-menu-reply input[name='pid']").val(pid);
-        $("#mobile-menu-reply").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
+        window.location.href="${base}/wx/organization/toReply?commOid=${orgId}&pid=" +pid;
+//        $("#mobile-menu-reply textarea[name='detail']").val("");
+////        $("#replyModal input[name='oid']").val(oid);
+//        $("#mobile-menu-reply input[name='pid']").val(pid);
+//        $("#mobile-menu-reply").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
     }
 
 

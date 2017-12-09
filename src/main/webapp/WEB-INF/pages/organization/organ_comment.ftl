@@ -1,208 +1,305 @@
 <#include "../order/common/const.ftl" />
 <html>
 <head>
-    <title>评论</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>评论机构</title>
 <#include "../order/common/head.ftl" />
-    <link type="text/css" rel="stylesheet" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
+    <link type="text/css" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link type="text/css" href="${path}/static/common/box/build.css" rel="stylesheet" />
     <style>
-        .rating-xl{
-            font-size: 8em !important;
-        }
-        .start{
-            margin-top: 50px;
-        }
-        .foot{
-            position: fixed;
+        #foot{
             width: 100%;
-            bottom: 0;
-            background-color: #f5f5f5;
         }
-        .foot input{
-            /*background-color:#94e6c8 ;*/
-            background-color: #20b49a;
-            color: white !important;
-            font-size: 45px;
-            font-weight: bold;
-            padding: 20px;
-            margin: 0 auto;
-            border-radius: 15px;
-            height:6%
+        #foot_function{
+            background-color: whitesmoke;
+            border-top: 1px solid #e5e5e5;
+            height: 8%;
         }
-        .ts_mask{
-            width:100%;
-            height:100%;
-            background:rgba(0,0,0,0.8);
-            position:fixed;
-            z-index:99;
-            top:0;
-            display:none;
+        #target{
+            width: 95%;
+            border-style: none;
+            padding-top: 10px;
+            font-size: 18px;
         }
-        .tishi{
-            width:100%;
-            height:auto;
-            float:left;
-            background-size:100% auto;
-            margin:0 auto;
+        #body{
+            height: 86%;
+            overflow-y: scroll;
         }
-        .teacher_reply{
-            font-size: 40px;
-            font-weight: bold;
+        #foot_play{
+            height: 6%;
         }
-        .teacher_reply_detail{
-            font-size: 40px;
+        .pic{
+            margin-top: 10%;
         }
-    </style>
-    <style type="text/css">
-        *{margin:0;padding:0;}
-        .fileImg{padding:20px;}
-        .fileImg ul li{position:relative;border:1px solid #c5c5c5;width:150px;height:150px;float:left;margin-right:50px;list-style-type:none;background:#f4f5f7;border-radius:5px;}
-        .fileImg ul li input{position:absolute;z-index:3;top:0;left:0;width:100%;height:100%;opacity:0;-webkit-tap-highlight-color:rgba(0,0,0,0);}
-        .fileImg ul li:after{position:absolute;content:' ';display:block;width:2px;height:30px;background:#cdcdcd;left:50%;margin-left:-1px;top:50%;margin-top:-15px;z-index:2;}
-        .fileImg ul li:before{position:absolute;content:' ';display:block;top:50%;margin-top:-1px;z-index:2;width:30px;height:2px;background:#cdcdcd;left:50%;margin-left:-15px;}
-        .fileImg ul li span:nth-child(2){display:none;width:150px;height:150px;position:absolute;left:0;top:0;background:#f4f5f7;cursor:pointer;border-radius:5px;overflow:hidden;z-index:3;}
-        .fileImg ul li span:nth-child(2):after{content:'x';display:block;z-index:4;width:20px;height:20px;line-height:16px;color:#fff;background:red;border-radius:50%;position:absolute;left:50%;top:50%;margin-left:-10px;margin-top:-10px;text-align:center;}
-        .fileImg ul li span:nth-child(2) img{width:100%;position:absolute;left:0;top:50%;}
+        .nm{
+            position: absolute;
+            right: 10px;
+            bottom: 9%;
+            background-color: whitesmoke;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding:0 5px 3px;
+        }
+        .nm_span{
+            color:#1296db ;
+            font-size: 18px;
+            position: relative;
+            top:3px;
+        }
+        .addimg{
+            width: 30%;
+            height: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .picdiv{
+            position: relative;
+            display: inline;
+        }
+        .picrm{
+            position: absolute;
+            z-index: 999;
+            margin-left: -25px;
+            color: white;
+            background-color: gray;
+            margin-top: -46px;
+        }
+        #pics{
+            width: 95%;
+            margin-left: 5%;
+            margin-top: 20px;
+        }
+        .openSpan{
+            font-size: 18px;
+            color: dimkgrey;
+        }
+        #addImg{
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-
-<form action="${path}/wx/organization/comment" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="pid" value="0">
-    <input type="hidden" name="oid" value="${orgId}">
-    <input type="hidden" name="type" value="1">
-
-    <div style="margin-top:20px;vertical-align: middle;font-size: 40px;" align="center">
-        <textarea style="width:95%;height:50%;border: 1px solid black" placeholder="请填写您的评价" id="comment_text" name="detail" ></textarea>
-    </div>
-    <div style="font-size: 50px;margin-top: 20px" align="center">
-        <input type="radio" name="isOpen"  id="open" checked value="1" style="width:50px;height:50px;margin: 13px;">公开&nbsp;&nbsp;&nbsp;
-        <input type="radio" name="isOpen"  id="anonymi" value="0" style="width:50px;height:50px;margin: 13px">匿名
-    </div>
-
-    <div class="fileImg" id="fileImg">
-        <ul class="file_ul">
-            <li>
-                <input type="file" class="upfile" name="pics">
-                <span></span>
-            </li>
-        </ul>
-    </div>
-    <div align="center" class="foot">
-        <input type="submit" style="width:90%;padding: 20px; font-size: 40px;background-color: #20b49a;color: white;border-radius: 10px" value="发表评论">
+<div id="main">
+    <div id="body">
+        <div align="center">
+            <form action="${path}//wx/organization/comment" method="post" id="formComment">
+                <textarea id="target" placeholder="填写评论..." name="detail"></textarea>
+                <input name="picUrls" type="hidden">
+                <input name="isOpen" type="hidden">
+                <input name="level" type="hidden">
+                <input type="hidden" name="pid" value="0">
+                <input type="hidden" name="oid" value="${orgId}">
+                <input type="hidden" name="type" value="1">
+            </form>
+        </div>
+        <div id="pics">
+            <div class="ps" style="display: inline">
+            </div>
+            <img src="/static/img/add.png" id="addImg" style="border: 2px dashed lightgray;width: 100px" onclick="$('#mulP').trigger('click');">
+        </div>
     </div>
 
 
-</form>
-<div class="ts_mask">
-    <div class="tishi" align="center">
-
+    <div id="foot">
+        <div id="foot_play">
+            <div style="display: inline">
+                <input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="0" >
+            </div>
+            <div class="nm">
+                <img src="/static/img/earth_s.png" ><span class="nm_span">公开</span>
+            </div>
+        </div>
+        <div id="foot_function">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
+                    </div>
+                    <div class="col-xs-3">
+                        <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px">
+                    </div>
+                    <div class="col-xs-3" onclick="selectOpen()">
+                        <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
+                    </div>
+                    <div class="col-xs-3">
+                        <input type="button" onclick="submit()" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="发表">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<input id="mulP" type="file" class="upfile"  multiple style="display: none">
+<div id="openSelect" style="display: none">
+    <div class="checkbox checkbox-success" onclick="selectOpenEnd('公开')">
+        <input type="radio" name="open" class="radio3" id="radio3" value="1" checked>
+        <label for="radio3" class="openSpan">
+            公开
+        </label>
+    </div>
+    <div class="checkbox checkbox-success" onclick="selectOpenEnd('匿名')">
+        <input type="radio" name="open" class="radio3" id="radio4" value="0" >
+        <label for="radio4" class="openSpan">
+            匿名
+        </label>
+    </div>
+</div>
+
+
 </body>
 <script>
 
 
-    //    上传图片
-    var obj;
-    var	ALi;
-
-    var isIos;//判断手机是不是苹果手机
 
 
-    //图片放大
-    function picAdd(obj) {
+    var num=1;//图片顺序
+    var fd=new FormData();//存放表单信息
 
-        $(".tishi").append($('<img src="'+$(obj).attr("src")+'" width="90%">'));
-
-        $(".ts_mask").fadeIn(500);
-
-    }
-
-
-    $(function(){
-        if('${comment!"no"}'=='no'){
-            //获取浏览器的userAgent,并转化为小写
-            var ua = navigator.userAgent.toLowerCase();
-            //判断是否是苹果手机，是则是true
-            isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
-            $("#input-21a").rating();
-            comment();
-        }
-
-
-        $(".ts_mask").click(function () {
-            $(".ts_mask").fadeOut(500);
-            $('.tishi').html("");
-        });
-
+    $("#input-22a").rating({
+        showClear: false
     });
 
-
-    //进行评价
-    function comment() {
-
-
-        if(isIos) {
-            $(".file_ul").html('<li><input type="file" class="upfile" name="pics"><span></span> </li>');
-        }else{
-            $(".file_ul").html('<li><input type="file" class="upfile" name="pics" accept="image/*" capture="camera" multiple><span></span> </li>');
-        }
-        obj = document.getElementById('fileImg');
-        ALi = obj.getElementsByTagName('li');
-        addFn();
-//        $("input[name='orgId']").val(oid);
-    }
-    function addFn(){
-        for(var i=0;i<ALi.length;i++){
-            ALi[i].getElementsByTagName('input')[0].index=i;
-            ALi[i].getElementsByTagName('span')[0].index=i;
-            // 文件域改变后执行
-            ALi[i].getElementsByTagName('input')[0].onchange=function(){
-                ALi[this.index].getElementsByTagName('span')[0].style.display='block'; //删除按钮显示
-                var oImg = document.createElement('img'); // 创建img元素
-                ALi[this.index].getElementsByTagName('span')[0].appendChild(oImg);
-                oImg.src=getFileUrl(this);  //地址增加
-//                oImg.src=pathJs+"/static/img/wechat/share.png";
-                setTimeout(function(){  //图片高度居中
-                    oImg.style.marginTop=-oImg.offsetHeight/2+'px';
-                }, 100);
-            };
-            // 删除按钮事件
-            ALi[i].getElementsByTagName('span')[0].onclick=function(){
-                if(isIos) {
-                    //苹果
-                    ALi[this.index].innerHTML = '<input type="file" class="upfile" name="pics"><span></span>';
+    $(function(){
+        $("#mulP").change(function () {
+            for(var i=0;i<this.files.length;i++){
+                fd.append("img"+num,this.files[i]);
+                var $div=$('<div class="picdiv"></div>');
+                var $span=$('<span class="glyphicon glyphicon-remove picrm" onclick="cancelImg(this)"></span>');
+                var $img;
+                if(i==this.files.length-1 && $("#addImg").is(":hidden")){
+                    $img=$('<img class="addimg" id="img"'+num+' onload=$("#addImg").show()>');
                 }else{
-                    //安卓
-                    ALi[this.index].innerHTML = '<input type="file" class="upfile" name="pics" accept="image/*" capture="camera" multiple><span></span>';
+                    $img=$('<img class="addimg" id="img"'+num+'>');
                 }
-                addFn();
-            };
+                $($img).attr("src",getObjectURL(this.files[i]));
+                $div.append($img);
+                $div.append($span);
+                var $target=$('#pics .ps');
+                $target.append($div);
+                num++;
+            }
+            //由于 添加的图片 是每行开头的话  样式会变 所以要判断是不是每行的开头
+            if($('.addimg').size()%3==0){
+                $("#addImg").css("margin-top","0px");
+            }else{
+                $("#addImg").css("margin-top","-10px");
+            }
+        });
+
+//        obj = document.getElementById('fileImg');
+//        ALi = obj.getElementsByTagName('li');
+//        addFn();
+    });
+
+    function cancelImg(obj) {
+        $(obj).parent().remove();
+        var img=$(obj).prev().attr("id");
+        fd.delete(img);
+        if($('.addimg').size()%3==0){
+            $("#addImg").css("margin-top","0px");
+        }else{
+            $("#addImg").css("margin-top","-10px");
         }
+        if($('.addimg').size()==0){
+            $("#addImg").hide();
+        }
+    }
+
+    function selectOpen() {
+        $('.nm').hide();
+        $('#main').slideUp();
+        $('#openSelect').show();
+        if($('.nm_span').html()=='公开'){
+            $("#radio3").prop("checked","true");
+        }else{
+            $("#radio4").prop("checked","true");
+        }
+    }
+    function selectOpenEnd(select) {
+        $('#main').slideDown();
+        $('.nm').show();
+        $('.nm_span').html(select);
+        $('#openSelect').hide();
+
 
     }
 
+    function submit() {
+        //先上传图片
+        $.ajax({
+            type: "POST",
+            url:"/wx/comment/img",
+            data: fd,
+            //下面的一定要加
+            // 告诉jQuery不要去处理发送的数据
+            processData : false,
+            // 告诉jQuery不要去设置Content-Type请求头
+            contentType : false,
+            success: function (data) {
+                $('input[name="picUrls"]').val(data.data);
+                $('input[name="isOpen"]').val($('input[name="open"]').val());
+                $('input[name="level"]').val($('#input-22a').val());
+                $("#formComment").submit();
+            },error:function () {
 
-    // 创建本地地址
-    function getFileUrl(sourceId) {
-        var url;
-        if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
-            url = sourceId.value;
-        } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
-            url = window.URL.createObjectURL(sourceId.files.item(0));
-        } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
-            url = window.URL.createObjectURL(sourceId.files.item(0));
+            }});
+    }
+
+
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
         }
-        if(isIos) {
-            $(".file_ul").append('<li><input type="file" class="upfile" name="pics"><span></span> </li>');
-        }else{
-            $(".file_ul").append('<li><input type="file" class="upfile" name="pics" accept="image/*" capture="camera" multiple><span></span> </li>');
-        }
-        addFn();
         return url;
     }
 
+
+
+
+</script>
+<script type="text/javascript">
+    //实现 textarea随内容高度自动变化  原理 新生成一个textarea替换
+    //*2
+    var addHandler = window.addEventListener?
+            function(elem,event,handler){elem.addEventListener(event,handler);}:
+            function(elem,event,handler){elem.attachEvent("on"+event,handler);};
+
+    var $$ = function(id){return document.getElementById(id);}
+
+
+    function autoTextArea(elemid){
+        //½һtextareaû߶
+        if(!$$("_textareacopy")){
+            var t = document.createElement("textarea");
+            t.id="_textareacopy";
+            t.style.position="absolute";
+            t.style.top="-300px";
+            t.style.width="95%";
+            t.style.fontSize="18px";
+            t.style.paddingTop="10px";
+            document.body.appendChild(t);
+        }
+        function change(){
+            $$("_textareacopy").value= $$(elemid).value;
+            $$(elemid).style.height= $$("_textareacopy").scrollHeight+$$("_textareacopy").style.height+"px";
+        }
+        addHandler($$("target"),"propertychange",change);//for IE
+        addHandler($$("target"),"input",change);// for !IE
+        $$(elemid).style.overflow="hidden";
+        $$(elemid).style.resize="none";
+    }
+
+    addHandler(window,"load",function(){
+        autoTextArea("target");
+    });
 </script>
 </html>

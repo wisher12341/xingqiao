@@ -20,6 +20,6 @@ public class TmpLogin {
         cookie.setPath("/");
         response.addCookie(cookie);
         response.setHeader("Access-Control-Allow-Credentials","true");
-        response.setHeader("Access-Control-Allow-Origin","https://open.weixin.qq.com/");
+        response.setHeader("Access-Control-Allow-Origin","http://localhost:8080/");
     }
 }

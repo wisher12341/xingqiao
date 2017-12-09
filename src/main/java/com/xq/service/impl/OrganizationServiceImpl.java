@@ -5,6 +5,7 @@ import com.xq.dao.OrganizationDao;
 import com.xq.dao.UserDao;
 import com.xq.model.OrganComment;
 import com.xq.model.Organization;
+import com.xq.model.Parent;
 import com.xq.model.User;
 import com.xq.service.OrganizationService;
 import com.xq.util.Const;
@@ -45,12 +46,15 @@ public class OrganizationServiceImpl implements OrganizationService{
     }
 
     @Override
-    public void addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
+    public boolean addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
 //        User user= (User) request.getSession().getAttribute("USER");
 
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
-        User user=userDao.getUserByOpenid(openid);
+        User user=userDao.getParentByOpenid(openid);
+        if (user==null){
+            return false;
+        }
         organComment.setUid(user.getId());
 
 
@@ -84,6 +88,7 @@ public class OrganizationServiceImpl implements OrganizationService{
         organComment.setTime(dateNowStr);
 
         organizationDao.addComment(organComment);
+        return true;
     }
 
     @Override

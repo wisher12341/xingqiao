@@ -15,7 +15,7 @@ public interface OrganizationService {
 
     Organization getOrganization(Integer id);
 
-    void addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics);
+    boolean addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics);
 
     List<String> getCommentPics(Integer cid, Integer index);
 

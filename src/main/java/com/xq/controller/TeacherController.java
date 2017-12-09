@@ -37,6 +37,14 @@ public class TeacherController {
         return "teacher/teachers";
     }
 
+
+    @RequestMapping(value = "/toReply",method = RequestMethod.GET)
+    public ModelAndView toReply(@RequestParam("teacherId") Integer teacherId,@RequestParam("pid") Integer pid) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_reply");
+        mv.addObject("teacherId",teacherId);
+        mv.addObject("pid",pid);
+        return mv;
+    }
     /**
      * 获得治疗师
      * @return
