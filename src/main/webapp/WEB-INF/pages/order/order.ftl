@@ -34,10 +34,10 @@
             </div>
             <div class="tab-pane fade" id="history">
                 <div style="margin-bottom: 50px">
-                    <div class="comment">待评价</div>
+                    <#--<div class="comment">待评价</div>-->
                     <@orderlist param1=orders.orderList_history_noComment />
                 </div>
-                <div class="comment">历史订单</div>
+                <#--<div class="comment">历史订单</div>-->
                 <@orderlist param1=orders.orderList_history />
             </div>
         </div>

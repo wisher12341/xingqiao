@@ -50,7 +50,7 @@ public class CommentController {
      */
     @RequestMapping(value = "/{oid}/teacherReply",method = RequestMethod.POST)
     public ModelAndView comment_reply(Comment comment,@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("redirect:/wx/comment/"+oid+"/getCommentByOid/teacher");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
         commentService.addReply(comment,oid);
         return mv;
     }
@@ -64,18 +64,18 @@ public class CommentController {
         return new Result(true,commentService.addCommentImg(request));
     }
 
-    /**
-     * 获取某一订单的 评论
-     * @param oid
-     * @param type 用于标记 身份 家长 治疗师
-     * @return
-     */
-    @RequestMapping(value = "/{oid}/getCommentByOid/{type}",method = RequestMethod.GET)
-    public ModelAndView getCommentByOid(@PathVariable String oid,@PathVariable String type){
-        Comment comment=commentService.getCommentByOid(oid);
-        ModelAndView mv=new ModelAndView("order/comment_read");
-        mv.addObject("comment",comment);
-        mv.addObject("type",type);//用于标志从家长身份
-        return mv;
-    }
+//    /**
+//     * 获取某一订单的 评论
+//     * @param oid
+//     * @param type 用于标记 身份 家长 治疗师
+//     * @return
+//     */
+//    @RequestMapping(value = "/{oid}/getCommentByOid/{type}",method = RequestMethod.GET)
+//    public ModelAndView getCommentByOid(@PathVariable String oid,@PathVariable String type){
+//        Comment comment=commentService.getCommentByOid(oid);
+//        ModelAndView mv=new ModelAndView("order/comment_read");
+//        mv.addObject("comment",comment);
+//        mv.addObject("type",type);//用于标志从家长身份
+//        return mv;
+//    }
 }

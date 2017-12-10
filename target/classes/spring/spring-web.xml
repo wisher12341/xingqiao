@@ -66,8 +66,6 @@
         <property name="requestContextAttribute" value="request" />
     </bean>
 
-
-
     <!--配置拦截器, 多个拦截器,顺序执行 -->
     <mvc:interceptors>
         <mvc:interceptor>
@@ -80,7 +78,7 @@
             <mvc:mapping path="/wx/log/*" />
             <mvc:mapping path="/wx/order/**" />
             <mvc:mapping path="/wx/parentCenter/**" />
-            <mvc:mapping path="/wx/teacherCenter/**" />
+            <!--<mvc:mapping path="/wx/teacherCenter/**" />-->
             <mvc:mapping path="/wx/order/submit" />
             <!--<mvc:exclude-mapping path="/index"/>-->
             <bean class="com.xq.interceptor.WxInterceptor"></bean>

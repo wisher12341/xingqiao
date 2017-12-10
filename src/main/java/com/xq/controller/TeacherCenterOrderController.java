@@ -4,6 +4,7 @@ import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
 import com.xq.dto.Result;
 import com.xq.model.Comment;
+import com.xq.model.RecoveryLog;
 import com.xq.service.CommentService;
 import com.xq.service.OrderTeacherService;
 import com.xq.service.RecoveryLogService;
@@ -73,23 +74,9 @@ public class TeacherCenterOrderController {
      * 更新康复日志
      */
     @RequestMapping(value = "/updateLog",method = RequestMethod.POST)
-    public ModelAndView updatelog_post(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        // 从请求中获取到文件信息需要将请求转换为MultipartHttpServletRequest类型
-        MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
-//        request.getParameter("mobile");// 依然可以从请求中获取到除图片之外的参数
-        Iterator<String> fileNames = MulRequest.getFileNames();
-        while(fileNames.hasNext()) { // 遍历请求中的图片信息
-            String fileName = fileNames.next(); // 图片对应的参数名
-//            FileUpload.uploadFile(MulRequest.getFile(fileName),request);
-
-//            if (file != null) {
-//                log.debug("file.getSize():" + file.getSize()); // 图片大小
-//                file.getBytes();// 可以获取到图片的字节数组
-//                images.put(fileName,file.getBytes());// 获取到图片以字节数组形式保存在服务器内存中
-//            }
-        }
-        ModelAndView mv=new ModelAndView("teacherCenter/order/updateLog");
-//        mv.addObject("oid",oid);
+    public ModelAndView updatelog_post(RecoveryLog recoveryLog)  {
+        recoveryLogService.addRecovery(recoveryLog);
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+recoveryLog.getOrderId()+"/detail");
         return mv;
     }
     /**
@@ -193,16 +180,16 @@ public class TeacherCenterOrderController {
 
     /**
      * 治疗师回应评论页面
-     * @param oid
+     * @param cid
      * @return
      */
-    @RequestMapping(value = "/order/{oid}/comment",method = RequestMethod.GET)
-    public ModelAndView comment(@PathVariable String oid){
-        Comment comment=commentService.getCommentByOid(oid);
-        ModelAndView mv=new ModelAndView("order/comment_read");
+    @RequestMapping(value = "/order/{oid}/{cid}/comment",method = RequestMethod.GET)
+    public ModelAndView comment(@PathVariable String cid,@PathVariable String oid){
+//        Comment comment=commentService.getCommentByOid(cid);
+        ModelAndView mv=new ModelAndView("teacherCenter/order/comment_reply");
         mv.addObject("oid",oid);
-        mv.addObject("comment",comment);
-        mv.addObject("type","teacher");
+        mv.addObject("cid",cid);
+//        mv.addObject("type","teacher");
         return mv;
     }
 

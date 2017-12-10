@@ -39,39 +39,49 @@
                     <p>康复项目：${(order.recoverOb)!}</p>
                     <p>上门方式：${(order.way)!}</p>
                 </div>
-                <div id="img">
-                    <div class="icon-head">
-                        <img src="${path}/static/img/order/waiting-off.png">
-                        <p>待服务</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/line.png">
-                        <p style="color: #fff;">待服务</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/ontheway-off.png">
-                        <p>已出发</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/line.png">
-                        <p style="color: #fff;">待服务</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/done-off.png">
-                        <p>已完成</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/line.png">
-                        <p style="color: #fff;">待服务</p>
-                    </div>
-                    <div class="icon-head">
-                        <img  src="${path}/static/img/order/comment-off.png">
-                        <p>已评价</p>
-                    </div>
-                </div>
+        <div id="img">
+            <div class="icon-head">
+                <img src="${path}/static/img/trace/yuyue${(order.statusP>=2 && order.statusP!=11 && order.statusP!=16)?string('','_no')}.png">
+                <p class="sss">预约</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/order/line${(order.statusP>=3 && order.statusP!=11 && order.statusP!=16)?string('','_no')}.png">
+                <p style="color: #fff;!important;">待服务</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/trace/fuwu${(order.statusP>=3 && order.statusP!=11 && order.statusP!=16)?string('','_no')}.png">
+                <p class="sss">服务</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/order/line${(order.statusP==15)?string('','_no')}.png">
+                <p style="color: #fff;!important;">待服务</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/trace/wancheng${(order.statusP==15)?string('','_no')}.png" style="width: 92%">
+                <p class="sss">完成</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/order/line${((order.statusP==15) && (order.cid!=0))?string('','_no')}.png">
+                <p style="color: #fff;!important;">待服务</p>
+            </div>
+            <div class="icon-head">
+                <img  src="${path}/static/img/trace/pingjia${((order.statusP==15) && (order.cid!=0))?string('','_no')}.png" style="width: 95%">
+                <p class="sss">评价</p>
+            </div>
+        </div>
                 <div class="row timee">
                     <div class="col-xs-6" style="width: 55% !important;">
-                        状态：<span style="color:orange;">${(order.statusDesc)!}</span>
+                        状态：<span style="color:orange;">
+                    <#if order.statusDesc?? &&(order.statusDesc)=='完成'>
+                        <#if order.cid==0>
+                            待评价
+                        <#else>
+                            完成
+                        </#if>
+                    <#else>
+                        ${(order.statusDesc)!}
+                    </#if>
+                    </span>
                     </div>
                     <div class="col-xs-5 ordertime" style="width: 45% !important;">
                         下单时间：${(order.sTime?split(" ")[0])!}

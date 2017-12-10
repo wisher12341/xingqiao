@@ -20,4 +20,6 @@ public interface RecoveryLogDao {
     void confirmById(@Param("id") Integer id,@Param("time") String dateNowStr);
 
     void remind(Integer lid);
+
+    void add(RecoveryLog recoveryLog);
 }

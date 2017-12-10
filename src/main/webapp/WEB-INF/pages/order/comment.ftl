@@ -4,11 +4,14 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>评论</title>
 <#include "common/head.ftl" />
-    <link href="/static/css/teacherCenter/updateLog.css">
-    <link type="text/css" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
-    <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
+
+    <link type="text/css" href="/static/css/order/star-rating.css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="/static/js/order/star-rating.js"></script>
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link type="text/css" href="${path}/static/common/box/build.css" rel="stylesheet" />
+    <link type="text/css" href="/static/common/box/build.css" rel="stylesheet" />
+
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
+
     <style>
         #foot{
             width: 100%;
@@ -16,14 +19,18 @@
         #foot_function{
             background-color: whitesmoke;
             border-top: 1px solid #e5e5e5;
+            border-bottom: 1px solid #e5e5e5;
             height: 8%;
         }
-        #target{
+        #textDiv{
             width: 95%;
             border-style: none;
             padding-top: 10px;
             font-size: 18px;
         }
+        /*实现div的placeholder*/
+        #textDiv:empty:before{content: attr(placeholder);color:#bbb;}
+        #textDiv:focus{content:none;}
         #body{
             height: 86%;
             overflow-y: scroll;
@@ -74,24 +81,79 @@
         }
         .openSpan{
             font-size: 18px;
-            color: dimkgrey;
+            color: darkgrey;
         }
         #addImg{
             display: none;
         }
+
+        #emojiDiv{
+            width: 100%;
+            background-color:whitesmoke ;
+        }
+        #emoji-list-0,#emoji-list-1{
+            list-style:none ;
+            position: relative;
+            left: -20px;
+        }
+        #emoji-list-0 li,#emoji-list-1 li{
+            float: left;
+            margin: 8px;
+        }
+        #textDiv .emoji{
+            width: 30px;
+            padding: 2px;
+        }
+
+    </style>
+
+    <style type="text/css">
+        .item{-webkit-transition:-webkit-transform .3s ease-out}
+        .touchmove{-webkit-transition:none}
+        .mod_control {
+            position: absolute;
+            z-index: 90;
+            bottom: 20px;
+            left: 55%;
+            margin-left: -30px;
+        }
+        .mod_tag {
+            margin: 0;
+            padding: 0;
+        }
+        .mod_tag li span {
+            display: none;
+        }
+        .mod_tag li{
+            float: left;
+            width: 7px;
+            height: 7px;
+            -webkit-border-radius: 50%;
+            background-color: darkgrey;
+            margin-right: 9px;
+            list-style: none;
+            margin-top: 0;
+            padding: 0;
+        }
+        .mod_tag .current{
+            background-color: #20b49a;
+        }
+
     </style>
 </head>
 <body>
 
     <div id="main">
-        <div id="body">
+        <div id="body" onclick="cancelEmoji()">
             <div align="center">
                 <form action="/wx/comment/${oid}" method="post" id="formComment">
-                    <textarea id="target" placeholder="填写评论..." name="detail"></textarea>
+                    <div id="textDiv" contenteditable="true" style="text-align: left" placeholder="填写评论..."></div>
+                    <textarea style="display: none" name="detail" ></textarea>
                     <input name="picUrls" type="hidden">
                     <input name="isOpen" type="hidden">
                     <input name="level" type="hidden">
                 </form>
+
             </div>
             <div id="pics">
                 <div class="ps" style="display: inline">
@@ -117,7 +179,7 @@
                             <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
                         </div>
                         <div class="col-xs-3">
-                            <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px">
+                            <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
                         </div>
                         <div class="col-xs-3" onclick="selectOpen()">
                             <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
@@ -146,12 +208,111 @@
         </div>
     </div>
 
+    <div id="emojiDiv" class="wrap" style="display: none">
+        <div class="item item-0 play">
+            <div class="content">
+                <div class="m_animate_box">
+                    <div class="inner">
+                        <div class="inn_box">
 
+                            <ul id="emoji-list-0">
+                                <li>&#x1F601;</li>
+                                <li>&#x1F602;</li>
+                                <li>&#x1F603;</li>
+                                <li>&#x1F604;</li>
+                                <li>&#x1F605;</li>
+                                <li>&#x1F606;</li>
+                                <li>&#x1F607;</li>
+                                <li>&#x1F608;</li>
+                                <li>&#x1F609;</li>
+                                <li>&#x1F60A;</li>
+                                <li>&#x1F60B;</li>
+                                <li>&#x1F60C;</li>
+                                <li>&#x1F60D;</li>
+                                <li>&#x1F60E;</li>
+                                <li>&#x1F60F;</li>
+                                <li>&#x1F610;</li>
+                                <li>&#x1F611;</li>
+                                <li>&#x1F612;</li>
+                                <li>&#x1F613;</li>
+                                <li>&#x1F614;</li>
+                                <li>&#x1F615;</li>
+                                <li>&#x1F616;</li>
+                                <li>&#x1F617;</li>
+                                <li>&#x1F618;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="item item-1">
+            <div class="content">
+                <div class="m_animate_box">
+                    <div class="inner">
+                        <div class="inn_box">
+                            <ul id="emoji-list-1">
+                                <li>&#x1F619;</li>
+                                <li>&#x1F61A;</li>
+                                <li>&#x1F61B;</li>
+                                <li>&#x1F61C;</li>
+                                <li>&#x1F61D;</li>
+                                <li>&#x1F61F;</li>
+                                <li>&#x1F620;</li>
+                                <li>&#x1F621;</li>
+                                <li>&#x1F622;</li>
+                                <li>&#x1F623;</li>
+                                <li>&#x1F624;</li>
+                                <li>&#x1F625;</li>
+                                <li>&#x1F626;</li>
+                                <li>&#x1F627;</li>
+                                <li>&#x1F628;</li>
+                                <li>&#x1F629;</li>
+                                <li>&#x1F62A;</li>
+                                <li>&#x1F62B;</li>
+                                <li>&#x1F62C;</li>
+                                <li>&#x1F62D;</li>
+                                <li>&#x1F62E;</li>
+                                <li>&#x1F62F;</li>
+                                <li>&#x1F630;</li>
+                                <li>&#x1F631;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap" style="display: none" id="wraps">
+        <div class="mod_control">
+            <ul class="mod_tag">
+                <li class="current"><span>1</span></li>
+                <li><span>2</span></li>
+            </ul>
+        </div>
+    </div>
 </body>
+<script type="text/javascript" src="/static/common/iSlider.js"></script>
 <script>
 
+    //demo
+    //用法
+    var myslider=new iSlider({
+        wrap:'#emojiDiv',
+        item:'.item',
+        isVertical:false,
+        speed:500,
+        onslide:function (index) {
 
+            document.querySelector('.mod_tag .current').className=''
+            document.querySelectorAll('.mod_tag li')[index].className='current';
+            document.getElementById('logo_contain').className='logo_contain step-' + (index + 1);
+        }
+    });
 
+</script>
+<script>
 
     var num=1;//图片顺序
     var fd=new FormData();//存放表单信息
@@ -160,7 +321,35 @@
         showClear: false
     });
 
+
+    function selectEmoji() {
+        $('#body').css('height','46%');
+        $('.nm').css('bottom','49%');
+        $('#emojiDiv').show();
+        $('#wraps').show();
+    }
+
+    function cancelEmoji() {
+        $('#emojiDiv').hide();
+        $('#wraps').hide();
+        $('#body').css('height','86%');
+        $('.nm').css('bottom','9%');
+    }
+
     $(function(){
+
+        twemoji.parse(document.getElementById('textDiv'), {size: 36});
+        twemoji.parse(document.getElementById('emoji-list-0'), {size: 36});
+        twemoji.parse(document.getElementById('emoji-list-1'), {size: 36});
+        $('#emoji-list-0 li').on('click',function(){
+
+            $("#textDiv").html($("#textDiv").html() +  $(this).html() );
+        });
+        $('#emoji-list-1 li').on('click',function(){
+
+            $("#textDiv").html($("#textDiv").html() +  $(this).html() );
+        });
+
         $("#mulP").change(function () {
             for(var i=0;i<this.files.length;i++){
                 fd.append("img"+num,this.files[i]);
@@ -208,7 +397,11 @@
 
 function selectOpen() {
     $('.nm').hide();
+    $('#emojiDiv').hide();
+    $('#wraps').hide();
     $('#main').slideUp();
+    $('#body').css('height','86%');
+    $('.nm').css('bottom','9%');
     $('#openSelect').show();
     if($('.nm_span').html()=='公开'){
         $("#radio3").prop("checked","true");
@@ -221,8 +414,6 @@ function selectOpen() {
         $('.nm').show();
         $('.nm_span').html(select);
         $('#openSelect').hide();
-
-
     }
 
     function submit() {
@@ -237,6 +428,7 @@ function selectOpen() {
             // 告诉jQuery不要去设置Content-Type请求头
             contentType : false,
             success: function (data) {
+                $('textarea[name="detail"]').val($("#textDiv").html());
                 $('input[name="picUrls"]').val(data.data);
                 $('input[name="isOpen"]').val($('input[name="open"]').val());
                 $('input[name="level"]').val($('#input-22a').val());
@@ -264,40 +456,5 @@ function selectOpen() {
 
 
 </script>
-<script type="text/javascript">
-    //实现 textarea随内容高度自动变化  原理 新生成一个textarea替换
-    //*2
-    var addHandler = window.addEventListener?
-            function(elem,event,handler){elem.addEventListener(event,handler);}:
-            function(elem,event,handler){elem.attachEvent("on"+event,handler);};
 
-    var $$ = function(id){return document.getElementById(id);}
-
-
-    function autoTextArea(elemid){
-        //½һtextareaû߶
-        if(!$$("_textareacopy")){
-            var t = document.createElement("textarea");
-            t.id="_textareacopy";
-            t.style.position="absolute";
-            t.style.top="-300px";
-            t.style.width="95%";
-            t.style.fontSize="18px";
-            t.style.paddingTop="10px";
-            document.body.appendChild(t);
-        }
-        function change(){
-            $$("_textareacopy").value= $$(elemid).value;
-            $$(elemid).style.height= $$("_textareacopy").scrollHeight+$$("_textareacopy").style.height+"px";
-        }
-        addHandler($$("target"),"propertychange",change);//for IE
-        addHandler($$("target"),"input",change);// for !IE
-        $$(elemid).style.overflow="hidden";//һأġ
-        $$(elemid).style.resize="none";//ȥtextareaקŴ/С߶/ȹ
-    }
-
-    addHandler(window,"load",function(){
-        autoTextArea("target");
-    });
-</script>
 </html>

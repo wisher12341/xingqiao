@@ -11,7 +11,9 @@
         SELECT count(1) FROM recovery_log WHERE order_id=#{oid} AND confirm_status=1
     </select>
 
-
+    <select id="add" parameterType="com.xq.model.RecoveryLog">
+        INSERT INTO recovery_log(order_id,time,content) VALUES(#{orderId},#{time},#{content})
+    </select>
 
     <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">
         SELECT r.id,r.order_id,r.time,r.confirm_time,r.confirm_status,r.content,r.remind_status,t.name teacherName,o.recover_ob

@@ -25,15 +25,17 @@
         <div id="search">
             <div class="search_div row">
                 <div class="col-xs-5" align="center" style="width: 48%!important;">
-                    <select name="teacher.id" class="select_teacher" onclick="$('.select_teacher .select_hide').remove();">
-                        <option class="select_hide" selected>选择治疗师</option>
-                    <#if (recoveryLogDto.teacherList)??>
-                        <option value="0">不限</option>
-                        <#list recoveryLogDto.teacherList as teacher>
-                            <option value="${teacher.id}">${teacher.name}</option>
-                        </#list>
-                    </#if>
-                    </select>
+                    <span style="font-size: 40px;color: grey;padding-right: 10px;padding-top: 10px" onclick="selectTeacher()" class="t_name">选择治疗师</span>
+                    <input type="hidden" value="0" name="teacher.id" class="t_val">
+                    <#--<select name="teacher.id" class="select_teacher" onclick="$('.select_teacher .select_hide').remove();">-->
+                        <#--<option class="select_hide" selected>选择治疗师</option>-->
+                    <#--<#if (recoveryLogDto.teacherList)??>-->
+                        <#--<option value="0">不限</option>-->
+                        <#--<#list recoveryLogDto.teacherList as teacher>-->
+                            <#--<option value="${teacher.id}">${teacher.name}</option>-->
+                        <#--</#list>-->
+                    <#--</#if>-->
+                    <#--</select>-->
                     <i class="glyphicon glyphicon-chevron-down" style="font-size: 30px;color: grey;"></i>
                 </div>
                 <input type="hidden" name="teacher.name" />
@@ -167,12 +169,51 @@
         </div>
     </div>
 
+
+
+    <div id="selectTeacher" style="display: none">
+    <#if (recoveryLogDto.teacherList)??>
+        <div class="checkbox checkbox-success" onclick="selectOpenEnd('不限')">
+            <input type="radio" name="open" class="radio3" id="radio3" value="0" >
+            <label for="radio3" class="openSpan">
+                不限
+            </label>
+        </div>
+        <#list recoveryLogDto.teacherList as teacher>
+            <div class="checkbox checkbox-success" onclick="selectOpenEnd('公开')">
+                <input type="radio" name="open" class="radio3" id="radio3" value="${teacher.id}" >
+                <label for="radio3" class="openSpan">
+                ${teacher.name}
+                </label>
+            </div>
+
+        </#list>
+    <#else>
+    <span>您还没有治疗师</span>
+    </#if>
+    </div>
 </div>
 
 
     <input id="calendarMultiday-demo" style="display: none"/>
 
 </body>
+<script>
+    function selectTeacher() {
+        $('#main').slideUp();
+        $('#selectTeacher').show();
+        $('.radio3').each(function () {
+            if($(this).val()==$('.t_val').val()){
+                $(this).prop("checked","true");
+                return;
+            }
+        });
+    }
 
+    function selectOpenEnd(select) {
+        $('#main').slideDown();
+        $('#selectTeacher').hide();
+    }
+</script>
 
 </html>

@@ -20,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by netlab606 on 2017/9/6.
@@ -41,6 +43,20 @@ public class CommentServiceImpl implements CommentService {
     @Override
     @Transactional
     public void addComment(Comment comment, String oid) {
+        String pattern = "<img.*?>";
+        String detai=comment.getDetail();
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(detai);
+        while (m.find()){
+            int begin=m.group().indexOf(".png")-5;
+            int end=m.group().indexOf(".png");
+            String number=m.group().substring(begin,end);
+            detai=detai.replace(m.group(),"&#x"+number+";");
+
+        }
+        comment.setDetail(detai);
+
+
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
@@ -84,7 +100,9 @@ public class CommentServiceImpl implements CommentService {
                 e.printStackTrace();
             }
         }
-        picsUrl=picsUrl.substring(0,picsUrl.length()-1);
+        if (!picsUrl.equals("")) {
+            picsUrl = picsUrl.substring(0, picsUrl.length() - 1);
+        }
         return picsUrl;
     }
 

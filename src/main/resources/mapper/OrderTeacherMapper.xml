@@ -55,6 +55,19 @@
             <result property="allergyHis" column="allergy_his"/>
             <result property="remark" column="dremark"/>
         </association>
+        <association property="comment" javaType="com.xq.model.Comment">
+            <id property="id" column="cid"/>
+            <result property="detail" column="cdetail"/>
+            <result property="time" column="ctime"/>
+            <result property="level" column="clevel" />
+            <result property="isOpen" column="cis_open"/>
+            <result property="picUrls" column="cpic_urls"/>
+            <association property="teacherComment" javaType="com.xq.model.Comment">
+                <id property="id" column="ctid"/>
+                <result property="detail" column="ctdetail"/>
+                <result property="time" column="cttime"/>
+            </association>
+        </association>
         <association property="preferentialE" javaType="com.xq.model.Preferential">
             <id property="id" column="preid"/>
             <result property="name" column="prename"/>
@@ -67,7 +80,7 @@
     </resultMap>
 
     <select id="getAllOrderByUid" resultMap="resultAllOrder">
-        SELECT o.id,o.recover_ob,o.status_t,o.way,o.totalpay,o.s_time,p.id tid,p.realName pname,o.cid,o.realpay,o.is_first,o.amount,o.server_time
+        SELECT o.id,o.recover_ob,o.status_t,o.status_p,o.way,o.totalpay,o.s_time,p.id tid,p.realName pname,o.cid,o.realpay,o.is_first,o.amount,o.server_time
         FROM orders o,parent p,sysuser u,teacher t
         WHERE u.id=#{uid} AND u.id=t.user_id AND t.id=o.teacher_id AND o.parent_id=p.id
         ORDER by s_time DESC
@@ -76,8 +89,8 @@
     <select id="getOrderByOid" resultMap="resultOrder">
         SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,p.id pid,p.realName,p.ground,o.status_t,o.realpay,o.trace,o.pay_way,o.amount,o.is_first,o.cid,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
-        pre.id preid,pre.name prename,pre.all_amount,pre.amount,pre.classes,pre.s_time,pre.e_time
-        FROM orders o,parent p,sysuser u,demand d,preferentials pre
+        c.id cid,c.detail cdetail,c.time ctime,c.level clevel,c.is_open cis_open,c.pic_urls cpic_urls,ct.id ctid,ct.detail ctdetail,ct.time cttime,
+        FROM orders o LEFT JOIN comment c on c.id=o.cid  LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,parent p,sysuser u,demand d,preferentials pre
         WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential
     </select>
 

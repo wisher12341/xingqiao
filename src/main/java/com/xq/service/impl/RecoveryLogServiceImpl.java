@@ -146,4 +146,31 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
         messageDao.addMessage(message);
     }
+
+    @Override
+    @Transactional
+    public void addRecovery(RecoveryLog recoveryLog) {
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        recoveryLog.setTime(dateNowStr);
+        recoveryLog.setConfirmStatus(0);
+        recoveryLogDao.add(recoveryLog);
+
+        orderDao.updateTrace(recoveryLog.getOrderId(),"#"+dateNowStr+"@治疗师填写康复日志");
+        Order order=orderDao.getOrderPayByOid(recoveryLog.getOrderId());
+        Message message=new Message();
+        message.setUserId(order.getUidP());
+        message.setTime(dateNowStr);
+        message.setMessage("<p>\n" +
+                "<span style=\"color:red;\">系统消息：</span>\n" +
+                "</p>\n" +
+                "<p>\n" +
+                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                "    您的订单（"+recoveryLog.getOrderId()+"），治疗师（"+order.getTname()+"）已填写康复日志，请前往确认。<a href='/parentCenter/"+recoveryLog.getOrderId()+"/doing_detail'>查看</a>"+
+                "</p>");
+
+        messageDao.addMessage(message);
+    }
 }

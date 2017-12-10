@@ -5,6 +5,9 @@
     <#include "common/head.ftl" />
     <link href="${path}/static/css/order/detail.css" type="text/css" rel="stylesheet" />
     <script src="${path}/static/js/order/detail.js" type="text/javascript" ></script>
+    <link type="text/css" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 <body>
     <div id="main">
@@ -17,35 +20,35 @@
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="order">
                 <div class="div_0">
-                    <p class="ptitle">订单创建</p>
+                    <p class="ptitle">订单追踪</p>
                     <div id="img" align="center">
                         <div class="icon-head">
-                            <img src="${path}/static/img/order/waiting-off.png">
-                            <p class="sss">待服务</p>
+                            <img src="${path}/static/img/trace/yuyue${(order.order.statusP>=2 && order.order.statusP!=11 && order.order.statusP!=16)?string('','_no')}.png">
+                            <p class="sss">预约</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/line.png">
+                            <img  src="${path}/static/img/order/line${(order.order.statusP>=3 && order.order.statusP!=11 && order.order.statusP!=16)?string('','_no')}.png">
                             <p style="color: #fff;!important;">待服务</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/ontheway-off.png">
-                            <p class="sss">已出发</p>
+                            <img  src="${path}/static/img/trace/fuwu${(order.order.statusP>=3 && order.order.statusP!=11 && order.order.statusP!=16)?string('','_no')}.png">
+                            <p class="sss">服务</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/line.png">
+                            <img  src="${path}/static/img/order/line${(order.order.statusP==15)?string('','_no')}.png">
                             <p style="color: #fff;!important;">待服务</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/done-off.png">
-                            <p class="sss">已完成</p>
+                            <img  src="${path}/static/img/trace/wancheng${(order.order.statusP==15)?string('','_no')}.png" style="width: 92%">
+                            <p class="sss">完成</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/line.png">
+                            <img  src="${path}/static/img/order/line${((order.order.statusP==15) && (order.order.comment)?exists)?string('','_no')}.png">
                             <p style="color: #fff;!important;">待服务</p>
                         </div>
                         <div class="icon-head">
-                            <img  src="${path}/static/img/order/comment-off.png">
-                            <p class="sss">已评价</p>
+                            <img  src="${path}/static/img/trace/pingjia${((order.order.statusP==15) && (order.order.comment)?exists)?string('','_no')}.png" style="width: 95%">
+                            <p class="sss">评价</p>
                         </div>
                     </div>
                 </div>
@@ -92,15 +95,38 @@
                                 <p class="ll">实付：${(order.order.realpay)!}</p>
                             </div>
                         </#if>
-                        <div class="faline">
-                            <p class="ptitle">订单追踪</p>
-                            <#if (order.order.trace)?? && order.order.trace!=''>
-                                <#list order.order.trace?split("#") as t>
-                                    <p class="llend">${t?split("@")[0]}</p>
-                                    <p class="ll">${t?split("@")[1]}</p>
-                                </#list>
+                        <#if (order.order.comment)??>
+                            <div class="faline">
+                                <p class="ptitle">订单评论：</p>
+                                <table style="border-bottom:3px solid #f5f5f5;width: 100%">
+                                    <tr>
+                                        <td >
+                                            <p class="ll">星级：</p>
+                                        </td>
+                                        <td style="position: relative;right: 19%;">
+                                            <input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="lg"  value="${order.order.comment.level}" disabled="disabled">
+                                        </td>
+                                    </tr>
+                                </table>
+                                <#--<p class="ll">星级：<input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="${order.order.comment.level}" disabled="disabled"></p>-->
+                                <p class="ll">展示：${(order.order.comment.isOpen==1)?string('公开','匿名')}</p>
+                                <p class="llend" style="color: #4e794f !important;">评论内容：</p>
+                                <p class="llend" id="comment">${(order.order.comment.detail)!}</p>
+                                <#if order.order.comment.picUrls??>
+                                <p class="llend">
+                                  <#list  order.order.comment.picUrls?split("#") as src>
+                                    <img src="/${src}" width="160px" height="160px" style="margin-right: 10px;margin-bottom: 10px;">
+                                  </#list>
+                                </p>
+                                </#if>
+                                <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.time)!}</p>
+                            <#if (order.order.comment.teacherComment)??>
+                                <p class="llend" style="color: #4e794f !important;">治疗师回复：</p>
+                                <p class="llend">${(order.order.comment.teacherComment.detail)!}</p>
+                                <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.teacherComment.time)!}</p>
                             </#if>
-                        </div>
+                            </div>
+                        </#if>
                     </div>
 
                 </div>
@@ -229,10 +255,14 @@
             <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 49.5% !important;">付款</button>
         <#elseif order.order.statusP==3>
             <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
-        <#elseif order.order.cid!=0 && order.order.statusP==15>
-            <button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>
-        <#elseif order.order.cid==0 && order.order.statusP==15>
-            <button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>
+        <#--<#elseif order.order.cid!=0 && order.order.statusP==15>-->
+            <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>-->
+        <#else >
+            <#if order.order.comment??>
+
+            <#else >
+                <button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>
+            </#if>
         </#if>
     </div>
 
@@ -243,4 +273,12 @@
         </div>
     </div>
 </body>
+<script>
+    $("#input-22a").rating({
+        showClear: false
+    });
+    $(function () {
+        twemoji.parse(document.getElementById('comment'), {size: 36});
+    })
+</script>
 </html>

@@ -2,6 +2,7 @@ package com.xq.service;
 
 
 import com.xq.dto.RecoveryLogDto;
+import com.xq.model.RecoveryLog;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -21,4 +22,6 @@ public interface RecoveryLogService {
     void confirmById(Integer id, String oid);
 
     void remind(Integer lid, String oid);
+
+    void addRecovery(RecoveryLog recoveryLog);
 }

@@ -50,6 +50,8 @@ public class Order {
 
     private String statusDesc;//订单状态描述
 
+    private Comment comment;//评价
+
 //    家长信息表
     private Parent parent;
 
@@ -60,6 +62,14 @@ public class Order {
 
     private Demand demand;
 
+
+    public Comment getComment() {
+        return comment;
+    }
+
+    public void setComment(Comment comment) {
+        this.comment = comment;
+    }
 
     private List<String> timeline;//用于 订单追踪的 时间轴的 刻度
 
