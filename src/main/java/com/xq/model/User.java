@@ -24,6 +24,16 @@ public class User {
     private String pName;
 
 
+    public int getInfoStatus() {
+        return infoStatus;
+    }
+
+    public void setInfoStatus(int infoStatus) {
+        this.infoStatus = infoStatus;
+    }
+
+    private int infoStatus=0;
+
     public User() {
     }
 

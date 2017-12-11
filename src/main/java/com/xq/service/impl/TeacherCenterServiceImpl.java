@@ -3,6 +3,7 @@ package com.xq.service.impl;
 import com.xq.dao.DemandDao;
 import com.xq.dao.MessageDao;
 import com.xq.dao.TeacherCenterDao;
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 import com.xq.service.TeacherCenterService;
@@ -11,7 +12,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 86761 on 2017/11/10.
@@ -62,6 +65,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService{
 
     @Override
     public List<RecoveryHisDto> getRecoveryHisList(String recoveryHis){
+        if(recoveryHis==null) return null;
         List<RecoveryHisDto> recoveryHisDtos=new ArrayList<RecoveryHisDto>();
         String[] strs=recoveryHis.split("@");
         for(int i=0;i<strs.length;i++){
@@ -72,25 +76,82 @@ public class TeacherCenterServiceImpl implements TeacherCenterService{
         return recoveryHisDtos;
     }
 
+    @Override
+    public ModifyPageDto getModifyDto(int objId,String fieldName) {
+
+        if (getTeacherByUserId(objId) == null) teacherCenterDao.addTeacher(objId);
+        Teacher teacher = getTeacherByUserId(objId);
+        User user = getUserById(objId);
+        switch (fieldName) {
+            case "name":
+                return new ModifyPageDto(teacher.getName(), fieldName, "姓名", objId);
+            case "gender":
+                return new ModifyPageDto(user.getGender() == 0 ? "男" : "女", fieldName, "性别",objId);
+            case "phone":
+                return new ModifyPageDto(user.getPhone(), fieldName, "手机", objId);
+            case "email":
+                return new ModifyPageDto(user.getEmail(), fieldName, "邮箱", objId);
+            case "school":
+                return new ModifyPageDto(teacher.getSchool(), fieldName, "毕业院校", objId);
+            case "domain":
+                return new ModifyPageDto(teacher.getDomain(), fieldName, "康复类型", objId);
+            case "object":
+                return new ModifyPageDto(teacher.getObject(), fieldName, "康复对象", objId);
+            case "way":
+                return new ModifyPageDto(teacher.getWay(), fieldName, "上门方式", objId);
+            case "tGround":
+                return new ModifyPageDto(teacher.gettGround(), fieldName, "治疗师上门区域", objId);
+            case "sGround":
+                return new ModifyPageDto(teacher.getsGround(), fieldName, "学生上门区域", objId);
+            case "pid":
+                return new ModifyPageDto(teacher.getPid(), fieldName, "身份证号", objId);
+            default:
+                return null;
+        }
+    }
 
     @Override
     @Transactional
     public void modifyFeild(int userId,String value,String fieldName){
-        if(fieldName.equals("name")) teacherCenterDao.updateName(value,userId);
-        else if(fieldName.equals("gender")){
-            Integer integerValue=Integer.parseInt(value);
-            teacherCenterDao.updateGender(integerValue,userId);
+        switch (fieldName) {
+            case "name":
+                teacherCenterDao.updateName(value, userId);
+                break;
+            case "gender":
+                Integer integerValue = Integer.parseInt(value);
+                teacherCenterDao.updateGender(integerValue, userId);
+                break;
+            case "phone":
+                teacherCenterDao.updatePhone(value, userId);
+                break;
+            case "email":
+                teacherCenterDao.updateEmail(value, userId);
+                break;
+            case "school":
+                teacherCenterDao.updateSchool(value, userId);
+                break;
+            case "domain":
+                teacherCenterDao.updateDomain(value, userId);
+                break;
+            case "object":
+                teacherCenterDao.updateObject(value, userId);
+                break;
+            case "way":
+                teacherCenterDao.updateWay(value, userId);
+                break;
+            case "tGround":
+                teacherCenterDao.updateTGround(value, userId);
+                break;
+            case "sGround":
+                teacherCenterDao.updateSGround(value, userId);
+                break;
+            case "pid":
+                teacherCenterDao.updatePid(value, userId);
+                break;
+            case "successCase":
+                teacherCenterDao.updateSuccessCase(value,userId);
+                break;
         }
-        else if(fieldName.equals("phone")) teacherCenterDao.updatePhone(value,userId);
-        else if(fieldName.equals("email")) teacherCenterDao.updateEmail(value,userId);
-        else if(fieldName.equals("school")) teacherCenterDao.updateSchool(value,userId);
-        else if(fieldName.equals("domain")) teacherCenterDao.updateDomain(value,userId);
-        else if(fieldName.equals("object")) teacherCenterDao.updateObject(value,userId);
-        else if(fieldName.equals("way")) teacherCenterDao.updateWay(value,userId);
-        else if(fieldName.equals("tGround")) teacherCenterDao.updateTGround(value,userId);
-        else if(fieldName.equals("sGround")) teacherCenterDao.updateSGround(value,userId);
-        else if(fieldName.equals("pid")) teacherCenterDao.updatePid(value,userId);
-
-        teacherCenterDao.updateUserStatus(3,userId);
+        teacherCenterDao.updateUserStatus(3, userId);
     }
 }

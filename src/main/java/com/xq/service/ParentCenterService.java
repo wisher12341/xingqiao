@@ -1,6 +1,7 @@
 package com.xq.service;
 
 
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
@@ -30,11 +31,9 @@ public interface ParentCenterService {
 
     List<Demand> isexisted(HttpSession session, Integer teacheId);
 
+    ModifyPageDto getModifyDto(int userId,String fieldName,String table);
+
     void modifyFeild(int objId,String newValue,String fieldName,String table);
-
-    void modifyParentInfo(int userId, String value, String fieldName);
-
-    void modifyDemand(int demandId,String newValue,String fieldName);
 
     List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
 
@@ -44,5 +43,7 @@ public interface ParentCenterService {
 
     void addDemand( int userId,String name,int gender,String birthday,String report,String diseaseHis,
                     String allergyHis,String remark);
+
+    int myInfoStatus(int userId);
 
 }

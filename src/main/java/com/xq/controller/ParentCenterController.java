@@ -8,9 +8,8 @@ import com.xq.dto.RecoveryHisDto;
 
 import com.xq.dto.Result;
 
-import com.xq.model.Demand;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
+import com.xq.service.AreaService;
 import com.xq.service.ParentCenterService;
 import com.xq.service.UserService;
 import com.xq.util.Const;
@@ -41,6 +40,8 @@ public class ParentCenterController {
     ParentCenterService parentCenterService;
     @Autowired
     UserService userService;
+    @Autowired
+    AreaService areaService;
 
     /**
     * 个人中心首页
@@ -48,9 +49,10 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+    //    String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"0");
+        user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
         mv.addObject("user",user);
         return mv;
     }
@@ -64,6 +66,8 @@ public class ParentCenterController {
         List<Teacher> teachers=parentCenterService.getTeachersByParent(userId);
         mv.addObject("teachers",teachers);
         mv.addObject("userId",userId);
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
         return mv;
     }
 
@@ -76,6 +80,7 @@ public class ParentCenterController {
         ModelAndView mv=new ModelAndView("parentCenter/teachersDetail");
         mv.addObject("teacher",teacher);
         mv.addObject("userId",userId);
+        mv.addObject("user",parentCenterService.getUserById(userId));
         return mv;
     }
 
@@ -86,7 +91,8 @@ public class ParentCenterController {
     public ModelAndView toMyDemands(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myDemands");
         mv.addObject("demands",parentCenterService.getDemands(userId));
-        mv.addObject("userId",userId);
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
         return mv;
     }
 
@@ -99,7 +105,8 @@ public class ParentCenterController {
         ModelAndView mv=new ModelAndView("parentCenter/demandDetail");
         mv.addObject("demand",demand);
         mv.addObject("recoveryHisList",parentCenterService.getRecoveryHisList(demand.getRecoveryHis()));
-        mv.addObject("userId",userId);
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
         return mv;
     }
 
@@ -135,6 +142,8 @@ public class ParentCenterController {
     public ModelAndView myMessages(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myMessages");
         mv.addObject("messages",parentCenterService.getMessagesByUserId(userId));
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
         return mv;
     }
 
@@ -146,6 +155,7 @@ public class ParentCenterController {
         ModelAndView mv=new ModelAndView("parentCenter/myInfo");
         mv.addObject("parent",parentCenterService.getParentByUserId(userId));
         mv.addObject("user",parentCenterService.getUserById(userId));
+
         return mv;
     }
 
@@ -185,12 +195,27 @@ public class ParentCenterController {
      *
      * 修改字段
      */
+    @RequestMapping(value = "/{userId}/{fieldName}/{table}/modifyPage")
+    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable String fieldName, @PathVariable String table)
+    {
+        ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
+        ModifyPageDto modifyPageDto=parentCenterService.getModifyDto(userId,fieldName,table);
+        //ModifyPageDto modifyPageDto=new ModifyPageDto(parentCenterService.getParentByUserId(userId).getRealName(),fieldName,"姓名",userId,table);
+        mv.addObject("modifyPageDto",modifyPageDto);
+        List<Area2> area2List=areaService.getArea2();
+        mv.addObject("area2List",area2List);
+        return mv;
+    }
+
+
     @RequestMapping(value = "/{objId}/{uiName}/{oldValue}/{fieldName}/{table}/modifyPage")
     public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName,@PathVariable String table)
     {
         ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
         ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,objId,table);
         mv.addObject("modifyPageDto",modifyPageDto);
+        List<Area2> area2List=areaService.getArea2();
+        mv.addObject("area2List",area2List);
         return mv;
     }
 
@@ -205,6 +230,7 @@ public class ParentCenterController {
         parentCenterService.modifyFeild(objId,newValue,fieldName,table);
         return map;
     }
+
 
 
     /**

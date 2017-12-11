@@ -1,9 +1,11 @@
 package com.xq.service;
 
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by 86761 on 2017/11/10.
@@ -27,6 +29,8 @@ public interface TeacherCenterService {
    List<RecoveryLog> getRecoveryLogs(int demandId,int userId);
 
    List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
+
+   ModifyPageDto getModifyDto(int objId, String fieldName);
 
    void modifyFeild(int userId,String value,String fieldName);
 }

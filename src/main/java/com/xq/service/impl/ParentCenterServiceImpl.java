@@ -2,6 +2,7 @@ package com.xq.service.impl;
 
 
 import com.xq.dao.*;
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 
 import com.xq.model.*;
@@ -105,42 +106,126 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     }
 
     @Override
+    public ModifyPageDto getModifyDto(int objId, String fieldName, String table){
+        if(table.equals("parent")){
+            if(getParentByUserId(objId)==null) {
+                parentCenterDao.addParent(objId);
+            }
+            Parent parent=getParentByUserId(objId);
+            switch (fieldName){
+                case "realName":
+                    return new ModifyPageDto(parent.getRealName(), fieldName, "姓名", objId,table);
+                case "pid":
+                    return new ModifyPageDto(parent.getPid(), fieldName, "身份证号", objId,table);
+                case "ground":
+                    return new ModifyPageDto(parent.getGround()+"_"+parent.getAddress(), fieldName, "地址", objId,table);
+                default:
+                    return null;
+            }
+        }
+        else if(table.equals("user")){
+            User user=getUserById(objId);
+            switch (fieldName){
+                case "phone":
+                    return new ModifyPageDto(user.getPhone(), fieldName, "手机", objId,table);
+                case "email":
+                    return new ModifyPageDto(user.getEmail(), fieldName, "邮箱", objId,table);
+                case "gender":
+                    return new ModifyPageDto(user.getGender()==0?"男":"女", fieldName, "邮箱", objId,table);
+                default:
+                    return null;
+            }
+        }
+        else if(table.equals("demand")){
+            Demand demand=getDemandDetail(objId);
+            switch (fieldName){
+                case "name":
+                    return new ModifyPageDto(demand.getName(),fieldName,"姓名",objId,table);
+                case "birthday":
+                    return new ModifyPageDto(demand.getBirthday(),fieldName,"出生日期",objId,table);
+                case "report":
+                    return new ModifyPageDto(demand.getReport(),fieldName,"诊断报告",objId,table);
+                case "diseaseHis":
+                    return new ModifyPageDto(demand.getDiseaseHis(),fieldName,"病史",objId,table);
+                case "allergyHis":
+                    return new ModifyPageDto(demand.getAllergyHis(),fieldName,"过敏史",objId,table);
+                case "remark":
+                    return new ModifyPageDto(demand.getRemark(),fieldName,"备注",objId,table);
+                default:
+                    return null;
+            }
+        }
+        else
+            return null;
+    }
+
+    @Override
     public void modifyFeild(int objId,String newValue,String fieldName,String table){
-        if(table.equals("parent")) modifyParentInfo(objId,newValue, fieldName);
-        else if(table.equals("demand")) modifyDemand(objId,newValue,fieldName);
+        switch (table) {
+            case "parent":
+                modifyParent(objId, newValue, fieldName);
+            case "user":
+                modifyUser(objId, newValue, fieldName);
+            case "demand":
+                modifyDemand(objId, newValue, fieldName);
+        }
     }
 
-    @Override
-    public void modifyParentInfo(int userId,String value,String fieldName){
-        if(fieldName.equals("realName")) parentCenterDao.updateRealName(value,userId);
-        else if(fieldName.equals("phone")) parentCenterDao.updatePhone(value,userId);
-        else if(fieldName.equals("email")) parentCenterDao.updateEmail(value,userId);
-        else if(fieldName.equals("pid")) parentCenterDao.updatePid(value,userId);
-        else if(fieldName.equals("ground")) {
-            String[] values=value.split(" ");
-            parentCenterDao.updateGroundAndAddr(values[0],values[1],userId);
-        }
-        else if(fieldName.equals("gender")) {
-            if(value.equals("0")) parentCenterDao.updateGender(0,userId);
-            else  parentCenterDao.updateGender(1,userId);
-        }
-
+    private void modifyUser(int userId,String value,String fieldName){
+        switch (fieldName){
+            case "phone":
+                parentCenterDao.updatePhone(value,userId);
+                break;
+            case "email":
+                parentCenterDao.updateEmail(value,userId);
+                break;
+            case "gender":
+                if(value.equals("0")) parentCenterDao.updateGender(0,userId);
+                else  parentCenterDao.updateGender(1,userId);
+                break;
+         }
         parentCenterDao.updateUserStatus(3,userId);
-
     }
 
-    @Override
-    public void modifyDemand(int demandId,String newValue,String fieldName){
-        if(fieldName.equals("name")) demandDao.updateName(newValue,demandId);
-        else if(fieldName.equals("gender")){
-            if(newValue.equals("0")) demandDao.updateGender(0,demandId);
-            else demandDao.updateGender(1,demandId);
+
+    private void modifyParent(int userId,String value,String fieldName){
+
+        switch(fieldName){
+            case "realName":
+                parentCenterDao.updateRealName(value,userId);
+                break;
+            case "pid":
+                parentCenterDao.updatePid(value,userId);
+                break;
+            case "ground":
+                String[] values=value.split("_");
+                parentCenterDao.updateGroundAndAddr(values[0],values[1],userId);
+                break;
         }
-        else if(fieldName.equals("birthday")) demandDao.updateBirthday(newValue,demandId);
-        else if(fieldName.equals("diseaseHis")) demandDao.updateDiseaseHis(newValue,demandId);
-        else if(fieldName.equals("allergyHis")) demandDao.updateAllergyHis(newValue,demandId);
-        else if(fieldName.equals("report")) demandDao.updateReport(newValue,demandId);
-        else if(fieldName.equals("remark")) demandDao.updateRemark(newValue,demandId);
+        parentCenterDao.updateUserStatus(3,userId);
+    }
+
+    private void modifyDemand(int demandId,String newValue,String fieldName) {
+        switch (fieldName) {
+            case "name":
+                demandDao.updateName(newValue, demandId);
+                break;
+            case "gender":
+                if (newValue.equals("0")) demandDao.updateGender(0, demandId);
+                else demandDao.updateGender(1, demandId);
+                break;
+            case "birthday":
+                demandDao.updateBirthday(newValue, demandId);
+                break;
+            case "diseaseHis":
+                demandDao.updateDiseaseHis(newValue, demandId);
+            case "allergyHis":
+                demandDao.updateAllergyHis(newValue, demandId);
+            case "report":
+                demandDao.updateReport(newValue, demandId);
+            case "remark":
+                demandDao.updateRemark(newValue, demandId);
+        }
     }
 
     @Override
@@ -186,6 +271,22 @@ public class ParentCenterServiceImpl implements ParentCenterService{
     public void addDemand( int userId,String name,int gender,String birthday,String report,String diseaseHis,
                     String allergyHis,String remark){
         demandDao.addDemand(userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
+    }
+
+    @Override
+    public int myInfoStatus(int userId){ //0.未完成 1.审核中 2.完成
+        User user=getUserById(userId);
+        if(user.getUserStatus()==0) return 0;
+        else if(user.getUserStatus()==1) return 1;
+        if(user.getPhone()==null || user.getEmail()==null || user.getGender() ==null){
+            return 0;
+        }
+        Parent parent=getParentByUserId(userId);
+        if(parent==null) return 0;
+        else if(parent.getAddress()==null || parent.getGround()==null || parent.getPid()==null){
+            return 0;
+        }
+        return 2;
     }
 }
 

@@ -17,6 +17,7 @@ public interface TeacherCenterDao {
     User getUserById(int userId);
     Teacher getTeacherByUserId(int userId);
     List<RecoveryLog> getRecoveryLogs(@Param("demandId") int demandId,@Param("teacherId") int teacherId);
+    void addTeacher(int userId);
 
     void updateName(@Param("name") String name,@Param("userId") int userId);
     void updateGender(@Param("gender") Integer gender,@Param("userId") int userId);
@@ -29,6 +30,7 @@ public interface TeacherCenterDao {
     void updateTGround(@Param("tGround") String tGround,@Param("userId") int userId);
     void updateSGround(@Param("sGround") String sGround,@Param("userId") int userId);
     void updatePid(@Param("pid") String pid,@Param("userId") int userId);
+    void updateSuccessCase(@Param("successCase") String successCase,@Param("userId") int userId);
 
     void updateUserStatus(@Param("status") int status,@Param("userId") int userId);
 

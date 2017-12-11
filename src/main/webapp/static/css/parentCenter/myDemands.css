@@ -103,11 +103,47 @@
 .addBtn{
     text-align: center;
     font-size: 50px;
-}
-.addBtn button{
-    font-size:50px;
+    margin-top: 20px;
+    width: 100%;
+    position: fixed;
+    bottom:0;
+
     height: 100px;
-    background-color: #00b0ff;
+    background-color:  #20b49a;
     color: white;
-    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.demand-div{
+    border:5px solid #20b49a;
+    border-radius: 20%;
+    height:350px;
+    margin: 15px;
+    padding-top: 20px;
+}
+.demand-div .demand-img img{
+    width: 100px;
+}
+.demand-info{
+    height:220px;
+}
+.demand-btn {
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.demand-btn div{
+    background-color:  #fbae5d;
+    color: white;
+    height: 80px;
+    font-size: 40px;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.demands-div{
+    padding: 20px;
 }

@@ -2,7 +2,7 @@
 用户头像
  */
 .img-circle{
-    width: 30%;
+    width: 250px;
 }
 .imgDiv{
     margin-top: 5%;
@@ -15,13 +15,14 @@
     margin-bottom: 10%;
     text-align: center;
 }
-
-/**
-跳转按钮
- */
-.buttonDiv{
-    border-radius:100%;
+.imgDiv2 {
+    font-size: 40px;
+    background-color: #20b49a;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
 }
+
 
 
 
@@ -70,19 +71,23 @@ th,td{
 }
 
 .saveBtn{
-    text-align: center;
     font-size: 50px;
-}
-.saveBtn button{
-    font-size:50px;
+    position:fixed;
+    bottom:0;
+    width: 100%;
+
     height: 100px;
-    background-color: #00b0ff;
+    background-color: #20b49a;
     color: white;
-    margin: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-p{
-    color: #20b49a;
-}
+
+/*p{*/
+    /*color: #20b49a;*/
+/*}*/
 
 .title{
     height: 110px;
@@ -95,3 +100,45 @@ p{
     margin-top:20px;
     margin-right: 30px;
 }
+
+.info-header{
+    background-color:#20b49a ;
+    height: 350px;
+    padding: 50px;
+}
+.info-header-img{
+
+}
+.info-header-name{
+    color: white;
+    font-size: 55px;
+    font-weight: bold;
+}
+.info-header-other{
+    color:white;
+    font-size: 35px;
+    margin-top: 50px;
+}
+.info-header-myinfo{
+    color: white;
+    font-size: 40px;
+    margin-top: 200px;
+}
+
+
+.saveBtn button{
+    background-color: #20b49a;
+}
+
+.centerBtn{
+    margin-top: 5px;
+    border-top:3px solid #e6ece3;
+    border-bottom:3px solid #e6ece3;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+

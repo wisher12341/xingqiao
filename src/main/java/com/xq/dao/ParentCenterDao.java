@@ -23,4 +23,6 @@ public interface ParentCenterDao {
 
     void updateUserStatus(@Param("status") int status,@Param("userId") int userId);
 
-}
+    void addParent(@Param("userId") int userId);
+
+    }
