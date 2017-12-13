@@ -26,7 +26,7 @@ import java.util.TimeZone;
  * Created by joy12 on 2017/11/3.
  */
 @Service
-public class OrganizationServiceImpl implements OrganizationService{
+public class OrganizationServiceImpl implements OrganizationService {
     @Autowired
     OrganizationDao organizationDao;
     @Autowired
@@ -45,12 +45,15 @@ public class OrganizationServiceImpl implements OrganizationService{
     }
 
     @Override
-    public void addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
+    public boolean addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
 //        User user= (User) request.getSession().getAttribute("USER");
 
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
-        User user=userDao.getUserByOpenid(openid);
+        User user=userDao.getParentByOpenid(openid);
+        if (user==null){
+            return false;
+        }
         organComment.setUid(user.getId());
 
 
@@ -61,7 +64,7 @@ public class OrganizationServiceImpl implements OrganizationService{
                 int index = 0;
                 if (!pic.isEmpty()) {
                     try {
-                        path = FileUpload.uploadFile(pic, request,FileUpload.COMMENT_ORGANIZATION_ROOT_PATH);
+                        path = FileUpload.uploadFile(pic, request, FileUpload.COMMENT_ORGANIZATION_ROOT_PATH);
                         index = path.indexOf("img");
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -84,6 +87,7 @@ public class OrganizationServiceImpl implements OrganizationService{
         organComment.setTime(dateNowStr);
 
         organizationDao.addComment(organComment);
+        return true;
     }
 
     @Override

@@ -3,11 +3,14 @@ package com.xq.controller;
 import com.xq.dto.CalendarDto;
 import com.xq.dto.Result;
 import com.xq.model.Comment;
-import com.xq.model.OrganComment;
 import com.xq.model.Teacher;
+import com.xq.model.User;
 import com.xq.model.UserGoodReport;
 import com.xq.service.GoodReportService;
 import com.xq.service.TeacherService;
+import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,8 @@ public class TeacherController {
     TeacherService teachersService;
     @Autowired
     GoodReportService goodReportService;
+    @Autowired
+    UserService userService;
 
 
     @RequestMapping(value = "/list",method = RequestMethod.GET)
@@ -37,6 +42,14 @@ public class TeacherController {
         return "teacher/teachers";
     }
 
+
+    @RequestMapping(value = "/toReply",method = RequestMethod.GET)
+    public ModelAndView toReply(@RequestParam("teacherId") Integer teacherId,@RequestParam("pid") Integer pid) {
+        ModelAndView mv = new ModelAndView("teacher/teacher_comment_reply");
+        mv.addObject("teacherId",teacherId);
+        mv.addObject("pid",pid);
+        return mv;
+    }
     /**
      * 获得治疗师
      * @return
@@ -64,6 +77,10 @@ public class TeacherController {
         model.addAttribute("teacher",teacher);
         UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
         model.addAttribute("usergoodreport",userGoodReport);
+
+        User user= userService.getUserByOpenidStatus(CookieUtil.checkCookie(request, Const.OPENID_PARENT),"0");
+        userService.setUserStatusDesc(user);
+        model.addAttribute("user",user);
         return "teacher/teacher";
     }
 
@@ -159,14 +176,14 @@ public class TeacherController {
      */
     @ResponseBody
     @RequestMapping(value = "/{tid}/orderTime/day",method = RequestMethod.POST)
-    public Result order_time_day(@PathVariable Integer tid,@RequestParam String date) throws ParseException {
+    public Result order_time_day(@PathVariable Integer tid, @RequestParam String date) throws ParseException {
         CalendarDto calendar=teachersService.order_time_day(tid,date);
         return new Result(true,calendar);
     }
 
     @ResponseBody
     @RequestMapping(value="orderTime",method = RequestMethod.POST)
-    public Result order_time(@RequestParam String start,@RequestParam String end) throws ParseException {
+    public Result order_time(@RequestParam String start, @RequestParam String end) throws ParseException {
         String time=teachersService.order_time(start,end);
         return new Result(true,time);
     }

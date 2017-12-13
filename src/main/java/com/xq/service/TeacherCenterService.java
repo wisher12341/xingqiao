@@ -1,5 +1,6 @@
 package com.xq.service;
 
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
@@ -24,9 +25,11 @@ public interface TeacherCenterService {
 
    Demand getDemandDetail(int demandId);
 
-   List<RecoveryLog> getRecoveryLogs(int demandId,int userId);
+   List<RecoveryLog> getRecoveryLogs(int demandId, int userId);
 
    List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
 
-   void modifyFeild(int userId,String value,String fieldName);
+   ModifyPageDto getModifyDto(int objId, String fieldName);
+
+   void modifyFeild(int userId, String value, String fieldName);
 }

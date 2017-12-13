@@ -24,6 +24,10 @@
         WHERE r.order_id =o.id and o.teacher_id=#{teacherId} and o.demand_id=#{demandId}
     </select>
 
+    <insert id="addTeacher">
+        INSERT INTO teacher(user_id)
+        VALUE (#{userId})
+    </insert>
 
     <update id="updateName">
         UPDATE teacher SET name=#{name} WHERE user_id=#{userId}
@@ -58,6 +62,10 @@
     <update id="updatePid">
         UPDATE teacher SET pid=#{pid} WHERE user_id=#{userId}
     </update>
+    <update id="updateSuccessCase">
+        UPDATE teacher SET success_case=#{successCase} WHERE user_id=#{userId}
+    </update>
+
 
     <update id="updateUserStatus">
         UPDATE sysuser SET user_status=#{status} WHERE id=#{userId}

@@ -111,6 +111,13 @@
                             <p class="ll">展示：${(order.order.comment.isOpen==1)?string('公开','匿名')}</p>
                             <p class="llend" style="color: #4e794f !important;">评论内容：</p>
                             <p class="llend">${(order.order.comment.detail)!}</p>
+                            <#if order.order.comment.picUrls??>
+                                <p class="llend">
+                                    <#list  order.order.comment.picUrls?split("#") as src>
+                                        <img src="/${src}" width="160px" height="160px" style="margin-right: 10px;margin-bottom: 10px;">
+                                    </#list>
+                                </p>
+                            </#if>
                             <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.time)!}</p>
                             <#if (order.order.comment.teacherComment)??>
                                 <p class="llend" style="color: #4e794f !important;">治疗师回复：</p>

@@ -119,4 +119,21 @@ public class UserServiceImpl implements UserService {
         response.addCookie(cookie);
         userDao.clearOpenid(openid,status);
     }
+
+
+    @Override
+    public void setUserStatusDesc(User user) {
+        switch (user.getUserStatus()){
+            case 0:
+                user.setUserStatusDesc("请下完善个人资料，待审核通过后才可下预约单");
+                break;
+            case 1:
+            case 3:
+                user.setUserStatusDesc("您的资料正在审核中，待审核通过后才可下预约单");
+                break;
+            case 4:
+                user.setUserStatusDesc("您的资料审核不通过，请重新填写，审核通过后才可下预约单");
+                break;
+        }
+    }
 }

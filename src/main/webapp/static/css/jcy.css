@@ -271,10 +271,14 @@ html {font-size: 62.5%;
 }
 
 .my-textarea{
-    border-radius: 5px;
+    appearance: none;
+    -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
+    -moz-appearance: none;  /*去除Firefox浏览器的默认下拉图片*/
+    border-radius: 0px;
     padding: 0.5rem 1rem;
-    margin: 0.8rem;
-    width: 94%;
+    margin: 0rem;
+    border: none;
+    width: 100%;
 }
 
 .level-star{
@@ -327,7 +331,7 @@ html {font-size: 62.5%;
     text-align: center;
     padding: 0rem 1rem;
     line-height: 2.4rem;
-    height: 2.6rem;
+    min-height: 2.6rem;
     font-size: 1.2rem;
     margin-left: 0.5rem;
 }

@@ -13,8 +13,8 @@
         </div>
 
         <div class="imgDiv">
-            <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
-            <p>用户名：${user.nickname}</p>
+            <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle">
+            <p>${(user.nickname)!}</p>
         </div>
 
 
@@ -22,14 +22,23 @@
 
         </div>
         <div class="buttonDiv">
-            <button type="button" class="btn btn-default btn-lg btn-block" onclick=location.href="parentCenter/${user.id}/myInfo" style="height:12%">
-                <i class="fa fa-user-circle fa-5x"></i><p style="font-size: 50px; display: inline;"> 个人资料</p></button>
-            <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="parentCenter/${user.id}/myDemands" style="height:12%">
-                <i class="fa fa-id-card fa-5x"></i><p style="font-size: 50px; display: inline;"> 需求管理</p></button>
-            <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="parentCenter/${user.id}/myTeacher" style="height:12%">
-                <i class="fa fa-users fa-5x"></i><p style="font-size: 50px; display: inline;"> 我的治疗师</p></button>
-            <button type="button" class="btn btn-default btn-lg btn-block"  onclick=location.href="parentCenter/${user.id}/myMessages" style="height:12%">
-                <i class="fa fa-envelope-o fa-5x"></i><p style="font-size: 50px; display: inline;"> 消息中心</p></button>
+            <div class="centerBtn" onclick=location.href="parentCenter/${user.id}/myInfo" style="height:12%">
+                <i class="fa fa-user-circle fa-5x"></i><p style="font-size: 50px; display: inline; margin-left: 10px"> 个人资料</p>
+            <#if user.infoStatus==0> <p style="color: red;display: inline;font-size: 40px">资料未完善</p>
+            <#elseif user.infoStatus==1>
+                <p style="color: blue">审核中</p>
+            </#if>
+            </div>
+
+            <div class="centerBtn" onclick=location.href="parentCenter/${user.id}/myDemands" style="height:12%">
+                <i class="fa fa-id-card fa-5x"></i><p style="font-size: 50px; display: inline;margin-left: 10px">  需求管理</p></div>
+
+            <div class="centerBtn"  onclick=location.href="parentCenter/${user.id}/myTeacher" style="height:12%">
+                <i class="fa fa-users fa-5x"></i><p style="font-size: 50px; display: inline; margin-left: 10px"> 我的治疗师</p></div>
+
+            <div class="centerBtn"  onclick=location.href="parentCenter/${user.id}/myMessages" style="height:12%">
+                <i class="fa fa-envelope-o fa-5x"></i><p style="font-size: 50px; display: inline;margin-left: 10px"> 消息中心</p></div>
+
         </div>
     </div>
 

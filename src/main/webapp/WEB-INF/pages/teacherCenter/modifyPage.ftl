@@ -10,20 +10,20 @@
 <div id="main">
 
     <div class="modifyDiv">
-      <label for="input" class="col-sm-2 control-label">${modifyPageDto.uiName}</label>
-    <div class="col-sm-10">
+      <label for="input" class="row control-label">${modifyPageDto.uiName}：</label>
+    <div>
         <#if modifyPageDto.fieldName=="gender">
             <div class="radio-input" style="font-size: 50px;margin-top: 10px">
                 <input type="radio" name="optionsRadiosinline" value="0" style=" height: 50px;width: 50px;"> 男
                 <input type="radio"  name="optionsRadiosinline" value="1" style=" height: 50px;width: 50px;"> 女
             </div>
         <#else>
-        <input type="text" class="form-control" id="input" value="${modifyPageDto.oldValue}" >
+        <input type="text" class="form-control" id="input" value="${(modifyPageDto.oldValue)!}" >
         </#if>
     </div>
-        <div class="saveBtn"style="text-align: center"><button class="btn btn-block btn-default fa fa-save fa-4x" onclick="saveTeacherModify('${modifyPageDto.objId}','${modifyPageDto.fieldName}');"> 保存</button></div>
 
     </div>
+    <div class="saveBtn fa fa-save fa-4x" onclick="saveTeacherModify('${modifyPageDto.objId}','${modifyPageDto.fieldName}');"> 保存</div>
 
 
 </div>
@@ -32,7 +32,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         if("${modifyPageDto.fieldName}"=="gender"){
-            if(${modifyPageDto.oldValue}==0) $("input[name='optionsRadiosinline']").get(0).checked=true;
+            if("${(modifyPageDto.oldValue)!}"=="男") $("input[name='optionsRadiosinline']").get(0).checked=true;
             else  $("input[name='optionsRadiosinline']").get(1).checked=true;
         }
     });

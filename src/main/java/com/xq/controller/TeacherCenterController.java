@@ -38,7 +38,8 @@ public class TeacherCenterController {
     public ModelAndView teacherCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwogy0siApRsScKZWI_oeOSE";
+//        openid="oxsEYwogy0siApRsScKZWI_oeOSE";
+
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);
@@ -49,19 +50,21 @@ public class TeacherCenterController {
     /**
      *我的患者
      */
-    @RequestMapping(value = "/{teacherId}/myDemands")
-    public ModelAndView toMyDemands(@PathVariable Integer teacherId){
+    @RequestMapping(value = "/{teacherId}/{userId}/myDemands")
+    public ModelAndView toMyDemands(@PathVariable Integer teacherId,@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("teacherCenter/myDemands");
         mv.addObject("demands",teacherCenterService.getDemands(teacherId));
         mv.addObject("teacherId",teacherId);
+        mv.addObject("user",teacherCenterService.getUserById(userId));
+        mv.addObject("name",teacherCenterService.getNameByUserId(userId));
         return mv;
     }
 
     /**
      *简历详情
      */
-    @RequestMapping(value = "/{teacherId}/{id}/demandDetail",method = RequestMethod.GET)
-    public ModelAndView toDemandDetail(@PathVariable Integer id,@PathVariable Integer teacherId){
+    @RequestMapping(value = "/{teacherId}/{userId}/{id}/demandDetail",method = RequestMethod.GET)
+    public ModelAndView toDemandDetail(@PathVariable Integer id,@PathVariable Integer teacherId,@PathVariable Integer userId){
         Demand demand=teacherCenterService.getDemandDetail(id);
         List<RecoveryLog> recoveryLogList=teacherCenterService.getRecoveryLogs(id,teacherId);
 //        for(RecoveryLog recoveryLog:recoveryLogList){
@@ -71,6 +74,8 @@ public class TeacherCenterController {
         mv.addObject("demand",demand);
         mv.addObject("recoveryHisList",teacherCenterService.getRecoveryHisList(demand.getRecoveryHis()));
         mv.addObject("recoveryLogList",recoveryLogList);
+        mv.addObject("user",teacherCenterService.getUserById(userId));
+        mv.addObject("name",teacherCenterService.getNameByUserId(userId));
         return mv;
     }
 
@@ -81,6 +86,8 @@ public class TeacherCenterController {
     public ModelAndView myMessages(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myMessages");
         mv.addObject("messages",teacherCenterService.getMessagesByUserId(userId));
+        mv.addObject("name",teacherCenterService.getNameByUserId(userId));
+        mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
 
@@ -99,7 +106,8 @@ public class TeacherCenterController {
     @RequestMapping(value = "/{userId}/myInfo")
     public ModelAndView myInfo(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo");
-        mv.addObject("teacher",teacherCenterService.getTeacherByUserId(userId));
+        Teacher teacher=teacherCenterService.getTeacherByUserId(userId);
+        mv.addObject("teacher",teacher);
         mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
@@ -108,11 +116,11 @@ public class TeacherCenterController {
      *
      * 修改字段
      */
-    @RequestMapping(value = "/{objId}/{uiName}/{oldValue}/{fieldName}/modifyPage")
-    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName)
+    @RequestMapping(value = "/{objId}/{fieldName}/modifyPage")
+    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String fieldName)
     {
         ModelAndView mv=new ModelAndView("teacherCenter/modifyPage");
-        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,objId);
+        ModifyPageDto modifyPageDto=teacherCenterService.getModifyDto(objId,fieldName);
         mv.addObject("modifyPageDto",modifyPageDto);
         return mv;
     }
@@ -128,6 +136,22 @@ public class TeacherCenterController {
         teacherCenterService.modifyFeild(objId,newValue,fieldName);
         return map;
     }
+
+    /**
+     *
+     * 修改成功案例
+     */
+    @RequestMapping(value = "{userId}/{caseIndex}/modifyText")
+    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable int caseIndex)
+    {
+        ModelAndView mv=new ModelAndView("teacherCenter/modifyText");
+        mv.addObject("userId",userId);
+        mv.addObject("cases",teacherCenterService.getTeacherByUserId(userId).getSuccessCase());
+        mv.addObject("casesIndex",caseIndex);
+        mv.addObject("case",teacherCenterService.getTeacherByUserId(userId).getSuccessCase().split("#")[caseIndex]);
+        return mv;
+    }
+
 
 
 }

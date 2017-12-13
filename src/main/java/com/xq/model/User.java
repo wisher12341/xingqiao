@@ -17,12 +17,22 @@ public class User {
     private String unionid;
     private String headimgurl;
     private Integer userStatus;//账号状态
+    private String userStatusDesc;//账号状态描述
     private String nickname;//昵称
     private String time;//注册时间
-
     private String tName;//家长或治疗师的姓名
     private String pName;
 
+
+    public int getInfoStatus() {
+        return infoStatus;
+    }
+
+    public void setInfoStatus(int infoStatus) {
+        this.infoStatus = infoStatus;
+    }
+
+    private int infoStatus=0;
 
     public User() {
     }
@@ -32,6 +42,14 @@ public class User {
         this.password = password;
     }
 
+
+    public String getUserStatusDesc() {
+        return userStatusDesc;
+    }
+
+    public void setUserStatusDesc(String userStatusDesc) {
+        this.userStatusDesc = userStatusDesc;
+    }
 
     public String getTime() {
         return time;

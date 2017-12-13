@@ -14,6 +14,7 @@
     <link href='${base}/static/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='${base}/static/fullcalendar/moment.min.js'></script>
     <script src='${base}/static/fullcalendar/fullcalendar.js'></script>
+    <script src='${base}/static/js/teacher/autoresize.js'></script>
     <style>
         #calendar_month,#calendar_day {
             max-width: 900px;
@@ -61,6 +62,13 @@
             color: #000000;
         }
 
+        #remark{
+            appearance: none;
+            -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
+            -moz-appearance: none;  /*去除Firefox浏览器的默认下拉图片*/
+            border: 0.1rem solid #aaaaaa;
+        }
+
 
     </style>
 </head>
@@ -69,7 +77,7 @@
 <div class="container my-panel" style="min-height: 20rem">
     <div class="row" style="height: 100%">
         <div class="col-xs-5 text-center" style="height: 12rem;">
-            <img src="${base}/${teacher.headimgurl!''}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
+            <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
         </div>
         <div class="col-xs-7" style="padding-left: 0rem">
             <div class="teacher-name-title">${teacher.name!"暂无"}</div>
@@ -270,10 +278,10 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                <div class="col-xs-10">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content">
+                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                             <#if comm.detail?length gt 40>
                                 <#assign s=comm.detail>
                                 <div class="comment-detail">
@@ -333,10 +341,10 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                <div class="col-xs-10">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content">
+                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                             <#if comm.detail?length gt 40>
                                 <#assign s=comm.detail>
                                 <div class="comment-detail">
@@ -396,10 +404,10 @@
                 <div class="col-xs-2 no-padding">
                     <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
                 </div>
-                <div class="col-xs-10" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                <div class="col-xs-10">
                     <div>
                         <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content">
+                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
                             <#if comm.detail?length gt 40>
                                 <#assign s=comm.detail>
                                 <div class="comment-detail">
@@ -462,8 +470,8 @@
 
 <!-- 预约 -->
 <div>
-    <div class="bottom-single-btn" onclick="makeOrder()">
-        <a href="#" class="mobile-nav-taggle" id="mobile-nav-taggle" style="color: #ffffff">
+    <div class="bottom-single-btn mobile-nav-taggle" id="mobile-nav-taggle">
+        <a href="#" style="color: #ffffff">
             立即预约</a>
     </div>
     <div id="mobile-menu-order" class="mobile-nav mobile-menu-bottom visible-xs visible-sm hide-nav-bottom">
@@ -525,16 +533,10 @@
                         </div>
                         <#--<select id="domainSelect"></select>-->
                     </div>
-                    <div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">
-                        服务时间：<input onfocus="this.blur();"  id="serviceTime" class="serviceTime" type="text" onclick="selectTime(this)">
-                    </div>
-                    <div class="offset-20" style="justify-content: flex-start">
-                        备    注：<br><input id="remark" style="margin-top:0.2rem;width:99%;min-height: 4rem" type="text">
-                    </div>
-                    <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
+                    <div class="offset-20">
                         <div>
                             需求简历：
-                            <div id="demands" class="inline-wrapper offset-15" style="justify-content: space-around">
+                            <div id="demands" class="row" style="margin: 0rem">
                             <#--<#if teacherways??>-->
                                 <#--<#if teacherways[0]??>-->
                                     <#--<div class="way border-pill border-pill-active">-->
@@ -557,13 +559,18 @@
                         </div>
                         <#--<select id="demandSelect"></select>-->
                     </div>
+                    <div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">
+                        服务时间：<img onclick="selectTime($('#serviceTime'))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg">
+                        <div id="serviceTime" class="serviceTime" style="margin-left: 1rem;"></div>
+                    </div>
                     <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
                         课程数量：
-                        <div>
-                            <button class="amount_button" onclick="subtract__fuction()">-</button>
-                            <span id="countSpan" >1</span>
-                            <button class="amount_button" onclick="add_function()">+</button>
-                        </div>
+                        <div class="amount_button" onclick="subtract__fuction()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/sub.svg"></div>
+                        <span id="countSpan" >1</span>
+                        <div class="amount_button" onclick="add_function()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/add.svg"></div>
+                    </div>
+                    <div class="offset-20" style="justify-content: flex-start">
+                        备    注：<br><textarea id="remark" style="margin-top:0.2rem;width:99%;"></textarea>
                     </div>
                     <br>
                 </div>
@@ -610,66 +617,63 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-<!--评论跟帖-->
-<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container">
-        <div class="slider-body" id="divContent">
-            <form action="${base}/wx/teacher/comment" method="post">
-                <div class="row offset-10">
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                    </div>
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                    </div>
-                    <div class="col-xs-4 col-md-4"></div>
-                    <div class="col-xs-2 col-md-2">
-                        <button type="button" class="close mobile-close-taggle">
-                            &times;
-                        </button>
-                    </div>
-                </div>
-                <div class="row text-center">
-                    <textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>
-                </div>
-                <input type="hidden" name="pid" >
-                <input type="hidden" name="tid" value="${teacher.id}">
-                <input type="hidden" name="type" value="0">
-                <input type="submit" class="bottom-single-btn" style="border: none" value="回复">
-            </form>
-        </div>
+<#--<!--评论跟帖&ndash;&gt;-->
+<#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
+    <#--<div class="container my-slider-container">-->
+        <#--<div class="slider-body" id="divContent">-->
+            <#--<form action="${base}/wx/teacher/comment" method="post">-->
+                <#--<div class="row offset-10">-->
+                    <#--<div class="col-xs-3 col-md-3">-->
+                        <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+                    <#--</div>-->
+                    <#--<div class="col-xs-3 col-md-3">-->
+                        <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+                    <#--</div>-->
+                    <#--<div class="col-xs-4 col-md-4"></div>-->
+                    <#--<div class="col-xs-2 col-md-2">-->
+                        <#--<button type="button" class="close mobile-close-taggle">-->
+                            <#--&times;-->
+                        <#--</button>-->
+                    <#--</div>-->
+                <#--</div>-->
+                <#--<div class="row text-center">-->
+                    <#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
+                <#--</div>-->
+                <#--<input type="hidden" name="pid" >-->
+                <#--<input type="hidden" name="tid" value="${teacher.id}">-->
+                <#--<input type="hidden" name="type" value="0">-->
+                <#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
+            <#--</form>-->
+        <#--</div>-->
 
-    </div>
-</div>
+    <#--</div>-->
+<#--</div>-->
 <!--举报-->
 <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container">
-        <div class="slider-body" id="divContent">
-            <div>
-                <div class="row offset-10">
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                    </div>
-                    <div class="col-xs-3 col-md-3">
-                        <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                    </div>
-                    <div class="col-xs-4 col-md-4"></div>
-                    <div class="col-xs-2 col-md-2">
-                        <button type="button" class="close mobile-close-taggle">
-                            &times;
-                        </button>
-                    </div>
+    <div class="container my-slider-container no-padding">
+        <div class="slider-header">
+            <div class="row">
+                <div class="col-xs-3 col-md-3">
+                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
                 </div>
-                <div class="row text-center">
-                    <textarea class="my-textarea" style="height: 10rem;" placeholder="举报理由" name="reason"></textarea>
+                <div class="col-xs-3 col-md-3">
+                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
                 </div>
-                <input type="hidden" name="cid" >
-                <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="report()">
-                    举报
-                </button>
+                <div class="col-xs-4 col-md-4"></div>
+                <div class="col-xs-2 col-md-2">
+                    <button type="button" class="close mobile-close-taggle">
+                        &times;
+                    </button>
+                </div>
             </div>
         </div>
-
+        <div class="slider-body" id="divContent">
+            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
+            <input type="hidden" name="cid" >
+            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
+                举报
+            </button>
+        </div>
     </div>
 </div>
 
@@ -720,15 +724,30 @@
   //      $("#base").unbind("touchmove");
     }
 
-    $(".mobile-nav-taggle").click(function () {
-        var mobileMenu = $(this).parent().next(".mobile-menu-bottom");//上拉框是下一个节点
+    $(".mobile-nav-taggle,#mobile-nav-taggle").click(function () {
+        if("${user!"no"}"!='no') {
+            if('${(user.userStatus)!}'!='2') {
+                alert('${(user.userStatusDesc)!}');
+                return;
+            }
+        } else{
+            location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41aea10976e1038a&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fparent&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
+        }
+
+
+        var mobileMenu = $(this).next(".mobile-menu-bottom");//上拉框是下一个节点
         if (mobileMenu.hasClass("hide-nav-bottom")) {
-            if(makeOrder()==true) {
-                masking();
+            makeOrder();
+//            if(makeOrder()==true) {
+                setTimeout(function () {
+                    masking();
+                }, 500);
                 setTimeout(function () {
                     mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-                }, 100)
-            }
+                }, 500);
+//            }else {
+//                alert("用户状态异常，无法预约");
+//            }
         }
         else {
             unmasking();
@@ -821,21 +840,21 @@
     }
 
     function reply(pid) {
-
-        $("#mobile-menu-reply textarea[name='detail']").val("");
-//        $("#replyModal input[name='oid']").val(oid);
-        $("#mobile-menu-reply input[name='pid']").val(pid);
-        var mobileMenu = $("#mobile-menu-reply");
-        if (mobileMenu.hasClass("hide-nav-bottom")) {
-            setTimeout(function () {
-                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-            }, 100)
-        }
-        else {
-            setTimeout(function (){
-                mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-            }, 100)
-        }
+        window.location.href="${base}/wx/teacher/toReply?teacherId=${teacher.id}&pid=" +pid;
+//        $("#mobile-menu-reply textarea[name='detail']").val("");
+////        $("#replyModal input[name='oid']").val(oid);
+//        $("#mobile-menu-reply input[name='pid']").val(pid);
+//        var mobileMenu = $("#mobile-menu-reply");
+//        if (mobileMenu.hasClass("hide-nav-bottom")) {
+//            setTimeout(function () {
+//                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
+//            }, 100)
+//        }
+//        else {
+//            setTimeout(function (){
+//                mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
+//            }, 100)
+//        }
     }
 
 
@@ -914,7 +933,7 @@
         }
     }
 
-    function report() {
+    function doreport() {
         $.ajax({
             method: 'POST',
             url: '${base}/wx/goodreport/add',
@@ -974,12 +993,15 @@
 
                     var demands = data.data;
                     $("#demands").html("");
-                    $option=$('<div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div>');
+                    $option=$('<div class="col-xs-3 offset-10 demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div><div class="col-xs-1"></div>');
                     $('#demands').append($option);
                     demandSelect=demands[0].id;
                     for(var i=1;i<demands.length;i++){
-                        $option=$('<div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div>');
+                        $option=$('<div class="col-xs-3 offset-10 demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div>');
                         $('#demands').append($option);
+                        if ((i+1)%3!=0){
+                            $('#demands').append("<div class='col-xs-1'></div>");
+                        }
                     }
                     var isFirst=$("#demands > .border-pill-active").data("first").split("#")[1];
                     if(isFirst=="yes"){
@@ -995,6 +1017,7 @@
                     //$('#noInf_Modal').modal();
                     alert("请先完善用户信息");
                     location.reload();
+                    return false;
                 }
                 return false;
             }
@@ -1054,20 +1077,6 @@
 
     }
 
-    function getCookie(name) {
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-
-        if(arr=document.cookie.match(reg)) {
-            return unescape(arr[2]);
-        }
-        else {
-            return null;
-        }
-    }
-    
-    function showTypewriting() {
-        this.blur();
-    }
 
     function selectTime(obj) {
         obj_var=obj;
@@ -1161,7 +1170,7 @@
                                                     end:event.end.toString()
                                                 },
                                                 success: function (data) {
-                                                    $(obj_var).val(data.data);
+                                                    $(obj_var).text(data.data);
                                                     $("#calendar_day").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                                                     $("#mask").hide();
                                                 }});
@@ -1215,7 +1224,6 @@
         $("#mask").hide();
         $("body").css("overflow-y","scroll");
     }
-
 
 
 </script>

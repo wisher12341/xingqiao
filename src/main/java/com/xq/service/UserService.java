@@ -23,4 +23,6 @@ public interface UserService {
     void changeAccount(String openid, HttpServletResponse response, int status);
 
     User bindAccount(User user);
+
+    void setUserStatusDesc(User user);
 }

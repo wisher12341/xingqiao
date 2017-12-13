@@ -1,11 +1,11 @@
 package com.xq.service;
 
 
+import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -31,19 +31,19 @@ public interface ParentCenterService {
 
     List<Demand> isexisted(HttpServletRequest request, Integer teacheId);
 
-    void modifyFeild(int objId,String newValue,String fieldName,String table);
+    ModifyPageDto getModifyDto(int userId, String fieldName, String table);
 
-    void modifyParentInfo(int userId, String value, String fieldName);
-
-    void modifyDemand(int demandId,String newValue,String fieldName);
+    void modifyFeild(int objId, String newValue, String fieldName, String table);
 
     List<RecoveryHisDto> getRecoveryHisList(String recoveryHis);
 
-    void addRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId);
+    void addRecoveryHis(RecoveryHisDto recoveryHisDto, int demandId);
 
-    void modifyRecoveryHis(RecoveryHisDto recoveryHisDto,int demandId);
+    void modifyRecoveryHis(RecoveryHisDto recoveryHisDto, int demandId);
 
-    void addDemand( int userId,String name,int gender,String birthday,String report,String diseaseHis,
-                    String allergyHis,String remark);
+    void addDemand(int userId, String name, int gender, String birthday, String report, String diseaseHis,
+                   String allergyHis, String remark);
+
+    int myInfoStatus(int userId);
 
 }

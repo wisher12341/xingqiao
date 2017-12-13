@@ -33,4 +33,11 @@
         UPDATE sysuser SET user_status=#{status} WHERE id=#{userId}
     </update>
 
+    <insert id="addParent" parameterType="java.lang.Integer">
+        INSERT INTO parent(userId)
+        VALUE (#{userId})
+    </insert>
+
+
+
 </mapper>

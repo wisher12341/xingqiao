@@ -1,10 +1,13 @@
-.myInfoDiv p{
-    font-size: 50px;
-    margin-left: 20px;
-    color: #5bc0de;
+info-part-title{
+
+    margin-top: 20px;
+    color: #20b49a;
     margin-bottom: 20px;
 }
-
+.info-part-item p{
+    margin-left: 20px;
+    font-size: 60px;
+}
 .info-part-item{
     margin-bottom: 60px;
 }

@@ -10,15 +10,7 @@
 </head>
 <body>
 <div id="main">
-    <div id="title" class="row">
-        <div class="col-sm-2" style="text-align: center"></div>
-        <div class="col-sm-8 titleText"><p>添加需求简历</p></div>
-        <div class="col-sm-2" style="text-align: center">
 
-            <a id="saveBtn" class="fa fa-save fa-4x" onclick="addDemand(${userId})"></a>
-
-        </div>
-    </div>
     <div class="demandAddDiv">
         <label for="input" class="col-sm-3 control-label">姓名</label>
         <div class="col-sm-9 text-input">
@@ -63,6 +55,8 @@
         </div>
     </div>
 
+    <div class="saveBtn fa fa-save fa-4x" onclick="addDemand(${userId})">添加需求简历</div>
+
 </div>
 </body>
 </html>
@@ -75,27 +69,38 @@
         var diseaseHis=$("#diseaseHis").val();
         var allergyHis=$("#allergyHis").val();
         var remark=$("#remark").val();
+        if(name==""||gender==""||birthday==""||report==""||diseaseHis==""||allergyHis==""||remark=="") {
+            if(name=="") alert("姓名不能为空！");
+            else if(gender=="") alert("性别不能为空！");
+            else if(birthday=="") alert("生日不能为空！");
+            else if(report=="") alert("诊断报告不能为空！");
+            else if(diseaseHis=="") alert("病史不能为空！");
+            else if(allergyHis=="") alert("过敏史不能为空！");
+            else if(remark=="") alert("备注不能为空！");
 
-        $.ajax({
-            url: "/wx/parentCenter/addDemand",
-            type: 'post',
-            dataType: 'json',
-            data: {
-                "userId":userId,
-                "name": name,
-                "gender": gender,
-                "birthday":birthday,
-                "report":report,
-                "diseaseHis": diseaseHis,
-                "allergyHis":allergyHis,
-                "remark":remark
-            },
-            success: function(){
-                window.location.href=document.referrer;
-            },
-            error: function(){
+        }
+        else {
+            $.ajax({
+                url: "/wx/parentCenter/addDemand",
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    "userId": userId,
+                    "name": name,
+                    "gender": gender,
+                    "birthday": birthday,
+                    "report": report,
+                    "diseaseHis": diseaseHis,
+                    "allergyHis": allergyHis,
+                    "remark": remark
+                },
+                success: function () {
+                    window.location.href = document.referrer;
+                },
+                error: function () {
 
-            }
-        });
+                }
+            });
+        }
     }
 </script>

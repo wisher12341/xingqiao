@@ -22,6 +22,7 @@ import java.util.List;
  * 机构查询和显示
  * Created by joy12 on 2017/11/3.
  */
+
 /**
  * 机构
  * Created by netlab606 on 2017/6/25.
@@ -64,7 +65,7 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/{orgId}/organintro",method = RequestMethod.GET)
-    public String organintro(@PathVariable("orgId") Integer orgId, Model model, HttpServletRequest request, HttpServletResponse response) {
+    public String organintro(@PathVariable("orgId") Integer orgId,@RequestParam(value = "error",required = false) String error, Model model, HttpServletRequest request, HttpServletResponse response) {
         if (request.getSession().getAttribute("USER") == null){
             TmpLogin.tmpLogin(request,response);
         }
@@ -72,6 +73,10 @@ public class OrganizationController {
         model.addAttribute("organization",organization);
         UserGoodReport userGoodReport=goodReportService.getOrganGoodReportByUid(request);
         model.addAttribute("usergoodreport",userGoodReport);
+        if(error==null){
+            error="null";
+        }
+        model.addAttribute("error",error);
         return "organization/organintro";
     }
 
@@ -88,6 +93,14 @@ public class OrganizationController {
         return mv;
     }
 
+    @RequestMapping(value = "/toReply",method = RequestMethod.GET)
+    public ModelAndView toReply(@RequestParam("commOid") Integer commOid,@RequestParam("pid") Integer pid) {
+        ModelAndView mv = new ModelAndView("organization/organ_reply");
+        mv.addObject("commOid",commOid);
+        mv.addObject("pid",pid);
+        return mv;
+    }
+
     /**
      * 机构评论
      * @param organComment
@@ -99,8 +112,11 @@ public class OrganizationController {
         if (request.getSession().getAttribute("USER") == null){
             TmpLogin.tmpLogin(request,response);
         }
-        organizationService.addComment(organComment,request,pics);
-        return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
+        if (organizationService.addComment(organComment,request,pics)) {
+            return "redirect:/wx/organization/" + organComment.getOid() + "/organintro";
+        } else {
+            return "redirect:/wx/organization/" + organComment.getOid() + "/organintro?error=NoAuth";
+        }
     }
 
     /**
@@ -130,7 +146,7 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/getOrgCommentByPage",method = RequestMethod.POST)
     @ResponseBody
-    public List<OrganComment> getOrgCommentByPage(@Param("orgId") Integer orgId,@Param("page") Integer page,@Param("size") Integer size) {
+    public List<OrganComment> getOrgCommentByPage(@Param("orgId") Integer orgId, @Param("page") Integer page, @Param("size") Integer size) {
         return organizationService.getOrganizationCommentsByPage(orgId,page,size);
     }
 
@@ -159,8 +175,12 @@ public class OrganizationController {
         if (request.getSession().getAttribute("USER") == null){
             TmpLogin.tmpLogin(request,response);
         }
-        organizationService.addComment(organComment,request,null);
-        return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
+        if (organizationService.addComment(organComment,request,null)){
+            return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
+        } else {
+            return "redirect:/wx/organization/"+organComment.getOid()+"/organintro?error='NoAuth'";
+        }
+
     }
 
     /**

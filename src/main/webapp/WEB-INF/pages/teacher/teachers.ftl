@@ -110,7 +110,9 @@
     <div ng-repeat="temp in teachers" ng-cloak>
         <div class="row row-wrapper my-panel pointable" ng-click="get_teacher_more(temp['id'])">
             <div class="no-padding col-xs-3 col-md-3" align="center">
-                <img ng-src="${base}/##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
+                <img ng-if="temp['headimgurl'].indexOf('wx.qlogo.cn')!=-1" ng-src="##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
+                <img ng-if="temp['headimgurl'].indexOf('wx.qlogo.cn')==-1" ng-src="${base}/##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">
+                <#--<img ng-src="##temp['headimgurl']##" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg">-->
             </div>
             <div class="col-xs-9 col-md-9">
                 <div class="row">

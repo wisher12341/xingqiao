@@ -315,7 +315,11 @@
 <script>
 
     var num=1;//图片顺序
-    var fd=new FormData();//存放表单信息
+
+    //由于手机端浏览器 不能执行formData的delete方法 改用set方法进行覆盖 也不支持  那就创建一个变量用于存储要删除的img的ID 提交时放到cookie供后台进行判断
+    var fd=new FormData();//存放全部图片信息
+    var deleteImg="";
+
 
     $("#input-22a").rating({
         showClear: false
@@ -357,9 +361,9 @@
                 var $span=$('<span class="glyphicon glyphicon-remove picrm" onclick="cancelImg(this)"></span>');
                 var $img;
                 if(i==this.files.length-1 && $("#addImg").is(":hidden")){
-                    $img=$('<img class="addimg" id="img"'+num+' onload=$("#addImg").show()>');
+                    $img=$('<img class="addimg" id="img'+num+'" onload=$("#addImg").show()>');
                 }else{
-                    $img=$('<img class="addimg" id="img"'+num+'>');
+                    $img=$('<img class="addimg" id="img'+num+'">');
                 }
                 $($img).attr("src",getObjectURL(this.files[i]));
                 $div.append($img);
@@ -384,7 +388,10 @@
     function cancelImg(obj) {
         $(obj).parent().remove();
         var img=$(obj).prev().attr("id");
-        fd.delete(img);
+//        fd.set(img+"","");//浏览器不能用
+//        fd.delete(img+"");//浏览器不能用
+        deleteImg+="#"+img;
+
         if($('.addimg').size()%3==0){
             $("#addImg").css("margin-top","0px");
         }else{
@@ -417,6 +424,9 @@ function selectOpen() {
     }
 
     function submit() {
+        deleteImg+="#";  //保证形式 #id#id#
+        setCookie("deleteImg",deleteImg,'0.001');//存到cookie中
+
         //先上传图片
         $.ajax({
             type: "POST",
@@ -438,7 +448,13 @@ function selectOpen() {
             }});
     }
 
-
+    function setCookie(c_name,value,expiredays)
+    {
+        var exdate=new Date()
+        exdate.setDate(exdate.getDate()+expiredays)
+        document.cookie=c_name+ "=" +escape(value)+
+                ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }
 
     function getObjectURL(file) {
         var url = null;

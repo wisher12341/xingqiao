@@ -4,10 +4,12 @@ import com.xq.dao.CommentDao;
 import com.xq.dao.MessageDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.UserDao;
+import com.xq.interceptor.WxInterceptor;
 import com.xq.model.Comment;
 import com.xq.model.Message;
 import com.xq.model.Order;
 import com.xq.service.CommentService;
+import com.xq.util.CookieUtil;
 import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,15 +87,22 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public String addCommentImg(HttpServletRequest request) {
+        String deleteImg= CookieUtil.checkCookie(request,"deleteImg");//获得要删除的img ID
         String picsUrl="";
         // 从请求中获取到文件信息需要将请求转换为MultipartHttpServletRequest类型
         MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
         Iterator<String> fileNames = MulRequest.getFileNames();
         while(fileNames.hasNext()) { // 遍历请求中的信息
             String fileName = fileNames.next(); //
+            //该图片 是要删除的图片  #被转义了
+            String name="%23"+fileName+"%23";
+            if(deleteImg.indexOf(name)!=-1){
+                continue;
+            }
             //图片
             try {
                 String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.COMMENT_TEACHER_ROOT_PATH);
+                WxInterceptor.logger.info(path);
                 int index = path.indexOf("img");
                 picsUrl += path.substring(index, path.length()) + "#";
             }catch (IOException e) {
