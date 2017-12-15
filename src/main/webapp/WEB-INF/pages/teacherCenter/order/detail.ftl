@@ -7,6 +7,7 @@
     <script src="${path}/static/js/order/detail_teacher.js" type="text/javascript" ></script>
     <link type="text/css" href="${path}/static/css/order/star-rating.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 <body>
     <div id="main">
@@ -110,7 +111,7 @@
                         <#--<p class="ll">星级：<input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="${order.order.comment.level}" disabled="disabled"></p>-->
                             <p class="ll">展示：${(order.order.comment.isOpen==1)?string('公开','匿名')}</p>
                             <p class="llend" style="color: #4e794f !important;">评论内容：</p>
-                            <p class="llend">${(order.order.comment.detail)!}</p>
+                            <p class="llend" id="comment">${(order.order.comment.detail)!}</p>
                             <#if order.order.comment.picUrls??>
                                 <p class="llend">
                                     <#list  order.order.comment.picUrls?split("#") as src>
@@ -118,11 +119,11 @@
                                     </#list>
                                 </p>
                             </#if>
-                            <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.time)!}</p>
+                            <p class="ll" style="padding-left: 50%">${(order.order.comment.time)!}</p>
                             <#if (order.order.comment.teacherComment)??>
                                 <p class="llend" style="color: #4e794f !important;">治疗师回复：</p>
-                                <p class="llend">${(order.order.comment.teacherComment.detail)!}</p>
-                                <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.teacherComment.time)!}</p>
+                                <p class="llend" id="comment_reply">${(order.order.comment.teacherComment.detail)!}</p>
+                                <p class="ll" style="padding-left: 50%">${(order.order.comment.teacherComment.time)!}</p>
                             </#if>
                         </div>
                     </#if>
@@ -274,5 +275,9 @@
     $("#input-22a").rating({
         showClear: false
     });
+    $(function () {
+        twemoji.parse(document.getElementById('comment'), {size: 36});
+        twemoji.parse(document.getElementById('comment_reply'), {size: 36});
+    })
 </script>
 </html>

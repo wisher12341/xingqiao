@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 <body class="base">
     <div class="my-panel">
@@ -58,7 +59,7 @@
         </div>
     </div>
 
-    <div class="my-panel">
+    <div class="my-panel" id="emoji">
         <div class="inline-wrapper pointable" onclick="location='${base}/wx/organization/toOrganCommentList?orgId=${organization.id}'">
             <div class="my-panel-title">机构评论 (${organization.organCommentList?size})</div>
             <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
@@ -335,6 +336,8 @@
     if(error!="null"){
         alert("用户无评论权限，评论失败");
     }
+
+    twemoji.parse(document.getElementById('emoji'), {size: 36});
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");

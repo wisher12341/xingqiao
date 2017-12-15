@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 <body>
-<div class="my-panel" style="margin: 0">
+<div class="my-panel" style="margin: 0" id="dataList">
     <div class="my-panel-content container line-height-24">
     <#assign good=usergoodreport.orgCommentGood>
     <#assign report=usergoodreport.orgCommentReport>
@@ -210,6 +211,7 @@
 </body>
 </html>
 <script>
+    twemoji.parse(document.getElementById('dataList'), {size: 36});
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");

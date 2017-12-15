@@ -2,7 +2,6 @@ package com.xq.service;
 
 import com.xq.model.OrganComment;
 import com.xq.model.Organization;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -15,7 +14,7 @@ public interface OrganizationService {
 
     Organization getOrganization(Integer id);
 
-    boolean addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics);
+    boolean addComment(OrganComment organComment, HttpServletRequest request);
 
     List<String> getCommentPics(Integer cid, Integer index);
 

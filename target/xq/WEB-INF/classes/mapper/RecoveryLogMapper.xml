@@ -12,7 +12,7 @@
     </select>
 
     <select id="add" parameterType="com.xq.model.RecoveryLog">
-        INSERT INTO recovery_log(order_id,time,content) VALUES(#{orderId},#{time},#{content})
+        INSERT INTO recovery_log(order_id,time,content,pic_urls) VALUES(#{orderId},#{time},#{content},#{picUrls})
     </select>
 
     <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">

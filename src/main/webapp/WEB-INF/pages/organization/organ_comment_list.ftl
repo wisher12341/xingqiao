@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
     <link rel="stylesheet" href="${base}/static/css/teacher/mescroll.min.css">
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
 <body class="base">
 <div class="container no-padding mescroll" id="mescroll" style="height: 1100px">
@@ -163,6 +164,8 @@
     }
 
     $(function(){
+
+
         //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
         $("#mescroll").height(h);
         var mescroll = new MeScroll("mescroll", {
@@ -186,6 +189,7 @@
                 //联网失败的回调,隐藏下拉刷新和上拉加载的状态;
                 mescroll.endErr();
             });
+
         }
 
         /*设置列表数据*/
@@ -265,6 +269,7 @@
                         var listData=data;
                 //        alert(listData.length);
                         successCallback(listData);
+                        twemoji.parse(document.getElementById('dataList'), {size: 36});
                     },
                     error: errorCallback
                 });

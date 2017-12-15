@@ -102,7 +102,7 @@ public class CommentServiceImpl implements CommentService {
             //图片
             try {
                 String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.COMMENT_TEACHER_ROOT_PATH);
-                WxInterceptor.logger.info(path);
+//                WxInterceptor.logger.info(path);
                 int index = path.indexOf("img");
                 picsUrl += path.substring(index, path.length()) + "#";
             }catch (IOException e) {
@@ -121,41 +121,24 @@ public class CommentServiceImpl implements CommentService {
     public Comment getCommentByOid(String oid) {
         return commentDao.getCommentByOid(oid);
     }
-    @Transactional
-    public void addReply(String reply, String oid, Integer pid) {
-        Date d = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
-        String dateNowStr = sdf.format(d);
-
-
-        Comment comment=new Comment();
-        comment.setTime(dateNowStr);
-        comment.setType(2);
-        comment.setDetail(reply);
-        comment.setPid(pid);
-        commentDao.addReply(comment);
-
-
-        Order order=orderDao.getOrderPayByOid(oid);
-        Message message=new Message();
-        message.setUserId(order.getUidP());
-        message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），治疗师（"+order.getPname()+"）已回复。"+
-                "</p>");
-
-        messageDao.addMessage(message);
-    }
 
 
     @Override
     @Transactional
     public void addReply(Comment comment, String oid) {
+        String pattern = "<img.*?>";
+        String detai=comment.getDetail();
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(detai);
+        while (m.find()){
+            int begin=m.group().indexOf(".png")-5;
+            int end=m.group().indexOf(".png");
+            String number=m.group().substring(begin,end);
+            detai=detai.replace(m.group(),"&#x"+number+";");
+
+        }
+        comment.setDetail(detai);
+
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));

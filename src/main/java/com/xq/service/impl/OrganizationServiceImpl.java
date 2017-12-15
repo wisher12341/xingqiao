@@ -21,6 +21,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by joy12 on 2017/11/3.
@@ -45,8 +47,21 @@ public class OrganizationServiceImpl implements OrganizationService {
     }
 
     @Override
-    public boolean addComment(OrganComment organComment, HttpServletRequest request, MultipartFile[] pics) {
+    public boolean addComment(OrganComment organComment, HttpServletRequest request) {
 //        User user= (User) request.getSession().getAttribute("USER");
+        String pattern = "<img.*?>";
+        String detai=organComment.getDetail();
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(detai);
+        while (m.find()){
+            int begin=m.group().indexOf(".png")-5;
+            int end=m.group().indexOf(".png");
+            String number=m.group().substring(begin,end);
+            detai=detai.replace(m.group(),"&#x"+number+";");
+
+        }
+        organComment.setDetail(detai);
+
 
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
@@ -56,28 +71,6 @@ public class OrganizationServiceImpl implements OrganizationService {
         }
         organComment.setUid(user.getId());
 
-
-        String picsUrl="";
-        if(pics!=null && pics.length>0) {
-            for (MultipartFile pic : pics) {
-                String path = "";
-                int index = 0;
-                if (!pic.isEmpty()) {
-                    try {
-                        path = FileUpload.uploadFile(pic, request, FileUpload.COMMENT_ORGANIZATION_ROOT_PATH);
-                        index = path.indexOf("img");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    picsUrl += path.substring(index, path.length()) + "#";
-                }
-            }
-            if (picsUrl.length()>0){
-                picsUrl=picsUrl.substring(0,picsUrl.length()-1);
-                organComment.setPicurls(picsUrl);
-            }
-
-        }
 
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

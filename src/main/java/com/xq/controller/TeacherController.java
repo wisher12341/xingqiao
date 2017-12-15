@@ -43,9 +43,19 @@ public class TeacherController {
     }
 
 
+    /**
+     * 评论回复页面
+     * @param teacherId
+     * @param pid
+     * @return
+     */
     @RequestMapping(value = "/toReply",method = RequestMethod.GET)
     public ModelAndView toReply(@RequestParam("teacherId") Integer teacherId,@RequestParam("pid") Integer pid) {
-        ModelAndView mv = new ModelAndView("teacher/teacher_comment_reply");
+//        ModelAndView mv = new ModelAndView("teacher/teacher_comment_reply");
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","评论回复");
+        mv.addObject("submit","/wx/teacher/comment");
+        mv.addObject("type","teacher_reply");
         mv.addObject("teacherId",teacherId);
         mv.addObject("pid",pid);
         return mv;

@@ -15,6 +15,7 @@
     <script src='${base}/static/fullcalendar/moment.min.js'></script>
     <script src='${base}/static/fullcalendar/fullcalendar.js'></script>
     <script src='${base}/static/js/teacher/autoresize.js'></script>
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
     <style>
         #calendar_month,#calendar_day {
             max-width: 900px;
@@ -72,7 +73,7 @@
 
     </style>
 </head>
-<body style="height: 100%;">
+<body style="height: 100%;" id="emoji">
 <div id="base" class="base" style="height: 100%;">
 <div class="container my-panel" style="min-height: 20rem">
     <div class="row" style="height: 100%">
@@ -693,6 +694,8 @@
     }else{
         $("#sumSpan").html("0");
     }
+
+    twemoji.parse(document.getElementById('emoji'), {size: 36});
 
     var original = document.documentElement.clientHeight;
     window.addEventListener("resize", function() {

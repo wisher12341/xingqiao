@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by joy12 on 2017/11/6.
@@ -109,6 +111,18 @@ public class TeacherServiceImpl implements TeacherService{
 
     @Override
     public void addComment(Comment comment, HttpServletRequest request) {
+        String pattern = "<img.*?>";
+        String detai=comment.getDetail();
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(detai);
+        while (m.find()){
+            int begin=m.group().indexOf(".png")-5;
+            int end=m.group().indexOf(".png");
+            String number=m.group().substring(begin,end);
+            detai=detai.replace(m.group(),"&#x"+number+";");
+
+        }
+        comment.setDetail(detai);
         //User user= (User) request.getSession().getAttribute("USER");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";

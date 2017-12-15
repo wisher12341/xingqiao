@@ -75,8 +75,10 @@ public class OrderController {
      */
     @RequestMapping(value = "/{oid}/stop",method = RequestMethod.GET)
     public ModelAndView stop(@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("order/stop");
-        mv.addObject("oid",oid);
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","订单终止");
+        mv.addObject("submit","/wx/order/"+oid+"/stop");
+        mv.addObject("type","order_stop");
         return mv;
     }
 
@@ -85,8 +87,8 @@ public class OrderController {
      * @param oid
      * @return
      */
-    @RequestMapping(value = "/stop",method = RequestMethod.POST)
-    public ModelAndView stop(String oid, String reason){
+    @RequestMapping(value = "/{oid}/stop",method = RequestMethod.POST)
+    public ModelAndView stop(@PathVariable String oid, String reason){
         orderService.orderStop(oid,reason);
         ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
         return mv;

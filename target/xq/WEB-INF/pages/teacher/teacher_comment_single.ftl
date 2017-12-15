@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
-<body>
+<body id="emoji">
 <div class="my-panel" style="margin: 0">
     <div class="my-panel-content container line-height-24">
     <#assign good=usergoodreport.teacherCommentGood>
@@ -259,6 +260,7 @@
 </body>
 </html>
 <script>
+    twemoji.parse(document.getElementById('emoji'), {size: 36});
 
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");

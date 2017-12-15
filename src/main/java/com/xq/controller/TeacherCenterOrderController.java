@@ -65,8 +65,11 @@ public class TeacherCenterOrderController {
      */
     @RequestMapping(value = "/{oid}/updateLog",method = RequestMethod.GET)
     public ModelAndView updatelog(@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("teacherCenter/order/updateLog");
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","更新康复日志");
+        mv.addObject("submit","/wx/teacherCenter/updateLog");
         mv.addObject("oid",oid);
+        mv.addObject("type","log");
         return mv;
     }
 
@@ -110,9 +113,11 @@ public class TeacherCenterOrderController {
     @ResponseBody
     @RequestMapping(value = "/order/{oid}/reject",method = RequestMethod.GET)
     public ModelAndView reject_get(@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("teacherCenter/order/reason");
-        mv.addObject("oid",oid);
-        mv.addObject("type","reject");
+//        ModelAndView mv=new ModelAndView("teacherCenter/order/reason");
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","订单拒绝");
+        mv.addObject("submit","/wx/teacherCenter/order/"+oid+"/reject");
+        mv.addObject("type","order_reject");
         return mv;
     }
 
@@ -122,8 +127,8 @@ public class TeacherCenterOrderController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/order/reject",method = RequestMethod.POST)
-    public ModelAndView reject(@RequestParam String orderId,String reason){
+    @RequestMapping(value = "/order/{orderId}/reject",method = RequestMethod.POST)
+    public ModelAndView reject(@PathVariable String orderId,String reason){
         orderTeacherService.orderReject(orderId,reason);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+orderId+"/detail");
         return mv;
@@ -148,9 +153,11 @@ public class TeacherCenterOrderController {
      */
     @RequestMapping(value = "/order/{oid}/stop",method = RequestMethod.GET)
     public ModelAndView stop_get(@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("teacherCenter/order/reason");
-        mv.addObject("oid",oid);
-        mv.addObject("type","stop");
+//        ModelAndView mv=new ModelAndView("teacherCenter/order/reason");
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","订单终止");
+        mv.addObject("submit","/wx/teacherCenter/order/"+oid+"/stop");
+        mv.addObject("type","order_stop");
         return mv;
     }
 
@@ -159,8 +166,8 @@ public class TeacherCenterOrderController {
      * @param oid
      * @return
      */
-    @RequestMapping(value = "/order/stop",method = RequestMethod.POST)
-    public ModelAndView stop(String oid,String reason){
+    @RequestMapping(value = "/order/{oid}/stop",method = RequestMethod.POST)
+    public ModelAndView stop(@PathVariable String oid,String reason){
         orderTeacherService.orderStop(oid,reason);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
         return mv;
@@ -186,9 +193,12 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{oid}/{cid}/comment",method = RequestMethod.GET)
     public ModelAndView comment(@PathVariable String cid,@PathVariable String oid){
 //        Comment comment=commentService.getCommentByOid(cid);
-        ModelAndView mv=new ModelAndView("teacherCenter/order/comment_reply");
-        mv.addObject("oid",oid);
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","回复评论");
+        mv.addObject("submit","/wx/comment/"+oid+"/teacherReply");
         mv.addObject("cid",cid);
+        mv.addObject("type","order_reply");
+
 //        mv.addObject("type","teacher");
         return mv;
     }

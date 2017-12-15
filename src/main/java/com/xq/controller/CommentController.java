@@ -29,12 +29,14 @@ public class CommentController {
     @RequestMapping(value = "/{oid}",method = RequestMethod.GET)
     public ModelAndView comment(@PathVariable String oid){
         ModelAndView mv=new ModelAndView("order/comment");
-        mv.addObject("oid",oid);
+        mv.addObject("title","订单评论");
+        mv.addObject("submit","/wx/comment/"+oid);
+        mv.addObject("type","order");
         return mv;
     }
 
     /**
-     * 评论
+     * 订单评论
      * @return
      */
     @RequestMapping(value = "/{oid}",method = RequestMethod.POST)

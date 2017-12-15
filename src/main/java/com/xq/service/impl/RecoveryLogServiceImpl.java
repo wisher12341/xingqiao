@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -150,6 +152,19 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     @Override
     @Transactional
     public void addRecovery(RecoveryLog recoveryLog) {
+        String pattern = "<img.*?>";
+        String detai=recoveryLog.getContent();
+        Pattern r = Pattern.compile(pattern);
+        Matcher m = r.matcher(detai);
+        while (m.find()){
+            int begin=m.group().indexOf(".png")-5;
+            int end=m.group().indexOf(".png");
+            String number=m.group().substring(begin,end);
+            detai=detai.replace(m.group(),"&#x"+number+";");
+
+        }
+        recoveryLog.setContent(detai);
+
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));

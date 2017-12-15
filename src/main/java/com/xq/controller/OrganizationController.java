@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,14 +87,28 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/toCommentPage",method = RequestMethod.GET)
     public ModelAndView toOrganComment(@Param("orgId") Integer orgId) {
-        ModelAndView mv = new ModelAndView("organization/organ_comment");
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","机构评论");
+        mv.addObject("submit","/wx/organization/comment");
         mv.addObject("orgId",orgId);
+        mv.addObject("type","organ_comment");
         return mv;
     }
 
+    /**
+     * 评论回复页面
+     * @param commOid
+     * @param pid
+     * @return
+     */
     @RequestMapping(value = "/toReply",method = RequestMethod.GET)
     public ModelAndView toReply(@RequestParam("commOid") Integer commOid,@RequestParam("pid") Integer pid) {
-        ModelAndView mv = new ModelAndView("organization/organ_reply");
+//        ModelAndView mv = new ModelAndView("organization/organ_reply");
+
+        ModelAndView mv=new ModelAndView("order/comment");
+        mv.addObject("title","评论回复");
+        mv.addObject("submit","/wx/organization/reply");
+        mv.addObject("type","organ_reply");
         mv.addObject("commOid",commOid);
         mv.addObject("pid",pid);
         return mv;
@@ -108,11 +121,11 @@ public class OrganizationController {
      * @return
      */
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
-    public String comment(OrganComment organComment, HttpServletRequest request, HttpServletResponse response, @RequestParam(required = false) MultipartFile[] pics){
+    public String comment(OrganComment organComment, HttpServletRequest request, HttpServletResponse response){
         if (request.getSession().getAttribute("USER") == null){
             TmpLogin.tmpLogin(request,response);
         }
-        if (organizationService.addComment(organComment,request,pics)) {
+        if (organizationService.addComment(organComment,request)) {
             return "redirect:/wx/organization/" + organComment.getOid() + "/organintro";
         } else {
             return "redirect:/wx/organization/" + organComment.getOid() + "/organintro?error=NoAuth";
@@ -175,7 +188,7 @@ public class OrganizationController {
         if (request.getSession().getAttribute("USER") == null){
             TmpLogin.tmpLogin(request,response);
         }
-        if (organizationService.addComment(organComment,request,null)){
+        if (organizationService.addComment(organComment,request)){
             return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
         } else {
             return "redirect:/wx/organization/"+organComment.getOid()+"/organintro?error='NoAuth'";

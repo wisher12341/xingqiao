@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
 
     <link rel="stylesheet" href="${base}/static/css/teacher/mescroll.min.css">
+    <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
     <style>
         ul,li{
             appearance: none;
@@ -256,6 +257,7 @@
                         var listData=data;
                         //        alert(listData.length);
                         successCallback(listData);
+                        twemoji.parse(document.getElementById('dataList'), {size: 36});
                     },
                     error: errorCallback
                 });

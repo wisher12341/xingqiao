@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>评论</title>
+    <title>${title!}</title>
 <#include "common/head.ftl" />
 
     <link type="text/css" href="/static/css/order/star-rating.css" media="all" rel="stylesheet" />
@@ -146,47 +146,129 @@
     <div id="main">
         <div id="body" onclick="cancelEmoji()">
             <div align="center">
-                <form action="/wx/comment/${oid}" method="post" id="formComment">
-                    <div id="textDiv" contenteditable="true" style="text-align: left" placeholder="填写评论..."></div>
-                    <textarea style="display: none" name="detail" ></textarea>
-                    <input name="picUrls" type="hidden">
-                    <input name="isOpen" type="hidden">
-                    <input name="level" type="hidden">
+                <form action="${submit!}" method="post" id="formComment">
+                    <div id="textDiv" contenteditable="true" style="text-align: left" placeholder="填写内容..."></div>
+                    <#if type=="order">
+                    <#--订单评论-->
+                        <textarea style="display: none" name="detail" ></textarea>
+                        <input name="picUrls" type="hidden">
+                        <input name="isOpen" type="hidden">
+                        <input name="level" type="hidden">
+                    <#elseif type=="organ_comment">
+                    <#--机构评论-->
+                        <textarea style="display: none" name="detail" ></textarea>
+                        <input name="isOpen" type="hidden">
+                        <input name="picurls" type="hidden">
+                        <input type="hidden" name="pid" value="0">
+                        <input type="hidden" name="oid" value="${orgId!}">
+                        <input type="hidden" name="type" value="1">
+                    <#elseif type=="log">
+                    <#--更新康复日志-->
+                        <textarea style="display: none" name="content" ></textarea>
+                        <input name="orderId" type="hidden" value="${oid!}">
+                        <input name="picUrls" type="hidden">
+                    <#elseif type=="order_reply">
+                    <#--治疗师回复订单-->
+                        <textarea style="display: none" name="detail" ></textarea>
+                        <input name="pid" type="hidden" value="${cid!}">
+                    <#elseif type=="organ_reply">
+                    <#--机构评论回复-->
+                        <textarea style="display: none" name="detail" ></textarea>
+                        <input name="isOpen" type="hidden">
+                        <input type="hidden" name="pid" value="${pid}">
+                        <input type="hidden" name="oid" value="${commOid}">
+                        <input type="hidden" name="type" value="0">
+                    <#elseif type=="teacher_reply">
+                    <#--治疗师评论回复-->
+                        <textarea style="display: none" name="detail" ></textarea>
+                        <input name="isOpen" type="hidden">
+                        <input type="hidden" name="pid" value="${pid!}">
+                        <input type="hidden" name="tid" value="${teacherId!}">
+                        <input type="hidden" name="type" value="0">
+                    <#else >
+                    <#--订单终止、拒绝-->
+                        <textarea style="display: none" name="reason" ></textarea>
+                    </#if>
+
                 </form>
 
             </div>
-            <div id="pics">
-                <div class="ps" style="display: inline">
+            <#if type=="order" || type=="organ_comment" || type=="log">
+                <div id="pics">
+                    <div class="ps" style="display: inline">
+                    </div>
+                    <img src="/static/img/add.png" id="addImg" style="border: 2px dashed lightgray;width: 100px" onclick="$('#mulP').trigger('click');">
                 </div>
-                <img src="/static/img/add.png" id="addImg" style="border: 2px dashed lightgray;width: 100px" onclick="$('#mulP').trigger('click');">
-            </div>
+            </#if>
         </div>
 
 
         <div id="foot">
             <div id="foot_play">
+                <#if type=="order">
                 <div style="display: inline">
                     <input id="input-22a" type="number" class="rating" min=0 max=5 step=1 data-size="xs"  value="0" >
                 </div>
+                </#if>
+                <#if type?index_of("report")==-1 && type?index_of("log")==-1 && type!="order_reply" && type!="order_stop" && type!="order_reject">
                 <div class="nm">
                     <img src="/static/img/earth_s.png" ><span class="nm_span">公开</span>
                 </div>
+                </#if>
             </div>
             <div id="foot_function">
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-3">
-                            <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
-                        </div>
-                        <div class="col-xs-3">
-                            <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
-                        </div>
-                        <div class="col-xs-3" onclick="selectOpen()">
-                            <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
-                        </div>
-                        <div class="col-xs-3">
-                            <input type="button" onclick="submit()" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="发表">
-                        </div>
+                        <#--评论-->
+                        <#if type=="order" || type=="organ_comment">
+                            <div class="col-xs-3">
+                                <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
+                            </div>
+                            <div class="col-xs-3">
+                                <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
+                            </div>
+                            <div class="col-xs-3" onclick="selectOpen()">
+                                <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="button" onclick="submit('comment')" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="评论">
+                            </div>
+                        <#--更新康复日志-->
+                        <#elseif type=="log">
+                            <div class="col-xs-4">
+                                <img src="/static/img/pic.png" class="pic" style="margin-left: 15px" onclick="$('#mulP').trigger('click');">
+                            </div>
+                            <div class="col-xs-4">
+                                <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" onclick="submit('comment')" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="更新">
+                            </div>
+                        <#--回复-->
+                        <#elseif (type?index_of("reply")!=-1) && type!="order_reply">
+                            <div class="col-xs-4">
+                                <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
+                            </div>
+                            <div class="col-xs-4" onclick="selectOpen()">
+                                <img src="/static/img/earth.png" class="pic" style="margin-left: 15px">
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="button" onclick="submit('reply')" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="回复">
+                            </div>
+                        <#--治疗师回复订单-->
+                        <#elseif type=="order_reply">
+                            <div class="col-xs-6">
+                                <img src="/static/img/Smile.png" class="pic" style="margin-left: 15px" onclick="selectEmoji()">
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="button" onclick="submit('reply')" class="pic" style="padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="回复">
+                            </div>
+                        <#--订单终止、拒绝-->
+                        <#else>
+                        <#--<div class="col-xs-12" style="clear: left">-->
+                                <input type="button" onclick="submit('reply')" style="height:100%;width:100%;padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="提交">
+                        <#--</div>-->
+                        </#if>
                     </div>
                 </div>
             </div>
@@ -423,29 +505,49 @@ function selectOpen() {
         $('#openSelect').hide();
     }
 
-    function submit() {
-        deleteImg+="#";  //保证形式 #id#id#
-        setCookie("deleteImg",deleteImg,'0.001');//存到cookie中
+    function submit(t) {
+        if(t=="comment") {
+            deleteImg += "#";  //保证形式 #id#id#
+            setCookie("deleteImg", deleteImg, '0.001');//存到cookie中
+            //先上传图片
+            $.ajax({
+                type: "POST",
+                url:"/wx/comment/img",
+                data: fd,
+                //下面的一定要加
+                // 告诉jQuery不要去处理发送的数据
+                processData : false,
+                // 告诉jQuery不要去设置Content-Type请求头
+                contentType : false,
+                success: function (data) {
+                    if('${type}'=="order"){
+                        $('textarea[name="detail"]').val($("#textDiv").html());
+                        $('input[name="picUrls"]').val(data.data);
+                        $('input[name="isOpen"]').val($('input[name="open"]').val());
+                        $('input[name="level"]').val($('#input-22a').val());
+                    }else if('${type}'=="organ_comment"){
+                        $('textarea[name="detail"]').val($("#textDiv").html());
+                        $('input[name="picurls"]').val(data.data);
+                        $('input[name="isOpen"]').val($('input[name="open"]').val());
+                    }else{
+                        $('textarea[name="content"]').val($("#textDiv").html());
+                        $('input[name="picUrls"]').val(data.data);
+                    }
+                    $("#formComment").submit();
+                },error:function () {
 
-        //先上传图片
-        $.ajax({
-            type: "POST",
-            url:"/wx/comment/img",
-            data: fd,
-            //下面的一定要加
-            // 告诉jQuery不要去处理发送的数据
-            processData : false,
-            // 告诉jQuery不要去设置Content-Type请求头
-            contentType : false,
-            success: function (data) {
-                $('textarea[name="detail"]').val($("#textDiv").html());
-                $('input[name="picUrls"]').val(data.data);
+                }});
+        }else if(t=="reply"){
+            $('textarea[name="detail"]').val($("#textDiv").html());
+            if("${type}"!="order_reply"){
                 $('input[name="isOpen"]').val($('input[name="open"]').val());
-                $('input[name="level"]').val($('#input-22a').val());
-                $("#formComment").submit();
-            },error:function () {
+            }
+            $("#formComment").submit();
+        }else{
+            $('textarea[name="reason"]').val($("#textDiv").html());
+        }
 
-            }});
+
     }
 
     function setCookie(c_name,value,expiredays)

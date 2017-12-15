@@ -119,11 +119,11 @@
                                   </#list>
                                 </p>
                                 </#if>
-                                <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.time)!}</p>
+                                <p class="ll" style="padding-left: 50%">${(order.order.comment.time)!}</p>
                             <#if (order.order.comment.teacherComment)??>
                                 <p class="llend" style="color: #4e794f !important;">治疗师回复：</p>
-                                <p class="llend">${(order.order.comment.teacherComment.detail)!}</p>
-                                <p class="ll" style="padding-left: 40%">时间：${(order.order.comment.teacherComment.time)!}</p>
+                                <p class="llend" id="comment_reply">${(order.order.comment.teacherComment.detail)!}</p>
+                                <p class="ll" style="padding-left: 50%">${(order.order.comment.teacherComment.time)!}</p>
                             </#if>
                             </div>
                         </#if>
@@ -257,7 +257,7 @@
             <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
         <#--<#elseif order.order.cid!=0 && order.order.statusP==15>-->
             <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>-->
-        <#else >
+        <#elseif order.order.statusP==15>
             <#if order.order.comment??>
 
             <#else >
@@ -279,6 +279,7 @@
     });
     $(function () {
         twemoji.parse(document.getElementById('comment'), {size: 36});
+        twemoji.parse(document.getElementById('comment_reply'), {size: 36});
     })
 </script>
 </html>
