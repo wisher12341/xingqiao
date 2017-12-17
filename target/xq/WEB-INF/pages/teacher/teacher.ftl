@@ -139,52 +139,63 @@
         </div>
 
         <div class="col-xs-12 my-panel-content">
-            <hr style="margin-top: 0.8rem; margin-bottom: 0.8rem">
-            <div style="color: #000000">康复方式及价格&nbsp(元/时)</div>
+
 
         <#if teacher.way??>
-            <div class="container no-padding">
+            <table class="table" style="margin-bottom: 10px;">
+                <thead>
+                <tr>
+                    <th>授课方式</th>
+                    <th>价格 (元/课时)</th>
+                    <th>服务区域</th>
+                </tr>
+                </thead>
                 <#assign teacherways=teacher.way?split("、")>
+                <tbody>
                 <#if teacherways[0] == "不限">
                     <#if teacher.priceO gt 0>
-                        <div class="inline-wrapper">
-                            <div>在线授课</div>
-                            <div>${teacher.priceO}</div>
-                        </div>
+                    <tr>
+                        <td>在线授课</td>
+                        <td>${teacher.priceO}</td>
+                        <td></td>
+                    </tr>
                     </#if>
                     <#if teacher.priceS gt 0>
-                        <div class="inline-wrapper">
-                            <div>学生上门</div>
-                            <div>${teacher.priceS}</div>
-                            <div>${teacher.sGround}</div>
-                        </div>
+                    <tr>
+                        <td>学生上门</td>
+                        <td>${teacher.priceS}</td>
+                        <td>${teacher.sGround}</td>
+                    </tr>
                     </#if>
                     <#if teacher.priceT gt 0>
-                        <div class="row">
-                            <div class="col-xs-3">治疗师上门</div>
-                            <div class="col-xs-1">${teacher.priceT}</div>
-                            <div class="col-xs-5">${teacher.tGround}</div>
-                        </div>
+                    <tr>
+                        <td>治疗师上门</td>
+                        <td>${teacher.priceT}</td>
+                        <td>${teacher.tGround}</td>
+                    </tr>
                     </#if>
                 <#else>
                     <#list teacherways as str>
-                        <div class="row">
-                            <div class="col-xs-4 no-padding-right">${str}</div>
-                            <#if str=="在线授课" && teacher.priceO gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceO}</div>
-                            <#elseif str=="学生上门" && teacher.priceS gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceS}</div>
-                                <div class="col-xs-6 no-padding">${teacher.sGround}</div>
-                            <#elseif str=="治疗师上门" && teacher.priceT gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceT}</div>
-                                <div class="col-xs-6 no-padding">${teacher.tGround}</div>
-                            </#if>
-                        </div>
+                    <tr>
+                        <td>${str}</td>
+                        <#if str=="在线授课" && teacher.priceO gt 0>
+                            <td>${teacher.priceO}</td>
+                            <td></td>
+                        <#elseif str=="学生上门" && teacher.priceS gt 0>
+                            <td>${teacher.priceS}</td>
+                            <td>${teacher.sGround}</td>
+                        <#elseif str=="治疗师上门" && teacher.priceT gt 0>
+                            <td>${teacher.priceT}</td>
+                            <td>${teacher.tGround}</td>
+                        </#if>
+                    </tr>
                     </#list>
                 </#if>
-                <div class="col-xs-12 no-padding offset-5">
-                    注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟
-                </div>
+
+                </tbody>
+            </table>
+            <div class="col-xs-12 no-padding offset-5">
+                注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟
             </div>
         <#else>
             <div class="my-panel-content row">
@@ -193,6 +204,58 @@
                 </div>
             </div>
         </#if>
+
+        <#--<#if teacher.way??>-->
+            <#--<div class="container no-padding">-->
+                <#--<#assign teacherways=teacher.way?split("、")>-->
+                <#--<#if teacherways[0] == "不限">-->
+                    <#--<#if teacher.priceO gt 0>-->
+                        <#--<div class="inline-wrapper">-->
+                            <#--<div>在线授课</div>-->
+                            <#--<div>${teacher.priceO}</div>-->
+                        <#--</div>-->
+                    <#--</#if>-->
+                    <#--<#if teacher.priceS gt 0>-->
+                        <#--<div class="inline-wrapper">-->
+                            <#--<div>学生上门</div>-->
+                            <#--<div>${teacher.priceS}</div>-->
+                            <#--<div>${teacher.sGround}</div>-->
+                        <#--</div>-->
+                    <#--</#if>-->
+                    <#--<#if teacher.priceT gt 0>-->
+                        <#--<div class="row">-->
+                            <#--<div class="col-xs-3">治疗师上门</div>-->
+                            <#--<div class="col-xs-1">${teacher.priceT}</div>-->
+                            <#--<div class="col-xs-5">${teacher.tGround}</div>-->
+                        <#--</div>-->
+                    <#--</#if>-->
+                <#--<#else>-->
+                    <#--<#list teacherways as str>-->
+                        <#--<div class="row">-->
+                            <#--<div class="col-xs-4 no-padding-right">${str}</div>-->
+                            <#--<#if str=="在线授课" && teacher.priceO gt 0>-->
+                                <#--<div class="col-xs-2 no-padding">${teacher.priceO}</div>-->
+                            <#--<#elseif str=="学生上门" && teacher.priceS gt 0>-->
+                                <#--<div class="col-xs-2 no-padding">${teacher.priceS}</div>-->
+                                <#--<div class="col-xs-6 no-padding">${teacher.sGround}</div>-->
+                            <#--<#elseif str=="治疗师上门" && teacher.priceT gt 0>-->
+                                <#--<div class="col-xs-2 no-padding">${teacher.priceT}</div>-->
+                                <#--<div class="col-xs-6 no-padding">${teacher.tGround}</div>-->
+                            <#--</#if>-->
+                        <#--</div>-->
+                    <#--</#list>-->
+                <#--</#if>-->
+                <#--<div class="col-xs-12 no-padding offset-5">-->
+                    <#--注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟-->
+                <#--</div>-->
+            <#--</div>-->
+        <#--<#else>-->
+            <#--<div class="my-panel-content row">-->
+                <#--<div class="col-xs-12">-->
+                    <#--暂无-->
+                <#--</div>-->
+            <#--</div>-->
+        <#--</#if>-->
         </div>
     </div>
 </div>
@@ -376,7 +439,7 @@
                     ${comm.time}
                     </div>
                     <div class="comment-btns inline-wrapper">
-                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span><span>回复</div>
                         <#if good?contains("#${comm.id}#")>
                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
                             <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
@@ -560,10 +623,10 @@
                         </div>
                         <#--<select id="demandSelect"></select>-->
                     </div>
-                    <div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">
-                        服务时间：<img onclick="selectTime($('#serviceTime'))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg">
-                        <div id="serviceTime" class="serviceTime" style="margin-left: 1rem;"></div>
-                    </div>
+                    <#--<div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">-->
+                        <#--服务时间：<img onclick="selectTime($('#serviceTime'))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg">-->
+                        <#--<div id="serviceTime" class="serviceTime" style="margin-left: 1rem;"></div>-->
+                    <#--</div>-->
                     <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
                         课程数量：
                         <div class="amount_button" onclick="subtract__fuction()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/sub.svg"></div>
@@ -587,10 +650,10 @@
         </div>
     </div>
 </div>
-<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
-<div class="mask" id="mask" style="z-index:10000;display: none"></div>
-<div id="calendar_month" class="hide-nav-bottom"></div>
-<div id="calendar_day" class="hide-nav-bottom"></div>
+<#--<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>-->
+<#--<div class="mask" id="mask" style="z-index:10000;display: none"></div>-->
+<#--<div id="calendar_month" class="hide-nav-bottom"></div>-->
+<#--<div id="calendar_day" class="hide-nav-bottom"></div>-->
 
 <!-- 模态框（Modal） 未完成个人资料-->
 <div class="modal fade"  id="noInf_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -650,32 +713,41 @@
     <#--</div>-->
 <#--</div>-->
 <!--举报-->
-<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container no-padding">
-        <div class="slider-header">
-            <div class="row">
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                </div>
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                </div>
-                <div class="col-xs-4 col-md-4"></div>
-                <div class="col-xs-2 col-md-2">
-                    <button type="button" class="close mobile-close-taggle">
-                        &times;
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="slider-body" id="divContent">
-            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
-            <input type="hidden" name="cid" >
-            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
-                举报
-            </button>
-        </div>
-    </div>
+    <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
+        <textarea class="my-textarea" style="height: 100%;" placeholder="举报理由" name="reason"></textarea>
+        <input type="hidden" name="cid" >
+        <button class="bottom-single-btn" style="border: none; background-color: #EE2C2C;width: 50%;" onclick="doreport()">
+            举报
+        </button>
+        <button class="bottom-single-btn" style="border: none; background-color: cornflowerblue;width: 50%;left: 50%;"
+                onclick="javascript:$('#mobile-menu-report').addClass('hide-nav-bottom').removeClass('show-nav-bottom');">
+            取消
+        </button>
+    <#--<div class="container my-slider-container no-padding">-->
+        <#--<div class="slider-header">-->
+            <#--<div class="row">-->
+                <#--<div class="col-xs-3 col-md-3">-->
+                    <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+                <#--</div>-->
+                <#--<div class="col-xs-3 col-md-3">-->
+                    <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+                <#--</div>-->
+                <#--<div class="col-xs-4 col-md-4"></div>-->
+                <#--<div class="col-xs-2 col-md-2">-->
+                    <#--<button type="button" class="close mobile-close-taggle">-->
+                        <#--&times;-->
+                    <#--</button>-->
+                <#--</div>-->
+            <#--</div>-->
+        <#--</div>-->
+        <#--<div class="slider-body" id="divContent">-->
+            <#--<textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>-->
+            <#--<input type="hidden" name="cid" >-->
+            <#--<button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">-->
+                <#--举报-->
+            <#--</button>-->
+        <#--</div>-->
+    <#--</div>-->
 </div>
 
 <!-- modal -->
@@ -742,9 +814,9 @@
         if (mobileMenu.hasClass("hide-nav-bottom")) {
             makeOrder();
 //            if(makeOrder()==true) {
-                setTimeout(function () {
-                    masking();
-                }, 500);
+//                setTimeout(function () {
+//                    masking();
+//                }, 500);
                 setTimeout(function () {
                     mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
                 }, 500);
@@ -753,7 +825,7 @@
 //            }
         }
         else {
-            unmasking();
+//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100)
@@ -764,13 +836,13 @@
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");
         if (mobileMenu.hasClass("hide-nav-bottom")) {
-            masking();
+//            masking();
             setTimeout(function () {
                 mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             }, 100)
         }
         else {
-            unmasking();
+//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100);

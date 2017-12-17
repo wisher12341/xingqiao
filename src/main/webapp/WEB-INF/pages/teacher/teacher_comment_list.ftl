@@ -121,32 +121,41 @@
     <#--</div>-->
 <#--</div>-->
 <!--举报-->
-<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container no-padding">
-        <div class="slider-header">
-            <div class="row">
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                </div>
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                </div>
-                <div class="col-xs-4 col-md-4"></div>
-                <div class="col-xs-2 col-md-2">
-                    <button type="button" class="close mobile-close-taggle">
-                        &times;
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="slider-body" id="divContent">
-            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
-            <input type="hidden" name="cid" >
-            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
-                举报
-            </button>
-        </div>
-    </div>
+<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
+    <textarea class="my-textarea" style="height: 100%;" placeholder="举报理由" name="reason"></textarea>
+    <input type="hidden" name="cid" >
+    <button class="bottom-single-btn" style="border: none; background-color: #EE2C2C;width: 50%;" onclick="doreport()">
+        举报
+    </button>
+    <button class="bottom-single-btn" style="border: none; background-color: cornflowerblue;width: 50%;left: 50%;"
+            onclick="javascript:$('#mobile-menu-report').addClass('hide-nav-bottom').removeClass('show-nav-bottom');">
+        取消
+    </button>
+<#--<div class="container my-slider-container no-padding">-->
+        <#--<div class="slider-header">-->
+            <#--<div class="row">-->
+                <#--<div class="col-xs-3 col-md-3">-->
+                    <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+                <#--</div>-->
+                <#--<div class="col-xs-3 col-md-3">-->
+                    <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+                <#--</div>-->
+                <#--<div class="col-xs-4 col-md-4"></div>-->
+                <#--<div class="col-xs-2 col-md-2">-->
+                    <#--<button type="button" class="close mobile-close-taggle">-->
+                        <#--&times;-->
+                    <#--</button>-->
+                <#--</div>-->
+            <#--</div>-->
+        <#--</div>-->
+        <#--<div class="slider-body" id="divContent">-->
+            <#--<textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>-->
+            <#--<input type="hidden" name="cid" >-->
+            <#--<button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">-->
+                <#--举报-->
+            <#--</button>-->
+        <#--</div>-->
+    <#--</div>-->
 </div>
 
 </body>
@@ -214,7 +223,7 @@
 
                 str += '</div></div></div><div class="time">' + comm.time +'</div>' +
                         '<div class="comment-btns inline-wrapper"> ' +
-                        '<div class="btn-pill" onclick="reply(' + comm.id + ')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ';
+                        '<div class="btn-pill" onclick="reply(' + comm.id + ')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span><span>回复</div> ';
                 var id = "#" + comm.id + "#";
                 if (good.indexOf(id) >= 0){
                     str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +

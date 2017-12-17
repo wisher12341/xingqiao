@@ -90,15 +90,24 @@
                         <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
                     </#if>
                 </div>
-
-
             </div>
+        </div>
+        <div class="row">
+            <hr style="margin-bottom: 1rem">
+            <div class="inline-wrapper col-xs-12">
+                <div class="my-panel-title padding-left-15">评论回复
+                    <#if comm.organCommentChildList??>
+                        (<span class="count">${comm.organCommentChildList?size}</span>)
+                    </#if>
+                </div>
+            </div>
+            <br>
+            <hr style="margin-top: 1rem">
         </div>
         <#if comm.organCommentChildList??>
             <#if comm.organCommentChildList?size gt 0>
                 <div class="sub-comment-list row">
                     <#list comm.organCommentChildList as subComm>
-                        <hr>
                         <div class="row padding-left-15">
                             <div class="col-xs-2 no-padding">
                                 <div class="inline-wrapper">
@@ -141,6 +150,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                     </#list>
                 </div>
             </#if>
