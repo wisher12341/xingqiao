@@ -91,19 +91,19 @@ body{
     padding-bottom: 10px;
 
 }
-.ob_no_select{
-    opacity: 0.5;
-    margin: 30px 50px;
-}
-.ob_select{
-    margin: 30px 50px;
-}
+/*.ob_no_select{*/
+    /*opacity: 0.5;*/
+    /*margin: 30px 50px;*/
+/*}*/
+/*.ob_select{*/
+    /*margin: 30px 50px;*/
+/*}*/
 .ob_title{
     padding: 10px;
     font-size: 40px;
     text-align: center;
  }
-.ob{
+.obD{
     background-color: #20b49a;
 }
 .ob_select span,.ob_no_select span{

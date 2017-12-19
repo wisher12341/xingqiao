@@ -9,7 +9,7 @@
     <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
-<body>
+<body id="emoji">
     <div id="main">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active title_li" ><a href="#order" data-toggle="tab">订单详情</a></li>
@@ -200,7 +200,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="log" style="font-size: 40px">
+            <div class="tab-pane fade" id="log" style="font-size: 40px;min-height: 90%;background-color: white;margin-top: 30px">
                 <div style="background-color: white;width: 100%; height: 80px;">
                     <div style="float: right; "><input onclick="location.href='${path}/wx/teacherCenter/${order.order.id}/updateLog'" class="btn btn-default"  style="float: right;margin-right: 20px;width: 40%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;" value="更新"></div>
                 </div>
@@ -216,22 +216,31 @@
                                             <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
                                         </#if>
                                         <span class="date" style="margin-left: 20px">${log.time}</span>
-                                    <span  style="border: 1px solid #dcdcdc;margin-left: 480px;width: 50px;height: 20px; color: #aaa;font-size:80%">
-                                        <#if log.confirmStatus==0>
-                                            未确认</span>
-                                            <#if log.remindStatus==0>
-                                                <button   style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;" onclick="remind(${log.id},this,'${order.order.id}')">提醒</button>
-                                            </#if>
-                                            <#if log.remindStatus==1>
-                                                <span  style="border: 0;float: right;margin-right: 20px;width: 50px;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 12px;font-weight: 400;">已提醒</span>
-                                            </#if>
+                                        <div style="float: right">
+                                            <span  style="border: 1px solid #dcdcdc;height: 20px; color: #aaa;font-size:40px;">
+                                                <#if log.confirmStatus==0>
+                                                    未确认</span>
+                                                    <#if log.remindStatus==0>
+                                                        <button   style="border: 0;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 40px;font-weight: 400;" onclick="remind(${log.id},this,'${order.order.id}')">提醒</button>
+                                                    </#if>
+                                                    <#if log.remindStatus==1>
+                                                        <span  style="border: 0;height: 20px;margin-top: 0px;background-color: white;color: red;font-size: 40px;font-weight: 400;">已提醒</span>
+                                                    </#if>
 
-                                        </#if>
-                                        <#if log.confirmStatus==1>已确认</span></#if>
-                                        <#if log.confirmStatus==2>逾期确认</span></#if>
-                                        <br>
+                                                </#if>
+                                                <#if log.confirmStatus==1>已确认</span></#if>
+                                                <#if log.confirmStatus==2>逾期确认</span></#if>
+                                        </div>
+
                                         <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px">
                                         ${log.content}
+                                            <div>
+                                                <#if log.picUrls??>
+                                                    <#list log.picUrls?split("#") as pic>
+                                                        <img src="/${pic}" width="160px" height="160px" style="margin:20px 20px 0 0">
+                                                    </#list>
+                                                </#if>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -252,12 +261,7 @@
             <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/affirm'" style="width: 49.5% !important;">接受</button>
             <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 49.5% !important;">拒绝</button>
         <#elseif order.order.statusT==3>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 49.5% !important;">订单终止</button>
-            <#if (order.count)?? && (order.count+"")==(order.order.amount)>
-                <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/finish'" style="width: 49.5% !important;">订单完成</button>
-            <#else>
-                <button style="width: 49.5%;opacity: 0.5 !important;">订单完成</button>
-            </#if>
+            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 100% !important;">订单终止</button>
         <#elseif order.order.comment?? && order.order.statusT==15>
             <#if order.order.comment.teacherComment??>
             <#else>
@@ -276,8 +280,7 @@
         showClear: false
     });
     $(function () {
-        twemoji.parse(document.getElementById('comment'), {size: 36});
-        twemoji.parse(document.getElementById('comment_reply'), {size: 36});
+        twemoji.parse(document.getElementById('emoji'), {size: 36});
     })
 </script>
 </html>

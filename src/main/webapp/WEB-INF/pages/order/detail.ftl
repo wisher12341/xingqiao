@@ -9,7 +9,7 @@
     <script type="text/javascript" src="${path}/static/js/order/star-rating.js"></script>
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
 </head>
-<body>
+<body id="emoji">
     <div id="main">
         <ul id="myTab" class="nav nav-tabs">
             <li class="active title_li" ><a href="#order" data-toggle="tab">订单详情</a></li>
@@ -233,6 +233,13 @@
 
                                     <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px;font-size: 43px">
                                     ${log.content}
+                                        <div>
+                                            <#if log.picUrls??>
+                                                <#list log.picUrls?split("#") as pic>
+                                                    <img src="/${pic}" width="160px" height="160px" style="margin:20px 20px 0 0">
+                                                </#list>
+                                            </#if>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -278,8 +285,8 @@
         showClear: false
     });
     $(function () {
-        twemoji.parse(document.getElementById('comment'), {size: 36});
-        twemoji.parse(document.getElementById('comment_reply'), {size: 36});
+        twemoji.parse(document.getElementById('emoji'), {size: 36});
+//        twemoji.parse(document.getElementById('comment_reply'), {size: 36});
     })
 </script>
 </html>

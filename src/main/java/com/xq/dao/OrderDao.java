@@ -1,5 +1,6 @@
 package com.xq.dao;
 
+import com.xq.model.CheckOrderFinish;
 import com.xq.model.Comment;
 import com.xq.model.Order;
 import org.apache.ibatis.annotations.Param;
@@ -43,4 +44,6 @@ public interface OrderDao {
     List<Order> getTodayServiceTime(@Param("time") String dateNowStr,@Param("tid") Integer id);
 
     void addComment(@Param("oid") String oid,@Param("cid") Integer id);
+
+    CheckOrderFinish checkOrderFinish(String oid);
 }

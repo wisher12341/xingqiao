@@ -3,7 +3,7 @@
 <mapper namespace="com.xq.dao.RecoveryLogDao">
 
     <select id="getLogByOrderId" resultType="com.xq.model.RecoveryLog">
-        SELECT id,order_id,time,confirm_time,confirm_status,content,remind_status FROM recovery_log WHERE order_id=#{id}
+        SELECT id,order_id,time,confirm_time,confirm_status,content,remind_status,pic_urls FROM recovery_log WHERE order_id=#{id}
         order by id DESC
     </select>
 
@@ -16,7 +16,7 @@
     </select>
 
     <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">
-        SELECT r.id,r.order_id,r.time,r.confirm_time,r.confirm_status,r.content,r.remind_status,t.name teacherName,o.recover_ob
+        SELECT r.id,r.order_id,r.time,r.confirm_time,r.confirm_status,r.content,r.remind_status,t.name teacherName,o.recover_ob,r.pic_urls
         FROM recovery_log r,orders o,teacher t
         WHERE  o.demand_id=#{demand.id} AND o.id=r.order_id AND o.teacher_id=t.id AND o.recover_ob IN
         <foreach collection="ob" item="item" index="index" open="(" separator="," close=")">

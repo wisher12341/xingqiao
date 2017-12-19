@@ -10,23 +10,23 @@ function addName() {
 }
 
 function ob_select(obj) {
-    if($(obj).attr("class").indexOf("ob_select")!=-1) {
-        $(obj).removeClass("ob_select");
-        $(obj).addClass("ob_no_select");
+    if($(obj).attr("class").indexOf("selectOb")!=-1) {
+        $(obj).removeClass("selectOb");
     }else{
-        $(obj).removeClass("ob_no_select");
-        $(obj).addClass("ob_select");
+        $(obj).addClass("selectOb");
     }
 }
 function selectObs() {
     $("#ob_div").html("");
-    $('.ob_select').each(function () {
-        var $input=$('<input  type="hidden" value="'+$(this).find("span").html()+'" name="ob">');
-        var $span=$('<span class="search_label">'+$(this).find("span").html()+'</span>');
+    $('.selectOb').each(function () {
+        var $input=$('<input  type="hidden" value="'+$(this).find(".ob").html()+'" name="ob">');
+        var $span=$('<span class="search_label">'+$(this).find(".ob").html()+'</span>');
         $("#ob_div").append($input);
         $("#ob_div").append($span);
     });
-    $("#obSelect").modal("hide");
+    $('#selectOb').hide();
+    $('#main').slideDown();
+    // $("#obSelect").modal("hide");
 }
 
 $(function () {

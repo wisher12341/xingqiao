@@ -8,6 +8,8 @@
     <link type="text/css" href="/static/css/order/star-rating.css" media="all" rel="stylesheet" />
     <script type="text/javascript" src="/static/js/order/star-rating.js"></script>
     <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+
+    <#--单选框-->
     <link type="text/css" href="/static/common/box/build.css" rel="stylesheet" />
 
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>

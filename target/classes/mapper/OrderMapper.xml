@@ -157,4 +157,8 @@
     <update id="addComment">
         UPDATE orders SET cid=#{cid} WHERE id=#{oid}
     </update>
+
+    <select id="checkOrderFinish" resultType="com.xq.model.CheckOrderFinish">
+        SELECT o.amount,count(r.id) FROM orders o,recovery_log r WHERE o.id=#{oid} AND r.order_id=#{oid} AND r.confirm_status=1
+    </select>
 </mapper>

@@ -36,6 +36,8 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     OrderDao orderDao;
     @Autowired
     MessageDao messageDao;
+    @Autowired
+    OrderTeacherDao orderTeacherDao;
 
     public Integer getConfirmCountByOid(String orderId) {
         return recoveryLogDao.getConfirmCountByOid(orderId);
@@ -99,6 +101,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(orderId,"#"+dateNowStr+"@家长确认当前全部康复日志");
+        checkOrderFinish(orderId);//检查该订单是否完成 家长确认了最后一个 康复日志 订单即完成
     }
 
     @Transactional
@@ -125,6 +128,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长确认康复日志");
+        checkOrderFinish(oid);//检查该订单是否完成 家长确认了最后一个 康复日志 订单即完成
     }
 
     @Transactional
@@ -187,5 +191,45 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
                 "</p>");
 
         messageDao.addMessage(message);
+    }
+
+    private void checkOrderFinish(String oid){
+        CheckOrderFinish checkOrderFinish=orderDao.checkOrderFinish(oid);
+        if(checkOrderFinish.getAmount()==checkOrderFinish.getConfirm()){
+            //订单完成
+            orderTeacherDao.orderFinish(oid);
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+            String dateNowStr = sdf.format(d);
+
+            Order order=orderDao.getOrderPayByOid(oid);
+            Message messageP=new Message();
+            messageP.setTime(dateNowStr);
+            messageP.setUserId(order.getUidP());
+            messageP.setMessage("<p>\n" +
+                    "<span style=\"color:red;\">系统消息：</span>\n" +
+                    "</p>\n" +
+                    "<p>\n" +
+                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                    "    您的订单（"+oid+"），已完成。"+
+                    "</p>");
+
+            messageDao.addMessage(messageP);
+
+            Message messageT=new Message();
+            messageT.setTime(dateNowStr);
+            messageT.setUserId(order.getUidT());
+            messageT.setMessage("<p>\n" +
+                    "<span style=\"color:red;\">系统消息：</span>\n" +
+                    "</p>\n" +
+                    "<p>\n" +
+                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
+                    "    订单（"+oid+"）已完成。"+
+                    "</p>");
+
+            messageDao.addMessage(messageT);
+            orderDao.updateTrace(oid,"#"+dateNowStr+"@订单完成");
+        }
     }
 }

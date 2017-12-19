@@ -4,7 +4,7 @@
 function remind(lid,obj,oid) {
     $.ajax({
         type: "POST",
-        url: pathJs + "/wx/teacherCenter/log/remind",
+        url: "/wx/teacherCenter/log/remind",
         data:{
             lid:lid,
             oid:oid
