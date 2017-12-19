@@ -37,8 +37,8 @@ public class TeacherCenterController {
     @RequestMapping(value = "")
     public ModelAndView teacherCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-//        openid="oxsEYwogy0siApRsScKZWI_oeOSE";
+       // String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";
 
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
@@ -109,6 +109,17 @@ public class TeacherCenterController {
         Teacher teacher=teacherCenterService.getTeacherByUserId(userId);
         mv.addObject("teacher",teacher);
         mv.addObject("user",teacherCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
+     *
+     * 填写个人资料页面
+     */
+    @RequestMapping(value="/{userId}/fillInfoPage")
+    public ModelAndView fillInfoPage(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("teacherCenter/fillInfoPage");
+        mv.addObject("userId",userId);
         return mv;
     }
 

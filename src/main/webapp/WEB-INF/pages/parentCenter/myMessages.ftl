@@ -6,7 +6,7 @@
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myMessages.css" type="text/css" rel="stylesheet" />
-
+    <script src="${path}/static/js/parentCenter/parentCenter.js" type="text/javascript" ></script>
 </head>
 <body>
 <div id="main">
@@ -36,13 +36,19 @@
     </div>
     <div style="background-color: #e6ece3">
             <#list messages as m>
-         <div style="background-color: white;margin-bottom: 20px;font-size: 40px;padding: 30px">
+         <div class="row" style="background-color: white;margin-bottom: 20px;font-size: 40px;padding: 30px;margin: 0">
+             <div class="col-sm-11">
                 ${(m.message)!}
                 <p>${(m.time)!}</p>
+             </div>
+             <div class="col-sm-1>
+                 <span style="display:inline;margin-bottom: 10px" onclick="deleteMessage(${m.id})"><i class="fa fa-trash-o fa-2x" style="color: indianred"></i></span>
+             </div>
          </div>
             </#list>
 
     </div>
 </div>
 </body>
+
 </html>

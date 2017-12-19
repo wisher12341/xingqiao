@@ -13,4 +13,5 @@ public interface MessageDao {
 
 
     void addMessageAdmin(Message message);
+    void deleteMessage(int messageId);
 }

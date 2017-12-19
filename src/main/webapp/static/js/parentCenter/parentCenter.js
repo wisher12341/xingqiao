@@ -31,6 +31,9 @@ function saveModify(objId,fieldName,table) {
             var newValue = $("#tGround_1_select").val() + "-" + $("#tGround_2_select").val() + "-" + $("#tGround_3_select").val() +
                 "_" + $("#addressInput").val();
         }
+        else if(fieldName=="gender"){
+            var newValue=$("input[type='radio']:checked").val();
+        }
         else
             var newValue = $("input").val();
 
@@ -106,6 +109,30 @@ function addRecoveryHis(demandId) {
         }
     });
 }
+
+
+function deleteMessage(messageId) {
+    $.ajax({
+        url: "/wx/parentCenter/deleteMessage",
+        type: 'post',
+        dataType: 'json',
+        data: {
+            "messageId":messageId
+        },
+        success: function(data){
+            if(data.success==true){
+            window.location.reload();
+            }
+        },
+        error: function(){
+
+        }
+    });
+}
+
+
+
+
 
 
 

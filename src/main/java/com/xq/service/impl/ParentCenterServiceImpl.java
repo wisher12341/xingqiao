@@ -3,17 +3,22 @@ package com.xq.service.impl;
 
 import com.xq.dao.*;
 import com.xq.dto.ModifyPageDto;
+import com.xq.dto.ParentInfoDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 import com.xq.service.ParentCenterService;
 import com.xq.util.Const;
 import com.xq.util.CookieUtil;
+import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -68,6 +73,11 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     }
 
     @Override
+    public void deleteMessage(int messageId){
+        messageDao.deleteMessage(messageId);
+    }
+
+    @Override
     public User getUserById(int userId){
         return userDao.getUserById(userId);
     }
@@ -104,10 +114,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     @Override
     public ModifyPageDto getModifyDto(int objId, String fieldName, String table){
         if(table.equals("parent")){
-            if(getParentByUserId(objId)==null) {
-                parentCenterDao.addParent(objId);
-            }
             Parent parent=getParentByUserId(objId);
+            User user=getUserById(objId);
             switch (fieldName){
                 case "realName":
                     return new ModifyPageDto(parent.getRealName(), fieldName, "姓名", objId,table);
@@ -115,19 +123,12 @@ public class ParentCenterServiceImpl implements ParentCenterService {
                     return new ModifyPageDto(parent.getPid(), fieldName, "身份证号", objId,table);
                 case "ground":
                     return new ModifyPageDto(parent.getGround()+"_"+parent.getAddress(), fieldName, "地址", objId,table);
-                default:
-                    return null;
-            }
-        }
-        else if(table.equals("user")){
-            User user=getUserById(objId);
-            switch (fieldName){
                 case "phone":
                     return new ModifyPageDto(user.getPhone(), fieldName, "手机", objId,table);
                 case "email":
                     return new ModifyPageDto(user.getEmail(), fieldName, "邮箱", objId,table);
                 case "gender":
-                    return new ModifyPageDto(user.getGender()==0?"男":"女", fieldName, "邮箱", objId,table);
+                    return new ModifyPageDto(user.getGender()==0?"男":"女", fieldName, "性别", objId,table);
                 default:
                     return null;
             }
@@ -160,15 +161,19 @@ public class ParentCenterServiceImpl implements ParentCenterService {
         switch (table) {
             case "parent":
                 modifyParent(objId, newValue, fieldName);
-            case "user":
-                modifyUser(objId, newValue, fieldName);
+                break;
             case "demand":
                 modifyDemand(objId, newValue, fieldName);
+                break;
         }
     }
 
-    private void modifyUser(int userId,String value,String fieldName){
-        switch (fieldName){
+
+
+
+    private void modifyParent(int userId,String value,String fieldName){
+
+        switch(fieldName){
             case "phone":
                 parentCenterDao.updatePhone(value,userId);
                 break;
@@ -179,14 +184,6 @@ public class ParentCenterServiceImpl implements ParentCenterService {
                 if(value.equals("0")) parentCenterDao.updateGender(0,userId);
                 else  parentCenterDao.updateGender(1,userId);
                 break;
-         }
-        parentCenterDao.updateUserStatus(3,userId);
-    }
-
-
-    private void modifyParent(int userId,String value,String fieldName){
-
-        switch(fieldName){
             case "realName":
                 parentCenterDao.updateRealName(value,userId);
                 break;
@@ -215,12 +212,16 @@ public class ParentCenterServiceImpl implements ParentCenterService {
                 break;
             case "diseaseHis":
                 demandDao.updateDiseaseHis(newValue, demandId);
+                break;
             case "allergyHis":
                 demandDao.updateAllergyHis(newValue, demandId);
+                break;
             case "report":
                 demandDao.updateReport(newValue, demandId);
+                break;
             case "remark":
                 demandDao.updateRemark(newValue, demandId);
+                break;
         }
     }
 
@@ -269,20 +270,47 @@ public class ParentCenterServiceImpl implements ParentCenterService {
         demandDao.addDemand(userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
     }
 
+//    @Override
+//    public int myInfoStatus(int userId){ //0.未完成 1.审核中 2.完成
+//        User user=getUserById(userId);
+//        if(user.getUserStatus()==0) return 0;
+//        else if(user.getUserStatus()==1) return 1;
+//        if(user.getPhone()==null || user.getEmail()==null || user.getGender() ==null){
+//            return 0;
+//        }
+//        Parent parent=getParentByUserId(userId);
+//        if(parent==null) return 0;
+//        else if(parent.getAddress()==null || parent.getGround()==null || parent.getPid()==null){
+//            return 0;
+//        }
+//        return 2;
+//    }
+
     @Override
-    public int myInfoStatus(int userId){ //0.未完成 1.审核中 2.完成
-        User user=getUserById(userId);
-        if(user.getUserStatus()==0) return 0;
-        else if(user.getUserStatus()==1) return 1;
-        if(user.getPhone()==null || user.getEmail()==null || user.getGender() ==null){
-            return 0;
+    public void fillInfo(ParentInfoDto parentInfoDto){
+        parentCenterDao.fillInfoUser(parentInfoDto);
+        parentCenterDao.fillInfoParent(parentInfoDto);
+    }
+
+
+
+    public void uploadPhoto(HttpServletRequest request,int userId){
+        String picUrl="";
+        MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
+        Iterator<String> fileNames = MulRequest.getFileNames();
+        while(fileNames.hasNext()) { // 遍历请求中的信息
+            String fileName = fileNames.next();
+
+            //图片
+            try {
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.ICON_PARENT_ROOT_PATH);
+                picUrl=path.substring(path.indexOf("img"),path.length());
+                System.out.println(picUrl);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        Parent parent=getParentByUserId(userId);
-        if(parent==null) return 0;
-        else if(parent.getAddress()==null || parent.getGround()==null || parent.getPid()==null){
-            return 0;
-        }
-        return 2;
+        parentCenterDao.updateIcon(picUrl,userId);
     }
 }
 

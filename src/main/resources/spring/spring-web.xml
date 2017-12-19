@@ -76,9 +76,9 @@
                 exclude-mapping 不拦截的url
             -->
             <mvc:mapping path="/wx/log/*" />
-            <mvc:mapping path="/wx/order/**" />
-            <mvc:mapping path="/wx/parentCenter/**" />
-            <mvc:mapping path="/wx/teacherCenter/**" />
+            <!--<mvc:mapping path="/wx/order/**" />-->
+            <!--<mvc:mapping path="/wx/parentCenter/**" />-->
+            <!--<mvc:mapping path="/wx/teacherCenter/**" />-->
             <mvc:mapping path="/wx/order/submit" />
             <!--<mvc:exclude-mapping path="/index"/>-->
             <bean class="com.xq.interceptor.WxInterceptor"></bean>

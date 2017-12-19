@@ -9,10 +9,35 @@
 
 </head>
 <body>
+<div class="modal fade infoModal" id="fillInfoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a type="button" class="close" aria-hidden="true" >×</a>
+                <h4 class="modal-title" id="myModalLabel">
+                    您还为填写个人资料
+                </h4>
+            </div>
+            <div class="modal-body">
+                未填写资料将无法预约治疗师。
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick=location.href="${path}/wx/teacherCenter/${user.id}/fillInfoPage">
+                    立即填写
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <div id="main">
 
     <div class="imgDiv2">
         <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle">
+        <div id="myAlert" class="alert alert-success" style="display: none">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>您的资料正在审核中。</strong>审核通过后即可预约。
+        </div>
     </div>
     <div class="myInfoDiv">
         <div style="height: 30px;background-color: #e6ece3"></div>
@@ -112,7 +137,14 @@
                 <li class="list-group-item">
                     <div class="list-item-div">
                         <div class="list-item-title">身份证照片</div>
-                        <div class="list-item-text"></div>
+                        <div class="list-item-text">
+                            <#if (teacher.pidUrlFront)??>
+                            <img src="${path}/${teacher.pidUrlFront}" style="width:100px">
+                            </#if>
+                            <#if (teacher.pidUrlBack)??>
+                            <img src="${path}/${teacher.pidUrlBack}" style="width:100px">
+                            </#if>
+                        </div>
                         <span><i class="fa fa-angle-right fa-4x"></i></span>
                     </div>
                 </li>
@@ -123,7 +155,7 @@
         <div style="height: 30px;background-color: #e6ece3"></div>
         <div class="info-part-item" style="padding-top: 30px">
             <p class="info-part-title" style="color: #20b49a">成功案例</p>
-            <#if (teacher.successCase)??>
+            <#if (teacher.successCase)?? && teacher.successCase!="">
             <ul class="list-group">
             <#list teacher.successCase?split("#") as case>
                 <li class="list-group-item">
@@ -148,11 +180,29 @@
         <div class="info-part-item" style="padding-top: 30px">
             <p class="info-part-title" style="color: #20b49a">其他资料</p>
         </div>
+
     </div>
 </div>
 </body>
 </html>
 <script type="text/javascript">
+    $(document).ready(function() {
+    <#--if(${user.infoStatus}==0){-->
+    <#--$("#myAlert").show();-->
+    <#--}-->
+        if(${user.userStatus}==0)
+        {
+            $('#fillInfoModal').modal();
+        }
+
+        else if(${user.userStatus}==1){
+            $("#myAlert").show();
+        }
+        else if(${user.userStatus}==3){
+            $("#myAlert").show();
+        }
+
+    });
 function deleteCase(userId,caseIndex,cases) {
     var strs=cases.split("#");
     strs.splice(caseIndex,1);

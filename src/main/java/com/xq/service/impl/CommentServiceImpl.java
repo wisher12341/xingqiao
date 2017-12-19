@@ -102,7 +102,7 @@ public class CommentServiceImpl implements CommentService {
             //图片
             try {
                 String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.COMMENT_TEACHER_ROOT_PATH);
-                WxInterceptor.logger.info(path);
+//                WxInterceptor.logger.info(path);
                 int index = path.indexOf("img");
                 picsUrl += path.substring(index, path.length()) + "#";
             }catch (IOException e) {

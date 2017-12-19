@@ -14,4 +14,8 @@
     <insert id="addMessageAdmin">
         INSERT INTO message_admin(message,time) VALUES (#{message},#{time})
     </insert>
+
+    <delete id="deleteMessage" parameterType="java.lang.Integer">
+        DELETE FROM message WHERE id=#{messageId}
+    </delete>
 </mapper>
