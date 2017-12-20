@@ -2,12 +2,10 @@ package com.xq.controller;
 
 
 import com.xq.dto.ModifyPageDto;
+import com.xq.dto.ParentInfoDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.dto.Result;
-import com.xq.model.Area2;
-import com.xq.model.Demand;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
 import com.xq.service.AreaService;
 import com.xq.service.ParentCenterService;
 import com.xq.service.UserService;
@@ -40,23 +38,26 @@ public class ParentCenterController {
     AreaService areaService;
 
     /**
-    * 个人中心首页
-    */
+     * 个人中心首页
+     */
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        openid="oxsEYwhJPFS9PLfA4veyKDAJo0Gg";
+             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="oxsEYwhJPFS9PLfA4veyKDAJo0Gg";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
-        user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
+        // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
         mv.addObject("user",user);
         return mv;
     }
 
+
+
+
     /**
-    *我的治疗师
-    */
+     *我的治疗师
+     */
     @RequestMapping(value = "/{userId}/myTeacher")
     public ModelAndView toMyTeacher(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myTeacher");
@@ -144,6 +145,12 @@ public class ParentCenterController {
         return mv;
     }
 
+    @RequestMapping(value="/deleteMessage")
+    @ResponseBody
+    public Result deleteMessage(@RequestParam int messageId) {
+        parentCenterService.deleteMessage(messageId);
+        return new Result(true);
+    }
     /**
      *我的资料
      */
@@ -172,7 +179,7 @@ public class ParentCenterController {
     @RequestMapping(value="/isexisted", method = RequestMethod.POST)
     public Result isexisted(HttpServletRequest request, @RequestParam Integer teacherId){
         List<Demand> demandList=parentCenterService.isexisted(request,teacherId);
-        System.out.print("成功" + demandList.size());
+//        System.out.print("成功" + demandList.size());
         if(demandList==null) {
             return new Result(false);
         }else{
@@ -191,6 +198,27 @@ public class ParentCenterController {
 
     /**
      *
+     * 填写个人资料页面
+     */
+    @RequestMapping(value="/{userId}/fillInfoPage")
+    public ModelAndView fillInfoPage(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/fillInfoPage");
+        mv.addObject("userId",userId);
+        return mv;
+    }
+
+    /**
+     * 提交个人资料
+     */
+    @RequestMapping(value = "{userId}/fillInfo")
+    public String fillInfo(@PathVariable int userId, ParentInfoDto parentInfoDto){
+        System.out.println(parentInfoDto.getRealName()+parentInfoDto.getEmail());
+        parentInfoDto.setUserId(userId);
+        parentCenterService.fillInfo(parentInfoDto);
+        return "redirect:/wx/parentCenter/"+userId+"/myInfo";
+    }
+    /**
+     *
      * 修改字段
      */
     @RequestMapping(value = "/{userId}/{fieldName}/{table}/modifyPage")
@@ -206,16 +234,16 @@ public class ParentCenterController {
     }
 
 
-    @RequestMapping(value = "/{objId}/{uiName}/{oldValue}/{fieldName}/{table}/modifyPage")
-    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName,@PathVariable String table)
-    {
-        ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
-        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,objId,table);
-        mv.addObject("modifyPageDto",modifyPageDto);
-        List<Area2> area2List=areaService.getArea2();
-        mv.addObject("area2List",area2List);
-        return mv;
-    }
+//    @RequestMapping(value = "/{objId}/{uiName}/{oldValue}/{fieldName}/{table}/modifyPage")
+//    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String uiName, @PathVariable String oldValue,@PathVariable String fieldName,@PathVariable String table)
+//    {
+//        ModelAndView mv=new ModelAndView("parentCenter/modifyPage");
+//        ModifyPageDto modifyPageDto=new ModifyPageDto(oldValue,fieldName,uiName,objId,table);
+//        mv.addObject("modifyPageDto",modifyPageDto);
+//        List<Area2> area2List=areaService.getArea2();
+//        mv.addObject("area2List",area2List);
+//        return mv;
+//    }
 
 
     /**
@@ -261,7 +289,7 @@ public class ParentCenterController {
     @RequestMapping(value = "/addRecoveryHis")
     @ResponseBody
     public Map addRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("name") String name,@RequestParam("time") String time,
-                          @RequestParam("count") String count,@RequestParam("detail") String detail){
+                              @RequestParam("count") String count,@RequestParam("detail") String detail){
         Map map=new HashMap();
         RecoveryHisDto recoveryHisDto=new RecoveryHisDto( name, time,count,detail);
         parentCenterService.addRecoveryHis(recoveryHisDto,demandId);
@@ -274,12 +302,22 @@ public class ParentCenterController {
     @RequestMapping(value = "/modifyRecoveryHis")
     @ResponseBody
     public Map modifyRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("index") int index,@RequestParam("name") String name,@RequestParam("time") String time,
-                              @RequestParam("count") String count,@RequestParam("detail") String detail){
+                                 @RequestParam("count") String count,@RequestParam("detail") String detail){
         Map map=new HashMap();
         System.out.println("index"+index);
         RecoveryHisDto recoveryHisDto=new RecoveryHisDto( index,name, time,count,detail);
         parentCenterService.modifyRecoveryHis(recoveryHisDto,demandId);
         return map;
+    }
+
+    /**
+     * 修改头像
+     */
+    @RequestMapping(value = "/{userId}/modifyIcon",method = RequestMethod.POST)
+    @ResponseBody
+    public Result modifyIcon(@PathVariable int userId,HttpServletRequest request){
+        parentCenterService.uploadPhoto(request,userId);
+        return new Result(true);
     }
 
 }

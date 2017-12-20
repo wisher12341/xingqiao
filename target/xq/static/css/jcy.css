@@ -153,6 +153,8 @@ html {font-size: 62.5%;
     align-items: center;
     -webkit-justify-content: space-between;
     justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .list-container-white{
@@ -358,6 +360,12 @@ html {font-size: 62.5%;
     color: #000000;
     font-size: 1.2rem;
 }
+
+.comment-content > .emoji{
+    width: 18px;
+    margin: 0px 1px;
+}
+
 .comment-btns{
     justify-content: flex-end;
 }

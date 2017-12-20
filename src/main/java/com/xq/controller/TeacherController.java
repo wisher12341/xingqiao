@@ -85,11 +85,14 @@ public class TeacherController {
         }
         Teacher teacher=teachersService.getTeacher(teacher_id);
         model.addAttribute("teacher",teacher);
+
         UserGoodReport userGoodReport=goodReportService.getTeacherGoodReportByUid(request);
         model.addAttribute("usergoodreport",userGoodReport);
 
         User user= userService.getUserByOpenidStatus(CookieUtil.checkCookie(request, Const.OPENID_PARENT),"0");
-        userService.setUserStatusDesc(user);
+        if(user!=null) {
+            userService.setUserStatusDesc(user);
+        }
         model.addAttribute("user",user);
         return "teacher/teacher";
     }

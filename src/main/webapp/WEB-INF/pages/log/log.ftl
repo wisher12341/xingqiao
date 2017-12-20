@@ -124,6 +124,12 @@
         .selectOb{
             opacity: 1;
         }
+
+        #selectTeacher,#selectOb,#selectDemand,#selectConfirm{
+            position: absolute;
+            z-index: 99;
+            top:100%;
+        }
     </style>
 </head>
 <body>
@@ -218,7 +224,7 @@
 
 <#if (recoveryLogDto.recoveryLogList)??>
     <div id="log">
-        <p class="search_factor_title">康复日志</p>
+        <#--<p class="search_factor_title">康复日志</p>-->
         <div class="track-list" style="width: 100%; margin-bottom: 20px;background-color: white">
             <ul id="logUl">
                 <#list recoveryLogDto.recoveryLogList as log>
@@ -255,8 +261,8 @@
 
 
 
-<div id="selectOb" style="display: none">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectOb").hide();$("#main").slideDown();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+<div id="selectOb" style="display: none;background-color: white;height:100%;width: 100%">
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectOb").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择康复领域</p>
 <#if (recoveryLogDto.obs)??>
     <#list (recoveryLogDto.obs)! as ob>
@@ -279,12 +285,12 @@
 </#if>
 </div>
 
-    <div id="selectTeacher" style="display: none">
-        <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("body").css("background-color","#f5f5f5");$("#selectTeacher").hide();$("#main").slideDown();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+    <div id="selectTeacher" style="display: none;background-color: white;height: 100%">
+        <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectTeacher").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
         <p class="selectTitle">选择治疗师</p>
         <#if (recoveryLogDto.teacherList)??>
-            <div class="demands-div" onclick="selectTeacherEnd('全部老师',0)">
-                <div class="col-sm-6" style="margin-top:  10%">
+            <div class="demands-div">
+                <div class="col-sm-6" style="margin-top:  10%" onclick="selectTeacherEnd('全部老师',0)">
                     <div class="demand-div" align="center">
                         <div class="demand-img">
                             <img src="/static/img/touxiang.svg">
@@ -312,8 +318,8 @@
     </#if>
     </div>
 
-<div id="selectDemand" style="display: none">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectDemand").hide();$("#main").slideDown();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+<div id="selectDemand" style="display: none;background-color: #f5f5f5;height: 100%;width: 100%">
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectDemand").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择简历</p>
 <#if (recoveryLogDto.demandList)??>
     <#list recoveryLogDto.demandList as demand>
@@ -332,8 +338,8 @@
 </#if>
 </div>
 
-<div id="selectConfirm" style="display: none">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectConfirm").hide();$("#main").slideDown();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+<div id="selectConfirm" style="display: none;background-color: #f5f5f5;height: 100%;width: 100%">
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectConfirm").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择康复日志是否确认</p>
         <div class="checkbox checkbox-success demand_div" onclick="selectConfirmEnd('不限',2)">
             <input type="radio" name="c"  class="radioC" id="radioC2" value="2">
@@ -370,41 +376,61 @@
             }
         });
 
+//        $('#main').hide();
+//        $('#selectConfirm').slideDown();
+//        $('#selectConfirm').show();
+//        $('#main').slideUp();
         $('#selectConfirm').show();
-        $('#main').slideUp();
+        $('#selectConfirm').animate({top:"0"},function () {
+            $('#main').hide();
+        });
 
     }
 
     function selectConfirmEnd(cname,cid) {
         $(".c_val").val(cid);
         $(".c_name").html(cname);
-        $('#selectConfirm').hide();
-        $('#main').slideDown();
-
+//        $('#selectConfirm').hide();
+//        $('#main').slideDown();
+//        $("#selectConfirm").slideUp();
+        $('#main').show();
+        $('#selectConfirm').animate({top:"100%"},function () {
+            $('#selectConfirm').hide();
+        });
     }
 
     function selectTeacher() {
 
-        $(".selectTeacher").parent().removeClass("selectTeacher");
-        $(".selectTeacherImg").parent().removeClass("selectTeacherImg");
+        $(".selectTeacher").removeClass("selectTeacher");
+//        $(".selectTeacherImg").removeClass("selectTeacherImg");
         $(".tname").each(function () {
             if($(".t_name").html()==$(this).html()){
                 $(this).parent().addClass("selectTeacher");
-                $(this).parent().prev().find("img").addClass("selectTeacherImg");
+//                $(this).parent().prev().find("img").addClass("selectTeacherImg");
             }
         });
 
-        $("body").css("background-color","white");
+//        $("body").css("background-color","white");
+//        $('#main').hide();
         $('#selectTeacher').show();
-        $('#main').slideUp();
+        $('#selectTeacher').animate({top:"0"},function () {
+            $('#main').hide();
+        });
+
+
     }
 
     function selectTeacherEnd(tname,tid) {
-        $("body").css("background-color","#f5f5f5");
+//        $("body").css("background-color","#f5f5f5");
         $(".t_val").val(tid);
         $(".t_name").html(tname);
-        $('#selectTeacher').hide();
-        $('#main').slideDown();
+//        $('#selectTeacher').hide();
+//        $('#main').slideDown();
+        $('#main').show();
+        $('#selectTeacher').animate({top:"100%"},function () {
+            $('#selectTeacher').hide();
+        });
+//        $("#selectTeacher").slideUp();
 
     }
 
@@ -416,16 +442,27 @@
             }
         });
 
+//        $('#selectDemand').show();
+//        $('#main').slideUp();
+//        $('#main').hide();
+//        $('#selectDemand').slideDown();
         $('#selectDemand').show();
-        $('#main').slideUp();
+        $('#selectDemand').animate({top:"0"},function () {
+            $('#main').hide();
+        });
 
     }
     function selectDemandEnd(dname,did) {
         $(".d_val").val(did);
         $(".d_name").html(dname);
-        $('#selectDemand').hide();
-        $('#main').slideDown();
+//        $('#selectDemand').hide();
+//        $('#main').slideDown();
 
+//        $("#selectDemand").slideUp();
+        $('#main').show();
+        $('#selectDemand').animate({top:"100%"},function () {
+            $('#selectDemand').hide();
+        });
     }
 
     function selectOb() {
@@ -439,8 +476,14 @@
                 $(this).addClass("selectOb");
             }
         });
+//        $('#selectOb').show();
+//        $('#main').slideUp();
+//        $('#main').hide();
+//        $('#selectOb').slideDown();
         $('#selectOb').show();
-        $('#main').slideUp();
+        $('#selectOb').animate({top:"0"},function () {
+            $('#main').hide();
+        });
     }
 </script>
 

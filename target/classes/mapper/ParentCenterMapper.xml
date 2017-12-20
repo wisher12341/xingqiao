@@ -14,7 +14,7 @@
     <update id="updateRealName">
         UPDATE parent SET realName=#{realName} WHERE userId=#{userId}
     </update>
-    <update id="updateGender">
+    <update id="updateGender" parameterType="java.lang.Integer">
         UPDATE sysuser SET gender=#{gender} WHERE id=#{userId}
     </update>
     <update id="updatePhone">
@@ -24,7 +24,7 @@
         UPDATE sysuser SET email=#{email} WHERE id=#{userId}
     </update>
     <update id="updatePid">
-        UPDATE sysuser SET pid=#{pid} WHERE id=#{userId}
+        UPDATE parent SET pid=#{pid} WHERE userId=#{userId}
     </update>
     <update id="updateGroundAndAddr">
         UPDATE parent SET ground=#{ground}, address=#{address} WHERE userId=#{userId}
@@ -32,10 +32,20 @@
     <update id="updateUserStatus">
         UPDATE sysuser SET user_status=#{status} WHERE id=#{userId}
     </update>
+    <update id="updateIcon">
+        UPDATE sysuser SET headimgurl=#{headimgurl} WHERE id=#{userId}
+    </update>
 
     <insert id="addParent" parameterType="java.lang.Integer">
-        INSERT INTO parent(userId)
-        VALUE (#{userId})
+
+    </insert>
+
+    <update id="fillInfoUser">
+        UPDATE sysuser SET user_status=1,gender=#{parentInfoDto.gender},phone=#{parentInfoDto.phone},email=#{parentInfoDto.email}
+        WHERE id=#{parentInfoDto.userId};
+    </update>
+    <insert id="fillInfoParent">
+        INSERT INTO parent(userId,ground,address,pid,realName) VALUE (#{parentInfoDto.userId},#{parentInfoDto.ground},#{parentInfoDto.address},#{parentInfoDto.pid},#{parentInfoDto.realName});
     </insert>
 
 

@@ -75,15 +75,15 @@
 </head>
 <body style="height: 100%;" id="emoji">
 <div id="base" class="base" style="height: 100%;">
-<div class="container my-panel" style="min-height: 20rem">
-    <div class="row" style="height: 100%">
-        <div class="col-xs-5 text-center" style="height: 12rem;">
-            <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
-        </div>
-        <div class="col-xs-7" style="padding-left: 0rem">
-            <div class="teacher-name-title">${teacher.name!"暂无"}</div>
-            <div class="row my-panel-content offset-5">
-                <div class="col-xs-12 inline-wrapper" style="justify-content: flex-start">
+    <div class="container my-panel" style="min-height: 20rem">
+        <div class="row" style="height: 100%">
+            <div class="col-xs-5 text-center" style="height: 12rem;">
+                <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
+            </div>
+            <div class="col-xs-7" style="padding-left: 0rem">
+                <div class="teacher-name-title">${teacher.name!"暂无"}</div>
+                <div class="row my-panel-content offset-5">
+                    <div class="col-xs-12 inline-wrapper" style="justify-content: flex-start">
                     <#if teacher.level??>
                         <#if teacher.level==1>
                             <img class="level-star" src="${base}/static/img/star-full.png"/>
@@ -119,93 +119,156 @@
                         <img class="level-star" src="${base}/static/img/star-empty.png"/>
                         <img class="level-star" src="${base}/static/img/star-empty.png"/>
                     </#if>
-                <#--${teacher.level!"暂无(星级)"}-->
+                    <#--${teacher.level!"暂无(星级)"}-->
+                    </div>
+                    <div class="offset-5 col-xs-12 no-padding-right" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;${teacher.experienceAge!"0"} 年经验</div>
                 </div>
-                <div class="offset-5 col-xs-12 no-padding-right" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;${teacher.experienceAge!"0"} 年经验</div>
-            </div>
 
-            <div class="row my-panel-content offset-5">
-                <div class="col-xs-4 no-padding-right" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;实名</div>
-                <div class="col-xs-3 no-padding" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;学历</div>
-                <div class="col-xs-3 no-padding" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;认证</div>
-            </div>
-            <div class="my-panel-content offset-5">
+                <div class="row my-panel-content offset-5">
+                    <div class="col-xs-4 no-padding-right" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;实名</div>
+                    <div class="col-xs-3 no-padding" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;学历</div>
+                    <div class="col-xs-3 no-padding" style="color: #4cae4c"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;认证</div>
+                </div>
+                <div class="my-panel-content offset-5">
                 <#--康复经验：${teacher.experienceAge!"0"} 年-->
                 <#--<br>-->
-                康复项目：${teacher.domain!"暂无"}
-                <br>
-                康复对象：${teacher.object!"暂无"}
+                    康复项目：${teacher.domain!"暂无"}
+                    <br>
+                    康复对象：${teacher.object!"暂无"}
+                </div>
             </div>
-        </div>
 
-        <div class="col-xs-12 my-panel-content">
-            <hr style="margin-top: 0.8rem; margin-bottom: 0.8rem">
-            <div style="color: #000000">康复方式及价格&nbsp(元/时)</div>
+            <div class="col-xs-12 my-panel-content">
 
-        <#if teacher.way??>
-            <div class="container no-padding">
-                <#assign teacherways=teacher.way?split("、")>
-                <#if teacherways[0] == "不限">
-                    <#if teacher.priceO gt 0>
-                        <div class="inline-wrapper">
-                            <div>在线授课</div>
-                            <div>${teacher.priceO}</div>
-                        </div>
-                    </#if>
-                    <#if teacher.priceS gt 0>
-                        <div class="inline-wrapper">
-                            <div>学生上门</div>
-                            <div>${teacher.priceS}</div>
-                            <div>${teacher.sGround}</div>
-                        </div>
-                    </#if>
-                    <#if teacher.priceT gt 0>
-                        <div class="row">
-                            <div class="col-xs-3">治疗师上门</div>
-                            <div class="col-xs-1">${teacher.priceT}</div>
-                            <div class="col-xs-5">${teacher.tGround}</div>
-                        </div>
-                    </#if>
-                <#else>
-                    <#list teacherways as str>
-                        <div class="row">
-                            <div class="col-xs-4 no-padding-right">${str}</div>
-                            <#if str=="在线授课" && teacher.priceO gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceO}</div>
-                            <#elseif str=="学生上门" && teacher.priceS gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceS}</div>
-                                <div class="col-xs-6 no-padding">${teacher.sGround}</div>
-                            <#elseif str=="治疗师上门" && teacher.priceT gt 0>
-                                <div class="col-xs-2 no-padding">${teacher.priceT}</div>
-                                <div class="col-xs-6 no-padding">${teacher.tGround}</div>
+
+            <#if teacher.way??>
+                <table class="table" style="margin-bottom: 10px;">
+                    <thead>
+                    <tr>
+                        <th>授课方式</th>
+                        <th>价格 (元/课时)</th>
+                        <th>服务区域</th>
+                    </tr>
+                    </thead>
+                    <#assign teacherways=teacher.way?split("、")>
+                    <tbody>
+                        <#if teacherways[0] == "不限">
+                            <#if teacher.priceO gt 0>
+                            <tr>
+                                <td>在线授课</td>
+                                <td>${teacher.priceO}</td>
+                                <td></td>
+                            </tr>
                             </#if>
-                        </div>
-                    </#list>
-                </#if>
+                            <#if teacher.priceS gt 0>
+                            <tr>
+                                <td>学生上门</td>
+                                <td>${teacher.priceS}</td>
+                                <td>${teacher.sGround}</td>
+                            </tr>
+                            </#if>
+                            <#if teacher.priceT gt 0>
+                            <tr>
+                                <td>治疗师上门</td>
+                                <td>${teacher.priceT}</td>
+                                <td>${teacher.tGround}</td>
+                            </tr>
+                            </#if>
+                        <#else>
+                            <#list teacherways as str>
+                            <tr>
+                                <td>${str}</td>
+                                <#if str=="在线授课" && teacher.priceO gt 0>
+                                    <td>${teacher.priceO}</td>
+                                    <td></td>
+                                <#elseif str=="学生上门" && teacher.priceS gt 0>
+                                    <td>${teacher.priceS}</td>
+                                    <td>${teacher.sGround}</td>
+                                <#elseif str=="治疗师上门" && teacher.priceT gt 0>
+                                    <td>${teacher.priceT}</td>
+                                    <td>${teacher.tGround}</td>
+                                </#if>
+                            </tr>
+                            </#list>
+                        </#if>
+
+                    </tbody>
+                </table>
                 <div class="col-xs-12 no-padding offset-5">
                     注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟
                 </div>
-            </div>
-        <#else>
-            <div class="my-panel-content row">
-                <div class="col-xs-12">
-                    暂无
+            <#else>
+                <div class="my-panel-content row">
+                    <div class="col-xs-12">
+                        暂无
+                    </div>
                 </div>
+            </#if>
+
+            <#--<#if teacher.way??>-->
+            <#--<div class="container no-padding">-->
+            <#--<#assign teacherways=teacher.way?split("、")>-->
+            <#--<#if teacherways[0] == "不限">-->
+            <#--<#if teacher.priceO gt 0>-->
+            <#--<div class="inline-wrapper">-->
+            <#--<div>在线授课</div>-->
+            <#--<div>${teacher.priceO}</div>-->
+            <#--</div>-->
+            <#--</#if>-->
+            <#--<#if teacher.priceS gt 0>-->
+            <#--<div class="inline-wrapper">-->
+            <#--<div>学生上门</div>-->
+            <#--<div>${teacher.priceS}</div>-->
+            <#--<div>${teacher.sGround}</div>-->
+            <#--</div>-->
+            <#--</#if>-->
+            <#--<#if teacher.priceT gt 0>-->
+            <#--<div class="row">-->
+            <#--<div class="col-xs-3">治疗师上门</div>-->
+            <#--<div class="col-xs-1">${teacher.priceT}</div>-->
+            <#--<div class="col-xs-5">${teacher.tGround}</div>-->
+            <#--</div>-->
+            <#--</#if>-->
+            <#--<#else>-->
+            <#--<#list teacherways as str>-->
+            <#--<div class="row">-->
+            <#--<div class="col-xs-4 no-padding-right">${str}</div>-->
+            <#--<#if str=="在线授课" && teacher.priceO gt 0>-->
+            <#--<div class="col-xs-2 no-padding">${teacher.priceO}</div>-->
+            <#--<#elseif str=="学生上门" && teacher.priceS gt 0>-->
+            <#--<div class="col-xs-2 no-padding">${teacher.priceS}</div>-->
+            <#--<div class="col-xs-6 no-padding">${teacher.sGround}</div>-->
+            <#--<#elseif str=="治疗师上门" && teacher.priceT gt 0>-->
+            <#--<div class="col-xs-2 no-padding">${teacher.priceT}</div>-->
+            <#--<div class="col-xs-6 no-padding">${teacher.tGround}</div>-->
+            <#--</#if>-->
+            <#--</div>-->
+            <#--</#list>-->
+            <#--</#if>-->
+            <#--<div class="col-xs-12 no-padding offset-5">-->
+            <#--注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟-->
+            <#--</div>-->
+            <#--</div>-->
+            <#--<#else>-->
+            <#--<div class="my-panel-content row">-->
+            <#--<div class="col-xs-12">-->
+            <#--暂无-->
+            <#--</div>-->
+            <#--</div>-->
+            <#--</#if>-->
             </div>
-        </#if>
         </div>
     </div>
-</div>
 
-<div class="my-panel">
-    <div class="my-panel-title">治疗师简介</div>
-    <div class="gray-line"></div>
-    <div class="my-panel-content">${teacher.abstractTeacher!"暂无"}</div>
-</div>
+    <div class="my-panel">
+        <div class="my-panel-title">治疗师简介</div>
+        <div class="gray-line"></div>
+        <div class="my-panel-content">${teacher.abstractTeacher!"暂无"}</div>
+    </div>
 
-<div class="my-panel">
-    <div class="my-panel-title">毕业院校</div>
-    <div class="gray-line"></div>
+    <div class="my-panel">
+        <div class="my-panel-title">毕业院校</div>
+        <div class="gray-line"></div>
     <#if teacher.school??>
         <div class="container no-padding-left">
             <#assign strs=teacher.school?split("#")>
@@ -228,11 +291,11 @@
             </div>
         </div>
     </#if>
-</div>
+    </div>
 
-<div class="my-panel">
-    <div class="my-panel-title">康复治疗经历</div>
-    <div class="gray-line"></div>
+    <div class="my-panel">
+        <div class="my-panel-title">康复治疗经历</div>
+        <div class="gray-line"></div>
     <#if teacher.recoveryHis??>
         <div class="container">
             <#assign strs=teacher.recoveryHis?split("#")>
@@ -240,10 +303,10 @@
                 <#assign s=str?split("@")>
                 <div class="my-panel-content row">
                     <div class="col-xs-4">
-                        ${s[0]!""}
+                    ${s[0]!""}
                     </div>
                     <div class="col-xs-8">
-                        ${s[1]!""}
+                    ${s[1]!""}
                     </div>
                 </div>
             </#list>
@@ -255,243 +318,243 @@
             </div>
         </div>
     </#if>
-</div>
-
-<div class="my-panel">
-    <div class="my-panel-title">成功案例</div>
-    <div class="gray-line"></div>
-    <div class="my-panel-content">${teacher.successCase?replace("@","<br>")!"暂无"}</div>
-</div>
-
-<div class="my-panel">
-    <div class="inline-wrapper pointable" onclick="location='${base}/wx/teacher/toTeacherCommentList?teacherId=${teacher.id}'">
-        <div class="my-panel-title">治疗师评论 (${teacher.commentList?size})</div>
-        <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
     </div>
-    <div class="gray-line"></div>
-    <div class="my-panel-content container line-height-24">
-    <#assign good=usergoodreport.teacherCommentGood>
-    <#assign report=usergoodreport.teacherCommentReport>
-    <#if teacher.commentList??>
-        <#if teacher.commentList?size gt 0>
-            <#assign comm=teacher.commentList[0]>
-            <div class="row row-wrapper">
-                <div class="col-xs-2 no-padding">
-                    <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
-                </div>
-                <div class="col-xs-10">
-                    <div>
-                        <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
-                            <#if comm.detail?length gt 40>
-                                <#assign s=comm.detail>
-                                <div class="comment-detail">
-                                ${comm.detail?substring(0,40)}……
-                                </div>
-                                <a onclick="showFullComment('${s}',this)">全文</a>
-                                <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+
+    <div class="my-panel">
+        <div class="my-panel-title">成功案例</div>
+        <div class="gray-line"></div>
+        <div class="my-panel-content">${teacher.successCase?replace("@","<br>")!"暂无"}</div>
+    </div>
+
+    <div class="my-panel">
+        <div class="inline-wrapper pointable" onclick="location='${base}/wx/teacher/toTeacherCommentList?teacherId=${teacher.id}'">
+            <div class="my-panel-title">治疗师评论 (${teacher.commentList?size})</div>
+            <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
+        </div>
+        <div class="gray-line"></div>
+        <div class="my-panel-content container line-height-24">
+        <#assign good=usergoodreport.teacherCommentGood>
+        <#assign report=usergoodreport.teacherCommentReport>
+        <#if teacher.commentList??>
+            <#if teacher.commentList?size gt 0>
+                <#assign comm=teacher.commentList[0]>
+                <div class="row row-wrapper">
+                    <div class="col-xs-2 no-padding">
+                        <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
+                    </div>
+                    <div class="col-xs-10">
+                        <div>
+                            <div class="user-name">${comm.user.username!""}</div>
+                            <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                                <#if comm.detail?length gt 40>
+                                    <#assign s=comm.detail>
+                                    <div class="comment-detail">
+                                    ${comm.detail?substring(0,40)}……
+                                    </div>
+                                    <a onclick="showFullComment('${s}',this)">全文</a>
+                                    <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                <#else>
+                                ${comm.detail}
+                                </#if>
+                            </div>
+                        <#--<div class="comment-pics">-->
+                        <#--<#if comm.picurls??>-->
+                        <#--<#assign picList = comm.picurls?split("#")>-->
+                        <#--<div class="img-wrap">-->
+                        <#--<img src="${base}/${picList[0]}">-->
+                        <#--<#if picList?size gt 1>-->
+                        <#--<img src="${base}/${picList[1]}">-->
+                        <#--</#if>-->
+                        <#--<#if picList?size gt 2>-->
+                        <#--<img src="${base}/${picList[2]}">-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        </div>
+                        <div class="time">
+                        ${comm.time}
+                        </div>
+                        <div class="comment-btns inline-wrapper">
+                            <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                            <#if good?contains("#${comm.id}#")>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
                             <#else>
-                            ${comm.detail}
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            </#if>
+                            <#if report?contains("#${comm.id}#")>
+                                <div class="btn-pill">已举报</div>
+                                <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                            <#else>
+                                <div class="btn-pill" style="display: none">已举报</div>
+                                <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
                             </#if>
                         </div>
-                    <#--<div class="comment-pics">-->
-                    <#--<#if comm.picurls??>-->
-                    <#--<#assign picList = comm.picurls?split("#")>-->
-                    <#--<div class="img-wrap">-->
-                    <#--<img src="${base}/${picList[0]}">-->
-                    <#--<#if picList?size gt 1>-->
-                    <#--<img src="${base}/${picList[1]}">-->
-                    <#--</#if>-->
-                    <#--<#if picList?size gt 2>-->
-                    <#--<img src="${base}/${picList[2]}">-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    </div>
-                    <div class="time">
-                    ${comm.time}
-                    </div>
-                    <div class="comment-btns inline-wrapper">
-                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <#if good?contains("#${comm.id}#")>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <#else>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        </#if>
-                        <#if report?contains("#${comm.id}#")>
-                            <div class="btn-pill">已举报</div>
-                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        <#else>
-                            <div class="btn-pill" style="display: none">已举报</div>
-                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        </#if>
-                    </div>
 
+
+                    </div>
 
                 </div>
-
-            </div>
-            <hr style="margin: 0.4rem -1.4rem;">
-        </#if>
-        <#if teacher.commentList?size gt 1>
-            <#assign comm=teacher.commentList[1]>
-            <div class="row row-wrapper">
-                <div class="col-xs-2 no-padding">
-                    <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
-                </div>
-                <div class="col-xs-10">
-                    <div>
-                        <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
-                            <#if comm.detail?length gt 40>
-                                <#assign s=comm.detail>
-                                <div class="comment-detail">
-                                ${comm.detail?substring(0,40)}……
-                                </div>
-                                <a onclick="showFullComment('${s}',this)">全文</a>
-                                <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                <hr style="margin: 0.4rem -1.4rem;">
+            </#if>
+            <#if teacher.commentList?size gt 1>
+                <#assign comm=teacher.commentList[1]>
+                <div class="row row-wrapper">
+                    <div class="col-xs-2 no-padding">
+                        <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
+                    </div>
+                    <div class="col-xs-10">
+                        <div>
+                            <div class="user-name">${comm.user.username!""}</div>
+                            <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                                <#if comm.detail?length gt 40>
+                                    <#assign s=comm.detail>
+                                    <div class="comment-detail">
+                                    ${comm.detail?substring(0,40)}……
+                                    </div>
+                                    <a onclick="showFullComment('${s}',this)">全文</a>
+                                    <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                <#else>
+                                ${comm.detail}
+                                </#if>
+                            </div>
+                        <#--<div class="comment-pics">-->
+                        <#--<#if comm.picurls??>-->
+                        <#--<#assign picList = comm.picurls?split("#")>-->
+                        <#--<div class="img-wrap">-->
+                        <#--<img src="${base}/${picList[0]}">-->
+                        <#--<#if picList?size gt 1>-->
+                        <#--<img src="${base}/${picList[1]}">-->
+                        <#--</#if>-->
+                        <#--<#if picList?size gt 2>-->
+                        <#--<img src="${base}/${picList[2]}">-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        </div>
+                        <div class="time">
+                        ${comm.time}
+                        </div>
+                        <div class="comment-btns inline-wrapper">
+                            <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span><span>回复</div>
+                            <#if good?contains("#${comm.id}#")>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
                             <#else>
-                            ${comm.detail}
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            </#if>
+                            <#if report?contains("#${comm.id}#")>
+                                <div class="btn-pill">已举报</div>
+                                <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                            <#else>
+                                <div class="btn-pill" style="display: none">已举报</div>
+                                <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
                             </#if>
                         </div>
-                    <#--<div class="comment-pics">-->
-                    <#--<#if comm.picurls??>-->
-                    <#--<#assign picList = comm.picurls?split("#")>-->
-                    <#--<div class="img-wrap">-->
-                    <#--<img src="${base}/${picList[0]}">-->
-                    <#--<#if picList?size gt 1>-->
-                    <#--<img src="${base}/${picList[1]}">-->
-                    <#--</#if>-->
-                    <#--<#if picList?size gt 2>-->
-                    <#--<img src="${base}/${picList[2]}">-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    </div>
-                    <div class="time">
-                    ${comm.time}
-                    </div>
-                    <div class="comment-btns inline-wrapper">
-                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <#if good?contains("#${comm.id}#")>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <#else>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        </#if>
-                        <#if report?contains("#${comm.id}#")>
-                            <div class="btn-pill">已举报</div>
-                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        <#else>
-                            <div class="btn-pill" style="display: none">已举报</div>
-                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        </#if>
-                    </div>
 
+
+                    </div>
 
                 </div>
-
-            </div>
-            <hr style="margin: 1.4rem -1.4rem;">
-        </#if>
-        <#if teacher.commentList?size gt 2>
-            <#assign comm=teacher.commentList[2]>
-            <div class="row row-wrapper">
-                <div class="col-xs-2 no-padding">
-                    <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
-                </div>
-                <div class="col-xs-10">
-                    <div>
-                        <div class="user-name">${comm.user.username!""}</div>
-                        <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
-                            <#if comm.detail?length gt 40>
-                                <#assign s=comm.detail>
-                                <div class="comment-detail">
-                                ${comm.detail?substring(0,40)}……
-                                </div>
-                                <a onclick="showFullComment('${s}',this)">全文</a>
-                                <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                <hr style="margin: 1.4rem -1.4rem;">
+            </#if>
+            <#if teacher.commentList?size gt 2>
+                <#assign comm=teacher.commentList[2]>
+                <div class="row row-wrapper">
+                    <div class="col-xs-2 no-padding">
+                        <img class="headimg" src='${comm.user.headimgurl?contains("wx.qlogo.cn")?string("${(comm.user.headimgurl)!}","/${(comm.user.headimgurl)!}")}'/>
+                    </div>
+                    <div class="col-xs-10">
+                        <div>
+                            <div class="user-name">${comm.user.username!""}</div>
+                            <div class="comment-content" onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacher.id}'">
+                                <#if comm.detail?length gt 40>
+                                    <#assign s=comm.detail>
+                                    <div class="comment-detail">
+                                    ${comm.detail?substring(0,40)}……
+                                    </div>
+                                    <a onclick="showFullComment('${s}',this)">全文</a>
+                                    <a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>
+                                <#else>
+                                ${comm.detail}
+                                </#if>
+                            </div>
+                        <#--<div class="comment-pics">-->
+                        <#--<#if comm.picurls??>-->
+                        <#--<#assign picList = comm.picurls?split("#")>-->
+                        <#--<div class="img-wrap">-->
+                        <#--<img src="${base}/${picList[0]}">-->
+                        <#--<#if picList?size gt 1>-->
+                        <#--<img src="${base}/${picList[1]}">-->
+                        <#--</#if>-->
+                        <#--<#if picList?size gt 2>-->
+                        <#--<img src="${base}/${picList[2]}">-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        <#--</#if>-->
+                        <#--</div>-->
+                        </div>
+                        <div class="time">
+                        ${comm.time}
+                        </div>
+                        <div class="comment-btns inline-wrapper">
+                            <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
+                            <#if good?contains("#${comm.id}#")>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
                             <#else>
-                            ${comm.detail}
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                                <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
+                            </#if>
+                            <#if report?contains("#${comm.id}#")>
+                                <div class="btn-pill">已举报</div>
+                                <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
+                            <#else>
+                                <div class="btn-pill" style="display: none">已举报</div>
+                                <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
                             </#if>
                         </div>
-                    <#--<div class="comment-pics">-->
-                    <#--<#if comm.picurls??>-->
-                    <#--<#assign picList = comm.picurls?split("#")>-->
-                    <#--<div class="img-wrap">-->
-                    <#--<img src="${base}/${picList[0]}">-->
-                    <#--<#if picList?size gt 1>-->
-                    <#--<img src="${base}/${picList[1]}">-->
-                    <#--</#if>-->
-                    <#--<#if picList?size gt 2>-->
-                    <#--<img src="${base}/${picList[2]}">-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    <#--</#if>-->
-                    <#--</div>-->
-                    </div>
-                    <div class="time">
-                    ${comm.time}
-                    </div>
-                    <div class="comment-btns inline-wrapper">
-                        <div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>
-                        <#if good?contains("#${comm.id}#")>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)" style="display: none"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        <#else>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                            <div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>
-                        </#if>
-                        <#if report?contains("#${comm.id}#")>
-                            <div class="btn-pill">已举报</div>
-                            <div class="btn-pill" style="display: none" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        <#else>
-                            <div class="btn-pill" style="display: none">已举报</div>
-                            <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
-                        </#if>
-                    </div>
 
+
+                    </div>
 
                 </div>
-
-            </div>
-            <hr style="margin: 1.4rem -1.4rem;">
+                <hr style="margin: 1.4rem -1.4rem;">
+            </#if>
         </#if>
-    </#if>
+        </div>
     </div>
-</div>
 
-<div style="height: 6rem; width: 100%">
-</div>
-
-<!-- 预约 -->
-<div>
-    <div class="bottom-single-btn mobile-nav-taggle" id="mobile-nav-taggle">
-        <a href="#" style="color: #ffffff">
-            立即预约</a>
+    <div style="height: 6rem; width: 100%">
     </div>
-    <div id="mobile-menu-order" class="mobile-nav mobile-menu-bottom visible-xs visible-sm hide-nav-bottom">
-        <div class="container my-slider-container">
-            <div class="slider-header">
-                <button type="button" class="close mobile-close-taggle">
-                    &times;
-                </button>
 
-                <div id="myModalLabel">
-                    预约
+    <!-- 预约 -->
+    <div>
+        <div class="bottom-single-btn mobile-nav-taggle" id="mobile-nav-taggle">
+            <a href="#" style="color: #ffffff">
+                立即预约</a>
+        </div>
+        <div id="mobile-menu-order" class="mobile-nav mobile-menu-bottom visible-xs visible-sm hide-nav-bottom">
+            <div class="container my-slider-container">
+                <div class="slider-header">
+                    <button type="button" class="close mobile-close-taggle">
+                        &times;
+                    </button>
+
+                    <div id="myModalLabel">
+                        预约
+                    </div>
                 </div>
-            </div>
-            <hr style="margin-top: 0rem; margin-bottom: 1.2rem">
-            <div class="slider-body" id="divContent">
-                <div class="form-group" style="overflow-y: scroll">
-                    <div>
-                        上门方式：
-                        <div id="ways" class="inline-wrapper offset-15" style="justify-content: space-around">
+                <hr style="margin-top: 0rem; margin-bottom: 1.2rem">
+                <div class="slider-body" id="divContent">
+                    <div class="form-group" style="overflow-y: scroll">
+                        <div>
+                            上门方式：
+                            <div id="ways" class="inline-wrapper offset-15" style="justify-content: space-around">
                             <#--<#if teacherways??>-->
                                 <#--<#if teacherways[0]??>-->
                                     <#--<div class="way border-pill border-pill-active">-->
@@ -509,14 +572,14 @@
                                     <#--</#if>-->
                                 <#--</#if>-->
                             <#--</#if>-->
-                        </div>
+                            </div>
                         <#--<select id="waySelect"></select>-->
-                    </div>
-                    <div class="offset-20" style="justify-content: flex-start">
-                        <div>
-                            康复项目：
-                            <div id="domains" class="inline-wrapper offset-15" style="justify-content: space-around">
-                            <#--<#if teacher.domain??>-->
+                        </div>
+                        <div class="offset-20" style="justify-content: flex-start">
+                            <div>
+                                康复项目：
+                                <div id="domains" class="inline-wrapper offset-15" style="justify-content: space-around">
+                                <#--<#if teacher.domain??>-->
                                 <#--<#assign tdomains=teacher.domain?split("、")>-->
                                 <#--<#list tdomains as o>-->
                                     <#--<#if tdomains[0]==o>-->
@@ -530,15 +593,15 @@
                                     <#--</#if>-->
                                 <#--</#list>-->
                             <#--</#if>-->
+                                </div>
                             </div>
-                        </div>
                         <#--<select id="domainSelect"></select>-->
-                    </div>
-                    <div class="offset-20">
-                        <div>
-                            需求简历：
-                            <div id="demands" class="row" style="margin: 0rem">
-                            <#--<#if teacherways??>-->
+                        </div>
+                        <div class="offset-20">
+                            <div>
+                                需求简历：
+                                <div id="demands" class="row" style="margin: 0rem">
+                                <#--<#if teacherways??>-->
                                 <#--<#if teacherways[0]??>-->
                                     <#--<div class="way border-pill border-pill-active">-->
                                     <#--${teacherways[0]}-->
@@ -555,130 +618,139 @@
                                     <#--</#if>-->
                                 <#--</#if>-->
                             <#--</#if>-->
+                                </div>
+                            <#--<select id="waySelect"></select>-->
                             </div>
-                        <#--<select id="waySelect"></select>-->
-                        </div>
                         <#--<select id="demandSelect"></select>-->
-                    </div>
-                    <div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">
-                        服务时间：<img onclick="selectTime($('#serviceTime'))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg">
-                        <div id="serviceTime" class="serviceTime" style="margin-left: 1rem;"></div>
-                    </div>
-                    <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
-                        课程数量：
-                        <div class="amount_button" onclick="subtract__fuction()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/sub.svg"></div>
-                        <span id="countSpan" >1</span>
-                        <div class="amount_button" onclick="add_function()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/add.svg"></div>
-                    </div>
-                    <div class="offset-20" style="justify-content: flex-start">
-                        备    注：<br><textarea id="remark" style="margin-top:0.2rem;width:99%;"></textarea>
-                    </div>
-                    <br>
-                </div>
-            </div>
-            <div class="bottom-multiple-btn inline-wrapper">
-                <div style="padding-left: 5%; color: #b47400">
-                    总价：<span id="sumSpan"></span>元
-                </div>
-                <button class="bottom-btn-item" style="width: 30%" onclick="yuYue_fucntion()">
-                    确认
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
-<div class="mask" id="mask" style="z-index:10000;display: none"></div>
-<div id="calendar_month" class="hide-nav-bottom"></div>
-<div id="calendar_day" class="hide-nav-bottom"></div>
-
-<!-- 模态框（Modal） 未完成个人资料-->
-<div class="modal fade"  id="noInf_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-
-                <h4 class="modal-title" id="myModalLabel">
-                    未完成个人资料
-                </h4>
-
-            </div>
-            <div class="modal-body" id="divContent">
-
-                <p>您未完成个人资料，请前往完成</p>
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                </button>
-                <div>
-                    <a href="${base}/center#/parentCenter/info">去完成</a>
-                </div>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
-<#--<!--评论跟帖&ndash;&gt;-->
-<#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
-    <#--<div class="container my-slider-container">-->
-        <#--<div class="slider-body" id="divContent">-->
-            <#--<form action="${base}/wx/teacher/comment" method="post">-->
-                <#--<div class="row offset-10">-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+                        </div>
+                    <#--<div id="time_div" class="offset-20 inline-wrapper" style="justify-content: flex-start">-->
+                    <#--服务时间：<img onclick="selectTime($('#serviceTime'))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg">-->
+                    <#--<div id="serviceTime" class="serviceTime" style="margin-left: 1rem;"></div>-->
                     <#--</div>-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
-                    <#--</div>-->
-                    <#--<div class="col-xs-4 col-md-4"></div>-->
-                    <#--<div class="col-xs-2 col-md-2">-->
-                        <#--<button type="button" class="close mobile-close-taggle">-->
-                            <#--&times;-->
-                        <#--</button>-->
-                    <#--</div>-->
-                <#--</div>-->
-                <#--<div class="row text-center">-->
-                    <#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
-                <#--</div>-->
-                <#--<input type="hidden" name="pid" >-->
-                <#--<input type="hidden" name="tid" value="${teacher.id}">-->
-                <#--<input type="hidden" name="type" value="0">-->
-                <#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
-            <#--</form>-->
-        <#--</div>-->
-
-    <#--</div>-->
-<#--</div>-->
-<!--举报-->
-<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container no-padding">
-        <div class="slider-header">
-            <div class="row">
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
+                        <div class="offset-20 inline-wrapper" style="justify-content: flex-start">
+                            课程数量：
+                            <div class="amount_button" onclick="subtract__fuction()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/sub.svg"></div>
+                            <span id="countSpan" >1</span>
+                            <div class="amount_button" onclick="add_function()"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/add.svg"></div>
+                        </div>
+                        <div class="offset-20" style="justify-content: flex-start">
+                            备    注：<br><textarea id="remark" style="margin-top:0.2rem;width:99%;"></textarea>
+                        </div>
+                        <br>
+                    </div>
                 </div>
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                </div>
-                <div class="col-xs-4 col-md-4"></div>
-                <div class="col-xs-2 col-md-2">
-                    <button type="button" class="close mobile-close-taggle">
-                        &times;
+                <div class="bottom-multiple-btn inline-wrapper">
+                    <div style="padding-left: 5%; color: #b47400">
+                        总价：<span id="sumSpan"></span>元
+                    </div>
+                    <button class="bottom-btn-item" style="width: 30%" onclick="yuYue_fucntion()">
+                        确认
                     </button>
                 </div>
             </div>
         </div>
-        <div class="slider-body" id="divContent">
-            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
-            <input type="hidden" name="cid" >
-            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
-                举报
-            </button>
-        </div>
     </div>
-</div>
+<#--<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>-->
+<#--<div class="mask" id="mask" style="z-index:10000;display: none"></div>-->
+<#--<div id="calendar_month" class="hide-nav-bottom"></div>-->
+<#--<div id="calendar_day" class="hide-nav-bottom"></div>-->
 
-<!-- modal -->
+    <!-- 模态框（Modal） 未完成个人资料-->
+    <div class="modal fade"  id="noInf_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+
+                    <h4 class="modal-title" id="myModalLabel">
+                        未完成个人资料
+                    </h4>
+
+                </div>
+                <div class="modal-body" id="divContent">
+
+                    <p>您未完成个人资料，请前往完成</p>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <div>
+                        <a href="${base}/center#/parentCenter/info">去完成</a>
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+<#--<!--评论跟帖&ndash;&gt;-->
+<#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
+<#--<div class="container my-slider-container">-->
+<#--<div class="slider-body" id="divContent">-->
+<#--<form action="${base}/wx/teacher/comment" method="post">-->
+<#--<div class="row offset-10">-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+<#--</div>-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+<#--</div>-->
+<#--<div class="col-xs-4 col-md-4"></div>-->
+<#--<div class="col-xs-2 col-md-2">-->
+<#--<button type="button" class="close mobile-close-taggle">-->
+<#--&times;-->
+<#--</button>-->
+<#--</div>-->
+<#--</div>-->
+<#--<div class="row text-center">-->
+<#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
+<#--</div>-->
+<#--<input type="hidden" name="pid" >-->
+<#--<input type="hidden" name="tid" value="${teacher.id}">-->
+<#--<input type="hidden" name="type" value="0">-->
+<#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
+<#--</form>-->
+<#--</div>-->
+
+<#--</div>-->
+<#--</div>-->
+    <!--举报-->
+    <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
+        <textarea class="my-textarea" style="height: 100%;" placeholder="举报理由" name="reason"></textarea>
+        <input type="hidden" name="cid" >
+        <button class="bottom-single-btn" style="border: none; background-color: #EE2C2C;width: 50%;" onclick="doreport()">
+            举报
+        </button>
+        <button class="bottom-single-btn" style="border: none; background-color: cornflowerblue;width: 50%;left: 50%;"
+                onclick="javascript:$('#mobile-menu-report').addClass('hide-nav-bottom').removeClass('show-nav-bottom');">
+            取消
+        </button>
+    <#--<div class="container my-slider-container no-padding">-->
+    <#--<div class="slider-header">-->
+    <#--<div class="row">-->
+    <#--<div class="col-xs-3 col-md-3">-->
+    <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+    <#--</div>-->
+    <#--<div class="col-xs-3 col-md-3">-->
+    <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+    <#--</div>-->
+    <#--<div class="col-xs-4 col-md-4"></div>-->
+    <#--<div class="col-xs-2 col-md-2">-->
+    <#--<button type="button" class="close mobile-close-taggle">-->
+    <#--&times;-->
+    <#--</button>-->
+    <#--</div>-->
+    <#--</div>-->
+    <#--</div>-->
+    <#--<div class="slider-body" id="divContent">-->
+    <#--<textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>-->
+    <#--<input type="hidden" name="cid" >-->
+    <#--<button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">-->
+    <#--举报-->
+    <#--</button>-->
+    <#--</div>-->
+    <#--</div>-->
+    </div>
+
+    <!-- modal -->
 </body>
 </html>
 <script>
@@ -707,16 +779,16 @@
         }
     });
 
-//    $("#mobile-nav-taggle").click(function () {
-//        makeOrder();
-//    });
+    //    $("#mobile-nav-taggle").click(function () {
+    //        makeOrder();
+    //    });
 
     function masking() {
         $("#maskbehind").show();
         $("#base").css("overflow-x","hidden");
         $("#base").css("overflow-y","hidden");
         $("#base").css("position","absolute");
-  //      $("#base").bind("touchmove",function(event){event.preventDefault();});
+        //      $("#base").bind("touchmove",function(event){event.preventDefault();});
     }
 
     function unmasking() {
@@ -724,7 +796,7 @@
         $("#base").css("overflow-x","scroll");
         $("#base").css("overflow-y","scroll");
         $("#base").css("position","");
-  //      $("#base").unbind("touchmove");
+        //      $("#base").unbind("touchmove");
     }
 
     $(".mobile-nav-taggle,#mobile-nav-taggle").click(function () {
@@ -734,6 +806,7 @@
                 return;
             }
         } else{
+            alert('您还没有登录，请前往登录');
             location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41aea10976e1038a&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fparent&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
         }
 
@@ -742,18 +815,18 @@
         if (mobileMenu.hasClass("hide-nav-bottom")) {
             makeOrder();
 //            if(makeOrder()==true) {
-                setTimeout(function () {
-                    masking();
-                }, 500);
-                setTimeout(function () {
-                    mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-                }, 500);
+//                setTimeout(function () {
+//                    masking();
+//                }, 500);
+            setTimeout(function () {
+                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
+            }, 500);
 //            }else {
 //                alert("用户状态异常，无法预约");
 //            }
         }
         else {
-            unmasking();
+//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100)
@@ -764,13 +837,13 @@
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");
         if (mobileMenu.hasClass("hide-nav-bottom")) {
-            masking();
+//            masking();
             setTimeout(function () {
                 mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             }, 100)
         }
         else {
-            unmasking();
+//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100);
@@ -1027,10 +1100,10 @@
         });
     }
 
-//    $('#demandSelect').change(function () {
-//
-//
-//    });
+    //    $('#demandSelect').change(function () {
+    //
+    //
+    //    });
 
 
     function yuYue_fucntion(){

@@ -3,7 +3,14 @@
  */
 .img-circle{
     width: 250px;
+    height: 250px;
+    object-fit: cover;
 }
+#imgModal .img-circle{
+    width: 400px;
+    height: 400px;
+}
+
 .imgDiv{
     margin-top: 5%;
     margin-bottom: 5%;
@@ -18,9 +25,23 @@
 .imgDiv2 {
     font-size: 40px;
     background-color: #20b49a;
-    padding-top: 5%;
-    padding-bottom: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
+}
+.imgDiv2 img{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.imgDiv2 .alert .close{
+    font-size: 60px;
+}
+
+.imgDiv2 .alert {
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0 20px;
 }
 
 
@@ -61,7 +82,7 @@ th,td{
 }
 
 #saveBtn{
- font-size: 50px;
+    font-size: 50px;
     padding: 20px;
     color: white;
 }
@@ -86,7 +107,7 @@ th,td{
 }
 
 /*p{*/
-    /*color: #20b49a;*/
+/*color: #20b49a;*/
 /*}*/
 
 .title{
@@ -162,3 +183,45 @@ th,td{
     justify-content: center;
 }
 
+#fillInfoModal{
+    top:30%
+}
+
+#fillInfoModal .modal-body{
+    font-size: 40px;
+    height: 150px;
+}
+
+#imgModal{
+    top:20%
+}
+#imgModal .modal-body{
+    height: 500px;
+    padding: 50px;
+}
+.infoModal .modal-title{
+    font-size: 60px;
+    text-align: center;
+}
+.infoModal .modal-footer .btn-primary{
+    background-color: #20b49a;
+}
+.infoModal .close{
+    font-size: 60px;
+}
+
+.radio-input {
+    font-size: 50px;
+    height: auto;
+}
+.radio-input input{
+    height: 50px;
+    width: 50px;
+}
+
+/**
+Calendar
+ */
+#calendar .fc-agenda-axis{
+    font-size: 30px;
+}

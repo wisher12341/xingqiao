@@ -2,6 +2,7 @@ package com.xq.service;
 
 
 import com.xq.dto.ModifyPageDto;
+import com.xq.dto.ParentInfoDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
@@ -24,6 +25,8 @@ public interface ParentCenterService {
 
     List<Message> getMessagesByUserId(int userId);
 
+    void deleteMessage(int messageId);
+
     User getUserById(int userId);
 
     String getUserNameById(int userId);
@@ -44,6 +47,9 @@ public interface ParentCenterService {
     void addDemand(int userId, String name, int gender, String birthday, String report, String diseaseHis,
                    String allergyHis, String remark);
 
-    int myInfoStatus(int userId);
+    //int myInfoStatus(int userId);
+    void fillInfo(ParentInfoDto parentInfoDto);
+
+    void uploadPhoto(HttpServletRequest request,int userId);
 
 }

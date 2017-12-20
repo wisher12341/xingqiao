@@ -52,20 +52,20 @@
                         <div class="img-wrap">
                             <img src="${base}/${picList[0]}">
                             <#if picList?size gt 1>
-                            <img src="${base}/${picList[1]}">
+                                <img src="${base}/${picList[1]}">
                             </#if>
                             <#if picList?size gt 2>
-                            <img src="${base}/${picList[2]}">
+                                <img src="${base}/${picList[2]}">
                             </#if>
                         </div>
                         <#if picList?size gt 3>
-                        <div class="img-wrap" style="display: none">
-                            <#list picList as pic>
-                                <img src="${base}/${pic}">
-                            </#list>
-                        </div>
-                        <a onclick="showMorePics(this)">查看全部${picList?size}张</a>
-                        <a onclick="hideMorePics(this)" style="display: none">隐藏</a>
+                            <div class="img-wrap" style="display: none">
+                                <#list picList as pic>
+                                    <img src="${base}/${pic}">
+                                </#list>
+                            </div>
+                            <a onclick="showMorePics(this)">查看全部${picList?size}张</a>
+                            <a onclick="hideMorePics(this)" style="display: none">隐藏</a>
                         </#if>
 
                     </#if>
@@ -90,15 +90,24 @@
                         <div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报</div>
                     </#if>
                 </div>
-
-
             </div>
+        </div>
+        <div class="row">
+            <hr style="margin-bottom: 1rem">
+            <div class="inline-wrapper col-xs-12">
+                <div class="my-panel-title padding-left-15">评论回复
+                    <#if comm.organCommentChildList??>
+                        (<span class="count">${comm.organCommentChildList?size}</span>)
+                    </#if>
+                </div>
+            </div>
+            <br>
+            <hr style="margin-top: 1rem">
         </div>
         <#if comm.organCommentChildList??>
             <#if comm.organCommentChildList?size gt 0>
                 <div class="sub-comment-list row">
                     <#list comm.organCommentChildList as subComm>
-                        <hr>
                         <div class="row padding-left-15">
                             <div class="col-xs-2 no-padding">
                                 <div class="inline-wrapper">
@@ -131,16 +140,17 @@
                                     <#else>
                                     ${subComm.detail}
                                     </#if>
-                                    <#--<div class="comment-btns inline-wrapper">-->
-                                        <#--<a class="btn-pill" onclick="reply(${subComm.id})">回复</a>-->
-                                        <#--<a class="btn-pill" onclick="changeCount(0,'${subComm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></a>-->
-                                        <#--<a class="btn-pill" onclick="changeCount(0,'${subComm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></a>-->
-                                        <#--<a class="btn-pill" onclick="changeCount(1,'${subComm.id}',0,this)">举报(${comm.report})</a>-->
-                                        <#--<p class="btn-pill" style="display: none">已举报</p>-->
-                                    <#--</div>-->
+                                <#--<div class="comment-btns inline-wrapper">-->
+                                <#--<a class="btn-pill" onclick="reply(${subComm.id})">回复</a>-->
+                                <#--<a class="btn-pill" onclick="changeCount(0,'${subComm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></a>-->
+                                <#--<a class="btn-pill" onclick="changeCount(0,'${subComm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></a>-->
+                                <#--<a class="btn-pill" onclick="changeCount(1,'${subComm.id}',0,this)">举报(${comm.report})</a>-->
+                                <#--<p class="btn-pill" style="display: none">已举报</p>-->
+                                <#--</div>-->
                                 </div>
                             </div>
                         </div>
+                        <hr>
                     </#list>
                 </div>
             </#if>
@@ -150,34 +160,34 @@
 </div>
 <!--评论跟帖-->
 <#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
-    <#--<div class="container my-slider-container">-->
-        <#--<div class="slider-body" id="divContent">-->
-            <#--<form action="${base}/wx/organization/reply" method="post">-->
-                <#--<div class="row offset-10">-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
-                    <#--</div>-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
-                    <#--</div>-->
-                    <#--<div class="col-xs-4 col-md-4"></div>-->
-                    <#--<div class="col-xs-2 col-md-2">-->
-                        <#--<button type="button" class="close mobile-close-taggle">-->
-                            <#--&times;-->
-                        <#--</button>-->
-                    <#--</div>-->
-                <#--</div>-->
-                <#--<div class="row text-center">-->
-                    <#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
-                <#--</div>-->
-                <#--<input type="hidden" name="pid" >-->
-                <#--<input type="hidden" name="oid" value="${comm.oid}">-->
-                <#--<input type="hidden" name="type" value="0">-->
-                <#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
-            <#--</form>-->
-        <#--</div>-->
+<#--<div class="container my-slider-container">-->
+<#--<div class="slider-body" id="divContent">-->
+<#--<form action="${base}/wx/organization/reply" method="post">-->
+<#--<div class="row offset-10">-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+<#--</div>-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+<#--</div>-->
+<#--<div class="col-xs-4 col-md-4"></div>-->
+<#--<div class="col-xs-2 col-md-2">-->
+<#--<button type="button" class="close mobile-close-taggle">-->
+<#--&times;-->
+<#--</button>-->
+<#--</div>-->
+<#--</div>-->
+<#--<div class="row text-center">-->
+<#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
+<#--</div>-->
+<#--<input type="hidden" name="pid" >-->
+<#--<input type="hidden" name="oid" value="${comm.oid}">-->
+<#--<input type="hidden" name="type" value="0">-->
+<#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
+<#--</form>-->
+<#--</div>-->
 
-    <#--</div>-->
+<#--</div>-->
 <#--</div>-->
 <!--举报-->
 <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">

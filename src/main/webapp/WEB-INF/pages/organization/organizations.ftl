@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="${base}/static/css/common/bootstrap.min.css">
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
+    <link rel="stylesheet" href="${base}/static/css/loading.css">
 
     <style>
         [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
@@ -53,17 +54,39 @@
             -webkit-transition: none;
             -o-transition: none;
         }
-
-
     </style>
 </head>
-<body ng-app="testapp" ng-controller="organizationCtrl" ng-init="getOrganization()">
+<body style="height: 100%;" ng-app="testapp" ng-controller="organizationCtrl" ng-init="getOrganization()">
+<div class="spinner-mask" style="display: none">
+    <div class="spinner">
+        <div class="spinner-container container1">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container2">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container3">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+    </div>
+
+</div>
 <div class="container list-container-white">
 
     <div class="input-group row row-wrapper" style="padding: 0rem 2.5rem">
         <input type="text"
                style="margin-top: 0.2rem;border-radius: 20px 0px 0px 20px;border: #cccccc solid 0.1rem"
-               class="form-control input-default" ng-model="orgName">
+               class="form-control input-default" ng-model="orgName"
+               ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
         <span class="glyphicon glyphicon-search input-group-addon"
               style="border-radius: 0 20px 20px 0px; color: #337fc0; background-color: #d9edf7;border: none;"
               ng-click="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)"></span>
@@ -76,13 +99,13 @@
         </div>
 
         <div class="col-xs-6 col-md-6 no-padding">
-            <select class="form-control form-select" ng-model="vm.dis" style="height: 4.5rem"
+            <select onclick="javascript:$('#defalutInform').remove();" class="form-control form-select" ng-model="vm.dis" style="height: 4.5rem"
                     ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
-                <option value="">-- 请选择区 --</option>
+                <option id="defalutInform" value="">-- 请选择区 --</option>
             </select>
         </div>
     </div>
-            <!-- 机构列表 -->
+    <!-- 机构列表 -->
 
     <div class="row">
         <div class="panel panel-default">
@@ -118,6 +141,16 @@
 <script type="text/javascript">
     var pathJs = "${base}";
     var app = angular.module('testapp', ['ipCookie']);
+
+    function loadingImg() {
+        $("body").css("overflow","hidden");
+        $(".spinner-mask").show();
+    }
+
+    function loadingOver() {
+        $("body").css("overflow","auto");
+        $(".spinner-mask").hide();
+    }
     app.config(function($interpolateProvider) {
         $interpolateProvider.startSymbol('##');
         $interpolateProvider.endSymbol('##');
@@ -146,7 +179,10 @@
         $scope.orgName = "";
         $scope.organizations = [];
         $scope.NewOrgItems = [];
+        $scope.tmp = [];
         $scope.getOrganization = function() {
+
+            loadingImg();
             $http({
                 method: 'GET',
                 url: pathJs+'/wx/organization/get_organizations'
@@ -155,8 +191,9 @@
 //                console.log(data);
                 $scope.organizations = data.data;
                 $scope.NewOrgItems = data.data;
+                loadingOver();
             }).error(function(data, status, headers, config) {
-
+                loadingOver();
             });
         };
 
@@ -192,16 +229,21 @@
                     }
                 }
             }
+            if (str=="" || str==null){
+                selectOrgs = $scope.NewOrgItems.concat();
+            }
 
 
             //合并地区查询和字符查询
 
+            $scope.tmp = $scope.NewOrgItems.concat();
+            $scope.NewOrgItems = [];
             //1.将相同的去掉
             for(aa in selectOrgs){
-                for(bb in $scope.NewOrgItems){
-                    if (selectOrgs[aa]['name']==$scope.NewOrgItems[bb]['name']){
-
-                        $scope.NewOrgItems.slice(bb,1);
+                for(bb in $scope.tmp){
+                    if (selectOrgs[aa]['name']==$scope.tmp[bb]['name']){
+                        $scope.NewOrgItems.push(selectOrgs[aa]);
+                        $scope.tmp.splice(bb,1);
                     }
 
                 }
@@ -217,7 +259,11 @@
 //        }
 //      }
             //2.把查询中有的给出
-            $scope.NewOrgItems = selectOrgs.concat($scope.NewOrgItems);
+            //$scope.NewOrgItems = selectOrgs.concat($scope.NewOrgItems);
+//            $scope.NewOrgItems = [];
+//            for(tt in $scope.tmp){
+//                $scope.NewOrgItems.push($scope.tmp[tt])
+//            }
 
         };
 

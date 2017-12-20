@@ -33,120 +33,129 @@
         </ul>
     </div>
 <#--<#if teacherCommentList??>-->
-    <#--<#list teacherCommentList as comm>-->
-    <#--&lt;#&ndash;<div class="my-panel container line-height-24">&ndash;&gt;-->
-        <#--<div class="my-panel row row-wrapper pointable">-->
-            <#--<div class="col-xs-2 no-padding">-->
-                <#--<img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>-->
-            <#--</div>-->
-            <#--<div class="col-xs-10">-->
-                <#--<div onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacherId}'">-->
-                    <#--<div class="user-name">${comm.user.username!""}</div>-->
-                    <#--<div class="comment-content">-->
-                        <#--<#if comm.detail?length gt 60>-->
-                            <#--<#assign s=comm.detail>-->
-                            <#--<div class="comment-detail">-->
-                            <#--${comm.detail?substring(0,60)}……-->
-                            <#--</div>-->
-                            <#--<a onclick="showFullComment('${s}',this)">全文</a>-->
-                            <#--<a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>-->
-                        <#--<#else>-->
-                        <#--${comm.detail}-->
-                        <#--</#if>-->
-                    <#--</div>-->
-                    <#--<div class="comment-pics">-->
-                        <#--<#if comm.picurls??>-->
-                            <#--<#assign picList = comm.picurls?split("#")>-->
-                            <#--<div class="img-wrap">-->
-                                <#--<img src="${base}/${picList[0]}">-->
-                                <#--<#if picList?size gt 1>-->
-                                    <#--<img src="${base}/${picList[1]}">-->
-                                <#--</#if>-->
-                                <#--<#if picList?size gt 2>-->
-                                    <#--<img src="${base}/${picList[2]}">-->
-                                <#--</#if>-->
-                            <#--</div>-->
-                        <#--</#if>-->
-                    <#--</div>-->
-                <#--</div>-->
-                <#--<div class="time">-->
-                <#--${comm.time}-->
-                <#--</div>-->
-                <#--<div class="comment-btns inline-wrapper">-->
-                    <#--<div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>-->
-                    <#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
-                    <#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
-                    <#--<div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>-->
-                    <#--<div class="btn-pill" style="display: none">已举报</div>-->
-                <#--</div>-->
+<#--<#list teacherCommentList as comm>-->
+<#--&lt;#&ndash;<div class="my-panel container line-height-24">&ndash;&gt;-->
+<#--<div class="my-panel row row-wrapper pointable">-->
+<#--<div class="col-xs-2 no-padding">-->
+<#--<img class="headimg" src='${base}/${comm.user.headimgurl!""}'/>-->
+<#--</div>-->
+<#--<div class="col-xs-10">-->
+<#--<div onclick="location='${base}/wx/teacher/toTeacherCommentSingle?cid=${comm.id}&tid=${teacherId}'">-->
+<#--<div class="user-name">${comm.user.username!""}</div>-->
+<#--<div class="comment-content">-->
+<#--<#if comm.detail?length gt 60>-->
+<#--<#assign s=comm.detail>-->
+<#--<div class="comment-detail">-->
+<#--${comm.detail?substring(0,60)}……-->
+<#--</div>-->
+<#--<a onclick="showFullComment('${s}',this)">全文</a>-->
+<#--<a onclick="showBriefComment('${s}',this)" style="display: none">收起</a>-->
+<#--<#else>-->
+<#--${comm.detail}-->
+<#--</#if>-->
+<#--</div>-->
+<#--<div class="comment-pics">-->
+<#--<#if comm.picurls??>-->
+<#--<#assign picList = comm.picurls?split("#")>-->
+<#--<div class="img-wrap">-->
+<#--<img src="${base}/${picList[0]}">-->
+<#--<#if picList?size gt 1>-->
+<#--<img src="${base}/${picList[1]}">-->
+<#--</#if>-->
+<#--<#if picList?size gt 2>-->
+<#--<img src="${base}/${picList[2]}">-->
+<#--</#if>-->
+<#--</div>-->
+<#--</#if>-->
+<#--</div>-->
+<#--</div>-->
+<#--<div class="time">-->
+<#--${comm.time}-->
+<#--</div>-->
+<#--<div class="comment-btns inline-wrapper">-->
+<#--<div class="btn-pill" onclick="reply(${comm.id})"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div>-->
+<#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',0,this)"><span class="glyphicon glyphicon-heart-empty btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
+<#--<div class="btn-pill" onclick="changeCount(0,'${comm.id}',1,this)" style="display: none"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">${comm.good}</span>)</span></div>-->
+<#--<div class="btn-pill" onclick="changeCount(1,'${comm.id}',0,this)"><span class="glyphicon glyphicon-bell btn-pill-icon-left"></span>举报(${comm.report})</div>-->
+<#--<div class="btn-pill" style="display: none">已举报</div>-->
+<#--</div>-->
 
 
-            <#--</div>-->
+<#--</div>-->
 
-        <#--</div>-->
-    <#--</#list>-->
+<#--</div>-->
+<#--</#list>-->
 <#--</#if>-->
 </div>
 </div>
 
 <#--<!--评论跟帖&ndash;&gt;-->
 <#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
-    <#--<div class="container my-slider-container">-->
-        <#--<div class="slider-body" id="divContent">-->
-            <#--<form action="${base}/wx/teacher/comment" method="post">-->
-                <#--<div class="row offset-10">-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
-                    <#--</div>-->
-                    <#--<div class="col-xs-3 col-md-3">-->
-                        <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
-                    <#--</div>-->
-                    <#--<div class="col-xs-4 col-md-4"></div>-->
-                    <#--<div class="col-xs-2 col-md-2">-->
-                        <#--<button type="button" class="close mobile-close-taggle">-->
-                            <#--&times;-->
-                        <#--</button>-->
-                    <#--</div>-->
-                <#--</div>-->
-                <#--<div class="row text-center">-->
-                    <#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
-                <#--</div>-->
-                <#--<input type="hidden" name="pid" >-->
-                <#--<input type="hidden" name="tid" value="${teacherId}">-->
-                <#--<input type="hidden" name="type" value="0">-->
-                <#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
-            <#--</form>-->
-        <#--</div>-->
+<#--<div class="container my-slider-container">-->
+<#--<div class="slider-body" id="divContent">-->
+<#--<form action="${base}/wx/teacher/comment" method="post">-->
+<#--<div class="row offset-10">-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+<#--</div>-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+<#--</div>-->
+<#--<div class="col-xs-4 col-md-4"></div>-->
+<#--<div class="col-xs-2 col-md-2">-->
+<#--<button type="button" class="close mobile-close-taggle">-->
+<#--&times;-->
+<#--</button>-->
+<#--</div>-->
+<#--</div>-->
+<#--<div class="row text-center">-->
+<#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
+<#--</div>-->
+<#--<input type="hidden" name="pid" >-->
+<#--<input type="hidden" name="tid" value="${teacherId}">-->
+<#--<input type="hidden" name="type" value="0">-->
+<#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
+<#--</form>-->
+<#--</div>-->
 
-    <#--</div>-->
+<#--</div>-->
 <#--</div>-->
 <!--举报-->
-<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">
-    <div class="container my-slider-container no-padding">
-        <div class="slider-header">
-            <div class="row">
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>
-                </div>
-                <div class="col-xs-3 col-md-3">
-                    <input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>
-                </div>
-                <div class="col-xs-4 col-md-4"></div>
-                <div class="col-xs-2 col-md-2">
-                    <button type="button" class="close mobile-close-taggle">
-                        &times;
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="slider-body" id="divContent">
-            <textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>
-            <input type="hidden" name="cid" >
-            <button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">
-                举报
-            </button>
-        </div>
-    </div>
+<div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
+    <textarea class="my-textarea" style="height: 100%;" placeholder="举报理由" name="reason"></textarea>
+    <input type="hidden" name="cid" >
+    <button class="bottom-single-btn" style="border: none; background-color: #EE2C2C;width: 50%;" onclick="doreport()">
+        举报
+    </button>
+    <button class="bottom-single-btn" style="border: none; background-color: cornflowerblue;width: 50%;left: 50%;"
+            onclick="javascript:$('#mobile-menu-report').addClass('hide-nav-bottom').removeClass('show-nav-bottom');">
+        取消
+    </button>
+<#--<div class="container my-slider-container no-padding">-->
+<#--<div class="slider-header">-->
+<#--<div class="row">-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
+<#--</div>-->
+<#--<div class="col-xs-3 col-md-3">-->
+<#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
+<#--</div>-->
+<#--<div class="col-xs-4 col-md-4"></div>-->
+<#--<div class="col-xs-2 col-md-2">-->
+<#--<button type="button" class="close mobile-close-taggle">-->
+<#--&times;-->
+<#--</button>-->
+<#--</div>-->
+<#--</div>-->
+<#--</div>-->
+<#--<div class="slider-body" id="divContent">-->
+<#--<textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>-->
+<#--<input type="hidden" name="cid" >-->
+<#--<button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">-->
+<#--举报-->
+<#--</button>-->
+<#--</div>-->
+<#--</div>-->
 </div>
 
 </body>
@@ -214,7 +223,7 @@
 
                 str += '</div></div></div><div class="time">' + comm.time +'</div>' +
                         '<div class="comment-btns inline-wrapper"> ' +
-                        '<div class="btn-pill" onclick="reply(' + comm.id + ')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span>回复</div> ';
+                        '<div class="btn-pill" onclick="reply(' + comm.id + ')"><span class="glyphicon glyphicon-pencil btn-pill-icon-left"></span><span>回复</div> ';
                 var id = "#" + comm.id + "#";
                 if (good.indexOf(id) >= 0){
                     str += '<div class="btn-pill" onclick="changeCount(0,'+ comm.id +',1,this)"><span class="glyphicon glyphicon-heart btn-pill-icon-left"></span><span>赞(<span class="count">'+ comm.good +'</span>)</span></div>' +

@@ -16,7 +16,7 @@ public class TmpLogin {
         user.setId(2);
         user.setHeadimgurl("static/img/usertouxiang.jpg");
         request.getSession().setAttribute("USER",user);
-        Cookie cookie = new Cookie(Const.OPENID_PARENT,"oxsEYwlPAa-fVc9fVyzVBYBed9n8");
+        Cookie cookie = new Cookie(Const.OPENID_PARENT,"oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E");
         cookie.setPath("/");
         response.addCookie(cookie);
         response.setHeader("Access-Control-Allow-Credentials","true");

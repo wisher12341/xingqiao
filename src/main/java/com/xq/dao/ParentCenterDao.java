@@ -1,6 +1,8 @@
 package com.xq.dao;
 
+import com.xq.dto.ParentInfoDto;
 import com.xq.model.Parent;
+import com.xq.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -21,7 +23,10 @@ public interface ParentCenterDao {
     void updateGender(@Param("gender") int gender, @Param("userId") int userId);
 
     void updateUserStatus(@Param("status") int status, @Param("userId") int userId);
+    void updateIcon(@Param("headimgurl") String headimgurl, @Param("userId") int userId);
 
-    void addParent(@Param("userId") int userId);
+    void fillInfoUser(@Param("parentInfoDto") ParentInfoDto parentInfoDto);
+    void fillInfoParent(@Param("parentInfoDto") ParentInfoDto parentInfoDto);
 
-    }
+
+}

@@ -38,9 +38,9 @@
     </select>
 
     <select id="getMyTeachersByOpenid" resultType="com.xq.model.Teacher">
-        SELECT distinct t.id,t.name,u.headimgurl
-        FROM teacher t,sysuser u,orders o,parent p
-        WHERE u.openid=#{openid} AND o.teacher_id=t.id AND p.userId=u.id AND o.parent_id=p.id AND (o.status_t!=1 and o.status_t!=2 and o.status_t!=11 and o.status_t!=12 and o.status_t!=16)
+        SELECT distinct t.id,t.name,uu.headimgurl
+        FROM teacher t,sysuser u,orders o,parent p,sysuser uu
+        WHERE u.openid=#{openid} AND o.teacher_id=t.id AND p.userId=u.id AND o.parent_id=p.id AND t.user_id=uu.id AND (o.status_t!=1 and o.status_t!=2 and o.status_t!=11 and o.status_t!=12 and o.status_t!=16)
     </select>
 
 

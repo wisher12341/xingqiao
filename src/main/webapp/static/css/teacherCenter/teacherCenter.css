@@ -44,9 +44,7 @@
     margin-top: 50%;
     margin-bottom: 50%;
 }
-p{
-    color: #20b49a;
-}
+
 
 .title{
     height: 110px;
@@ -58,4 +56,58 @@ p{
     float: right;
     margin-top:20px;
     margin-right: 30px;
+}
+
+/**
+tab标签
+ */
+#fillInfoTab{
+    font-size: 60px;
+    text-align: center;
+}
+#fillInfoTab li{
+    width: 33%;
+}
+#fillInfoTab>li.active{
+    width: 34%;
+}
+#fillInfoTab li a{
+    padding: 20px;
+    background-color: #20b49a;
+    color: white;
+}
+
+#fillInfoTab >li.active> a{
+    padding: 20px;
+    background-color: white;
+    color: #20b49a;
+}
+
+.checkbox-inline input{
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+
+}
+.checkbox-text{
+    display:inline;
+    margin-left:40px;
+    font-size: 50px;
+    font-weight: normal;
+}
+.checkbox-inline-div{
+    display: inline;
+    margin-left: 20px;
+}
+.checkbox{
+    width: 50px;
+    height: 50px;
+    margin-top: 10px;
+}
+.checkbox-text2{
+    display:inline;
+    margin-left:20px;
+    font-size: 50px;
+    font-weight: normal;
+    margin-top: -10px;
 }

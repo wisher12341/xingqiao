@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
     public void setUserStatusDesc(User user) {
         switch (user.getUserStatus()){
             case 0:
-                user.setUserStatusDesc("请下完善个人资料，待审核通过后才可下预约单");
+                user.setUserStatusDesc("请完善下个人资料，待审核通过后才可下预约单");
                 break;
             case 1:
             case 3:

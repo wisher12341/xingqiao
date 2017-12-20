@@ -24,8 +24,13 @@ function selectObs() {
         $("#ob_div").append($input);
         $("#ob_div").append($span);
     });
-    $('#selectOb').hide();
-    $('#main').slideDown();
+    // $('#selectOb').hide();
+    // $('#main').slideDown();
+    // $("#selectOb").slideUp();
+    $('#main').show();
+    $('#selectOb').animate({top:"100%"},function () {
+        $('#selectOb').hide();
+    });
     // $("#obSelect").modal("hide");
 }
 
