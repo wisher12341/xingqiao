@@ -262,7 +262,7 @@
 
 
 <div id="selectOb" style="display: none;background-color: white;height:100%;width: 100%">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectOb").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='backSelect(this)' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择康复领域</p>
 <#if (recoveryLogDto.obs)??>
     <#list (recoveryLogDto.obs)! as ob>
@@ -285,8 +285,8 @@
 </#if>
 </div>
 
-    <div id="selectTeacher" style="display: none;background-color: white;height: 100%">
-        <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectTeacher").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+    <div id="selectTeacher" style="display: none;background-color: white;height:100%;width: 100%">
+        <i class="glyphicon glyphicon-circle-arrow-left" onclick='backSelect(this)' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
         <p class="selectTitle">选择治疗师</p>
         <#if (recoveryLogDto.teacherList)??>
             <div class="demands-div">
@@ -319,7 +319,7 @@
     </div>
 
 <div id="selectDemand" style="display: none;background-color: #f5f5f5;height: 100%;width: 100%">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectDemand").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='backSelect(this)' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择简历</p>
 <#if (recoveryLogDto.demandList)??>
     <#list recoveryLogDto.demandList as demand>
@@ -339,7 +339,7 @@
 </div>
 
 <div id="selectConfirm" style="display: none;background-color: #f5f5f5;height: 100%;width: 100%">
-    <i class="glyphicon glyphicon-circle-arrow-left" onclick='$("#selectConfirm").slideUp();' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
+    <i class="glyphicon glyphicon-circle-arrow-left" onclick='backSelect(this)' style="position: absolute;top:1%;left: 4%;font-size: 60px;color: white"></i>
     <p class="selectTitle">选择康复日志是否确认</p>
         <div class="checkbox checkbox-success demand_div" onclick="selectConfirmEnd('不限',2)">
             <input type="radio" name="c"  class="radioC" id="radioC2" value="2">
@@ -385,6 +385,13 @@
             $('#main').hide();
         });
 
+    }
+
+    function backSelect(obj) {
+        $('#main').show();
+        $(obj).parent().animate({top:"100%"},function () {
+            $(obj).parent().hide();
+        });
     }
 
     function selectConfirmEnd(cname,cid) {

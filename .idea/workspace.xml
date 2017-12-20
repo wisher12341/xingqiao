@@ -2,87 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8096fa39-2683-4410-8529-ecf7826ba959" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/parentCenter/upload.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/ParentInfoDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/fillInfoPage.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/fillInfoPage.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/loading.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/fullcalendar2/fullcalendar.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/fullcalendar2/fullcalendar.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/fullcalendar2/fullcalendar.print.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TmpLogin.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TmpLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/MessageDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/MessageDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq.war" afterPath="$PROJECT_DIR$/target/xq.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TmpLogin.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TmpLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/MessageDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/MessageDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/ParentCenterDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/ParentCenterDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TmpLogin.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TmpLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/MessageDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/MessageDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/ParentCenterDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/ParentCenterDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/util/FileUpload.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/util/FileUpload.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" afterPath="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_single.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organ_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organizations.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/organization/organizations.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/teachersDetail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/teachersDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_list.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_single.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teachers.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teachers.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myDemands.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/myDemands.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/parentCenter/parentCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/teacher/slider.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/teacher/slider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/teacherCenter/teacherCenter.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/teacherCenter/teacherCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/log/log.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/log/log.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/js/parentCenter/parentCenter.js" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/parentCenter/parentCenter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/MessageMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/MessageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/spring/spring-web.xml" afterPath="$PROJECT_DIR$/target/classes/spring/spring-web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/MessageMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/MessageMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/ParentCenterMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/ParentCenterMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/spring/spring-web.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/spring/spring-web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_single.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organ_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organizations.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/organization/organizations.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/teachersDetail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/teachersDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_list.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_list.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_single.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_comment_single.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teachers.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teachers.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/jcy.css" afterPath="$PROJECT_DIR$/target/xq/static/css/jcy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myDemands.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/myDemands.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" afterPath="$PROJECT_DIR$/target/xq/static/css/parentCenter/parentCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/teacher/slider.css" afterPath="$PROJECT_DIR$/target/xq/static/css/teacher/slider.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/teacherCenter/teacherCenter.css" afterPath="$PROJECT_DIR$/target/xq/static/css/teacherCenter/teacherCenter.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/js/parentCenter/parentCenter.js" afterPath="$PROJECT_DIR$/target/xq/static/js/parentCenter/parentCenter.js" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -98,12 +18,13 @@
       <file leaf-file-name="log.ftl" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
+            <state relative-caret-position="-25">
+              <caret line="352" column="15" lean-forward="true" selection-start-line="352" selection-start-column="15" selection-end-line="352" selection-end-column="15" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1348,10 +1269,9 @@
       <method />
     </configuration>
     <configuration default="false" name="xq" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\sp\progrom\jdk1.7.0_17\jre">
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="xq:war exploded">
+        <artifact name="xq:war">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
@@ -1416,7 +1336,7 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="xq:war exploded" />
+          <artifact name="xq:war" />
         </option>
       </method>
     </configuration>
@@ -1437,12 +1357,12 @@
       <workItem from="1512544865800" duration="1447000" />
       <workItem from="1512634656659" duration="80249000" />
       <workItem from="1513055670809" duration="30712000" />
-      <workItem from="1513325607868" duration="50166000" />
+      <workItem from="1513325607868" duration="50899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162574000" />
+    <option name="totallyTimeSpent" value="163307000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -2119,12 +2039,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="345" column="50" lean-forward="true" selection-start-line="345" selection-start-column="50" selection-end-line="345" selection-end-column="50" />
+        <state relative-caret-position="-25">
+          <caret line="352" column="15" lean-forward="true" selection-start-line="352" selection-start-column="15" selection-end-line="352" selection-end-column="15" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
