@@ -52,7 +52,17 @@ public class Order {
 
     private Comment comment;//评价
 
-//    家长信息表
+    private String timeOpt;//服务时间重复方式，不是数据库里的字段
+
+    public String getTimeOpt() {
+        return timeOpt;
+    }
+
+    public void setTimeOpt(String timeOpt) {
+        this.timeOpt = timeOpt;
+    }
+
+    //    家长信息表
     private Parent parent;
 
     //治疗师 信息表

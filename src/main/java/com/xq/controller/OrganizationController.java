@@ -65,9 +65,9 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/{orgId}/organintro",method = RequestMethod.GET)
     public String organintro(@PathVariable("orgId") Integer orgId,@RequestParam(value = "error",required = false) String error, Model model, HttpServletRequest request, HttpServletResponse response) {
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         Organization organization=organizationService.getOrganization(orgId);
         model.addAttribute("organization",organization);
         UserGoodReport userGoodReport=goodReportService.getOrganGoodReportByUid(request);
@@ -122,9 +122,9 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public String comment(OrganComment organComment, HttpServletRequest request, HttpServletResponse response){
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         if (organizationService.addComment(organComment,request)) {
             return "redirect:/wx/organization/" + organComment.getOid() + "/organintro";
         } else {
@@ -139,9 +139,9 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/toOrganCommentList",method = RequestMethod.GET)
     public ModelAndView toOrganCommentList(@Param("orgId") Integer orgId, HttpServletRequest request, HttpServletResponse response) {
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         ModelAndView mv = new ModelAndView("organization/organ_comment_list");
         UserGoodReport userGoodReport=goodReportService.getOrganGoodReportByUid(request);
         mv.addObject("usergoodreport",userGoodReport);
@@ -185,9 +185,9 @@ public class OrganizationController {
      */
     @RequestMapping(value = "/reply",method = RequestMethod.POST)
     public String reply(OrganComment organComment, HttpServletRequest request, HttpServletResponse response){
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         if (organizationService.addComment(organComment,request)){
             return "redirect:/wx/organization/"+organComment.getOid()+"/organintro";
         } else {

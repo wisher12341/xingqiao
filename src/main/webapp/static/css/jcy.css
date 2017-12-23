@@ -196,6 +196,14 @@ html {font-size: 62.5%;
     padding: 0rem;
 }
 
+.padding-5{
+    padding:0px 5px;
+}
+
+.padding-10{
+    padding:0px 10px;
+}
+
 .no-padding-right{
     padding-right: 0rem;
 }
@@ -241,11 +249,11 @@ html {font-size: 62.5%;
     cursor: pointer;
     bottom: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 5rem;
     line-height: 5rem;
-    background-color: inherit;
+    background-color: #ffffff;
     font-size: 1.6rem;
     border-top: solid 0.1rem #d0d0d0;
 }
@@ -329,24 +337,19 @@ html {font-size: 62.5%;
 .border-pill{
     border: 0.1rem solid #888888;
     color: #888888;
-    border-radius: 15px;
+    border-radius: 5px;
     text-align: center;
-    padding: 0rem 1rem;
-    line-height: 2.4rem;
+    padding: 1rem;
     min-height: 2.6rem;
     font-size: 1.2rem;
-    margin-left: 0.5rem;
 }
 .border-pill-active {
     border: 0.1rem solid #20b49a;
     color: #20b49a;
-    border-radius: 15px;
+    border-radius: 5px;
     text-align: center;
-    padding: 0rem 1rem;
-    /*line-height: 2.4rem;*/
-    /*height: 2.6rem;*/
+    padding: 1rem;
     font-size: 1.2rem;
-    margin-left: 0.5rem;
 }
 
 
@@ -362,7 +365,7 @@ html {font-size: 62.5%;
 }
 
 .comment-content > .emoji{
-    width: 18px;
+    width: 12px;
     margin: 0px 1px;
 }
 

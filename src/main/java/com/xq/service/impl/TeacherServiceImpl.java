@@ -99,6 +99,14 @@ public class TeacherServiceImpl implements TeacherService{
             }else{
                 teacher1.setPrice(min+"");
             }
+
+            if(teacher1.getDomain()!=null){
+                teacher1.setDomain(teacher1.getDomain().replace("、", " "));
+            }
+
+            if(teacher1.getObject()!=null){
+                teacher1.setObject(teacher1.getObject().replace("、", " "));
+            }
         }
         return teacherList;
     }
@@ -327,20 +335,27 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public String order_time(String start, String end) throws ParseException {
+    public Map<String,String> order_time(String start, String end) throws ParseException {
+        Map<String,String> resultMap = new HashMap<>();
+        String[] weekArr = {"日", "一", "二", "三", "四", "五", "六"};
+        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss",Locale.ENGLISH);
+        SimpleDateFormat sftime = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat sfdate = new SimpleDateFormat("yyyy-MM-dd");
+
         start=start.split("GMT")[0];
-
-        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
-        Date date_start = sf1.parse(start);
-        SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-        String time_start=sf2.format(date_start);
-
         end=end.split("GMT")[0];
-        Date date_end=sf1.parse(end);
-        SimpleDateFormat sf3 = new SimpleDateFormat("hh:mm");
-        String time_end=sf3.format(date_end);
+        Date dateStart = sf1.parse(start);
+        Date dateEnd=sf1.parse(end);
 
-        return time_start+"-"+time_end;
+        resultMap.put("date",sfdate.format(dateStart));
+        resultMap.put("time",sftime.format(dateStart)+"-"+sftime.format(dateEnd));
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateStart);
+        resultMap.put("weekDay",weekArr[calendar.get(Calendar.DAY_OF_WEEK)-1]);
+        resultMap.put("monthDay",calendar.get(Calendar.DAY_OF_MONTH)+"日");
+
+        return resultMap;
     }
 
     @Override

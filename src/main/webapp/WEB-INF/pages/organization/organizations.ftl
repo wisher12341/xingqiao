@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="${base}/static/css/common/bootstrap.min.css">
     <link rel="stylesheet" href="${base}/static/css/jcy.css">
+    <link rel="stylesheet" href="${base}/static/css/teacher/slider.css">
     <link rel="stylesheet" href="${base}/static/css/loading.css">
 
     <style>
@@ -28,31 +29,20 @@
             height: 3.5rem;
         }
 
-        select.form-select{
-            appearance: none;
-            -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
-            -moz-appearance: none;  /*去除Firefox浏览器的默认下拉图片*/
-            border: none;
-            border-top: #cccccc 1px solid;
-            border-radius: 0;
-            background: url("${base}/static/img/organization/arrow-down-b.svg") no-repeat scroll 80% transparent;
-            background-size: 2rem;
-            padding: 0rem 5rem;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            -webkit-transition: none;
-            -o-transition: none;
-        }
-
-        select.form-select:focus,
-        select.form-select:active,
-        select.form-select:hover{
+        .form-select:focus,
+        .form-select:active,
+        .form-select:hover{
             border-color: none;
             outline: 0;
             -webkit-box-shadow: none;
             box-shadow: none;
             -webkit-transition: none;
             -o-transition: none;
+        }
+        select > option{
+            -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
+            background-color:transparent;
+            border-color:transparent;
         }
     </style>
 </head>
@@ -78,7 +68,6 @@
             <div class="circle4"></div>
         </div>
     </div>
-
 </div>
 <div class="container list-container-white">
 
@@ -86,40 +75,54 @@
         <input type="text"
                style="margin-top: 0.2rem;border-radius: 20px 0px 0px 20px;border: #cccccc solid 0.1rem"
                class="form-control input-default" ng-model="orgName"
-               ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
+               ng-change="selectOrg(vm.pro.label,null,null)">
         <span class="glyphicon glyphicon-search input-group-addon"
               style="border-radius: 0 20px 20px 0px; color: #337fc0; background-color: #d9edf7;border: none;"
               ng-click="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)"></span>
     </div>
-    <div class="row row-wrapper" style="padding: 1.5rem 0rem 0rem 0rem">
+    <div class="row row-wrapper selector-row">
         <div class="col-xs-6 col-md-6 no-padding">
-            <select class="form-control form-select" style="height: 4.5rem">
-                <option>上海市:</option>
-            </select>
+            <div class="mobile-nav-taggle my-select" id="citySelector" data-menu="menuCity">
+                上海市
+            </div>
         </div>
 
+        <#--<div class="col-xs-6 col-md-6 no-padding">-->
+            <#--<select onclick="javascript:$('#defalutInform').remove();" class="form-control form-select" ng-model="vm.dis" style="height: 4.5rem"-->
+                    <#--ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">-->
+                <#--<option id="defalutInform" value="">-- 请选择区 --</option>-->
+            <#--</select>-->
+        <#--</div>-->
         <div class="col-xs-6 col-md-6 no-padding">
-            <select onclick="javascript:$('#defalutInform').remove();" class="form-control form-select" ng-model="vm.dis" style="height: 4.5rem"
-                    ng-options="c.label for c in addr.provinces[0].districts" ng-change="selectOrg(vm.pro.label,vm.cit.label,vm.dis.label)">
-                <option id="defalutInform" value="">-- 请选择区 --</option>
-            </select>
+            <div class="mobile-nav-taggle my-select" id="districtSelector" data-menu="menuDistrict">
+                --请选择区--
+            </div>
+        </div>
+
+    </div>
+    <div id="menuCity" class="mobile-nav mobile-menu-top visible-xs visible-sm" style="height: 0px;">
+        <div class="menu-option menu-option-active">
+            <p>上海市</p>
+            <hr/>
         </div>
     </div>
+    <div id="menuDistrict" class="mobile-nav mobile-menu-top visible-xs visible-sm" style="height: 0px;">
+        <div class="menu-option district-option" data-value="##c['label']##"
+             ng-repeat="c in addr.provinces[0].districts" ng-cloak
+             ng-click="selectOrg(vm.pro.label,vm.cit.label,c['label'])"
+        ><p>##c['label']##</p><hr/></div>
+    </div>
+
+    <div class="mask" style="display: none;top:auto;"></div>
     <!-- 机构列表 -->
 
     <div class="row">
-        <div class="panel panel-default">
+        <div class="panel" style="border: none">
             <table border="0"  style="width: 100%; border-color: #dddddd">
                 <tr ng-repeat="temp in NewOrgItems" ng-cloak>
-                    <!--<td>名字:<br/>-->
-                    <!--人数:<br/>-->
-                    <!--简介:-->
-                    <!--</td>-->
 
-                    <td style="height: 50px; padding-left: 20px; border-color: #dddddd; border-top: 1px solid #dddddd" >
+                    <td style="height: 50px; padding-left: 20px; border-color: #dddddd; border-bottom: 1px solid #dddddd" >
                         <a ng-click="get_org_intro(temp['id'])">##temp['name']##</a><br/>
-                        <!--##temp['NumPeople']##<br/>-->
-                        <!--##temp['abstract']##-->
 
                     </td>
                 </tr>
@@ -141,6 +144,68 @@
 <script type="text/javascript">
     var pathJs = "${base}";
     var app = angular.module('testapp', ['ipCookie']);
+    var selectedCity = "上海市";
+    var selectedDistrict = "不限";
+
+    window.onload = function(){
+
+        $(".menu-option").click(function () {
+            if (!$(this).hasClass("menu-option-active")){
+                $(this).siblings(".menu-option-active").removeClass("menu-option-active");
+                $(this).addClass("menu-option-active");
+            }
+        });
+
+        $(".district-option").click(function () {
+           selectedDistrict = $(this).data("value");
+           $("#districtSelector").html(selectedDistrict);
+                //do search
+        });
+
+        $(".mask").click(function () {
+            hideMenu(null);
+            $(".mask").hide();
+        })
+    }
+
+
+
+    $(".mobile-nav-taggle").click(function () {
+        var menuId = "#" + $(this).data("menu");
+        var mobileMenu = $(menuId);
+        if (mobileMenu.hasClass("mobile-menu-top")) {
+            if (mobileMenu.height() == 0){
+                showMenu(mobileMenu);
+                $(this).css("background-image","url('${base}/static/img/up.svg')");
+                $(this).addClass("mobile-nav-taggle-active");
+                $(".mask").show();
+            } else {
+                hideMenu(mobileMenu);
+                $(this).css("background-image","url('${base}/static/img/down.svg')");
+                $(this).removeClass("mobile-nav-taggle-active");
+                $(".mask").hide();
+            }
+        }
+    });
+
+    function showMenu(menu){
+        hideMenu(null);
+        menu.css("height","70%");
+        menu.css("padding-bottom","3rem");
+    }
+    function hideMenu(menu){
+        if (menu==null){
+            $(".mobile-menu-top").css("padding-bottom","0");
+            $(".mobile-menu-top").height(0);
+
+            $(".mobile-nav-taggle").css("background-image","url('${base}/static/img/down.svg')");
+            $(".mobile-nav-taggle").removeClass("mobile-nav-taggle-active");
+        } else {
+            menu.css("padding-bottom","0");
+            menu.height(0);
+
+        }
+    }
 
     function loadingImg() {
         $("body").css("overflow","hidden");
@@ -200,6 +265,12 @@
 //选择结果
 
         $scope.selectOrg = function(aaa,bbb,ccc) {
+            if (bbb==null){
+                bbb = selectedCity;
+            }
+            if (ccc==null){
+                ccc = selectedDistrict;
+            }
             //地区选择;
             j=0;
             $scope.NewOrgItems=[];
@@ -341,6 +412,9 @@
 
         ];
     }]);
+
+
+
 
 </script>
 </html>

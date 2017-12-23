@@ -19,10 +19,24 @@
     left:0;
     width:100%;
     height:100%;
-    background-color:#f7f7f7;
+    background-color:#ffffff;
     z-index:9999;
     transition:all 0.3s ease-in;
     box-shadow: 1px -2px 2px #e0e0e0;
+}
+
+.mobile-menu-top {
+    position:absolute;
+    overflow: scroll;
+    -webkit-transition: height 0.3s ease-in;
+    -moz-transition: height 0.3s ease-in;
+    -o-transition: height 0.3s ease-in;
+    transition: height 0.3s ease-in;
+    left:0;
+    max-height: 70%;
+    width:100%;
+    background-color:#fcfcfc;
+    z-index:9999;
 }
 
 .mobile-menu-bottom-sm {
@@ -54,13 +68,23 @@ a:hover ,a:focus{
     color: #ffffff;
 }
 .show-nav {transform:translateX(0);}
-.hide-nav {transform:translateX(-220px);} /*侧滑*/
+.hide-nav {transform:translateX(-300px);} /*侧滑*/
 
 .show-nav-bottom {transform:translateY(0);}
 .hide-nav-bottom {transform:translateY(100%);} /*上滑*/
 
-.show-nav-top {transform:translateY(0);}
-.hide-nav-top {transform:translateY(-200%);} /*下滑*/
+.show-nav-top {
+    height: auto;
+}
+.hide-nav-top {
+    height: 0;
+    position: relative;
+    overflow: scroll;
+    -webkit-transition: height 0.6s;
+    -moz-transition: height 0.6s;
+    -o-transition: height 0.6s;
+    transition: height 0.6s;
+} /*相对定位下滑*/
 
 .mobile-nav-taggle {
 
@@ -122,8 +146,7 @@ a:hover ,a:focus{
     font-family: "微软雅黑";
     text-align: center;
     color: #000000;
-    padding: 0.5rem 1.5rem;
-    border-top: 0.1rem solid #dddddd;
+    padding: 1rem;
     border-bottom: 0.1rem solid #dddddd;
 }
 
@@ -139,8 +162,43 @@ a:hover ,a:focus{
     position: absolute;
     top: 0;
     left: 0;
-    background-color: #73737354;
+    background-color: #59595d54;
     width: 100%;
     height: 100%;
     z-index: 100;
+}
+
+.selector-row{
+    margin-top: 1rem;
+    padding: 0;
+    border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.my-select{
+    border: none;
+    height: 4.5rem;
+    line-height: 4.5rem;
+    border-radius: 0;
+    background: url("/static/img/down.svg") no-repeat scroll 80% transparent;
+    background-size: 1.5rem;
+    padding: 0rem 5rem;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: none;
+    -o-transition: none;
+}
+
+.menu-option{
+    height: 4rem;
+    padding: 1rem 3rem;
+}
+.menu-option-active{
+    color: #20b49a;
+}
+.menu-option > hr {
+    margin:  1rem 0rem;
+}
+.menu-option-active > hr{
+    border-color: #20b49a;
 }

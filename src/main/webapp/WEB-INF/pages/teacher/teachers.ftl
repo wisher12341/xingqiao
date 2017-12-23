@@ -27,16 +27,21 @@
         }
         .btn-link{
             border: none;
-            border-radius: 20px;
+            border-radius: 5px;
             background-color: #20b49a;
             color: #ffffff;
             text-align: center;
             line-height: 2.8rem;
             font-size: 1.3rem;
         }
+
+        .nav-pill{
+            border-radius: 5px;
+            margin: 5px 0px;
+        }
     </style>
 </head>
-<body ng-app="testapp" ng-controller="teacherCtrl" ng-init="getTeacher()" style="height: 100%;">
+<body ng-app="testapp" ng-controller="teacherCtrl" ng-init="getTeacher()" style="height: 100%;width: 100%;">
 
 <div class="spinner-mask" style="display: none">
     <div class="spinner">
@@ -62,80 +67,156 @@
 
 </div>
 
-<div class="nav-btn visible-xs visible-sm" style="font-size: 1.2rem">
-    <a href="#" class="mobile-nav-taggle btn-select" id="mobile-nav-taggle">
-        <span class="glyphicon glyphicon-search"></span>筛选</a>
-</div>
-<div class="mask" id="mask" style="display: none"></div>
-<div id="mobile-menu" class="mobile-nav mobile-menu visible-xs visible-sm hide-nav">
-    <div class="container offset-15">
-        <div class="nav-title text-center">康复领域</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill" ng-click="search_factor('d不限')">##"不限"##</div>
-            <div class="nav-pill" ng-click="search_factor('d言语')" >##"言语"##</div>
-            <div class="nav-pill" ng-click="search_factor('d听觉')" >##"听觉"##</div>
-            <div class="nav-pill" ng-click="search_factor('d认知')" >##"认知"##</div>
-            <div class="nav-pill" ng-click="search_factor('d运动')" >##"运动"##</div>
-            <div class="nav-pill" ng-click="search_factor('d心理')" >##"心理"##</div>
-            <div class="nav-pill" ng-click="search_factor('d情绪行为')" >##"情绪行为"##</div>
-
-            <div class="col-xs-12 gray-line"></div>
-        </div>
-
-        <div class="nav-title text-center">康复对象</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill " ng-click="search_factor('o不限')">##"不限"##</div>
-            <div class="nav-pill " ng-click="search_factor('o3岁以下')" >##"3岁以下"##</div>
-            <div class="nav-pill " ng-click="search_factor('o3-6岁')" >##"3-6岁"##</div>
-            <div class="nav-pill " ng-click="search_factor('o6-18岁')" >##"6-18岁"##</div>
-            <div class="nav-pill " ng-click="search_factor('o成人')" >##"成人"##</div>
-
-            <div class="col-xs-12 gray-line"></div>
-        </div>
-
-        <div class="nav-title text-center">老师性别</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill" ng-click="search_factor('g不限')">##"不限"##</div>
-            <div class="nav-pill" ng-click="search_factor('g0')" >##"男"##</div>
-            <div class="nav-pill" ng-click="search_factor('g1')" >##"女"##</div>
-
-            <div class="col-xs-12 gray-line"></div>
-        </div>
-
-        <div class="nav-title text-center">上门方式</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill col-xs-4" ng-click="search_factor('w不限')">##"不限"##</div>
-            <div class="nav-pill col-xs-4" ng-click="search_factor('w治疗师上门')" >##"治疗师上门"##</div>
-            <div class="nav-pill col-xs-4" ng-click="search_factor('w学生上门')" >##"学生上门"##</div>
-            <div class="nav-pill col-xs-4" ng-click="search_factor('w在线授课')" >##"在线授课"##</div>
-
-            <div class="col-xs-12 gray-line"></div>
-        </div>
-
-        <div class="nav-title text-center">教学经验</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill" ng-click="search_factor('y不限')">##"不限"##</div>
-            <div class="nav-pill" ng-click="search_factor('y3年以下')" >##"3年以下"##</div>
-            <div class="nav-pill" ng-click="search_factor('y3-5年')" >##"3-5年"##</div>
-            <div class="nav-pill" ng-click="search_factor('y5年以上')" >##"5年以上"##</div>
-
-            <div class="col-xs-12 gray-line"></div>
-        </div>
-
-        <div class="nav-title text-center">价格区间</div>
-        <div class="inline-wrapper" align="center">
-            <div class="active nav-pill" ng-click="search_factor('p不限')">##"不限"##</div>
-            <div class="nav-pill" ng-click="search_factor('p80-150元')" >##"80-150元/小时"##</div>
-            <div class="nav-pill" ng-click="search_factor('p150-300元')" >##"150-300元/小时"##</div>
-            <div class="nav-pill" ng-click="search_factor('p300-500元')" >##"300-500元/小时"##</div>
-            <div class="nav-pill" ng-click="search_factor('p500元以上')" >##"500元以上/小时"##</div>
-        </div>
+<#--<div class="nav-btn visible-xs visible-sm" style="font-size: 1.2rem">-->
+    <#--<a href="#" class="mobile-nav-taggle btn-select" id="mobile-nav-taggle">-->
+        <#--<span class="glyphicon glyphicon-search"></span>筛选</a>-->
+<#--</div>-->
 
 
-
-    </div>
-</div>
 <div id="container" class="container base no-padding">
+    <div class="row row-wrapper selector-row" style="margin: 0px">
+        <div class="col-xs-6 col-md-6 no-padding">
+            <div class="mobile-nav-taggle my-select" id="citySelector" data-menu="menuCity">
+                智能排序
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6 no-padding">
+            <div class="mobile-nav-taggle my-select" id="btnSelector" data-menu="mobile-menu">
+                筛选
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="mobile-nav mobile-menu-top" style="height: 0">
+        <#--<div class="container offset-15">-->
+            <#--<div class="nav-title text-left">康复领域</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill" ng-click="search_factor('d不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d言语')" >##"言语"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d听觉')" >##"听觉"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d认知')" >##"认知"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d运动')" >##"运动"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d心理')" >##"心理"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('d情绪行为')" >##"情绪行为"##</div>-->
+
+                <#--<div class="col-xs-12 gray-line"></div>-->
+            <#--</div>-->
+
+            <#--<div class="nav-title text-left">康复对象</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill " ng-click="search_factor('o不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill " ng-click="search_factor('o3岁以下')" >##"3岁以下"##</div>-->
+                <#--<div class="nav-pill " ng-click="search_factor('o3-6岁')" >##"3-6岁"##</div>-->
+                <#--<div class="nav-pill " ng-click="search_factor('o6-18岁')" >##"6-18岁"##</div>-->
+                <#--<div class="nav-pill " ng-click="search_factor('o成人')" >##"成人"##</div>-->
+
+                <#--<div class="col-xs-12 gray-line"></div>-->
+            <#--</div>-->
+
+            <#--<div class="nav-title text-left">老师性别</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill" ng-click="search_factor('g不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('g0')" >##"男"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('g1')" >##"女"##</div>-->
+
+                <#--<div class="col-xs-12 gray-line"></div>-->
+            <#--</div>-->
+
+            <#--<div class="nav-title text-left">上门方式</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill col-xs-4" ng-click="search_factor('w不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill col-xs-4" ng-click="search_factor('w治疗师上门')" >##"治疗师上门"##</div>-->
+                <#--<div class="nav-pill col-xs-4" ng-click="search_factor('w学生上门')" >##"学生上门"##</div>-->
+                <#--<div class="nav-pill col-xs-4" ng-click="search_factor('w在线授课')" >##"在线授课"##</div>-->
+
+                <#--<div class="col-xs-12 gray-line"></div>-->
+            <#--</div>-->
+
+            <#--<div class="nav-title text-left">教学经验</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill" ng-click="search_factor('y不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('y3年以下')" >##"3年以下"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('y3-5年')" >##"3-5年"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('y5年以上')" >##"5年以上"##</div>-->
+
+                <#--<div class="col-xs-12 gray-line"></div>-->
+            <#--</div>-->
+
+            <#--<div class="nav-title text-left">价格区间</div>-->
+            <#--<div class="inline-wrapper" align="center">-->
+                <#--<div class="active nav-pill" ng-click="search_factor('p不限')">##"不限"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('p80-150元')" >##"80-150元/小时"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('p150-300元')" >##"150-300元/小时"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('p300-500元')" >##"300-500元/小时"##</div>-->
+                <#--<div class="nav-pill" ng-click="search_factor('p500元以上')" >##"500元以上/小时"##</div>-->
+            <#--</div>-->
+
+        <#--</div>-->
+            <div class="container offset-15" style="padding: 0rem 2.5rem;">
+                <div class="nav-title text-left">康复领域</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" ng-click="search_factor('d不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d言语')" >##"言语"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d听觉')" >##"听觉"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d认知')" >##"认知"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d运动')" >##"运动"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d心理')" >##"心理"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('d情绪行为')" >##"情绪行为"##</div></div>
+
+                    <div class="col-xs-12 gray-line"></div>
+                </div>
+
+                <div class="nav-title text-left">康复对象</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" " ng-click="search_factor('o不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('o3岁以下')" >##"3岁以下"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('o3-6岁')" >##"3-6岁"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('o6-18岁')" >##"6-18岁"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('o成人')" >##"成人"##</div></div>
+
+                    <div class="col-xs-12 gray-line"></div>
+                </div>
+
+                <div class="nav-title text-left">老师性别</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" ng-click="search_factor('g不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('g0')" >##"男"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('g1')" >##"女"##</div></div>
+
+                    <div class="col-xs-12 gray-line"></div>
+                </div>
+
+                <div class="nav-title text-left">上门方式</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" " ng-click="search_factor('w不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('w治疗师上门')" >##"治疗师上门"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('w学生上门')" >##"学生上门"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill " ng-click="search_factor('w在线授课')" >##"在线授课"##</div></div>
+
+                    <div class="col-xs-12 gray-line"></div>
+                </div>
+
+                <div class="nav-title text-left">教学经验</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" ng-click="search_factor('y不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('y3年以下')" >##"3年以下"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('y3-5年')" >##"3-5年"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('y5年以上')" >##"5年以上"##</div></div>
+
+                    <div class="col-xs-12 gray-line"></div>
+                </div>
+
+                <div class="nav-title text-left">价格区间</div>
+                <div class="row" align="center">
+                    <div class="col-xs-3 padding-5"><div class="active nav-pill" ng-click="search_factor('p不限')">##"不限"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('p80-150元')" >##"80-150元/小时"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('p150-300元')" >##"150-300元/小时"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('p300-500元')" >##"300-500元/小时"##</div></div>
+                    <div class="col-xs-3 padding-5"><div class="nav-pill" ng-click="search_factor('p500元以上')" >##"500元以上/小时"##</div></div>
+                </div>
+
+            </div>
+    </div>
+    <div class="mask" style="display: none;top:auto;"></div>
     <div ng-repeat="temp in teachers" ng-cloak>
         <div class="row row-wrapper my-panel pointable" ng-click="get_teacher_more(temp['id'])">
             <div class="no-padding col-xs-3 col-md-3" align="center">
@@ -191,10 +272,11 @@
                     </div>
                 </div>
                 <div class="row padding-left-15 list-item-content" style="line-height: 3.6rem">
-                    <div class="col-xs-8 no-padding">
-                        <span>##temp['domain']##</span> | <span>##temp['object']##</span>
+                    <div class="col-xs-8 no-padding" style="line-height: 2.2rem">
+                        <div>##temp['domain']##</div>
+                        <div>##temp['object']##</div>
                     </div>
-                    <div class="col-xs-4 no-padding price" style="float: right">¥##temp['price']##</div>
+                    <div class="col-xs-4 no-padding price" style="float: right;text-align: right;">¥##temp['price']##</div>
                 </div>
                 <div class="row inline-wrapper padding-left-15 list-item-content" style="justify-content: flex-start; width: 24rem">
                     <div class="way-border" ng-repeat="item in temp['way'].split('、')" style="margin-right: 0.2rem;">
@@ -212,6 +294,21 @@
 </html>
 
 <script type="text/javascript">
+    var openid = "oxsEYwtmbjRkLNS7NelU1jClG668";
+    //document.cookie="openid_parent="+openid;
+    setCookie("openid_parent","oxsEYwtmbjRkLNS7NelU1jClG668",0);
+    //调用
+    //设置cookie
+    function setCookie(name, value, seconds) {
+        seconds = seconds || 0;   //seconds有值就直接赋值，没有为0，这个根php不一样。
+        var expires = "";
+        if (seconds != 0 ) {      //设置cookie生存时间
+            var date = new Date();
+            date.setTime(date.getTime()+(seconds*1000));
+            expires = "; expires="+date.toGMTString();
+        }
+        document.cookie = name+"="+escape(value)+expires+"; path=/";   //转码并赋值
+    }
     function loadingImg() {
         $("body").css("overflow","hidden");
         $(".spinner-mask").show();
@@ -222,49 +319,88 @@
         $(".spinner-mask").hide();
     }
 
-    $("#mobile-nav-taggle").click(function () {
-        var mobileMenu = $("#mobile-menu");
-        if (mobileMenu.hasClass("hide-nav")) {
-            $("body").css("overflow-x","hidden");
-            $("body").css("overflow-y","hidden");
-            setTimeout(function () {
-                $("body").css("position","fixed");
-                $("#container").css("overflow-y","hidden");
-                $("#mask").show();
-            }, 50);
-            setTimeout(function () {
-                mobileMenu.addClass("show-nav").removeClass("hide-nav");
-            }, 100);
-        }
-        else {
-            $("body").css("overflow-x","scroll");
-            $("body").css("overflow-y","scroll");
-            setTimeout(function () {
-                $("body").css("position","inherit");
-                $("#container").css("overflow-y","scroll");
-                $("#mask").hide();
-            }, 50);
-            setTimeout(function (){
-                mobileMenu.addClass("hide-nav").removeClass("show-nav");
-            }, 100);
+
+    $(".mobile-nav-taggle").click(function () {
+        var menuId = "#" + $(this).data("menu");
+        var mobileMenu = $(menuId);
+        if (mobileMenu.hasClass("mobile-menu-top")) {
+            if (mobileMenu.height() == 0){
+                showMenu(mobileMenu);
+                $(this).css("background-image","url('${base}/static/img/up.svg')");
+                $(this).addClass("mobile-nav-taggle-active");
+                $(".mask").show();
+            } else {
+                hideMenu(mobileMenu);
+                $(this).css("background-image","url('${base}/static/img/down.svg')");
+                $(this).removeClass("mobile-nav-taggle-active");
+                $(".mask").hide();
+            }
         }
     });
 
-    $("#mask").click(function () {
+    function showMenu(menu){
+        hideMenu(null);
+        $("body").css("overflow-x","hidden");
+        $("body").css("overflow-y","hidden");
+        $("body").css("position","fixed");
+        $("#container").css("overflow-y","hidden");
+        menu.css("height","70%");
+        menu.css("padding-bottom","3rem");
+    }
+    function hideMenu(menu){
         $("body").css("overflow-x","scroll");
         $("body").css("overflow-y","scroll");
-        setTimeout(function () {
-            $("body").css("position","inherit");
-            $("#container").css("overflow-y","scroll");
-            $("#mask").hide();
-        }, 50);
-        setTimeout(function (){
-            $("#mobile-menu").addClass("hide-nav").removeClass("show-nav");
-        }, 100)
-    })
+        $("body").css("position","inherit");
+        $("#container").css("overflow-y","scroll");
+        if (menu==null){
+            $(".mobile-menu-top").css("padding-bottom","0");
+            $(".mobile-menu-top").height(0);
+
+            $(".mobile-nav-taggle").css("background-image","url('${base}/static/img/down.svg')");
+            $(".mobile-nav-taggle").removeClass("mobile-nav-taggle-active");
+        } else {
+            menu.css("padding-bottom","0");
+            menu.height(0);
+        }
+    }
+
+//    $("#btnSelector").click(function () {
+//        var mobileMenu = $("#mobile-menu");
+//        if (mobileMenu.hasClass("hide-nav")) {
+//            $("body").css("overflow-x","hidden");
+//            $("body").css("overflow-y","hidden");
+//            setTimeout(function () {
+//                $("body").css("position","fixed");
+//                $("#container").css("overflow-y","hidden");
+//                $("#mask").show();
+//            }, 50);
+//            setTimeout(function () {
+//                mobileMenu.addClass("show-nav").removeClass("hide-nav");
+//            }, 100);
+//        }
+//        else {
+//            $("body").css("overflow-x","scroll");
+//            $("body").css("overflow-y","scroll");
+//            setTimeout(function () {
+//                $("body").css("position","inherit");
+//                $("#container").css("overflow-y","scroll");
+//                $("#mask").hide();
+//            }, 50);
+//            setTimeout(function (){
+//                mobileMenu.addClass("hide-nav").removeClass("show-nav");
+//            }, 100);
+//        }
+//    });
+
+    $(".mask").click(function(){
+        hideMenu(null);
+        $(this).hide();
+    });
 
     $('.nav-pill').click(function(){
-        $(this).addClass("active").siblings(".nav-pill").removeClass("active");
+        //$(this).addClass("active").siblings(".nav-pill").removeClass("active");
+        $(this).parent().siblings().children(".nav-pill").removeClass("active");
+        $(this).addClass("active");
     });
 
 
