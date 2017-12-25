@@ -1,6 +1,7 @@
 package com.xq.controller;
 
 import com.xq.dto.ModifyPageDto;
+import com.xq.dto.Result;
 import com.xq.model.Demand;
 import com.xq.model.RecoveryLog;
 import com.xq.model.Teacher;
@@ -123,6 +124,9 @@ public class TeacherCenterController {
         return mv;
     }
 
+
+
+
     /**
      *
      * 修改字段
@@ -162,6 +166,28 @@ public class TeacherCenterController {
         mv.addObject("case",teacherCenterService.getTeacherByUserId(userId).getSuccessCase().split("#")[caseIndex]);
         return mv;
     }
+
+    /**
+     * 修改头像页面
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value="/{userId}/changeIconPage")
+    public ModelAndView changeIconPage(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("teacherCenter/changeIcon");
+        mv.addObject("user",teacherCenterService.getUserById(userId));
+        return mv;
+    }
+    /**
+     * 修改头像
+     */
+    @RequestMapping(value = "/{userId}/modifyIcon",method = RequestMethod.POST)
+    @ResponseBody
+    public Result modifyIcon(@PathVariable int userId,HttpServletRequest request){
+        teacherCenterService.uploadPhoto(request,userId);
+        return new Result(true);
+    }
+
 
 
 

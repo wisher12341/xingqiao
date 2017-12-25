@@ -33,5 +33,6 @@ public interface TeacherCenterDao {
     void updateSuccessCase(@Param("successCase") String successCase, @Param("userId") int userId);
 
     void updateUserStatus(@Param("status") int status, @Param("userId") int userId);
+    void updateIcon(@Param("headimgurl") String headimgurl, @Param("userId") int userId);
 
 }
