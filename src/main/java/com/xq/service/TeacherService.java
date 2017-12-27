@@ -8,6 +8,7 @@ import com.xq.model.Teacher;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by joy12 on 2017/11/6.
@@ -25,7 +26,7 @@ public interface TeacherService {
 
     CalendarDto order_time_day(Integer tid, String date) throws ParseException;
 
-    String order_time(String start, String end) throws ParseException;
+    Map<String,String> order_time(String start, String end) throws ParseException;
 
     List<Comment> getTeacherComments(Integer id);
 

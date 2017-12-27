@@ -67,9 +67,9 @@ public class TeacherController {
     @RequestMapping(value = "/get_teacher",method = RequestMethod.POST)
     @ResponseBody
     public Result get_teacher(Teacher teacher, String years, String priceSelect, HttpServletRequest request, HttpServletResponse response){
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         List<Teacher> teacherList=teachersService.getTeachers(teacher,years,priceSelect);
         return new Result(true,teacherList);
     }
@@ -80,9 +80,9 @@ public class TeacherController {
      */
     @RequestMapping(value = "/{teacher_id}/detail",method = RequestMethod.GET)
     public String teacherIntro(@PathVariable("teacher_id") Integer teacher_id, Model model, HttpServletRequest request, HttpServletResponse response) {
-        if (request.getSession().getAttribute("USER") == null){
-            TmpLogin.tmpLogin(request,response);
-        }
+//        if (request.getSession().getAttribute("USER") == null){
+//            TmpLogin.tmpLogin(request,response);
+//        }
         Teacher teacher=teachersService.getTeacher(teacher_id);
         model.addAttribute("teacher",teacher);
 
@@ -197,7 +197,6 @@ public class TeacherController {
     @ResponseBody
     @RequestMapping(value="orderTime",method = RequestMethod.POST)
     public Result order_time(@RequestParam String start, @RequestParam String end) throws ParseException {
-        String time=teachersService.order_time(start,end);
-        return new Result(true,time);
+        return new Result(true,teachersService.order_time(start,end));
     }
 }

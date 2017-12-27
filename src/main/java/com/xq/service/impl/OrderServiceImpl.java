@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -314,6 +315,7 @@ public class OrderServiceImpl implements OrderService{
         User user=userDao.getParentByOpenid(openid);
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String dateNowStr = sdf.format(d);
 
@@ -328,6 +330,34 @@ public class OrderServiceImpl implements OrderService{
         order.setStatusP(1);
         order.setStatusT(1);
         order.setTrace(dateNowStr+"@下预约单");
+
+        try {
+            if (!order.getTimeOpt().equals("day")){
+                String timeStr = order.getServerTime();
+                Date serveDate = sdfdate.parse(timeStr.split(" ")[0]);
+                String timePeriod = timeStr.split(" ")[1];
+                StringBuilder sb = new StringBuilder();
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(serveDate);
+                for (int i = 0; i < Integer.parseInt(order.getAmount()); i++) {
+                    if (i>0){
+                        sb.append("#");
+                    }
+                    sb.append(sdfdate.format(calendar.getTime())).append(" ").append(timePeriod);
+                    if (order.getTimeOpt().equals("week")){
+                        calendar.add(Calendar.DATE,7);
+                    } else if (order.getTimeOpt().equals("month")){
+                        calendar.add(Calendar.MONTH,1);
+                    }
+                }
+
+                order.setServerTime(sb.toString());
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         orderDao.addOrder(order);
 
         Message messageP=new Message();
