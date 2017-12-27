@@ -152,8 +152,9 @@ th,td{
 }
 .info-header-name{
     color: white;
-    font-size: 55px;
+    font-size: 45px;
     font-weight: bold;
+    padding-top: 20px;
 }
 .info-header-other{
     color:white;

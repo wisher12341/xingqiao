@@ -8,6 +8,8 @@ body{
 
 #log{
     background-color: white;
+    padding-top: 20px;
+    border-top: solid 1px lightgray;
 }
 
 .date{

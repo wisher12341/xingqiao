@@ -274,6 +274,7 @@
         <div class="tishi" align="center">
         </div>
     </div>
+    <#include "../common/foot.ftl" />
 </body>
 <script>
     $("#input-22a").rating({

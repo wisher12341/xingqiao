@@ -44,6 +44,7 @@ public class TeacherCenterOrderController {
     public ModelAndView order(@PathVariable String uid){
         AllTypeOrder allTypeOrder=orderTeacherService.getAllOrder(uid);
         ModelAndView mv=new ModelAndView("teacherCenter/order/order");
+        mv.addObject("uid",uid);
         mv.addObject("orders",allTypeOrder);
         mv.addObject("teacher","yes");
         return mv;
@@ -52,11 +53,12 @@ public class TeacherCenterOrderController {
     /**
      * 订单详情
      */
-    @RequestMapping(value = "/order/{oid}/detail",method = RequestMethod.GET)
-    public ModelAndView detail(@PathVariable String oid){
+    @RequestMapping(value = "/{uid}/order/{oid}/detail",method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable String oid,@PathVariable String uid){
         OrderDto orderDto=orderTeacherService.getOrderByOid(oid);
         ModelAndView mv=new ModelAndView("teacherCenter/order/detail");
         mv.addObject("order",orderDto);
+        mv.addObject("uid",uid);
         return mv;
     }
 

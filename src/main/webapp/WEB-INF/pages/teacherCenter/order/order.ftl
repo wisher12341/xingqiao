@@ -37,5 +37,6 @@
             </div>
         </div>
     </div>
+    <#include "../common/foot.ftl" />
 </body>
 </html>

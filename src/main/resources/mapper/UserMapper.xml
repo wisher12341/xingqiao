@@ -16,7 +16,7 @@
         SELECT id,headimgurl,nickname,username,user_status FROM sysuser WHERE openid=#{openid} AND status=#{status}
     </select>
 
-    <select id="getUserById" resultType="com.xq.model.User">
+    <select id="getUserByUid" resultType="com.xq.model.User">
         SELECT * FROM sysuser WHERE id=#{id}
     </select>
 
@@ -41,9 +41,6 @@
         select name from teacher where user_id=#{id}
     </select>
 
-    <select id="getUserByUid" resultType="com.xq.model.User">
-        SELECT id,username,password,phone,gender,email FROM sysuser WHERE id=#{id}
-    </select>
 
     <update id="save">
         UPDATE sysuser SET id=id

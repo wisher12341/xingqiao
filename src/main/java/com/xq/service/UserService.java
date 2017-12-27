@@ -25,4 +25,6 @@ public interface UserService {
     User bindAccount(User user);
 
     void setUserStatusDesc(User user);
+
+    User getUserByUid(Integer uid);
 }

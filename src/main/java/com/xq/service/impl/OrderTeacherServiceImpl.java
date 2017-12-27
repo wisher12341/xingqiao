@@ -110,14 +110,17 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
                 break;
         }
         List<RecoveryHis> recoveryHisList=new ArrayList<RecoveryHis>();
-        String[] data=order.getDemand().getRecoveryHis().split("@");
-        for(String s:data){
-            RecoveryHis recoveryHis=new RecoveryHis();
-            recoveryHis.setName(s.split("#")[0]);
-            recoveryHis.setTime(s.split("#")[1]);
-            recoveryHis.setDetail(s.split("#")[3]);
-            recoveryHis.setCount(Integer.parseInt(s.split("#")[2]));
-            recoveryHisList.add(recoveryHis);
+
+        if(order.getDemand().getRecoveryHis()!=null) {
+            String[] data = order.getDemand().getRecoveryHis().split("@");
+            for (String s : data) {
+                RecoveryHis recoveryHis = new RecoveryHis();
+                recoveryHis.setName(s.split("#")[0]);
+                recoveryHis.setTime(s.split("#")[1]);
+                recoveryHis.setDetail(s.split("#")[3]);
+                recoveryHis.setCount(Integer.parseInt(s.split("#")[2]));
+                recoveryHisList.add(recoveryHis);
+            }
         }
         order.setRecoveryHisList(recoveryHisList);
 

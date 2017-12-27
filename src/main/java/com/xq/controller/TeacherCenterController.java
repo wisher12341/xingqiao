@@ -36,9 +36,9 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "")
     public ModelAndView teacherCenter(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
-         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-//        String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";
+        ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter_index");
+//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
@@ -48,13 +48,27 @@ public class TeacherCenterController {
     }
 
     /**
+     * 我的
+     */
+    @RequestMapping(value = "/{uid}/my")
+    public ModelAndView my(@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter");
+        User user=userService.getUserByUid(uid);
+        Teacher teacher=teacherCenterService.getTeacherByUserId(uid);
+        mv.addObject("user",user);
+        mv.addObject("teacher",teacher);
+        return mv;
+    }
+
+    /**
      *我的患者
      */
-    @RequestMapping(value = "/{teacherId}/{userId}/myDemands")
-    public ModelAndView toMyDemands(@PathVariable Integer teacherId,@PathVariable Integer userId){
+    @RequestMapping(value = "/{userId}/myDemands")
+    public ModelAndView toMyDemands(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("teacherCenter/myDemands");
-        mv.addObject("demands",teacherCenterService.getDemands(teacherId));
-        mv.addObject("teacherId",teacherId);
+        Teacher teacher=teacherCenterService.getTeacherByUserId(userId);
+        mv.addObject("demands",teacherCenterService.getDemands(teacher.getId()));
+        mv.addObject("teacherId",teacher.getId());
         mv.addObject("user",teacherCenterService.getUserById(userId));
         mv.addObject("name",teacherCenterService.getNameByUserId(userId));
         return mv;
