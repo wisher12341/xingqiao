@@ -33,7 +33,7 @@
 <div id="main">
 
     <div class="imgDiv2">
-        <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle">
+        <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" onclick=location.href="${path}/wx/teacherCenter/${user.id}/changeIconPage">
         <div id="myAlert" class="alert alert-success" style="display: none">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>您的资料正在审核中。</strong>审核通过后即可预约。
@@ -185,6 +185,7 @@
 </div>
 </body>
 </html>
+
 <script type="text/javascript">
     $(document).ready(function() {
     <#--if(${user.infoStatus}==0){-->
@@ -226,5 +227,7 @@
         });
 
     }
+
+
 
 </script>

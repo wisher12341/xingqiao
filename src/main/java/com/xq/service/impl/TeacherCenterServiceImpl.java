@@ -7,11 +7,16 @@ import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 import com.xq.service.TeacherCenterService;
+import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -151,5 +156,24 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
         }
         teacherCenterDao.updateUserStatus(3, userId);
+    }
+
+    public void uploadPhoto(HttpServletRequest request, int userId){
+        String picUrl="";
+        MultipartHttpServletRequest MulRequest = request instanceof MultipartHttpServletRequest ? (MultipartHttpServletRequest) request : null;
+        Iterator<String> fileNames = MulRequest.getFileNames();
+        while(fileNames.hasNext()) { // 遍历请求中的信息
+            String fileName = fileNames.next();
+
+            //图片
+            try {
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.ICON_TEACHER_ROOT_PATH);
+                picUrl=path.substring(path.indexOf("img"),path.length());
+                System.out.println(picUrl);
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        teacherCenterDao.updateIcon(picUrl,userId);
     }
 }

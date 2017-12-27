@@ -4,6 +4,7 @@ import com.xq.dto.ModifyPageDto;
 import com.xq.dto.RecoveryHisDto;
 import com.xq.model.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -32,4 +33,6 @@ public interface TeacherCenterService {
    ModifyPageDto getModifyDto(int objId, String fieldName);
 
    void modifyFeild(int userId, String value, String fieldName);
+
+   void uploadPhoto(HttpServletRequest request, int userId);
 }

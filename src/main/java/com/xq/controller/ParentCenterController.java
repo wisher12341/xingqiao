@@ -311,6 +311,18 @@ public class ParentCenterController {
     }
 
     /**
+     * 修改头像页面
+     * @param userId
+     * @return
+     */
+    @RequestMapping(value="/{userId}/changeIconPage")
+    public ModelAndView changeIconPage(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/changeIcon");
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
      * 修改头像
      */
     @RequestMapping(value = "/{userId}/modifyIcon",method = RequestMethod.POST)
