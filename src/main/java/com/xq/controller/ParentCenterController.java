@@ -43,8 +43,8 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        String openid="oxsEYwhJPFS9PLfA4veyKDAJo0Gg";
+//             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));

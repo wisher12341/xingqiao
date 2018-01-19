@@ -19,4 +19,8 @@ public interface OrderTeacherDao {
     void agree(String oid);
 
     void orderStop(@Param("oid") String oid, @Param("reason") String reason);
+
+    List<Order> getAllDoingOrderByUid(Integer userId);
+
+    List<Order> getAllDoingDayOrderByUid(@Param("uid") Integer uid,@Param("day") String day);
 }

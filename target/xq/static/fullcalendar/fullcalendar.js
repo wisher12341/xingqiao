@@ -3445,7 +3445,7 @@ DragListener.mixin({
 	scrollIntervalId: null, // ID of setTimeout for scrolling animation loop
 
 	// defaults
-	scrollSensitivity: 30, // pixels from edge for scrolling to start
+	scrollSensitivity: 0, // pixels from edge for scrolling to start
 	scrollSpeed: 200, // pixels per second, at maximum speed
 	scrollIntervalMs: 50, // millisecond wait between scroll increment
 
@@ -7941,7 +7941,7 @@ DayGrid.mixin({
 					emptyCellsUntil(seg.leftCol);
 
 					// create a container that occupies or more columns. append the event element.
-					td = $('<td class="fc-event-container"/>').append(seg.el);
+					td = $('<td class="fc-event-container" align="center"/>').append(seg.el);
 					if (seg.leftCol != seg.rightCol) {
 						td.attr('colspan', seg.rightCol - seg.leftCol + 1);
 					}
@@ -8532,13 +8532,13 @@ var TimeGrid = FC.TimeGrid = Grid.extend(DayTableMixin, {
 		// Calculate the time for each slot
 		while (slotTime < view.maxTime) {
 			slotDate = calendar.msToUtcMoment(this.unzonedRange.startMs).time(slotTime);
+			var leftTime=slotDate.toString().split(" ")[4].split(":")[0]+":00"; //自己加的
 			isLabeled = isInt(divideDurationByDuration(slotIterator, this.labelInterval));
-
 			axisHtml =
 				'<td class="fc-axis fc-time ' + theme.getClass('widgetContent') + '" ' + view.axisStyleAttr() + '>' +
 					(isLabeled ?
 						'<span>' + // for matchCellWidths
-							htmlEscape(slotDate.format(this.labelFormat)) +
+							leftTime +
 						'</span>' :
 						''
 						) +
@@ -9275,6 +9275,28 @@ TimeGrid.mixin({
 			timeText = this.getEventTimeText(seg.footprint);
 			fullTimeText = this.getEventTimeText(seg.footprint, 'LT');
 			startTimeText = this.getEventTimeText(seg.footprint, null, false); // displayEnd=false
+
+			//自己加的  让事件的时间都是24小时的 形式
+				var times=fullTimeText.toString().split("-");
+				var star=times[0].trim();
+				var end=times[1].trim();
+
+				if(star.indexOf("PM")!=-1){
+					var s=star.split(" ")[0].split(":")[0];
+					var now=parseInt(s)+12;
+					star=now+":"+star.split(" ")[0].split(":")[1];
+				}else{
+                    star=star.split(" ")[0];
+				}
+                if(end.indexOf("PM")!=-1 && end.indexOf("12")==-1){
+                    var s=end.split(" ")[0].split(":")[0];
+                    var now=parseInt(s)+12;
+                    end=now+":"+end.split(" ")[0].split(":")[1];
+                }else{
+                    end=end.split(" ")[0];
+				}
+                timeText=star+"@"+end;
+
 		}
 
 		return '<a class="' + classes.join(' ') + '"' +
@@ -9293,7 +9315,7 @@ TimeGrid.mixin({
 						' data-start="' + htmlEscape(startTimeText) + '"' +
 						' data-full="' + htmlEscape(fullTimeText) + '"' +
 						'>' +
-							'<span>' + htmlEscape(timeText) + '</span>' +
+							'<span style="font-weight: bold">' + timeText.split("@")[0] +'-\n'+ timeText.split("@")[1] + '</span>' +
 						'</div>' :
 						''
 						) +
@@ -17468,7 +17490,7 @@ fcViews.agenda = {
 	'class': AgendaView,
 	defaults: {
 		allDaySlot: true,
-		slotDuration: '00:30:00',
+		slotDuration: '01:00:00',
 		slotEventOverlap: true // a bad name. confused with overlap/constraint system
 	}
 };

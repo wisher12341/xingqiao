@@ -114,7 +114,7 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 		}else{
 //			用户登录
 			openid_parent=CookieUtil.checkCookie(request,Const.OPENID_PARENT);
-//			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 			if(openid_parent==null){
 				response.sendRedirect(redirect_url_parent);
 				return false;

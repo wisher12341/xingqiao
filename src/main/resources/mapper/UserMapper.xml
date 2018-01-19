@@ -19,6 +19,9 @@
     <select id="getUserByUid" resultType="com.xq.model.User">
         SELECT * FROM sysuser WHERE id=#{id}
     </select>
+    <select id="getUserById" resultType="com.xq.model.User">
+        SELECT * FROM sysuser WHERE id=#{id}
+    </select>
 
 
     <select id="findUserByNameType" resultType="com.xq.model.User">
@@ -77,5 +80,10 @@
 
     <update id="bindAccount" parameterType="com.xq.model.User">
         UPDATE sysuser set username=#{username},password=#{password} WHERE openid=#{openid} AND status='0'
+    </update>
+
+
+    <update id="changeUserStatus">
+        UPDATE sysuser set user_status=#{userStatue} WHERE id=#{uid}
     </update>
 </mapper>

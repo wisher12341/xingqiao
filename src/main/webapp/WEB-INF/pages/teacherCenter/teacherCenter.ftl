@@ -26,7 +26,7 @@
             background-color: white;
             margin: 4px 0;
             height: 7%;
-            padding: 25px 40px;
+            padding: 20px 40px;
         }
         .text_p{
             font-size: 45px;
@@ -123,7 +123,7 @@
     <#--</div>-->
     <div style="background-color: white; border-bottom: 1px solid #ccc;" align="center">
             <div class="row" style="width: 95%">
-                <div class="col-xs-4">
+                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule">
                     <div>
                         <span class="fa fa-calendar-check-o icon_mid"></span>
                     </div>
@@ -153,7 +153,7 @@
     </div>
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo" >
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_base" >
                 <div class="col-xs-1">
                     <i class="fa fa-user-circle fa-4x icon_fa"></i>
                 </div>
@@ -164,7 +164,7 @@
                     <i class="fa fa-angle-right fa-4x icon_fa"></i>
                 </div>
         </div>
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo">
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_authentication">
             <div class="col-xs-1">
                 <i class="fa fa-id-card fa-4x icon_fa"></i>
             </div>
@@ -175,9 +175,9 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo">
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_service">
             <div class="col-xs-1">
-                <i class="fa fa-user-circle fa-4x icon_fa"></i>
+                <i class="fa fa-heartbeat fa-4x icon_fa"></i>
             </div>
             <div class="col-xs-10">
                 <p class="text_p"> 康复服务</p>

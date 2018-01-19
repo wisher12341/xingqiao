@@ -5,6 +5,11 @@
     <title>治疗师订单</title>
     <#include "../common/head.ftl" />
     <link href="${path}/static/css/order/order.css" type="text/css" rel="stylesheet" />
+    <style>
+        .glyphicon-list-alt,.text_order{
+            color: #20b49a!important;
+        }
+    </style>
 </head>
 <body>
     <div id="main">

@@ -18,6 +18,7 @@ public class FileUpload {
     public static final String COMMENT_ORGANIZATION_ROOT_PATH = "img/comment/organization/";
     public static final String ICON_TEACHER_ROOT_PATH = "img/info/teacher/";
     public static final String ICON_PARENT_ROOT_PATH = "img/info/parent/";
+    public static final String TEACHER_INFO_AWARD_ROOT_PATH = "img/info/teacher/award/";
 
     //    路径规范 images/2012/9/25/1343287394783.jpg  按照时间戳+随机数来生成
     public static String uploadFile(MultipartFile file, HttpServletRequest request,String rp) throws IOException {

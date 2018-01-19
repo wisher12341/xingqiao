@@ -30,4 +30,6 @@ public interface UserDao {
     void clearOpenid(@Param("openid") String openid,@Param("status") int status);
 
     void bindAccount(User user);
+
+    void changeUserStatus(@Param("uid") int uid, @Param("userStatue") int i);
 }

@@ -116,4 +116,16 @@
         UPDATE orders SET status_t=4,status_p=4 WHERE id=#{oid}
     </update>
 
+    <select id="getAllDoingOrderByUid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.remark,p.id pid,p.realName,d.id did,d.name,d.gender,d.disease,d.remark dremark,o.server_time
+        FROM orders o,parent p,demand d,teacher t
+        WHERE o.teacher_id=t.id AND t.user_id=#{userId} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3
+    </select>
+
+    <select id="getAllDoingDayOrderByUid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.remark,p.id pid,p.realName,d.id did,d.name,d.gender,d.disease,d.remark dremark,o.server_time
+        FROM orders o,parent p,demand d,teacher t
+        WHERE o.teacher_id=t.id AND t.user_id=#{uid} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3 AND o.server_time LIKE concat('%',#{day},'%')
+    </select>
+
 </mapper>

@@ -1,0 +1,38 @@
+.sl-li {
+  /*height: 100%;*/
+  position: relative;
+  background-color: #fff;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+.sl-li .sl-content {
+  /*height: 100%;*/
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  z-index: 10;
+  background-color: #fff;
+}
+.sl-li .sl-content.animated {
+  -webkit-transition: -webkit-transform .2s ease-out;
+  transition: transform .2s ease-out;
+}
+.sl-li .sl-opts {
+  height: 100%;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 0;
+}
+.sl-li .sl-opts span {
+  height: 100%;
+  padding: 0 10px;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

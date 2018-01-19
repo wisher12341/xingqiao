@@ -8,6 +8,9 @@
         body{
             background-color: #f5f5f5;
         }
+        .glyphicon-home,.text_index{
+            color: #20b49a!important;
+        }
     </style>
 </head>
 <body>

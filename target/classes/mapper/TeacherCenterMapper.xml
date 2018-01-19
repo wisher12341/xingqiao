@@ -73,4 +73,74 @@
     <update id="updateIcon">
         UPDATE sysuser SET headimgurl=#{headimgurl} WHERE id=#{userId}
     </update>
+    
+    <select id="getInfoByTypeName" resultType="java.lang.String">
+        SELECT  ${type} FROM teacher WHERE user_id=#{uid}
+    </select>
+    
+    <update id="updateComplexInfo">
+        UPDATE teacher SET ${type}=#{data} WHERE user_id=#{uid}
+    </update>
+
+    <update id="addComplexInfo">
+        UPDATE teacher SET ${type}= CONCAT(${type},#{data}) WHERE user_id=#{uid}
+    </update>
+
+
+    <select id="getTeacherInfoByUid" resultType="com.xq.model.Teacher">
+        SELECT
+        <foreach collection="types" item="item" index="index"
+                 open="" separator="," close="">
+            ${item}
+        </foreach>
+        FROM teacher WHERE  user_id=#{uid}
+    </select>
+
+    <update id="editServiceInfo" parameterType="com.xq.model.Teacher">
+        UPDATE teacher SET
+        <if test="domain!=null and domain!=''">
+            domain=#{domain}
+        </if>
+        <if test="object!=null and object!=''">
+            object=#{object}
+        </if>
+        WHERE user_id=#{userId}
+    </update>
+
+    <update id="editServiceInfoWay" parameterType="com.xq.model.Teacher">
+        UPDATE teacher SET way=#{way}
+        <if test="sGround!=null and sGround!=''">
+            ,s_ground=#{sGround}
+        </if>
+        <if test="tGround!=null and tGround!=''">
+            ,t_ground=#{tGround}
+        </if>
+        <if test="priceS!=null and priceS!=''">
+            ,price_s=#{priceS}
+        </if>
+        <if test="priceT!=null and priceT!=''">
+            ,price_t=#{priceT}
+        </if>
+        <if test="priceO!=null and priceO!=''">
+            ,price_o=#{priceO}
+        </if>
+        <if test="detailAddress!=null and detailAddress!=''">
+            ,detailAddress=#{detailAddress}
+        </if>
+        WHERE user_id=#{userId}
+    </update>
+
+    <update id="editIdCard">
+        UPDATE teacher SET user_id=#{uid}
+        <if test="p1!=null and p1!=''">
+            ,people_pid_url=#{p1}
+        </if>
+        <if test="p2!=null and p2!=''">
+            ,pid_url_front=#{p2}
+        </if>
+        <if test="p3!=null and p3!=''">
+            ,pid_url_back=#{p3}
+        </if>
+        WHERE user_id=#{uid}
+    </update>
 </mapper>

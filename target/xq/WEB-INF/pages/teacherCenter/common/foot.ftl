@@ -16,6 +16,10 @@
         font-size: 40px;
         color: dimgrey;
     }
+    .row{
+    margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
 </style>
 <div id="foot">
         <div class="row" align="center" style="padding-top: 3%">
@@ -35,7 +39,7 @@
                     <span class="text_foot text_order">订单</span>
                 </div>
             </div>
-            <div class="col-xs-3" align="center" style="width: 20%!important;">
+            <div class="col-xs-3" align="center" style="width: 20%!important;" onclick="href('/wx/teacherCenter/${(user.id)!uid}/myWork')">
                 <div>
                     <span class="glyphicon glyphicon-calendar icon_foot"></span>
                 </div>

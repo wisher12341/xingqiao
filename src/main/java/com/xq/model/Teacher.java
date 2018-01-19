@@ -42,11 +42,11 @@ public class Teacher {
     private Integer isPass;
     private String pidUrlFront;
     private String pidUrlBack;
-    private String school;
-    private String award;
-    private String certificate;
-    private String recoveryHis;
-    private String successCase;
+    private String school;//毕业学校
+    private String award;//奖励荣誉
+    private String certificate;//相关证书
+    private String recoveryHis;//康复治疗经历
+    private String successCase;//成功案例
     private String detailAddress;
     private String peoplePidUrl;
     private String otherPic;

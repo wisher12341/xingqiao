@@ -35,4 +35,17 @@ public interface TeacherCenterDao {
     void updateUserStatus(@Param("status") int status, @Param("userId") int userId);
     void updateIcon(@Param("headimgurl") String headimgurl, @Param("userId") int userId);
 
+    String getInfoByTypeName(@Param("uid") int uid, @Param("type") String type);
+
+    void updateComplexInfo(@Param("type") String t, @Param("data") String data,@Param("uid") int uid);
+
+    void addComplexInfo(@Param("type") String t, @Param("data") String data,@Param("uid") int uid);
+
+    Teacher getTeacherInfoByUid(@Param("uid") Integer uid,@Param("types") String[] type);
+
+    void editServiceInfo(Teacher teacher);
+
+    void editServiceInfoWay(Teacher teacher);
+
+    void editIdCard(@Param("p1") String path1, @Param("p2") String path2, @Param("p3") String path3,@Param("uid") Integer uid);
 }

@@ -121,8 +121,8 @@
             <table border="0"  style="width: 100%; border-color: #dddddd">
                 <tr ng-repeat="temp in NewOrgItems" ng-cloak>
 
-                    <td style="height: 50px; padding-left: 20px; border-color: #dddddd; border-bottom: 1px solid #dddddd" >
-                        <a ng-click="get_org_intro(temp['id'])">##temp['name']##</a><br/>
+                    <td style="height: 58px; padding-left: 20px; border-color: #dddddd; border-bottom: 1px solid #dddddd" >
+                        <a style="font-size: 16px" ng-click="get_org_intro(temp['id'])">##temp['name']##</a><br/>
 
                     </td>
                 </tr>

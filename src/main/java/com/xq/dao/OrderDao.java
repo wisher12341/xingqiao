@@ -46,4 +46,5 @@ public interface OrderDao {
     void addComment(@Param("oid") String oid,@Param("cid") Integer id);
 
     CheckOrderFinish checkOrderFinish(String oid);
+
 }

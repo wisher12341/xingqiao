@@ -10,6 +10,9 @@
         body{
             background-color: #f5f5f5;
         }
+        .glyphicon-heart,.text_demand{
+            color: #20b49a!important;
+        }
     </style>
 </head>
 
