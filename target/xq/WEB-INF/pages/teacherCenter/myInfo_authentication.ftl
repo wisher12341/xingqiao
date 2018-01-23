@@ -83,7 +83,7 @@
     <#--</div>-->
 
     <div class="buttonDiv_info">
-        <div class="info row" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/name/0">
             <div class="col-xs-3">
                 <p class="text_p"> 真实姓名</p>
             </div>
@@ -94,7 +94,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/pid/0">
             <div class="col-xs-3">
                 <p class="text_p"> 证件号</p>
             </div>
@@ -172,7 +172,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/experienceAge/0">
             <div class="col-xs-3">
                 <p class="text_p"> 康复教龄</p>
             </div>

@@ -249,6 +249,8 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             case "certificate":
             case "school":
             case "abstractTeacher":
+            case "name":
+            case "pid":
             case "other_pic":
             case "schedule":
             case "period":
@@ -259,6 +261,9 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
             case "recoveryHis":
                 t="recovery_his";
+                break;
+            case "experienceAge":
+                t="experience_age";
                 break;
         }
         String result=teacherCenterDao.getInfoByTypeName(uid,t);
@@ -325,12 +330,17 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             case "certificate":
             case "school":
             case "abstractTeacher":
+            case "name":
+            case "pid":
             case "other_pic":
             case "schedule":
                 t=type;
                 break;
             case "recoveryHis":
                 t="recovery_his";
+                break;
+            case "experienceAge":
+                t="experience_age";
                 break;
         }
         String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
@@ -443,6 +453,15 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             case "abstractTeacher":
                 t=type;
                 data+=detail;
+                break;
+            case "name":
+            case "pid":
+                t=type;
+                data+=title;
+                break;
+            case "experienceAge":
+                t="experience_age";
+                data+=title;
                 break;
         }
 

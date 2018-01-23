@@ -1,5 +1,6 @@
 package com.xq.controller;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import com.xq.dto.*;
 import com.xq.model.Demand;
 import com.xq.model.RecoveryLog;
@@ -293,10 +294,11 @@ public class TeacherCenterController {
         if(page==0){
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type)+"_add");
             mv.addObject("user",userService.getUserByUid(uid));
-            if(type.equals("abstractTeacher")){
+            System.out.println("page:"+page);
+           // if(type.equals("abstractTeacher")){
                 Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
                 mv.addObject("data",data);
-            }
+                       // }
         }else{
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type));
             Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
@@ -360,9 +362,10 @@ public class TeacherCenterController {
     @RequestMapping(value = "/info/{uid}/{type}/{index}/edit",method = RequestMethod.POST)
     public ModelAndView info_edit_post(@PathVariable int uid,@PathVariable String type,@PathVariable int index,String title,String detail,String picUrls,String deleteExitImg,TeacherInfoSchool teacherInfoSchool,TeacherInfoRecoveryHis teacherInfoRecoveryHis){
         ModelAndView mv;
-        if(type.equals("abstractTeacher")){
+        if(type.equals("abstractTeacher")||type.equals("name")||type.equals("pid")||type.equals("experienceAge")){
             mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
-        }else{
+        }
+        else{
          mv=new ModelAndView("redirect:/wx/teacherCenter/info/"+uid+"/"+type+"/1");
         }
         teacherCenterService.editComplexInfo(uid,type,index,title,detail,picUrls,deleteExitImg,teacherInfoSchool,teacherInfoRecoveryHis);
