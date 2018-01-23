@@ -52,7 +52,7 @@
             width: 80%;
         }
         .ob-div{
-            opacity: 0.5;
+            opacity: 1;
         }
         .ob-btn div{
             color:dimgrey;
@@ -122,7 +122,7 @@
             width: 80%;
         }
         .selectOb{
-            opacity: 1;
+            opacity: 0.5;
         }
 
         #selectTeacher,#selectOb,#selectDemand,#selectConfirm{

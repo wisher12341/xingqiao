@@ -194,8 +194,30 @@
             <#--<i class="fa fa-star-o fa-5x"></i><p style="font-size: 50px; display: inline;margin-left: 10px"> 星级评定</p></div>-->
     </div>
 
-    <div class="buttonDiv_info" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
-        <div class="info row">
+    <div class="buttonDiv_info" >
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
+            <div class="col-xs-1">
+                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+            </div>
+            <div class="col-xs-10">
+                <p class="text_p"> 作业中心</p>
+            </div>
+            <div class="col-xs-1">
+                <i class="fa fa-angle-right fa-4x icon_fa"></i>
+            </div>
+        </div>
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
+            <div class="col-xs-1">
+                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+            </div>
+            <div class="col-xs-10">
+                <p class="text_p"> 评价中心</p>
+            </div>
+            <div class="col-xs-1">
+                <i class="fa fa-angle-right fa-4x icon_fa"></i>
+            </div>
+        </div>
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
             <div class="col-xs-1">
                 <i class="fa fa-envelope-o fa-4x icon_fa"></i>
             </div>
@@ -208,19 +230,6 @@
         </div>
     </div>
 
-    <div class="buttonDiv_info" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
-        <div class="info row">
-            <div class="col-xs-1">
-                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
-            </div>
-            <div class="col-xs-10">
-                <p class="text_p"> 评价中心</p>
-            </div>
-            <div class="col-xs-1">
-                <i class="fa fa-angle-right fa-4x icon_fa"></i>
-            </div>
-        </div>
-    </div>
 </div>
 <#include "common/foot.ftl" />
 </body>

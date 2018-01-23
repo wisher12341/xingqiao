@@ -37,13 +37,13 @@
             border: solid 1px #20b49a;
             border-radius: 5px;
             width: 95%;
-            opacity: 0.5;
+            opacity: 1;
         }
         .area{
             margin-top: 5%;
         }
         .select{
-            opacity: 1;
+            opacity: 0.5;
         }
     </style>
 </head>

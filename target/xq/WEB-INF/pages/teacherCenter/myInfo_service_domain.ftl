@@ -38,7 +38,7 @@
             justify-content: center;
         }
         .ob-img{
-            opacity: 0.5;
+            opacity: 1;
         }
         .ob{
             font-size: 42px;
@@ -59,7 +59,7 @@
             color: dimgrey !important;
         }
         .select .ob-img{
-            opacity: 1 !important;
+            opacity: 0.5 !important;
         }
     </style>
 </head>

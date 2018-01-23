@@ -144,9 +144,9 @@
             margin-right: 100px;
         }
         .search_label{
-            background-color: #20b49a;
+            background-color: white;
             font-size: 40px;
-            color: white;
+            color: #20b49a;
             padding: 5px;
             margin-right: 10px;
             border: solid 1px #20b49a;
@@ -160,7 +160,7 @@
             border: solid 1px #20b49a;
             border-radius: 5px;
             width: 95%;
-            opacity: 0.5;
+            opacity: 1;
         }
         #area2{
             position: absolute;
@@ -175,7 +175,7 @@
             margin-top: 5%;
         }
         .selectArea2{
-            opacity: 1;
+            opacity: 0.5;
         }
     </style>
 </head>
@@ -272,8 +272,11 @@
         <#elseif teacher.way=="治疗师上门">
         <div class="buttonDiv_info" style="background-color: white" onclick="showArea2()">
             <div class="row" style="margin: 4% 0!important;">
-                <div class="col-xs-11">
+                <div class="col-xs-9">
                     <p class="text_p"> 上门区域</p>
+                </div>
+                <div class="col-xs-2">
+                    <p class="text_ppp"> 编辑</p>
                 </div>
                 <div class="col-xs-1">
                     <i class="fa fa-angle-right fa-4x icon_fa"></i>

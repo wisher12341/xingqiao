@@ -93,7 +93,7 @@
         今日安排
          */
         .buttonDiv_info{
-            margin: 4% 0;
+            margin: 7% 0;
             border-bottom: 1px solid #ccc;
             border-top: 1px solid #ccc;
             padding-bottom: 10px;
@@ -142,16 +142,85 @@
             text-align: center;
         }
         .fc-center h2{
-            padding-top: 15px;
+            padding-top: 25px;
         }
 
+        .fc-left button{
+            color: white!important;
+            background-color: #20b49a!important;
+            margin-left: 20px!important;
+            margin-top: 5px;!important;
+            background-image:none;!important;
+        }
+        .fc-button-group .fc-prev-button{
+            color: white!important;
+            background-color: #20b49a!important;
+            background-image:none;!important;
+            margin-top: 5px;!important;
+            margin-right: 20px!important;
+        }
+        .fc-button-group .fc-next-button{
+            color: white!important;
+            background-color: #20b49a!important;
+            background-image:none;!important;
+            margin-top: 5px;!important;
+            margin-right: 20px!important;
+        }
+        .sou{
+            width: 100%;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+        .jiantou{
+            height: ;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            z-index: 99;
+        }
+        .rili{
+            font-size: 50px;
+            color: dimgrey;
+            font-weight: bold;
+            padding: 8px;
+        }
+        /*.jj{*/
+            /*background-color: white;*/
+            /*width: 50px;*/
+        /*}*/
+        .fa-angle-double-down,.fa-angle-double-up{
+            background-color: white;
+            padding: 0 40px;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            bottom: 1px;
+            border-right: 1px solid #eee;
+            border-left: 1px solid #eee;
+            color: dimgrey;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        .fa-angle-double-up{
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 <div id="main">
-
     <div id="calendar_month"></div>
+
+    <div class="sou" align="center">
+        <p class="rili">日历表</p>
+        <div class="jiantou" align="center">
+        <#--<div class="jj">-->
+            <i class="fa  fa-angle-double-down fa-3x" onclick="showCalendar()"></i>
+            <i class="fa  fa-angle-double-up fa-3x" onclick="hideCalendar()"></i>
+        <#--</div>-->
+        </div>
+    </div>
+
     <div class="buttonDiv_info">
     <#if work.workDay?? && (work.workDay)?size gt 0>
         <script>
@@ -175,7 +244,7 @@
                             <p style="color: white">aa</p>
                         </div>
                         <div class="col-xs-11">
-                            <p class="text_p">简历：${day.order.demand.name}<span style="font-size: 40px;font-weight: bold;padding: 5px">·</span>家长：${day.order.parent.realName}</p>
+                            <p class="text_p">${day.order.demand.name}&nbsp;&nbsp;&nbsp;家长：${day.order.parent.realName}</p>
                         </div>
                     </div>
                     <div class="row" style="height: 4%;">
@@ -196,7 +265,7 @@
         <script>
             $(".buttonDiv_info").addClass("noneDiv");
         </script>
-        <div class="row" style="margin-top: 100px;width: 100%">
+        <div class="row" style="margin-top: 150px;width: 100%">
             <div class="col-xs-2">
             </div>
             <div class="col-xs-2">
@@ -216,10 +285,22 @@
 <#include "common/foot.ftl" />
 </body>
 <script>
+    function showCalendar() {
+        $('#calendar_month').slideDown();
+        $(".rili").hide();
+        $(".fa-angle-double-down").hide();
+        $(".fa-angle-double-up").show();
+
+    }
+    function hideCalendar() {
+        $('#calendar_month').slideUp();
+        $(".rili").show();
+        $(".fa-angle-double-up").hide();
+        $(".fa-angle-double-down").show();
+    }
+
     $(function () {
         var selectTime;//用于记录选中的有安排的日期
-
-
         var events=[];
         <#list (work.monthWork)! as item>
             events.push({start:"${item.start}",title:"${item.title}",className:"schedule_title"});
@@ -242,8 +323,8 @@
             weekMode:"liquid",
             eventLimit: true, // allow "more" link when too many events
             events: events,
-            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-            monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            monthNames: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
+            monthNamesShort: ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"],
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
             today: ["今天"],
@@ -264,7 +345,7 @@
                         var $target=$(".buttonDiv_info");
                         $target.append($('<div class="row" ><p class="work_today">'+data.data.today+'</p></div>'));
                         for(var i=0;i<data.data.work.length;i++){
-                            $target.append($('<div> <div class="row" style="position: relative"> <div class="col-xs-1 circle"> <i class="fa fa-circle-thin fa-2x icon_fa"></i> </div> <div class="col-xs-8" style="position: absolute;left:80px"> <p class="text_detail text_time"> '+data.data.work[i].startTime+'<span style="color: white;border-top: 1px solid dimgrey;padding: 10px;margin: 10px;position: relative;top: 33px;">a</span>'+data.data.work[i].endTime+'</p> </div> </div> <div class="row" style="height: 6%;"> <div class="col-xs-1" style="'+((i!=data.data.work.length-1)?'border-left:2px solid #ccc;':'')+'height: 100%;position: relative;left: 50px"> <p style="color: white">aa</p> </div> <div class="col-xs-11"> <p class="text_p">简历：'+data.data.work[i].order.demand.name+'<span style="font-size: 40px;font-weight: bold;padding: 5px">·</span>家长：'+data.data.work[i].order.parent.realName+'</p> </div> </div> <div class="row" style="height: 4%;"> <div class="col-xs-1" style="'+((i!=data.data.work.length-1)?'border-left:2px solid #ccc;':'')+'height: 100%;position: relative;left: 50px"> <p style="color: white">aa</p> </div> <div class="col-xs-11" style="'+((i!=data.data.work.length-1)?'border-bottom:2px solid #ccc;':'')+'"> <p class="text_detail" style="color: #a0a0a0">'+data.data.work[i].order.way+'<span style="font-size: 40px;font-weight: bold;padding: 5px">·</span>'+data.data.work[i].order.recoverOb+'</p> </div> </div>'));
+                            $target.append($('<div> <div class="row" style="position: relative"> <div class="col-xs-1 circle"> <i class="fa fa-circle-thin fa-2x icon_fa"></i> </div> <div class="col-xs-8" style="position: absolute;left:80px"> <p class="text_detail text_time"> '+data.data.work[i].startTime+'<span style="color: white;border-top: 1px solid dimgrey;padding: 10px;margin: 10px;position: relative;top: 33px;">a</span>'+data.data.work[i].endTime+'</p> </div> </div> <div class="row" style="height: 6%;"> <div class="col-xs-1" style="'+((i!=data.data.work.length-1)?'border-left:2px solid #ccc;':'')+'height: 100%;position: relative;left: 50px"> <p style="color: white">aa</p> </div> <div class="col-xs-11"> <p class="text_p">'+data.data.work[i].order.demand.name+'&nbsp;&nbsp;&nbsp;家长：'+data.data.work[i].order.parent.realName+'</p> </div> </div> <div class="row" style="height: 4%;"> <div class="col-xs-1" style="'+((i!=data.data.work.length-1)?'border-left:2px solid #ccc;':'')+'height: 100%;position: relative;left: 50px"> <p style="color: white">aa</p> </div> <div class="col-xs-11" style="'+((i!=data.data.work.length-1)?'border-bottom:2px solid #ccc;':'')+'"> <p class="text_detail" style="color: #a0a0a0">'+data.data.work[i].order.way+'<span style="font-size: 40px;font-weight: bold;padding: 5px">·</span>'+data.data.work[i].order.recoverOb+'</p> </div> </div>'));
                             if(i!=data.data.work.length-1){
                                 $target.append($('<div class="row" style="border-left:2px solid #ccc;height: 2%;margin-left: 50px!important;"> </div>'));
                             }
@@ -278,6 +359,15 @@
                 });
             }
         });
+        $("#calendar_month").hide();
+        $(".fc-center h2").html($(".fc-center h2").text().split(" ")[1]+"-"+$(".fc-center h2").text().split(" ")[0]);
+        $(".fc-button-group button").click(function () {
+            $(".fc-center h2").html($(".fc-center h2").text().split(" ")[1]+"-"+$(".fc-center h2").text().split(" ")[0]);
+        });
+        $(".fc-left button").click(function () {
+            $(".fc-center h2").html($(".fc-center h2").text().split(" ")[1]+"-"+$(".fc-center h2").text().split(" ")[0]);
+        });
+
         <#if (work.workDay)??>
             var day=$(".schedule_title").eq(0).text();
             var today = new Date().getDate()+"";

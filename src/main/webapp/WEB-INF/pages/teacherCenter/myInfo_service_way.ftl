@@ -48,9 +48,9 @@
             font-weight: bold;
         }
         .search_label{
-            background-color: #20b49a;
+            background-color: white;
             font-size: 35px;
-            color: white;
+            color: #20b49a;
             padding: 5px;
             margin-right: 10px;
             border: solid 1px #20b49a;

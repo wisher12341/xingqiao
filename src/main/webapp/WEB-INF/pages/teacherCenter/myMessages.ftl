@@ -10,41 +10,29 @@
 </head>
 <body>
 <div id="main">
-
-    <div class="info-header">
-        <div class="info-header-img col-sm-4">
-            <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
-        </div>
-        <div class="col-sm-7">
-            <div class="row">
-                <div class="col-sm-11">
-                    <p class="info-header-name">${(name)!}</p>
-                </div>
-                <div class="col-sm-1">
-                    <div class="i1"><a href="${path}/wx/teacherCenter/${user.id}/myInfo"><span><i class="fa fa-angle-right fa-5x"  style="color:white;display: inline"></i></span></a></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-10">
-                    <p class="info-header-other" style="font-size: 40px">
-                   </p>
-                </div>
-                <div class="col-sm-2">
-                    <div class="i2" style="margin-top: 40px"><a href="${path}/wx/teacherCenter/${user.id}/myMessages"><span><i class="fa fa-envelope-o fa-5x"  style="color:white;display: inline"></i></span></a></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div style="background-color: #e6ece3">
+    <#if messages??>
+        <div style="background-color: #e6ece3">
             <#list messages as m>
                 <div style="background-color: white;margin-bottom: 20px;font-size: 40px;padding: 30px">
                 ${(m.message)!}
                     <p>${(m.time)!}</p>
                 </div>
             </#list>
-    </div>
+        </div>
+        <#else >
+            <div class="row" style="margin-top: 100px;width: 100%">
+                <div class="col-xs-2">
+                </div>
+                <div class="col-xs-2">
+                    <img src="/static/img/kong.png" width="150">
+                </div>
+                <div class="col-xs-6">
+                    <p style="font-size: 45px;color: dimgrey;font-weight: bold">您当天没有安排</p>
+                    <p style="font-size: 38px;color: grey">可点击日历上标记的日期查看该天安排</p>
+                </div>
+            </div>
+    </#if>
+
 </div>
 </body>
 </html>
