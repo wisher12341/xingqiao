@@ -10,6 +10,7 @@ public class CalendarDto {
     private List<String> start;//开始时间
     private List<String> title;
     private List<String> end;//结束时间
+    private List<String> period;
     private List<String> className;//日程   样式class 名
 
     public List<String> getClassName() {
@@ -42,5 +43,13 @@ public class CalendarDto {
 
     public void setEnd(List<String> end) {
         this.end = end;
+    }
+
+    public List<String> getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(List<String> period) {
+        this.period = period;
     }
 }

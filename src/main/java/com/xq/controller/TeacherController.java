@@ -1,11 +1,9 @@
 package com.xq.controller;
 
 import com.xq.dto.CalendarDto;
+import com.xq.dto.OrderDto;
 import com.xq.dto.Result;
-import com.xq.model.Comment;
-import com.xq.model.Teacher;
-import com.xq.model.User;
-import com.xq.model.UserGoodReport;
+import com.xq.model.*;
 import com.xq.service.GoodReportService;
 import com.xq.service.TeacherService;
 import com.xq.service.UserService;
@@ -169,16 +167,57 @@ public class TeacherController {
     }
 
     /**
-     * 下预约单 显示级别：月份
-     * @param tid
+     * 前往选择时间页面
      * @return
      */
-    @ResponseBody
-    @RequestMapping(value = "/{tid}/orderTime/month",method = RequestMethod.GET)
-    public Result order_time_month(@PathVariable Integer tid){
-        List<String> starts=teachersService.order_time_month(tid);
-        return new Result(true,starts);
+    @RequestMapping(value = "/toSelectTime",method = RequestMethod.POST)
+    public ModelAndView toSelectTime(Order order){
+        ModelAndView mv=new ModelAndView();
+        switch (order.getTimeOpt()){
+            case "day": mv.setViewName("order/choose_time");break;
+            case "week": mv.setViewName("order/choose_weekday");break;
+            default:break;
+        }
+
+        mv.addObject("order",order);
+        List<String> starts=teachersService.order_time_month(order.getTeacher().getId());
+        mv.addObject("starts",starts);
+        return mv;
     }
+
+    /**
+     * 前往选择时间页面
+     * @return
+     */
+    @RequestMapping(value = "/toCheckTimes",method = RequestMethod.POST)
+    public ModelAndView toCheckTimes(Order order){
+        ModelAndView mv=new ModelAndView("order/check_times");
+        mv.addObject("order",order);
+        return mv;
+    }
+
+    /**
+     * 前往选择时间页面
+     * @return
+     */
+    @RequestMapping(value = "/toChooseFirstClass",method = RequestMethod.POST)
+    public ModelAndView toChooseFirstClass(Order order){
+        ModelAndView mv=new ModelAndView("order/choose_weekday_first");
+        mv.addObject("order",order);
+        return mv;
+    }
+
+//    /**
+//     * 下预约单 显示级别：月份
+//     * @param tid
+//     * @return
+//     */
+//    @ResponseBody
+//    @RequestMapping(value = "/{tid}/orderTime/month",method = RequestMethod.GET)
+//    public Result order_time_month(@PathVariable Integer tid){
+//        List<String> starts=teachersService.order_time_month(tid);
+//        return new Result(true,starts);
+//    }
 
     /**
      * 下预约单 显示级别：日
