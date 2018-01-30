@@ -185,7 +185,7 @@
         </div>
     </div>
 
-    <div class="buttonDiv_info">
+    <div class="buttonDiv_info" onclick=location.href="${path}/wx/teacherCenter/serviceInfo/${user.id}/rule">
         <div class="info row" >
             <div class="col-xs-3">
                 <p class="text_p"> 平台准则</p>

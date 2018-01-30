@@ -108,7 +108,10 @@
     </update>
 
     <update id="editServiceInfoWay" parameterType="com.xq.model.Teacher">
-        UPDATE teacher SET way=#{way}
+        UPDATE teacher SET user_id=#{userId}
+        <if test="way!=null and way!=''">
+            ,way=#{way}
+        </if>
         <if test="sGround!=null and sGround!=''">
             ,s_ground=#{sGround}
         </if>

@@ -88,7 +88,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" >
+        <div class="info row" onclick="$('#genderSelecter').trigger('click');">
             <div class="col-xs-3">
                 <p class="text_p"> 年龄</p>
             </div>
@@ -99,6 +99,10 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
+        <select name="gender" id="genderSelecter">
+            <option value="0">男</option>
+            <option value="1">女</option>
+        </select>
     </div>
     <div class="buttonDiv_info">
         <div class="info row" >

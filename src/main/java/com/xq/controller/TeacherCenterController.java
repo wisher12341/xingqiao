@@ -1,5 +1,6 @@
 package com.xq.controller;
 
+import com.sun.media.jfxmedia.logging.Logger;
 import com.xq.dto.*;
 import com.xq.model.Demand;
 import com.xq.model.RecoveryLog;
@@ -200,8 +201,10 @@ public class TeacherCenterController {
     @RequestMapping(value = "/serviceInfo/{uid}/{type}",method = RequestMethod.GET)
     public ModelAndView myInfo_service_type(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_service_"+type.split("@")[0]);
-        Teacher teacher=teacherCenterService.getTeacherInfoByUid(uid,type);
-        mv.addObject("teacher",teacher);
+        if(!type.equals("rule")) {
+            Teacher teacher = teacherCenterService.getTeacherInfoByUid(uid, type);
+            mv.addObject("teacher", teacher);
+        }
         mv.addObject("user",teacherCenterService.getUserById(uid));
         return mv;
     }
@@ -219,7 +222,7 @@ public class TeacherCenterController {
         mv.addObject("teacher",teacher);
         mv.addObject("user",teacherCenterService.getUserById(uid));
         mv.addObject("area2",areaService.getArea2());
-        mv.addObject("type",type);
+        mv.addObject("type",(type.equals("teacher"))?"治疗师上门":((type.equals("student"))?"学生上门":"在线授课"));
         return mv;
     }
 
@@ -293,10 +296,11 @@ public class TeacherCenterController {
         if(page==0){
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type)+"_add");
             mv.addObject("user",userService.getUserByUid(uid));
-            if(type.equals("abstractTeacher")){
+            System.out.println("page:"+page);
+           // if(type.equals("abstractTeacher")){
                 Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
                 mv.addObject("data",data);
-            }
+                       // }
         }else{
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type));
             Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
@@ -360,15 +364,35 @@ public class TeacherCenterController {
     @RequestMapping(value = "/info/{uid}/{type}/{index}/edit",method = RequestMethod.POST)
     public ModelAndView info_edit_post(@PathVariable int uid,@PathVariable String type,@PathVariable int index,String title,String detail,String picUrls,String deleteExitImg,TeacherInfoSchool teacherInfoSchool,TeacherInfoRecoveryHis teacherInfoRecoveryHis){
         ModelAndView mv;
-        if(type.equals("abstractTeacher")){
+        if(type.equals("abstractTeacher")||type.equals("name")||type.equals("pid")||type.equals("experienceAge")){
             mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
-        }else{
+        }
+        else{
          mv=new ModelAndView("redirect:/wx/teacherCenter/info/"+uid+"/"+type+"/1");
         }
         teacherCenterService.editComplexInfo(uid,type,index,title,detail,picUrls,deleteExitImg,teacherInfoSchool,teacherInfoRecoveryHis);
         return mv;
     }
 
+    /**
+     * 复杂个人资料 删除   删除 不用审核
+     * @param uid
+     * @param type
+     * @param index  删除的该条的 索引
+     * @return
+     */
+    @RequestMapping(value = "/info/{uid}/{type}/{index}/del",method = RequestMethod.GET)
+    public ModelAndView info_del_post(@PathVariable int uid,@PathVariable String type,@PathVariable int index){
+        ModelAndView mv;
+        if(type.equals("abstractTeacher")||type.equals("name")||type.equals("pid")||type.equals("experienceAge")){
+            mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
+        }
+        else{
+            mv=new ModelAndView("redirect:/wx/teacherCenter/info/"+uid+"/"+type+"/1");
+        }
+        teacherCenterService.delComplexInfo(uid,type,index);
+        return mv;
+    }
 
     /**
      * 保存个人资料的 图片
@@ -487,6 +511,18 @@ public class TeacherCenterController {
     public ModelAndView idcard_post(@PathVariable Integer uid, MultipartFile peoplePidUrl,MultipartFile pidUrlFront,MultipartFile pidUrlBack,HttpServletRequest request){
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
         teacherCenterService.editIdCard(peoplePidUrl,pidUrlBack,pidUrlFront,uid,request);
+        return mv;
+    }
+
+    /**
+     *日志中心
+     */
+    @RequestMapping(value = "/{userId}/myLog",method = RequestMethod.GET)
+    public ModelAndView myLog(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("teacherCenter/myLog");
+//        Work work=teacherCenterService.getWorkByUid(userId);
+//        mv.addObject("work",work);
+        mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
 }

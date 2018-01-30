@@ -68,4 +68,6 @@ public interface TeacherCenterService {
     void editIdCard(MultipartFile peoplePidUrl, MultipartFile pidUrlBack, MultipartFile pidUrlFront, Integer uid, HttpServletRequest request);
 
     Teacher getIdCardByUid(Integer uid);
+
+    void delComplexInfo(int uid, String type, int index);
 }

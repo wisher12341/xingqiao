@@ -130,9 +130,121 @@
             z-index: 99;
             top:100%;
         }
+        #main{
+            display: none;
+        }
+        .buttonDiv_info{
+            margin: 4% 0;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+        .text_p{
+            font-size: 45px;
+            display: inline;
+            margin-left: 40px;
+            color: dimgrey;
+            font-weight: bold;
+        }
+        .text_ppp{
+            font-size: 35px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:5px;
+            color: dimgrey;
+        }
+        .icon_fa{
+            /*position: relative;*/
+            /*top: 5px;*/
+            color: dimgrey;
+        }
+        .text_detail{
+            color: #a0a0a0;
+            font-size: 35px;
+            margin-left: 40px;
+            margin-right: 100px;
+        }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
+        #log .row{
+            margin: 0 !important;
+        }
+        #log{
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
+<div id="log">
+    <div class="buttonDiv_info" style="background-color: white;margin-bottom: 8%">
+        <div  onclick=location.href="">
+            <div class="row" style="height: 7%;padding-top:3.5% ">
+                <div class="col-xs-3" style="width: 25%!important;">
+                    <p class="text_p"> 小岳岳</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text_p"> 治疗师：高中华</p>
+                </div>
+                <div class="col-xs-2">
+                    <p class="text_ppp"> 确认</p>
+                </div>
+                <div class="col-xs-1">
+                    <i class="fa fa-angle-right fa-4x icon_fa"></i>
+                </div>
+            </div>
+            <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
+                <div class="col-xs-12">
+                    <p class="text_detail">
+                        啊啊啊啊啊啊啊啊阿打算但是ad撒啊大叔大师的的啊的
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div  onclick=location.href="">
+            <div class="row" style="height: 7%;padding-top:3.5% ">
+                <div class="col-xs-3" style="width: 25%!important;">
+                    <p class="text_p"> 小岳岳</p>
+                </div>
+                <div class="col-xs-6">
+                    <p class="text_p"> 治疗师：高中华</p>
+                </div>
+                <div class="col-xs-2">
+                    <p class="text_ppp"> 确认</p>
+                </div>
+                <div class="col-xs-1">
+                    <i class="fa fa-angle-right fa-4x icon_fa"></i>
+                </div>
+            </div>
+            <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
+                <div class="col-xs-12">
+                    <p class="text_detail">
+                        啊啊啊啊啊啊啊啊阿打算但是ad撒啊大叔大师的的啊的
+                    </p>
+                </div>
+            </div>
+         </div>
+    </div>
+    <div class="foot" align="center">
+        <button  style="width: 100% !important;" onclick="$('#log').hide();$('#main').show()">日志查询</button>
+    </div>
+</div>
+
+
 <div id="main">
     <form action="${path}/wx/log/index" method="post">
         <div class="obD">

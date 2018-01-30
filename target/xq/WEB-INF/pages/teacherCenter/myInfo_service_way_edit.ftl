@@ -182,7 +182,7 @@
 <body>
 
 <div id="main">
-    <form action="<#if (teacher.tGround)?? && teacher.tGround!="">/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/edit<#else >/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/add</#if>" method="post">
+    <form action="<#if (teacher.way)?contains(type)>/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/edit<#else >/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/add</#if>" method="post">
         <input type="hidden" name="userId" value="${(user.id)!}">
         <input type="hidden" name="way" value="${(teacher.way)!}">
         <input type="hidden" name="sGround">
@@ -192,7 +192,7 @@
                     <p class="text_p"> 康复方式</p>
                 </div>
                 <div class="col-xs-8">
-                    <p class="text_pp" style="color: #a0a0a0;font-weight: bold">${(teacher.way)!}</p>
+                    <p class="text_pp" style="color: #a0a0a0;font-weight: bold">${type}</p>
                 </div>
             </div>
             <div class="info row" >
@@ -201,9 +201,9 @@
                 </div>
                 <div class="col-xs-8">
                     <input placeholder="请输入一课时的酬金" type="text" class="title_input" maxlength="10" style="padding-left: 20px"
-                    <#if teacher.way=="学生上门">
+                    <#if type=="学生上门">
                            value="${(teacher.priceS==0)?string("",teacher.priceS)}" name="priceS"
-                    <#elseif teacher.way=="治疗师上门">
+                    <#elseif type=="治疗师上门">
                            value="${(teacher.priceT==0)?string("",teacher.priceT)}" name="priceT"
                     <#else >
                            value="${(teacher.priceO==0)?string("",teacher.priceO)}" name="priceO"
@@ -212,7 +212,7 @@
             </div>
         </div>
 
-        <#if teacher.way=="学生上门">
+        <#if type=="学生上门">
         <div class="buttonDiv_info">
             <div class="info row" >
                 <div class="col-xs-3">
@@ -269,7 +269,7 @@
                 </div>
             </div>
         </div>
-        <#elseif teacher.way=="治疗师上门">
+        <#elseif type=="治疗师上门">
         <div class="buttonDiv_info" style="background-color: white" onclick="showArea2()">
             <div class="row" style="margin: 4% 0!important;">
                 <div class="col-xs-9">

@@ -103,7 +103,7 @@
             <div class="row" style="width: 95%">
                 <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule">
                     <div>
-                        <span class="fa fa-calendar-check-o icon_mid"></span>
+                        <span class="glyphicon glyphicon-heart icon_mid"></span>
                     </div>
                     <div class="text_div">
                         <span class="text_mid">我的需求</span>
@@ -112,7 +112,7 @@
 
                 <div class="col-xs-4" onclick=location.href="parentCenter/${user.id}/myTeacher">
                     <div>
-                        <span class="fa fa-star-o icon_mid"></span>
+                        <span class="fa fa-users icon_mid"></span>
                     </div>
                     <div class="text_div">
                         <span class="text_mid">我的治疗师</span>
@@ -145,17 +145,6 @@
     </div>
 
     <div class="buttonDiv_info" >
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_service">
-            <div class="col-xs-1">
-                <i class="fa fa-heartbeat fa-4x icon_fa"></i>
-            </div>
-            <div class="col-xs-10">
-                <p class="text_p"> 作业中心</p>
-            </div>
-            <div class="col-xs-1">
-                <i class="fa fa-angle-right fa-4x icon_fa"></i>
-            </div>
-        </div>
         <div class="info row">
             <div class="col-xs-1">
                 <i class="fa fa-envelope-o fa-4x icon_fa"></i>
@@ -183,10 +172,10 @@
     <div class="buttonDiv_info" >
         <div class="info row">
             <div class="col-xs-1">
-                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+                <i class="fa fa-exclamation-circle fa-4x icon_fa"></i>
             </div>
             <div class="col-xs-10">
-                <p class="text_p"> 用户反馈</p>
+                <p class="text_p"> 问题反馈</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -194,7 +183,7 @@
         </div>
         <div class="info row">
             <div class="col-xs-1">
-                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+                <i class="fa fa-heart fa-4x icon_fa"></i>
             </div>
             <div class="col-xs-10">
                 <p class="text_p"> 帮助中心</p>
@@ -205,7 +194,7 @@
         </div>
         <div class="info row">
             <div class="col-xs-1">
-                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+                <i class="glyphicon glyphicon-star fa-4x icon_fa"></i>
             </div>
             <div class="col-xs-10">
                 <p class="text_p"> 关于星桥</p>

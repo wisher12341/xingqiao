@@ -65,6 +65,14 @@
         .text_my{
             color: #20b49a!important;
         }
+        .text_ppp{
+            font-size: 45px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:2px;
+            color: orange;!important;
+        }
     </style>
 </head>
 <body style="background-color: #f5f5f5">
@@ -195,12 +203,15 @@
     </div>
 
     <div class="buttonDiv_info" >
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myLog">
             <div class="col-xs-1">
-                <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
+                <i class="glyphicon glyphicon-list-alt fa-4x icon_fa"></i>
             </div>
-            <div class="col-xs-10">
-                <p class="text_p"> 作业中心</p>
+            <div class="col-xs-9">
+                <p class="text_p"> 日志中心</p>
+            </div>
+            <div class="col-xs-1">
+                <p class="text_ppp"><span style="font-weight: bold">2</span></p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -210,8 +221,11 @@
             <div class="col-xs-1">
                 <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
             </div>
-            <div class="col-xs-10">
+            <div class="col-xs-9">
                 <p class="text_p"> 评价中心</p>
+            </div>
+            <div class="col-xs-1">
+                <p class="text_ppp"><span style="font-weight: bold">2</span></p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

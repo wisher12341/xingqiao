@@ -249,6 +249,8 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             case "certificate":
             case "school":
             case "abstractTeacher":
+            case "name":
+            case "pid":
             case "other_pic":
             case "schedule":
             case "period":
@@ -259,6 +261,9 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
             case "recoveryHis":
                 t="recovery_his";
+                break;
+            case "experienceAge":
+                t="experience_age";
                 break;
         }
         String result=teacherCenterDao.getInfoByTypeName(uid,t);
@@ -325,12 +330,17 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             case "certificate":
             case "school":
             case "abstractTeacher":
+            case "name":
+            case "pid":
             case "other_pic":
             case "schedule":
                 t=type;
                 break;
             case "recoveryHis":
                 t="recovery_his";
+                break;
+            case "experienceAge":
+                t="experience_age";
                 break;
         }
         String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
@@ -444,6 +454,15 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 t=type;
                 data+=detail;
                 break;
+            case "name":
+            case "pid":
+                t=type;
+                data+=title;
+                break;
+            case "experienceAge":
+                t="experience_age";
+                data+=title;
+                break;
         }
 
         String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
@@ -452,6 +471,46 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         String str="";
         for (String s:result){
             str+="#"+s;
+        }
+        teacherCenterDao.updateComplexInfo(t,str.substring(1),uid);
+    }
+
+    @Override
+    public void delComplexInfo(int uid, String type, int index) {
+        String t="";
+        switch (type){
+            case "successCase":
+                t="success_case";
+                break;
+            case "certificate":
+            case "award":
+            case "other_pic":
+            case "school":
+                t=type;
+                break;
+            case "recoveryHis":
+                t="recovery_his";
+                break;
+            case "abstractTeacher":
+                t=type;
+                break;
+            case "name":
+            case "pid":
+                t=type;
+                break;
+            case "experienceAge":
+                t="experience_age";
+                break;
+        }
+
+        String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
+        result[index]="";
+
+        String str="";
+        for (String s:result){
+            if(!s.equals("")) {
+                str += "#" + s;
+            }
         }
         teacherCenterDao.updateComplexInfo(t,str.substring(1),uid);
     }
@@ -597,27 +656,16 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         String[] t = new String[0];
         switch (type){
             case "student":
-                t= new String[]{"price_s", "t_ground", "detailAddress"};
+                t= new String[]{"price_s", "t_ground", "detailAddress","way"};
                 break;
             case "teacher":
-                t= new String[]{"price_t", "s_ground"};
+                t= new String[]{"price_t", "s_ground","way"};
                 break;
             case "online":
-                t= new String[]{"price_o"};
+                t= new String[]{"price_o","way"};
                 break;
         }
         Teacher teacher=teacherCenterDao.getTeacherInfoByUid(uid,t);
-        switch (type){
-            case "student":
-                teacher.setWay("学生上门");
-                break;
-            case "teacher":
-                teacher.setWay("治疗师上门");
-                break;
-            case "online":
-                teacher.setWay("在线授课");
-                break;
-        }
         return teacher;
     }
 
@@ -635,8 +683,6 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             if (way != null && !way.equals("")){
                 teacher.setWay(way+"、"+teacher.getWay());
             }
-        }else{
-            teacher.setWay(way);
         }
 
         //学生上门
@@ -712,6 +758,13 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
 
     @Override
     public void editIdCard(MultipartFile peoplePidUrl, MultipartFile pidUrlBack, MultipartFile pidUrlFront, Integer uid, HttpServletRequest request) {
+        User user=userDao.getUserByUid(uid);
+        //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
+        if(user.getUserStatus()==2 || user.getUserStatus()==4){
+            userDao.changeUserStatus(uid,3);
+        }
+
+
         String path1 = "";
         int index1=0;
         if(!peoplePidUrl.isEmpty()) {
