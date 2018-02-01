@@ -71,6 +71,9 @@
         }
 
 
+        .padding-5-10{
+            padding: 5px 10px;
+        }
     </style>
 </head>
 <body style="height: 100%;" id="emoji">
@@ -145,9 +148,9 @@
                 <table class="table" style="margin-bottom: 10px;border-top: 1px solid #dddddd;">
                     <thead>
                     <tr>
-                        <th>授课方式</th>
-                        <th>价格 (元/课时)</th>
-                        <th>服务区域</th>
+                        <th class="col-xs-3">授课方式</th>
+                        <th class="col-xs-4">价格 (元/课时)</th>
+                        <th class="col-xs-5">服务区域</th>
                     </tr>
                     </thead>
                     <#assign teacherways=teacher.way?split("、")>
@@ -553,77 +556,26 @@
                     <div class="form-group container" style="overflow-y: scroll">
                         <div>
                             <div class="text-left">上门方式：</div>
-                            <div id="ways" class="row offset-15">
-                            <#--<#if teacherways??>-->
-                                <#--<#if teacherways[0]??>-->
-                                    <#--<div class="way border-pill border-pill-active">-->
-                                        <#--${teacherways[0]}-->
-                                    <#--</div>-->
-                                <#--</#if>-->
-                                <#--<#if teacherways?size gt 1>-->
-                                    <#--<div class="way border-pill">-->
-                                        <#--${teacherways[1]}-->
-                                    <#--</div>-->
-                                    <#--<#if teacherways?size gt 2>-->
-                                        <#--<div class="way border-pill">-->
-                                            <#--${teacherways[2]}-->
-                                        <#--</div>-->
-                                    <#--</#if>-->
-                                <#--</#if>-->
-                            <#--</#if>-->
+                            <div id="ways" class="row offset-10">
                             </div>
-                        <#--<select id="waySelect"></select>-->
                         </div>
                         <div class="offset-20">
                             <div class="text-left">康复项目：</div>
-                            <div id="domains" class="row offset-15">
-                            <#--<#if teacher.domain??>-->
-                            <#--<#assign tdomains=teacher.domain?split("、")>-->
-                            <#--<#list tdomains as o>-->
-                                <#--<#if tdomains[0]==o>-->
-                                    <#--<div class="domain border-pill border-pill-active">-->
-                                        <#--${o}-->
-                                    <#--</div>-->
-                                <#--<#else>-->
-                                    <#--<div class="domain border-pill">-->
-                                    <#--${o}-->
-                                    <#--</div>-->
-                                <#--</#if>-->
-                            <#--</#list>-->
-                        <#--</#if>-->
+                            <div id="domains" class="row offset-10">
                             </div>
-                        <#--<select id="domainSelect"></select>-->
                         </div>
                         <div class="offset-20">
                             <div class="text-left">需求简历：</div>
-                            <div id="demands" class="row offset-15">
-                            <#--<#if teacherways??>-->
-                            <#--<#if teacherways[0]??>-->
-                                <#--<div class="way border-pill border-pill-active">-->
-                                <#--${teacherways[0]}-->
-                                <#--</div>-->
-                            <#--</#if>-->
-                            <#--<#if teacherways?size gt 1>-->
-                                <#--<div class="way border-pill">-->
-                                <#--${teacherways[1]}-->
-                                <#--</div>-->
-                                <#--<#if teacherways?size gt 2>-->
-                                    <#--<div class="way border-pill">-->
-                                    <#--${teacherways[2]}-->
-                                    <#--</div>-->
-                                <#--</#if>-->
-                            <#--</#if>-->
-                        <#--</#if>-->
+                            <div id="demands" class="row offset-10">
                             </div>
                         <#--<select id="waySelect"></select>-->
                         <#--<select id="demandSelect"></select>-->
                         </div>
                         <div class="offset-20">
                             <div class="text-left">排课方式：</div>
-                            <div id="timeOption" class="row offset-15">
+                            <div id="timeOption" class="row offset-10">
                                 <div class="col-xs-4 padding-10"><div class="timeOption border-pill-active border-pill" data-timeopt="day">指定日期</div></div>
                                 <div class="col-xs-4 padding-10"><div class="timeOption border-pill" data-timeopt="week">每周重复</div></div>
-                                <div class="col-xs-4 padding-10"><div class="timeOption border-pill" data-timeopt="month">每月重复</div></div>
                             </div>
                         </div>
                         <div class="offset-20">
@@ -633,19 +585,19 @@
                             <span class="amount_button" id="addBtn"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/add.svg"/></span>
                         </div>
 
-                        <div class="offset-20">
-                            <div class="text-left">服务时间：</div>
-                            <div id="time_div">
-                                <div class="time-choose-div">
-                                    <img onclick="selectTime($(this))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/>
-                                    <span class="serviceTime" style="margin-left: 1rem;"></span>
-                                </div>
-                            </div>
-                        </div>
+                        <#--<div class="offset-20">-->
+                            <#--<div class="text-left">服务时间：</div>-->
+                            <#--<div id="time_div">-->
+                                <#--<div class="time-choose-div">-->
+                                    <#--<img onclick="selectTime($(this))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/>-->
+                                    <#--<span class="serviceTime" style="margin-left: 1rem;"></span>-->
+                                <#--</div>-->
+                            <#--</div>-->
+                        <#--</div>-->
 
                         <div class="offset-20">
                             <div class="text-left">备注：</div>
-                            <br><textarea id="remark" style="margin-top:0.2rem;width:99%;"></textarea>
+                            <br><textarea id="remark" style="margin-top:2px;width:99%;"></textarea>
                         </div>
                         <br>
                     </div>
@@ -655,10 +607,22 @@
                 <div style="padding-left: 5%; color: #b47400">
                     总价：<span id="sumSpan"></span>元
                 </div>
-                <button class="bottom-btn-item" style="width: 30%" onclick="yuYue_fucntion()">
-                    确认
+                <button class="bottom-btn-item" style="width: 30%" onclick="toSelectTime()">
+                    选择时间
                 </button>
             </div>
+            <form id="toSelectTimeForm" action="${base}/wx/teacher/toSelectTime" method="post">
+                <input hidden name="teacher.id"/>
+                <input hidden name="teacher.name"/>
+                <input hidden name="demandId"/>
+                <input hidden name="way"/>
+                <input hidden name="recoverOb"/>
+                <input hidden name="remark"/>
+                <input hidden name="totalpay"/>
+                <input hidden name="amount"/>
+                <input hidden name="isFirst"/>
+                <input hidden name="timeOpt"/>
+            </form>
         </div>
     </div>
 <div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
@@ -666,37 +630,6 @@
 <div id="calendar_month" class="hide-nav-bottom"></div>
 <div id="calendar_day" class="hide-nav-bottom"></div>
 
-<#--<!--评论跟帖&ndash;&gt;-->
-<#--<div id="mobile-menu-reply" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom">-->
-<#--<div class="container my-slider-container">-->
-<#--<div class="slider-body" id="divContent">-->
-<#--<form action="${base}/wx/teacher/comment" method="post">-->
-<#--<div class="row offset-10">-->
-<#--<div class="col-xs-3 col-md-3">-->
-<#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
-<#--</div>-->
-<#--<div class="col-xs-3 col-md-3">-->
-<#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
-<#--</div>-->
-<#--<div class="col-xs-4 col-md-4"></div>-->
-<#--<div class="col-xs-2 col-md-2">-->
-<#--<button type="button" class="close mobile-close-taggle">-->
-<#--&times;-->
-<#--</button>-->
-<#--</div>-->
-<#--</div>-->
-<#--<div class="row text-center">-->
-<#--<textarea class="my-textarea" style="height: 10rem;" placeholder="回复评论" name="detail"></textarea>-->
-<#--</div>-->
-<#--<input type="hidden" name="pid" >-->
-<#--<input type="hidden" name="tid" value="${teacher.id}">-->
-<#--<input type="hidden" name="type" value="0">-->
-<#--<input type="submit" class="bottom-single-btn" style="border: none" value="回复">-->
-<#--</form>-->
-<#--</div>-->
-
-<#--</div>-->
-<#--</div>-->
     <!--举报-->
     <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
         <textarea class="my-textarea" style="height: 100%;" placeholder="举报理由" name="reason"></textarea>
@@ -850,35 +783,36 @@
             waySelect = $(this).text().trim();
         } else if ($(this).hasClass("domain")){
             domainSelect = $(this).text().trim();
-        } else if ($(this).hasClass("demand")){
-            demandSelect=$(this).data("first").split("#")[0];
-            var isFirst=$(this).data("first").split("#")[1];
-            if(isFirst=="yes"){
+        } else if ($(this).hasClass("demand")) {
+            demandSelect = $(this).data("first").split("#")[0];
+            var isFirst = $(this).data("first").split("#")[1];
+            if (isFirst == "yes") {
                 //该简历 第一次交易
                 $(".amount_button").unbind("click");
                 $("#countSpan").html("1");
-            }else{
-                $("#addBtn").bind("click",add_function);
-                $("#subBtn").bind("click",subtract_function);
-            }
-        } else if ($(this).hasClass("timeOption")){
-            timeOpt = $(this).data("timeopt");
-            $("#time_div").html("");
-            var times = parseInt($("#countSpan").html());
-            if (timeOpt == "day" && times > 1){
-                for (var i=0; i<times; i++){
-                    $("#time_div").append(timeDayStr);
-                }
-                $(".delete-btn").unbind("click");
-                $(".delete-btn").bind("click", deleteTimeChoose);
             } else {
-                $("#time_div").html(timeStr);
+                $("#addBtn").bind("click", add_function);
+                $("#subBtn").bind("click", subtract_function);
             }
-
-            $(".calendar-icon").unbind("click").click(function () {
-               selectTime($(this));
-            });
         }
+//        } else if ($(this).hasClass("timeOption")){
+//            timeOpt = $(this).data("timeopt");
+//            $("#time_div").html("");
+//            var times = parseInt($("#countSpan").html());
+//            if (timeOpt == "day" && times > 1){
+//                for (var i=0; i<times; i++){
+//                    $("#time_div").append(timeDayStr);
+//                }
+//                $(".delete-btn").unbind("click");
+//                $(".delete-btn").bind("click", deleteTimeChoose);
+//            } else {
+//                $("#time_div").html(timeStr);
+//            }
+//
+//            $(".calendar-icon").unbind("click").click(function () {
+//               selectTime($(this));
+//            });
+//        }
         var sib = new Array();
         sib = $(this).parent().siblings().children(".border-pill-active");
         $.each(sib, function(key, val) {
@@ -1068,10 +1002,10 @@
                     if(domains[0]=='不限') {
                         domains = ['言语', '听觉', '认知', '情绪行为', '运动', '心理'];
                     }
-                    var $option=$('<div class="col-xs-4 padding-10"><div class="domain border-pill border-pill-active">'+domains[0]+'</div></div>');
+                    var $option=$('<div class="col-xs-4 padding-5-10"><div class="domain border-pill border-pill-active">'+domains[0]+'</div></div>');
                     $('#domains').append($option);
                     for(var i=1;i<domains.length;i++){
-                        $option=$('<div class="col-xs-4 padding-10"><div class="domain border-pill">'+domains[i]+'</div></div>');
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="domain border-pill">'+domains[i]+'</div></div>');
                         $('#domains').append($option);
                     }
                     domainSelect = domains[0];
@@ -1081,21 +1015,21 @@
                     if(ways[0]=='不限') {
                         ways = ['治疗师上门', '学生上门', '在线授课'];
                     }
-                    $option=$('<div class="col-xs-4 padding-10"><div class="way border-pill border-pill-active">'+ways[0]+'</div></div>');
+                    $option=$('<div class="col-xs-4 padding-5-10"><div class="way border-pill border-pill-active">'+ways[0]+'</div></div>');
                     $('#ways').append($option);
                     for(var i=1;i<ways.length;i++){
-                        $option=$('<div class="col-xs-4 padding-10"><div class="way border-pill">'+ways[i]+'</div></div>');
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="way border-pill">'+ways[i]+'</div></div>');
                         $('#ways').append($option);
                     }
                     waySelect = ways[0];
 
                     var demands = data.data;
                     $("#demands").html("");
-                    $option=$('<div class="col-xs-4 padding-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
+                    $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
                     $('#demands').append($option);
                     demandSelect=demands[0].id;
                     for(var i=1;i<demands.length;i++){
-                        $option=$('<div class="col-xs-4 padding-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
                         $('#demands').append($option);
                     }
                     var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
@@ -1123,94 +1057,89 @@
         });
     }
 
-    //    $('#demandSelect').change(function () {
-    //
-    //
-    //    });
 
+    <#--function yuYue_fucntion(){-->
+        <#--var isFirst=$(".amount_button:disabled").size();-->
+        <#--if(isFirst>0){-->
+            <#--isFirst=1;-->
+        <#--}-->
+        <#--var ts = new Array();-->
+        <#--$(".serviceTime").each(function(){-->
+            <#--alert($(this).text());-->
+            <#--if ($(this).text()!=null && $(this).text()!=""){-->
+                <#--ts.push($(this).text());-->
+            <#--}-->
+        <#--});-->
+        <#--if (timeOpt=="day" && ts.length != parseInt($('#countSpan').html())){-->
+            <#--alert("请完善服务时间");-->
+            <#--return;-->
+        <#--}-->
+        <#--serviceTimes = "";-->
+        <#--for (var i=0; i<ts.length; i++){-->
+            <#--if (i>0){-->
+                <#--serviceTimes += "#";-->
+            <#--}-->
+            <#--var date = ts[i].split(" ")[0];-->
+            <#--var time = ts[i].split(" ")[1];-->
+            <#--serviceTimes += date+ " " + time.replace("-","%");-->
+        <#--}-->
 
-    function yuYue_fucntion(){
-        var isFirst=$(".amount_button:disabled").size();
-        if(isFirst>0){
-            isFirst=1;
-        }
-        var ts = new Array();
-        $(".serviceTime").each(function(){
-            alert($(this).text());
-            if ($(this).text()!=null && $(this).text()!=""){
-                ts.push($(this).text());
-            }
-        });
-        if (timeOpt=="day" && ts.length != parseInt($('#countSpan').html())){
-            alert("请完善服务时间");
-            return;
-        }
-        serviceTimes = "";
-        for (var i=0; i<ts.length; i++){
-            if (i>0){
-                serviceTimes += "#";
-            }
-            var date = ts[i].split(" ")[0];
-            var time = ts[i].split(" ")[1];
-            serviceTimes += date+ " " + time.replace("-","%");
-        }
+        <#--alert(serviceTimes);-->
 
-        alert(serviceTimes);
+        <#--$.ajax({-->
+            <#--method: 'POST',-->
+            <#--url: '${base}/wx/order/submit',-->
+            <#--data: {-->
+                <#--'teacher.id': '${teacher.id}',-->
+                <#--'teacher.name':'${teacher.name}',-->
+                <#--'demandId':$(".demand.border-pill-active").data("first").split("#")[0],-->
+                <#--'way':waySelect,-->
+                <#--'recoverOb':domainSelect,-->
+                <#--'serverTime':serviceTimes,-->
+                <#--'remark':$('#remark').val(),-->
+                <#--'totalpay':$('#sumSpan').html(),-->
+                <#--'amount':$('#countSpan').html(),-->
+                <#--'isFirst':isFirst,-->
+                <#--'timeOpt':timeOpt-->
+            <#--},-->
+            <#--success:function (data, status, headers, config) {-->
+                <#--if (data.success==true) {-->
+                    <#--//alert(data['data']['order_id'])-->
+<#--//                    setCookie('order_id',data.data,1);//小时-->
+<#--//                    ipCookie('order_id', data['data']['order_id'], {path: '/', expires: 14});-->
+                    <#--document.location = '${base}/wx/order/'+data.data+'/success';-->
+                <#--} else{-->
+                    <#--alert('发生错误');-->
+                <#--}-->
+            <#--}-->
+        <#--});-->
 
-        $.ajax({
-            method: 'POST',
-            url: '${base}/wx/order/submit',
-            data: {
-                'teacher.id': '${teacher.id}',
-                'teacher.name':'${teacher.name}',
-                'demandId':$(".demand.border-pill-active").data("first").split("#")[0],
-                'way':waySelect,
-                'recoverOb':domainSelect,
-                'serverTime':serviceTimes,
-                'remark':$('#remark').val(),
-                'totalpay':$('#sumSpan').html(),
-                'amount':$('#countSpan').html(),
-                'isFirst':isFirst,
-                'timeOpt':timeOpt
-            },
-            success:function (data, status, headers, config) {
-                if (data.success==true) {
-                    //alert(data['data']['order_id'])
-//                    setCookie('order_id',data.data,1);//小时
-//                    ipCookie('order_id', data['data']['order_id'], {path: '/', expires: 14});
-                    document.location = '${base}/wx/order/'+data.data+'/success';
-                } else{
-                    alert('发生错误');
-                }
-            }
-        });
-
-    }
+    <#--}-->
 
     function subtract_function() {
         if($('#countSpan').html()!=1) {
             $('#countSpan').html(parseInt($('#countSpan').html()) - 1);
             $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html())/(parseInt($('#countSpan').html())+1))));
-            if (timeOpt == "day"){
-                $("#time_div > .time-choose-div:last").remove();
-            }
+//            if (timeOpt == "day"){
+//                $("#time_div > .time-choose-div:last").remove();
+//            }
         }
     }
 
     function add_function() {
         $('#countSpan').html(parseInt($('#countSpan').html()) + 1);
         $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html()/($('#countSpan').html()-1)))));
-        if (timeOpt == "day"){
-            if (parseInt($('#countSpan').html())==2 && $(".time-choose-div:first").children("img.delete-btn").length==0){
-                $("#time_div > .time-choose-div").prepend('<img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg">')
-            }
-            $("#time_div").append(timeDayStr);
-            $(".calendar-icon").unbind("click").click(function(){
-                selectTime($(this));
-            });
-            $(".delete-btn").unbind("click");
-            $(".delete-btn").bind("click", deleteTimeChoose);
-        }
+        <#--if (timeOpt == "day"){-->
+            <#--if (parseInt($('#countSpan').html())==2 && $(".time-choose-div:first").children("img.delete-btn").length==0){-->
+                <#--$("#time_div > .time-choose-div").prepend('<img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg">')-->
+            <#--}-->
+            <#--$("#time_div").append(timeDayStr);-->
+            <#--$(".calendar-icon").unbind("click").click(function(){-->
+                <#--selectTime($(this));-->
+            <#--});-->
+            <#--$(".delete-btn").unbind("click");-->
+            <#--$(".delete-btn").bind("click", deleteTimeChoose);-->
+        <#--}-->
     }
 
 
@@ -1368,6 +1297,42 @@
         $(this).parents("show-nav-bottom").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
         $("#mask").hide();
         $("body").css("overflow-y","scroll");
+    }
+
+    function toSelectTime() {
+        var isFirst=$(".amount_button:disabled").size();
+        if(isFirst>0){
+            isFirst=1;
+        }
+        if (isNaN($('#countSpan').html())){
+            alert("显示错误，请刷新页面");
+            return;
+        }
+
+        if (prepareOrderInfo(isFirst)){
+            $("#toSelectTimeForm").submit();
+        } else {
+            alert("请先完善订单信息");
+        }
+    }
+
+    function prepareOrderInfo(isFirst) {
+        var amount = parseInt($('#countSpan').html());
+        if (timeOpt != null && amount > 0){
+            $("input[name='teacher.id']").val(${teacher.id});
+            $("input[name='teacher.name']").val("${teacher.name}");
+            $("input[name='demandId']").val($(".demand.border-pill-active").data("first").split("#")[0]);
+            $("input[name='way']").val(waySelect);
+            $("input[name='recoverOb']").val(domainSelect);
+            $("input[name='remark']").val($('#remark').val());
+            $("input[name='totalpay']").val($('#sumSpan').html());
+            $("input[name='amount']").val(amount);
+            $("input[name='isFirst']").val(isFirst);
+            $("input[name='timeOpt']").val(timeOpt);
+            return true;
+        }
+        return false;
+
     }
 
 

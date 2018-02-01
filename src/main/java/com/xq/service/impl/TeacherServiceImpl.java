@@ -248,6 +248,7 @@ public class TeacherServiceImpl implements TeacherService{
         List<String> title = new ArrayList<String>();
         List<String> end = new ArrayList<String>();
         List<String> className = new ArrayList<String>();
+        List<String> period = new ArrayList<>();
 
 
         Teacher teacher=teachersDao.getTeacher(tid);
@@ -283,12 +284,14 @@ public class TeacherServiceImpl implements TeacherService{
 
         //分析一周安排表中 当天的各个时间段  每个时间段是一课时 看订单是否 已安排的
         for(String time:today_schedule.split("@")){
+            if (time.equals("0")) continue;
 
             if(service_time.size()==0){
                 start.add(now+"T"+time.split("-")[0]);
                 title.add("可预约");
                 end.add(now+"T"+time.split("-")[1]);
                 className.add("orderY");
+                period.add(time);
                 continue;
             }
 
@@ -299,6 +302,7 @@ public class TeacherServiceImpl implements TeacherService{
                     title.add("已预约");
                     end.add(now+"T"+time.split("-")[1]);
                     className.add("orderN");
+                    period.add(time);
                     break;
                 }
                 if(i==service_time.size()-1){
@@ -307,6 +311,7 @@ public class TeacherServiceImpl implements TeacherService{
                     title.add("可预约");
                     end.add(now+"T"+time.split("-")[1]);
                     className.add("orderY");
+                    period.add(time);
                 }
 
             }
@@ -316,6 +321,7 @@ public class TeacherServiceImpl implements TeacherService{
         calendarDto.setEnd(end);
         calendarDto.setTitle(title);
         calendarDto.setClassName(className);
+        calendarDto.setPeriod(period);
         return calendarDto;
     }
 
