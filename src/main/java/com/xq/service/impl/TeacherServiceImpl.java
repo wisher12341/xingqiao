@@ -253,12 +253,20 @@ public class TeacherServiceImpl implements TeacherService{
 
         Teacher teacher=teachersDao.getTeacher(tid);
 
-        d=d.split("GMT")[0];
-
+        Date date = null;
         SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
-        Date date = sf1.parse(d);
         SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
-        String now=sf2.format(date);
+        String now = null;
+        try {
+            String tmp = d.split("GMT")[0];
+            date = sf1.parse(tmp);
+            now=sf2.format(date);
+
+        } catch (ParseException e){
+            date = sf2.parse(d);
+            now = d;
+        }
+
 
         Calendar c = Calendar.getInstance();
         c.setTime(date);
@@ -378,5 +386,145 @@ public class TeacherServiceImpl implements TeacherService{
     public List<Comment> getCommentsByPage(Integer teacherId, Integer page, Integer size){
         Integer start = (page-1)*size;
         return commentDao.getMainCommentsByTidAndPage(teacherId,start,size);
+    }
+
+    @Override
+    public List<String> getTeacherSchedule(Integer tid) {
+        List<String> list = new ArrayList<>();
+        String schedule = teachersDao.getScheduleByTid(tid);
+        if (schedule != null && !schedule.isEmpty()){
+            for (String item : schedule.split("#")) {
+                list.add(item);
+            }
+        }
+        list.add(0,list.get(list.size()-1));
+        list.remove(list.size()-1);
+        return list;
+    }
+
+    @Override
+    public List<String> getAvailableDateByWeekday(int tid, String condition){
+        List<String> result = new ArrayList<>();
+
+        List<String> starts = order_time_month(tid);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+        String[] conditions = condition.split("@");
+
+        for (String item : starts){
+            try {
+                int dayOfWeek = getWeekDay(sdf.parse(item));
+                if (dayOfWeek == 7){
+                    dayOfWeek = 0;
+                }
+
+                if (String.valueOf(dayOfWeek).equals(conditions[0]) && canOrder(order_time_day(tid,item), conditions[1])){
+                    result.add(item);
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
+    }
+
+    private boolean canOrder(CalendarDto calendarDto, String condition){
+        if (calendarDto == null) return false;
+
+        String[] conditions = condition.split("%");
+        List<String> starts = calendarDto.getStart();
+        List<String> ends = calendarDto.getEnd();
+
+        if (starts.size() != ends.size()) return false;
+
+        for (int i=0; i<starts.size(); i++) {
+            if (calendarDto.getClassName().get(i).equals("orderY") && starts.get(i).contains(conditions[0]) && ends.get(i).contains(conditions[1])){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
+    private int getWeekDay(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        int week = calendar.get(Calendar.DAY_OF_WEEK);
+        if(week==1){
+            week=7;
+        }else{
+            week=week-1;
+        }
+        return week;
+    }
+
+    @Override
+    public String formatDateAndTime(String gmt){
+        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy HH:mm:ss",Locale.ENGLISH);
+        SimpleDateFormat sfdate = new SimpleDateFormat("yyyy-MM-dd");
+        String dateStr = gmt.split("GMT")[0];
+        try {
+            Date dateFrom = sf1.parse(dateStr);
+            return sfdate.format(dateFrom);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return gmt;
+    }
+
+    @Override
+    public List<String> weekLoop(Order order){
+        List<String> resultList = new ArrayList<>();
+        String serveTime = "";
+        String conflictTime = "";
+        SimpleDateFormat sfdate = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = Calendar.getInstance();
+
+        String[] startDates = order.getServerTime().split("#");
+        String[] tmp = null;
+        int amount = Integer.parseInt(order.getAmount());
+
+        try {
+            do {
+                tmp = new String[startDates.length];
+                for (int i = 0; i < startDates.length; i++){
+                    String date = startDates[i].substring(0, startDates[i].indexOf(" "));
+                    String timeCondition = startDates[i].substring(startDates[i].indexOf(" ")+1);
+
+                    CalendarDto calendarDto = order_time_day(order.getTeacher().getId(),date);
+                    if (canOrder(calendarDto, timeCondition)){
+                        serveTime += startDates[i] + "#";
+                        amount--;
+                        if (amount <= 0){
+                            if (serveTime.length() > 0){
+                                serveTime = serveTime.substring(0,serveTime.length()-1);
+                            }
+                            if (conflictTime.length() > 0){
+                                conflictTime = conflictTime.substring(0,conflictTime.length()-1);
+                            }
+                            resultList.add(serveTime);
+                            resultList.add(conflictTime);
+                            return resultList;
+                        }
+                    } else {
+                        conflictTime += startDates[i] + "#";
+                    }
+                    calendar.setTime(sfdate.parse(date));
+                    calendar.add(Calendar.DATE, 7);
+                    tmp[i] = sfdate.format(calendar.getTime()) + " " + timeCondition;
+                }
+
+                startDates = tmp;
+            } while (amount > 0);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        resultList.add(serveTime);
+        resultList.add(conflictTime);
+        return resultList;
+
     }
 }

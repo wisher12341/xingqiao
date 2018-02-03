@@ -31,4 +31,6 @@ public interface TeacherDao {
 
     void editSchedule(@Param("schedule") String schedule, @Param("id") Integer id);
 
+    String getScheduleByTid(Integer id);
+
 }

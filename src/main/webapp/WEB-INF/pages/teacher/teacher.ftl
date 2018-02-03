@@ -612,6 +612,7 @@
                 </button>
             </div>
             <form id="toSelectTimeForm" action="${base}/wx/teacher/toSelectTime" method="post">
+                <input hidden name="teacher.userId"/>
                 <input hidden name="teacher.id"/>
                 <input hidden name="teacher.name"/>
                 <input hidden name="demandId"/>
@@ -1319,6 +1320,7 @@
     function prepareOrderInfo(isFirst) {
         var amount = parseInt($('#countSpan').html());
         if (timeOpt != null && amount > 0){
+            $("input[name='teacher.userId']").val(${teacher.userId});
             $("input[name='teacher.id']").val(${teacher.id});
             $("input[name='teacher.name']").val("${teacher.name}");
             $("input[name='demandId']").val($(".demand.border-pill-active").data("first").split("#")[0]);
@@ -1328,7 +1330,7 @@
             $("input[name='totalpay']").val($('#sumSpan').html());
             $("input[name='amount']").val(amount);
             $("input[name='isFirst']").val(isFirst);
-            $("input[name='timeOpt']").val(timeOpt);
+            $("input[name='timeOpt']").val($(".timeOption.border-pill-active").data("timeopt"));
             return true;
         }
         return false;

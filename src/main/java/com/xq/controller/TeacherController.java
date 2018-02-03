@@ -19,6 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -182,6 +186,7 @@ public class TeacherController {
         mv.addObject("order",order);
         List<String> starts=teachersService.order_time_month(order.getTeacher().getId());
         mv.addObject("starts",starts);
+        mv.addObject("schedule",teachersService.getTeacherSchedule(order.getTeacher().getId()));
         return mv;
     }
 
@@ -192,6 +197,14 @@ public class TeacherController {
     @RequestMapping(value = "/toCheckTimes",method = RequestMethod.POST)
     public ModelAndView toCheckTimes(Order order){
         ModelAndView mv=new ModelAndView("order/check_times");
+        if (order.getTimeOpt().equals("week")){
+            List<String> time = teachersService.weekLoop(order);
+            if (!time.get(1).isEmpty()){
+                order.setServerTime(time.get(0) + "++" + time.get(1));
+            } else {
+                order.setServerTime(time.get(0));
+            }
+        }
         mv.addObject("order",order);
         return mv;
     }
@@ -207,17 +220,18 @@ public class TeacherController {
         return mv;
     }
 
-//    /**
-//     * 下预约单 显示级别：月份
-//     * @param tid
-//     * @return
-//     */
-//    @ResponseBody
-//    @RequestMapping(value = "/{tid}/orderTime/month",method = RequestMethod.GET)
-//    public Result order_time_month(@PathVariable Integer tid){
-//        List<String> starts=teachersService.order_time_month(tid);
-//        return new Result(true,starts);
-//    }
+
+    /**
+     * 下预约单 显示级别：月份
+     * @param tid
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getAvailableDateByWeekday",method = RequestMethod.POST)
+    public Result order_time_month(@RequestParam("tid") Integer tid, @RequestParam("condition") String condition){
+        List<String> result = teachersService.getAvailableDateByWeekday(tid, condition);
+        return new Result(true, result);
+    }
 
     /**
      * 下预约单 显示级别：日
@@ -237,5 +251,11 @@ public class TeacherController {
     @RequestMapping(value="orderTime",method = RequestMethod.POST)
     public Result order_time(@RequestParam String start, @RequestParam String end) throws ParseException {
         return new Result(true,teachersService.order_time(start,end));
+    }
+
+    @ResponseBody
+    @RequestMapping(value="formatDate",method = RequestMethod.POST)
+    public Result order_time(@RequestParam String date) throws ParseException {
+        return new Result(true,teachersService.formatDateAndTime(date));
     }
 }
