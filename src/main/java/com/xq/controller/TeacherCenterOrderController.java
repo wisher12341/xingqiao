@@ -3,23 +3,18 @@ package com.xq.controller;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
 import com.xq.dto.Result;
-import com.xq.model.Comment;
 import com.xq.model.RecoveryLog;
+import com.xq.model.User;
 import com.xq.service.CommentService;
 import com.xq.service.OrderTeacherService;
 import com.xq.service.RecoveryLogService;
-import com.xq.util.FileUpload;
+import com.xq.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
 
 /**
  * 治疗师中心 我的订单
@@ -35,6 +30,8 @@ public class TeacherCenterOrderController {
     RecoveryLogService recoveryLogService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    UserService userService;
 
     /**
      * 我的订单首页
@@ -79,9 +76,12 @@ public class TeacherCenterOrderController {
      * 更新康复日志
      */
     @RequestMapping(value = "/updateLog",method = RequestMethod.POST)
-    public ModelAndView updatelog_post(RecoveryLog recoveryLog)  {
+    public ModelAndView updatelog_post(RecoveryLog recoveryLog, HttpServletRequest request)  {
         recoveryLogService.addRecovery(recoveryLog);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+recoveryLog.getOrderId()+"/detail");
+//        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,"1");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user.getId()+"/myLog");
         return mv;
     }
     /**

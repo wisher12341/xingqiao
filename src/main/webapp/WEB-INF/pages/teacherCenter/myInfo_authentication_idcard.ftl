@@ -88,7 +88,9 @@
        <div class="idcard" id="front" align="center" onclick=$("input[name=pidUrlFront]").trigger('click')>
            <div class="picdiv">
            <#if (teacher.pidUrlFront)?? && (teacher.pidUrlFront)!="">
-               <img class="addimg" src="/${teacher.pidUrlFront}"  onerror='this.src="/static/img/touxiang.svg;this.onerror=null"'>
+               <img class="addimg" src="/${teacher.pidUrlFront}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
+           <#elseif (parent.pidFrontUrl)?? && (parent.pidFrontUrl)!="">
+               <img class="addimg" src="/${parent.pidFrontUrl}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
            <#else >
                <img src="/static/img/sf1.png" class="sf">
                <img src="/static/img/camera.png" class="camera">
@@ -103,7 +105,9 @@
         <div class="idcard" id="back" align="center" onclick=$("input[name=pidUrlBack]").trigger('click')>
             <div class="picdiv">
         <#if (teacher.pidUrlBack)?? && (teacher.pidUrlBack)!="">
-            <img class="addimg" src="/${teacher.pidUrlBack}"  onerror='this.src="/static/img/touxiang.svg;this.onerror=null"'>
+            <img class="addimg" src="/${teacher.pidUrlBack}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
+        <#elseif (parent.pidBackUrl)?? && (parent.pidBackUrl)!="">
+            <img class="addimg" src="/${parent.pidBackUrl}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
         <#else >
             <img src="/static/img/sf2.png" class="sf">
             <img src="/static/img/camera.png" class="camera">
@@ -118,7 +122,9 @@
         <div class="idcard" id="people" align="center" onclick=$("input[name=peoplePidUrl]").trigger('click')>
         <div class="picdiv">
         <#if (teacher.peoplePidUrl)?? && (teacher.peoplePidUrl)!="">
-                <img class="addimg" src="/${teacher.peoplePidUrl}"  onerror='this.src="/static/img/touxiang.svg;this.onerror=null"'>
+                <img class="addimg" src="/${teacher.peoplePidUrl}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
+            <#elseif (parent.peoplePidUrl)?? && (parent.peoplePidUrl)!="">
+                <img class="addimg" src="/${parent.peoplePidUrl}"  onerror='this.src="/static/img/touxiang.svg";this.onerror=null'>
         <#else >
             <img src="/static/img/sf3.png" class="sf3">
             <img src="/static/img/camera.png" class="camera">
@@ -134,7 +140,7 @@
 
 
 <div class="foot" align="center">
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="/wx/${(teacher??)?string("teacherCenter","parentCenter")}/info/${user.id}/idcard" method="post" enctype="multipart/form-data">
         <input type="file" name="pidUrlFront" style="display: none">
         <input type="file" name="pidUrlBack" style="display: none">
         <input type="file" name="peoplePidUrl" style="display: none">

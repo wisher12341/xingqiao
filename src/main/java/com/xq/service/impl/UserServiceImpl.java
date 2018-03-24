@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
         if(user==null){
             return false;
         }else{
-            String key=type.equals("parent")?Const.OPENID_PARENT:Const.OPENID_TEACHER;
+            String key=type.equals("parent")? Const.OPENID_PARENT: Const.OPENID_TEACHER;
             // 保存用openid到cookie
             Cookie cookie = new Cookie(key,openid);
             // 设置过期时间，以秒为单位  设为100个星期
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
             if (user_re.getPassword().equals(user.getPassword())) {
                 user_re.setOpenid(user.getOpenid());
                 userDao.addOpenid(user_re);
-                String op=user.getStatus()==0?Const.OPENID_PARENT:Const.OPENID_TEACHER;
+                String op=user.getStatus()==0? Const.OPENID_PARENT: Const.OPENID_TEACHER;
                 // 保存用openid到cookie
                 Cookie cookie = new Cookie(op,user.getOpenid());
                 // 设置过期时间，以秒为单位  设为100个星期
@@ -110,7 +110,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changeAccount(String openid, HttpServletResponse response, int status) {
-        String key=status==0?Const.OPENID_PARENT:Const.OPENID_TEACHER;
+        String key=status==0? Const.OPENID_PARENT: Const.OPENID_TEACHER;
         // 删除cookie
         Cookie cookie = new Cookie(key,"no");
         cookie.setMaxAge(0);
@@ -140,5 +140,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUid(Integer uid) {
         return userDao.getUserByUid(uid);
+    }
+
+    @Override
+    public void changePassword(HttpServletRequest request, String password, String type) {
+//        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        userDao.changePassword(openid,type,password);
     }
 }

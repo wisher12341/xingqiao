@@ -19,6 +19,10 @@ public class Comment {
     private String picUrls;
 
     private User user;//对应的用户
+    private Order order;//对应的订单
+    private Integer cnumber;//追评数
+    private Parent parent;//对应的家长
+    private Demand demand;//对应的患者
 
     private String username;//公众号添加-jcy
     private String headimgurl;//公众号添加-jcy
@@ -33,6 +37,38 @@ public class Comment {
     private Integer pid;//跟帖 对应父评论id
 
     private MultipartFile[] pics;//照片
+
+    public Parent getParent() {
+        return parent;
+    }
+
+    public void setParent(Parent parent) {
+        this.parent = parent;
+    }
+
+    public Demand getDemand() {
+        return demand;
+    }
+
+    public void setDemand(Demand demand) {
+        this.demand = demand;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Integer getCnumber() {
+        return cnumber;
+    }
+
+    public void setCnumber(Integer cnumber) {
+        this.cnumber = cnumber;
+    }
 
     public MultipartFile[] getPics() {
         return pics;

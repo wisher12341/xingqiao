@@ -14,6 +14,7 @@
         }
         #main{
             margin-top: 4%;
+            margin-bottom: 10%;
         }
         .buttonDiv_info{
             border-bottom: 1px solid #ccc;
@@ -67,6 +68,8 @@
             margin-left: 20px;
             margin-right: 100px;
             margin-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 5%;
         }
         .row{
             margin: 0!important;
@@ -78,61 +81,51 @@
 </head>
 <body>
     <div id="main">
-        <div class="buttonDiv_info" style="background-color: white;" >
-            <div>
-                <div class="row" style="height: 7%;padding-top:3.5%;">
-                    <div class="col-xs-4">
-                        <p class="text_p"> 小岳岳</p>
-                    </div>
-                    <div class="col-xs-5">
-                        <p class="text_pp">
-                            <span style="color: orange">1/3</span>
-                        </p>
+    <#if logs?size==0>
+        <div >
+                <div class="row" style="margin-top: 30%!important;width: 100%">
+                    <div class="col-xs-2">
                     </div>
                     <div class="col-xs-2">
-                        <p class="text_ppp"> 更新</p>
+                        <img src="/static/img/kong.png" width="150">
                     </div>
-                    <div class="col-xs-1">
-                        <i class="fa fa-angle-right fa-4x icon_fa icon_fa"></i>
-                    </div>
-                </div>
-                <div class="row" style="border-bottom:1px solid #ccc; ">
-                    <div class="col-xs-12">
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复时间</span><span class="col-xs-8">2018-01-05 14:00-15:40</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复项目</span><span class="col-xs-8">心理</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">上门方式</span><span class="col-xs-8">治疗师上门</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">订单号</span><span class="col-xs-8">13151515445</span></p>
+                    <div class="col-xs-6">
+                        <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                        <p style="font-size: 38px;color: grey;font-weight: bold">您还没有要填写的康复日志</p>
                     </div>
                 </div>
-            </div>
-            <div>
-                <div class="row" style="height: 7%;padding-top:3.5% ">
-                    <div class="col-xs-4">
-                        <p class="text_p"> 小月月</p>
+            <#else>
+            <div class="buttonDiv_info" style="background-color: white;" >
+                <#list logs as log>
+                    <div onclick="location.href='${path}/wx/teacherCenter/${log.order.id}/updateLog'">
+                        <div class="row" style="height: 7%;padding-top:3.5%;">
+                            <div class="col-xs-4">
+                                <p class="text_p">${log.order.demand.name}</p>
+                            </div>
+                            <div class="col-xs-5">
+                                <p class="text_pp">
+                                    <span style="color: orange">${log.count}/${log.order.amount}</span>
+                                </p>
+                            </div>
+                            <div class="col-xs-2">
+                                <p class="text_ppp"> 更新</p>
+                            </div>
+                            <div class="col-xs-1">
+                                <i class="fa fa-angle-right fa-4x icon_fa icon_fa"></i>
+                            </div>
+                        </div>
+                        <div class="row" style="border-bottom:1px solid #ccc;">
+                            <div class="col-xs-12">
+                                <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复时间</span><span class="col-xs-8">${log.time}</span></p>
+                                <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复项目</span><span class="col-xs-8">${log.order.recoverOb}</span></p>
+                                <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">上门方式</span><span class="col-xs-8">${log.order.way}</span></p>
+                                <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">订单号</span><span class="col-xs-8">${log.order.id}</span></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-xs-5">
-                        <p class="text_pp">
-                            <span style="color: orange">2/3</span>
-                        </p>
-                    </div>
-                    <div class="col-xs-2">
-                        <p class="text_ppp"> 更新</p>
-                    </div>
-                    <div class="col-xs-1">
-                        <i class="fa fa-angle-right fa-4x icon_fa"></i>
-                    </div>
-                </div>
-                <div class="row" style="border-bottom:1px solid #ccc; ">
-                    <div class="col-xs-12">
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复时间</span><span class="col-xs-8">2018-01-05 14:00-15:40</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">康复项目</span><span class="col-xs-8">心理</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">上门方式</span><span class="col-xs-8">治疗师上门</span></p>
-                        <p class="text_detail row"><span class="col-xs-3" style="font-weight: bold">订单号</span><span class="col-xs-8">13151515445</span></p>
-                    </div>
-                </div>
-            </div>
+                </#list>
+            </#if>
         </div>
-
     </div>
 </body>
 </html>

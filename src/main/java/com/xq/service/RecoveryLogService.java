@@ -15,7 +15,7 @@ public interface RecoveryLogService {
 
     RecoveryLogDto getLogsByDto(RecoveryLogDto recoveryLogDto, HttpServletRequest request);
 
-    RecoveryLogDto getMyTeachersAndDemandsByUid(HttpServletRequest request);
+    RecoveryLogDto getMyTeachersAndDemandsNoConfirmLogByUid(HttpServletRequest request);
 
     void allConfirmByOrderId(String orderId);
 
@@ -24,4 +24,6 @@ public interface RecoveryLogService {
     void remind(Integer lid, String oid);
 
     void addRecovery(RecoveryLog recoveryLog);
+
+    RecoveryLog getLogByRid(Integer rid);
 }

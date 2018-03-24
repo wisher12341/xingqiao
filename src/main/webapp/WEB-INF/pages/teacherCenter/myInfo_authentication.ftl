@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>实名认证</title>
+    <meta charset="UTF-8">
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myInfo.css" type="text/css" rel="stylesheet" />
@@ -83,7 +84,7 @@
     <#--</div>-->
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/name/0">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/name/${(teacher.name)!''}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 真实姓名</p>
             </div>
@@ -94,7 +95,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/pid/0">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/pid/${(teacher.pid)!''}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 证件号</p>
             </div>
@@ -172,7 +173,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/experienceAge/0">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/experience_age/${(teacher.experienceAge)!''}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 康复教龄</p>
             </div>

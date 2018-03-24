@@ -23,7 +23,7 @@ public interface TeacherCenterService {
 
    List<Demand> getDemands(int teacherId);
 
-   List<Message> getMessagesByUserId(int userId);
+   MessageDto getMessagesByUserId(int userId);
 
    Demand getDemandDetail(int demandId);
 
@@ -39,7 +39,7 @@ public interface TeacherCenterService {
 
     TeacherInfoAuthentication getTeacherInfoAuthenticationByUid(Integer userId);
 
-    Object getInfoByTypeName(int uid, String type,String string);
+    Object getInfoByTypeName(int uid, String type, String string);
 
     void addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis);
 
@@ -70,4 +70,20 @@ public interface TeacherCenterService {
     Teacher getIdCardByUid(Integer uid);
 
     void delComplexInfo(int uid, String type, int index);
+
+    List<TeacherLogDto> getLogByUid(Integer userId);
+
+    TeacherCenterCountDto getCounts(Integer id, String parent);
+
+    TeacherInfoEdit myInfoEdit(String ftype, String ctype, String value, Integer userStatus);
+
+    void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String parent);
+
+    List<Message> getInformMessageByPage(HttpServletRequest request, Integer page);
+
+    void allInformRead(HttpServletRequest request);
+
+    TCommentsDto getCommentsByUserId(Integer userId);
+
+    Integer getUidByTid(Integer tid);
 }

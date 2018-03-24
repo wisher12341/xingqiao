@@ -108,7 +108,7 @@
                     <p class="text_p"> 标题</p>
                 </div>
                 <div class="col-xs-9">
-                    <input placeholder="请输入标题，20字以内" name="title" type="text" class="title_input" maxlength="20"
+                    <input placeholder="请输入标题，20字以内" name="title" type="text" class="title_input" maxlength="20" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: #111!important;"</#if>
                         <#if data??>
                             value="${(data!)?split("@")[0]}"
                         </#if>
@@ -118,7 +118,8 @@
         </div>
 
         <div class="buttonDiv_info" style="background-color: white">
-            <textarea class="textarea" placeholder="描述您曾任职的学校及岗位具体的教学内容、教研成果" name="detail"><#if data??>${(data!)?split("@")[1]}</#if></textarea>
+            <textarea class="textarea" placeholder="描述您的成功案例" name="detail" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: #111!important;"</#if>><#if data??>${(data!)?split("@")[1]}</#if></textarea>
+<#if qetype?? && qetype=="edit">
             <p class="length">
                 <#if data??>
                     ${200-(data!)?split("@")[1]?length}
@@ -126,11 +127,13 @@
                     200
                 </#if>
             </p>
+</#if>
         </div>
-
+<#if qetype?? && qetype=="edit">
         <div class="foot" align="center">
             <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
         </div>
+</#if>
     </form>
 
 </div>

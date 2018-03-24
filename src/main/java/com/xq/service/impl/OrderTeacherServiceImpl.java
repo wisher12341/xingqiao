@@ -45,6 +45,8 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         List<Order> orderList_doing=new ArrayList<Order>();
         List<Order> orderList_history=new ArrayList<Order>();
         for(Order order:orderList){
+            String[] times=order.getServerTime().split("#");
+            order.setServerTime(times[0].split(" ")[0]+"—"+times[times.length-1].split(" ")[0]);
             if(order.getStatusT()<3){
                 //待处理   只有家长付款后  p,t都变为3 才算进行中
                 orderList_wait.add(order);

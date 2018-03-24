@@ -23,13 +23,15 @@ public interface UserDao {
 
     void saveNewUser(WxUserInfo wxUserInfo);
 
-    User getUserByOpenidStatus(@Param("openid") String openid,@Param("status") String status);
+    User getUserByOpenidStatus(@Param("openid") String openid, @Param("status") String status);
 
     void register(User user);
 
-    void clearOpenid(@Param("openid") String openid,@Param("status") int status);
+    void clearOpenid(@Param("openid") String openid, @Param("status") int status);
 
     void bindAccount(User user);
 
     void changeUserStatus(@Param("uid") int uid, @Param("userStatue") int i);
+
+    void changePassword(@Param("openid") String openid, @Param("status") String type, @Param("password") String password);
 }

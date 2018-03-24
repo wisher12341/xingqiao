@@ -60,7 +60,7 @@
                 <p class="text_p"> 头像</p>
             </div>
             <div class="col-xs-8">
-                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" onclick=location.href="${path}/wx/teacherCenter/${user.id}/changeIconPage">
+                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" >
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -77,7 +77,7 @@
                 <p class="text_pp"> ${(user.id)!}</p>
             </div>
         </div>
-        <div class="info row" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!''}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 性别</p>
             </div>
@@ -88,21 +88,17 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick="$('#genderSelecter').trigger('click');">
-            <div class="col-xs-3">
-                <p class="text_p"> 年龄</p>
-            </div>
-            <div class="col-xs-8">
-                <p class="text_pp">35</p>
-            </div>
-            <div class="col-xs-1">
-                <i class="fa fa-angle-right fa-4x icon_fa"></i>
-            </div>
-        </div>
-        <select name="gender" id="genderSelecter">
-            <option value="0">男</option>
-            <option value="1">女</option>
-        </select>
+        <#--<div class="info row" onclick="$('#genderSelecter').trigger('click');">-->
+            <#--<div class="col-xs-3">-->
+                <#--<p class="text_p"> 年龄</p>-->
+            <#--</div>-->
+            <#--<div class="col-xs-8">-->
+                <#--<p class="text_pp">35</p>-->
+            <#--</div>-->
+            <#--<div class="col-xs-1">-->
+                <#--<i class="fa fa-angle-right fa-4x icon_fa"></i>-->
+            <#--</div>-->
+        <#--</div>-->
     </div>
     <div class="buttonDiv_info">
         <div class="info row" >
@@ -113,7 +109,7 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/${user.id}/email/modifyPage">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(user.email)!''}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>

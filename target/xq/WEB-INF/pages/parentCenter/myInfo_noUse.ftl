@@ -1,4 +1,4 @@
-<#include "common/const.ftl" />
+0<#include "common/const.ftl" />
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>个人资料</title>

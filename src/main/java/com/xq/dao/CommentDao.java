@@ -30,5 +30,13 @@ public interface CommentDao {
 
     Comment getCommentByCid(Integer cid);
 
-    List<Comment> getMainCommentsByTidAndPage(@Param("tid") Integer tId,@Param("start") Integer start,@Param("size") Integer size);
+    List<Comment> getMainCommentsByTidAndPage(@Param("tid") Integer tId, @Param("start") Integer start, @Param("size") Integer size);
+
+    List<Comment> getNoReplyCommentsByUid(Integer uid);
+
+    List<Comment> getHisCommentsByUid(Integer uid);
+
+    int getNoReplyCommentCountByUid(Integer uid);
+
+    List<Comment> getParentHisCommentsByUid(Integer userId);
 }

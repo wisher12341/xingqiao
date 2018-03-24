@@ -52,16 +52,26 @@
         <br>
         <br>
     </div>
+    <div class="container time-selector" id="conflictContainer">
+        <div class="row">
+            <div class="col-xs-12 time-selector-title" >
+                以下课时已被预约，已为您自动跳过<span></span>
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
 
 </div>
 
 
 <div class="bottom-multiple-btn inline-wrapper" style="height: 120px;padding-left: 2%;z-index: 10000">
-    <div id="btnCancel" class="bottom-btn-item" style="background-color: transparent;">返回</div>
+    <div id="btnCancel" class="bottom-btn-item" style="background-color: transparent; color: #696969">返回</div>
     <div id="btnSubmitOrder" class="bottom-btn-item">确认</div>
 </div>
 
 <form id="toCancelForm" action="${path}/wx/teacher/toSelectTime" method="post">
+    <input hidden name="teacher.userId"/>
     <input hidden name="teacher.id"/>
     <input hidden name="teacher.name"/>
     <input hidden name="demandId"/>
@@ -79,7 +89,20 @@
 <script>
     $(function () {
             var servertime = "${order.serverTime}";
+            var conflict = null;
+            var list = servertime.split("++");
+            if (list.length > 1){
+                servertime = list[0];
+                conflict = list[1];
+                var tmpConflicts = conflict.split("#");
+                for (var j=0; j < tmpConflicts.length; j++){
+                    var strConflict = '<div class="row">' +
+                            '<div class="col-xs-12 selected-time" style="color: red">' + tmpConflicts[j].replace(/%/, "-") + '</div></div><hr/>';
+                    $("#conflictContainer").append(strConflict);
+                }
+            }
             var tmp = servertime.split("#");
+            tmp.sort();
             for (var i=0; i< tmp.length; i++){
                 var str = '<div class="row">' +
                                 '<div class="col-xs-3 selected-time">第' + (i+1) + '节课</div>' +
@@ -94,6 +117,7 @@
                     method: 'POST',
                     url: '${path}/wx/order/submit',
                     data: {
+                        'teacher.userId' : '${order.teacher.userId}',
                         'teacher.id': '${order.teacher.id}',
                         'teacher.name':'${order.teacher.name}',
                         'demandId':'${order.demandId}',
@@ -123,6 +147,7 @@
                 var pay = "${order.totalpay}";
                 pay = pay.replace(/,/,"");
 
+                $("input[name='teacher.userId']").val(${order.teacher.userId});
                 $("input[name='teacher.id']").val(${order.teacher.id});
                 $("input[name='teacher.name']").val("${order.teacher.name}");
                 $("input[name='demandId']").val("${order.demandId}");
@@ -133,8 +158,8 @@
                 $("input[name='amount']").val("${order.amount}");
                 $("input[name='isFirst']").val("${order.isFirst}");
                 $("input[name='timeOpt']").val("${order.timeOpt}");
-                $("input[name='serverTime']").val(serviceTimes);
-                $("#toCheckTimeForm").submit();
+                $("input[name='serverTime']").val(servertime);
+                $("#toCancelForm").submit();
             });
     });
 

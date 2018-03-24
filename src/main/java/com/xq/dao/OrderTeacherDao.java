@@ -12,7 +12,7 @@ public interface OrderTeacherDao {
     List<Order> getAllOrderByUid(String uid);
     void orderAffirm(String orderId);
 
-    void orderReject(@Param("oid") String orderId,@Param("reason") String reason);
+    void orderReject(@Param("oid") String orderId, @Param("reason") String reason);
 
     void orderFinish(String oid);
 
@@ -22,5 +22,7 @@ public interface OrderTeacherDao {
 
     List<Order> getAllDoingOrderByUid(Integer userId);
 
-    List<Order> getAllDoingDayOrderByUid(@Param("uid") Integer uid,@Param("day") String day);
+    List<Order> getAllDoingDayOrderByUid(@Param("uid") Integer uid, @Param("day") String day);
+
+    List<Order> getLogByUid(Integer userId);
 }

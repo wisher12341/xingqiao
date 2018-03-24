@@ -52,6 +52,8 @@ public class OrderServiceImpl implements OrderService{
         List<Order> orderList_history=new ArrayList<Order>();
         List<Order> orderList_history_noComment=new ArrayList<Order>();
         for(Order order:orderList){
+            String[] times=order.getServerTime().split("#");
+            order.setServerTime(times[0].split(" ")[0]+"—"+times[times.length-1].split(" ")[0]);
             if(order.getStatusP()<3){
                 //待处理   只有家长付款后  p,t都变为3 才算进行中
                 orderList_wait.add(order);
@@ -315,7 +317,7 @@ public class OrderServiceImpl implements OrderService{
         User user=userDao.getParentByOpenid(openid);
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
+//        SimpleDateFormat sdfdate = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String dateNowStr = sdf.format(d);
 
@@ -331,31 +333,31 @@ public class OrderServiceImpl implements OrderService{
         order.setStatusT(1);
         order.setTrace(dateNowStr+"@下预约单");
 
-        try {
-            if (!order.getTimeOpt().equals("day")){
-                String timeStr = order.getServerTime();
-                Date serveDate = sdfdate.parse(timeStr.split(" ")[0]);
-                String timePeriod = timeStr.split(" ")[1];
-                StringBuilder sb = new StringBuilder();
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(serveDate);
-                for (int i = 0; i < Integer.parseInt(order.getAmount()); i++) {
-                    if (i>0){
-                        sb.append("#");
-                    }
-                    sb.append(sdfdate.format(calendar.getTime())).append(" ").append(timePeriod);
-                    if (order.getTimeOpt().equals("week")){
-                        calendar.add(Calendar.DATE,7);
-                    } else if (order.getTimeOpt().equals("month")){
-                        calendar.add(Calendar.MONTH,1);
-                    }
-                }
-
-                order.setServerTime(sb.toString());
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            if (!order.getTimeOpt().equals("day")){
+//                String timeStr = order.getServerTime();
+//                Date serveDate = sdfdate.parse(timeStr.split(" ")[0]);
+//                String timePeriod = timeStr.split(" ")[1];
+//                StringBuilder sb = new StringBuilder();
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.setTime(serveDate);
+//                for (int i = 0; i < Integer.parseInt(order.getAmount()); i++) {
+//                    if (i>0){
+//                        sb.append("#");
+//                    }
+//                    sb.append(sdfdate.format(calendar.getTime())).append(" ").append(timePeriod);
+//                    if (order.getTimeOpt().equals("week")){
+//                        calendar.add(Calendar.DATE,7);
+//                    } else if (order.getTimeOpt().equals("month")){
+//                        calendar.add(Calendar.MONTH,1);
+//                    }
+//                }
+//
+//                order.setServerTime(sb.toString());
+//            }
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
 
         orderDao.addOrder(order);

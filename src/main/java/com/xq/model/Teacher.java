@@ -1,5 +1,7 @@
 package com.xq.model;
 
+import com.xq.dto.TeacherInfoSchool;
+
 import java.util.List;
 
 /**
@@ -71,6 +73,17 @@ public class Teacher {
     //家长-我的治疗师
     private User user;
     private List<Demand> demandList;
+
+
+    private List<TeacherInfoSchool> teacherInfoSchoolList;//用于毕业学校展示
+
+    public List<TeacherInfoSchool> getTeacherInfoSchoolList() {
+        return teacherInfoSchoolList;
+    }
+
+    public void setTeacherInfoSchoolList(List<TeacherInfoSchool> teacherInfoSchoolList) {
+        this.teacherInfoSchoolList = teacherInfoSchoolList;
+    }
 
     public Integer getStar() {
         return star;

@@ -6,7 +6,7 @@
 <#include "common/head.ftl" />
     <style>
         body{
-            background-color: #f5f5f5;
+            /*background-color: #f5f5f5;*/
         }
         #main{
             margin-top: 4%;
@@ -22,34 +22,46 @@
             /*font-weight: bold;*/
             padding:15px 30px 0;
         }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
     </style>
 </head>
 <body>
 
 
 <div id="main">
-    <div class="buttonDiv_info" style="background-color: white;" >
-        <p class="text_p">亲爱的康复治疗师，你好！</p>
-        <p class="text_p">欢迎您申请成为星桥康复的一名康复治疗师，感谢您的支持和认可，希望您能在星桥康复平台获得更多成长和支持！</p>
-        <p class="text_p">1、申请加入星桥康复平台的康复治疗师所上传的相关信息、证件等内容必须真实有效、不得虚构造假；</p>
-        <p class="text_p">2、在使用本平台的产品和服务时不得违反国家有关法规及星桥平台的相关规定；</p>
-        <p class="text_p">3、康复治疗师在通过资料审核后，才能获得平台上的接单资格。</p>
-        <p class="text_p">4、康复治疗师在平台上接单时需注意以下事项：</p>
-        <p class="text_p">（1）及时更新服务相关安排，确保平台中显示信息与条件与本人实际情况相符，如康复时间、康复方式等。</p>
-        <p class="text_p">（2）康复前与家长积极沟通，确定患者情况、康复时间、地点等；</p>
-        <p class="text_p">（3）康复之前需做好充分准备，制定康复计划，康复时不迟到、不早退、不随意更改时间，如有特殊情况提前沟通协调；</p>
-        <p class="text_p">（4）康复过程中不做与康复无关的事情、不玩手机、注意个人卫生、有责任心、耐心、爱心；</p>
-        <p class="text_p">解除合作规则</p>
-        <p class="text_p">注册康复治疗师在使用本平台时，若出现下列任一或几种情况，根据情节和危害后果，将与平台永久解除合作，若行为触犯国家有关法律、法规规定的，星桥康复平台保留配合行政司法机关调查的权利。</p>
-        <p class="text_p">5、上传资料与实际情况不符，伪造、虚构信息；</p>
-        <p class="text_p">6、恶意收费，除了在平台上设定的价格外，肆意借助其他名目收费；</p>
-        <p class="text_p">7、接单过程中，在平台-治疗师-患者三方沟通达成一致情况下，出现临时拒绝接单情况两次及以上的；</p>
-        <p class="text_p">8、恶意泄露患者、患者亲属、平台用户等个人信息的；</p>
-        <p class="text_p">9、恶意诽谤、中伤平台，对平台造成不利影响的；</p>
-        <p class="text_p">10、通过平台散步或传播言行不雅的信息、或向其他用户散步或传播虚假信息的；</p>
+    <div class="" style="background-color: white;" >
+        <p class="text_p">1. 星级治疗师是如何评定的？</p>
+        <p class="text_p">治疗师在本平台具有的星级标志制度规则如下:</p>
+        <p class="text_p">300次康复+90％以上好评， 1星</p>
+        <p class="text_p">600次康复+90％以上好评， 2星</p>
+        <p class="text_p">1000次康复+90％以上好评，3星</p>
+        <p class="text_p">2000次康复+90％以上好评，4星</p>
+        <p class="text_p">3000次康复+90％以上好评，5星</p>
+        <p class="text_p">（康复次数：按治疗师在平台中更新的‘康复计划’计数） </p>
+        <p class="text_p"> 治疗师获得星级后，其康复费用参考标准可以上浮。获得星级后接收的预约可以开始上浮费用，正在进行治疗的要根据双方的意愿进行费用调整。</p>
+        <p class="text_p">2.成为星级治疗师有什么好处吗？</p>
+        <p class="text_p">首先这是您经验能力的展示，您的价格也可以以此为依据提升，进入更高的价格区间，帮助您与经验稍缺乏的治疗师区分开。另外，您将会得到平台的优先推荐，得到更多患者资源，更好的做康复安排。同时，平台也会为星级康复治疗师准备各种福利，组织相关活动以及技能提升的讲座等。</p>
     </div>
 
-
+    <div class="foot" align="center">
+        <button style="width: 100% !important;" onclick="">申请升级</button>
+    </div>
 </div>
 </body>
 

@@ -21,11 +21,13 @@ public class SmsServiceImpl implements SmsService {
     UserDao userDao;
 
     @Override
-    public String getNumber(String phone) {
-        User user=userDao.findUserByName(phone);
-        if(user!=null){
-            //手机号已注册
-            return null;
+    public String getNumber(String phone, String type) {
+        if(type.equals("login")) {
+            User user = userDao.findUserByName(phone);
+            if (user != null) {
+                //手机号已注册
+                return null;
+            }
         }
 
         Random random = new Random();

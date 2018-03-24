@@ -16,6 +16,7 @@
     <script src='${base}/static/fullcalendar/fullcalendar.js'></script>
     <script src='${base}/static/js/teacher/autoresize.js'></script>
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
+    <link rel="stylesheet" href="${base}/static/font-awesome-4.7.0/css/font-awesome.min.css" />
     <style>
         #calendar_month,#calendar_day {
             max-width: 900px;
@@ -74,11 +75,42 @@
         .padding-5-10{
             padding: 5px 10px;
         }
+        body{
+            background-color: #f5f5f5;
+        }
+
+        .circle{
+            position: relative;
+            left: 30px;
+            /*padding-top:10px;*/
+            /*padding-bottom: 5px;*/
+        }
+        .icon_fa{
+            /*position: relative;*/
+            /*top: 5px;*/
+            color: dimgrey;
+        }
+        .text_detail{
+            color: dimgrey;
+            font-size: 15px;
+            /*margin-left: 10px;*/
+            /*margin-bottom: 15px;*/
+        }
+        .text_p{
+            font-size: 16px;
+            display: inline;
+            color: dimgrey;
+            /*font-weight: bold;*/
+            position: relative;
+            top:10px;
+            left: 24px;
+            padding-bottom: 10px;
+        }
     </style>
 </head>
 <body style="height: 100%;" id="emoji">
 <div id="base" class="base" style="height: 100%;">
-    <div class="container my-panel" style="min-height: 20rem">
+    <div class="container my-panel" style="min-height: 20rem;margin-top: 0!important;" >
         <div class="row" style="height: 100%">
             <div class="col-xs-5 text-center" style="height: 12rem;">
                 <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
@@ -206,58 +238,6 @@
                     </div>
                 </div>
             </#if>
-
-            <#--<#if teacher.way??>-->
-            <#--<div class="container no-padding">-->
-            <#--<#assign teacherways=teacher.way?split("、")>-->
-            <#--<#if teacherways[0] == "不限">-->
-            <#--<#if teacher.priceO gt 0>-->
-            <#--<div class="inline-wrapper">-->
-            <#--<div>在线授课</div>-->
-            <#--<div>${teacher.priceO}</div>-->
-            <#--</div>-->
-            <#--</#if>-->
-            <#--<#if teacher.priceS gt 0>-->
-            <#--<div class="inline-wrapper">-->
-            <#--<div>学生上门</div>-->
-            <#--<div>${teacher.priceS}</div>-->
-            <#--<div>${teacher.sGround}</div>-->
-            <#--</div>-->
-            <#--</#if>-->
-            <#--<#if teacher.priceT gt 0>-->
-            <#--<div class="row">-->
-            <#--<div class="col-xs-3">治疗师上门</div>-->
-            <#--<div class="col-xs-1">${teacher.priceT}</div>-->
-            <#--<div class="col-xs-5">${teacher.tGround}</div>-->
-            <#--</div>-->
-            <#--</#if>-->
-            <#--<#else>-->
-            <#--<#list teacherways as str>-->
-            <#--<div class="row">-->
-            <#--<div class="col-xs-4 no-padding-right">${str}</div>-->
-            <#--<#if str=="在线授课" && teacher.priceO gt 0>-->
-            <#--<div class="col-xs-2 no-padding">${teacher.priceO}</div>-->
-            <#--<#elseif str=="学生上门" && teacher.priceS gt 0>-->
-            <#--<div class="col-xs-2 no-padding">${teacher.priceS}</div>-->
-            <#--<div class="col-xs-6 no-padding">${teacher.sGround}</div>-->
-            <#--<#elseif str=="治疗师上门" && teacher.priceT gt 0>-->
-            <#--<div class="col-xs-2 no-padding">${teacher.priceT}</div>-->
-            <#--<div class="col-xs-6 no-padding">${teacher.tGround}</div>-->
-            <#--</#if>-->
-            <#--</div>-->
-            <#--</#list>-->
-            <#--</#if>-->
-            <#--<div class="col-xs-12 no-padding offset-5">-->
-            <#--注：该治疗师每个课时时长为 ${teacher.period!"??"} 分钟-->
-            <#--</div>-->
-            <#--</div>-->
-            <#--<#else>-->
-            <#--<div class="my-panel-content row">-->
-            <#--<div class="col-xs-12">-->
-            <#--暂无-->
-            <#--</div>-->
-            <#--</div>-->
-            <#--</#if>-->
             </div>
         </div>
     </div>
@@ -271,61 +251,56 @@
     <div class="my-panel">
         <div class="my-panel-title">毕业院校</div>
         <div class="gray-line"></div>
-    <#if teacher.school??>
-        <div class="container no-padding-left">
-            <#assign strs=teacher.school?split("#")>
-            <#list strs as str>
-                <#assign s=str?split("@")>
-                <div class="my-panel-content row">
-                    <div class="col-xs-4">
-                    ${s[1]!""}
+        <div class="my-panel-content">
+<#list (teacher.teacherInfoSchoolList)! as school>
+            <div style="background-color: white;position: relative;right: 15px" >
+            <#if school_index==0>
+                <div class="row" style="height: 2%;">
+                </div>
+            </#if>
+                <div class="row" style="position: relative; ">
+                    <div class="col-xs-1 circle">
+                        <i class="fa fa-circle-thin fa-1x icon_fa"></i>
                     </div>
-                    <div class="col-xs-8">
-                    ${s[0]!""}
+                    <div class="col-xs-8" style="position: absolute;left:55px">
+                        <p class="text_detail"> ${school.startTime}<span style="color: white;border-top: 1px solid dimgrey;padding: 10px;margin: 10px;position: relative;top: 20px;">a</span>${school.endTime}</p>
                     </div>
                 </div>
-            </#list>
-        </div>
-    <#else>
-        <div class="my-panel-content row">
-            <div class="col-xs-12">
-                暂无
-            </div>
-        </div>
-    </#if>
-    </div>
-
-    <div class="my-panel">
-        <div class="my-panel-title">康复治疗经历</div>
-        <div class="gray-line"></div>
-    <#if teacher.recoveryHis??>
-        <div class="container">
-            <#assign strs=teacher.recoveryHis?split("#")>
-            <#list strs as str>
-                <#assign s=str?split("@")>
-                <div class="my-panel-content row">
-                    <div class="col-xs-4">
-                    ${s[0]!""}
+                <div class="row" style="height: 35px;">
+                    <div class="col-xs-1" style="${school_has_next?string('border-left:2px solid #ccc;','')}height: 100%;position: relative;left: 50px">
+                        <p style="color: white">aa</p>
                     </div>
-                    <div class="col-xs-8">
-                    ${s[1]!""}
+                    <div class="col-xs-5">
+                        <p class="text_p">${school.schoolName}</p>
                     </div>
                 </div>
-            </#list>
-        </div>
-    <#else>
-        <div class="my-panel-content row">
-            <div class="col-xs-12">
-                暂无
+                <div class="row" style="height: 4%;">
+                    <div class="col-xs-1" style="${school_has_next?string('border-left:2px solid #ccc;','')}height: 100%;position: relative;left: 50px">
+                        <p style="color: white">aa</p>
+                    </div>
+                    <div class="col-xs-10" style="margin-left: 20px;">
+                        <p class="text_detail" style="padding-left:5px;color: #a0a0a0;margin-bottom: 0px!important;padding-bottom: 5px;${school_has_next?string('border-bottom:1px solid #ccc;','')}">${school.education}<span style="font-size: 25px;font-weight: bold;padding: 4px;position: relative;top: 2px">·</span>${school.major}</p>
+                    </div>
+                </div>
+            <#if school_has_next>
+                <div class="row" style="border-left:2px solid #ccc;height: 10px;position: relative;left: 50px;width: 70%">
+                    <span style="color: white">dd</span>
+                </div>
+            </#if>
             </div>
+</#list>
         </div>
-    </#if>
     </div>
-
     <div class="my-panel">
-        <div class="my-panel-title">成功案例</div>
+        <div class="inline-wrapper pointable" onclick=location.href="/wx/teacher/${teacher.id}/info/recoveryHis">
+            <div class="my-panel-title">康复治疗经历</div>
+            <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
+        </div>
         <div class="gray-line"></div>
-        <div class="my-panel-content">${teacher.successCase?replace("@","<br>")!"暂无"}</div>
+        <div class="inline-wrapper pointable" onclick=location.href="/wx/teacher/${teacher.id}/info/successCase">
+            <div class="my-panel-title">成功案例</div>
+            <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
+        </div>
     </div>
 
     <div class="my-panel">
@@ -612,6 +587,7 @@
                 </button>
             </div>
             <form id="toSelectTimeForm" action="${base}/wx/teacher/toSelectTime" method="post">
+                <input hidden name="teacher.userId"/>
                 <input hidden name="teacher.id"/>
                 <input hidden name="teacher.name"/>
                 <input hidden name="demandId"/>
@@ -669,6 +645,12 @@
     </div>
 
     <!-- modal -->
+
+
+
+</div>
+
+
 </body>
 </html>
 <script>
@@ -1319,6 +1301,7 @@
     function prepareOrderInfo(isFirst) {
         var amount = parseInt($('#countSpan').html());
         if (timeOpt != null && amount > 0){
+            $("input[name='teacher.userId']").val(${teacher.userId});
             $("input[name='teacher.id']").val(${teacher.id});
             $("input[name='teacher.name']").val("${teacher.name}");
             $("input[name='demandId']").val($(".demand.border-pill-active").data("first").split("#")[0]);
@@ -1328,7 +1311,7 @@
             $("input[name='totalpay']").val($('#sumSpan').html());
             $("input[name='amount']").val(amount);
             $("input[name='isFirst']").val(isFirst);
-            $("input[name='timeOpt']").val(timeOpt);
+            $("input[name='timeOpt']").val($(".timeOption.border-pill-active").data("timeopt"));
             return true;
         }
         return false;

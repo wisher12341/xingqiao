@@ -1,10 +1,9 @@
 package com.xq.service.impl;
 
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import com.xq.dao.*;
-import com.xq.dto.ModifyPageDto;
-import com.xq.dto.ParentInfoDto;
-import com.xq.dto.RecoveryHisDto;
+import com.xq.dto.*;
 import com.xq.model.*;
 import com.xq.service.ParentCenterService;
 import com.xq.util.Const;
@@ -16,10 +15,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by 86761 on 2017/11/5.
@@ -40,6 +38,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     MessageDao messageDao;
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    CommentDao commentDao;
 
     @Override
     public Parent getParentByUserId(int userId){
@@ -311,6 +311,186 @@ public class ParentCenterServiceImpl implements ParentCenterService {
             }
         }
         parentCenterDao.updateIcon(picUrl,userId);
+    }
+
+    @Override
+    public void allInformRead(HttpServletRequest request) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userDao.getUserByOpenidStatus(openid,"0");
+        messageDao.allInformRead(user.getId());
+    }
+
+    @Override
+    public PCommentsDto getCommentsByUserId(Integer userId) {
+        PCommentsDto pCommentsDto=new PCommentsDto();
+        List<Comment> hisCommentList=commentDao.getParentHisCommentsByUid(userId);
+
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        for(Comment comment:hisCommentList){
+            if(comment.getTime().split(" ")[0].equals(dateNowStr)){
+                comment.setTime(comment.getTime().split(" ")[1]);
+            }else{
+                comment.setTime(comment.getTime().split(" ")[0]);
+            }
+            if(comment.getTeacherComment().getTime().split(" ")[0].equals(dateNowStr)){
+                comment.getTeacherComment().setTime(comment.getTeacherComment().getTime().split(" ")[1]);
+            }else{
+                comment.getTeacherComment().setTime(comment.getTeacherComment().getTime().split(" ")[0]);
+            }
+        }
+
+        List<Order> orderList=orderDao.getParentNoCommentOrderByUid(userId);
+
+        pCommentsDto.setNoCommentOrders(orderList);
+        pCommentsDto.setHisComments(hisCommentList);
+        return pCommentsDto;
+    }
+
+    @Override
+    public TeacherInfoEdit myInfoEdit(String ftype, String ctype, String value, Integer userStatus) {
+        TeacherInfoEdit teacherInfoEdit=new TeacherInfoEdit(value,ctype);
+        switch (ftype){
+            case "base":
+                teacherInfoEdit.setFtype("基本资料");
+                break;
+            case "authentication":
+                teacherInfoEdit.setFtype("实名认证");
+                break;
+        }
+        switch (ctype){
+            case "email":
+                teacherInfoEdit.setCtypeDesc("邮箱");
+                break;
+            case "gender":
+                teacherInfoEdit.setCtypeDesc("性别");
+                break;
+            case "realName":
+                teacherInfoEdit.setCtypeDesc("真实姓名");
+                break;
+            case "pid":
+                teacherInfoEdit.setCtypeDesc("证件号");
+                break;
+            case "nickname":
+                teacherInfoEdit.setCtypeDesc("昵称");
+                break;
+        }
+
+        if(userStatus!=0) {
+            //更改用户状态
+            switch (ctype) {
+                case "realName":
+                case "pid":
+                    teacherInfoEdit.setIsChangeStatus(1);
+            }
+        }
+        return teacherInfoEdit;
+    }
+
+    @Override
+    public Parent getIdCardByUid(Integer uid) {
+        Parent parent=parentCenterDao.getIdcardByUid(uid);
+        return parent;
+    }
+
+
+    @Override
+    public Work getWorkByUid(Integer userId) {
+        Work work=new Work();
+        List<WorkMonth> workMonthList=new ArrayList<>();
+        List<WorkDay> workDayList=new ArrayList<>();
+
+        Date today = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(today);
+
+        work.setToday(dateNowStr);
+
+        List<Order> orderList=orderDao.getAllDoingOrderByUid(userId);//获得该家长 正在进行的所有订单
+
+        StringBuffer monthWork=new StringBuffer();//用于有任务的日期 避免重复
+
+        //遍历 正在进行的所有订单 根据订单服务进度 只分析 未完成的服务时间
+        for(Order order:orderList){
+            String[] serveTimes=order.getServerTime().split("#");
+            for(String time:serveTimes){
+                String date=time.split(" ")[0];//截取年月日
+                if(date.compareTo(dateNowStr)==0){
+                    //今天的任务安排
+                    WorkDay workDay=new WorkDay();
+                    workDay.setStartTime(time.split(" ")[1].split("%")[0]);
+                    workDay.setEndTime(time.split(" ")[1].split("%")[1]);
+                    workDay.setOrder(order);
+                    workDayList.add(workDay);
+                    if(monthWork.indexOf(date)==-1){
+                        WorkMonth workMonth=new WorkMonth();
+                        workMonth.setStart(date);
+                        String title=date.split("-")[2];
+                        if(title.substring(0,1).equals("0")){
+                            title=title.substring(1);
+                        }
+                        workMonth.setTitle(title);
+                        workMonthList.add(workMonth);
+                        monthWork.append(date);
+                    }
+                }else if (date.compareTo(dateNowStr)>0 && monthWork.indexOf(date)==-1){
+                    //以后的安排
+                    WorkMonth workMonth=new WorkMonth();
+                    workMonth.setStart(date);
+                    String title=date.split("-")[2];
+                    if(title.substring(0,1).equals("0")){
+                        title=title.substring(1);
+                    }
+                    workMonth.setTitle(title);
+                    workMonthList.add(workMonth);
+                    monthWork.append(date);
+                }else{
+                    continue;
+                }
+            }
+        }
+        Collections.sort(workDayList);
+        work.setMonthWork(workMonthList);
+        work.setWorkDay(workDayList);
+        return work;
+    }
+
+    @Override
+    public WorkDayDto getDayWorkByUid(Integer uid, String date) throws ParseException {
+        WorkDayDto workDayDto=new WorkDayDto();
+
+        List<WorkDay> workDayList=new ArrayList<>();
+
+        date=date.split("GMT")[0];
+        SimpleDateFormat sf1 = new SimpleDateFormat("EEE MMM dd yyyy hh:mm:ss",Locale.ENGLISH);
+        Date d = sf1.parse(date);
+        SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
+        String day=sf2.format(d);//该天的日期
+
+        List<Order> orderList=orderDao.getAllDoingDayOrderByUid(uid,day);
+        for(Order order:orderList){
+            String[] serveTimes=order.getServerTime().split("#");
+            for(String time:serveTimes){
+                String dd=time.split(" ")[0];//截取年月日
+                if(dd.compareTo(day)==0){
+                    //该天的任务安排
+                    WorkDay workDay=new WorkDay();
+                    workDay.setStartTime(time.split(" ")[1].split("%")[0]);
+                    workDay.setEndTime(time.split(" ")[1].split("%")[1]);
+                    workDay.setOrder(order);
+                    workDayList.add(workDay);
+                }
+            }
+        }
+        Collections.sort(workDayList);
+
+        workDayDto.setWork(workDayList);
+        workDayDto.setToday(day);
+        return workDayDto;
     }
 }
 

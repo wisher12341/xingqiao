@@ -86,6 +86,14 @@
             color: dimgrey;
             position: relative;
             top:-6px;
+            width: 100%;
+        }
+        input[type=month] {
+            background-color:transparent;
+            FILTER: alpha(opacity=0); /*androd*/
+            appearance:none;  /*下拉框去掉右侧图标*/
+            -moz-appearance:none;
+            -webkit-appearance:none;
         }
         .length{
             background-color: white;
@@ -131,11 +139,11 @@
                         <p class="text_p"> 开始时间</p>
                     </div>
                     <div class="col-xs-8">
-                        <input placeholder="选择时间" type="text" class="title_input" name="startTime"
                         <#if data??>
-                               value="${data.startTime}"
+                                <input type="month" class="title_input" name="startTime" value="${data.startTime}" >
+                            <#else >
+                                <input type="text" class="title_input" name="startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
                         </#if>
-                        >
                     </div>
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -146,11 +154,11 @@
                         <p class="text_p"> 结束时间</p>
                     </div>
                     <div class="col-xs-8">
-                        <input placeholder="选择时间" type="text" class="title_input" name="endTime"
                         <#if data??>
-                               value="${data.endTime}"
+                            <input  type="month" class="title_input" name="endTime" value="${data.endTime}" >
+                        <#else >
+                            <input type="text" class="title_input" name="startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
                         </#if>
-                        >
                     </div>
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -200,6 +208,7 @@
 </body>
 
 <script>
+<#if data??>
     $(function () {
         $("option").each(function () {
             if($(this).val()=='${data.education}'){
@@ -207,7 +216,9 @@
                 return;
             }
         })
-        $("select").css('color','dimgrey').css('opacity','1')
+        $("select").css('color','dimgrey').css('opacity','1');
+
     });
+    </#if>
 </script>
 </html>

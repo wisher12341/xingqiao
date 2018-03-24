@@ -1,12 +1,11 @@
 package com.xq.service;
 
 
-import com.xq.dto.ModifyPageDto;
-import com.xq.dto.ParentInfoDto;
-import com.xq.dto.RecoveryHisDto;
+import com.xq.dto.*;
 import com.xq.model.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -52,4 +51,15 @@ public interface ParentCenterService {
 
     void uploadPhoto(HttpServletRequest request,int userId);
 
+    void allInformRead(HttpServletRequest request);
+
+    PCommentsDto getCommentsByUserId(Integer userId);
+
+    TeacherInfoEdit myInfoEdit(String ftype, String ctype, String value, Integer userStatus);
+
+    Parent getIdCardByUid(Integer uid);
+
+    Work getWorkByUid(Integer userId);
+
+   WorkDayDto getDayWorkByUid(Integer uid, String date) throws ParseException;
 }

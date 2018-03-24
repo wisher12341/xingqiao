@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -68,14 +68,21 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         return recoveryLogDto;
     }
 
-    public RecoveryLogDto getMyTeachersAndDemandsByUid(HttpServletRequest request) {
+    public RecoveryLogDto getMyTeachersAndDemandsNoConfirmLogByUid(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();
         recoveryLogDto.setTeacherList(teacherList);
         recoveryLogDto.setDemandList(demandList);
         List<String> obs=orderDao.getAllRecoveryObsByOpenid(openid);
+        List<RecoveryLog> recoveryLogList=recoveryLogDao.getNoConfirmLogByOpenid(openid);
+        for(RecoveryLog recoveryLog:recoveryLogList){
+            recoveryLog.setServerTime(recoveryLog.getServerTime().split("#")[recoveryLog.getIndex()-1].replace("%","-"));
+        }
+        Collections.sort(recoveryLogList);
+        recoveryLogDto.setRecoveryLogNoConfirmList(recoveryLogList);
         recoveryLogDto.setObs(obs);
         return recoveryLogDto;
     }
@@ -156,6 +163,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
     @Override
     @Transactional
     public void addRecovery(RecoveryLog recoveryLog) {
+        //简化 表情
         String pattern = "<img.*?>";
         String detai=recoveryLog.getContent();
         Pattern r = Pattern.compile(pattern);
@@ -175,6 +183,10 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         String dateNowStr = sdf.format(d);
         recoveryLog.setTime(dateNowStr);
         recoveryLog.setConfirmStatus(0);
+
+        Integer nowNumber=recoveryLogDao.getLogCountByOid(recoveryLog.getOrderId());
+        recoveryLog.setIndex(nowNumber+1);
+
         recoveryLogDao.add(recoveryLog);
 
         orderDao.updateTrace(recoveryLog.getOrderId(),"#"+dateNowStr+"@治疗师填写康复日志");
@@ -231,5 +243,12 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
             messageDao.addMessage(messageT);
             orderDao.updateTrace(oid,"#"+dateNowStr+"@订单完成");
         }
+    }
+
+
+    @Override
+    public RecoveryLog getLogByRid(Integer rid) {
+        RecoveryLog recoveryLog=recoveryLogDao.getLogByRid(rid);
+        return recoveryLog;
     }
 }

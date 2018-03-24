@@ -27,4 +27,6 @@ public interface UserService {
     void setUserStatusDesc(User user);
 
     User getUserByUid(Integer uid);
+
+    void changePassword(HttpServletRequest request, String password, String type);
 }

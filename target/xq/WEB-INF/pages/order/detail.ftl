@@ -268,7 +268,7 @@
             <#if order.order.comment??>
 
             <#else >
-                <button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>
+                <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>-->
             </#if>
         </#if>
     </div>

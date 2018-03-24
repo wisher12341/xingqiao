@@ -17,9 +17,15 @@ public interface RecoveryLogDao {
 
     void allConfirmByOrderId(@Param("oid") String orderId, @Param("time") String dateNowStr);
 
-    void confirmById(@Param("id") Integer id,@Param("time") String dateNowStr);
+    void confirmById(@Param("id") Integer id, @Param("time") String dateNowStr);
 
     void remind(Integer lid);
 
     void add(RecoveryLog recoveryLog);
+
+    Integer getLogCountByOid(String id);
+
+    List<RecoveryLog> getNoConfirmLogByOpenid(String openid);
+
+    RecoveryLog getLogByRid(Integer rid);
 }

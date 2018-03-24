@@ -181,64 +181,138 @@
             border-radius: 15px;
             height:6%
         }
+
+        #log{
+            background-color: #f5f5f5;
+            margin-bottom: 20%;
+        }
+        #log .buttonDiv_info{
+            margin: 4% 0;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        #log .text_p_log{
+            font-size: 40px;
+            display: inline;
+            color: dimgrey;
+            font-weight: bold;
+            position: relative;
+            top:25px;
+        }
+        .text_ppp_log{
+            font-size: 35px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:5px;
+            color: dimgrey;
+        }
+        #log .icon_fa{
+            /*position: relative;*/
+            /*top: 5px;*/
+            color: dimgrey;
+        }
+        .text_detail_log{
+            color: dimgrey;
+            font-size: 35px;
+            /*margin-right: 100px;*/
+            margin-bottom: 15px;
+        }
         #log .row{
             margin: 0 !important;
         }
-        #log{
-            background-color: #f5f5f5;
+        #log .circle{
+            position: relative;
+            left: 25px;
+            padding-top:10px;
+            padding-bottom: 5px;
+        }
+        #log .fa-circle-thin{
+            color: #bbb;
         }
     </style>
 </head>
 <body>
 <div id="log">
-    <div class="buttonDiv_info" style="background-color: white;margin-bottom: 8%">
-        <div  onclick=location.href="">
-            <div class="row" style="height: 7%;padding-top:3.5% ">
-                <div class="col-xs-3" style="width: 25%!important;">
-                    <p class="text_p"> 小岳岳</p>
-                </div>
-                <div class="col-xs-6">
-                    <p class="text_p"> 治疗师：高中华</p>
-                </div>
-                <div class="col-xs-2">
-                    <p class="text_ppp"> 确认</p>
-                </div>
-                <div class="col-xs-1">
-                    <i class="fa fa-angle-right fa-4x icon_fa"></i>
-                </div>
-            </div>
-            <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
-                <div class="col-xs-12">
-                    <p class="text_detail">
-                        啊啊啊啊啊啊啊啊阿打算但是ad撒啊大叔大师的的啊的
-                    </p>
-                </div>
-            </div>
+<#if (recoveryLogDto.recoveryLogNoConfirmList)?size==0>
+<div >
+    <div class="row" style="margin-top: 30%!important;width: 100%">
+        <div class="col-xs-3">
         </div>
-        <div  onclick=location.href="">
-            <div class="row" style="height: 7%;padding-top:3.5% ">
-                <div class="col-xs-3" style="width: 25%!important;">
-                    <p class="text_p"> 小岳岳</p>
+        <div class="col-xs-2">
+            <img src="/static/img/kong.png" width="150">
+        </div>
+        <div class="col-xs-6">
+            <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+            <p style="font-size: 38px;color: grey;font-weight: bold">您还没有要确认的康复日志</p>
+        </div>
+    </div>
+<#else>
+<div class="buttonDiv_info" style="background-color: white;" >
+    <#list recoveryLogDto.recoveryLogNoConfirmList as log>
+        <#if log_index==0>
+            <div class="row" style="height: 2%;">
+            </div>
+        </#if>
+        <div onclick=location.href="/wx/log/${log.id}/confirm">
+            <div class="row" style="position: relative">
+                <div class="col-xs-1 circle">
+                    <i class="fa fa-circle-thin fa-2x icon_fa"></i>
                 </div>
-                <div class="col-xs-6">
-                    <p class="text_p"> 治疗师：高中华</p>
+                <div class="col-xs-6" style="position: absolute;left:80px">
+                    <p class="text_detail_log"> ${log.serverTime}</p>
                 </div>
-                <div class="col-xs-2">
-                    <p class="text_ppp"> 确认</p>
+                <div class="col-xs-2" style="position: absolute;right: 20%">
+                    <#--<#if log.remindStatus==1>-->
+                        <#--<p class="text_ppp_log" style="color: red">已提醒</p>-->
+                    <#--</#if>-->
                 </div>
-                <div class="col-xs-1">
+                <div class="col-xs-2" style="position: absolute;right: 8%">
+                    <p class="text_ppp_log"> 确认</p>
+                </div>
+                <div class="col-xs-1" style="position: absolute;right: 0">
                     <i class="fa fa-angle-right fa-4x icon_fa"></i>
                 </div>
             </div>
-            <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
-                <div class="col-xs-12">
-                    <p class="text_detail">
-                        啊啊啊啊啊啊啊啊阿打算但是ad撒啊大叔大师的的啊的
+            <div class="row" style="height: 6%;">
+                <div class="col-xs-1" style="${log_has_next?string('border-left:2px solid #ccc;','')}height: 100%;position: relative;left: 50px">
+                    <p style="color: white">aa</p>
+                </div>
+                <div class="col-xs-11">
+                    <p class="text_p_log">${log.demandName}</p>
+                </div>
+            </div>
+            <div class="row" style="height: 8%;">
+                <div class="col-xs-1" style="${log_has_next?string('border-left:2px solid #ccc;','')}height: 100%;position: relative;left: 50px">
+                    <p style="color: white">aa</p>
+                </div>
+                <div class="col-xs-4" style="${log_has_next?string('border-bottom:1px solid #ccc;','')}">
+                    <p class="text_detail_log" style="color: #a0a0a0">
+                        治疗师：${log.teacherName}
+                    </p>
+                    <p class="text_detail_log" style="color: #a0a0a0">
+                        康复项目：${log.recoverOb}
+                    </p>
+                </div>
+                <div class="col-xs-7" style="${log_has_next?string('border-bottom:1px solid #ccc;','')}">
+                    <p class="text_detail_log" style="color: #a0a0a0">
+                        订单号：${log.orderId}
+                    </p>
+                    <p class="text_detail_log" style="color: #a0a0a0">
+                        康复方式：${log.way}
                     </p>
                 </div>
             </div>
-         </div>
-    </div>
+            <#if log_has_next>
+                <div class="row" style="border-left:2px solid #ccc;height: 2%;margin-left: 50px!important;">
+                </div>
+            </#if>
+        </div>
+    </#list>
+</#if>
+</div>
+
     <div class="foot" align="center">
         <button  style="width: 100% !important;" onclick="$('#log').hide();$('#main').show()">日志查询</button>
     </div>
@@ -348,7 +422,7 @@
                                 <span class="glyphicon glyphicon-record" style="margin-left: -7px; color: #e8e8e8;font-size: 40px"></span>
                             </#if>
                             <span class="date" style="margin-left: 20px">${log.time}
-                                <#if recoveryLogDto.teacher.id==0>
+                                <#if (recoveryLogDto.teacher.id)==0>
                                 ${log.teacherName}（${log.recoverOb}）
                                 </#if>
                                 </span>
@@ -480,6 +554,7 @@
 <script>
 
     twemoji.parse(document.getElementById('main'), {size: 36});
+    twemoji.parse(document.getElementById('log'), {size: 36});
     function selectConfirm() {
         $('.radioC').each(function () {
             if($(this).val()==$('.c_val').val()){

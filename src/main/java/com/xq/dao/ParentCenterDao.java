@@ -29,4 +29,5 @@ public interface ParentCenterDao {
     void fillInfoParent(@Param("parentInfoDto") ParentInfoDto parentInfoDto);
 
 
+    Parent getIdcardByUid(Integer uid);
 }

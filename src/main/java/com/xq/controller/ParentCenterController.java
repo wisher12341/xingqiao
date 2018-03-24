@@ -1,22 +1,20 @@
 package com.xq.controller;
 
 
-import com.xq.dto.ModifyPageDto;
-import com.xq.dto.ParentInfoDto;
-import com.xq.dto.RecoveryHisDto;
-import com.xq.dto.Result;
+import com.xq.dto.*;
 import com.xq.model.*;
-import com.xq.service.AreaService;
-import com.xq.service.ParentCenterService;
-import com.xq.service.UserService;
+import com.xq.service.*;
 import com.xq.util.Const;
 import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +34,10 @@ public class ParentCenterController {
     UserService userService;
     @Autowired
     AreaService areaService;
+    @Autowired
+    TeacherCenterService teacherCenterService;
+    @Autowired
+    MessageService messageService;
 
     /**
      * 个人中心首页
@@ -49,6 +51,8 @@ public class ParentCenterController {
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
         mv.addObject("user",user);
+        TeacherCenterCountDto teacherCenterCountDto=teacherCenterService.getCounts(user.getId(),"parent");
+        mv.addObject("number",teacherCenterCountDto);
         return mv;
     }
 
@@ -133,17 +137,49 @@ public class ParentCenterController {
     }
 
 
+//    /**
+//     *消息中心
+//     */
+//    @RequestMapping(value = "/{userId}/myMessages")
+//    public ModelAndView myMessages(@PathVariable Integer userId){
+//        ModelAndView mv=new ModelAndView("parentCenter/myMessages");
+//        mv.addObject("messages",parentCenterService.getMessagesByUserId(userId));
+//        mv.addObject("user",parentCenterService.getUserById(userId));
+//        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
+//        return mv;
+//    }
+
     /**
      *消息中心
      */
     @RequestMapping(value = "/{userId}/myMessages")
     public ModelAndView myMessages(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("parentCenter/myMessages");
-        mv.addObject("messages",parentCenterService.getMessagesByUserId(userId));
-        mv.addObject("user",parentCenterService.getUserById(userId));
-        mv.addObject("name",parentCenterService.getParentByUserId(userId).getRealName());
+        mv.addObject("messages",teacherCenterService.getMessagesByUserId(userId));
+//        mv.addObject("name",teacherCenterService.getNameByUserId(userId));
+        mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
+
+    @RequestMapping(value = "/{uid}/message/{mid}/del",method = RequestMethod.GET)
+    public ModelAndView delMessage(@PathVariable Integer mid,@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myMessages");
+        messageService.delMessageByMid(mid);
+        return mv;
+    }
+
+    /**
+     * 所有通知 变已读
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/allInformRead",method = RequestMethod.POST)
+    public Result allInformRead(HttpServletRequest request){
+        parentCenterService.allInformRead(request);
+        return new Result(true);
+    }
+
 
     @RequestMapping(value="/deleteMessage")
     @ResponseBody
@@ -152,16 +188,89 @@ public class ParentCenterController {
         return new Result(true);
     }
     /**
-     *我的资料
+     *我的资料 基础资料
      */
-    @RequestMapping(value = "/{userId}/myInfo")
-    public ModelAndView myInfo(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("parentCenter/myInfo");
+    @RequestMapping(value = "/{userId}/myInfo_base")
+    public ModelAndView myInfo_base(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/myInfo_base");
         mv.addObject("parent",parentCenterService.getParentByUserId(userId));
         mv.addObject("user",parentCenterService.getUserById(userId));
-
         return mv;
     }
+
+    /**
+     *实名认证
+     */
+    @RequestMapping(value = "/{userId}/myInfo_authentication")
+    public ModelAndView myInfo(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/myInfo_authentication");
+        Parent parent=parentCenterService.getParentByUserId(userId);
+        mv.addObject("parent",parent);
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
+     * 个人资料  单项 编辑页面
+     * @param ftype 父类型 base service authentication
+     * @param ctype 子类型 email等等
+     * @param value 值
+     * @return
+     */
+    @RequestMapping(value = "/{ftype}/{ctype}/{value}/edit",method = RequestMethod.GET)
+    public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
+        ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,"0");
+        mv.addObject("user",user);
+
+        //解决中文乱码
+        if(ctype.equals("name")){
+            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
+        }
+        TeacherInfoEdit teacherInfoEdit=parentCenterService.myInfoEdit(ftype,ctype,value,user.getUserStatus());
+        mv.addObject("info",teacherInfoEdit);
+        mv.addObject("parent","dd");//标志  是家长的请求
+        return mv;
+    }
+
+    @RequestMapping(value = "/myInfo/edit",method = RequestMethod.POST)
+    public ModelAndView myInfo_edit_post(String ftype,String ctype,String value,HttpServletRequest request,Integer isChangeStatus,Integer uid){
+        ModelAndView mv=null;
+        switch (ftype){
+            case "基本资料":
+                mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_base");
+                break;
+            case "实名认证":
+                mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_authentication");
+                break;
+        }
+        teacherCenterService.myInfoEditPost(ftype,ctype,value,isChangeStatus,request,"parent");
+        return mv;
+    }
+
+    /**
+     * 身份证 页面
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/info/{uid}/idcard",method = RequestMethod.GET)
+    public ModelAndView idcard(@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("teacherCenter/myInfo_authentication_idcard");
+        Parent parent=parentCenterService.getIdCardByUid(uid);
+        mv.addObject("user",userService.getUserByUid(uid));
+        mv.addObject("parent",parent);
+        return mv;
+    }
+
+    @RequestMapping(value = "/info/{uid}/idcard",method = RequestMethod.POST)
+    public ModelAndView idcard_post(@PathVariable Integer uid, MultipartFile peoplePidUrl, MultipartFile pidUrlFront, MultipartFile pidUrlBack, HttpServletRequest request){
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
+        teacherCenterService.editIdCard(peoplePidUrl,pidUrlBack,pidUrlFront,uid,request);
+        return mv;
+    }
+
 
     /**
      * 家长个人中心主界面
@@ -330,6 +439,43 @@ public class ParentCenterController {
     public Result modifyIcon(@PathVariable int userId,HttpServletRequest request){
         parentCenterService.uploadPhoto(request,userId);
         return new Result(true);
+    }
+
+    /**
+     *评价中心
+     */
+    @RequestMapping(value = "/{userId}/myComments")
+    public ModelAndView myCommentsens(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/myComments");
+        mv.addObject("comments",parentCenterService.getCommentsByUserId(userId));
+        mv.addObject("user",parentCenterService.getUserById(userId));
+        mv.addObject("comment","dd");//无实际意义 只用于标记
+        return mv;
+    }
+
+
+    /**
+     *我的日程安排
+     */
+    @RequestMapping(value = "/{userId}/myWork",method = RequestMethod.GET)
+    public ModelAndView myWork(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("parentCenter/myWork");
+        Work work=parentCenterService.getWorkByUid(userId);
+        mv.addObject("work",work);
+        mv.addObject("user",teacherCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
+     * 我的日程安排  获得具体某一天的安排
+     * @param uid
+     * @param date
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/{uid}/myWork/getDayWork",method = RequestMethod.POST)
+    public Result getDayWork(@PathVariable Integer uid, String date) throws ParseException {
+        return new Result(true,parentCenterService.getDayWorkByUid(uid,date));
     }
 
 }

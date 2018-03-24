@@ -2,6 +2,7 @@ package com.xq.service;
 
 import com.xq.dto.CalendarDto;
 import com.xq.model.Comment;
+import com.xq.model.Order;
 import com.xq.model.OrganComment;
 import com.xq.model.Teacher;
 
@@ -33,4 +34,12 @@ public interface TeacherService {
     Comment getTeacherCommentByCid(Integer cid);
 
     List<Comment> getCommentsByPage(Integer teacherId, Integer page, Integer size);
+
+    List<String> getTeacherSchedule(Integer tid);
+
+    List<String> getAvailableDateByWeekday(int tid, String condition);
+
+    String formatDateAndTime(String gmt);
+
+    List<String> weekLoop(Order order);
 }

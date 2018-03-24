@@ -86,6 +86,7 @@
             color: dimgrey;
             position: relative;
             top:-6px;
+            width: 100%;
         }
         .length{
             background-color: white;
@@ -105,6 +106,13 @@
             padding-top: 5px;
             width: 100%;
         }
+        input[type=month] {
+            background-color:transparent;
+            FILTER: alpha(opacity=0); /*androd*/
+            appearance:none;  /*下拉框去掉右侧图标*/
+            -moz-appearance:none;
+            -webkit-appearance:none;
+        }
     </style>
 </head>
 <body>
@@ -118,7 +126,7 @@
                     <p class="text_p"> 单位名称</p>
                 </div>
                 <div class="col-xs-9">
-                    <input placeholder="请输入所在单位名称，20字以内" type="text" class="title_input" maxlength="20" name="rec.name" style="width: 100%"
+                    <input placeholder="请输入所在单位名称，20字以内" type="text" class="title_input" maxlength="20" name="rec.name" style="width: 100%;<#if qetype?? && qetype=="query">opacity: 1!important;color: #111!important;</#if>" <#if qetype?? && qetype=="query">disabled</#if>
                         <#if data??>
                             value="${data.name}"
                         </#if>
@@ -131,36 +139,41 @@
                         <p class="text_p"> 开始时间</p>
                     </div>
                     <div class="col-xs-8">
-                        <input placeholder="选择时间" type="text" class="title_input" name="rec.startTime"
-                        <#if data??>
-                               value="${data.startTime}"
-                        </#if>
-                        >
+                    <#if data??>
+                        <input type="month" class="title_input" name="rec.startTime" value="${data.startTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
+                    <#else >
+                        <input type="text" class="title_input" name="rec.startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                    </#if>
                     </div>
+<#if qetype?? && qetype=="edit">
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
                     </div>
+</#if>
                 </div>
                 <div class="info row" >
                     <div class="col-xs-3">
                         <p class="text_p"> 结束时间</p>
                     </div>
                     <div class="col-xs-8">
-                        <input placeholder="选择时间" type="text" class="title_input" name="rec.endTime"
-                        <#if data??>
-                               value="${data.endTime}"
-                        </#if>
-                        >
+                    <#if data??>
+                        <input type="month" class="title_input" name="rec.endTime" value="${data.endTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
+                    <#else >
+                        <input type="text" class="title_input" name="rec.endTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                    </#if>
                     </div>
+<#if qetype?? && qetype=="edit">
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
                     </div>
+</#if>
                 </div>
             </div>
         </div>
 
         <div class="buttonDiv_info" style="background-color: white">
-            <textarea class="textarea" placeholder="描述您曾任职期间的具体教学内容，科研成果" name="rec.detail"><#if data??>${data.detail}</#if></textarea>
+            <textarea class="textarea" placeholder="描述您曾任职期间的具体教学内容，科研成果" name="rec.detail" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: #111!important;" </#if>><#if data??>${data.detail}</#if></textarea>
+<#if qetype?? && qetype=="edit">
             <p class="length">
             <#if data??>
                 ${200-(data!)?split("@")[1]?length}
@@ -168,12 +181,15 @@
                 200
             </#if>
             </p>
+</#if>
         </div>
 
+        <#if qetype?? && qetype=="edit">
+            <div class="foot" align="center">
+                <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+            </div>
+        </#if>
 
-        <div class="foot" align="center">
-            <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
-        </div>
     </form>
 </div>
 </body>

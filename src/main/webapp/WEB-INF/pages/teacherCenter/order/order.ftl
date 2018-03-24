@@ -9,6 +9,20 @@
         .glyphicon-list-alt,.text_order{
             color: #20b49a!important;
         }
+        .number{
+            background-color: red;
+            color: white;
+            padding:2px 17px;
+            font-size: 38px;
+            font-weight: bold;
+            border-radius: 100%;
+            position: relative;
+            border: 2px solid white;
+            /*top:-25%;*/
+            /*right: 10%;*/
+            bottom: 20px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -16,12 +30,12 @@
         <ul id="myTab" class="nav nav-tabs">
             <li class="active">
                 <a href="#wait" data-toggle="tab">
-                    待处理
+                    待处理<span class="number">${(orders.orderList_wait)?size}</span>
                 </a>
             </li>
             <li>
                 <a href="#doing" data-toggle="tab">
-                    进行中
+                    进行中<span class="number">${(orders.orderList_doing)?size}</span>
                 </a>
             </li>
             <li>

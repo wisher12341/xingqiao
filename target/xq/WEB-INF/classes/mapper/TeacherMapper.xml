@@ -85,7 +85,7 @@
     </select>
 
     <select id="getTeacher" resultType="com.xq.model.Teacher">
-        SELECT t.id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.level,t.t_ground,t.s_ground,t.domain,
+        SELECT t.id,t.user_id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.level,t.t_ground,t.s_ground,t.domain,
         t.question,t.object,t.project,t.experience_age,t.way,u.gender,t.school,t.recovery_his,t.success_case,t.schedule,u.phone,u.email,u.headimgurl,t.period
         FROM teacher t,sysuser u WHERE t.user_id=u.id AND t.id=#{id}
     </select>
@@ -169,6 +169,9 @@
 
     <select id="getScheduleByUid" resultType="java.lang.String">
         SELECT schedule FROM teacher WHERE user_id=#{id}
+    </select>
+    <select id="getScheduleByTid" resultType="java.lang.String">
+        SELECT schedule FROM teacher WHERE id=#{id}
     </select>
 
     <update id="editSchedule">

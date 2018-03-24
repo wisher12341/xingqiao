@@ -13,7 +13,7 @@
 
 
     <select id="getUserByOpenidStatus" resultType="com.xq.model.User" parameterType="java.lang.String">
-        SELECT id,headimgurl,nickname,username,user_status FROM sysuser WHERE openid=#{openid} AND status=#{status}
+        SELECT id,headimgurl,nickname,username,user_status,status FROM sysuser WHERE openid=#{openid} AND status=#{status}
     </select>
 
     <select id="getUserByUid" resultType="com.xq.model.User">
@@ -85,5 +85,9 @@
 
     <update id="changeUserStatus">
         UPDATE sysuser set user_status=#{userStatue} WHERE id=#{uid}
+    </update>
+
+    <update id="changePassword">
+        UPDATE sysuser set password=#{password} WHERE openid=#{openid} AND status=#{status}
     </update>
 </mapper>

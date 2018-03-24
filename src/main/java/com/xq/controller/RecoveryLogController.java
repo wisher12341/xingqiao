@@ -4,13 +4,11 @@ package com.xq.controller;
 
 import com.xq.dto.RecoveryLogDto;
 import com.xq.dto.Result;
+import com.xq.model.RecoveryLog;
 import com.xq.service.RecoveryLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +33,7 @@ public class RecoveryLogController {
      */
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public ModelAndView log_get(HttpServletRequest request){
-        RecoveryLogDto recoveryLogDto=recoveryLogService.getMyTeachersAndDemandsByUid(request);
+        RecoveryLogDto recoveryLogDto=recoveryLogService.getMyTeachersAndDemandsNoConfirmLogByUid(request);
         ModelAndView mv=new ModelAndView("log/log");
         mv.addObject("recoveryLogDto",recoveryLogDto);
         return mv;
@@ -48,7 +46,7 @@ public class RecoveryLogController {
      * @return
      */
     @RequestMapping(value = "/index",method = RequestMethod.POST)
-    public ModelAndView log_post(RecoveryLogDto recoveryLogDto,HttpServletRequest request){
+    public ModelAndView log_post(RecoveryLogDto recoveryLogDto, HttpServletRequest request){
         RecoveryLogDto recoveryLogDtoResult=recoveryLogService.getLogsByDto(recoveryLogDto,request);
         ModelAndView mv=new ModelAndView("log/log");
         mv.addObject("recoveryLogDto",recoveryLogDtoResult);
@@ -70,13 +68,26 @@ public class RecoveryLogController {
 
     /**
      * 确认
-     * @param id
+     * @param rid
      * @return
      */
-    @ResponseBody
     @RequestMapping(value = "/confirm",method = RequestMethod.POST)
-    public Result confirm(@RequestParam Integer id,@RequestParam String oid){
-        recoveryLogService.confirmById(id,oid);
-        return new Result(true);
+    public ModelAndView confirm(@RequestParam Integer rid,@RequestParam String oid){
+        ModelAndView mv=new ModelAndView("redirect:/wx/log/index");
+        recoveryLogService.confirmById(rid,oid);
+        return mv;
+    }
+
+    /**
+     * 确认页面
+     * @param rid
+     * @return
+     */
+    @RequestMapping(value = "/{rid}/confirm",method =RequestMethod.GET)
+    public ModelAndView confirm_get(@PathVariable Integer rid){
+        ModelAndView mv=new ModelAndView("log/log_confirm");
+        RecoveryLog recoveryLog=recoveryLogService.getLogByRid(rid);
+        mv.addObject("log",recoveryLog);
+        return mv;
     }
 }

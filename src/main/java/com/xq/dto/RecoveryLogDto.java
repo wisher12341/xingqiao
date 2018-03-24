@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class RecoveryLogDto {
     private List<RecoveryLog> recoveryLogList;
-
+    private List<RecoveryLog> recoveryLogNoConfirmList;//未确认的康复日志
     private Teacher teacher;//治疗师 空值的话表示不限
     private Demand demand;//需求简历
 
@@ -28,6 +28,13 @@ public class RecoveryLogDto {
 
     private List<String> obs;//该家长所有孩子 有过的康复领域
 
+    public List<RecoveryLog> getRecoveryLogNoConfirmList() {
+        return recoveryLogNoConfirmList;
+    }
+
+    public void setRecoveryLogNoConfirmList(List<RecoveryLog> recoveryLogNoConfirmList) {
+        this.recoveryLogNoConfirmList = recoveryLogNoConfirmList;
+    }
 
     public List<String> getObs() {
         return obs;

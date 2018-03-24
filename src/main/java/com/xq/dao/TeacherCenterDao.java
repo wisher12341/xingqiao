@@ -1,9 +1,6 @@
 package com.xq.dao;
 
-import com.xq.model.Demand;
-import com.xq.model.RecoveryLog;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -37,15 +34,21 @@ public interface TeacherCenterDao {
 
     String getInfoByTypeName(@Param("uid") int uid, @Param("type") String type);
 
-    void updateComplexInfo(@Param("type") String t, @Param("data") String data,@Param("uid") int uid);
+    void updateComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
 
-    void addComplexInfo(@Param("type") String t, @Param("data") String data,@Param("uid") int uid);
+    void addComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
 
-    Teacher getTeacherInfoByUid(@Param("uid") Integer uid,@Param("types") String[] type);
+    Teacher getTeacherInfoByUid(@Param("uid") Integer uid, @Param("types") String[] type);
 
     void editServiceInfo(Teacher teacher);
 
     void editServiceInfoWay(Teacher teacher);
 
-    void editIdCard(@Param("p1") String path1, @Param("p2") String path2, @Param("p3") String path3,@Param("uid") Integer uid);
+    void editIdCard(@Param("p1") String path1, @Param("p2") String path2, @Param("p3") String path3, @Param("uid") Integer uid);
+
+    List<Order> getLogByUid(Integer userId);
+
+    void myInfoEditPost(@Param("ftype") String ftype, @Param("ctype") String ctype, @Param("value") String value, @Param("uid") Integer uid, @Param("status") String status);
+
+    Integer getUidByTid(Integer tid);
 }

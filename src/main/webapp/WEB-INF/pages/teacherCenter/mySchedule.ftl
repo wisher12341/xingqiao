@@ -317,7 +317,8 @@
                 $(".delClass").html("周"+week+"  "+start.split(" ")[1]+"  -  "+event.end.format('HH:mm'));
                 $('#delModal').modal();
                 $('input[name="time"]').val(event.start.toString());
-            }
+            },
+
         });
 
         function showAdd() {

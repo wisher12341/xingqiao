@@ -1,12 +1,17 @@
 package com.xq.controller;
+
 import com.xq.dto.Result;
 import com.xq.model.Comment;
 import com.xq.service.CommentService;
+import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +25,8 @@ public class CommentController {
 
     @Autowired
     CommentService commentService;
-
+    @Autowired
+    UserService userService;
     /**
      * 评论页面
      * @param oid
@@ -40,7 +46,7 @@ public class CommentController {
      * @return
      */
     @RequestMapping(value = "/{oid}",method = RequestMethod.POST)
-    public ModelAndView comment_post(Comment comment,@PathVariable String oid){
+    public ModelAndView comment_post(Comment comment, @PathVariable String oid){
         ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
         commentService.addComment(comment,oid);
         return mv;
@@ -51,8 +57,10 @@ public class CommentController {
      * @return
      */
     @RequestMapping(value = "/{oid}/teacherReply",method = RequestMethod.POST)
-    public ModelAndView comment_reply(Comment comment,@PathVariable String oid){
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+    public ModelAndView comment_reply(Comment comment, @PathVariable String oid, HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+userService.getUserByOpenidStatus(openid,"1").getId()+"/myComments");
         commentService.addReply(comment,oid);
         return mv;
     }

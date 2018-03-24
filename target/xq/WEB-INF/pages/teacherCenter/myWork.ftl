@@ -55,7 +55,7 @@
             background-color: #20b49a;
             color: white;
             font-size: 40px;
-            width: 30%;
+            width: 33%;
             border-radius:100% ;
             text-align: center;
             padding:8px 14px;
@@ -92,7 +92,7 @@
         /**
         今日安排
          */
-        .buttonDiv_info{
+        .buttonDiv_info,.buttonDiv_info_hide{
             margin: 7% 0;
             border-bottom: 1px solid #ccc;
             border-top: 1px solid #ccc;
@@ -204,6 +204,10 @@
         .fa-angle-double-up{
             display: none;
         }
+
+        .daySelect{
+            background-color: #e0e0e0;!important;
+        }
     </style>
 </head>
 
@@ -221,11 +225,9 @@
         </div>
     </div>
 
-    <div class="buttonDiv_info">
-    <#if work.workDay?? && (work.workDay)?size gt 0>
-        <script>
-            $(".buttonDiv_info").css("background-color","white");
-        </script>
+
+    <div class="buttonDiv_info" style="background-color:white;${(work.workDay?? && (work.workDay)?size gt 0 )?string("","display: none")}">
+<#if work.workDay?? && (work.workDay)?size gt 0>
         <div class="row" >
             <p class="work_today">${work.today}</p>
         </div>
@@ -261,10 +263,10 @@
                     </#if>
                 </div>
             </#list>
-    <#else >
-        <script>
-            $(".buttonDiv_info").addClass("noneDiv");
-        </script>
+</#if>
+</div>
+
+    <div class="buttonDiv_info_hide noneDiv" style="${(work.workDay?? && (work.workDay)?size gt 0 )?string("display: none","")}">
         <div class="row" style="margin-top: 150px;width: 100%">
             <div class="col-xs-2">
             </div>
@@ -276,9 +278,7 @@
                 <p style="font-size: 38px;color: grey">可点击日历上标记的日期查看该天安排</p>
             </div>
         </div>
-    </#if>
-</div>
-
+    </div>
 
 </div>
 
@@ -302,8 +302,10 @@
     $(function () {
         var selectTime;//用于记录选中的有安排的日期
         var events=[];
+        var month=[];//用于记录全部有安排的日期
         <#list (work.monthWork)! as item>
             events.push({start:"${item.start}",title:"${item.title}",className:"schedule_title"});
+            month.push("${item.start}");
         </#list>
 //        alert(JSON.stringify(events));
 
@@ -328,7 +330,21 @@
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
             today: ["今天"],
+            dayClick:function (date) {
+                var d=$.fullCalendar.formatDate(date, "YYYY-MM-DD");
+                if(month.indexOf(d)==-1){
+                    $(".select").removeClass("select");
+                    $(".daySelect").removeClass("daySelect");
+                    $(this).addClass("daySelect");
+
+                    if($(".buttonDiv_info_hide").is(":hidden")){
+                        $(".buttonDiv_info").hide();
+                        $(".buttonDiv_info_hide").show();
+                    }
+                }
+            },
             eventClick : function( event ) {
+                $(".daySelect").removeClass("daySelect");
                 var date = event.start.toString();
                 $(".select").removeClass("select");
                 $(this).addClass("select");
@@ -340,7 +356,7 @@
                         date: date
                     },
                     success: function (data) {
-                        $(".buttonDiv_info").removeClass("noneDiv").css("background-color","white");
+//                        $(".buttonDiv_info").removeClass("noneDiv").css("background-color","white");
                         $(".buttonDiv_info").empty();
                         var $target=$(".buttonDiv_info");
                         $target.append($('<div class="row" ><p class="work_today">'+data.data.today+'</p></div>'));
@@ -355,6 +371,11 @@
                         if(parseInt(day)!=parseInt(today)){
                             $(".fa-circle-thin").eq(0).removeClass("fa-circle-thin").addClass("fa-circle").addClass("sss");
                         }
+
+                        if($(".buttonDiv_info").is(":hidden")){
+                            $(".buttonDiv_info_hide").hide();
+                            $(".buttonDiv_info").show();
+                        }
                     }
                 });
             }
@@ -368,7 +389,7 @@
             $(".fc-center h2").html($(".fc-center h2").text().split(" ")[1]+"-"+$(".fc-center h2").text().split(" ")[0]);
         });
 
-        <#if (work.workDay)??>
+        <#if (work.workDay)?? && (work.workDay)?size gt 0>
             var day=$(".schedule_title").eq(0).text();
             var today = new Date().getDate()+"";
             if(parseInt(day)==parseInt(today)){
@@ -397,6 +418,8 @@
                     return;
                 }
             });
+            <#else >
+        showCalendar();
         </#if>
     });
 

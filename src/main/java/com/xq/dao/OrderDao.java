@@ -47,4 +47,11 @@ public interface OrderDao {
 
     CheckOrderFinish checkOrderFinish(String oid);
 
+    List<Order> getParentNoCommentOrderByUid(Integer userId);
+
+    int getNoCommentCountByUid(Integer id);
+
+    List<Order> getAllDoingOrderByUid(Integer userId);
+
+    List<Order> getAllDoingDayOrderByUid(@Param("uid") Integer uid, @Param("day") String day);
 }

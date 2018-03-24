@@ -73,6 +73,9 @@
             top:2px;
             color: orange;!important;
         }
+        a{
+            text-decoration:none;
+        }
     </style>
 </head>
 <body style="background-color: #f5f5f5">
@@ -101,7 +104,7 @@
                         </#if>
                 </div>
                 <div class="cog">
-                    <div class="i1"><a href="${path}/wx/teacherCenter/${user.id}/myInfo"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></a></div>
+                    <div class="i1"><a href="${path}/wx/login/setting/1"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></a></div>
                 </div>
             </div>
             <#--<div class="row">-->
@@ -140,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="col-xs-4">
+                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/myStar">
                     <div>
                         <span class="fa fa-star-o icon_mid"></span>
                     </div>
@@ -211,13 +214,13 @@
                 <p class="text_p"> 日志中心</p>
             </div>
             <div class="col-xs-1">
-                <p class="text_ppp"><span style="font-weight: bold">2</span></p>
+                <p class="text_ppp"><span style="font-weight: bold">${number.logNumber}</span></p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myMessages">
+        <div class="info row" onclick=location.href="/wx/teacherCenter/${user.id}/myComments">
             <div class="col-xs-1">
                 <i class="fa fa-pencil-square-o fa-4x icon_fa"></i>
             </div>
@@ -225,7 +228,7 @@
                 <p class="text_p"> 评价中心</p>
             </div>
             <div class="col-xs-1">
-                <p class="text_ppp"><span style="font-weight: bold">2</span></p>
+                <p class="text_ppp"><span style="font-weight: bold">${number.commentNumber}</span></p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -235,8 +238,11 @@
             <div class="col-xs-1">
                 <i class="fa fa-envelope-o fa-4x icon_fa"></i>
             </div>
-            <div class="col-xs-10">
+            <div class="col-xs-9">
                 <p class="text_p"> 消息中心</p>
+            </div>
+            <div class="col-xs-1">
+                <p class="text_ppp"><span style="font-weight: bold">${number.messageNumber}</span></p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

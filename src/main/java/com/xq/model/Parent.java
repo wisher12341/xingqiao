@@ -21,6 +21,7 @@ public class Parent {
     private String pid;
     private String pidFrontUrl;//身份证正面照
     private String pidBackUrl;//身份证反面照
+    private String peoplePidUrl;//手持身份证
     private String address;//详细地址
     private String ground;//市区路 地址
     private String time;//添加时间
@@ -90,4 +91,11 @@ public class Parent {
         this.pid = pid;
     }
 
+    public String getPeoplePidUrl() {
+        return peoplePidUrl;
+    }
+
+    public void setPeoplePidUrl(String peoplePidUrl) {
+        this.peoplePidUrl = peoplePidUrl;
+    }
 }

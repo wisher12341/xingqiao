@@ -4,6 +4,7 @@ import com.xq.dao.*;
 import com.xq.dto.*;
 import com.xq.model.*;
 import com.xq.service.TeacherCenterService;
+import com.xq.util.Const;
 import com.xq.util.CookieUtil;
 import com.xq.util.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,13 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Autowired
     UserDao userDao;
     @Autowired
-    OrderTeacherDao orderTeacherDaoDao;
+    OrderTeacherDao orderTeacherDao;
+    @Autowired
+    RecoveryLogDao recoveryLogDao;
+    @Autowired
+    CommentDao commentDao;
+    @Autowired
+    OrderDao orderDao;
 
     @Override
     public String getNameByUserId(int userId){
@@ -50,8 +57,33 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     }
 
     @Override
-    public List<Message> getMessagesByUserId(int userId){
-        return messageDao.getMessagesByUserId(userId);
+    public MessageDto getMessagesByUserId(int uid){
+        MessageDto messageDto=new MessageDto();
+        messageDto.setReadInform(messageDao.getReadInformByUid(uid,0));//第一页 0-10
+        messageDto.setNoReadInform(messageDao.getNoReadInformByUid(uid));
+
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        for(Message message:messageDto.getNoReadInform()){
+            if(message.getTime().split(" ")[0].equals(dateNowStr)){
+                message.setTime(message.getTime().split(" ")[1]);
+            }else{
+                message.setTime(message.getTime().split(" ")[0]);
+            }
+        }
+        for(Message message:messageDto.getReadInform()){
+            if(message.getTime().split(" ")[0].equals(dateNowStr)){
+                message.setTime(message.getTime().split(" ")[1]);
+            }else{
+                message.setTime(message.getTime().split(" ")[0]);
+            }
+        }
+        if(messageDto.getReadInform().size()==0 && messageDto.getNoReadInform().size()==0){
+            messageDto.setIsNoneInform(1);
+        }
+        return messageDto;
     }
 
     @Override
@@ -170,7 +202,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
 
             //图片
             try {
-                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.ICON_TEACHER_ROOT_PATH);
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request, FileUpload.ICON_TEACHER_ROOT_PATH);
                 picUrl=path.substring(path.indexOf("img"),path.length());
                 System.out.println(picUrl);
             }catch (IOException e) {
@@ -533,7 +565,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             }
             //图片
             try {
-                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.TEACHER_INFO_AWARD_ROOT_PATH);
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request, FileUpload.TEACHER_INFO_AWARD_ROOT_PATH);
 //                WxInterceptor.logger.info(path);
                 int index = path.indexOf("img");
                 picsUrl += path.substring(index, path.length()) + "!";
@@ -560,7 +592,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
 
         work.setToday(dateNowStr);
 
-        List<Order> orderList=orderTeacherDaoDao.getAllDoingOrderByUid(userId);//获得该治疗师 正在进行的所有订单
+        List<Order> orderList=orderTeacherDao.getAllDoingOrderByUid(userId);//获得该治疗师 正在进行的所有订单
 
         StringBuffer monthWork=new StringBuffer();//用于有任务的日期 避免重复
 
@@ -579,7 +611,11 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                     if(monthWork.indexOf(date)==-1){
                         WorkMonth workMonth=new WorkMonth();
                         workMonth.setStart(date);
-                        workMonth.setTitle(date.split("-")[2]);
+                        String title=date.split("-")[2];
+                        if(title.substring(0,1).equals("0")){
+                            title=title.substring(1);
+                        }
+                        workMonth.setTitle(title);
                         workMonthList.add(workMonth);
                         monthWork.append(date);
                     }
@@ -587,7 +623,11 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                     //以后的安排
                     WorkMonth workMonth=new WorkMonth();
                     workMonth.setStart(date);
-                    workMonth.setTitle(date.split("-")[2]);
+                    String title=date.split("-")[2];
+                    if(title.substring(0,1).equals("0")){
+                        title=title.substring(1);
+                    }
+                    workMonth.setTitle(title);
                     workMonthList.add(workMonth);
                     monthWork.append(date);
                 }else{
@@ -613,7 +653,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         SimpleDateFormat sf2 = new SimpleDateFormat("yyyy-MM-dd");
         String day=sf2.format(d);//该天的日期
 
-        List<Order> orderList=orderTeacherDaoDao.getAllDoingDayOrderByUid(uid,day);
+        List<Order> orderList=orderTeacherDao.getAllDoingDayOrderByUid(uid,day);
         for(Order order:orderList){
             String[] serveTimes=order.getServerTime().split("#");
             for(String time:serveTimes){
@@ -822,5 +862,218 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         return sdf.format(t);
     }
 
+    @Override
+    public List<TeacherLogDto> getLogByUid(Integer userId) {
+        List<TeacherLogDto> teacherLogDtoList=new ArrayList<>();
 
+        List<Order> orders=orderTeacherDao.getLogByUid(userId);
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);//系统时间
+        for(Order order:orders){
+            Integer count=recoveryLogDao.getLogCountByOid(order.getId());//已写好的  康复日志数量
+            if(count!=Integer.parseInt(order.getAmount())){
+                //该订单的康复日志没有写完
+                String[] serverTimes=order.getServerTime().split("#");
+                for(int i=0;i<serverTimes.length;i++){
+                    if(i==count){
+                        //下一次 需要填写康复日志的 服务时间  与系统时间做比较
+                        String time=serverTimes[i].split("%")[0];
+                        if(dateNowStr.compareTo(time)>0){
+                            //系统时间大于 需要当前康复服务时间 则 显示
+                            TeacherLogDto teacherLogDto=new TeacherLogDto();
+                            teacherLogDto.setCount(count);
+                            teacherLogDto.setOrder(order);
+                            teacherLogDto.setTime(serverTimes[i].replace('%','-'));
+                            teacherLogDtoList.add(teacherLogDto);
+                            break;
+                        }
+                    }
+                }
+
+            }
+        }
+        return teacherLogDtoList;
+    }
+
+    @Override
+    public TeacherCenterCountDto getCounts(Integer id, String type) {
+        TeacherCenterCountDto teacherCenterCountDto=new TeacherCenterCountDto();
+        //日志中心
+        if(type.equals("teacher")) {
+            int logN = 0;
+            List<Order> orders = orderTeacherDao.getLogByUid(id);
+            Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+            String dateNowStr = sdf.format(d);//系统时间
+            for (Order order : orders) {
+                Integer count = recoveryLogDao.getLogCountByOid(order.getId());//已写好的  康复日志数量
+                if (count != Integer.parseInt(order.getAmount())) {
+                    //该订单的康复日志没有写完
+                    String[] serverTimes = order.getServerTime().split("#");
+                    for (int i = 0; i < serverTimes.length; i++) {
+                        if (i == count) {
+                            //下一次 需要填写康复日志的 服务时间  与系统时间做比较
+                            String time = serverTimes[i].split("%")[0];
+                            if (dateNowStr.compareTo(time) > 0) {
+                                //系统时间大于 需要当前康复服务时间 则 显示
+                                logN++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            teacherCenterCountDto.setLogNumber(logN);
+
+            int commentN=commentDao.getNoReplyCommentCountByUid(id);
+            teacherCenterCountDto.setCommentNumber(commentN);
+        }
+        else{
+            int commentN=orderDao.getNoCommentCountByUid(id);
+            teacherCenterCountDto.setCommentNumber(commentN);
+        }
+
+        int messageN=messageDao.getNoReadInformCountByUid(id);
+        teacherCenterCountDto.setMessageNumber(messageN);
+
+
+        return teacherCenterCountDto;
+    }
+
+    @Override
+    public TeacherInfoEdit myInfoEdit(String ftype, String ctype, String value, Integer userStatus) {
+        TeacherInfoEdit teacherInfoEdit=new TeacherInfoEdit(value,ctype);
+        switch (ftype){
+            case "base":
+                teacherInfoEdit.setFtype("基本资料");
+                break;
+            case "authentication":
+                teacherInfoEdit.setFtype("实名认证");
+                break;
+            case "service":
+                teacherInfoEdit.setFtype("康复服务");
+        }
+        switch (ctype){
+            case "email":
+                teacherInfoEdit.setCtypeDesc("邮箱");
+                break;
+            case "gender":
+                teacherInfoEdit.setCtypeDesc("性别");
+                break;
+            case "name":
+                teacherInfoEdit.setCtypeDesc("真实姓名");
+                break;
+            case "pid":
+                teacherInfoEdit.setCtypeDesc("证件号");
+                break;
+            case "experience_age":
+                teacherInfoEdit.setCtypeDesc("康复教龄");
+                break;
+            case "period":
+                teacherInfoEdit.setCtypeDesc("课时");
+                break;
+        }
+
+        if(userStatus!=0) {
+            //更改用户状态
+            switch (ctype) {
+                case "name":
+                case "pid":
+                case "experience_age":
+                case "period":
+                    teacherInfoEdit.setIsChangeStatus(1);
+            }
+        }
+        return teacherInfoEdit;
+    }
+
+    @Override
+    @Transactional
+    public void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String status) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=null;
+        if(status.equals("parent")){
+            user=userDao.getUserByOpenidStatus(openid,"0");
+        }else{
+            user=userDao.getUserByOpenidStatus(openid,"1");
+        }
+        //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
+        if(isChangeStatus==1){
+            userDao.changeUserStatus(user.getId(),3);
+        }
+        teacherCenterDao.myInfoEditPost(ftype,ctype,value,user.getId(),status);
+    }
+
+    @Override
+    public List<Message> getInformMessageByPage(HttpServletRequest request, Integer page) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userDao.getUserByOpenidStatus(openid,"1");
+        List<Message> messageList=messageDao.getReadInformByUid(user.getId(),(page-1)*10);
+
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        for(Message message:messageList){
+            if(message.getTime().split(" ")[0].equals(dateNowStr)){
+                message.setTime(message.getTime().split(" ")[1]);
+            }else{
+                message.setTime(message.getTime().split(" ")[0]);
+            }
+        }
+        return messageList;
+    }
+
+    @Override
+    public void allInformRead(HttpServletRequest request) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userDao.getUserByOpenidStatus(openid,"1");
+        messageDao.allInformRead(user.getId());
+    }
+
+    @Override
+    public TCommentsDto getCommentsByUserId(Integer userId) {
+        TCommentsDto tCommentsDto=new TCommentsDto();
+        List<Comment> noReplyCommentList=commentDao.getNoReplyCommentsByUid(userId);
+        List<Comment> hisCommentList=commentDao.getHisCommentsByUid(userId);
+
+        //今天的只显示 时分秒  过去的显示 年月日
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        for(Comment comment:noReplyCommentList){
+            if(comment.getTime().split(" ")[0].equals(dateNowStr)){
+                comment.setTime(comment.getTime().split(" ")[1]);
+            }else{
+                comment.setTime(comment.getTime().split(" ")[0]);
+            }
+        }
+        for(Comment comment:hisCommentList){
+            if(comment.getTime().split(" ")[0].equals(dateNowStr)){
+                comment.setTime(comment.getTime().split(" ")[1]);
+            }else{
+                comment.setTime(comment.getTime().split(" ")[0]);
+            }
+            if(comment.getTeacherComment().getTime().split(" ")[0].equals(dateNowStr)){
+                comment.getTeacherComment().setTime(comment.getTeacherComment().getTime().split(" ")[1]);
+            }else{
+                comment.getTeacherComment().setTime(comment.getTeacherComment().getTime().split(" ")[0]);
+            }
+        }
+        tCommentsDto.setNoReplyComments(noReplyCommentList);
+        tCommentsDto.setHisComments(hisCommentList);
+        return tCommentsDto;
+    }
+
+    @Override
+    public Integer getUidByTid(Integer tid) {
+        return teacherCenterDao.getUidByTid(tid);
+    }
 }

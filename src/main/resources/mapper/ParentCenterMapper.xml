@@ -48,6 +48,8 @@
         INSERT INTO parent(userId,ground,address,pid,realName) VALUE (#{parentInfoDto.userId},#{parentInfoDto.ground},#{parentInfoDto.address},#{parentInfoDto.pid},#{parentInfoDto.realName});
     </insert>
 
-
+    <select id="getIdcardByUid" resultType="com.xq.model.Parent">
+        SELECT pid_front_url,pid_back_url,people_pid_url FROM parent WHERE userId=#{uid}
+    </select>
 
 </mapper>

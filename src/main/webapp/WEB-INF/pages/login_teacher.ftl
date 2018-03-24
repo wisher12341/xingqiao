@@ -103,7 +103,7 @@
 
             $.ajax({
                 method: 'POST',
-                url: '/wx/login/getNumber',
+                url: '/wx/login/getNumber/login',
                 data: {
                     'phone': $('#regAccount input[name="username"]').val()
                 }
@@ -132,7 +132,6 @@
         }else{
             $('#sendCode').val(second + "秒后可重发");
             second--;
-
         }
     }
 

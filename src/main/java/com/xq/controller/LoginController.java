@@ -8,11 +8,9 @@ import com.xq.util.Const;
 import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -65,12 +63,13 @@ public class LoginController {
     /**
      * 生成验证码
      * @param phone
+     * @param type login 注册用的验证码  change修改密码用的验证码
      * @return
      */
     @ResponseBody
-    @RequestMapping(value = "/getNumber",method = RequestMethod.POST)
-    public Result getNumber(@RequestParam String phone){
-        String number=smsService.getNumber(phone);
+    @RequestMapping(value = "/getNumber/{type}",method = RequestMethod.POST)
+    public Result getNumber(@RequestParam String phone, @PathVariable String type){
+        String number=smsService.getNumber(phone,type);
         if(number==null) return new Result(false);
         return new Result(true,number);
     }
@@ -82,7 +81,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "/teacher/reg",method = RequestMethod.POST)
-    public ModelAndView reg(User user,HttpServletResponse response){
+    public ModelAndView reg(User user, HttpServletResponse response){
         User user_re=userService.regTeacher(user,response);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user_re.getId()+"/myInfo");
         return mv;
@@ -97,7 +96,8 @@ public class LoginController {
      */
     @RequestMapping(value = "/{status}/changeAccount",method = RequestMethod.GET)
     public ModelAndView change_teacher(HttpServletRequest request, HttpServletResponse response,@PathVariable Integer status){
-        String openid= CookieUtil.checkCookie(request,status==1?Const.OPENID_TEACHER:Const.OPENID_PARENT);
+        String openid= CookieUtil.checkCookie(request,status==1? Const.OPENID_TEACHER: Const.OPENID_PARENT);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         userService.changeAccount(openid,response,status);
         ModelAndView mv=new ModelAndView(status==1?"login_teacher":"login_parent");
         mv.addObject("openid",openid);
@@ -111,7 +111,7 @@ public class LoginController {
      */
     @RequestMapping(value = "/parent/bindAccount",method = RequestMethod.GET)
     public ModelAndView bind(HttpServletRequest request){
-        String openid= CookieUtil.checkCookie(request,Const.OPENID_PARENT);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         ModelAndView mv=new ModelAndView("parent_bind");
         mv.addObject("openid",openid);
         return mv;
@@ -136,6 +136,52 @@ public class LoginController {
     @RequestMapping(value = "/parent",method = RequestMethod.GET)
     public ModelAndView p(){
         ModelAndView mv=new ModelAndView("login_parent");
+        return mv;
+    }
+
+
+    /**
+     * 设置页面
+     * @param request
+     * @param type  1治疗师  0家长
+     * @return
+     */
+    @RequestMapping(value = "/setting/{type}",method = RequestMethod.GET)
+    public ModelAndView setting(HttpServletRequest request,@PathVariable String type){
+        ModelAndView mv=new ModelAndView("setting/setting");
+//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,type);
+        mv.addObject("user",user);
+        return mv;
+    }
+
+    /**
+     * 修改密码页面
+     * @param request
+     * @param type 1治疗师  0家长
+     * @return
+     */
+    @RequestMapping(value = "/changePwd/{type}",method = RequestMethod.GET)
+    public ModelAndView pwd(HttpServletRequest request,@PathVariable String type){
+        ModelAndView mv=new ModelAndView("setting/changePwd");
+//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,type);
+        mv.addObject("user",user);
+        return mv;
+    }
+
+    /**
+     * 修改密码
+     * @param request
+     * @param type 1治疗师  0家长
+     * @return
+     */
+    @RequestMapping(value = "/changePwd/{type}",method = RequestMethod.POST)
+    public ModelAndView pwd_post(HttpServletRequest request,@PathVariable String type,String password){
+        ModelAndView mv=new ModelAndView("redirect:/wx/login/setting/"+type);
+        userService.changePassword(request,password,type);
         return mv;
     }
 }

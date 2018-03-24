@@ -116,12 +116,12 @@
     </div>
 
     <div class="buttonDiv_info">
-        <div class="info row" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/service/period/${(teacher.period)!''}/edit" >
             <div class="col-xs-3">
                 <p class="text_p"> 课时</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> 100</p>
+                <p class="text_pp">${teacher.period}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

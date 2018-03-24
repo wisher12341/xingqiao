@@ -7,6 +7,10 @@
         SELECT id,message,is_read,time FROM message WHERE user_id=#{id}
     </select>
 
+    <select id="getMessagesByMid" resultType="com.xq.model.Message">
+        SELECT id,message,is_read,time FROM message WHERE id=#{mid}
+    </select>
+
     <insert id="addMessage">
         INSERT INTO message(message,user_id,time) VALUES (#{message},#{userId},#{time})
     </insert>
@@ -18,4 +22,17 @@
     <delete id="deleteMessage" parameterType="java.lang.Integer">
         DELETE FROM message WHERE id=#{messageId}
     </delete>
+
+    <select id="getReadInformByUid" resultType="com.xq.model.Message">
+        SELECT id,message,time FROM message WHERE user_id=#{uid} AND is_read=1 ORDER BY time DESC limit #{start},10
+    </select>
+    <select id="getNoReadInformByUid" resultType="com.xq.model.Message">
+        SELECT id,message,time FROM message WHERE user_id=#{uid} AND is_read=0 ORDER BY time DESC
+    </select>
+    <select id="getNoReadInformCountByUid" resultType="java.lang.Integer">
+        SELECT count(1) FROM message WHERE user_id=#{id} AND is_read=0
+    </select>
+    <update id="allInformRead">
+        UPDATE message SET is_read=1 WHERE is_read=0 AND user_id=#{id}
+    </update>
 </mapper>

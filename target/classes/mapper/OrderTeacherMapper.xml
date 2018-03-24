@@ -38,6 +38,10 @@
         <result property="amount" column="amount"/>
         <result property="realpay" column="realpay"/>
         <result property="isFirst" column="is_first"/>
+        <association property="teacher" javaType="com.xq.model.Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tname"/>
+        </association>
         <association property="parent" javaType="com.xq.model.Parent">
             <id property="id" column="pid"/>
             <result property="realName" column="realName"/>
@@ -128,4 +132,8 @@
         WHERE o.teacher_id=t.id AND t.user_id=#{uid} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3 AND o.server_time LIKE concat('%',#{day},'%')
     </select>
 
+
+    <select id="getLogByUid" resultMap="resultOrder">
+        SELECT o.id,o.server_time,o.way,o.recover_ob,o.amount,d.name FROM orders o,teacher t,demand d WHERE d.id=o.demand_id AND t.user_id=#{userId} AND o.teacher_id=t.id AND o.status_t=3
+    </select>
 </mapper>

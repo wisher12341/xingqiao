@@ -1,12 +1,9 @@
 package com.xq.controller;
 
-import com.sun.media.jfxmedia.logging.Logger;
 import com.xq.dto.*;
-import com.xq.model.Demand;
-import com.xq.model.RecoveryLog;
-import com.xq.model.Teacher;
-import com.xq.model.User;
+import com.xq.model.*;
 import com.xq.service.AreaService;
+import com.xq.service.MessageService;
 import com.xq.service.TeacherCenterService;
 import com.xq.service.UserService;
 import com.xq.util.Const;
@@ -19,10 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 86761 on 2017/11/10.
@@ -37,6 +33,8 @@ public class TeacherCenterController {
     UserService userService;
     @Autowired
     AreaService areaService;
+    @Autowired
+    MessageService messageService;
 
     /**
      * 治疗师中心首页
@@ -46,7 +44,6 @@ public class TeacherCenterController {
         ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter_index");
 //         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
         String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
-
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);
@@ -64,6 +61,8 @@ public class TeacherCenterController {
         Teacher teacher=teacherCenterService.getTeacherByUserId(uid);
         mv.addObject("user",user);
         mv.addObject("teacher",teacher);
+        TeacherCenterCountDto teacherCenterCountDto=teacherCenterService.getCounts(user.getId(), "teacher");
+        mv.addObject("number",teacherCenterCountDto);
         return mv;
     }
 
@@ -105,19 +104,68 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{userId}/myMessages")
     public ModelAndView myMessages(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("parentCenter/myMessages");
+        ModelAndView mv=new ModelAndView("teacherCenter/myMessages");
         mv.addObject("messages",teacherCenterService.getMessagesByUserId(userId));
         mv.addObject("name",teacherCenterService.getNameByUserId(userId));
         mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
 
+    @RequestMapping(value = "/{uid}/message/{mid}/del",method = RequestMethod.GET)
+    public ModelAndView delMessage(@PathVariable Integer mid,@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myMessages");
+        messageService.delMessageByMid(mid);
+        return mv;
+    }
+
+    /**
+     *评价中心
+     */
+    @RequestMapping(value = "/{userId}/myComments")
+    public ModelAndView myCommentsens(@PathVariable Integer userId){
+        ModelAndView mv=new ModelAndView("teacherCenter/myComments");
+        mv.addObject("comments",teacherCenterService.getCommentsByUserId(userId));
+        mv.addObject("user",teacherCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
+     * 获得第几页的消息
+     * @param page
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getInformMessageByPage/{page}",method = RequestMethod.GET)
+    public List<Message> getInformMessageByPage(@PathVariable Integer page, HttpServletRequest request){
+        return teacherCenterService.getInformMessageByPage(request,page);
+    }
+
+    /**
+     * 所有通知 变已读
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/allInformRead",method = RequestMethod.POST)
+    public Result allInformRead(HttpServletRequest request){
+        teacherCenterService.allInformRead(request);
+        return new Result(true);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getInfromById/{mid}",method = RequestMethod.GET)
+    public Result getInfromById(@PathVariable Integer mid){
+        Message message=messageService.getInfromById(mid);
+        return new Result(true,message);
+    }
+
     /**
      *星级评定
      */
-    @RequestMapping(value = "/{userId}/myLevel")
+    @RequestMapping(value = "/{userId}/myStar")
     public ModelAndView myLevel(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("teacherCenter/myLevel");
+        ModelAndView mv=new ModelAndView("teacherCenter/myStar");
         return mv;
     }
 
@@ -158,14 +206,14 @@ public class TeacherCenterController {
     }
 
     /**
-     * 我的日程安排  获得具体后一天的安排
+     * 我的日程安排  获得具体某一天的安排
      * @param uid
      * @param date
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/{uid}/myWork/getDayWork",method = RequestMethod.POST)
-    public Result getDayWork(@PathVariable Integer uid,String date) throws ParseException {
+    public Result getDayWork(@PathVariable Integer uid, String date) throws ParseException {
         return new Result(true,teacherCenterService.getDayWorkByUid(uid,date));
     }
 
@@ -227,7 +275,7 @@ public class TeacherCenterController {
     }
 
     /**
-     * 我的资料  康复服务 康复方式 编辑提交
+     * 我的资料：康复服务 康复方式 编辑提交
      * @param uid
      * @param type 学生上门、治疗师上门、在线授课
      * @param teacher
@@ -237,7 +285,7 @@ public class TeacherCenterController {
      * @return
      */
     @RequestMapping(value = "/serviceInfo/{uid}/way/{type}/{ctype}",method =RequestMethod.POST)
-    public ModelAndView way_post(@PathVariable Integer uid,@PathVariable String type,Teacher teacher,String area1,String area2,@PathVariable String ctype){
+    public ModelAndView way_post(@PathVariable Integer uid, @PathVariable String type, Teacher teacher, String area1, String area2, @PathVariable String ctype){
         teacherCenterService.editServiceInfoWay(uid,type,teacher,area1,area2,ctype);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/serviceInfo/"+uid+"/way@s_ground@t_ground@price_t@price_s@price_o@detailAddress");
         return mv;
@@ -268,18 +316,18 @@ public class TeacherCenterController {
 
 
 
-    /**
-     *
-     * 修改字段
-     */
-    @RequestMapping(value = "/{objId}/{fieldName}/modifyPage")
-    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String fieldName)
-    {
-        ModelAndView mv=new ModelAndView("teacherCenter/modifyPage");
-        ModifyPageDto modifyPageDto=teacherCenterService.getModifyDto(objId,fieldName);
-        mv.addObject("modifyPageDto",modifyPageDto);
-        return mv;
-    }
+//    /**
+//     *
+//     * 修改字段
+//     */
+//    @RequestMapping(value = "/{objId}/{fieldName}/modifyPage")
+//    public ModelAndView modifyPage(@PathVariable int objId,@PathVariable String fieldName)
+//    {
+//        ModelAndView mv=new ModelAndView("teacherCenter/modifyPage");
+//        ModifyPageDto modifyPageDto=teacherCenterService.getModifyDto(objId,fieldName);
+//        mv.addObject("modifyPageDto",modifyPageDto);
+//        return mv;
+//    }
 
 
     /**
@@ -296,10 +344,11 @@ public class TeacherCenterController {
         if(page==0){
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type)+"_add");
             mv.addObject("user",userService.getUserByUid(uid));
-            System.out.println("page:"+page);
+            mv.addObject("type",type);
+//            System.out.println("page:"+page);
            // if(type.equals("abstractTeacher")){
-                Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
-                mv.addObject("data",data);
+//                Object data=teacherCenterService.getInfoByTypeName(uid,type,"");
+//                mv.addObject("data",data);
                        // }
         }else{
             mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type));
@@ -341,16 +390,18 @@ public class TeacherCenterController {
      * @param uid
      * @param type
      * @param index  编辑的该条的 索引
+     * @param qetype 判断是查询还是编辑 query 查询 edit 编辑
      * @return
      */
-    @RequestMapping(value = "/info/{uid}/{type}/{index}/edit",method = RequestMethod.GET)
-    public ModelAndView info_edit(@PathVariable int uid,@PathVariable String type,@PathVariable int index){
+    @RequestMapping(value = "/info/{uid}/{type}/{index}/{qetype}",method = RequestMethod.GET)
+    public ModelAndView info_edit(@PathVariable int uid,@PathVariable String type,@PathVariable int index,@PathVariable String qetype){
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type)+"_add");
         Object data=teacherCenterService.getInfoByTypeNameIndex(uid,type,index);
         mv.addObject("data",data);
         mv.addObject("index",index);
         mv.addObject("user",userService.getUserByUid(uid));
         mv.addObject("type",type);
+        mv.addObject("qetype",qetype);
         return mv;
     }
 
@@ -362,7 +413,7 @@ public class TeacherCenterController {
      * @return
      */
     @RequestMapping(value = "/info/{uid}/{type}/{index}/edit",method = RequestMethod.POST)
-    public ModelAndView info_edit_post(@PathVariable int uid,@PathVariable String type,@PathVariable int index,String title,String detail,String picUrls,String deleteExitImg,TeacherInfoSchool teacherInfoSchool,TeacherInfoRecoveryHis teacherInfoRecoveryHis){
+    public ModelAndView info_edit_post(@PathVariable int uid, @PathVariable String type, @PathVariable int index, String title, String detail, String picUrls, String deleteExitImg, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis){
         ModelAndView mv;
         if(type.equals("abstractTeacher")||type.equals("name")||type.equals("pid")||type.equals("experienceAge")){
             mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
@@ -405,31 +456,31 @@ public class TeacherCenterController {
         return new Result(true,teacherCenterService.addInfoImg(request));
     }
 
-    /**
-     *保存字段修改
-     */
-    @RequestMapping(value = "/saveModify")
-    @ResponseBody
-    public Map saveModify(@RequestParam("fieldName") String fieldName, @RequestParam("objId") Integer objId, @RequestParam("newValue") String newValue){
-        Map map=new HashMap();
-        teacherCenterService.modifyFeild(objId,newValue,fieldName);
-        return map;
-    }
+//    /**
+//     *保存字段修改
+//     */
+//    @RequestMapping(value = "/saveModify")
+//    @ResponseBody
+//    public Map saveModify(@RequestParam("fieldName") String fieldName, @RequestParam("objId") Integer objId, @RequestParam("newValue") String newValue){
+//        Map map=new HashMap();
+//        teacherCenterService.modifyFeild(objId,newValue,fieldName);
+//        return map;
+//    }
 
-    /**
-     *
-     * 修改成功案例
-     */
-    @RequestMapping(value = "{userId}/{caseIndex}/modifyText")
-    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable int caseIndex)
-    {
-        ModelAndView mv=new ModelAndView("teacherCenter/modifyText");
-        mv.addObject("userId",userId);
-        mv.addObject("cases",teacherCenterService.getTeacherByUserId(userId).getSuccessCase());
-        mv.addObject("casesIndex",caseIndex);
-        mv.addObject("case",teacherCenterService.getTeacherByUserId(userId).getSuccessCase().split("#")[caseIndex]);
-        return mv;
-    }
+//    /**
+//     *
+//     * 修改成功案例
+//     */
+//    @RequestMapping(value = "{userId}/{caseIndex}/modifyText")
+//    public ModelAndView modifyPage(@PathVariable int userId,@PathVariable int caseIndex)
+//    {
+//        ModelAndView mv=new ModelAndView("teacherCenter/modifyText");
+//        mv.addObject("userId",userId);
+//        mv.addObject("cases",teacherCenterService.getTeacherByUserId(userId).getSuccessCase());
+//        mv.addObject("casesIndex",caseIndex);
+//        mv.addObject("case",teacherCenterService.getTeacherByUserId(userId).getSuccessCase().split("#")[caseIndex]);
+//        return mv;
+//    }
 
     /**
      * 修改头像页面
@@ -447,7 +498,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{userId}/modifyIcon",method = RequestMethod.POST)
     @ResponseBody
-    public Result modifyIcon(@PathVariable int userId,HttpServletRequest request){
+    public Result modifyIcon(@PathVariable int userId, HttpServletRequest request){
         teacherCenterService.uploadPhoto(request,userId);
         return new Result(true);
     }
@@ -520,9 +571,51 @@ public class TeacherCenterController {
     @RequestMapping(value = "/{userId}/myLog",method = RequestMethod.GET)
     public ModelAndView myLog(@PathVariable Integer userId){
         ModelAndView mv=new ModelAndView("teacherCenter/myLog");
-//        Work work=teacherCenterService.getWorkByUid(userId);
-//        mv.addObject("work",work);
+        List<TeacherLogDto> teacherLogDtos=teacherCenterService.getLogByUid(userId);
+        mv.addObject("logs",teacherLogDtos);
         mv.addObject("user",teacherCenterService.getUserById(userId));
+        return mv;
+    }
+
+    /**
+     * 个人资料  单项 编辑页面
+     * @param ftype 父类型 base service authentication
+     * @param ctype 子类型 email等等
+     * @param value 值
+     * @return
+     */
+    @RequestMapping(value = "/{ftype}/{ctype}/{value}/edit",method = RequestMethod.GET)
+    public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
+        ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userService.getUserByOpenidStatus(openid,"1");
+        mv.addObject("user",user);
+
+        //解决中文乱码
+        if(ctype.equals("name")){
+            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
+        }
+        TeacherInfoEdit teacherInfoEdit=teacherCenterService.myInfoEdit(ftype,ctype,value,user.getUserStatus());
+        mv.addObject("info",teacherInfoEdit);
+        return mv;
+    }
+
+    @RequestMapping(value = "/myInfo/edit",method = RequestMethod.POST)
+    public ModelAndView myInfo_edit_post(String ftype,String ctype,String value,HttpServletRequest request,Integer isChangeStatus,Integer uid){
+        ModelAndView mv=null;
+        switch (ftype){
+            case "基本资料":
+                mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_base");
+                break;
+            case "实名认证":
+                mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
+                break;
+            case "康复服务":
+                mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_service");
+                break;
+        }
+        teacherCenterService.myInfoEditPost(ftype,ctype,value,isChangeStatus,request, "teacher");
         return mv;
     }
 }
