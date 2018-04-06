@@ -294,9 +294,9 @@
 </html>
 
 <script type="text/javascript">
-    var openid = "oxsEYwtmbjRkLNS7NelU1jClG668";
+//    var openid = "oxsEYwtmbjRkLNS7NelU1jClG668";
     //document.cookie="openid_parent="+openid;
-    setCookie("openid_parent","oxsEYwtmbjRkLNS7NelU1jClG668",0);
+//    setCookie("openid_parent","oxsEYwtmbjRkLNS7NelU1jClG668",0);
     //调用
     //设置cookie
     function setCookie(name, value, seconds) {

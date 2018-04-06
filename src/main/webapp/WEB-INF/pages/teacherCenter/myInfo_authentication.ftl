@@ -84,7 +84,7 @@
     <#--</div>-->
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/name/${(teacher.name)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/name/${(((teacher.name)!'')!="")?string(teacher.name,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 真实姓名</p>
             </div>
@@ -95,7 +95,7 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/pid/${(teacher.pid)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/pid/${(((teacher.pid)!'')!="")?string(teacher.pid,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 证件号</p>
             </div>
@@ -173,12 +173,12 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/experience_age/${(teacher.experienceAge)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/experience_age/${((teacher.experienceAge)!="-1")?string(teacher.experienceAge,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 康复教龄</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp">${(teacher.experienceAge)!'<span style="color:red">未选择</span>'}</p>
+                <p class="text_pp">${((teacher.experienceAge)!="-1")?string(teacher.experienceAge,"<span style='color:red'>未选择</span>")}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

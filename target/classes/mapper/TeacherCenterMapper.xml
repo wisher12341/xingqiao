@@ -164,4 +164,8 @@
     <select id="getUidByTid" resultType="java.lang.Integer">
         SELECT user_id FROM teacher WHERE id=#{tid}
     </select>
+
+    <insert id="saveNewTeacher" >
+        INSERT into teacher(user_id) VALUES (#{id})
+    </insert>
 </mapper>

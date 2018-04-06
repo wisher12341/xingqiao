@@ -109,12 +109,12 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/parentCenter/base/email/${(user.email)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/base/email/${(((user.email)!'')=="")?string("none",user.email)}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>
+                <p class="text_pp"> ${(((user.email)!'')=="")?string('<span style="color:red">未填写</span>',user.email)}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

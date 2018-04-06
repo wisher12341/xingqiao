@@ -41,9 +41,9 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "")
     public ModelAndView teacherCenter(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter_index");
-//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        ModelAndView mv=new ModelAndView("teacherCenter/home");
+         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);
@@ -588,7 +588,7 @@ public class TeacherCenterController {
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         mv.addObject("user",user);
 

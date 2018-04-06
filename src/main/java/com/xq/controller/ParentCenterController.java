@@ -2,6 +2,7 @@ package com.xq.controller;
 
 
 import com.xq.dto.*;
+import com.xq.interceptor.WxInterceptor;
 import com.xq.model.*;
 import com.xq.service.*;
 import com.xq.util.Const;
@@ -45,8 +46,8 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-//             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
@@ -220,11 +221,11 @@ public class ParentCenterController {
     @RequestMapping(value = "/{ftype}/{ctype}/{value}/edit",method = RequestMethod.GET)
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"0");
         mv.addObject("user",user);
-
+//        WxInterceptor.logger.info(user.toString());
         //解决中文乱码
         if(ctype.equals("name")){
             value= new String(value.getBytes("ISO8859-1"), "UTF-8");
@@ -266,7 +267,7 @@ public class ParentCenterController {
 
     @RequestMapping(value = "/info/{uid}/idcard",method = RequestMethod.POST)
     public ModelAndView idcard_post(@PathVariable Integer uid, MultipartFile peoplePidUrl, MultipartFile pidUrlFront, MultipartFile pidUrlBack, HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_authentication");
         teacherCenterService.editIdCard(peoplePidUrl,pidUrlBack,pidUrlFront,uid,request);
         return mv;
     }
@@ -478,5 +479,17 @@ public class ParentCenterController {
         return new Result(true,parentCenterService.getDayWorkByUid(uid,date));
     }
 
+    /**
+     * 用户状态 修改
+     * @param userStatus
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/userstatus/change",method = RequestMethod.POST)
+    public ModelAndView userstatus(@RequestParam Integer userStatus,HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        userService.changeUserStatus(userStatus,openid,"parent");
+        return new ModelAndView("redirect:/wx/parentCenter");
+    }
 }
 

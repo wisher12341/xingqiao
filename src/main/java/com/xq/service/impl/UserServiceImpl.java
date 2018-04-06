@@ -1,12 +1,15 @@
 package com.xq.service.impl;
 
 import com.xq.dao.GoodReportDao;
+import com.xq.dao.TeacherCenterDao;
 import com.xq.dao.UserDao;
 import com.xq.model.User;
 import com.xq.service.UserService;
 import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +27,8 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
     @Autowired
     GoodReportDao goodReportDao;
+    @Autowired
+    TeacherCenterDao teacherCenterDao;
 
     @Override
     public User getUserByOpenid(String openid) {
@@ -84,6 +89,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User regTeacher(User user, HttpServletResponse response) {
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -93,6 +99,7 @@ public class UserServiceImpl implements UserService {
         user.setStatus(1);
         user.setUserStatus(0);
         userDao.register(user);
+        teacherCenterDao.saveNewTeacher(user.getId());
 
         Cookie cookie = new Cookie(Const.OPENID_TEACHER,user.getOpenid());
         cookie.setMaxAge(60 * 60 * 24 * 7 * 100);
@@ -144,8 +151,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void changePassword(HttpServletRequest request, String password, String type) {
-//        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         userDao.changePassword(openid,type,password);
+    }
+
+    @Override
+    public void changeUserStatus(Integer userStatus, String openid, String type) {
+        userDao.changeUserStatusByOpenid(openid,userStatus,type);
     }
 }

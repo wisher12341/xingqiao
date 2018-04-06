@@ -21,7 +21,7 @@ public interface UserDao {
 
     void addOpenid(User user);
 
-    void saveNewUser(WxUserInfo wxUserInfo);
+    void saveNewUser(User wxUserInfo);
 
     User getUserByOpenidStatus(@Param("openid") String openid, @Param("status") String status);
 
@@ -34,4 +34,6 @@ public interface UserDao {
     void changeUserStatus(@Param("uid") int uid, @Param("userStatue") int i);
 
     void changePassword(@Param("openid") String openid, @Param("status") String type, @Param("password") String password);
+
+    void changeUserStatusByOpenid(@Param("openid") String openid, @Param("userStatue") Integer userStatus, @Param("type") String type);
 }

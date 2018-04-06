@@ -243,6 +243,7 @@
 
 <form id="toCheckTimeForm" action="${path}/wx/teacher/toCheckTimes" method="post">
     <input hidden name="teacher.id"/>
+    <input hidden name="teacher.userId"/>
     <input hidden name="teacher.name"/>
     <input hidden name="demandId"/>
     <input hidden name="way"/>
@@ -438,6 +439,7 @@
             pay = pay.replace(/,/,"");
 
             $("input[name='teacher.id']").val(${order.teacher.id});
+            $("input[name='teacher.userId']").val(${order.teacher.userId});
             $("input[name='teacher.name']").val("${order.teacher.name}");
             $("input[name='demandId']").val("${order.demandId}");
             $("input[name='way']").val("${order.way}");

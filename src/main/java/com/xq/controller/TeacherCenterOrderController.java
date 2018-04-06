@@ -9,6 +9,8 @@ import com.xq.service.CommentService;
 import com.xq.service.OrderTeacherService;
 import com.xq.service.RecoveryLogService;
 import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -78,8 +80,8 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/updateLog",method = RequestMethod.POST)
     public ModelAndView updatelog_post(RecoveryLog recoveryLog, HttpServletRequest request)  {
         recoveryLogService.addRecovery(recoveryLog);
-//        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user.getId()+"/myLog");
         return mv;

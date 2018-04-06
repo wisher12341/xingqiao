@@ -2,8 +2,10 @@ package com.xq.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.xq.dao.GoodReportDao;
+import com.xq.dao.ParentCenterDao;
 import com.xq.dao.UserDao;
 import com.xq.interceptor.WxInterceptor;
+import com.xq.model.User;
 import com.xq.model.WxUserInfo;
 import com.xq.service.UserService;
 import com.xq.service.WxService;
@@ -33,6 +35,8 @@ public class WxServiceImpl implements WxService{
     UserDao userDao;
     @Autowired
     GoodReportDao goodReportDao;
+    @Autowired
+    ParentCenterDao parentCenterDao;
 
     public String getOpenId(String code) {
         String appid= WxConfig.APPID;
@@ -113,8 +117,16 @@ public class WxServiceImpl implements WxService{
         String dateNowStr = sdf.format(d);
         wxUserInfo.setTime(dateNowStr);
 
-        userDao.saveNewUser(wxUserInfo);
-        goodReportDao.addUser(wxUserInfo.getId());
+        User user=new User();
+        user.setNickname(wxUserInfo.getNickname());
+        user.setHeadimgurl(wxUserInfo.getHeadimgurl());
+        user.setOpenid(wxUserInfo.getOpenid());
+        user.setGender(Integer.parseInt(wxUserInfo.getSex()));
+        user.setTime(wxUserInfo.getTime());
+
+        userDao.saveNewUser(user);
+        goodReportDao.addUser(user.getId());
+        parentCenterDao.saveNewParent(user.getId());
         return wxUserInfo;
     }
 }

@@ -40,6 +40,8 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     CommentDao commentDao;
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    ParentCenterDao parentCenterDao;
 
     @Override
     public String getNameByUserId(int userId){
@@ -839,8 +841,12 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             }
             path3=path3.substring(index3);
         }
-
-        teacherCenterDao.editIdCard(path1,path2,path3,uid);
+        if(user.getStatus()==0){
+            //家长
+            parentCenterDao.editIdCard(path1,path2,path3,uid);
+        }else {
+            teacherCenterDao.editIdCard(path1, path2, path3, uid);
+        }
     }
 
     @Override
@@ -993,12 +999,14 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     @Transactional
     public void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String status) {
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid="";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=null;
         if(status.equals("parent")){
+            openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
             user=userDao.getUserByOpenidStatus(openid,"0");
         }else{
+            openid=CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
             user=userDao.getUserByOpenidStatus(openid,"1");
         }
         //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
@@ -1011,7 +1019,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     public List<Message> getInformMessageByPage(HttpServletRequest request, Integer page) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"1");
         List<Message> messageList=messageDao.getReadInformByUid(user.getId(),(page-1)*10);
 
@@ -1032,7 +1040,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     public void allInformRead(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"1");
         messageDao.allInformRead(user.getId());
     }

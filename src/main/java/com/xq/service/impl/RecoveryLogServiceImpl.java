@@ -70,7 +70,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
     public RecoveryLogDto getMyTeachersAndDemandsNoConfirmLogByUid(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();

@@ -30,4 +30,8 @@ public interface ParentCenterDao {
 
 
     Parent getIdcardByUid(Integer uid);
+
+    void saveNewParent(Integer id);
+
+    void editIdCard(@Param("p1") String path1,@Param("p2") String path2,@Param("p3") String path3,@Param("uid") Integer uid);
 }

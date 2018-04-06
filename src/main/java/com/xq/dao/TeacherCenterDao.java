@@ -51,4 +51,6 @@ public interface TeacherCenterDao {
     void myInfoEditPost(@Param("ftype") String ftype, @Param("ctype") String ctype, @Param("value") String value, @Param("uid") Integer uid, @Param("status") String status);
 
     Integer getUidByTid(Integer tid);
+
+    void saveNewTeacher(Integer id);
 }

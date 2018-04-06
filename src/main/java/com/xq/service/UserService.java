@@ -29,4 +29,6 @@ public interface UserService {
     User getUserByUid(Integer uid);
 
     void changePassword(HttpServletRequest request, String password, String type);
+
+    void changeUserStatus(Integer userStatus, String request, String parent);
 }

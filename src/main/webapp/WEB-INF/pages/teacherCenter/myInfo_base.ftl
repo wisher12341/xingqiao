@@ -77,7 +77,7 @@
                 <p class="text_pp"> ${(user.id)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!'0'}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 性别</p>
             </div>
@@ -109,7 +109,7 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(user.email)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(user.email)!'none'}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>

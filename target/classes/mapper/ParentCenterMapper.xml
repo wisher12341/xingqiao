@@ -52,4 +52,22 @@
         SELECT pid_front_url,pid_back_url,people_pid_url FROM parent WHERE userId=#{uid}
     </select>
 
+
+    <insert id="saveNewParent" >
+        INSERT into parent(userId) VALUES (#{id})
+    </insert>
+
+    <update id="editIdCard">
+        UPDATE parent SET userId=#{uid}
+        <if test="p1!=null and p1!=''">
+            ,people_pid_url=#{p1}
+        </if>
+        <if test="p2!=null and p2!=''">
+            ,pid_front_url=#{p2}
+        </if>
+        <if test="p3!=null and p3!=''">
+            ,pid_back_url=#{p3}
+        </if>
+        WHERE userId=#{uid}
+    </update>
 </mapper>

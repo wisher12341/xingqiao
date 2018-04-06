@@ -1004,8 +1004,11 @@
                         $('#ways').append($option);
                     }
                     waySelect = ways[0];
-
                     var demands = data.data;
+                    if(demands.length<1){
+                        alert("请先添加简历");
+                        return;
+                    }
                     $("#demands").html("");
                     $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
                     $('#demands').append($option);
