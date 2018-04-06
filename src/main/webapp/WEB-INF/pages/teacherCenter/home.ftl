@@ -1,8 +1,10 @@
+<!DOCTYPE html>
 <#include "common/const.ftl" />
 <#include "common/var.ftl" />
 <html xmlns="http://www.w3.org/1999/html">
 <head>
     <title>治疗师中心</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <#include "common/head.ftl" />
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
     <link href="/static/css/jquery.circliful.css" rel="stylesheet" type="text/css" />
@@ -19,7 +21,7 @@
 
 </head>
 <body class="index-base">
-<div id="main" class="container">
+<div id="main" class="container" style="padding-left: 0px; padding-right: ">
     <div id="headPoster" class="row">
         <img src="/static/img/poster.jpg">
     </div>
@@ -72,6 +74,7 @@
 
 <#include "common/foot.ftl" />
 <script>
+
     $( document ).ready(function() {
         $("#chart1").circliful({
             animationStep: 5,

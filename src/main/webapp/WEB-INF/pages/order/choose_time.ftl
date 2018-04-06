@@ -420,6 +420,22 @@
             }
         });
 
+        $(".fc-day-number").click(function () {
+
+            var target = -1;
+            var day = $(this).text();
+
+            $(this).parent().parent().children().each(function(index,element){
+                if (element.firstChild.innerText == day){
+                    target = index;
+                    return false;
+                }
+            });
+            if (target > 0) {
+                $(this).parent().parent().parent().siblings('tbody').children().children().eq(target).children('a').click();
+            }
+        });
+
         $("#btnNextStep").click(function () {
             if ($("#remainingTimes").data("remain") > 0){
                 alert("您的课时还没选完哦~");

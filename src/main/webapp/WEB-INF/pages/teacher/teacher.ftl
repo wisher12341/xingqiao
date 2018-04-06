@@ -18,6 +18,13 @@
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
     <link rel="stylesheet" href="${base}/static/font-awesome-4.7.0/css/font-awesome.min.css" />
     <style>
+        .btn-xxs{
+            background: #20b49a;
+            color: #fff;
+            font-size: 12px;
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
         #calendar_month,#calendar_day {
             max-width: 900px;
             margin: 0 auto;
@@ -540,7 +547,10 @@
                             </div>
                         </div>
                         <div class="offset-20">
-                            <div class="text-left">需求简历：</div>
+                            <div class="text-left">
+                                需求简历：
+                                <span class="btn-xxs" onclick="javascript:location='${base}/wx/parentCenter/${user.id}/addDemandPage'">+创建简历</span>
+                            </div>
                             <div id="demands" class="row offset-10">
                             </div>
                         <#--<select id="waySelect"></select>-->
@@ -653,6 +663,7 @@
 
 </body>
 </html>
+<script src='${base}/static/js/jquery.cookie.js'></script>
 <script>
     var waySelect = null;
     var domainSelect = null;
@@ -664,7 +675,7 @@
     var timeDayStr = '<div class="time-choose-div"><img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
     var timeStr = '<div class="time-choose-div"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
     if(waySelect=="治疗师上门"){
-        $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").htmal(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="学生上门"){
         $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="在线授课"){
@@ -1005,28 +1016,29 @@
                     }
                     waySelect = ways[0];
                     var demands = data.data;
-                    if(demands.length<1){
-                        alert("请先添加简历");
-                        return;
-                    }
                     $("#demands").html("");
-                    $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
-                    $('#demands').append($option);
-                    demandSelect=demands[0].id;
-                    for(var i=1;i<demands.length;i++){
-                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
-                        $('#demands').append($option);
-                    }
-                    var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
-                    if(isFirst=="yes"){
-                        //该简历 第一次交易
-                        $("#addBtn").unbind("click");
-                        $("#subBtn").unbind("click");
+                    if(demands.length<1){
+                        $("#demands").html("<div class='col-sm-12 col-xs-12' style='color:#FF7F00; padding: 10px; text-align:center'>您还未添加任何需求简历！</div>");
                     } else {
-                        $("#addBtn").bind("click",add_function);
-                        $("#subBtn").bind("click",subtract_function);
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
+                        $('#demands').append($option);
+                        demandSelect=demands[0].id;
+                        for(var i=1;i<demands.length;i++){
+                            $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
+                            $('#demands').append($option);
+                        }
+                        var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
+                        if(isFirst=="yes"){
+                            //该简历 第一次交易
+                            $("#addBtn").unbind("click");
+                            $("#subBtn").unbind("click");
+                        } else {
+                            $("#addBtn").bind("click",add_function);
+                            $("#subBtn").bind("click",subtract_function);
+                        }
+                        $(".border-pill").bind("click", pillClick);
                     }
-                    $(".border-pill").bind("click", pillClick);
+
                     calculateSum();
                     mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
                     $("#divContent").children(".container").height($("#mobile-menu-order").height()-120);
@@ -1291,6 +1303,11 @@
         }
         if (isNaN($('#countSpan').html())){
             alert("显示错误，请刷新页面");
+            return;
+        }
+
+        if ($(".demand.border-pill-active").length == 0){
+            alert("您还没有添加简历哦~");
             return;
         }
 
