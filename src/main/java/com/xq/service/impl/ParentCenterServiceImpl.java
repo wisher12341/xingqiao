@@ -492,5 +492,10 @@ public class ParentCenterServiceImpl implements ParentCenterService {
         workDayDto.setToday(day);
         return workDayDto;
     }
+
+    @Override
+    public void changeInfo(Parent parent) {
+        parentCenterDao.changeInfo(parent);
+    }
 }
 

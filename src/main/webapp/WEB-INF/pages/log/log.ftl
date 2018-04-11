@@ -235,10 +235,10 @@
 </head>
 <body>
 <div id="log">
-<#if (recoveryLogDto.recoveryLogNoConfirmList)?size==0>
+<#if !(recoveryLogDto.recoveryLogNoConfirmList??) || (recoveryLogDto.recoveryLogNoConfirmList)?size==0>
 <div >
     <div class="row" style="margin-top: 30%!important;width: 100%">
-        <div class="col-xs-3">
+        <div class="col-xs-2">
         </div>
         <div class="col-xs-2">
             <img src="/static/img/kong.png" width="150">
@@ -248,6 +248,7 @@
             <p style="font-size: 38px;color: grey;font-weight: bold">您还没有要确认的康复日志</p>
         </div>
     </div>
+</div>
 <#else>
 <div class="buttonDiv_info" style="background-color: white;" >
     <#list recoveryLogDto.recoveryLogNoConfirmList as log>
@@ -310,8 +311,8 @@
             </#if>
         </div>
     </#list>
-</#if>
 </div>
+</#if>
 
     <div class="foot" align="center">
         <button  style="width: 100% !important;" onclick="$('#log').hide();$('#main').show()">日志查询</button>
@@ -552,6 +553,13 @@
 
 </body>
 <script>
+$(function () {
+    <#if (recoveryLogDto.recoveryLogList)??>
+    $("#log").hide();
+    $("#main").show();
+    </#if>
+})
+
 
     twemoji.parse(document.getElementById('main'), {size: 36});
     twemoji.parse(document.getElementById('log'), {size: 36});

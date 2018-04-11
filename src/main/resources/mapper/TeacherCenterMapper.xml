@@ -83,7 +83,14 @@
     </update>
 
     <update id="addComplexInfo">
-        UPDATE teacher SET ${type}= CONCAT(${type},#{data}) WHERE user_id=#{uid}
+        UPDATE teacher SET ${type}=
+        <if test="pre==null">
+            #{data}
+        </if>
+        <if test="pre!=null">
+            CONCAT(${type},#{data})
+        </if>
+         WHERE user_id=#{uid}
     </update>
 
 

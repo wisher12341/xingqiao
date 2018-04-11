@@ -68,39 +68,24 @@
 
 
 <div id="main">
-<#--<form action="" method="post">-->
-    <#--<div class="buttonDiv_info" onclick=location.href="${path}/wx/teacherCenter/${user.id}/changeIconPage" >-->
-        <#--<div class="info_head row">-->
-            <#--<div class="col-xs-3">-->
-                <#--<p class="text_p"> 头像</p>-->
-            <#--</div>-->
-            <#--<div class="col-xs-8">-->
-                <#--<img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" onclick=location.href="${path}/wx/teacherCenter/${user.id}/changeIconPage">-->
-            <#--</div>-->
-            <#--<div class="col-xs-1">-->
-                <#--<i class="fa fa-angle-right fa-4x icon_fa"></i>-->
-            <#--</div>-->
-        <#--</div>-->
-    <#--</div>-->
-
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/name/${(((teacher.name)!'')!="")?string(teacher.name,"none")}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/name/${(teacher.name)!"none"}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 真实姓名</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(teacher.name)!'<span style="color:red;font-size:35px">未填写</span>'}</p>
+                ${((teacher.name)??)?string("<p class='text_pp'> "+((teacher.name)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/pid/${(((teacher.pid)!'')!="")?string(teacher.pid,"none")}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/pid/${(teacher.pid)!'none'}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 证件号</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(teacher.pid)!'<span style="color:red;font-size:35px">未填写</span>'}</p>
+            ${((teacher.pid)??)?string("<p class='text_pp'> "+((teacher.pid)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -173,12 +158,12 @@
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/experience_age/${((teacher.experienceAge)!="-1")?string(teacher.experienceAge,"none")}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/authentication/experience_age/${teacher.experienceAge!"none"}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 康复教龄</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp">${((teacher.experienceAge)!="-1")?string(teacher.experienceAge,"<span style='color:red'>未选择</span>")}</p>
+            ${((teacher.experienceAge)??)?string("<p class='text_pp'> "+((teacher.experienceAge)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

@@ -142,7 +142,7 @@
 <div id="main">
     <div class="buttonDiv_info" style="background-color: white;margin-bottom: 8%">
         <ul>
-            <#list data! as school>
+            <#list data as school>
                 <li class="sl-li ui-border-b" style="background-color: white">
                     <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/school/${school.index}/edit">
                     <#if school_index==0>

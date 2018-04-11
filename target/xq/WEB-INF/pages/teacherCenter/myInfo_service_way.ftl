@@ -81,7 +81,7 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 学生上门</p>
                 </div>
-                <#if (teacher.way)?contains("学生上门")>
+                <#if ((teacher.way)!)?contains("学生上门")>
                     <div class="col-xs-5">
                         <p class="text_pp">
                             <span style="color: orange">${(teacher.priceS)!}</span>元/课时
@@ -106,8 +106,8 @@
             </div>
             <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
                 <div class="col-xs-12">
-                    <#if (teacher.way)?contains("学生上门")>
-                        <p class="text_detail">${teacher.tGround}-${teacher.detailAddress}</p>
+                    <#if ((teacher.way)!)?contains("学生上门")>
+                        <p class="text_detail">${(teacher.tGround)!}-${(teacher.detailAddress)!}</p>
                     </#if>
                 </div>
             </div>
@@ -121,10 +121,10 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 治疗师上门</p>
                 </div>
-            <#if (teacher.way)?contains("治疗师上门")>
+            <#if ((teacher.way)!)?contains("治疗师上门")>
                 <div class="col-xs-5">
                     <p class="text_pp">
-                        <span style="color: orange">${teacher.priceT}</span>元/课时
+                        <span style="color: orange">${(teacher.priceT)!}</span>元/课时
                     </p>
                 </div>
                 <div class="col-xs-2">
@@ -144,19 +144,24 @@
                 </div>
             </#if>
             </div>
-        <#list ((teacher.sGround)!)?split("、") as g>
-            <#if g_index%5==0>
-                <div class="row a">
-                <div class="col-xs-12">
-                <p class="text_detail sground">
+            <div class="row" style="height: 8%;border-bottom:1px solid #ccc;padding: 1% 2% 0;">
+            <#if (teacher.sGround)??>
+                <#list (teacher.sGround)?split("、") as g>
+                    <#--<#if g_index%5==0>-->
+                    <#--<div class="row a">-->
+                    <#--<div class="col-xs-12">-->
+                    <#--<p class="text_detail sground">-->
+                    <#--</#if>-->
+                    <span class="search_label">${g}</span>
+                    <#--<#if g_index==4 || g_index==9 || g_index==14>-->
+                    <#--</p>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</#if>-->
+                </#list>
+            <#else>
             </#if>
-            <span class="search_label">${g}</span>
-            <#if g_index==4 || g_index==9 || g_index==14>
-            </p>
             </div>
-            </div>
-            </#if>
-        </#list>
         </div>
     </div>
 
@@ -166,10 +171,10 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 在线授课</p>
                 </div>
-            <#if (teacher.way)?contains("在线授课")>
+            <#if ((teacher.way)!)?contains("在线授课")>
                 <div class="col-xs-5">
                     <p class="text_pp">
-                        <span style="color: orange">${teacher.priceO}</span>元/课时
+                        <span style="color: orange">${(teacher.priceO)!}</span>元/课时
                     </p>
                 </div>
                 <div class="col-xs-2">

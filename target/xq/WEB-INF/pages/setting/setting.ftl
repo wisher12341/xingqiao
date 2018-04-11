@@ -77,12 +77,12 @@
                 </div>
             </#if>
         </div>
-        <div class="info row" <#if (user.username)?? && (user.username)!=''>onclick=location.href="${path}/wx/login/changePwd/${user.status}"</#if>>
+        <div class="info row" onclick=<#if (user.username)?? && (user.username)!=''>location.href="${path}/wx/login/changePwd/${user.status}"<#else >"alert(请先绑定手机);"</#if>>
             <div class="col-xs-3">
                 <p class="text_p"> 修改密码</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"><#if (user.username)?? && (user.username)!=''><#else ><span style="color:red;float:right;padding-top: 5px">请先绑定手机</span</#if> </p>
+                <p class="text_pp"></p>
             </div>
             <#if (user.username)?? && (user.username)!=''>
             <div class="col-xs-1">

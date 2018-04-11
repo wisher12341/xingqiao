@@ -491,5 +491,33 @@ public class ParentCenterController {
         userService.changeUserStatus(userStatus,openid,"parent");
         return new ModelAndView("redirect:/wx/parentCenter");
     }
+
+    /**
+     * 实名认证 地址 ground+address
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/info/{uid}/address",method = RequestMethod.GET)
+    public ModelAndView address(@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("parentCenter/myInfo_authentication_address");
+        Parent parent=parentCenterService.getParentByUserId(uid);
+        mv.addObject("user",userService.getUserByUid(uid));
+        mv.addObject("parent",parent);
+        mv.addObject("area2",areaService.getArea2());
+        return mv;
+
+    }
+
+    @RequestMapping(value = "/info/{uid}/address",method = RequestMethod.POST)
+    public ModelAndView address_post(@PathVariable Integer uid,@RequestParam String area1,@RequestParam String area2,@RequestParam String address){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_authentication");
+        Parent parent=new Parent();
+        parent.setUserId(uid);
+        parent.setGround(area1+"-"+area2);
+        parent.setAddress(address);
+        parentCenterService.changeInfo(parent);
+        return mv;
+
+    }
 }
 

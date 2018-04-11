@@ -88,11 +88,14 @@
             <div class="row">
                 <div class="col-sm-11">
                     <p class="info-header-name"><span>
-                    ${(teacher.name)!user.name}
+                    ${((teacher.name)??)?string((teacher.name)!,user.username)}
                     </span>
-                    <#list 1..teacher.star as i>
-                        <span class="glyphicon glyphicon-star" style="font-size: 38px;color: orange;position: relative;top:5px;${(i==1)?string('margin-left:10px','')}"></span>
-                    </#list></p>
+                        <#if (teacher.star)!=0>
+                            <#list 1..(teacher.star) as i>
+                                <span class="glyphicon glyphicon-star" style="font-size: 38px;color: orange;position: relative;top:5px;${(i==1)?string('margin-left:10px','')}"></span>
+                            </#list>
+                        </#if>
+                   </p>
                         <#if user.userStatus==0>
                             <i class="glyphicon glyphicon-exclamation-sign" style="color: orange"></i><span class="userstatus" style="color: orange">个人资料未认证</span>
                         <#elseif user.userStatus==1 || user.userStatus==3>

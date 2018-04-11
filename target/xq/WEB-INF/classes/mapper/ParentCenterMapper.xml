@@ -70,4 +70,15 @@
         </if>
         WHERE userId=#{uid}
     </update>
+
+    <update id="changeInfo" parameterType="com.xq.model.Parent">
+        UPDATE parent SET userId=#{userId}
+        <if test="ground!=null and ground!=''">
+            ,ground=#{ground}
+        </if>
+        <if test="address!=null and address!=''">
+            ,address=#{address}
+        </if>
+        WHERE userId=#{userId}
+    </update>
 </mapper>

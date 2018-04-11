@@ -125,12 +125,12 @@
     </div>
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${user.id}/school/">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/info/${user.id}/address">
             <div class="col-xs-3">
                 <p class="text_p"> 地址</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp">  ${(((parent.ground)!'')!="")?string(parent.ground+"-"+parent.address,'<span style="color:red;font-size:35px">未填写</span>')}</p>
+                 ${(((parent.ground)!'')!="")?string("<p class='text_pp'>"+parent.ground+"-"+parent.address+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span><p class="text_pp">')}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

@@ -47,6 +47,13 @@
             top: 5px;
             color: dimgrey;
         }
+        .text_ppp{
+            font-size: 35px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:5px;
+        }
     </style>
 </head>
 <body>
@@ -109,12 +116,13 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(user.email)!'none'}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(((user.email)!'')=="")?string("none",user.email)}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>
+            ${(((user.email)!'')!="")?string("<p class='text_pp'> "+((user.email)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
+                <#--<p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>-->
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

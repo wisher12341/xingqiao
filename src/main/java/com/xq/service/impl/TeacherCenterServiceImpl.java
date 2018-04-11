@@ -222,7 +222,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         teacherInfoAuthentication.setName(teacher.getName());
         teacherInfoAuthentication.setPid(teacher.getPid());
 
-        if (teacher.getExperienceAge()!=null && teacher.getExperienceAge()!=0){
+        if (teacher.getExperienceAge()!=null){
             teacherInfoAuthentication.setExperienceAge(teacher.getExperienceAge());
         }
 
@@ -403,7 +403,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
 
     @Override
     @Transactional
-    public void addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis) {
+    public String addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis) {
         User user=userDao.getUserByUid(uid);
         //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
         if(user.getUserStatus()==2 || user.getUserStatus()==4){
@@ -439,8 +439,9 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
         }
 
-        teacherCenterDao.addComplexInfo(t,data,uid);
+        teacherCenterDao.addComplexInfo(t,data,uid,pre);
 
+        return data;
     }
 
     @Override
@@ -499,13 +500,18 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
         }
 
-        String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
-        result[index]=data;
-
+        String sss=teacherCenterDao.getInfoByTypeName(uid,t);
         String str="";
-        for (String s:result){
-            str+="#"+s;
+        if(sss!=null){
+            String[] result=sss.split("#");
+            result[index]=data;
+            for (String s:result){
+                str+="#"+s;
+            }
+        }else{
+            str=data;
         }
+
         teacherCenterDao.updateComplexInfo(t,str.substring(1),uid);
     }
 
@@ -723,12 +729,14 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         String way = teacherCenterDao.getInfoByTypeName(uid, "way");
         if(ctype.equals("add")) {
             if (way != null && !way.equals("")){
-                teacher.setWay(way+"、"+teacher.getWay());
+                teacher.setWay(way+"、"+type);
+            }else{
+                teacher.setWay(type);
             }
         }
 
         //学生上门
-        if(type.equals("student")){
+        if(type.equals("学生上门")){
             teacher.settGround(area1+"-"+area2);
         }
 

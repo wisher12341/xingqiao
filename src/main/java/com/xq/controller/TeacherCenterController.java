@@ -302,16 +302,16 @@ public class TeacherCenterController {
         return mv;
     }
 
-    /**
-     *
-     * 填写个人资料页面
-     */
-    @RequestMapping(value="/{userId}/fillInfoPage",method = RequestMethod.GET)
-    public ModelAndView fillInfoPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("teacherCenter/fillInfoPage");
-        mv.addObject("userId",userId);
-        return mv;
-    }
+//    /**
+//     *
+//     * 填写个人资料页面
+//     */
+//    @RequestMapping(value="/{userId}/fillInfoPage",method = RequestMethod.GET)
+//    public ModelAndView fillInfoPage(@PathVariable Integer userId){
+//        ModelAndView mv=new ModelAndView("teacherCenter/fillInfoPage");
+//        mv.addObject("userId",userId);
+//        return mv;
+//    }
 
 
 
@@ -406,7 +406,7 @@ public class TeacherCenterController {
     }
 
     /**
-     * 复杂个人资料 编辑
+     * 实名认证 复杂个人资料 编辑  简介
      * @param uid
      * @param type
      * @param index  编辑的该条的 索引
@@ -617,5 +617,18 @@ public class TeacherCenterController {
         }
         teacherCenterService.myInfoEditPost(ftype,ctype,value,isChangeStatus,request, "teacher");
         return mv;
+    }
+
+    /**
+     * 治疗师 修改
+     * @param userStatus
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/userstatus/change",method = RequestMethod.POST)
+    public ModelAndView userstatus(@RequestParam Integer userStatus,HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        userService.changeUserStatus(userStatus,openid,"teacher");
+        return new ModelAndView("redirect:/wx/teacherCenter/myInfo");
     }
 }

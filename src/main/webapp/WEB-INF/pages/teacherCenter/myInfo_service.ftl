@@ -81,6 +81,25 @@
             border: solid 1px #20b49a;
             border-radius: 5px;
         }
+        .foot{
+            /*position: fixed;*/
+            /*width: 100%;*/
+            /*bottom: 0;*/
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 3% auto;
+            border-radius: 15px;
+            height:6%;
+            opacity:0.5;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -116,12 +135,14 @@
     </div>
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/service/period/${(teacher.period)!''}/edit" >
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/service/period/${(teacher.period)!'none'}/edit" >
             <div class="col-xs-3">
                 <p class="text_p"> 课时</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp">${teacher.period}</p>
+            ${((teacher.period)??)?string("<p class='text_pp'> "+((teacher.period)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
+                <#--<p class="text_pp">-->
+                <#--${(teacher.period)!}</p>-->
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -199,12 +220,14 @@
         </div>
     </div>
 
-    <#if user.userStatus==0>
-        <button>
-            提交审核
-        </button>
-    </#if>
-
+<#if user.userStatus==0>
+    <div class="foot" align="center">
+        <form action="/wx/teacherCenter/userstatus/change" method="post">
+            <input type="hidden" value="1" name="userStatus">
+            <button style="width: 95% !important;">提交审核</button>
+        </form>
+    </div>
+</#if>
 </div>
 </body>
 </html>

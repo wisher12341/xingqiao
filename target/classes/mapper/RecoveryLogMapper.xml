@@ -16,7 +16,7 @@
     </select>
 
     <select id="add" parameterType="com.xq.model.RecoveryLog">
-        INSERT INTO recovery_log(order_id,time,content,pic_urls,index) VALUES(#{orderId},#{time},#{content},#{picUrls},#{index})
+        INSERT INTO recovery_log(order_id,time,content,pic_urls,index_class) VALUES(#{orderId},#{time},#{content},#{picUrls},#{indexClass})
     </select>
 
     <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">
@@ -51,7 +51,7 @@
     </update>
 
     <select id="getNoConfirmLogByOpenid" resultType="com.xq.model.RecoveryLog">
-         SELECT r.id,r.time,r.remind_status,t.name teacherName,d.name demandName,r.order_id,o.way,o.recover_ob,o.server_time,r.index FROM teacher t,recovery_log r,demand d,sysuser u,orders o,parent p
+         SELECT r.id,r.time,r.remind_status,t.name teacherName,d.name demandName,r.order_id,o.way,o.recover_ob,o.server_time,r.index_class FROM teacher t,recovery_log r,demand d,sysuser u,orders o,parent p
         WHERE u.openid=#{openid} AND p.userId=u.id AND p.id=o.parent_id AND o.teacher_id=t.id AND o.demand_id=d.id AND r.order_id=o.id AND r.confirm_status=0
   </select>
 

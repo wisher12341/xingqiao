@@ -36,7 +36,7 @@ public interface TeacherCenterDao {
 
     void updateComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
 
-    void addComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
+    void addComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid, @Param("pre") String pre);
 
     Teacher getTeacherInfoByUid(@Param("uid") Integer uid, @Param("types") String[] type);
 
