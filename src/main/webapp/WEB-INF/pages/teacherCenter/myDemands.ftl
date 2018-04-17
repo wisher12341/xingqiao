@@ -45,7 +45,7 @@
     <#--</div>-->
 
 
-    <#if demands??>
+    <#if demands?? && demands?size &gt; 0>
         <div class="demands-div">
             <#list demands as demand>
                 <div class="col-sm-6">
@@ -65,7 +65,17 @@
             </#list>
         </div>
     <#else>
-        <p>您还没有患者</p>
+        <div class="row" style="margin-top: 30%!important;width: 100%">
+            <div class="col-xs-3">
+            </div>
+            <div class="col-xs-2">
+                <img src="/static/img/kong.png" width="150">
+            </div>
+            <div class="col-xs-6">
+                <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                <p style="font-size: 38px;color: grey;font-weight: bold">您还没有患者</p>
+            </div>
+        </div>
     </#if>
     </div>
 <#include "common/foot.ftl" />

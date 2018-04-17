@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByOpenid(String openid) {
-        return userDao.getUserByOpenid(openid);
+        return userDao.getUserByOpenid(openid, "0");
     }
 
     @Override
@@ -111,7 +111,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User bindAccount(User user) {
         userDao.bindAccount(user);
-        User user_re=userDao.getUserByOpenid(user.getOpenid());
+        User user_re=userDao.getUserByOpenid(user.getOpenid(),"0");
         return user_re;
     }
 

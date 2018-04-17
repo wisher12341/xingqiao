@@ -507,13 +507,15 @@ public class TeacherCenterController {
     /**
      * 我的课程
      * @param uid
+     * @param type  parent 表示  家长看的   teacher 表示治疗师自己看的
      * @return
      */
-    @RequestMapping(value = "/{uid}/mySchedule",method = RequestMethod.GET)
-    public ModelAndView schedule(@PathVariable Integer uid){
+    @RequestMapping(value = "/{uid}/mySchedule/{type}",method = RequestMethod.GET)
+    public ModelAndView schedule(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/mySchedule");
         mv.addObject("uid",uid);
         mv.addObject("schedule",teacherCenterService.getInfoByTypeName(uid,"schedule",""));
+        mv.addObject("type",type);
         return mv;
     }
 
@@ -526,7 +528,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{uid}/mySchedule/add",method = RequestMethod.POST)
     public ModelAndView schedule_add(@PathVariable Integer uid,String week,String time) throws ParseException {
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule/teacher");
         teacherCenterService.addSchedule(uid,week,time);
         return mv;
     }
@@ -629,6 +631,6 @@ public class TeacherCenterController {
     public ModelAndView userstatus(@RequestParam Integer userStatus,HttpServletRequest request){
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
         userService.changeUserStatus(userStatus,openid,"teacher");
-        return new ModelAndView("redirect:/wx/teacherCenter/myInfo");
+        return new ModelAndView("redirect:/wx/teacherCenter");
     }
 }

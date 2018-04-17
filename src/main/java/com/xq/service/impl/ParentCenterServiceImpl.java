@@ -315,7 +315,7 @@ public class ParentCenterServiceImpl implements ParentCenterService {
 
     @Override
     public void allInformRead(HttpServletRequest request) {
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"0");
         messageDao.allInformRead(user.getId());

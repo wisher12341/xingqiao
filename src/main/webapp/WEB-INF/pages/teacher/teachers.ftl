@@ -40,6 +40,7 @@
             margin: 5px 0px;
         }
     </style>
+
 </head>
 <body ng-app="testapp" ng-controller="teacherCtrl" ng-init="getTeacher()" style="height: 100%;width: 100%;">
 

@@ -139,7 +139,7 @@
                     <p class="text_p"> 市/区</p>
                 </div>
                 <div class="col-xs-8" id="a2">
-                <#if (teacher.tGround)?? && (teacher.tGround)!="">
+                <#if (parent.ground)?? && (parent.ground)!="">
                 <select class="selectArea2 title_input" name="area2">
                     <#list area2 as a>
                         <option value="${a.name}">${a.name}</option>
@@ -160,7 +160,7 @@
                     <p class="text_p" style="position:relative;top: 50px"> 详细地址</p>
                 </div>
                 <div class="col-xs-9" style="height:250px!important; ">
-                    <textarea placeholder="请输入详细地址,40字以内"  class="title_input" maxlength="40" name="address" style="padding-left: 20px;height: 100%">${(teacher.detailAddress)!}</textarea>
+                    <textarea placeholder="请输入详细地址,40字以内"  class="title_input" maxlength="40" name="address" style="padding-left: 20px;height: 100%">${(parent.address)!}</textarea>
                 </div>
             </div>
         </div>
@@ -176,12 +176,12 @@
         $(function () {
         <#if ((parent.ground))?? && ((parent.ground))!="">
             $(".selectArea1 option").each(function () {
-                if($(this).val()=="${(teacher.tGround)?split("-")[0]}"){
+                if($(this).val()=="${(parent.ground)?split("-")[0]}"){
                     $(this).prop("selected","true");
                 }
             });
             $(".selectArea2 option").each(function () {
-                if($(this).val()=="${(teacher.tGround)?split("-")[1]}"){
+                if($(this).val()=="${(parent.ground)?split("-")[1]}"){
                     $(this).prop("selected","true");
                 }
             });

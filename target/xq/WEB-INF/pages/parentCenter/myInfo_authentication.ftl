@@ -94,7 +94,7 @@
                 <p class="text_p"> 真实姓名</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(((parent.realName)!'')!="")?string(parent.realName,'<span style="color:red;font-size:35px">未填写</span>')}</p>
+                ${(((parent.realName)!'')!="")?string("<p class='text_pp'>"+(parent.realName)!+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -105,7 +105,7 @@
                 <p class="text_p"> 证件号</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(((parent.pid)!'')!="")?string(parent.pid,'<span style="color:red;font-size:35px">未填写</span>')}</p>
+               ${(((parent.pid)!'')!="")?string("<p class='text_pp'>"+parent.pid+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

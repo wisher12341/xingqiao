@@ -145,9 +145,11 @@
 <body>
 <div id="main">
     <div id='calendar'></div>
-    <div class="foot" align="center">
-        <input type="button" style="width: 100% !important;" value="添加" onclick="showAdd()">
-    </div>
+    <#if type=="teacher">
+        <div class="foot" align="center">
+            <input type="button" style="width: 100% !important;" value="添加" onclick="showAdd()">
+        </div>
+    </#if>
 </div>
 
 <div id="add">
@@ -214,7 +216,7 @@
 </body>
 <script>
 
-        var schedule="${schedule}";
+        var schedule="${schedule!}";
         var list=[[],[],[],[],[],[],[]];
         var week=schedule.split("#");
         for(var i=0;i<week.length;i++){
@@ -289,6 +291,7 @@
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
             eventClick : function( event ) {
+            <#if type=="teacher">
                 var start = event.start.format('E HH:mm');
                 var week;
                 switch (start.split(" ")[0]){
@@ -317,6 +320,7 @@
                 $(".delClass").html("周"+week+"  "+start.split(" ")[1]+"  -  "+event.end.format('HH:mm'));
                 $('#delModal').modal();
                 $('input[name="time"]').val(event.start.toString());
+                </#if>
             },
 
         });

@@ -26,9 +26,9 @@
     </resultMap>
 
     <select id="getTeachersByUserId" resultMap="resultTeacher">
-        SELECT t.id,t.name tname,t.way,t.schedule,u.id uid,u.phone phone,u.email email,d.id did,d.name,d.disease
-        FROM teacher t,sysuser u,demand d,orders o,parent p
-        WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id AND o.demand_id=d.id AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
+        SELECT t.id,t.name tname,t.way,t.schedule,uu.id uid,uu.phone phone,uu.email email,uu.headimgurl
+        FROM teacher t LEFT JOIN sysuser uu on uu.id=t.user_id,sysuser u,orders o,parent p
+        WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id  AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
     </select>
 
     <select id="getTeacherDetail" resultMap="resultTeacher">
@@ -47,7 +47,7 @@
     <select id="getTeachers" resultType="com.xq.model.Teacher">
         SELECT t.id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.price_min,t.price_max,t.price_mid,t.level,t.t_ground,t.s_ground,t.domain,
         t.question,t.object,t.project,t.experience_age,t.way,u.gender,u.headimgurl
-        FROM teacher t,sysuser u WHERE t.user_id=u.id
+        FROM teacher t,sysuser u WHERE t.user_id=u.id and u.user_status=2
         <if test="teacher.object != null and teacher.object != '' and teacher.object != '不限'">
             and (t.object like concat('%',#{teacher.object},'%') OR t.object='不限')
         </if>

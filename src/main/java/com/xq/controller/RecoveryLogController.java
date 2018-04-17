@@ -25,7 +25,6 @@ public class RecoveryLogController {
     @Autowired
     RecoveryLogService recoveryLogService;
 
-    public static Logger logger;
 
     /**
      * 康复日志页面

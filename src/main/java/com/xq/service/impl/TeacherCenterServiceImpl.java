@@ -739,8 +739,32 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         if(type.equals("学生上门")){
             teacher.settGround(area1+"-"+area2);
         }
-
+        this.caculatePrice(teacher);
         teacherCenterDao.editServiceInfoWay(teacher);
+    }
+
+    private void caculatePrice(Teacher teacher) {
+        int priceO=(teacher.getPriceO()==null)?0:teacher.getPriceO();
+        int priceT=(teacher.getPriceT()==null)?0:teacher.getPriceT();
+        int priceS=(teacher.getPriceS()==null)?0:teacher.getPriceS();
+        int mid=0,max=0,min=0;
+        List<Integer> list=new ArrayList<>();
+        list.add(priceO);
+        list.add(priceS);
+        list.add(priceT);
+        Collections.sort(list);
+        max=list.get(2);//一定有一个 最大的
+        if(list.get(1)==0){
+            mid=min=max;
+        }else if(list.get(0)==0){
+            min=mid=list.get(1);
+        }else{
+            mid=list.get(1);
+            min=list.get(0);
+        }
+        teacher.setPriceMax(max);
+        teacher.setPriceMid(mid);
+        teacher.setPriceMin(min);
     }
 
 

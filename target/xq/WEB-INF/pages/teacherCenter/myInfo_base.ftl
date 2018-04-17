@@ -67,7 +67,7 @@
                 <p class="text_p"> 头像</p>
             </div>
             <div class="col-xs-8">
-                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" >
+                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" onerror='this.src="/static/img/touxiang.svg";this.onerror=null' class="img-circle" >
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -116,12 +116,12 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(((user.email)!'')=="")?string("none",user.email)}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${((user.email)?? && user.email!='')?string((user.email)!,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>
             <div class="col-xs-8">
-            ${(((user.email)!'')!="")?string("<p class='text_pp'> "+((user.email)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
+                ${((user.email)?? && user.email!='')?string("<p class='text_pp'> "+(user.email)!''+"</p>",'<p class="text_ppp"> <span style="color:red">未填写</span></p>')}</p>
                 <#--<p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>-->
             </div>
             <div class="col-xs-1">

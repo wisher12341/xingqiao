@@ -21,7 +21,7 @@
         .demand-btn {
             text-align: center;
             width: 80%;
-            opacity: 0.5;
+            /*opacity: 0.5;*/
         }
         .demand-btn div{
             background-color:  #20b49a;
@@ -37,18 +37,20 @@
         .demands-div{
             padding: 20px;
         }
-
+        body{
+            background-color: #f5f5f5;
+        }
     </style>
 </head>
 <body>
 <div id="main">
-    <#if teachers??>
+    <#if teachers?? && teachers?size &gt; 0 >
         <div class="demands-div">
             <#list teachers as teacher>
                 <div class="col-sm-6" style="margin-top: 10%">
-                    <div class="demand-div" align="center" onclick=location.href="${path}/wx/parentCenter/${userId}/myTeacher/${teacher.id}/teachersDetail">
+                    <div class="demand-div" align="center" onclick=location.href="${path}/wx/teacher/${teacher.id}/detail">
                         <div class="demand-img">
-                            <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}">
+                            <img src="${(teacher.user.headimgurl?contains("wx.qlogo.cn")?string("${teacher.user.headimgurl}","/${teacher.user.headimgurl}"))!}">
                         </div>
                         <div class="demand-btn">
                             <div style="width: 100%" class="tname">${teacher.name!}</div>
@@ -59,7 +61,7 @@
         </div>
     <#else>
         <div class="row" style="margin-top: 30%!important;width: 100%">
-            <div class="col-xs-2">
+            <div class="col-xs-3">
             </div>
             <div class="col-xs-2">
                 <img src="/static/img/kong.png" width="150">

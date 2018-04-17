@@ -102,7 +102,7 @@
                         </#if>
                 </div>
                 <div class="cog">
-                    <div class="i1"><a href="${path}/wx/login/setting/0"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></a></div>
+                    <div class="i1" onclick=location.href="${path}/wx/login/setting/0"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></div>
                 </div>
             </div>
         </div>

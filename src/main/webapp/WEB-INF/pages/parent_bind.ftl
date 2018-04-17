@@ -3,59 +3,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<#include "order/common/head.ftl" />
+    <#--<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<#include "parentCenter/common/head.ftl" />
     <title>账号绑定</title>
-    <link href="${path}/static/css/login.css" type="text/css" rel="stylesheet" />
+    <style>
+        body{
+            background-color: #f5f5f5;
+        }
+        .buttonDiv_info{
+            margin: 4% 0;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+        .info{
+            height: 120px;
+            padding-top: 25px;
+            background-color: white;
+            margin: 4px 0;
+        }
+        .text_p{
+            font-size: 45px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            font-weight: bold;
+        }
+        .text_pp{
+            font-size: 40px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            position: relative;
+            top:5px;
+        }
+        .icon_fa{
+            position: relative;
+            top: 5px;
+            color: dimgrey;
+        }
+        .foot{
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 2% auto;
+            border-radius: 15px;
+            height:7%;
+            border: none;
+        }
+        .textInput{
+            font-size: 40px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .fa{
+            font-size: 48px!important;
+            color: grey;
+            margin-top: 10px;
+            margin-left: 30px;
+            opacity: 0.6;
+        }
+        .btn{
+            font-size: 42px!important;
+            background-color: white!important;
+            color: #20b49a!important;
+            border: 1px solid #20b49a;
+            border-radius: 10%;
+        }
+    </style>
+    <#--<link href="${path}/static/css/login.css" type="text/css" rel="stylesheet" />-->
 </head>
 <body>
-<div id="logo" align="center">
-    <img src="/static/img/logo.jpg" width="40%">
-</div>
-
-<div id="regAccount"  align="center">
-    <form action="${path}/wx/login/parent/bindAccount" method="post" id="regForm">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">账号：</span>
+<div id="main">
+    <form action="${path}/wx/login/parent/bindAccount" id="regAccount" method="post">
+        <div class="buttonDiv_info">
+            <div class="info row" >
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-phone"></i>
                 </div>
-                <div class="col-xs-8">
-                    <input type="text" name="username" class="textInput" placeholder="手机号"/>
+                <div class="col-xs-10">
+                    <input placeholder="手机号" type="text" class="textInput" name="username">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">验证码：</span>
+            <div class="info row" >
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-id-badge" > </i>
                 </div>
-                <div class="col-xs-4">
-                    <input class="textInput code"/>
+                <div class="col-xs-6">
+                    <input placeholder="请输入收到的验证码" type="text" class="textInput code">
                 </div>
-                <div class="col-xs-4">
-                    <input type="button" onclick="sendphonecode()" class="btn btn-primary" value="获取验证码" id="sendCode">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">密码：</span>
-                </div>
-                <div class="col-xs-8">
-                    <input type="password" name="password" class="textInput" />
+                <div class="col-xs-3">
+                    <input type="button" onclick="sendphonecode()" class="btn" value="获取验证码" id="sendCode">
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 20px">
-                <div class="col-xs-4 la_div">
-                    <span class="la">确认密码：</span>
+            <div class="info row">
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-lock"> </i>
                 </div>
-                <div class="col-xs-8">
-                    <input type="password"  class="textInput pw" />
+                <div class="col-xs-10">
+                    <input placeholder="创建新密码（6-20位数字或英文字符）" type="text" class="textInput" name="password">
                 </div>
             </div>
+            <div class="info row">
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-repeat"> </i>
+                </div>
+                <div class="col-xs-10">
+                    <input placeholder="再次输入密码" type="text" class="textInput pw">
+                </div>
+            </div>
+            <input type="hidden" name="openid" value="${openid!}">
         </div>
-        <input type="hidden" name="openid" value="${openid!}">
-        <input onclick="reg()" type="button" value="绑定"  class="submit">
+    <div class="foot" align="center">
+        <button style="width: 95% !important;" onclick="reg()">重置密码</button>
+    </div>
+
+
     </form>
 </div>
+
+
 
 </body>
 <script type="text/javascript">

@@ -38,7 +38,8 @@ public class WxPayServiceImpl implements WxPayService{
     public WxSendData pay(String oid, HttpServletRequest request) {
         Order order=orderDao.getOrderPayByOid(oid);
         String out_trade_no = order.getId();
-        String subject="康复项目"+order.getRecoverOb();
+//        String subject="康复项目"+order.getRecoverOb();
+        String subject="aaa";
         Double total=order.getTotalpay();
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
 //        String openid="123";
@@ -127,7 +128,6 @@ public class WxPayServiceImpl implements WxPayService{
 
     @Transactional
     public String notufy_url(HttpServletRequest request, HttpServletResponse response) throws ParseException {
-        RecoveryLogController.logger.info("notify");
         String out_trade_no = "";//商户订单号
         String transaction_id = "";//微信支付订单号
         StringBuffer sb=new StringBuffer();
@@ -146,8 +146,6 @@ public class WxPayServiceImpl implements WxPayService{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        RecoveryLogController.logger.info(out_trade_no);
-        RecoveryLogController.logger.info(transaction_id);
 
         Order order=orderDao.getOrderPayByOid(out_trade_no);
         Date d = new Date();
@@ -155,7 +153,6 @@ public class WxPayServiceImpl implements WxPayService{
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
         String dateNowStr = sdf.format(d);
         if(order.getTradeNoWx()==null||order.getTradeNoWx().equals("")){
-            RecoveryLogController.logger.info("success");
             order.setStatusP(3);
             order.setStatusT(3);
             order.setPayWay("微信");

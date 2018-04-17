@@ -99,7 +99,8 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 		User user;
 		String openid_parent="";
 		String openid_teacher="";
-		if(url.contains("teacherCenter")){
+		//  /0/query用来过滤 在预约治疗师界面 查看治疗师成功案例 等详情
+		if(url.contains("teacherCenter") && !url.contains("parent") && !url.contains("/0/query")){
 //			治疗师登录
 			openid_teacher= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
 			if(openid_teacher==null){

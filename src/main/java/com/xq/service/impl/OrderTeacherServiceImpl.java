@@ -160,26 +160,14 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的预约单（"+orderId+"），治疗师已接受。"+
-                "</p>");
+        messageP.setMessage("您的预约单（"+orderId+"），治疗师已接受。");
 
         messageDao.addMessage(messageP);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您已接受预约单（"+orderId+"）。"+
-                "</p>");
+        messageT.setMessage("您已接受预约单（"+orderId+"）。");
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(orderId,"#"+dateNowStr+"@治疗师接受");
@@ -198,26 +186,14 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的预约单（"+orderId+"），治疗师已拒绝。理由："+reason+
-                "</p>");
+        messageP.setMessage("您的预约单（"+orderId+"），治疗师已拒绝。理由："+reason);
 
         messageDao.addMessage(messageP);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您已拒绝预约单（"+orderId+"）。理由"+reason+
-                "</p>");
+        messageT.setMessage("您已拒绝预约单（"+orderId+"）。理由"+reason);
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(orderId,"#"+dateNowStr+"@治疗师拒绝");
@@ -237,26 +213,14 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），已完成。"+
-                "</p>");
+        messageP.setMessage("您的订单（"+oid+"），已完成。");
 
         messageDao.addMessage(messageP);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    订单（"+oid+"）已完成。"+
-                "</p>");
+        messageT.setMessage("订单（"+oid+"）已完成。");
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@订单完成");
@@ -275,26 +239,14 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Order order=orderDao.getOrderPayByOid(oid);
         Message message=new Message();
         message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    订单（"+oid+"），家长（"+order.getPname()+"）申请终止。"+
-                "</p>");
+        message.setMessage("订单（"+oid+"），家长（"+order.getPname()+"）申请终止。");
 
         messageDao.addMessageAdmin(message);
 
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），治疗师（"+order.getTname()+"）同意终止."+
-                "</p>");
+        messageP.setMessage("您的订单（"+oid+"），治疗师（"+order.getTname()+"）同意终止.");
 
         messageDao.addMessage(messageP);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@治疗师同意终止");
@@ -313,13 +265,8 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止，理由:"+reason+
-                "</p><a href='${path}/parentCenter/"+oid+"/agree'>同意" +
+        messageP.setMessage("您的订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止，理由:"+reason+
+                "<a href='${path}/parentCenter/"+oid+"/agree'>同意" +
                 "</a>");
 
         messageDao.addMessage(messageP);
