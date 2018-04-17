@@ -138,6 +138,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
             switch (fieldName){
                 case "name":
                     return new ModifyPageDto(demand.getName(),fieldName,"姓名",objId,table);
+                case "gender":
+                    return new ModifyPageDto(demand.getGender()==1?"男":"女", fieldName, "性别", objId,table);
                 case "birthday":
                     return new ModifyPageDto(demand.getBirthday(),fieldName,"出生日期",objId,table);
                 case "report":
@@ -204,8 +206,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
                 demandDao.updateName(newValue, demandId);
                 break;
             case "gender":
-                if (newValue.equals("0")) demandDao.updateGender(0, demandId);
-                else demandDao.updateGender(1, demandId);
+                if (newValue.equals("1")) demandDao.updateGender(1, demandId);
+                else demandDao.updateGender(2, demandId);
                 break;
             case "birthday":
                 demandDao.updateBirthday(newValue, demandId);
@@ -241,7 +243,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     @Override
     public void addRecoveryHis(RecoveryHisDto recoveryHisDto, int demandId){
         String recoveryHisStr=demandDao.getRecoveryHis(demandId);
-        String newRecoveryHis="@"+recoveryHisDto.getName()+"#"+recoveryHisDto.getTime()+"#"+recoveryHisDto.getCount()+"#"+recoveryHisDto.getDetail();
+        String newRecoveryHis="@"+recoveryHisDto.getName()+"#"+recoveryHisDto.getBeginTime()+"-"+recoveryHisDto.getEndTime()
+                +"#"+recoveryHisDto.getCount()+"#"+recoveryHisDto.getDetail();
         recoveryHisStr+=newRecoveryHis;
         demandDao.updateRecoveryHis(recoveryHisStr,demandId);
     }

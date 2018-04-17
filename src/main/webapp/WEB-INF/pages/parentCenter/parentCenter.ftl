@@ -112,7 +112,7 @@
 
     <div style="background-color: white; border-bottom: 1px solid #ccc;" align="center">
             <div class="row" style="width: 95%">
-                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule">
+                <div class="col-xs-4" onclick=location.href="/wx/parentCenter/${user.id}/myDemands">
                     <div>
                         <span class="glyphicon glyphicon-heart icon_mid"></span>
                     </div>
