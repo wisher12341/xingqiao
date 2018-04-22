@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.OrderDao">
+
+    <resultMap id="resultAllOrder" type="com.xq.model.Order">
+        <id property="id" column="id"/>
+        <result property="recoverOb" column="recover_ob"/>
+        <result property="statusP" column="status_p"/>
+        <result property="statusT" column="status_t"/>
+        <result property="way" column="way"/>
+        <result property="totalpay" column="totalpay"/>
+        <result property="sTime" column="s_time"/>
+        <result property="cid" column="cid"/>
+        <result property="realpay" column="realpay"/>
+        <result property="isFirst" column="is_first"/>
+        <result property="amount" column="amount" />
+        <result property="serverTime" column="server_time"/>
+        <result property="pname" column="pname"/>
+        <association property="teacher" javaType="com.xq.model.Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tName"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="resultOrder" type="com.xq.model.Order">
+        <id property="id" column="id"/>
+        <result property="recoverOb" column="recover_ob"/>
+        <result property="way" column="way"/>
+        <result property="totalpay" column="totalpay"/>
+        <result property="realpay" column="realpay"/>
+        <result property="sTime" column="s_time"/>
+        <result property="serverTime" column="server_time"/>
+        <result property="remark" column="remark"/>
+        <result property="statusT" column="status_t"/>
+        <result property="pay" column="pay"/>
+        <result property="payWay" column="pay_way"/>
+        <result property="amount" column="amount"/>
+        <result property="isFirst" column="is_first"/>
+        <result property="statusP" column="status_p"/>
+        <result property="statusT" column="status_t"/>
+        <association property="parent" javaType="com.xq.model.Parent">
+            <id property="id" column="pid"/>
+            <result property="realName" column="realName"/>
+        </association>
+        <association property="teacher" javaType="com.xq.model.Teacher">
+            <id property="id" column="tid"/>
+            <result property="name" column="tName"/>
+            <result property="star" column="tStar"/>
+            <result property="detailAddress" column="detailAddress"/>
+            <result property="unit" column="unit"/>
+            <association property="user" javaType="com.xq.model.User">
+                <id property="id" column="uid"/>
+                <result property="headimgurl" column="headimgurl"/>
+            </association>
+        </association>
+        <association property="demand" javaType="com.xq.model.Demand">
+            <id property="id" column="did"/>
+            <result property="name" column="name"/>
+            <result property="gender" column="gender"/>
+            <result property="disease" column="disease"/>
+            <result property="birthday" column="birthday"/>
+            <result property="report" column="report"/>
+            <result property="diseaseHis" column="disease_his"/>
+            <result property="recoveryHis" column="recovery_his"/>
+            <result property="allergyHis" column="allergy_his"/>
+            <result property="remark" column="dremark"/>
+        </association>
+        <association property="comment" javaType="com.xq.model.Comment">
+            <id property="id" column="cid"/>
+            <result property="detail" column="cdetail"/>
+            <result property="time" column="ctime"/>
+            <result property="level" column="clevel" />
+            <result property="isOpen" column="cis_open"/>
+            <result property="picUrls" column="cpic_urls"/>
+            <association property="teacherComment" javaType="com.xq.model.Comment">
+                <id property="id" column="ctid"/>
+                <result property="detail" column="ctdetail"/>
+                <result property="time" column="cttime"/>
+            </association>
+        </association>
+        <association property="preferentialE" javaType="com.xq.model.Preferential">
+            <id property="id" column="preid"/>
+            <result property="name" column="prename"/>
+            <result property="allAmount" column="all_amount"/>
+            <result property="amount" column="amount"/>
+            <result property="classes" column="classes"/>
+            <result property="sTime" column="s_time"/>
+            <result property="eTime" column="e_time"/>
+        </association>
+    </resultMap>
+    <insert id="addOrder" useGeneratedKeys="true" keyProperty="id" parameterType="com.xq.model.Order">
+        INSERT INTO orders(teacher_id,parent_id,demand_id,way,preferential,recover_ob,server_time,remark,totalpay,s_time,status_p,status_t,amount,id,trace,is_first)
+        VALUE (#{teacher.id},#{parentId},#{demandId},#{way},#{preferential},#{recoverOb},#{serverTime},#{remark},#{totalpay},#{sTime},#{statusP},#{statusT},#{amount},#{id},#{trace},#{isFirst})
+    </insert>
+
+    <select id="getAllOrderByOpenid" resultMap="resultAllOrder">
+        SELECT o.id,o.recover_ob,o.status_p,o.way,o.totalpay,o.s_time,t.id tid,t.name tName,o.cid,o.realpay,o.is_first,o.amount,o.server_time
+        FROM orders o,parent p,sysuser u,teacher t
+        WHERE u.openid=#{openid} AND u.id=p.userId AND t.id=o.teacher_id AND o.parent_id=p.id
+        ORDER by s_time DESC
+    </select>
+
+
+    <select id="getOrderByOid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.is_first,o.status_p,
+        d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
+         c.id cid,c.detail cdetail,c.time ctime,c.level clevel,c.is_open cis_open,c.pic_urls cpic_urls,ct.id ctid,ct.detail ctdetail,ct.time cttime,
+        t.id tid,t.name tName,t.star tStar,t.detailAddress,t.unit,u.headimgurl
+        FROM orders o LEFT JOIN comment c on c.id=o.cid  LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,parent p,sysuser u,demand d,preferentials pre,teacher t
+        WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential AND t.id=o.teacher_id AND t.user_id=u.id
+    </select>
+
+
+    <select id="getOrderPayByOid" resultType="com.xq.model.Order">
+        SELECT o.id,o.trade_no_wx,p.userId uidP,t.user_id uidT,t.name tname,p.realName pname,o.recover_ob,o.totalpay FROM orders o,parent p,teacher t WHERE o.id=#{oid} AND o.teacher_id=t.id AND o.parent_id=p.id
+    </select>
+
+    <update id="updateTrace">
+        UPDATE orders SET trace= CONCAT(trace,#{trace}) WHERE id=#{id}
+    </update>
+
+    <update id="orderCancel">
+        UPDATE orders SET status_t=11,status_p=11 WHERE id=#{oid}
+    </update>
+    <update id="orderPay" parameterType="com.xq.model.Order">
+        UPDATE orders SET status_p=#{statusP},status_t=#{statusT},pay_way=#{payWay},trade_no_wx=#{tradeNoWx},trace= CONCAT(trace,#{trace}),realpay=#{realpay} WHERE id=#{id}
+    </update>
+    <update id="agree">
+        UPDATE orders SET status_t=4,status_p=4 WHERE id=#{oid}
+    </update>
+    <update id="addCommentId" parameterType="com.xq.model.Comment">
+        update orders set cid=#{id} WHERE id=#{order.id}
+    </update>
+    <update id="stop">
+        UPDATE orders SET status_t=8,status_p=8,reason=#{reason} WHERE id=#{oid}
+    </update>
+
+    <select id="getOrder" resultType="com.xq.model.Order">
+        SELECT id FROM orders WHERE demand_id=#{demandId} AND teacher_id=#{teacherId} AND status_p &gt;=3 AND status_t &gt;=2
+    </select>
+
+    <select id="getUserIdByOid" resultType="java.lang.Integer">
+        SELECT t.user_id FROM orders o,teacher t WHERE o.id=#{id} AND o.teacher_id=t.id
+    </select>
+
+    <select id="getAllRecoveryObsByOpenid" resultType="java.lang.String">
+        SELECT distinct(o.recover_ob) FROM orders o,sysuser u,parent p WHERE u.openid=#{openid} AND p.userId=u.id AND o.parent_id=p.id
+    </select>
+    <select id="getServerTime" resultType="com.xq.model.Order">
+        SELECT o.id,o.server_time,p.realName pname,o.period FROM orders o,parent p,teacher t WHERE o.parent_id=p.id and o.teacher_id=t.id and t.user_id=#{id} and o.status_t=3
+    </select>
+
+    <select id="getTodayServiceTime" resultType="com.xq.model.Order">
+        SELECT id,server_time FROM orders WHERE teacher_id=#{tid} AND server_time like concat('%',#{time},'%') AND status_t=3
+    </select>
+
+    <update id="addComment">
+        UPDATE orders SET cid=#{cid} WHERE id=#{oid}
+    </update>
+
+    <select id="checkOrderFinish" resultType="com.xq.model.CheckOrderFinish">
+        SELECT o.amount,count(r.id) FROM orders o,recovery_log r WHERE o.id=#{oid} AND r.order_id=#{oid} AND r.confirm_status=1
+    </select>
+
+    <select id="getParentNoCommentOrderByUid" resultMap="resultAllOrder">
+        SELECT o.id,o.recover_ob,o.way,o.totalpay,o.s_time,t.id tid,t.name tName,o.cid,o.realpay,o.is_first,o.amount,o.server_time
+        FROM orders o,parent p,sysuser u,teacher t
+        WHERE u.id=#{userId} AND u.id=p.userId AND t.id=o.teacher_id AND o.parent_id=p.id AND o.status_p=15 AND cid=0
+        ORDER by s_time DESC
+    </select>
+
+    <select id="getNoCommentCountByUid" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM orders o,parent p,sysuser u
+        WHERE u.id=#{id} AND u.id=p.userId  AND o.parent_id=p.id AND o.status_p=15 AND cid=0
+    </select>
+
+    <select id="getAllDoingOrderByUid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.remark,p.id pid,p.realName,d.id did,d.name,d.gender,d.disease,d.remark dremark,o.server_time
+        FROM orders o,parent p,demand d,teacher t
+        WHERE o.teacher_id=t.id AND p.userId=#{userId} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3
+    </select>
+
+    <select id="getAllDoingDayOrderByUid" resultMap="resultOrder">
+        SELECT o.id,o.recover_ob,o.way,o.remark,d.id did,d.name,d.gender,d.disease,d.remark dremark,o.server_time,t.name tName
+        FROM orders o,parent p,demand d,teacher t
+        WHERE o.teacher_id=t.id AND p.userId=#{uid} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3 AND o.server_time LIKE concat('%',#{day},'%')
+    </select>
+
+    <select id="getOnGoingOrdersByTid" resultMap="resultOrder">
+        SELECT id, teacher_id, parent_id, demand_id, status_t, status_p,server_time
+        FROM orders
+        WHERE teacher_id=#{teacherId} AND status_t &lt; 11 AND status_p &lt; 11
+    </select>
+</mapper>

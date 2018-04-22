@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.CommentDao">
+
+    <resultMap id="resultComment" type="com.xq.model.Comment">
+        <id property="id" column="id"/>
+        <result property="detail" column="detail"/>
+        <result property="time" column="time"/>
+        <result property="level" column="level" />
+        <result property="isOpen" column="is_open"/>
+        <result property="picUrls" column="pic_urls"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+        <association property="teacherComment" javaType="com.xq.model.Comment">
+            <id property="id" column="ctid"/>
+            <result property="detail" column="ctdetail"/>
+            <result property="time" column="cttime"/>
+            <result property="good" column="ctgood"/>
+            <result property="report" column="ctreport"/>
+        </association>
+        <collection property="commentList" ofType="com.xq.model.Comment">
+            <id property="id" column="cid" />
+            <result property="time" column="ctime"/>
+            <result property="detail" column="cdetail"/>
+            <result property="isOpen" column="cis_open" />
+            <association property="user" javaType="com.xq.model.User">
+                <id property="id" column="cuid" />
+                <result property="username" column="cusername"/>
+                <result property="headimgurl" column="cheadimgurl"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <resultMap id="mainComment" type="com.xq.model.Comment">
+        <id property="id" column="id"/>
+        <result property="detail" column="detail"/>
+        <result property="time" column="time"/>
+        <result property="level" column="level" />
+        <result property="isOpen" column="is_open"/>
+        <result property="picUrls" column="pic_urls"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid"/>
+            <result property="username" column="username"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="centerComment" type="com.xq.model.Comment">
+        <id property="id" column="id"/>
+        <result property="detail" column="detail"/>
+        <result property="time" column="time"/>
+        <result property="level" column="level" />
+        <result property="isOpen" column="is_open"/>
+        <result property="picUrls" column="pic_urls"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <association property="user" javaType="com.xq.model.User">
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+        <association property="parent" javaType="com.xq.model.Parent">
+            <result property="realName" column="realName"/>
+        </association>
+        <association property="order" javaType="com.xq.model.Order">
+            <result property="id" column="oid"/>
+            <result property="way" column="way"/>
+            <result property="recoverOb" column="recover_ob"/>
+        </association>
+        <association property="demand" javaType="com.xq.model.Demand">
+            <result property="name" column="dname"/>
+        </association>
+        <association property="teacherComment" javaType="com.xq.model.Comment">
+            <id property="id" column="ctid"/>
+            <result property="detail" column="ctdetail"/>
+            <result property="time" column="cttime"/>
+            <result property="good" column="ctgood"/>
+            <result property="report" column="ctreport"/>
+        </association>
+    </resultMap>
+
+
+    <insert id="add" useGeneratedKeys="true" keyProperty="id" parameterType="com.xq.model.Comment">
+        INSERT INTO comment(detail,level,time,is_open,type,pic_urls)
+        VALUE(#{detail},#{level},#{time},#{isOpen},#{type},#{picUrls})
+    </insert>
+
+    <select id="getCommentByOid" resultMap="resultComment" parameterType="java.lang.String">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,ct.id ctid,ct.detail ctdetail,c.pic_urls
+        FROM comment c LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,orders o
+        WHERE o.id=#{oid} AND c.id=o.cid
+    </select>
+
+
+    <select id="getCommentByTid" resultMap="resultComment">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls,
+         cc.id cid,cc.time ctime,cc.detail cdetail,cc.is_open cis_open,uu.id cuid,uu.username cusername,uu.headimgurl cheadimgurl,ct.id ctid,ct.detail ctdetail,ct.good ctgood,ct.report ctreport,ct.time cttime
+        FROM comment c LEFT JOIN comment cc on cc.pid=c.id AND cc.type=0 LEFT JOIN comment ct on ct.pid=c.id and ct.type=2 left join sysuser uu on uu.id=cc.uid,orders o,teacher t,sysuser u,parent p
+        WHERE t.id=#{id} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1 order by c.time desc
+    </select>
+
+    <select id="getNoReplyCommentsByUid" resultMap="centerComment">
+        select c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,c.pic_urls,p.realName,d.name dname,o.id oid,o.way,o.recover_ob,u.headimgurl
+        from comment c,teacher t,orders o,demand d,sysuser u,parent p where
+        u.id=#{uid} and t.user_id=u.id and o.parent_id=p.id and o.demand_id=d.id and o.teacher_id=t.id and o.cid=c.id and c.id not in(select pid from comment where type=2)
+        ORDER By time DESC
+    </select>
+
+    <select id="getNoReplyCommentCountByUid" resultType="java.lang.Integer">
+        select count(1)
+        from comment c,teacher t,orders o,sysuser u where
+        u.id=#{uid} and t.user_id=u.id and o.teacher_id=t.id and o.cid=c.id and c.id not in(select pid from comment where type=2)
+    </select>
+
+    <select id="getHisCommentsByUid" resultMap="centerComment">
+        select c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,p.realName,c.pic_urls,d.name dname,o.id oid,o.way,o.recover_ob,u.headimgurl,
+        ct.id ctid,ct.detail ctdetail,ct.good ctgood,ct.report ctreport,ct.time cttime
+        from comment c LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,teacher t,orders o,demand d,sysuser u,parent p where
+        u.id=#{uid} and t.user_id=u.id and o.parent_id=p.id and o.demand_id=d.id and o.teacher_id=t.id and o.cid=c.id and c.id in(select pid from comment where type=2)
+        ORDER By time DESC
+    </select>
+
+    <select id="getParentHisCommentsByUid" resultMap="centerComment">
+        select c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,p.realName,c.pic_urls,d.name dname,o.id oid,o.way,o.recover_ob,u.headimgurl,
+        ct.id ctid,ct.detail ctdetail,ct.good ctgood,ct.report ctreport,ct.time cttime
+        from comment c LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,teacher t,orders o,demand d,sysuser u,parent p where
+        u.id=#{uid} and p.userId=u.id and o.parent_id=p.id and o.demand_id=d.id and o.teacher_id=t.id and o.cid=c.id and c.id in(select pid from comment where type=2)
+        ORDER By time DESC
+    </select>
+
+    <update id="updateGRCount" parameterType="com.xq.model.UserGoodReport">
+        UPDATE comment SET good=good+#{good},report=report+#{report} WHERE id=#{id}
+    </update>
+
+
+    <insert id="addComment"  parameterType="com.xq.model.Comment">
+        INSERT INTO comment(detail,is_open,time,type,pid,uid)
+        VALUE(#{detail},#{isOpen},#{time},#{type},#{pid},#{uid})
+    </insert>
+
+
+
+    <insert id="addReply"  parameterType="com.xq.model.Comment">
+        INSERT INTO comment(detail,time,type,pid)
+        VALUE(#{detail},#{time},#{type},#{pid})
+    </insert>
+
+    <select id="getCommentById" resultType="com.xq.model.Comment">
+        SELECT id,pic_urls FROM comment WHERE id=#{cid}
+    </select>
+
+
+    <select id="getMainTeacherCommentsByTid" resultMap="mainComment">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls
+        FROM comment c, orders o,teacher t,sysuser u,parent p
+        WHERE t.id=#{id} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1
+    </select>
+
+    <select id="getCommentByCid" resultMap="resultComment">
+        SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls,
+        cc.id cid,cc.time ctime,cc.detail cdetail,cc.is_open cis_open,uu.id cuid,uu.username cusername,uu.headimgurl cheadimgurl,
+        ct.id ctid,ct.detail ctdetail,ct.good ctgood,ct.report ctreport,ct.time cttime
+        FROM comment c LEFT JOIN comment cc on cc.pid=c.id AND cc.type=0 LEFT JOIN comment ct on ct.pid=c.id and ct.type=2 left join sysuser uu on uu.id=cc.uid,orders o,teacher t,sysuser u,parent p
+        WHERE c.id=#{cid} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1
+    </select>
+    <select id="getMainCommentsByTidAndPage" resultMap="mainComment">
+    SELECT  c.id,c.detail,c.time,c.level,c.is_open,c.good,c.report,u.id uid,u.username,u.headimgurl,c.pic_urls
+    FROM comment c, orders o,teacher t,sysuser u,parent p
+    WHERE t.id=#{tid} AND c.id=o.cid AND o.teacher_id=t.id AND o.parent_id=p.id AND p.userId=u.id AND c.type=1
+    order by c.time DESC limit #{start},#{size}
+    </select>
+</mapper>
