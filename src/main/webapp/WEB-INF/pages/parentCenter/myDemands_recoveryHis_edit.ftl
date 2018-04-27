@@ -119,7 +119,7 @@
 
 
 <div id="main">
-    <form action="<#if data??>/wx/parentCenter/mydemands/recoveryHis/${demandId}/${data.index}/edit<#else>/wx/parentCenter/mydemands/recoveryHis/${demandId}/add</#if>" method="post">
+    <form action="<#if data??>/wx/parentCenter/mydemands/recoveryHis/${user.id}/${demandId}/${data.index}/edit<#else>/wx/parentCenter/mydemands/recoveryHis/${user.id}/${demandId}/add</#if>" method="post">
         <div class="buttonDiv_info">
             <div class="info row" >
                 <div class="col-xs-3">

@@ -119,7 +119,7 @@ public class ParentCenterController {
     @RequestMapping(value = "/{userId}/addDemandPage",method = RequestMethod.GET)
     public ModelAndView toAddDemandPage(@PathVariable int userId){
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_addDemand");
-        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
+        mv.addObject("user",userService.getUserByUid(userId));
         return mv;
     }
 
@@ -220,7 +220,6 @@ public class ParentCenterController {
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"0");
         mv.addObject("user",user);
 
@@ -369,13 +368,14 @@ public class ParentCenterController {
     /**
      * 康复史页面
      */
-    @RequestMapping(value = "/{demandId}/recoveryHis")
-    public ModelAndView toRecovery(@PathVariable int demandId)
+    @RequestMapping(value = "/{userId}/{demandId}/recoveryHis")
+    public ModelAndView toRecovery(@PathVariable int userId,@PathVariable int demandId)
     {
         Demand demand=parentCenterService.getDemandDetail(demandId);
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis");
         mv.addObject("recoveryHisList",parentCenterService.getRecoveryHisList(demand.getRecoveryHis()));
-        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
+        mv.addObject("userId",userId);
+        mv.addObject("demandId",demandId);
         return mv;
     }
 
@@ -383,8 +383,8 @@ public class ParentCenterController {
      *
      * 修改康复史页面
      */
-    @RequestMapping(value = "/recoveryHis/{demandId}/{recoveryHis}/editPage")
-    public ModelAndView toModifyRecovery(@PathVariable int demandId, @PathVariable String recoveryHis)
+    @RequestMapping(value = "/recoveryHis/{userId}/{demandId}/{recoveryHis}/editPage")
+    public ModelAndView toModifyRecovery(@PathVariable int userId,@PathVariable int demandId, @PathVariable String recoveryHis)
     {
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis_edit");
         RecoveryHisDto recoveryHisDto=new RecoveryHisDto(recoveryHis);
@@ -395,28 +395,28 @@ public class ParentCenterController {
         System.out.println("recoveryHis");
         mv.addObject("data",recoveryHisDto);
         mv.addObject("demandId",demandId);
-        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
+        mv.addObject("user",userService.getUserByUid(userId));
         return mv;
     }
     /**
      *
      * 添加康复史页面
      */
-    @RequestMapping(value = "/recoveryHis/{demandId}/addRecoveryHis")
-    public ModelAndView toAddRecoveryHis(@PathVariable int demandId){
+    @RequestMapping(value = "/recoveryHis/{userId}/{demandId}/addRecoveryHis")
+    public ModelAndView toAddRecoveryHis(@PathVariable int userId,@PathVariable int demandId){
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis_edit");
 
         mv.addObject("demandId",demandId);
-        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
+        mv.addObject("user",userService.getUserByUid(userId));
         return mv;
     }
 
     /**
      *添加康复史
      */
-    @RequestMapping(value = "/mydemands/recoveryHis/{demandId}/add",method = RequestMethod.POST)
-    public ModelAndView addRecoveryHis(@PathVariable int demandId, RecoveryHisDto recoveryHisDto){
-        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+demandId+"/recoveryHis");
+    @RequestMapping(value = "/mydemands/recoveryHis/{userId}/{demandId}/add",method = RequestMethod.POST)
+    public ModelAndView addRecoveryHis(@PathVariable int userId, @PathVariable int demandId, RecoveryHisDto recoveryHisDto){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+userId+"/"+demandId+"/recoveryHis");
         //时间转换为数据库存储要求的格式
         recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('-','.'));
         recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('-','.'));
@@ -427,9 +427,9 @@ public class ParentCenterController {
     /**
      *修改康复史
      */
-    @RequestMapping(value = "/mydemands/recoveryHis/{demandId}/{index}/edit",method = RequestMethod.POST)
-    public ModelAndView modifyRecoveryHis(@PathVariable int index,@PathVariable int demandId,  RecoveryHisDto recoveryHisDto){
-        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+demandId+"/recoveryHis");
+    @RequestMapping(value = "/mydemands/recoveryHis/{userId}/{demandId}/{index}/edit",method = RequestMethod.POST)
+    public ModelAndView modifyRecoveryHis(@PathVariable int index, @PathVariable int userId, @PathVariable int demandId, RecoveryHisDto recoveryHisDto){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+userId+"/"+demandId+"/recoveryHis");
         //时间转换为数据库存储要求的格式
         recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('-','.'));
         recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('-','.'));
