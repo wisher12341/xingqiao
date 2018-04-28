@@ -6,24 +6,27 @@ package com.xq.dto;
 public class RecoveryHisDto {
 
     private int index;
-    private String time;
+    private String beginTime;
     private String name;
     private String count;
     private String detail;
+    private String endTime;
 
 
 
     public RecoveryHisDto(String recoveryHis) {
         String[] strings=recoveryHis.split("_");
         this.index = Integer.parseInt(strings[0]);
-        this.time = strings[2];
+        this.beginTime = strings[2].split("-")[0];
+        this.endTime = strings[2].split("-")[1];
         this.name = strings[1];
         this.count = strings[3];
         this.detail = strings[4];
     }
 
     public RecoveryHisDto(String name,String time,  String count, String detail) {
-        this.time = time;
+        this.beginTime = time.split("-")[0];
+        this.endTime = time.split("-")[1];
         this.name = name;
         this.count = count;
         this.detail = detail;
@@ -31,17 +34,37 @@ public class RecoveryHisDto {
     public RecoveryHisDto(int index,String name,String time,  String count, String detail) {
         this.index=index;
         this.name = name;
-        this.time = time;
+        this.beginTime = time.split("-")[0];
+        this.endTime = time.split("-")[1];
         this.count = count;
         this.detail = detail;
     }
 
-    public String getTime() {
-        return time;
+    public RecoveryHisDto(int index, String name, String beginTime, String endTime, String detail, String count) {
+        this.index=index;
+        this.beginTime = beginTime;
+        this.endTime = endTime;
+        this.name = name;
+        this.detail = detail;
+        this.count = count;
+
+    }
+    public RecoveryHisDto(){}
+
+    public String getBeginTime() {
+        return beginTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
 
     public String getName() {
@@ -81,7 +104,9 @@ public class RecoveryHisDto {
         stringBuilder.append("_");
         stringBuilder.append(name);
         stringBuilder.append("_");
-        stringBuilder.append(time);
+        stringBuilder.append(beginTime);
+        stringBuilder.append("-");
+        stringBuilder.append(endTime);
         stringBuilder.append("_");
         stringBuilder.append(count);
         stringBuilder.append("_");
@@ -93,7 +118,9 @@ public class RecoveryHisDto {
         StringBuilder stringBuilder=new StringBuilder();
         stringBuilder.append(name);
         stringBuilder.append("#");
-        stringBuilder.append(time);
+        stringBuilder.append(beginTime);
+        stringBuilder.append("-");
+        stringBuilder.append(endTime);
         stringBuilder.append("#");
         stringBuilder.append(count);
         stringBuilder.append("#");

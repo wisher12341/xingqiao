@@ -194,7 +194,8 @@
 <#if teacherList??>
 <#else>
 <div class="foot" align="center">
-    <button onclick="location.href='${path}/wx/teacherCenter/info/${uid}/successCase/0'" style="width: 100% !important;">新增</button>
+    <button onclick="location.href='${path}/wx/teacherCenter/info/${uid}/successCase/0'" style="width: 49% !important;">新增</button>
+    <button onclick="location.href='${path}/wx/teacherCenter/${uid}/myInfo_authentication'" style="width: 49% !important;">返回</button>
 </div>
 </#if>
 </body>

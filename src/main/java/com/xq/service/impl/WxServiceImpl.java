@@ -4,15 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.xq.dao.GoodReportDao;
 import com.xq.dao.ParentCenterDao;
 import com.xq.dao.UserDao;
-import com.xq.interceptor.WxInterceptor;
 import com.xq.model.User;
 import com.xq.model.WxUserInfo;
-import com.xq.service.UserService;
 import com.xq.service.WxService;
 import com.xq.util.Const;
 import com.xq.util.HttpRequestor;
 import com.xq.wxpay.config.WxConfig;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +26,7 @@ import java.util.TimeZone;
  * Created by netlab606 on 2017/11/17.
  */
 @Service
-public class WxServiceImpl implements WxService{
+public class WxServiceImpl implements WxService {
 
     @Autowired
     UserDao userDao;
@@ -124,6 +121,10 @@ public class WxServiceImpl implements WxService{
         user.setGender(Integer.parseInt(wxUserInfo.getSex()));
         user.setTime(wxUserInfo.getTime());
 
+        User exist=userDao.getUserByOpenidStatus(user.getOpenid(),"0");
+        if(exist!=null){
+            return null;
+        }
         userDao.saveNewUser(user);
         goodReportDao.addUser(user.getId());
         parentCenterDao.saveNewParent(user.getId());

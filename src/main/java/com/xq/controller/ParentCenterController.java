@@ -2,7 +2,6 @@ package com.xq.controller;
 
 
 import com.xq.dto.*;
-import com.xq.interceptor.WxInterceptor;
 import com.xq.model.*;
 import com.xq.service.*;
 import com.xq.util.Const;
@@ -46,8 +45,8 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
@@ -119,22 +118,21 @@ public class ParentCenterController {
      */
     @RequestMapping(value = "/{userId}/addDemandPage",method = RequestMethod.GET)
     public ModelAndView toAddDemandPage(@PathVariable int userId){
-        ModelAndView mv=new ModelAndView("parentCenter/addDemandPage");
-        mv.addObject("userId",userId);
+        ModelAndView mv=new ModelAndView("parentCenter/myDemands_addDemand");
+        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
         return mv;
     }
 
     /**
      *添加简历
      */
-    @RequestMapping(value = "/addDemand")
-    @ResponseBody
-    public Map addRecoveryHis(@RequestParam("userId") Integer userId, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
+    @RequestMapping(value = "/mydemands/{userId}/addDemand",method = RequestMethod.POST)
+    public ModelAndView addRecoveryHis(@PathVariable Integer userId, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
                               @RequestParam("birthday") String birthday,@RequestParam("report") String report, @RequestParam("diseaseHis") String diseaseHis,
                               @RequestParam("allergyHis") String allergyHis, @RequestParam("remark") String remark){
-        Map map=new HashMap();
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+userId+"/myDemands");
         parentCenterService.addDemand( userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
-        return map;
+        return mv;
     }
 
 
@@ -368,57 +366,81 @@ public class ParentCenterController {
     }
 
 
+    /**
+     * 康复史页面
+     */
+    @RequestMapping(value = "/{demandId}/recoveryHis")
+    public ModelAndView toRecovery(@PathVariable int demandId,HttpServletRequest request)
+    {
+        Demand demand=parentCenterService.getDemandDetail(demandId);
+        ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis");
+        mv.addObject("recoveryHisList",parentCenterService.getRecoveryHisList(demand.getRecoveryHis()));
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        mv.addObject("user",userService.getUserByOpenidStatus(openid,"0"));
+        return mv;
+    }
 
     /**
      *
      * 修改康复史页面
      */
-    @RequestMapping(value = "/{userId}/myDemands/{demandId}/demandDetail/{recoveryHis}/modifyRecoveryHis")
-    public ModelAndView toModifyRecovery(@PathVariable int userId,@PathVariable int demandId,@PathVariable String recoveryHis)
+    @RequestMapping(value = "/recoveryHis/{demandId}/{recoveryHis}/editPage")
+    public ModelAndView toModifyRecovery(@PathVariable int demandId, @PathVariable String recoveryHis,HttpServletRequest request)
     {
-        ModelAndView mv=new ModelAndView("parentCenter/recoveryHisSingle");
+        ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis_edit");
         RecoveryHisDto recoveryHisDto=new RecoveryHisDto(recoveryHis);
-        mv.addObject("recoveryHis",recoveryHisDto);
+        //时间转换为前端显示要求的格式
+        recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('.','-'));
+        recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('.','-'));
+
+        System.out.println("recoveryHis");
+        mv.addObject("data",recoveryHisDto);
         mv.addObject("demandId",demandId);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        mv.addObject("user",userService.getUserByOpenidStatus(openid,"0"));
         return mv;
     }
     /**
      *
      * 添加康复史页面
      */
-    @RequestMapping(value = "/{userId}/myDemands/{demandId}/demandDetail/addRecoveryHis")
-    public ModelAndView toAddRecoveryHis(@PathVariable int demandId){
-        ModelAndView mv=new ModelAndView("parentCenter/recoveryHisSingle");
+    @RequestMapping(value = "/recoveryHis/{demandId}/addRecoveryHis")
+    public ModelAndView toAddRecoveryHis(@PathVariable int demandId,HttpServletRequest request){
+        ModelAndView mv=new ModelAndView("parentCenter/myDemands_recoveryHis_edit");
+
         mv.addObject("demandId",demandId);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        mv.addObject("user",userService.getUserByOpenidStatus(openid,"0"));
         return mv;
     }
 
     /**
      *添加康复史
      */
-    @RequestMapping(value = "/addRecoveryHis")
-    @ResponseBody
-    public Map addRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("name") String name,@RequestParam("time") String time,
-                              @RequestParam("count") String count,@RequestParam("detail") String detail){
-        Map map=new HashMap();
-        RecoveryHisDto recoveryHisDto=new RecoveryHisDto( name, time,count,detail);
+    @RequestMapping(value = "/mydemands/recoveryHis/{demandId}/add",method = RequestMethod.POST)
+    public ModelAndView addRecoveryHis(@PathVariable int demandId, RecoveryHisDto recoveryHisDto){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+demandId+"/recoveryHis");
+        //时间转换为数据库存储要求的格式
+        recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('-','.'));
+        recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('-','.'));
         parentCenterService.addRecoveryHis(recoveryHisDto,demandId);
-        return map;
+        return mv;
     }
 
     /**
      *修改康复史
      */
-    @RequestMapping(value = "/modifyRecoveryHis")
-    @ResponseBody
-    public Map modifyRecoveryHis(@RequestParam("demandId") int demandId,@RequestParam("index") int index,@RequestParam("name") String name,@RequestParam("time") String time,
-                                 @RequestParam("count") String count,@RequestParam("detail") String detail){
-        Map map=new HashMap();
-        System.out.println("index"+index);
-        RecoveryHisDto recoveryHisDto=new RecoveryHisDto( index,name, time,count,detail);
+    @RequestMapping(value = "/mydemands/recoveryHis/{demandId}/{index}/edit",method = RequestMethod.POST)
+    public ModelAndView modifyRecoveryHis(@PathVariable int index,@PathVariable int demandId,  RecoveryHisDto recoveryHisDto){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+demandId+"/recoveryHis");
+        //时间转换为数据库存储要求的格式
+        recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('-','.'));
+        recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('-','.'));
         parentCenterService.modifyRecoveryHis(recoveryHisDto,demandId);
-        return map;
+        return mv;
     }
+
+
 
     /**
      * 修改头像页面
@@ -437,7 +459,7 @@ public class ParentCenterController {
      */
     @RequestMapping(value = "/{userId}/modifyIcon",method = RequestMethod.POST)
     @ResponseBody
-    public Result modifyIcon(@PathVariable int userId,HttpServletRequest request){
+    public Result modifyIcon(@PathVariable int userId, HttpServletRequest request){
         parentCenterService.uploadPhoto(request,userId);
         return new Result(true);
     }

@@ -57,6 +57,25 @@ function saveModify(objId,fieldName,table) {
     }
 }
 
+function saveModify2(objId,fieldName,table,value) {
+        $.ajax({
+            url: "/wx/parentCenter/saveModify",
+            type: 'post',
+            dataType: 'json',
+            data: {
+                "newValue": value,
+                "objId": objId,
+                "fieldName": fieldName,
+                "table": table,
+            },
+            success: function () {
+                window.location.href = document.referrer;
+            },
+            error: function () {
+
+            }
+        });
+}
 function modifyRecoveryHis(demandId,index) {
     var name= $("#name").val();
     var time= $("#time").val();

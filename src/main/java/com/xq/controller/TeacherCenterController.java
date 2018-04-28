@@ -378,7 +378,7 @@ public class TeacherCenterController {
     @RequestMapping(value = "/info/{uid}/{type}/add",method = RequestMethod.POST)
     public ModelAndView info(@PathVariable int uid, @PathVariable String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis){
         ModelAndView mv;
-        mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type));
+        mv=new ModelAndView("redirect:/wx/teacherCenter/info/"+uid+"/"+type+"/1");
         teacherCenterService.addComplexInfo(uid,type,title,detail,picUrls,teacherInfoSchool,teacherInfoRecoveryHis);
         Object result=teacherCenterService.getInfoByTypeName(uid,type,"");
         mv.addObject("data",result);

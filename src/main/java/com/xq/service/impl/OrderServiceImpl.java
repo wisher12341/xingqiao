@@ -3,10 +3,6 @@ package com.xq.service.impl;
 import com.xq.dao.*;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
-import com.xq.model.Message;
-import com.xq.model.Order;
-import com.xq.model.RecoveryHis;
-import com.xq.model.RecoveryLog;
 import com.xq.model.*;
 import com.xq.service.OrderService;
 import com.xq.service.RecoveryLogService;
@@ -17,8 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -26,7 +20,7 @@ import java.util.*;
  * Created by netlab606 on 2017/11/2.
  */
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderDao orderDao;
@@ -127,7 +121,7 @@ public class OrderServiceImpl implements OrderService{
         }
 
         List<RecoveryHis> recoveryHisList = new ArrayList<RecoveryHis>();
-        if (order.getDemand().getRecoveryHis()!=null) {
+        if (order.getDemand().getRecoveryHis()!=null && !order.getDemand().getRecoveryHis().equals("")) {
             String[] data = order.getDemand().getRecoveryHis().split("@");
             for (String s : data) {
                 RecoveryHis recoveryHis = new RecoveryHis();
@@ -282,7 +276,7 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Transactional
-    public String addOrder(Order order,HttpServletRequest request) {
+    public String addOrder(Order order, HttpServletRequest request) {
         //User user = (User) session.getAttribute("USER");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         User user=userDao.getParentByOpenid(openid);

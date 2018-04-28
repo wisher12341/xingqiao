@@ -91,6 +91,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User regTeacher(User user, HttpServletResponse response) {
+        User exist=userDao.getUserByOpenidStatus(user.getOpenid(),"1");
+        if(exist!=null){
+            return exist;
+        }
         Date d = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));

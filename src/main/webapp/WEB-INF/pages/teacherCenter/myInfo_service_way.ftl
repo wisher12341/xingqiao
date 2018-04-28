@@ -69,6 +69,23 @@
         .b{
             margin-bottom: 2%!important;
         }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
     </style>
 </head>
 <body>
@@ -199,6 +216,9 @@
         </div>
     </div>
 
+</div>
+<div class="foot" align="center">
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_service">回到个人中心</button>
 </div>
 </body>
 <script>
