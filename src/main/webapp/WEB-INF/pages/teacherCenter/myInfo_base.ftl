@@ -187,7 +187,7 @@
     <#--</div>-->
 </div>
 <div class="foot" align="center">
-    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo">回到个人中心</button>
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
 </div>
 </body>
 </html>

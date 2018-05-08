@@ -54,6 +54,23 @@
             position: relative;
             top:5px;
         }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
     </style>
 </head>
 <body>
@@ -130,11 +147,12 @@
         </div>
     </div>
 
+
+
     <#--<div>-->
         <#--<input type="submit" class="butt" onclick="" value="${(user.userStatus==0)?string('保存','提交审核')}">-->
     <#--</div>-->
 <#--</form>-->
-
 
     <#--<div class="myInfoDiv">-->
         <#--<div class="info-part-item" >-->
@@ -167,6 +185,9 @@
             <#--</ul>-->
         <#--</div>-->
     <#--</div>-->
+</div>
+<div class="foot" align="center">
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
 </div>
 </body>
 </html>

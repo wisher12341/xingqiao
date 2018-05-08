@@ -140,6 +140,13 @@
         .delClass{
             color: orange;!important;
         }
+        input[type=time] {
+            background-color:transparent;
+            /*!*FILTER: alpha(opacity=0); !*androd*!*!*/
+            /*appearance:none;  !*下拉框去掉右侧图标*!*/
+            /*-moz-appearance:none;*/
+            /*-webkit-appearance:none;*/
+        }
     </style>
 </head>
 <body>
@@ -180,7 +187,7 @@
                         <p class="text_p"> 具体时间</p>
                     </div>
                     <div class="col-xs-6">
-                        <input placeholder="选择时间" type="text" class="title_input" name="time">
+                        <input placeholder="选择时间" type="time" class="title_input" name="time" style="width: 100%">
                     </div>
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-2x icon_fa"></i>

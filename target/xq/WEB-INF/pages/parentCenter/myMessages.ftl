@@ -513,7 +513,7 @@
 
 <div id="top" align="center">
     <div class="bu">
-        <button class="left" style="position: relative">通&nbsp;&nbsp;知<span class="number">${(messages.noReadInform)?size}</span></button>
+        <button class="left" style="position: relative">通&nbsp;&nbsp;知<#if (messages.noReadInform)?size != 0 ><span class="number">${(messages.noReadInform)?size}</span></#if></button>
         <button class="right">私&nbsp;&nbsp;信<span></span></button>
     </div>
 

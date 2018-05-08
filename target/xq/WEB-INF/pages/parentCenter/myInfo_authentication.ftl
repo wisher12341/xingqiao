@@ -77,7 +77,7 @@
             margin: 3% auto;
             border-radius: 15px;
             height:6%;
-            opacity:0.5;
+            /*opacity:0.5;*/
             border: none;
         }
     </style>

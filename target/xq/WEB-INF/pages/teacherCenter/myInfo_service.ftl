@@ -82,12 +82,18 @@
             border-radius: 5px;
         }
         .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot_back{
             /*position: fixed;*/
             /*width: 100%;*/
             /*bottom: 0;*/
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot_back button,.foot button{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -99,6 +105,9 @@
             height:6%;
             opacity:0.5;
             border: none;
+        }
+        #main{
+            margin-bottom: 7%;
         }
     </style>
 </head>
@@ -220,14 +229,18 @@
         </div>
     </div>
 
+
 <#if user.userStatus==0>
-    <div class="foot" align="center">
+    <div class="foot_back" align="center">
         <form action="/wx/teacherCenter/userstatus/change" method="post">
             <input type="hidden" value="1" name="userStatus">
             <button style="width: 95% !important;">提交审核</button>
         </form>
     </div>
 </#if>
+</div>
+<div class="foot" align="center">
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
 </div>
 </body>
 </html>
