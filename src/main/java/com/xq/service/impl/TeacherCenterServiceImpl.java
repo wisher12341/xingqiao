@@ -1032,8 +1032,6 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Transactional
     public void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String status) {
         String openid="";
-//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
-        String openid="";
 
         User user=null;
         if(status.equals("parent")){
