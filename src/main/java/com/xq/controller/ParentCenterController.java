@@ -45,8 +45,8 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-//      String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        //String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
@@ -219,8 +219,8 @@ public class ParentCenterController {
     @RequestMapping(value = "/{ftype}/{ctype}/{value}/edit",method = RequestMethod.GET)
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
-        //String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E"; //测试用
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        //String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E"; //测试用
         User user=userService.getUserByOpenidStatus(openid,"0");
         mv.addObject("user",user);
 //        WxInterceptor.logger.info(user.toString());
