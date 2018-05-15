@@ -253,7 +253,7 @@
 <div class="fakeloader">aaa</div>
 <script>
     $(".fakeloader").fakeLoader({
-        timeToHide:2000,
+        timeToHide:3000,
         bgColor:"#20b49a",
         spinner:"spinner6",
         fadeDiv:"main"

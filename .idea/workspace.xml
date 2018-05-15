@@ -2,40 +2,118 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8096fa39-2683-4410-8529-ecf7826ba959" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/1/1512111826364.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/1/1512111877709.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/1/1512111923188.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/2/1512185143797.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/2/1512185144738.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401087246.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401087299.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401357721.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401363529.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401650577.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401650637.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401736334.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/2017/12/4/1512401803188.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986141703.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986141715.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986309324.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986309392.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986435801.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986435813.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986579508.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986586580.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/11/1512986945894.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513260308280.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513261591826.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513261636141.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513261700199.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513261757140.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513261885813.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/14/1513262338228.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/15/1513319931638.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/15/1513321163484.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/15/1513321369552.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/5/1512404846081.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/5/1512404938647.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/5/1512405703557.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/5/1512451124128.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/5/1512451405623.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/8/1512746217548.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/comment/teacher/2017/12/8/1512746217613.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2017/12/28/1514430537060.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/1/21/1516511042934.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/1/21/1516511042956.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/1/21/1516511042966.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832460185.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832460201.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832460213.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832852722.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832856736.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522832859752.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833178610.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833178623.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833178635.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833185026.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833185036.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833185047.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833274140.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833274150.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833274160.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833345952.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833345963.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/4/4/1522833345976.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978325623.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978328905.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978749199.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978749208.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978845159.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978845166.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978952290.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514978952299.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514979668382.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/3/1514980262901.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515051261206.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515052495149.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515052981870.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515053003453.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515067993579.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068338473.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068358908.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068380545.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068483233.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068615337.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/4/1515068945267.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/1/7/1515294055659.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/img/info/teacher/award/2018/4/7/1523068053668.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/WxController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/WxController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterOrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherCenterService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherCenterService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq.war" afterPath="$PROJECT_DIR$/target/xq.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/WxController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/WxController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterOrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherCenterService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherCenterService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo_authentication.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo_authentication.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/common/var.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/common/var.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_base.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_base.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service_way.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service_way.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myMessages.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myMessages.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -63,101 +141,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="myInfo_authentication.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="227" column="92" lean-forward="false" selection-start-line="227" selection-start-column="92" selection-end-line="227" selection-end-column="92" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_service.ftl" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="242" column="98" lean-forward="false" selection-start-line="242" selection-start-column="98" selection-end-line="242" selection-end-column="98" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_authentication_award.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4392">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_authentication_recoveryHis.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherCenterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13075">
-              <caret line="530" column="95" lean-forward="false" selection-start-line="530" selection-start-column="95" selection-end-line="530" selection-end-column="95" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-567">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="myInfo_base.ftl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="189" column="98" lean-forward="false" selection-start-line="189" selection-start-column="98" selection-end-line="189" selection-end-column="98" />
+            <state relative-caret-position="2160">
+              <caret line="80" column="38" lean-forward="false" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teacherCenter.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl">
+      <file leaf-file-name="TeacherCenterOrderController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="192" column="15" lean-forward="false" selection-start-line="192" selection-start-column="15" selection-end-line="192" selection-end-column="15" />
+            <state relative-caret-position="864">
+              <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl">
+      <file leaf-file-name="order.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/order.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2313">
-              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="27">
+              <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="foot.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/common/foot.ftl">
+      <file leaf-file-name="var.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1053">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="513">
+              <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parentCenter.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="870">
+              <caret line="253" column="8" lean-forward="true" selection-start-line="253" selection-start-column="8" selection-end-line="253" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-588">
+              <caret line="127" column="18" lean-forward="true" selection-start-line="127" selection-start-column="18" selection-end-line="127" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WxPayController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/WxPayController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WxController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="897">
+              <caret line="83" column="8" lean-forward="false" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ParentCenterController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="86">
+              <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.ftl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7317">
+              <caret line="271" column="0" lean-forward="false" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -176,24 +254,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>selected-time</find>
-      <find>openid=&quot;</find>
-      <find>oxsEYwtmbjRkLNS7NelU1jClG668</find>
-      <find>mobile-nav-taggle</find>
-      <find>我的资料</find>
-      <find>getTeacherInfoAuthenticationByUid</find>
-      <find>getInfoByTypeName</find>
-      <find>addComplexInfo</find>
-      <find>updateComplexInfo</find>
-      <find>editComplexInfo</find>
-      <find>myInfo_service_type</find>
-      <find>editServiceInfoWay</find>
-      <find>sground</find>
-      <find>selectArea2</find>
-      <find>/myInfo</find>
-      <find>tname</find>
-      <find>area2</find>
-      <find>messag</find>
       <find>message</find>
       <find>&quot;getTeachersByUserId</find>
       <find>getTeachersByUserId</find>
@@ -206,6 +266,24 @@
       <find>calendar</find>
       <find>请先</find>
       <find>calendar_month</find>
+      <find>op</find>
+      <find>openid</find>
+      <find>openid=</find>
+      <find>openid=&quot;</find>
+      <find>a</find>
+      <find>ajax</find>
+      <find>recovery_his</find>
+      <find>recovery_is</find>
+      <find>recoveryis</find>
+      <find>recoveryHiis</find>
+      <find>recoveryHii</find>
+      <find>recovery</find>
+      <find>recoveryH</find>
+      <find>recoveryHi</find>
+      <find>recoveryHis</find>
+      <find>demand</find>
+      <find>oxsEYwlPAa-fVc9fVyzVBYBed9n8</find>
+      <find>&lt;span style=&quot;color: red;padding: 15px;position: relative;top: 8px;&quot;&gt;*&lt;/span&gt;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -225,10 +303,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_object.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/model/RecoveryLog.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/RecoveryLogMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/RecoveryLogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/setting.ftl" />
@@ -254,7 +328,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_authentication.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myDemands.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl" />
@@ -263,19 +336,24 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/TeacherCenterMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/interceptor/WxInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java" />
       </list>
     </option>
   </component>
@@ -317,8 +395,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -440,6 +516,44 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="teacherCenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teacherCenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="order" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1144,16 +1258,18 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/台式/xingqiao/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
@@ -1586,7 +1702,7 @@
     <configuration default="false" name="xq" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.11" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\sp\progrom\jdk1.7.0_17\jre">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="xq:war">
+        <artifact name="xq:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="/" />
           </settings>
@@ -1653,7 +1769,7 @@
       </ConfigurationWrapper>
       <method>
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="xq:war" />
+          <artifact name="xq:war exploded" />
         </option>
       </method>
     </configuration>
@@ -1707,19 +1823,25 @@
       <workItem from="1524018248673" duration="528000" />
       <workItem from="1524136491296" duration="2159000" />
       <workItem from="1524543804915" duration="2104000" />
+      <workItem from="1525794553879" duration="56000" />
+      <workItem from="1525822005556" duration="79000" />
+      <workItem from="1525845348186" duration="2683000" />
+      <workItem from="1526303145138" duration="8930000" />
+      <workItem from="1526381342397" duration="279000" />
+      <workItem from="1526381864442" duration="226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="761842000" />
+    <option name="totallyTimeSpent" value="776080000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3415605" sideWeight="0.50158983" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1729,54 +1851,27 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3415605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3415605" sideWeight="0.49841017" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882166" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21224165" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22019078" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3415605" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882166" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21065183" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1822,7 +1917,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="228" />
+      <option name="time" value="231" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1835,166 +1930,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myTeacher.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="9" lean-forward="true" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/setting.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="121" column="50" lean-forward="false" selection-start-line="121" selection-start-column="50" selection-end-line="121" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/changePwd.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="106" column="18" lean-forward="true" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myComments.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4183">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myMessages.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5894">
-          <caret line="515" column="184" lean-forward="false" selection-start-line="515" selection-start-column="184" selection-end-line="515" selection-end-column="184" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1525778789945" expanded="true" signature="2282:2303" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="2431:2487" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="2666:2682" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="2973:3022" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="3317:3344" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="3634:3650" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="3850:3877" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22188:22194" ph="&amp;nbsp;" />
-            <marker date="1525778789945" expanded="true" signature="22194:22200" ph="&amp;nbsp;" />
-            <marker date="1525778789945" expanded="true" signature="22311:27430" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22335:26972" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22363:22490" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22516:26724" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22536:24790" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22610:24769" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22703:24347" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22745:24320" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="22804:22825" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="22826:23003" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="22911:22967" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="23062:23078" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="23129:23587" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="23188:23347" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="23243:23292" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="23461:23488" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="23645:23661" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="23722:24215" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="23777:23804" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="23805:24172" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="23855:24124" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="24012:24118" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="24810:26709" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="24882:26688" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="24975:26274" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="25017:26247" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25076:25097" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="25098:25275" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25183:25239" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25334:25350" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="25401:25859" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="25460:25619" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25515:25564" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25733:25760" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="25917:25933" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="25994:26142" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="26049:26076" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="26793:26806" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="26822:26961" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="26868:26884" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="26980:27417" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="27011:27048" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="27049:27416" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="27080:27095" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="27253:27301" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="27332:27377" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="27604:27627" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="27628:27778" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="27640:27733" ph="..." />
-            <marker date="1525778789945" expanded="false" signature="27841:27864" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="27980:32702" ph="..." />
-            <marker date="1525778789945" expanded="true" signature="28018:31603" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="28562:30883" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="28652:29047" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="28732:29029" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="28851:28926" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="29542:30781" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="29627:30014" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="29667:29786" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="29800:29988" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30093:30759" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30176:30540" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30238:30365" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30369:30510" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30545:30733" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30785:30849" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="30932:31580" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="31245:31414" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="31418:31566" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="31676:31829" ph="{&quot;type&quot;: 'post'...}" />
-            <marker date="1525778789945" expanded="true" signature="31878:32530" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="31895:32522" ph="{&quot;type&quot;: 'get'...}" />
-            <marker date="1525778789945" expanded="true" signature="32043:32512" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="32320:32378" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="32412:32498" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="32556:32693" ph="{...}" />
-            <marker date="1525778789945" expanded="true" signature="32640:32685" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_base.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="124" column="136" lean-forward="false" selection-start-line="124" selection-start-column="88" selection-end-line="124" selection-end-column="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -2002,26 +1937,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.2.6.RELEASE/spring-aop-4.2.6.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="127" column="18" lean-forward="true" selection-start-line="127" selection-start-column="18" selection-end-line="127" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="47" column="8" lean-forward="false" selection-start-line="47" selection-start-column="8" selection-end-line="49" selection-end-column="73" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2032,45 +1951,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="750" column="30" lean-forward="false" selection-start-line="750" selection-start-column="30" selection-end-line="750" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
           <caret line="170" column="24" lean-forward="false" selection-start-line="170" selection-start-column="24" selection-end-line="170" selection-end-column="24" />
-          <folding>
-            <marker date="1525778789861" expanded="true" signature="4282:6022" ph="..." />
-            <marker date="1525778789861" expanded="true" signature="4398:5060" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4449:4510" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4592:4782" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1525778789861" expanded="true" signature="4686:4772" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4808:4959" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4845:4896" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4900:4949" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="4983:4995" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5087:5419" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5110:5325" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5329:5413" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5440:6012" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5515:5606" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5557:5596" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5628:5689" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5768:5827" ph="{...}" />
-            <marker date="1525778789861" expanded="true" signature="5913:5974" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeacherCenterMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2078,7 +1962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="98" column="9" lean-forward="true" selection-start-line="98" selection-start-column="9" selection-end-line="98" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2086,12 +1969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="329" column="22" lean-forward="false" selection-start-line="329" selection-start-column="22" selection-end-line="329" selection-end-column="22" />
-          <folding>
-            <marker date="1525778789949" expanded="true" signature="12152:12166" ph="{...}" />
-            <marker date="1525778789949" expanded="true" signature="12152:12178" ph="{&quot;columnFormat&quot;: 'ddd'...}" />
-            <marker date="1525778789949" expanded="true" signature="12152:12482" ph="..." />
-            <marker date="1525778789949" expanded="true" signature="12209:12473" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2106,15 +1983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="82" column="68" lean-forward="false" selection-start-line="82" selection-start-column="68" selection-end-line="82" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15012">
-          <caret line="556" column="25" lean-forward="false" selection-start-line="556" selection-start-column="24" selection-end-line="556" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2122,33 +1990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2268">
           <caret line="101" column="83" lean-forward="false" selection-start-line="101" selection-start-column="83" selection-end-line="101" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1512">
-          <caret line="394" column="0" lean-forward="true" selection-start-line="394" selection-start-column="0" selection-end-line="394" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="317" column="13" lean-forward="true" selection-start-line="317" selection-start-column="13" selection-end-line="317" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2156,10 +1997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="492">
           <caret line="121" column="43" lean-forward="false" selection-start-line="121" selection-start-column="43" selection-end-line="121" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1525778789771" expanded="true" signature="4775:4941" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2167,7 +2004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="113" column="0" lean-forward="true" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2175,7 +2011,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1068">
           <caret line="345" column="0" lean-forward="true" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2193,36 +2028,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="80" column="90" lean-forward="false" selection-start-line="80" selection-start-column="62" selection-end-line="80" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1398">
           <caret line="201" column="0" lean-forward="false" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
-          <folding>
-            <marker date="1525778789814" expanded="true" signature="7812:8502" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="7812:9453" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="7812:9463" ph="..." />
-            <marker date="1525778789814" expanded="true" signature="7974:8188" ph="{&quot;method&quot;: 'POST'...}" />
-            <marker date="1525778789814" expanded="true" signature="8080:8174" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8214:8389" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8255:8314" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8318:8375" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8413:8429" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8529:8860" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8552:8767" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8771:8854" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8881:9453" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="8956:9047" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="9069:9130" ph="{...}" />
-            <marker date="1525778789814" expanded="true" signature="9209:9268" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2230,7 +2039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="987">
           <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2246,10 +2054,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
           <caret line="221" column="6" lean-forward="false" selection-start-line="221" selection-start-column="6" selection-end-line="221" selection-end-column="6" />
-          <folding>
-            <marker date="1525778789937" expanded="true" signature="7539:7546" ph="..." />
-            <marker date="1525778789937" expanded="true" signature="7555:7631" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2257,17 +2061,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="365" column="13" lean-forward="false" selection-start-line="365" selection-start-column="13" selection-end-line="365" selection-end-column="13" />
-          <folding>
-            <marker date="1525778789940" expanded="true" signature="12391:12498" ph="{...}" />
-            <marker date="1525778789940" expanded="true" signature="12391:13351" ph="..." />
-            <marker date="1525778789940" expanded="true" signature="12392:12492" ph="//..." />
-            <marker date="1525778789940" expanded="true" signature="12530:12731" ph="{...}" />
-            <marker date="1525778789940" expanded="true" signature="12670:12725" ph="{...}" />
-            <marker date="1525778789940" expanded="true" signature="12760:13224" ph="{...}" />
-            <marker date="1525778789940" expanded="true" signature="13010:13024" ph="..." />
-            <marker date="1525778789940" expanded="true" signature="13074:13185" ph="..." />
-            <marker date="1525778789940" expanded="true" signature="13253:13342" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2275,21 +2068,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-777">
           <caret line="158" column="32" lean-forward="false" selection-start-line="158" selection-start-column="32" selection-end-line="158" selection-end-column="32" />
-          <folding>
-            <marker date="1525778789911" expanded="true" signature="5482:5551" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="5729:6184" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="5759:5938" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="5802:5932" ph="..." />
-            <marker date="1525778789911" expanded="false" signature="5861:5875" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="6431:6500" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="6655:6785" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="6680:6763" ph="..." />
-            <marker date="1525778789911" expanded="false" signature="6915:6938" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="7052:7351" ph="..." />
-            <marker date="1525778789911" expanded="true" signature="7079:7339" ph="{...}" />
-            <marker date="1525778789911" expanded="true" signature="7118:7268" ph="{...}" />
-            <marker date="1525778789911" expanded="true" signature="7170:7258" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2297,7 +2075,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="145" column="32" lean-forward="false" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2305,31 +2082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1884">
           <caret line="196" column="0" lean-forward="false" selection-start-line="196" selection-start-column="0" selection-end-line="196" selection-end-column="0" />
-          <folding>
-            <marker date="1525778789915" expanded="true" signature="5912:6249" ph="..." />
-            <marker date="1525778789915" expanded="true" signature="5934:6243" ph="..." />
-            <marker date="1525778789915" expanded="true" signature="6318:9959" ph="..." />
-            <marker date="1525778789915" expanded="true" signature="6356:9941" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="6849:9930" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="6900:9221" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="6990:7385" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="7070:7367" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="7189:7264" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="7586:9206" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="7880:9119" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="7965:8352" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8005:8124" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8138:8326" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8431:9097" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8514:8878" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8576:8703" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8707:8848" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="8883:9071" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="9123:9187" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="9270:9918" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="9583:9752" ph="{...}" />
-            <marker date="1525778789915" expanded="true" signature="9756:9904" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2337,78 +2089,216 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="417">
           <caret line="65" column="14" lean-forward="true" selection-start-line="65" selection-start-column="14" selection-end-line="65" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="192" column="15" lean-forward="false" selection-start-line="192" selection-start-column="15" selection-end-line="192" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2313">
-          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/common/foot.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1053">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13075">
-          <caret line="530" column="95" lean-forward="false" selection-start-line="530" selection-start-column="95" selection-end-line="530" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4392">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/common/foot.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-675">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="89" column="10" lean-forward="false" selection-start-line="89" selection-start-column="10" selection-end-line="89" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_edit.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-567">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-513">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DemandMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="189" column="98" lean-forward="false" selection-start-line="189" selection-start-column="98" selection-end-line="189" selection-end-column="98" />
+        <state relative-caret-position="63">
+          <caret line="84" column="13" lean-forward="true" selection-start-line="84" selection-start-column="13" selection-end-line="84" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="48" column="33" lean-forward="false" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="227" column="92" lean-forward="false" selection-start-line="227" selection-start-column="92" selection-end-line="227" selection-end-column="92" />
-          <folding />
+        <state relative-caret-position="549">
+          <caret line="215" column="19" lean-forward="true" selection-start-line="215" selection-start-column="19" selection-end-line="215" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/4.2.6.RELEASE/spring-aop-4.2.6.RELEASE.jar!/org/springframework/aop/support/AopUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1113" column="0" lean-forward="true" selection-start-line="1113" selection-start-column="0" selection-end-line="1113" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="242" column="98" lean-forward="false" selection-start-line="242" selection-start-column="98" selection-end-line="242" selection-end-column="98" />
+        <state relative-caret-position="39">
+          <caret line="242" column="15" lean-forward="true" selection-start-line="242" selection-start-column="15" selection-end-line="242" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherCenter.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1220">
+          <caret line="186" column="18" lean-forward="true" selection-start-line="186" selection-start-column="18" selection-end-line="186" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TeacherCenterMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3861">
+          <caret line="143" column="22" lean-forward="false" selection-start-line="143" selection-start-column="22" selection-end-line="143" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="636" column="17" lean-forward="false" selection-start-line="636" selection-start-column="17" selection-end-line="636" selection-end-column="17" />
+          <folding>
+            <element signature="e#24424#24425#0" expanded="true" />
+            <element signature="e#24488#24489#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_base.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="80" column="38" lean-forward="false" selection-start-line="80" selection-start-column="38" selection-end-line="80" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="14" lean-forward="false" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/order.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="233" column="60" lean-forward="false" selection-start-line="233" selection-start-column="60" selection-end-line="233" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7317">
+          <caret line="271" column="0" lean-forward="false" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="36" column="6" lean-forward="false" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="253" column="8" lean-forward="true" selection-start-line="253" selection-start-column="8" selection-end-line="253" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-588">
+          <caret line="127" column="18" lean-forward="true" selection-start-line="127" selection-start-column="18" selection-end-line="127" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/WxPayController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/WxController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="897">
+          <caret line="83" column="8" lean-forward="false" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -2424,7 +2314,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -2432,7 +2321,7 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Spring</last-edited>
+          <last-edited>Web (xq)|Invalid</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

@@ -9,7 +9,7 @@
     <div class="container" >
     <#else >
         <#if teacher??>
-        <div class="container" onclick=location.href="${path}/wx/teacherCenter/${uid}/order/${order.id}/detail">
+        <div class="container" onclick=location.href="${path}/wx/teacherCenter/order/${order.id}/detail">
         <#else>
         <div class="container" onclick=location.href="${path}/wx/order/${order.id}/detail">
         </#if>

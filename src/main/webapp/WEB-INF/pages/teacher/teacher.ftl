@@ -227,11 +227,11 @@
                                     <td>${teacher.priceO}</td>
                                     <td></td>
                                 <#elseif str=="学生上门" && teacher.priceS gt 0>
-                                    <td>${teacher.priceS}</td>
-                                    <td>${teacher.tGround}</td>
+                                    <td>${(teacher.priceS)!}</td>
+                                    <td>${(teacher.tGround)!}</td>
                                 <#elseif str=="治疗师上门" && teacher.priceT gt 0>
-                                    <td>${teacher.priceT}</td>
-                                    <td>${teacher.sGround}</td>
+                                    <td>${(teacher.priceT)!}</td>
+                                    <td>${(teacher.sGround)!}</td>
                                 </#if>
                             </tr>
                             </#list>

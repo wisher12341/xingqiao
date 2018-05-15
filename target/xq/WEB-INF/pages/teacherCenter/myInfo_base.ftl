@@ -81,7 +81,7 @@
     <div class="buttonDiv_info" onclick=location.href="${path}/wx/teacherCenter/${user.id}/changeIconPage" >
         <div class="info_head row">
             <div class="col-xs-3">
-                <p class="text_p"> 头像</p>
+                <p class="text_p"> 头像<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
             <div class="col-xs-8">
                 <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" onerror='this.src="/static/img/touxiang.svg";this.onerror=null' class="img-circle" >
@@ -103,7 +103,7 @@
         </div>
         <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!'0'}/edit">
             <div class="col-xs-3">
-                <p class="text_p"> 性别</p>
+                <p class="text_p"> 性别<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
             <div class="col-xs-8">
                 <p class="text_pp"> ${(user.gender==0)?string('男','女')}</p>

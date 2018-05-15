@@ -103,7 +103,6 @@
             margin: 3% auto;
             border-radius: 15px;
             height:6%;
-            opacity:0.5;
             border: none;
         }
         #main{
@@ -145,10 +144,10 @@
 
     <div class="buttonDiv_info">
         <div class="info row" onclick=location.href="${path}/wx/teacherCenter/service/period/${(teacher.period)!'none'}/edit" >
-            <div class="col-xs-3">
-                <p class="text_p"> 课时</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 课时<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
             ${((teacher.period)??)?string("<p class='text_pp'> "+((teacher.period)!)+"</p>","<p class='text_ppp'><span style='color:red;font-size:35px'>未填写</span></p>")}
                 <#--<p class="text_pp">-->
                 <#--${(teacher.period)!}</p>-->
@@ -158,10 +157,10 @@
             </div>
         </div>
         <div class="info row" onclick=location.href="${path}/wx/teacherCenter/serviceInfo/${user.id}/domain">
-            <div class="col-xs-3">
-                <p class="text_p"> 康复项目</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 康复项目<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                     <#if teacher.domain??>
                         <#list teacher.domain?split("、") as domain>
                         <#if domain_index<=3>
@@ -180,10 +179,10 @@
             </div>
         </div>
         <div class="info row" onclick=location.href="${path}/wx/teacherCenter/serviceInfo/${user.id}/object">
-            <div class="col-xs-3">
-                <p class="text_p"> 康复对象</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 康复对象<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
             <#if teacher.object??>
                 <#list teacher.object?split("、") as ob>
                         <span class="search_label">${ob}</span>
@@ -197,10 +196,10 @@
             </div>
         </div>
         <div class="info row" onclick=location.href="${path}/wx/teacherCenter/serviceInfo/${user.id}/way@s_ground@t_ground@price_t@price_s@price_o@detailAddress">
-            <div class="col-xs-3">
-                <p class="text_p"> 康复方式</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 康复方式<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
             <#if teacher.way??>
                 <#list teacher.way?split("、") as way>
                     <span class="search_label">${way}</span>
@@ -217,10 +216,10 @@
 
     <div class="buttonDiv_info" onclick=location.href="${path}/wx/teacherCenter/serviceInfo/${user.id}/rule">
         <div class="info row" >
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <p class="text_p"> 平台准则</p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
 
             </div>
             <div class="col-xs-1">
@@ -232,10 +231,11 @@
 
 <#if user.userStatus==0>
     <div class="foot_back" align="center">
-        <form action="/wx/teacherCenter/userstatus/change" method="post">
+        <form action="/wx/teacherCenter/userstatus/change" id="sss" method="post">
             <input type="hidden" value="1" name="userStatus">
-            <button style="width: 95% !important;">提交审核</button>
         </form>
+            <button style="width: 95% !important;" onclick="subb()">提交审核</button>
+
     </div>
 </#if>
 </div>
@@ -243,4 +243,22 @@
     <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
 </div>
 </body>
+
+<script>
+    function subb() {
+        $.ajax({
+            type: "GET",
+            url: "${path}/wx/teacherCenter/checkAccountReg",
+            dataType: "json",
+            data: {
+                uid:"${user.id}"
+            },
+            success: function (data) {
+                alert(data.data);
+                if(data.success==true)
+                    $("#sss").submit();
+            }
+        });
+        }
+</script>
 </html>

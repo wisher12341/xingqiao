@@ -45,8 +45,8 @@ public class ParentCenterController {
     @RequestMapping(value = "")
     public ModelAndView parentCenter(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-//             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
@@ -117,9 +117,10 @@ public class ParentCenterController {
      *添加简历页面
      */
     @RequestMapping(value = "/{userId}/addDemandPage",method = RequestMethod.GET)
-    public ModelAndView toAddDemandPage(@PathVariable int userId){
+    public ModelAndView toAddDemandPage(@PathVariable int userId,HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_addDemand");
-        mv.addObject("user",userService.getUserByOpenidStatus("oxsEYwlPAa-fVc9fVyzVBYBed9n8","0"));
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        mv.addObject("user",userService.getUserByOpenidStatus(openid,"0"));
         return mv;
     }
 
@@ -392,7 +393,6 @@ public class ParentCenterController {
         //时间转换为前端显示要求的格式
         recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('.','-'));
         recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('.','-'));
-
         System.out.println("recoveryHis");
         mv.addObject("data",recoveryHisDto);
         mv.addObject("demandId",demandId);
