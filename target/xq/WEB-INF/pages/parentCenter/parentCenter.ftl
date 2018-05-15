@@ -4,6 +4,8 @@
     <title>家长中心</title>
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
+    <link href="/static/css/fakeLoader.css" type="text/css" rel="stylesheet" />
+    <script src="/static/js/fakeLoader.min.js" type="text/javascript"></script>
     <style>
         .icon_mid{
             font-size: 60px;
@@ -76,6 +78,20 @@
             top:2px;
             color: orange;!important;
         }
+        .getInfo{
+            text-align: center;
+            font-size: 45px;
+            color: white;
+            margin-top: 65%;
+        }
+        .spinner6{
+            height: 60px!important;
+            width: 150px!important;
+            top:35% !important;
+        }
+        .spinner6 > div{
+            width: 12px!important;
+        }
     </style>
 </head>
 <body style="background-color: #f5f5f5">
@@ -102,7 +118,7 @@
                         </#if>
                 </div>
                 <div class="cog">
-                    <div class="i1"><a href="${path}/wx/login/setting/0"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></a></div>
+                    <div class="i1" onclick=location.href="${path}/wx/login/setting/0"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></div>
                 </div>
             </div>
         </div>
@@ -112,7 +128,7 @@
 
     <div style="background-color: white; border-bottom: 1px solid #ccc;" align="center">
             <div class="row" style="width: 95%">
-                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule">
+                <div class="col-xs-4" onclick=location.href="/wx/parentCenter/${user.id}/myDemands">
                     <div>
                         <span class="glyphicon glyphicon-heart icon_mid"></span>
                     </div>
@@ -233,6 +249,17 @@
         </div>
     </div>
 </div>
-
+<#if new??>
+<div class="fakeloader">aaa</div>
+<script>
+    $(".fakeloader").fakeLoader({
+        timeToHide:2000,
+        bgColor:"#20b49a",
+        spinner:"spinner6",
+        fadeDiv:"main"
+    });
+    $(".fakeloader").append("<div class='getInfo'>正在获取微信资料</div>");
+</script>
+</#if>
 </body>
 </html>

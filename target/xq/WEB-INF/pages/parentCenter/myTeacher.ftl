@@ -5,57 +5,73 @@
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myTeachers.css" type="text/css" rel="stylesheet" />
+    <style>
+        .demand-div{
+            /*border:5px solid #20b49a;*/
+            /*border-radius: 20%;*/
+            height:350px;
+            margin: 15px;
+        }
+        .demand-div .demand-img img{
+            width: 80%;
+            border:5px solid #8ad4c7;
+            border-top-left-radius: 10%;
+            border-top-right-radius:10% ;
+        }
+        .demand-btn {
+            text-align: center;
+            width: 80%;
+            /*opacity: 0.5;*/
+        }
+        .demand-btn div{
+            background-color:  #20b49a;
+            color: white;
+            height: 80px;
+            font-size: 40px;
+            border-bottom-left-radius: 10%;
+            border-bottom-right-radius:10% ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .demands-div{
+            padding: 20px;
+        }
+        body{
+            background-color: #f5f5f5;
+        }
+    </style>
 </head>
 <body>
 <div id="main">
-    <div class="info-header">
-        <div class="info-header-img col-sm-4">
-            <img src="${user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}")}" class="img-circle">
+    <#if teachers?? && teachers?size &gt; 0 >
+        <div class="demands-div">
+            <#list teachers as teacher>
+                <div class="col-sm-6" style="margin-top: 10%">
+                    <div class="demand-div" align="center" onclick=location.href="${path}/wx/teacher/${teacher.id}/detail">
+                        <div class="demand-img">
+                            <img src="${(teacher.user.headimgurl?contains("wx.qlogo.cn")?string("${teacher.user.headimgurl}","/${teacher.user.headimgurl}"))!}">
+                        </div>
+                        <div class="demand-btn">
+                            <div style="width: 100%" class="tname">${teacher.name!}</div>
+                        </div>
+                    </div>
+                </div>
+            </#list>
         </div>
-        <div class="col-sm-7">
-            <div class="row">
-                <div class="col-sm-11">
-                    <p class="info-header-name">${(name)!}</p>
-                </div>
-                <div class="col-sm-1">
-                    <div class="i1"><a href="${path}/wx/parentCenter/${user.id}/myInfo"><span><i class="fa fa-angle-right fa-5x"  style="color:white;display: inline"></i></span></a></div>
-                </div>
+    <#else>
+        <div class="row" style="margin-top: 30%!important;width: 100%">
+            <div class="col-xs-3">
             </div>
-            <div class="row">
-                <div class="col-sm-10">
-                    <p class="info-header-other" style="font-size: 40px">
-                    </p>
-                </div>
-                <div class="col-sm-2">
-                    <div class="i2" style="margin-top: 40px"><a href="${path}/wx/parentCenter/${user.id}/myMessages"><span><i class="fa fa-envelope-o fa-5x"  style="color:white;display: inline"></i></span></a></div>
-                </div>
+            <div class="col-xs-2">
+                <img src="/static/img/kong.png" width="150">
+            </div>
+            <div class="col-xs-6">
+                <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                <p style="font-size: 38px;color: grey;font-weight: bold">您还没有治疗师</p>
             </div>
         </div>
-    </div>
-    <div class="panel panel-default">
-    <#if teachers??>
-        <table class="table teacher-table">
-            <thead>
-            <tr>
-                <th>姓名</th>
-                <th>联系方式</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-
-                <#list teachers as teacher>
-                <tr>
-                    <td>${teacher.name!}</td>
-                    <td>${(teacher.user.phone)!}</td>
-                    <td><button type="button" class="btn btn-default" style="background-color: #20b49a;color: white" onclick=location.href="${path}/wx/parentCenter/${userId}/myTeacher/${teacher.id}/teachersDetail">查看详情</td>
-                </tr>
-                </#list>
-            </tbody>
-        </table>
-            <#else>
-                <p>您还未订购治疗师的课程。</p>
-            </#if>
+    </#if>
     </div>
 </div>
 </body>

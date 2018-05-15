@@ -18,6 +18,13 @@
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
     <link rel="stylesheet" href="${base}/static/font-awesome-4.7.0/css/font-awesome.min.css" />
     <style>
+        .btn-xxs{
+            background: #20b49a;
+            color: #fff;
+            font-size: 12px;
+            padding: 5px 8px;
+            border-radius: 5px;
+        }
         #calendar_month,#calendar_day {
             max-width: 900px;
             margin: 0 auto;
@@ -106,6 +113,9 @@
             left: 24px;
             padding-bottom: 10px;
         }
+        .daySelect{
+            background-color: #e0e0e0;!important;
+        }
     </style>
 </head>
 <body style="height: 100%;" id="emoji">
@@ -188,10 +198,10 @@
                     <#assign teacherways=teacher.way?split("、")>
                     <tbody style="border-bottom: 1px solid #dddddd;color: #000000">
                         <#if teacherways[0] == "不限">
-                            <#if teacher.priceO gt 0>
+                            <#if (teacher.priceO)! gt 0>
                             <tr>
                                 <td>在线授课</td>
-                                <td>${teacher.priceO}</td>
+                                <td>${(teacher.priceO)!}</td>
                                 <td></td>
                             </tr>
                             </#if>
@@ -199,14 +209,14 @@
                             <tr>
                                 <td>学生上门</td>
                                 <td>${teacher.priceS}</td>
-                                <td>${teacher.sGround}</td>
+                                <td>${teacher.tGround}</td>
                             </tr>
                             </#if>
                             <#if teacher.priceT gt 0>
                             <tr>
                                 <td>治疗师上门</td>
                                 <td>${teacher.priceT}</td>
-                                <td>${teacher.tGround}</td>
+                                <td>${teacher.sGround}</td>
                             </tr>
                             </#if>
                         <#else>
@@ -218,10 +228,10 @@
                                     <td></td>
                                 <#elseif str=="学生上门" && teacher.priceS gt 0>
                                     <td>${teacher.priceS}</td>
-                                    <td>${teacher.sGround}</td>
+                                    <td>${teacher.tGround}</td>
                                 <#elseif str=="治疗师上门" && teacher.priceT gt 0>
                                     <td>${teacher.priceT}</td>
-                                    <td>${teacher.tGround}</td>
+                                    <td>${teacher.sGround}</td>
                                 </#if>
                             </tr>
                             </#list>
@@ -299,6 +309,11 @@
         <div class="gray-line"></div>
         <div class="inline-wrapper pointable" onclick=location.href="/wx/teacher/${teacher.id}/info/successCase">
             <div class="my-panel-title">成功案例</div>
+            <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
+        </div>
+        <div class="gray-line"></div>
+        <div class="inline-wrapper pointable" onclick=location.href="/wx/teacherCenter/${teacher.userId}/mySchedule/parent">
+            <div class="my-panel-title">工作时间表</div>
             <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
         </div>
     </div>
@@ -540,7 +555,10 @@
                             </div>
                         </div>
                         <div class="offset-20">
-                            <div class="text-left">需求简历：</div>
+                            <div class="text-left">
+                                需求简历：
+                                <span class="btn-xxs" onclick="javascript:location='${base}/wx/parentCenter/${(user.id)!}/addDemandPage'">+创建简历</span>
+                            </div>
                             <div id="demands" class="row offset-10">
                             </div>
                         <#--<select id="waySelect"></select>-->
@@ -653,6 +671,7 @@
 
 </body>
 </html>
+<script src='${base}/static/js/jquery.cookie.js'></script>
 <script>
     var waySelect = null;
     var domainSelect = null;
@@ -664,11 +683,11 @@
     var timeDayStr = '<div class="time-choose-div"><img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
     var timeStr = '<div class="time-choose-div"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
     if(waySelect=="治疗师上门"){
-        $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").htmal(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="学生上门"){
-        $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").html(parseInt("${(teacher.priceS)!}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="在线授课"){
-        $("#sumSpan").html(parseInt("${teacher.priceO}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseInt($("#countSpan").html()));
     }else{
         $("#sumSpan").html("0");
     }
@@ -817,11 +836,11 @@
 
     function calculateSum() {
         if(waySelect=="治疗师上门"){
-            $("#sumSpan").html(parseInt("${teacher.priceT}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
         }else if(waySelect=="学生上门"){
-            $("#sumSpan").html(parseInt("${teacher.priceS}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseInt("${(teacher.priceS)!}")*parseInt($("#countSpan").html()));
         }else if(waySelect=="在线授课"){
-            $("#sumSpan").html(parseInt("${teacher.priceO}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseInt($("#countSpan").html()));
         }else{
             $("#sumSpan").html("0");
         }
@@ -1004,26 +1023,30 @@
                         $('#ways').append($option);
                     }
                     waySelect = ways[0];
-
                     var demands = data.data;
                     $("#demands").html("");
-                    $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
-                    $('#demands').append($option);
-                    demandSelect=demands[0].id;
-                    for(var i=1;i<demands.length;i++){
-                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
-                        $('#demands').append($option);
-                    }
-                    var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
-                    if(isFirst=="yes"){
-                        //该简历 第一次交易
-                        $("#addBtn").unbind("click");
-                        $("#subBtn").unbind("click");
+                    if(demands.length<1){
+                        $("#demands").html("<div class='col-sm-12 col-xs-12' style='color:#FF7F00; padding: 10px; text-align:center'>您还未添加任何需求简历！</div>");
                     } else {
-                        $("#addBtn").bind("click",add_function);
-                        $("#subBtn").bind("click",subtract_function);
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
+                        $('#demands').append($option);
+                        demandSelect=demands[0].id;
+                        for(var i=1;i<demands.length;i++){
+                            $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
+                            $('#demands').append($option);
+                        }
+                        var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
+                        if(isFirst=="yes"){
+                            //该简历 第一次交易
+                            $("#addBtn").unbind("click");
+                            $("#subBtn").unbind("click");
+                        } else {
+                            $("#addBtn").bind("click",add_function);
+                            $("#subBtn").bind("click",subtract_function);
+                        }
+                        $(".border-pill").bind("click", pillClick);
                     }
-                    $(".border-pill").bind("click", pillClick);
+
                     calculateSum();
                     mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
                     $("#divContent").children(".container").height($("#mobile-menu-order").height()-120);
@@ -1161,7 +1184,6 @@
                     today: ["今天"],
                     eventClick : function( event ){
                         var date=event.start.toString();
-//                        alert(date);
                         $.ajax({
                             type: "POST",
                             url: "${base}/wx/teacher/${teacher.id}/orderTime/day",
@@ -1288,6 +1310,11 @@
         }
         if (isNaN($('#countSpan').html())){
             alert("显示错误，请刷新页面");
+            return;
+        }
+
+        if ($(".demand.border-pill-active").length == 0){
+            alert("您还没有添加简历哦~");
             return;
         }
 

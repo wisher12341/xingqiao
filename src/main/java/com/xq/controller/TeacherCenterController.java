@@ -41,9 +41,9 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "")
     public ModelAndView teacherCenter(HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("teacherCenter/teacherCenter_index");
-//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        ModelAndView mv=new ModelAndView("teacherCenter/home");
+         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);
@@ -302,16 +302,16 @@ public class TeacherCenterController {
         return mv;
     }
 
-    /**
-     *
-     * 填写个人资料页面
-     */
-    @RequestMapping(value="/{userId}/fillInfoPage",method = RequestMethod.GET)
-    public ModelAndView fillInfoPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("teacherCenter/fillInfoPage");
-        mv.addObject("userId",userId);
-        return mv;
-    }
+//    /**
+//     *
+//     * 填写个人资料页面
+//     */
+//    @RequestMapping(value="/{userId}/fillInfoPage",method = RequestMethod.GET)
+//    public ModelAndView fillInfoPage(@PathVariable Integer userId){
+//        ModelAndView mv=new ModelAndView("teacherCenter/fillInfoPage");
+//        mv.addObject("userId",userId);
+//        return mv;
+//    }
 
 
 
@@ -378,7 +378,7 @@ public class TeacherCenterController {
     @RequestMapping(value = "/info/{uid}/{type}/add",method = RequestMethod.POST)
     public ModelAndView info(@PathVariable int uid, @PathVariable String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis){
         ModelAndView mv;
-        mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type));
+        mv=new ModelAndView("redirect:/wx/teacherCenter/info/"+uid+"/"+type+"/1");
         teacherCenterService.addComplexInfo(uid,type,title,detail,picUrls,teacherInfoSchool,teacherInfoRecoveryHis);
         Object result=teacherCenterService.getInfoByTypeName(uid,type,"");
         mv.addObject("data",result);
@@ -406,7 +406,7 @@ public class TeacherCenterController {
     }
 
     /**
-     * 复杂个人资料 编辑
+     * 实名认证 复杂个人资料 编辑  简介
      * @param uid
      * @param type
      * @param index  编辑的该条的 索引
@@ -507,13 +507,15 @@ public class TeacherCenterController {
     /**
      * 我的课程
      * @param uid
+     * @param type  parent 表示  家长看的   teacher 表示治疗师自己看的
      * @return
      */
-    @RequestMapping(value = "/{uid}/mySchedule",method = RequestMethod.GET)
-    public ModelAndView schedule(@PathVariable Integer uid){
+    @RequestMapping(value = "/{uid}/mySchedule/{type}",method = RequestMethod.GET)
+    public ModelAndView schedule(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/mySchedule");
         mv.addObject("uid",uid);
         mv.addObject("schedule",teacherCenterService.getInfoByTypeName(uid,"schedule",""));
+        mv.addObject("type",type);
         return mv;
     }
 
@@ -526,7 +528,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{uid}/mySchedule/add",method = RequestMethod.POST)
     public ModelAndView schedule_add(@PathVariable Integer uid,String week,String time) throws ParseException {
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule/teacher");
         teacherCenterService.addSchedule(uid,week,time);
         return mv;
     }
@@ -588,7 +590,7 @@ public class TeacherCenterController {
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         mv.addObject("user",user);
 
@@ -617,5 +619,18 @@ public class TeacherCenterController {
         }
         teacherCenterService.myInfoEditPost(ftype,ctype,value,isChangeStatus,request, "teacher");
         return mv;
+    }
+
+    /**
+     * 治疗师 修改
+     * @param userStatus
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/userstatus/change",method = RequestMethod.POST)
+    public ModelAndView userstatus(@RequestParam Integer userStatus,HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+        userService.changeUserStatus(userStatus,openid,"teacher");
+        return new ModelAndView("redirect:/wx/teacherCenter");
     }
 }

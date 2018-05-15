@@ -144,7 +144,7 @@
 <script>
     $(function () {
         $(".ob-div").each(function () {
-            if('${teacher.domain}'.indexOf($(this).text().trim())!=-1){
+            if('${(teacher.domain)!}'.indexOf($(this).text().trim())!=-1){
                 $(this).addClass("select");
             }
         });

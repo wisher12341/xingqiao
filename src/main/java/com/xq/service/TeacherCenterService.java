@@ -41,7 +41,7 @@ public interface TeacherCenterService {
 
     Object getInfoByTypeName(int uid, String type, String string);
 
-    void addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis);
+    String addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis);
 
     void editComplexInfo(int uid, String type, int index, String title, String detail, String picUrls, String deleteExitImg, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis);
 

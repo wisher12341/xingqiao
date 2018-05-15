@@ -40,6 +40,8 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     CommentDao commentDao;
     @Autowired
     OrderDao orderDao;
+    @Autowired
+    ParentCenterDao parentCenterDao;
 
     @Override
     public String getNameByUserId(int userId){
@@ -220,7 +222,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         teacherInfoAuthentication.setName(teacher.getName());
         teacherInfoAuthentication.setPid(teacher.getPid());
 
-        if (teacher.getExperienceAge()!=null && teacher.getExperienceAge()!=0){
+        if (teacher.getExperienceAge()!=null){
             teacherInfoAuthentication.setExperienceAge(teacher.getExperienceAge());
         }
 
@@ -401,7 +403,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
 
     @Override
     @Transactional
-    public void addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis) {
+    public String addComplexInfo(int uid, String type, String title, String detail, String picUrls, TeacherInfoSchool teacherInfoSchool, TeacherInfoRecoveryHis teacherInfoRecoveryHis) {
         User user=userDao.getUserByUid(uid);
         //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
         if(user.getUserStatus()==2 || user.getUserStatus()==4){
@@ -437,8 +439,9 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
         }
 
-        teacherCenterDao.addComplexInfo(t,data,uid);
+        teacherCenterDao.addComplexInfo(t,data,uid,pre);
 
+        return data;
     }
 
     @Override
@@ -497,13 +500,18 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 break;
         }
 
-        String[] result=teacherCenterDao.getInfoByTypeName(uid,t).split("#");
-        result[index]=data;
-
+        String sss=teacherCenterDao.getInfoByTypeName(uid,t);
         String str="";
-        for (String s:result){
-            str+="#"+s;
+        if(sss!=null){
+            String[] result=sss.split("#");
+            result[index]=data;
+            for (String s:result){
+                str+="#"+s;
+            }
+        }else{
+            str=data;
         }
+
         teacherCenterDao.updateComplexInfo(t,str.substring(1),uid);
     }
 
@@ -721,16 +729,42 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         String way = teacherCenterDao.getInfoByTypeName(uid, "way");
         if(ctype.equals("add")) {
             if (way != null && !way.equals("")){
-                teacher.setWay(way+"、"+teacher.getWay());
+                teacher.setWay(way+"、"+type);
+            }else{
+                teacher.setWay(type);
             }
         }
 
         //学生上门
-        if(type.equals("student")){
+        if(type.equals("学生上门")){
             teacher.settGround(area1+"-"+area2);
         }
-
+        this.caculatePrice(teacher);
         teacherCenterDao.editServiceInfoWay(teacher);
+    }
+
+    private void caculatePrice(Teacher teacher) {
+        int priceO=(teacher.getPriceO()==null)?0:teacher.getPriceO();
+        int priceT=(teacher.getPriceT()==null)?0:teacher.getPriceT();
+        int priceS=(teacher.getPriceS()==null)?0:teacher.getPriceS();
+        int mid=0,max=0,min=0;
+        List<Integer> list=new ArrayList<>();
+        list.add(priceO);
+        list.add(priceS);
+        list.add(priceT);
+        Collections.sort(list);
+        max=list.get(2);//一定有一个 最大的
+        if(list.get(1)==0){
+            mid=min=max;
+        }else if(list.get(0)==0){
+            min=mid=list.get(1);
+        }else{
+            mid=list.get(1);
+            min=list.get(0);
+        }
+        teacher.setPriceMax(max);
+        teacher.setPriceMid(mid);
+        teacher.setPriceMin(min);
     }
 
 
@@ -839,8 +873,12 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
             }
             path3=path3.substring(index3);
         }
-
-        teacherCenterDao.editIdCard(path1,path2,path3,uid);
+        if(user.getStatus()==0){
+            //家长
+            parentCenterDao.editIdCard(path1,path2,path3,uid);
+        }else {
+            teacherCenterDao.editIdCard(path1, path2, path3, uid);
+        }
     }
 
     @Override
@@ -994,9 +1032,12 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Transactional
     public void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String status) {
         String openid="";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid="";
 
         User user=null;
         if(status.equals("parent")){
+            openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
             //openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
             openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";  //测试用
             user=userDao.getUserByOpenidStatus(openid,"0");
@@ -1015,7 +1056,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     public List<Message> getInformMessageByPage(HttpServletRequest request, Integer page) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8"; //测试用
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"1");
         List<Message> messageList=messageDao.getReadInformByUid(user.getId(),(page-1)*10);
 
@@ -1036,7 +1077,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     public void allInformRead(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8"; //测试用
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"1");
         messageDao.allInformRead(user.getId());
     }

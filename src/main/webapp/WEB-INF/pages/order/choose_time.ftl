@@ -243,6 +243,7 @@
 
 <form id="toCheckTimeForm" action="${path}/wx/teacher/toCheckTimes" method="post">
     <input hidden name="teacher.id"/>
+    <input hidden name="teacher.userId"/>
     <input hidden name="teacher.name"/>
     <input hidden name="demandId"/>
     <input hidden name="way"/>
@@ -419,6 +420,22 @@
             }
         });
 
+        $(".fc-day-number").click(function () {
+
+            var target = -1;
+            var day = $(this).text();
+
+            $(this).parent().parent().children().each(function(index,element){
+                if (element.firstChild.innerText == day){
+                    target = index;
+                    return false;
+                }
+            });
+            if (target > 0) {
+                $(this).parent().parent().parent().siblings('tbody').children().children().eq(target).children('a').click();
+            }
+        });
+
         $("#btnNextStep").click(function () {
             if ($("#remainingTimes").data("remain") > 0){
                 alert("您的课时还没选完哦~");
@@ -438,6 +455,7 @@
             pay = pay.replace(/,/,"");
 
             $("input[name='teacher.id']").val(${order.teacher.id});
+            $("input[name='teacher.userId']").val(${order.teacher.userId});
             $("input[name='teacher.name']").val("${order.teacher.name}");
             $("input[name='demandId']").val("${order.demandId}");
             $("input[name='way']").val("${order.way}");

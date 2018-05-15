@@ -6,7 +6,7 @@ public class TeacherInfoEdit {
     private String ftype; //base authentication service
     private String ctype; //资料类型  name  gender。。。
     private String value;
-    private Integer isChangeStatus=0;//是否更改 用户状态
+    private Integer isChangeStatus=0;//是否更改 用户状态 0不更改 1更改
     private String ctypeDesc;//类型的 中文
 
     public TeacherInfoEdit(String value, String ctype) {

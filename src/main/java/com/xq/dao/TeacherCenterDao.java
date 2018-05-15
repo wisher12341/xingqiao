@@ -36,7 +36,7 @@ public interface TeacherCenterDao {
 
     void updateComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
 
-    void addComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid);
+    void addComplexInfo(@Param("type") String t, @Param("data") String data, @Param("uid") int uid, @Param("pre") String pre);
 
     Teacher getTeacherInfoByUid(@Param("uid") Integer uid, @Param("types") String[] type);
 
@@ -51,4 +51,6 @@ public interface TeacherCenterDao {
     void myInfoEditPost(@Param("ftype") String ftype, @Param("ctype") String ctype, @Param("value") String value, @Param("uid") Integer uid, @Param("status") String status);
 
     Integer getUidByTid(Integer tid);
+
+    void saveNewTeacher(Integer id);
 }

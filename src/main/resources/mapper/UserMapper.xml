@@ -4,7 +4,7 @@
 
 
     <select id="getUserByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
-        SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid}
+        SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid} AND status=#{status}
     </select>
 
     <select id="getParentByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
@@ -67,7 +67,7 @@
     </update>
 
     <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo" useGeneratedKeys="true" keyProperty="id">
-        INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{sex},#{nickname},#{headimgurl},#{time},0,0)
+        INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{gender},#{nickname},#{headimgurl},#{time},0,0)
     </insert>
 
     <insert id="register" useGeneratedKeys="true" keyProperty="id">
@@ -85,6 +85,16 @@
 
     <update id="changeUserStatus">
         UPDATE sysuser set user_status=#{userStatue} WHERE id=#{uid}
+    </update>
+
+    <update id="changeUserStatusByOpenid">
+        UPDATE sysuser set user_status=#{userStatue} WHERE openid=#{openid}
+        <if test="type=='parent'">
+            and status=0
+        </if>
+        <if test="type=='teacher'">
+            and status=1
+        </if>
     </update>
 
     <update id="changePassword">

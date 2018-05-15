@@ -140,14 +140,23 @@
         .delClass{
             color: orange;!important;
         }
+        input[type=time] {
+            background-color:transparent;
+            /*!*FILTER: alpha(opacity=0); !*androd*!*!*/
+            /*appearance:none;  !*下拉框去掉右侧图标*!*/
+            /*-moz-appearance:none;*/
+            /*-webkit-appearance:none;*/
+        }
     </style>
 </head>
 <body>
 <div id="main">
     <div id='calendar'></div>
-    <div class="foot" align="center">
-        <input type="button" style="width: 100% !important;" value="添加" onclick="showAdd()">
-    </div>
+    <#if type=="teacher">
+        <div class="foot" align="center">
+            <input type="button" style="width: 100% !important;" value="添加" onclick="showAdd()">
+        </div>
+    </#if>
 </div>
 
 <div id="add">
@@ -178,7 +187,7 @@
                         <p class="text_p"> 具体时间</p>
                     </div>
                     <div class="col-xs-6">
-                        <input placeholder="选择时间" type="text" class="title_input" name="time">
+                        <input placeholder="选择时间" type="time" class="title_input" name="time" style="width: 100%">
                     </div>
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-2x icon_fa"></i>
@@ -214,7 +223,7 @@
 </body>
 <script>
 
-        var schedule="${schedule}";
+        var schedule="${schedule!}";
         var list=[[],[],[],[],[],[],[]];
         var week=schedule.split("#");
         for(var i=0;i<week.length;i++){
@@ -289,6 +298,7 @@
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
             eventClick : function( event ) {
+            <#if type=="teacher">
                 var start = event.start.format('E HH:mm');
                 var week;
                 switch (start.split(" ")[0]){
@@ -317,6 +327,7 @@
                 $(".delClass").html("周"+week+"  "+start.split(" ")[1]+"  -  "+event.end.format('HH:mm'));
                 $('#delModal').modal();
                 $('input[name="time"]').val(event.start.toString());
+                </#if>
             },
 
         });

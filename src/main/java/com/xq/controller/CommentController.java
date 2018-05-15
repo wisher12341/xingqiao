@@ -59,7 +59,7 @@ public class CommentController {
     @RequestMapping(value = "/{oid}/teacherReply",method = RequestMethod.POST)
     public ModelAndView comment_reply(Comment comment, @PathVariable String oid, HttpServletRequest request){
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+userService.getUserByOpenidStatus(openid,"1").getId()+"/myComments");
         commentService.addReply(comment,oid);
         return mv;

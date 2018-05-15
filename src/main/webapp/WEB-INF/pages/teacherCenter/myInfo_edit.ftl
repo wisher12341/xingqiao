@@ -90,7 +90,7 @@
         <#else >
             <div class="buttonDiv_info" align="center">
                 <div class="info" align="center">
-                    <input name="value" type="text" class="title_input" maxlength="20" value="${info.value}">
+                    <input name="value" type="text" class="title_input" maxlength="20" value="${(info.value=='none')?string('',info.value)}">
                 </div>
             </div>
             <div class="foot" align="center">

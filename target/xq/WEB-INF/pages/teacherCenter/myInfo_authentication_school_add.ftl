@@ -157,7 +157,7 @@
                         <#if data??>
                             <input  type="month" class="title_input" name="endTime" value="${data.endTime}" >
                         <#else >
-                            <input type="text" class="title_input" name="startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                            <input type="text" class="title_input" name="endTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
                         </#if>
                     </div>
                     <div class="col-xs-1">

@@ -47,6 +47,13 @@
             top: 5px;
             color: dimgrey;
         }
+        .text_ppp{
+            font-size: 35px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:5px;
+        }
     </style>
 </head>
 <body>
@@ -101,20 +108,26 @@
         </div>
     </div>
     <div class="buttonDiv_info">
-        <div class="info row" >
+        <div class="info row" <#if (user.username)?? && (user.username)!=''><#else >onclick=location.href="/wx/login/parent/bindAccount"</#if>>
             <div class="col-xs-3">
                 <p class="text_p"> 手机号</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(user.username)!}</p>
+                <p class="text_pp"> ${((user.username)?? && ((user.username)!'')=="")?string('<p class="text_ppp"> <span style="color:red">未认证</span></p>',"<p class='text_pp'> "+user.username+"</p>")}</p></p>
             </div>
+            <#if (user.username)?? && (user.username)!=''>
+            <#else >
+                <div class="col-xs-1">
+                    <i class="fa fa-angle-right fa-4x icon_fa"></i>
+                </div>
+            </#if>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/parentCenter/base/email/${(user.email)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/base/email/${((user.email)??)?string((user.email)!,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>
+                ${((user.email)??)?string("<p class='text_pp'> "+(user.email)!''+"</p>",'<p class="text_ppp"> <span style="color:red">未填写</span></p>')}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>

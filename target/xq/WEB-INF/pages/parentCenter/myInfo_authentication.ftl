@@ -77,7 +77,7 @@
             margin: 3% auto;
             border-radius: 15px;
             height:6%;
-            opacity:0.5;
+            /*opacity:0.5;*/
             border: none;
         }
     </style>
@@ -89,23 +89,23 @@
 
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/realName/${(parent.realName)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/realName/${(((parent.realName)!'')!="")?string(parent.realName,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 真实姓名</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(parent.realName)!'<span style="color:red;font-size:35px">未填写</span>'}</p>
+                ${(((parent.realName)!'')!="")?string("<p class='text_pp'>"+(parent.realName)!+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/pid/${(parent.pid)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/pid/${(((parent.pid)!'')!="")?string(parent.pid,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 证件号</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(parent.pid)!'<span style="color:red;font-size:35px">未填写</span>'}</p>
+               ${(((parent.pid)!'')!="")?string("<p class='text_pp'>"+parent.pid+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -125,12 +125,12 @@
     </div>
 
     <div class="buttonDiv_info">
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/info/${user.id}/school/">
+        <div class="info row" onclick=location.href="${path}/wx/parentCenter/info/${user.id}/address">
             <div class="col-xs-3">
                 <p class="text_p"> 地址</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(parent.ground)!}-${(parent.address)!}</p>
+                 ${(((parent.ground)!'')!="")?string("<p class='text_pp'>"+parent.ground+"-"+parent.address+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span><p class="text_pp">')}</p>
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -139,7 +139,8 @@
     </div>
 <#if user.userStatus==0>
     <div class="foot" align="center">
-        <form action="" method="post">
+        <form action="/wx/parentCenter/userstatus/change" method="post">
+            <input type="hidden" value="1" name="userStatus">
             <button style="width: 95% !important;">提交审核</button>
         </form>
     </div>

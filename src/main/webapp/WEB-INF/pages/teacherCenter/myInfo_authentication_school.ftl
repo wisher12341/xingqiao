@@ -142,7 +142,7 @@
 <div id="main">
     <div class="buttonDiv_info" style="background-color: white;margin-bottom: 8%">
         <ul>
-            <#list data! as school>
+            <#list data as school>
                 <li class="sl-li ui-border-b" style="background-color: white">
                     <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/school/${school.index}/edit">
                     <#if school_index==0>
@@ -193,7 +193,8 @@
     </div>
 </div>
 <div class="foot" align="center">
-    <button onclick="location.href='${path}/wx/teacherCenter/info/${uid}/school/0'" style="width: 100% !important;">新增</button>
+    <button onclick="location.href='${path}/wx/teacherCenter/info/${uid}/school/0'" style="width: 49% !important;">新增</button>
+    <button onclick="location.href='${path}/wx/teacherCenter/${uid}/myInfo_authentication'" style="width: 49% !important;">返回</button>
 </div>
 </body>
 

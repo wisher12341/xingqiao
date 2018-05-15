@@ -1,7 +1,6 @@
 package com.xq.service.impl;
 
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.xq.dao.*;
 import com.xq.dto.*;
 import com.xq.model.*;
@@ -306,7 +305,7 @@ public class ParentCenterServiceImpl implements ParentCenterService {
 
             //图片
             try {
-                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request,FileUpload.ICON_PARENT_ROOT_PATH);
+                String path= FileUpload.uploadFile(MulRequest.getFile(fileName), request, FileUpload.ICON_PARENT_ROOT_PATH);
                 picUrl=path.substring(path.indexOf("img"),path.length());
                 System.out.println(picUrl);
             }catch (IOException e) {
@@ -318,8 +317,8 @@ public class ParentCenterServiceImpl implements ParentCenterService {
 
     @Override
     public void allInformRead(HttpServletRequest request) {
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userDao.getUserByOpenidStatus(openid,"0");
         messageDao.allInformRead(user.getId());
     }
@@ -494,6 +493,11 @@ public class ParentCenterServiceImpl implements ParentCenterService {
         workDayDto.setWork(workDayList);
         workDayDto.setToday(day);
         return workDayDto;
+    }
+
+    @Override
+    public void changeInfo(Parent parent) {
+        parentCenterDao.changeInfo(parent);
     }
 }
 

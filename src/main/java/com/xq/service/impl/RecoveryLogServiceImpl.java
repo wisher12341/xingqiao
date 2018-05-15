@@ -70,7 +70,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
 
     public RecoveryLogDto getMyTeachersAndDemandsNoConfirmLogByUid(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Teacher> teacherList=teacherDao.getMyTeachersByOpenid(openid);
         List<Demand> demandList=demandDao.getMyDemandsByOpenid(openid);
         RecoveryLogDto recoveryLogDto=new RecoveryLogDto();
@@ -79,7 +79,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         List<String> obs=orderDao.getAllRecoveryObsByOpenid(openid);
         List<RecoveryLog> recoveryLogList=recoveryLogDao.getNoConfirmLogByOpenid(openid);
         for(RecoveryLog recoveryLog:recoveryLogList){
-            recoveryLog.setServerTime(recoveryLog.getServerTime().split("#")[recoveryLog.getIndex()-1].replace("%","-"));
+            recoveryLog.setServerTime(recoveryLog.getServerTime().split("#")[recoveryLog.getIndexClass()-1].replace("%","-"));
         }
         Collections.sort(recoveryLogList);
         recoveryLogDto.setRecoveryLogNoConfirmList(recoveryLogList);
@@ -125,13 +125,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    家长（"+order.getPname()+"）已确认康复日志。"+
-                "</p>");
+        messageT.setMessage(" 家长（"+order.getPname()+"）已确认康复日志。");
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长确认康复日志");
@@ -185,7 +179,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         recoveryLog.setConfirmStatus(0);
 
         Integer nowNumber=recoveryLogDao.getLogCountByOid(recoveryLog.getOrderId());
-        recoveryLog.setIndex(nowNumber+1);
+        recoveryLog.setIndexClass(nowNumber+1);
 
         recoveryLogDao.add(recoveryLog);
 
@@ -194,12 +188,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         Message message=new Message();
         message.setUserId(order.getUidP());
         message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+recoveryLog.getOrderId()+"），治疗师（"+order.getTname()+"）已填写康复日志，请前往确认。<a href='/parentCenter/"+recoveryLog.getOrderId()+"/doing_detail'>查看</a>"+
+        message.setMessage("您的订单（"+recoveryLog.getOrderId()+"），治疗师（"+order.getTname()+"）已填写康复日志，请前往确认。<a href='/parentCenter/"+recoveryLog.getOrderId()+"/doing_detail'>查看</a>"+
                 "</p>");
 
         messageDao.addMessage(message);
@@ -219,13 +208,7 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
             Message messageP=new Message();
             messageP.setTime(dateNowStr);
             messageP.setUserId(order.getUidP());
-            messageP.setMessage("<p>\n" +
-                    "<span style=\"color:red;\">系统消息：</span>\n" +
-                    "</p>\n" +
-                    "<p>\n" +
-                    "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                    "    您的订单（"+oid+"），已完成。"+
-                    "</p>");
+            messageP.setMessage("您的订单（"+oid+"），已完成。");
 
             messageDao.addMessage(messageP);
 

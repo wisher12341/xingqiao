@@ -83,7 +83,14 @@
     </update>
 
     <update id="addComplexInfo">
-        UPDATE teacher SET ${type}= CONCAT(${type},#{data}) WHERE user_id=#{uid}
+        UPDATE teacher SET ${type}=
+        <if test="pre==null">
+            #{data}
+        </if>
+        <if test="pre!=null">
+            CONCAT(${type},#{data})
+        </if>
+         WHERE user_id=#{uid}
     </update>
 
 
@@ -127,6 +134,15 @@
         <if test="priceO!=null and priceO!=''">
             ,price_o=#{priceO}
         </if>
+        <if test="priceMin!=null and priceMin!=''">
+            ,price_min=#{priceMin}
+        </if>
+        <if test="priceMax!=null and priceMax!=''">
+            ,price_max=#{priceMax}
+        </if>
+        <if test="priceMid!=null and priceMid!=''">
+            ,price_mid=#{priceMid}
+        </if>
         <if test="detailAddress!=null and detailAddress!=''">
             ,detailAddress=#{detailAddress}
         </if>
@@ -164,4 +180,8 @@
     <select id="getUidByTid" resultType="java.lang.Integer">
         SELECT user_id FROM teacher WHERE id=#{tid}
     </select>
+
+    <insert id="saveNewTeacher" >
+        INSERT into teacher(user_id,schedule) VALUES (#{id},"0#0#0#0#0#0#0")
+    </insert>
 </mapper>

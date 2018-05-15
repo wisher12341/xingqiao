@@ -99,7 +99,8 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 		User user;
 		String openid_parent="";
 		String openid_teacher="";
-		if(url.contains("teacherCenter")){
+		//  /0/query用来过滤 在预约治疗师界面 查看治疗师成功案例 等详情   /teacherCenter/2/message 家长的 消息中心
+		if(url.contains("teacherCenter") && !url.contains("parent") && !url.contains("/0/query") && !url.contains("/teacherCenter/2/message")){
 //			治疗师登录
 			openid_teacher= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
 			if(openid_teacher==null){
@@ -114,7 +115,7 @@ public class WxInterceptor extends HandlerInterceptorAdapter {
 		}else{
 //			用户登录
 			openid_parent=CookieUtil.checkCookie(request,Const.OPENID_PARENT);
-			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//			openid_parent="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
 			if(openid_parent==null){
 				response.sendRedirect(redirect_url_parent);
 				return false;

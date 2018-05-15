@@ -84,7 +84,7 @@ public class TeacherServiceImpl implements TeacherService{
 
 
 
-        List<Teacher> teacherList=teachersDao.getTeachers(teacher,minY,minP,maxP,maxY,flag);
+        List<Teacher> teacherList = teachersDao.getTeachers(teacher,minY,minP,maxP,maxY,flag);
         for(Teacher teacher1:teacherList){
             if(teacher1.getGender().equals("0")){
                 teacher1.setGender("男");

@@ -36,6 +36,7 @@ public class WxPayController {
         WxSendData wxSendData=wxPayService.pay(oid,request);
         ModelAndView mv=new ModelAndView("order/wx_pay");
         mv.addObject("data",wxSendData);
+        mv.addObject("oid",oid);
         return mv;
     }
 

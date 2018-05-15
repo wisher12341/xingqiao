@@ -182,7 +182,7 @@
 <body>
 
 <div id="main">
-    <form action="<#if (teacher.way)?contains(type)>/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/edit<#else >/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/add</#if>" method="post">
+    <form action="<#if (teacher.way)?? && (teacher.way)?contains(type)>/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/edit<#else >/wx/teacherCenter/serviceInfo/${user.id}/way/${type!}/add</#if>" method="post">
         <input type="hidden" name="userId" value="${(user.id)!}">
         <input type="hidden" name="way" value="${(teacher.way)!}">
         <input type="hidden" name="sGround">
@@ -202,11 +202,11 @@
                 <div class="col-xs-8">
                     <input placeholder="请输入一课时的酬金" type="text" class="title_input" maxlength="10" style="padding-left: 20px"
                     <#if type=="学生上门">
-                           value="${(teacher.priceS==0)?string("",teacher.priceS)}" name="priceS"
+                           value="${((teacher.priceS)??)?string((teacher.priceS)!,"")}" name="priceS"
                     <#elseif type=="治疗师上门">
-                           value="${(teacher.priceT==0)?string("",teacher.priceT)}" name="priceT"
+                           value="${((teacher.priceT)??)?string((teacher.priceT)!,"")}" name="priceT"
                     <#else >
-                           value="${(teacher.priceO==0)?string("",teacher.priceO)}" name="priceO"
+                           value="${((teacher.priceO)??)?string((teacher.priceO)!,"")}" name="priceO"
                     </#if>>
                 </div>
             </div>
@@ -282,20 +282,23 @@
                     <i class="fa fa-angle-right fa-4x icon_fa"></i>
                 </div>
             </div>
-                        <#list ((teacher.sGround)!)?split("、") as g>
-                            <#if g_index%5==0>
-                                <div class="row" style="margin:0 0 2%!important;">
-                                    <div class="col-xs-12">
-                            <p class="text_detail sground">
-                            </#if>
-                            <span class="search_label">${g}</span>
-                            <#if g_index==4 || g_index==9 || g_index==14>
-                            </p>
-                            </div>
-                            </div>
-                            </#if>
-                        </#list>
-
+            <div class="row ss" style="margin: 0!important;padding: 0 2% 2%;">
+                <#if (teacher.sGround)??>
+                    <#list ((teacher.sGround)!)?split("、") as g>
+                        <#--<#if g_index%5==0>-->
+                        <#--<div class="row" style="margin:0 0 2%!important;">-->
+                        <#--<div class="col-xs-12">-->
+                        <#--<p class="text_detail sground">-->
+                        <#--</#if>-->
+                        <span class="search_label">${g}</span>
+                        <#--<#if g_index==4 || g_index==9 || g_index==14>-->
+                        <#--</p>-->
+                        <#--</div>-->
+                        <#--</div>-->
+                        <#--</#if>-->
+                    </#list>
+                </#if>
+            </div>
         </div>
         </#if>
 
@@ -305,12 +308,12 @@
     </form>
 </div>
 
-<#if (teacher.sGround)??>
+
 <div id="area2">
     <div class="area">
         <#list area2 as a>
             <div class="col-xs-4" align="center" style="margin-bottom: 60px">
-                <div class="search_label_a <#if teacher.sGround?? && (teacher.sGround)?contains(a.name)>selectArea2</#if>" onclick="changeArea2(this)">${a.name}</div>
+                <div class="search_label_a <#if (teacher.sGround)?? && (teacher.sGround)?contains(a.name)>selectArea2</#if>" onclick="changeArea2(this)">${a.name}</div>
             </div>
         </#list>
     </div>
@@ -319,7 +322,7 @@
         <button style="width: 49.5% !important;" onclick="confirmArea2()">确定</button>
     </div>
 </div>
-</#if>
+
 
 
 </body>
@@ -343,11 +346,11 @@
 
     });
     function confirmArea2() {
-        $(".sground").html("");
+        $(".ss").html("");
         var data="";
         $(".selectArea2").each(function () {
             data+="、"+$(this).text();
-            $(".sground").append($('<span class="search_label">'+$(this).text()+'</span>'));
+            $(".ss").append($('<span class="search_label">'+$(this).text()+'</span>'));
         });
         if(data.length>0){
             data=data.substring(1);
@@ -358,9 +361,9 @@
 
     function showArea2() {
         $('#area2').show();
-        $('#area2').animate({top:"0"},function () {
-            $('#main').hide();
-        });
+//        $('#area2').animate({top:"0"},function () {
+//            $('#main').hide();
+//        });
     }
 
     function changeArea2(obj) {

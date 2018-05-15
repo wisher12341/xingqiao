@@ -23,6 +23,28 @@ public class User {
     private String tName;//家长或治疗师的姓名
     private String pName;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", status=" + status +
+                ", gender=" + gender +
+                ", email='" + email + '\'' +
+                ", openid='" + openid + '\'' +
+                ", unionid='" + unionid + '\'' +
+                ", headimgurl='" + headimgurl + '\'' +
+                ", userStatus=" + userStatus +
+                ", userStatusDesc='" + userStatusDesc + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", time='" + time + '\'' +
+                ", tName='" + tName + '\'' +
+                ", pName='" + pName + '\'' +
+                ", infoStatus=" + infoStatus +
+                '}';
+    }
 
     public int getInfoStatus() {
         return infoStatus;

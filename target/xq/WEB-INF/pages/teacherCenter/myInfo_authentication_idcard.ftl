@@ -11,7 +11,13 @@
             /*bottom: 0;*/
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button,.foot_back button{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -139,13 +145,16 @@
 
 
 
-<div class="foot" align="center">
+<div class="foot_back" align="center">
     <form action="/wx/${(teacher??)?string("teacherCenter","parentCenter")}/info/${user.id}/idcard" method="post" enctype="multipart/form-data">
         <input type="file" name="pidUrlFront" style="display: none">
         <input type="file" name="pidUrlBack" style="display: none">
         <input type="file" name="peoplePidUrl" style="display: none">
         <button style="width: 95% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
     </form>
+</div>
+<div class="foot" align="center">
+    <button onclick="location.href='${path}/wx/teacherCenter/${uid}/myInfo_authentication'" style="width: 100% !important;">返回</button>
 </div>
 </body>
 

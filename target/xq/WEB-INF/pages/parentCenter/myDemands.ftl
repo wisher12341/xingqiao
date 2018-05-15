@@ -5,7 +5,57 @@
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myDemands.css" type="text/css" rel="stylesheet" />
+    <style>
+        body{
+            background-color: #f5f5f5;
+        }
+        .buttonDiv_info{
+            margin: 2% 0;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+        .info,.info_head{
+            background-color: white;
+            margin: 4px 0;
+        }
+        .info{
+            height: 250px;
+            padding-top: 30px;
+        }
 
+        .text_p{
+            font-size: 55px;
+            display: block;
+            color: dimgrey;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .text_pp{
+            font-size: 40px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            position: relative;
+            top:5px;
+        }
+        .text_ppp{
+            display: block;
+            font-size: 40px;
+            top:5px;
+        }
+        .icon_fa{
+            /*position: relative;*/
+            /*top: 5px;*/
+            color: dimgrey;
+        }
+        .number{
+            background-color: #20b49a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 <div id="main">
@@ -32,25 +82,27 @@
         </div>
     </div>
 
+
 <#if demands??>
-<div class="demands-div">
+
     <#list demands as demand>
-    <div class="col-sm-6">
-        <div class="demand-div">
-            <div class="row">
-            <div class="demand-img col-sm-4"><img src="../../../static/img/parentCenter/demandIcon.png"></div>
-            <div class="demand-info col-sm-8">
-                <p style="font-size: 50px;font-weight: bold">${demand.name!}</p>
-                <p style="font-size: 40px;">${demand.disease!}</p>
-            </div>
-            </div>
-            <div class="demand-btn">
-                <div onclick=location.href="${path}/wx/parentCenter/${user.id}/myDemands/${demand.id}/demandDetail">详情</div>
+        <div class="buttonDiv_info" onclick=location.href="${path}/wx/parentCenter/${user.id}/myDemands/${demand.id}/demandDetail">
+            <div class="info row" onclick=location.href="">
+                <div class="col-xs-3">
+                    <div><img src="../../../static/img/parentCenter/demandIcon.png" style="width: 150px;margin: 20px"></div>
+                </div>
+                <div class="col-xs-8">
+                    <p class="text_p"> ${demand.name!}</p>
+                    <p class="text_ppp">${demand.disease!}</p>
+                </div>
+                <div class="col-xs-1">
+                    <i class="fa fa-angle-right fa-4x icon_fa" style="margin-top: 50px"></i>
+                </div>
             </div>
         </div>
-    </div>
+
     </#list>
-</div>
+
 <#else>
     <p>您还未添加任何需求简历</p>
 </#if>

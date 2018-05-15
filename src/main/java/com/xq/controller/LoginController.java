@@ -83,7 +83,7 @@ public class LoginController {
     @RequestMapping(value = "/teacher/reg",method = RequestMethod.POST)
     public ModelAndView reg(User user, HttpServletResponse response){
         User user_re=userService.regTeacher(user,response);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user_re.getId()+"/myInfo");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user_re.getId()+"/myInfo_base");
         return mv;
     }
 
@@ -97,7 +97,7 @@ public class LoginController {
     @RequestMapping(value = "/{status}/changeAccount",method = RequestMethod.GET)
     public ModelAndView change_teacher(HttpServletRequest request, HttpServletResponse response,@PathVariable Integer status){
         String openid= CookieUtil.checkCookie(request,status==1? Const.OPENID_TEACHER: Const.OPENID_PARENT);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         userService.changeAccount(openid,response,status);
         ModelAndView mv=new ModelAndView(status==1?"login_teacher":"login_parent");
         mv.addObject("openid",openid);
@@ -124,7 +124,7 @@ public class LoginController {
     @RequestMapping(value = "/parent/bindAccount",method = RequestMethod.POST)
     public ModelAndView bind_post(User user){
         User user_re=userService.bindAccount(user);
-        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+user_re.getId()+"myAccount");
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+user_re.getId()+"/myInfo_base");
         return mv;
     }
 
@@ -149,8 +149,8 @@ public class LoginController {
     @RequestMapping(value = "/setting/{type}",method = RequestMethod.GET)
     public ModelAndView setting(HttpServletRequest request,@PathVariable String type){
         ModelAndView mv=new ModelAndView("setting/setting");
-//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+         String openid= CookieUtil.checkCookie(request,type.equals("0")?Const.OPENID_PARENT:Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,type);
         mv.addObject("user",user);
         return mv;
@@ -165,8 +165,8 @@ public class LoginController {
     @RequestMapping(value = "/changePwd/{type}",method = RequestMethod.GET)
     public ModelAndView pwd(HttpServletRequest request,@PathVariable String type){
         ModelAndView mv=new ModelAndView("setting/changePwd");
-//         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
-        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+         String openid= CookieUtil.checkCookie(request,type.equals("0")?Const.OPENID_PARENT:Const.OPENID_TEACHER);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,type);
         mv.addObject("user",user);
         return mv;

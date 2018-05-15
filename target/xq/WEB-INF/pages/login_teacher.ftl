@@ -3,81 +3,202 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<#include "order/common/head.ftl" />
+    <#--<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<#include "parentCenter/common/head.ftl" />
     <title>治疗师登录</title>
-    <link href="${path}/static/css/login.css" type="text/css" rel="stylesheet" />
+    <#--<link href="${path}/static/css/login.css" type="text/css" rel="stylesheet" />-->
     <script src="${path}/static/js/login.js" type="text/javascript" ></script>
+    <style>
+        body{
+            background-color: #f5f5f5;
+        }
+        .buttonDiv_info{
+            margin: 4% 0;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+        }
+        .info{
+            height: 120px;
+            padding-top: 25px;
+            background-color: white;
+            margin: 4px 0;
+        }
+        .text_p{
+            font-size: 45px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            font-weight: bold;
+        }
+        .text_pp{
+            font-size: 40px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            position: relative;
+            top:5px;
+        }
+        .icon_fa{
+            position: relative;
+            top: 5px;
+            color: dimgrey;
+        }
+        .foot{
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 2% auto;
+            border-radius: 15px;
+            height:7%;
+            border: none;
+        }
+        .textInput{
+            font-size: 40px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+        }
+        .fa{
+            font-size: 48px!important;
+            color: grey;
+            margin-top: 10px;
+            margin-left: 30px;
+            opacity: 0.6;
+        }
+        .btn{
+            font-size: 42px!important;
+            background-color: white!important;
+            color: #20b49a!important;
+            border: 1px solid #20b49a;
+            border-radius: 10%;
+        }
+        .foot{
+            background-color: #f5f5f5;
+        }
+        .foot input,.foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px 100px;
+            margin: 2% 1%;
+            border-radius: 15px;
+            height:7%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 <div id="logo" align="center">
     <img src="/static/img/logo.jpg" width="40%">
 </div>
 <div id="select" align="center">
-    <button class="but" onclick="$('#select').hide();$('#accountBind').show()">登录</button>
-    <button class="but" onclick="$('#select').hide();$('#regAccount').show()">注册</button>
+    <div class="foot">
+        <button class="but" onclick="$('#select').hide();$('#accountBind').show()">登录</button>
+        <button class="but" onclick="$('#select').hide();$('#regAccount').show()">注册</button>
+    </div>
 </div>
 
 <div id="accountBind" style="display: none" align="center">
     <form action="${path}/wx/login" method="post">
-        <div class="group">
-            <span class="la">账号：</span><input type="text" name="username" class="textInput" placeholder="手机号"/>
+        <div class="buttonDiv_info">
+            <div class="info row" >
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-phone"></i>
+                </div>
+                <div class="col-xs-10">
+                    <input placeholder="手机号" type="text" class="textInput" name="username">
+                </div>
+            </div>
+            <div class="info row">
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-lock"> </i>
+                </div>
+                <div class="col-xs-10">
+                    <input placeholder="密码" type="text" class="textInput" name="password">
+                </div>
+            </div>
+            <#if message??>
+                <div class="info row">
+                    <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <#--<i class="fa fa-lock"> </i>-->
+                    </div>
+                    <div class="col-xs-10">
+                        <span style="color: red;text-align: center">${message!}</span>
+                    </div>
+                </div>
+            </#if>
         </div>
-        <div class="group">
-            <span class="la">密码：</span><input type="password" name="password" class="textInput" placeholder="password"/>
-        </div>
-        <div class="group">
-            <span style="color: red;text-align: center">${message!}</span>
-        </div>
+
+
+        <#--<div class="group">-->
+            <#--<span class="la">账号：</span><input type="text" name="username" class="textInput" placeholder="手机号"/>-->
+        <#--</div>-->
+        <#--<div class="group">-->
+            <#--<span class="la">密码：</span><input type="password" name="password" class="textInput" placeholder="password"/>-->
+        <#--</div>-->
+        <#--<div class="group">-->
+            <#--<span style="color: red;text-align: center">${message!}</span>-->
+        <#--</div>-->
         <input type="hidden" name="openid" value="${openid!}">
         <input type="hidden" name="status" value="1">
-        <input type="submit" value="登录"  class="submit">
-        <input type="button" value="返回"  class="submit" onclick="$('#accountBind').hide();$('.textInput').val('');$('#select').show();">
+        <div class="foot">
+            <input type="submit" value="登录"  class="submit">
+            <input type="button" value="返回"  class="submit" onclick="$('#accountBind').hide();$('.textInput').val('');$('#select').show();">
+        </div>
     </form>
 </div>
 <div id="regAccount" style="display: none" align="center">
     <form action="${path}/wx/login/teacher/reg" method="post" id="regForm">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">账号：</span>
+        <div class="buttonDiv_info">
+            <div class="info row" >
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-phone"></i>
                 </div>
-                <div class="col-xs-8">
-                    <input type="text" name="username" class="textInput" placeholder="手机号"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">验证码：</span>
-                </div>
-                <div class="col-xs-4">
-                    <input class="textInput code"/>
-                </div>
-                <div class="col-xs-4">
-                    <input type="button" onclick="sendphonecode()" class="btn btn-primary" value="获取验证码" id="sendCode">
+                <div class="col-xs-10">
+                    <input placeholder="手机号" type="text" class="textInput" name="username">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-4 la_div">
-                    <span class="la">密码：</span>
+            <div class="info row" >
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-id-badge" > </i>
                 </div>
-                <div class="col-xs-8">
-                    <input type="password" name="password" class="textInput" />
+                <div class="col-xs-6">
+                    <input placeholder="请输入收到的验证码" type="text" class="textInput code">
+                </div>
+                <div class="col-xs-3">
+                    <input type="button" onclick="sendphonecode()" class="btn" value="获取验证码" id="sendCode">
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 20px">
-                <div class="col-xs-4 la_div">
-                    <span class="la">确认密码：</span>
+            <div class="info row">
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-lock"> </i>
                 </div>
-                <div class="col-xs-8">
-                    <input type="password"  class="textInput pw" />
+                <div class="col-xs-10">
+                    <input placeholder="创建新密码（6-20位数字或英文字符）" type="password" class="textInput" name="password">
+                </div>
+            </div>
+            <div class="info row">
+                <div class="col-xs-1" style="text-align: right;width: 10%!important;">
+                    <i class="fa fa-repeat"> </i>
+                </div>
+                <div class="col-xs-10">
+                    <input placeholder="再次输入密码" type="password" class="textInput pw">
                 </div>
             </div>
         </div>
-
         <input type="hidden" name="openid" value="${openid!}">
-        <input onclick="reg()" type="button" value="注册"  class="submit">
-        <input type="button" value="返回"  class="submit" onclick="$('#regAccount').hide();$('.textInput').val('');$('#select').show();">
+        <div class="foot">
+            <input onclick="reg()" type="button" value="注册"  class="submit">
+            <input type="button" value="返回"  class="submit" onclick="$('#regAccount').hide();$('.textInput').val('');$('#select').show();">
+        </div>
     </form>
 </div>
 
@@ -95,7 +216,7 @@
             timePromise = undefined;
 
         function sendphonecode() {
-            if($('input[name="username"]').val()==''){
+            if($('#regAccount input[name="username"]').val()==''){
                 alert("手机号不能为空");
                 return;
             }

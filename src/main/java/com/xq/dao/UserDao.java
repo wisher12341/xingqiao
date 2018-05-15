@@ -1,7 +1,6 @@
 package com.xq.dao;
 
 import com.xq.model.User;
-import com.xq.model.WxUserInfo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -9,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
  * Created by netlab606 on 2017/11/10.
  */
 public interface UserDao {
-    User getUserByOpenid(String openid);
+    User getUserByOpenid(@Param("openid") String openid,@Param("status") String s);
     User getParentByOpenid(String openid);
     User getUserById(Integer id);
     User findUserByNameType(@Param("username") String username, @Param("type") Integer type);
@@ -21,7 +20,7 @@ public interface UserDao {
 
     void addOpenid(User user);
 
-    void saveNewUser(WxUserInfo wxUserInfo);
+    void saveNewUser(User wxUserInfo);
 
     User getUserByOpenidStatus(@Param("openid") String openid, @Param("status") String status);
 
@@ -34,4 +33,6 @@ public interface UserDao {
     void changeUserStatus(@Param("uid") int uid, @Param("userStatue") int i);
 
     void changePassword(@Param("openid") String openid, @Param("status") String type, @Param("password") String password);
+
+    void changeUserStatusByOpenid(@Param("openid") String openid, @Param("userStatue") Integer userStatus, @Param("type") String type);
 }

@@ -3,10 +3,6 @@ package com.xq.service.impl;
 import com.xq.dao.*;
 import com.xq.dto.AllTypeOrder;
 import com.xq.dto.OrderDto;
-import com.xq.model.Message;
-import com.xq.model.Order;
-import com.xq.model.RecoveryHis;
-import com.xq.model.RecoveryLog;
 import com.xq.model.*;
 import com.xq.service.OrderService;
 import com.xq.service.RecoveryLogService;
@@ -17,8 +13,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -26,7 +20,7 @@ import java.util.*;
  * Created by netlab606 on 2017/11/2.
  */
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 
     @Autowired
     OrderDao orderDao;
@@ -43,7 +37,7 @@ public class OrderServiceImpl implements OrderService{
 
     public AllTypeOrder getAllOrder(HttpServletRequest request) {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         List<Order> orderList=orderDao.getAllOrderByOpenid(openid);
         setStatusDesc(orderList);
         AllTypeOrder allTypeOrder=new AllTypeOrder();
@@ -127,7 +121,7 @@ public class OrderServiceImpl implements OrderService{
         }
 
         List<RecoveryHis> recoveryHisList = new ArrayList<RecoveryHis>();
-        if (order.getDemand().getRecoveryHis()!=null) {
+        if (order.getDemand().getRecoveryHis()!=null && !order.getDemand().getRecoveryHis().equals("")) {
             String[] data = order.getDemand().getRecoveryHis().split("@");
             for (String s : data) {
                 RecoveryHis recoveryHis = new RecoveryHis();
@@ -173,26 +167,14 @@ public class OrderServiceImpl implements OrderService{
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您已取消预约单（"+oid+"）。"+
-                "</p>");
+        messageP.setMessage("您已取消预约单（"+oid+"）。");
 
         messageDao.addMessage(messageP);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    家长已取消预约单（"+oid+"）。"+
-                "</p>");
+        messageT.setMessage("家长已取消预约单（"+oid+"）。");
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长取消预约");
@@ -210,13 +192,8 @@ public class OrderServiceImpl implements OrderService{
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
-                "</p><a href='${path}/teacher/order/"+oid+"/agree'>同意" +
+        messageT.setMessage("您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
+                "<a href='${path}/teacher/order/"+oid+"/agree'>同意" +
                 "</a>");
 
         messageDao.addMessage(messageT);
@@ -235,26 +212,14 @@ public class OrderServiceImpl implements OrderService{
         Order order=orderDao.getOrderPayByOid(oid);
         Message message=new Message();
         message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止。"+
-                "</p>");
+        message.setMessage("订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止。");
 
         messageDao.addMessageAdmin(message);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），家长（"+order.getPname()+"）同意终止."+
-                "</p>");
+        messageT.setMessage("您的订单（"+oid+"），家长（"+order.getPname()+"）同意终止。");
 
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长同意终止");
@@ -311,7 +276,7 @@ public class OrderServiceImpl implements OrderService{
 
 
     @Transactional
-    public String addOrder(Order order,HttpServletRequest request) {
+    public String addOrder(Order order, HttpServletRequest request) {
         //User user = (User) session.getAttribute("USER");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         User user=userDao.getParentByOpenid(openid);
@@ -365,26 +330,14 @@ public class OrderServiceImpl implements OrderService{
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(user.getId());
-        messageP.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的预约单已发给治疗师（"+order.getTeacher().getName()+"），请耐心等待治疗师回复。"+
-                "</p>");
+        messageP.setMessage("您的预约单已发给治疗师（"+order.getTeacher().getName()+"），请耐心等待治疗师回复。");
 
         messageDao.addMessage(messageP);
 
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(orderDao.getUserIdByOid(order.getId()));
-        messageT.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您收到一份预约单。"+
-                "</p>");
+        messageT.setMessage("您收到一份预约单。");
 
         messageDao.addMessage(messageT);
         return order.getId();

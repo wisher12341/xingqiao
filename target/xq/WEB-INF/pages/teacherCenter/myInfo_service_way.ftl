@@ -69,6 +69,23 @@
         .b{
             margin-bottom: 2%!important;
         }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
     </style>
 </head>
 <body>
@@ -81,7 +98,7 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 学生上门</p>
                 </div>
-                <#if (teacher.way)?contains("学生上门")>
+                <#if ((teacher.way)!)?contains("学生上门")>
                     <div class="col-xs-5">
                         <p class="text_pp">
                             <span style="color: orange">${(teacher.priceS)!}</span>元/课时
@@ -106,8 +123,8 @@
             </div>
             <div class="row" style="border-bottom:1px solid #ccc;height: 8% ">
                 <div class="col-xs-12">
-                    <#if (teacher.way)?contains("学生上门")>
-                        <p class="text_detail">${teacher.tGround}-${teacher.detailAddress}</p>
+                    <#if ((teacher.way)!)?contains("学生上门")>
+                        <p class="text_detail">${(teacher.tGround)!}-${(teacher.detailAddress)!}</p>
                     </#if>
                 </div>
             </div>
@@ -121,10 +138,10 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 治疗师上门</p>
                 </div>
-            <#if (teacher.way)?contains("治疗师上门")>
+            <#if ((teacher.way)!)?contains("治疗师上门")>
                 <div class="col-xs-5">
                     <p class="text_pp">
-                        <span style="color: orange">${teacher.priceT}</span>元/课时
+                        <span style="color: orange">${(teacher.priceT)!}</span>元/课时
                     </p>
                 </div>
                 <div class="col-xs-2">
@@ -144,19 +161,24 @@
                 </div>
             </#if>
             </div>
-        <#list ((teacher.sGround)!)?split("、") as g>
-            <#if g_index%5==0>
-                <div class="row a">
-                <div class="col-xs-12">
-                <p class="text_detail sground">
+            <div class="row" style="height: 8%;border-bottom:1px solid #ccc;padding: 1% 2% 0;">
+            <#if (teacher.sGround)??>
+                <#list (teacher.sGround)?split("、") as g>
+                    <#--<#if g_index%5==0>-->
+                    <#--<div class="row a">-->
+                    <#--<div class="col-xs-12">-->
+                    <#--<p class="text_detail sground">-->
+                    <#--</#if>-->
+                    <span class="search_label">${g}</span>
+                    <#--<#if g_index==4 || g_index==9 || g_index==14>-->
+                    <#--</p>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</#if>-->
+                </#list>
+            <#else>
             </#if>
-            <span class="search_label">${g}</span>
-            <#if g_index==4 || g_index==9 || g_index==14>
-            </p>
             </div>
-            </div>
-            </#if>
-        </#list>
         </div>
     </div>
 
@@ -166,10 +188,10 @@
                 <div class="col-xs-4">
                     <p class="text_p"> 在线授课</p>
                 </div>
-            <#if (teacher.way)?contains("在线授课")>
+            <#if ((teacher.way)!)?contains("在线授课")>
                 <div class="col-xs-5">
                     <p class="text_pp">
-                        <span style="color: orange">${teacher.priceO}</span>元/课时
+                        <span style="color: orange">${(teacher.priceO)!}</span>元/课时
                     </p>
                 </div>
                 <div class="col-xs-2">
@@ -194,6 +216,9 @@
         </div>
     </div>
 
+</div>
+<div class="foot" align="center">
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/myInfo_service">回到个人中心</button>
 </div>
 </body>
 <script>

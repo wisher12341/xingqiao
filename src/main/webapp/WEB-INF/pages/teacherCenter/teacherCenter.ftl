@@ -82,17 +82,20 @@
 <div id="main">
     <div class="info-header">
         <div class="info-header-img col-sm-4">
-            <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle">
+            <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" onerror='this.src="/static/img/touxiang.svg";this.onerror=null' class="img-circle">
         </div>
         <div class="col-sm-7">
             <div class="row">
                 <div class="col-sm-11">
                     <p class="info-header-name"><span>
-                    ${(teacher.name)!user.name}
+                    ${((teacher.name)??)?string((teacher.name)!,user.username)}
                     </span>
-                    <#list 1..teacher.star as i>
-                        <span class="glyphicon glyphicon-star" style="font-size: 38px;color: orange;position: relative;top:5px;${(i==1)?string('margin-left:10px','')}"></span>
-                    </#list></p>
+                        <#if (teacher.star)!=0>
+                            <#list 1..(teacher.star) as i>
+                                <span class="glyphicon glyphicon-star" style="font-size: 38px;color: orange;position: relative;top:5px;${(i==1)?string('margin-left:10px','')}"></span>
+                            </#list>
+                        </#if>
+                   </p>
                         <#if user.userStatus==0>
                             <i class="glyphicon glyphicon-exclamation-sign" style="color: orange"></i><span class="userstatus" style="color: orange">个人资料未认证</span>
                         <#elseif user.userStatus==1 || user.userStatus==3>
@@ -104,7 +107,7 @@
                         </#if>
                 </div>
                 <div class="cog">
-                    <div class="i1"><a href="${path}/wx/login/setting/1"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></a></div>
+                    <div class="i1" onclick=location.href="${path}/wx/login/setting/1"><i class="glyphicon glyphicon-cog"  style="color:white;display: inline"></i><span style="font-size: 40px;color: white;margin-left: 5px">设置</span></div>
                 </div>
             </div>
             <#--<div class="row">-->
@@ -134,7 +137,7 @@
     <#--</div>-->
     <div style="background-color: white; border-bottom: 1px solid #ccc;" align="center">
             <div class="row" style="width: 95%">
-                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule">
+                <div class="col-xs-4" onclick=location.href="/wx/teacherCenter/${user.id}/mySchedule/teacher">
                     <div>
                         <span class="fa fa-calendar-check-o icon_mid"></span>
                     </div>

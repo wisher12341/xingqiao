@@ -47,6 +47,30 @@
             top: 5px;
             color: dimgrey;
         }
+        .text_ppp{
+            font-size: 35px;
+            display: inline;
+            float: right;
+            position: relative;
+            top:5px;
+        }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
     </style>
 </head>
 <body>
@@ -60,7 +84,7 @@
                 <p class="text_p"> 头像</p>
             </div>
             <div class="col-xs-8">
-                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle" >
+                <img style="height: 150px;width: 150px;position: relative;top: -35px;"  src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" onerror='this.src="/static/img/touxiang.svg";this.onerror=null' class="img-circle" >
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -77,7 +101,7 @@
                 <p class="text_pp"> ${(user.id)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/gender/${(user.gender)!'0'}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 性别</p>
             </div>
@@ -109,12 +133,13 @@
                 <p class="text_pp"> ${(user.username)!}</p>
             </div>
         </div>
-        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${(user.email)!''}/edit">
+        <div class="info row" onclick=location.href="${path}/wx/teacherCenter/base/email/${((user.email)?? && user.email!='')?string((user.email)!,"none")}/edit">
             <div class="col-xs-3">
                 <p class="text_p"> 邮箱</p>
             </div>
             <div class="col-xs-8">
-                <p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>
+                ${((user.email)?? && user.email!='')?string("<p class='text_pp'> "+(user.email)!''+"</p>",'<p class="text_ppp"> <span style="color:red">未填写</span></p>')}</p>
+                <#--<p class="text_pp"> ${(user.email)!'<span style="color:red">未填写</span>'}</p>-->
             </div>
             <div class="col-xs-1">
                 <i class="fa fa-angle-right fa-4x icon_fa"></i>
@@ -122,11 +147,12 @@
         </div>
     </div>
 
+
+
     <#--<div>-->
         <#--<input type="submit" class="butt" onclick="" value="${(user.userStatus==0)?string('保存','提交审核')}">-->
     <#--</div>-->
 <#--</form>-->
-
 
     <#--<div class="myInfoDiv">-->
         <#--<div class="info-part-item" >-->
@@ -159,6 +185,9 @@
             <#--</ul>-->
         <#--</div>-->
     <#--</div>-->
+</div>
+<div class="foot" align="center">
+    <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
 </div>
 </body>
 </html>

@@ -81,7 +81,7 @@
 <script>
     $(function () {
         $(".search_label_a").each(function () {
-            if('${teacher.object}'.indexOf($(this).text().trim())!=-1){
+            if('${(teacher.object)!}'.indexOf($(this).text().trim())!=-1){
                 $(this).addClass("select");
             }
         });

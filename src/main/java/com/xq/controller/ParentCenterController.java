@@ -223,7 +223,7 @@ public class ParentCenterController {
         String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E"; //测试用
         User user=userService.getUserByOpenidStatus(openid,"0");
         mv.addObject("user",user);
-
+//        WxInterceptor.logger.info(user.toString());
         //解决中文乱码
         if(ctype.equals("name")){
             value= new String(value.getBytes("ISO8859-1"), "UTF-8");
@@ -265,7 +265,7 @@ public class ParentCenterController {
 
     @RequestMapping(value = "/info/{uid}/idcard",method = RequestMethod.POST)
     public ModelAndView idcard_post(@PathVariable Integer uid, MultipartFile peoplePidUrl, MultipartFile pidUrlFront, MultipartFile pidUrlBack, HttpServletRequest request){
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/myInfo_authentication");
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_authentication");
         teacherCenterService.editIdCard(peoplePidUrl,pidUrlBack,pidUrlFront,uid,request);
         return mv;
     }
@@ -499,5 +499,45 @@ public class ParentCenterController {
         return new Result(true,parentCenterService.getDayWorkByUid(uid,date));
     }
 
+    /**
+     * 用户状态 修改
+     * @param userStatus
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/userstatus/change",method = RequestMethod.POST)
+    public ModelAndView userstatus(@RequestParam Integer userStatus,HttpServletRequest request){
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        userService.changeUserStatus(userStatus,openid,"parent");
+        return new ModelAndView("redirect:/wx/parentCenter");
+    }
+
+    /**
+     * 实名认证 地址 ground+address
+     * @param uid
+     * @return
+     */
+    @RequestMapping(value = "/info/{uid}/address",method = RequestMethod.GET)
+    public ModelAndView address(@PathVariable Integer uid){
+        ModelAndView mv=new ModelAndView("parentCenter/myInfo_authentication_address");
+        Parent parent=parentCenterService.getParentByUserId(uid);
+        mv.addObject("user",userService.getUserByUid(uid));
+        mv.addObject("parent",parent);
+        mv.addObject("area2",areaService.getArea2());
+        return mv;
+
+    }
+
+    @RequestMapping(value = "/info/{uid}/address",method = RequestMethod.POST)
+    public ModelAndView address_post(@PathVariable Integer uid,@RequestParam String area1,@RequestParam String area2,@RequestParam String address){
+        ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+uid+"/myInfo_authentication");
+        Parent parent=new Parent();
+        parent.setUserId(uid);
+        parent.setGround(area1+"-"+area2);
+        parent.setAddress(address);
+        parentCenterService.changeInfo(parent);
+        return mv;
+
+    }
 }
 
