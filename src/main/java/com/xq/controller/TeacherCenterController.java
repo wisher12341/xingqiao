@@ -633,4 +633,10 @@ public class TeacherCenterController {
         userService.changeUserStatus(userStatus,openid,"teacher");
         return new ModelAndView("redirect:/wx/teacherCenter");
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/checkAccountReg",method = RequestMethod.GET)
+    public Result check(Integer uid){
+        return teacherCenterService.checkAccountReg(uid);
+    }
 }

@@ -64,4 +64,6 @@ public interface ParentCenterService {
    WorkDayDto getDayWorkByUid(Integer uid, String date) throws ParseException;
 
     void changeInfo(Parent parent);
+
+    Result checkAccountReg(Integer uid);
 }

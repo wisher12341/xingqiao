@@ -9,7 +9,7 @@
     <div class="container" >
     <#else >
         <#if teacher??>
-        <div class="container" onclick=location.href="${path}/wx/teacherCenter/${uid}/order/${order.id}/detail">
+        <div class="container" onclick=location.href="${path}/wx/teacherCenter/order/${order.id}/detail">
         <#else>
         <div class="container" onclick=location.href="${path}/wx/order/${order.id}/detail">
         </#if>
@@ -157,7 +157,7 @@
             <p style="color: dimgrey;font-size: 45px">${comment.detail}</p>
                     <div id="pics">
                         <div class="ps" style="display: inline">
-            <#if (comment.picUrls)??>
+            <#if (comment.picUrls)?? && (comment.picUrls)!="">
                 <#list (comment.picUrls)?split("#") as pic>
                             <div class="picdiv">
                                 <img class="addimg"  src="/${pic}">

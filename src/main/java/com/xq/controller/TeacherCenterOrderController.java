@@ -52,12 +52,12 @@ public class TeacherCenterOrderController {
     /**
      * 订单详情
      */
-    @RequestMapping(value = "/{uid}/order/{oid}/detail",method = RequestMethod.GET)
-    public ModelAndView detail(@PathVariable String oid,@PathVariable String uid){
+    @RequestMapping(value = "/order/{oid}/detail",method = RequestMethod.GET)
+    public ModelAndView detail(@PathVariable String oid){
         OrderDto orderDto=orderTeacherService.getOrderByOid(oid);
         ModelAndView mv=new ModelAndView("teacherCenter/order/detail");
         mv.addObject("order",orderDto);
-        mv.addObject("uid",uid);
+//        mv.addObject("uid",uid);
         return mv;
     }
 

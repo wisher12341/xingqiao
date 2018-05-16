@@ -134,6 +134,12 @@
             -webkit-box-pack: center;
             -webkit-box-align: center;
         }
+        .empty_list_text{
+            text-align: center;
+            font-size: 40px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
     </style>
 </head>
 <body style="overflow-x: hidden">
@@ -142,9 +148,10 @@
 <div id="main">
     <div class="buttonDiv_info" style="background-color: white;margin-bottom: 8%">
         <ul>
-            <#list recoveryHisList! as recoveryHis>
+         <#if recoveryHisList?? && (recoveryHisList?size>0)>
+            <#list recoveryHisList as recoveryHis>
                 <li class="sl-li ui-border-b" style="background-color: white">
-                    <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/parentCenter/recoveryHis/${demandId}/${recoveryHis}/editPage">
+                    <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/parentCenter/recoveryHis/${userId}/${demandId}/${recoveryHis}/editPage">
                     <#if recoveryHis.index==0>
                         <div class="row" style="height: 2%;">
                         </div>
@@ -186,11 +193,17 @@
                     </div>
                 </li>
             </#list>
+         <#else>
+             <div class="empty_list_text">
+                 <p>您还未添加康复史。</p>
+             </div>
+         </#if>
+
         </ul>
     </div>
 </div>
 <div class="foot" align="center">
-    <button onclick="location.href='${path}/wx/parentCenter/recoveryHis/${demandId}/addRecoveryHis'" style="width: 100% !important;">新增</button>
+    <button onclick="location.href='${path}/wx/parentCenter/recoveryHis/${userId}/${demandId}/addRecoveryHis'" style="width: 100% !important;">新增</button>
 </div>
 </body>
 </html>

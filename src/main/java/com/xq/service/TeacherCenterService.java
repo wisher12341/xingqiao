@@ -86,4 +86,6 @@ public interface TeacherCenterService {
     TCommentsDto getCommentsByUserId(Integer userId);
 
     Integer getUidByTid(Integer tid);
+
+    Result checkAccountReg(Integer uid);
 }

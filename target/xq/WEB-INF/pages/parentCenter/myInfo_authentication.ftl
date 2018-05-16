@@ -62,12 +62,18 @@
             font-weight: bold;
         }
         .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot_back{
             /*position: fixed;*/
             /*width: 100%;*/
             /*bottom: 0;*/
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot_back button,.foot button{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -77,7 +83,6 @@
             margin: 3% auto;
             border-radius: 15px;
             height:6%;
-            /*opacity:0.5;*/
             border: none;
         }
     </style>
@@ -90,10 +95,10 @@
 
     <div class="buttonDiv_info">
         <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/realName/${(((parent.realName)!'')!="")?string(parent.realName,"none")}/edit">
-            <div class="col-xs-3">
-                <p class="text_p"> 真实姓名</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 真实姓名<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                 ${(((parent.realName)!'')!="")?string("<p class='text_pp'>"+(parent.realName)!+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
@@ -101,10 +106,10 @@
             </div>
         </div>
         <div class="info row" onclick=location.href="${path}/wx/parentCenter/authentication/pid/${(((parent.pid)!'')!="")?string(parent.pid,"none")}/edit">
-            <div class="col-xs-3">
-                <p class="text_p"> 证件号</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 证件号<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                ${(((parent.pid)!'')!="")?string("<p class='text_pp'>"+parent.pid+"</p>",'<p class="text_ppp"><span style="color:red;font-size:35px">未填写</span></p>')}
             </div>
             <div class="col-xs-1">
@@ -112,10 +117,10 @@
             </div>
         </div>
         <div class="info row" onclick=location.href="${path}/wx/parentCenter/info/${user.id}/idcard">
-            <div class="col-xs-3">
-                <p class="text_p"> 证件照</p>
+            <div class="col-xs-4">
+                <p class="text_p"> 证件照<span style="color: red;position: relative;top: 8px;left: 10px">*</span></p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                 <p class="text_ppp"> ${(parent.pidFrontUrl?? && parent.pidFrontUrl!='' )?string('','<span style="color:red">未上传</span>')}</p>
             </div>
             <div class="col-xs-1">
@@ -138,15 +143,36 @@
         </div>
     </div>
 <#if user.userStatus==0>
-    <div class="foot" align="center">
-        <form action="/wx/parentCenter/userstatus/change" method="post">
+    <div class="foot_back" align="center">
+        <form action="/wx/parentCenter/userstatus/change" method="post" id="sss">
             <input type="hidden" value="1" name="userStatus">
-            <button style="width: 95% !important;">提交审核</button>
         </form>
+        <button style="width: 95% !important;" onclick="subb()">提交审核</button>
     </div>
 </#if>
 
+    <div class="foot" align="center">
+        <button style="width: 100% !important;" onclick=location.href="/wx/parentCenter">回到个人中心</button>
+    </div>
 
 </div>
 </body>
+
+<script>
+    function subb() {
+        $.ajax({
+            type: "GET",
+            url: "${path}/wx/parentCenter/checkAccountReg",
+            dataType: "json",
+            data: {
+                uid:"${user.id}"
+            },
+            success: function (data) {
+                alert(data.data);
+                if(data.success==true)
+                    $("#sss").submit();
+            }
+        });
+    }
+</script>
 </html>

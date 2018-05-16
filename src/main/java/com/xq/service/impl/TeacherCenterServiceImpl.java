@@ -1037,7 +1037,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         if(status.equals("parent")){
             openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
             //openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-            openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";  //测试用
+//            openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";  //测试用
             user=userDao.getUserByOpenidStatus(openid,"0");
         }else{
             openid=CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
@@ -1118,5 +1118,28 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Override
     public Integer getUidByTid(Integer tid) {
         return teacherCenterDao.getUidByTid(tid);
+    }
+
+
+    @Override
+    public Result checkAccountReg(Integer uid) {
+        User user=userDao.getUserById(uid);
+
+        Teacher teacher=teacherCenterDao.getTeacherByUserId(uid);
+        if(user.getHeadimgurl()==null || user.getHeadimgurl().equals("") ||
+                teacher.getName()==null || teacher.getName().equals("") ||
+                teacher.getPid()==null || teacher.getPid().equals("") ||
+                teacher.getObject()==null || teacher.getObject().equals("") ||
+                teacher.getDomain()==null || teacher.getDomain().equals("") ||
+                teacher.getExperienceAge()==null || teacher.getExperienceAge().equals("") ||
+                teacher.getPidUrlFront()==null || teacher.getPidUrlFront().equals("") ||
+                teacher.getPeriod()==null || teacher.getPeriod().equals("")){
+            return new Result(false,"资料未填写完整");
+        }
+        if(teacher.getSchedule()==null || teacher.getSchedule().equals("0#0#0#0#0#0#0")){//初始值
+            return new Result(false,"未添加我的课表");
+        }
+
+        return new Result(true,"提交成功，请耐心等待审核");
     }
 }

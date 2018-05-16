@@ -184,11 +184,11 @@
 </#if>
         </div>
 
-        <#if qetype?? && qetype=="edit">
+        <#--<#if qetype?? && qetype=="edit">-->
             <div class="foot" align="center">
                 <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
             </div>
-        </#if>
+        <#--</#if>-->
 
     </form>
 </div>

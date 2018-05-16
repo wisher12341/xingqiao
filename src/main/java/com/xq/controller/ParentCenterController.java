@@ -43,16 +43,22 @@ public class ParentCenterController {
      * 个人中心首页
      */
     @RequestMapping(value = "")
-    public ModelAndView parentCenter(HttpServletRequest request){
+    public ModelAndView parentCenter(HttpServletRequest request,@RequestParam(required = false) String newUser){
         ModelAndView mv=new ModelAndView("parentCenter/parentCenter");
-        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
-        //String openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";
+
+             String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
         mv.addObject("user",user);
         TeacherCenterCountDto teacherCenterCountDto=teacherCenterService.getCounts(user.getId(),"parent");
         mv.addObject("number",teacherCenterCountDto);
+
+        if(newUser!=null && newUser.equals("new")){
+            mv.addObject("new","new");
+        }
         return mv;
     }
 
@@ -117,9 +123,13 @@ public class ParentCenterController {
      *添加简历页面
      */
     @RequestMapping(value = "/{userId}/addDemandPage",method = RequestMethod.GET)
-    public ModelAndView toAddDemandPage(@PathVariable int userId){
+    public ModelAndView toAddDemandPage(@PathVariable int userId,HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/myDemands_addDemand");
+
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+
         mv.addObject("user",userService.getUserByUid(userId));
+
         return mv;
     }
 
@@ -392,7 +402,6 @@ public class ParentCenterController {
         //时间转换为前端显示要求的格式
         recoveryHisDto.setEndTime(recoveryHisDto.getEndTime().replace('.','-'));
         recoveryHisDto.setBeginTime(recoveryHisDto.getBeginTime().replace('.','-'));
-
         System.out.println("recoveryHis");
         mv.addObject("data",recoveryHisDto);
         mv.addObject("demandId",demandId);
@@ -478,12 +487,14 @@ public class ParentCenterController {
     /**
      *我的日程安排
      */
-    @RequestMapping(value = "/{userId}/myWork",method = RequestMethod.GET)
-    public ModelAndView myWork(@PathVariable Integer userId){
+    @RequestMapping(value = "/myWork",method = RequestMethod.GET)
+    public ModelAndView myWork(HttpServletRequest request){
         ModelAndView mv=new ModelAndView("parentCenter/myWork");
-        Work work=parentCenterService.getWorkByUid(userId);
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        User user=userService.getUserByOpenidStatus(openid,"0");
+        Work work=parentCenterService.getWorkByUid(user.getId());
         mv.addObject("work",work);
-        mv.addObject("user",teacherCenterService.getUserById(userId));
+        mv.addObject("user",teacherCenterService.getUserById(user.getId()));
         return mv;
     }
 
@@ -538,6 +549,12 @@ public class ParentCenterController {
         parentCenterService.changeInfo(parent);
         return mv;
 
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/checkAccountReg",method = RequestMethod.GET)
+    public Result check(Integer uid){
+        return parentCenterService.checkAccountReg(uid);
     }
 }
 

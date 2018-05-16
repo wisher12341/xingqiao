@@ -499,5 +499,21 @@ public class ParentCenterServiceImpl implements ParentCenterService {
     public void changeInfo(Parent parent) {
         parentCenterDao.changeInfo(parent);
     }
+
+
+    @Override
+    public Result checkAccountReg(Integer uid) {
+        User user=userDao.getUserById(uid);
+        Parent parent=parentCenterDao.getParentByUserId(uid);
+        if(user.getHeadimgurl()==null || user.getHeadimgurl().equals("") ||
+                user.getUsername()==null || user.getUsername().equals("") ||
+                parent.getRealName()==null || parent.getRealName().equals("") ||
+                parent.getPid()==null || parent.getPid().equals("") ||
+                parent.getPidFrontUrl()==null || parent.getPidFrontUrl().equals("")){
+            return new Result(false,"资料未填写完整");
+        }
+
+        return new Result(true,"提交成功，请耐心等待审核");
+    }
 }
 
