@@ -90,7 +90,7 @@
             <textarea class="textarea" placeholder="请输入<#if type=='award'>相关奖励荣誉<#elseif type=='certificate'>相关证书<#else >其他资料，如学生证等</#if>介绍，20字以内" name="detail" maxlength="20"><#if data??>${(data?split("@")[0])}</#if></textarea>
             <div id="pics">
                 <div class="ps" style="display: inline">
-                    <#if data??>
+                    <#if data?? && (data?split("@")[1])?? && (data?split("@")[1])!=''>
                         <#list (data?split("@")[1])?split("!") as pic>
                             <div class="picdiv">
                                 <img class="addimg" number="${pic_index}" src="/${pic}">

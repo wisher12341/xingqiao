@@ -112,7 +112,7 @@
                                 <p class="ll">展示：${(order.order.comment.isOpen==1)?string('公开','匿名')}</p>
                                 <p class="llend" style="color: #4e794f !important;">评论内容：</p>
                                 <p class="llend" id="comment">${(order.order.comment.detail)!}</p>
-                                <#if order.order.comment.picUrls??>
+                                <#if order.order.comment.picUrls?? && (order.order.comment.picUrls)!="">
                                 <p class="llend">
                                   <#list  order.order.comment.picUrls?split("#") as src>
                                     <img src="/${src}" width="160px" height="160px" style="margin-right: 10px;margin-bottom: 10px;">
@@ -129,6 +129,24 @@
                         </#if>
                     </div>
 
+                </div>
+                <div class="foot" align="center">
+                <#if order.order.statusP==1>
+                    <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 100% !important;">取消预约</button>
+                <#elseif order.order.statusP==2>
+                    <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 49.5% !important;">取消预约</button>
+                    <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 49.5% !important;">付款</button>
+                <#elseif order.order.statusP==3>
+                    <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
+                <#--<#elseif order.order.cid!=0 && order.order.statusP==15>-->
+                <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>-->
+                <#elseif order.order.statusP==15>
+                    <#if order.order.comment??>
+
+                    <#else >
+                    <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>-->
+                    </#if>
+                </#if>
                 </div>
             </div>
             <div class="tab-pane fade" id="teacher">
@@ -234,7 +252,7 @@
                                     <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px;font-size: 43px">
                                     ${log.content}
                                         <div>
-                                            <#if log.picUrls??>
+                                            <#if log.picUrls?? && (log.picUrls)!="">
                                                 <#list log.picUrls?split("#") as pic>
                                                     <img src="/${pic}" width="160px" height="160px" style="margin:20px 20px 0 0">
                                                 </#list>
@@ -254,25 +272,10 @@
 
     </div>
 
-    <div class="foot" align="center">
-        <#if order.order.statusP==1>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 100% !important;">取消预约</button>
-        <#elseif order.order.statusP==2>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/cancel'" style="width: 49.5% !important;">取消预约</button>
-            <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 49.5% !important;">付款</button>
-        <#elseif order.order.statusP==3>
-            <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
-        <#--<#elseif order.order.cid!=0 && order.order.statusP==15>-->
-            <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>-->
-        <#elseif order.order.statusP==15>
-            <#if order.order.comment??>
 
-            <#else >
-                <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}'" style="width: 100% !important;">评价</button>-->
-            </#if>
-        </#if>
+    <div class="foot_back" align="center">
+        <button style="width: 100% !important;" onclick=location.href="/wx/order">返回</button>
     </div>
-
 
     <div class="ts_mask">
         <div class="tishi" align="center">

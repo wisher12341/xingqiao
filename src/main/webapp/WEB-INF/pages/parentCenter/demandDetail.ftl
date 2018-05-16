@@ -160,7 +160,7 @@
             </div>
 
         <div class="buttonDiv_info">
-            <div class="info row" onclick=location.href="/wx/parentCenter/${demand.id}/recoveryHis">
+            <div class="info row" onclick=location.href="/wx/parentCenter/${user.id}/${demand.id}/recoveryHis">
                 <div class="col-xs-1">
                     <i class="fa fa-user-circle fa-4x icon_fa"></i>
                 </div>

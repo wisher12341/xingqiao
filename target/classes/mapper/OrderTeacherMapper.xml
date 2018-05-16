@@ -44,6 +44,7 @@
         </association>
         <association property="parent" javaType="com.xq.model.Parent">
             <id property="id" column="pid"/>
+            <result property="userId" column="userId"/>
             <result property="realName" column="realName"/>
             <result property="ground" column="ground"/>
         </association>
@@ -91,7 +92,7 @@
     </select>
 
     <select id="getOrderByOid" resultMap="resultOrder">
-        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,p.id pid,p.realName,p.ground,o.status_t,o.realpay,o.trace,o.pay_way,o.amount,o.is_first,o.cid,
+        SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,p.id pid,p.realName,p.userId,p.ground,o.status_t,o.realpay,o.trace,o.pay_way,o.amount,o.is_first,o.cid,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
         c.id cid,c.detail cdetail,c.time ctime,c.level clevel,c.is_open cis_open,c.pic_urls cpic_urls,ct.id ctid,ct.detail ctdetail,ct.time cttime,
         FROM orders o LEFT JOIN comment c on c.id=o.cid  LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,parent p,sysuser u,demand d,preferentials pre
@@ -104,7 +105,7 @@
 
 
     <update id="orderReject">
-        UPDATE orders SET status_t=16,status_p=16,reason=#{reason} WHERE id=#{id}
+        UPDATE orders SET status_t=16,status_p=16,reason=#{reason} WHERE id=#{oid}
     </update>
 
     <update id="orderFinish">

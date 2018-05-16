@@ -83,10 +83,10 @@
                 <p class="gender" style="border-bottom: 1px solid #eee" onclick="saveModify2('${modifyPageDto.objId}','${modifyPageDto.fieldName}','${modifyPageDto.table}','1');">男${((modifyPageDto.oldValue)?? && modifyPageDto.oldValue=="男")?string("<span class='fa fa-check'></span>","")}</p>
                 <p class="gender" onclick="saveModify2('${modifyPageDto.objId}','${modifyPageDto.fieldName}','${modifyPageDto.table}','2');">女${((modifyPageDto.oldValue)?? && modifyPageDto.oldValue=="女")?string("<span class='fa fa-check'></span>","")}</p>
             </div>
-        <#else >
+        <#else>
             <div class="buttonDiv_info" align="center">
                 <div class="info" align="center">
-                    <input name="value" type="text" class="title_input" maxlength="20" value="${modifyPageDto.oldValue}">
+                    <input name="value" type="text" class="title_input" maxlength="20" value="${modifyPageDto.oldValue!}">
                 </div>
             </div>
             <div class="foot" align="center">

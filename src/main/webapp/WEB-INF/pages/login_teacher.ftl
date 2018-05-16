@@ -10,7 +10,7 @@
     <script src="${path}/static/js/login.js" type="text/javascript" ></script>
     <style>
         body{
-            background-color: #f5f5f5;
+            /*background-color: #f5f5f5;*/
         }
         .buttonDiv_info{
             margin: 4% 0;
@@ -43,21 +43,7 @@
             top: 5px;
             color: dimgrey;
         }
-        .foot{
-            background-color: #f5f5f5;
-        }
-        .foot button{
-            /*background-color:#94e6c8 ;*/
-            background-color: #20b49a;
-            color: white !important;
-            font-size: 45px;
-            font-weight: bold;
-            padding: 20px;
-            margin: 2% auto;
-            border-radius: 15px;
-            height:7%;
-            border: none;
-        }
+
         .textInput{
             font-size: 40px;
             border: none;
@@ -79,7 +65,7 @@
             border-radius: 10%;
         }
         .foot{
-            background-color: #f5f5f5;
+            /*background-color: #f5f5f5;*/
         }
         .foot input,.foot button{
             /*background-color:#94e6c8 ;*/
@@ -93,17 +79,32 @@
             height:7%;
             border: none;
         }
+        #select{
+            margin-top: 20%;
+        }
+
+        #select .but{
+            width: 80%;
+            font-size: 45px;
+            border: none;
+            border-radius: 20px;
+            background-color: #20b49a;
+            color: white;
+            padding: 25px;
+            margin: 40px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-<div id="logo" align="center">
+<div id="logo" align="center" style="margin-top: 15%">
     <img src="/static/img/logo.jpg" width="40%">
 </div>
 <div id="select" align="center">
-    <div class="foot">
+    <#--<div class="foot">-->
         <button class="but" onclick="$('#select').hide();$('#accountBind').show()">登录</button>
         <button class="but" onclick="$('#select').hide();$('#regAccount').show()">注册</button>
-    </div>
+    <#--</div>-->
 </div>
 
 <div id="accountBind" style="display: none" align="center">
@@ -122,7 +123,7 @@
                     <i class="fa fa-lock"> </i>
                 </div>
                 <div class="col-xs-10">
-                    <input placeholder="密码" type="text" class="textInput" name="password">
+                    <input placeholder="密码" type="password" class="textInput" name="password">
                 </div>
             </div>
             <#if message??>

@@ -11,11 +11,21 @@
             /*bottom: 0;*/
             background-color: #f5f5f5;
         }
+        #main{
+            /*margin-bottom: 7%;*/
+        }
         .foot{
             position: fixed;
             width: 100%;
             bottom: 0;
             background-color: #f5f5f5;
+        }
+        .foot_back{
+            /*position: fixed;*/
+            /*width: 100%;*/
+            /*bottom: 0;*/
+            background-color: #f5f5f5;
+            margin-bottom: 20%;
         }
         .foot button,.foot_back button{
             /*background-color:#94e6c8 ;*/
@@ -27,7 +37,6 @@
             margin: 3% auto;
             border-radius: 15px;
             height:6%;
-            opacity:0.5;
             border: none;
         }
 
@@ -154,7 +163,11 @@
     </form>
 </div>
 <div class="foot" align="center">
-    <button onclick="location.href='${path}/wx/teacherCenter/${uid}/myInfo_authentication'" style="width: 100% !important;">返回</button>
+    <#if teacher??>
+        <button onclick="location.href='${path}/wx/teacherCenter/${uid}/myInfo_authentication'" style="width: 100% !important;">返回</button>
+    <#else>
+        <button onclick="location.href='${path}/wx/parentCenter/${uid}/myInfo_authentication'" style="width: 100% !important;">返回</button>
+    </#if>
 </div>
 </body>
 

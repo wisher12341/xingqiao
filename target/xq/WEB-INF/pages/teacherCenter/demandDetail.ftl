@@ -6,6 +6,24 @@
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myInfo.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myDemands.css" type="text/css" rel="stylesheet" />
+    <style>
+        .text_p {
+            font-size: 45px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            font-weight: bold;
+        }
+        .text_pp {
+            font-size: 40px;
+            display: inline;
+            margin-left: 20px;
+            color: dimgrey;
+            position: relative;
+            top: 5px;
+        }
+
+    </style>
 </head>
 <body>
 <div id="main">
@@ -35,61 +53,61 @@
         </div>
     </div>
     <div class="myInfoDiv">
-        <div style="height: 30px;background-color: #e6ece3"></div>
+        <div style="height: 30px;background-color: #f5f5f5"></div>
         <div class="info-part-item" style="padding-top: 30px">
             <p  style="color: #20b49a">基本信息</p>
             <ul class="list-group">
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"姓名"}/${(demand.name)?default("_null")}/${"name"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">姓名： </div>
-                        <div class="list-item-text">${(demand.name)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">姓名 </div>
+                        <div class="col-xs-8 text_pp">${(demand.name)!}</div>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"性别"}/${(demand.gender)?default("_null")}/${"gender"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">性别： </div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">性别 </div>
                         <#if demand.gender??>
                         <#if demand.gender==1>
-                            <div class="list-item-text">女</div>
+                            <div class="col-xs-8 text_pp">女</div>
                         <#else>
-                            <div class="list-item-text">男</div>
+                            <div class="col-xs-8 text_pp">男</div>
                         </#if>
                         </#if>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"出生日期"}/${(demand.birthday)?default("_null")}/${"birthday"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">出生日期： </div>
-                        <div class="list-item-text">${(demand.birthday)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">出生日期 </div>
+                        <div class="col-xs-8 text_pp">${(demand.birthday)!}</div>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"诊断报告"}/${(demand.report)?default("_null")}/${"report"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">诊断报告： </div>
-                        <div class="list-item-text">${(demand.report)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">诊断报告 </div>
+                        <div class="col-xs-8 text_pp">${(demand.report)!}</div>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"病史"}/${(demand.diseaseHis)?default("_null")}/${"diseaseHis"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">病史： </div>
-                        <div class="list-item-text">${(demand.diseaseHis)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">病史 </div>
+                        <div class="col-xs-8 text_pp">${(demand.diseaseHis)!}</div>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${demand.id}/${"过敏史"}/${(demand.allergyHis)?default("_null")}/${"allergyHis"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">过敏史： </div>
-                        <div class="list-item-text">${(demand.allergyHis)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">过敏史 </div>
+                        <div class="col-xs-8 text_pp">${(demand.allergyHis)!}</div>
                     </div>
                 </li>
                 <li class="list-group-item">
-                    <div class="list-item-div" onclick=location.href="${path}/wx/parentCenter/${"备注"}/${(demand.remark)?default("_null")}/${"remark"}/${"demand"}/modifyPage">
-                        <div class="list-item-title">备注： </div>
-                        <div class="list-item-text">${(demand.remark)!}</div>
+                    <div class="row list-item-div">
+                        <div class="col-xs-3 text_p">备注 </div>
+                        <div class="col-xs-8 text_pp">${(demand.remark)!}</div>
                     </div>
                 </li>
             </ul>
         </div>
-        <div style="height: 30px;background-color: #e6ece3"></div>
+        <div style="height: 30px;background-color: #f5f5f5"></div>
         <div class="info-part-item" style="padding-top: 30px">
             <p  style="color: #20b49a">康复史</p>
             <#if recoveryHisList??>
@@ -111,7 +129,7 @@
                     </td>
                     <td>
                         <div>
-                            <span>${recoveryHis.time}</span>
+                            <span>${recoveryHis.beginTime}-${recoveryHis.endTime}</span>
                         </div>
                     </td>
                     <td>
@@ -137,7 +155,7 @@
 
         </div>
 
-        <div style="height: 30px;background-color: #e6ece3"></div>
+        <div style="height: 30px;background-color: #f5f5f5"></div>
         <div class="info-part-item" style="padding-top: 30px">
             <p  style="color: #20b49a">康复日志</p>
             <div class="track-list" style="width: 100%; margin-bottom: 20px;background-color: white">

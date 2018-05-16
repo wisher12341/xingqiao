@@ -161,10 +161,13 @@
                         </div>
                         <div class="row" style="height: 17% ">
                             <div class="col-xs-12">
-                                <p class="text_detail">
-                                    <#list (a?split("@")[1])?split("!") as pic>
-                                        <img src="/${pic}" class="addimg">
-                                    </#list>
+                                <#--<p class="text_detail">-->
+                                    <#if (a?split("@")[1])??&& (a?split("@")[1])!=''>
+                                        <#list (a?split("@")[1])?split("!") as pic>
+                                            <img src="/${pic}" class="addimg">
+                                        </#list>
+                                    </#if>
+
                             </div>
                         </div>
                     </div>

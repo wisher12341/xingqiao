@@ -1032,15 +1032,18 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     @Transactional
     public void myInfoEditPost(String ftype, String ctype, String value, Integer isChangeStatus, HttpServletRequest request, String status) {
         String openid="";
-//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+
         User user=null;
         if(status.equals("parent")){
             openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+            //openid=CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//            openid="oxsEYwkz_Yz4ND5Y8nF2ZYN0JZ9E";  //测试用
             user=userDao.getUserByOpenidStatus(openid,"0");
         }else{
             openid=CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
             user=userDao.getUserByOpenidStatus(openid,"1");
         }
+
         //如果是通过审核 或者不通过审核   修改后用户状态都改为 3 审核中  其他不变
         if(isChangeStatus==1){
             userDao.changeUserStatus(user.getId(),3);
@@ -1133,7 +1136,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
                 teacher.getPeriod()==null || teacher.getPeriod().equals("")){
             return new Result(false,"资料未填写完整");
         }
-        if(teacher.getSchedule()==null || teacher.getSchedule().equals("")){
+        if(teacher.getSchedule()==null || teacher.getSchedule().equals("0#0#0#0#0#0#0")){//初始值
             return new Result(false,"未添加我的课表");
         }
 

@@ -44,6 +44,7 @@
         </association>
         <association property="teacher" javaType="com.xq.model.Teacher">
             <id property="id" column="tid"/>
+            <result property="userId" column="user_id"/>
             <result property="name" column="tName"/>
             <result property="star" column="tStar"/>
             <result property="detailAddress" column="detailAddress"/>
@@ -105,7 +106,7 @@
         SELECT o.id,o.recover_ob,o.way,o.server_time,o.remark,o.s_time,o.totalpay,o.realpay,o.amount,p.id pid,p.realName,o.status_t,o.pay_way,o.is_first,o.status_p,
         d.id did,d.name,d.gender,d.disease,d.birthday,d.report,d.disease_his,d.recovery_his,d.allergy_his,d.remark dremark,
          c.id cid,c.detail cdetail,c.time ctime,c.level clevel,c.is_open cis_open,c.pic_urls cpic_urls,ct.id ctid,ct.detail ctdetail,ct.time cttime,
-        t.id tid,t.name tName,t.star tStar,t.detailAddress,t.unit,u.headimgurl
+        t.id tid,t.name tName,t.star tStar,t.detailAddress,t.unit,u.headimgurl,t.user_id
         FROM orders o LEFT JOIN comment c on c.id=o.cid  LEFT JOIN comment ct on ct.pid=c.id and ct.type=2,parent p,sysuser u,demand d,preferentials pre,teacher t
         WHERE o.id=#{id} AND p.id=o.parent_id AND d.id=o.demand_id AND pre.id=o.preferential AND t.id=o.teacher_id AND t.user_id=u.id
     </select>
@@ -159,7 +160,7 @@
     </update>
 
     <select id="checkOrderFinish" resultType="com.xq.model.CheckOrderFinish">
-        SELECT o.amount,count(r.id) FROM orders o,recovery_log r WHERE o.id=#{oid} AND r.order_id=#{oid} AND r.confirm_status=1
+        SELECT o.amount,count(r.id) confirm FROM orders o,recovery_log r WHERE o.id=#{oid} AND r.order_id=#{oid}
     </select>
 
     <select id="getParentNoCommentOrderByUid" resultMap="resultAllOrder">

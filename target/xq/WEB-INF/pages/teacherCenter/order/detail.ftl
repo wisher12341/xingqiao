@@ -112,7 +112,7 @@
                             <p class="ll">展示：${(order.order.comment.isOpen==1)?string('公开','匿名')}</p>
                             <p class="llend" style="color: #4e794f !important;">评论内容：</p>
                             <p class="llend" id="comment">${(order.order.comment.detail)!}</p>
-                            <#if order.order.comment.picUrls??>
+                            <#if order.order.comment.picUrls?? && (order.order.comment.picUrls)!="">
                                 <p class="llend">
                                     <#list  order.order.comment.picUrls?split("#") as src>
                                         <img src="/${src}" width="160px" height="160px" style="margin-right: 10px;margin-bottom: 10px;">
@@ -129,6 +129,19 @@
                     </#if>
                     </div>
 
+                </div>
+                <div class="foot" align="center">
+                <#if order.order.statusT==1>
+                    <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/affirm'" style="width: 49.5% !important;">接受</button>
+                    <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 49.5% !important;">拒绝</button>
+                <#elseif order.order.statusT==3>
+                    <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 100% !important;">订单终止</button>
+                <#elseif order.order.comment?? && order.order.statusT==15>
+                    <#if order.order.comment.teacherComment??>
+                    <#else>
+                        <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/${order.order.comment.id}/comment'" style="width: 100% !important;">回复评价</button>
+                    </#if>
+                </#if>
                 </div>
             </div>
             <div class="tab-pane fade" id="parent">
@@ -235,7 +248,7 @@
                                         <div class="txt" style="margin-left: -1px;border-left: solid 1px #e8e8e8; padding-left: 26px; padding-bottom: 20px; margin-bottom: 0px">
                                         ${log.content}
                                             <div>
-                                                <#if log.picUrls??>
+                                                <#if log.picUrls?? && (log.picUrls)!="">
                                                     <#list log.picUrls?split("#") as pic>
                                                         <img src="/${pic}" width="160px" height="160px" style="margin:20px 20px 0 0">
                                                     </#list>
@@ -256,20 +269,10 @@
 
     </div>
 
-    <div class="foot" align="center">
-        <#if order.order.statusT==1>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/affirm'" style="width: 49.5% !important;">接受</button>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 49.5% !important;">拒绝</button>
-        <#elseif order.order.statusT==3>
-            <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 100% !important;">订单终止</button>
-        <#elseif order.order.comment?? && order.order.statusT==15>
-            <#if order.order.comment.teacherComment??>
-            <#else>
-                <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/${order.order.comment.id}/comment'" style="width: 100% !important;">回复评价</button>
-            </#if>
-        </#if>
-    </div>
 
+    <div class="foot_back" align="center">
+        <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${order.order.teacher.userId}/order">返回</button>
+    </div>
     <div class="ts_mask">
         <div class="tishi" align="center">
         </div>

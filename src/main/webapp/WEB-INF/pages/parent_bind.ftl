@@ -107,7 +107,7 @@
                     <i class="fa fa-lock"> </i>
                 </div>
                 <div class="col-xs-10">
-                    <input placeholder="创建新密码（6-20位数字或英文字符）" type="text" class="textInput" name="password">
+                    <input placeholder="创建新密码（6-20位数字或英文字符）" type="password" class="textInput" name="password">
                 </div>
             </div>
             <div class="info row">
@@ -115,7 +115,7 @@
                     <i class="fa fa-repeat"> </i>
                 </div>
                 <div class="col-xs-10">
-                    <input placeholder="再次输入密码" type="text" class="textInput pw">
+                    <input placeholder="再次输入密码" type="password" class="textInput pw">
                 </div>
             </div>
             <input type="hidden" name="openid" value="${openid!}">

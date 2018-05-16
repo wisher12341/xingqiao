@@ -268,7 +268,7 @@
                         <#--订单终止、拒绝-->
                         <#else>
                         <#--<div class="col-xs-12" style="clear: left">-->
-                                <input type="button" onclick="submit('reply')" style="height:100%;width:100%;padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="提交">
+                                <input type="button" onclick="submit('reject')" style="height:100%;width:100%;padding: 5px 8px; font-size: 18px;background-color: #20b49a;color: white;border-radius: 5px;border: none" value="提交">
                         <#--</div>-->
                         </#if>
                     </div>
@@ -547,6 +547,7 @@ function selectOpen() {
             $("#formComment").submit();
         }else{
             $('textarea[name="reason"]').val($("#textDiv").html());
+            $("#formComment").submit();
         }
 
 

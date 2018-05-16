@@ -450,7 +450,7 @@
                     contentType : false,
                     success: function (data) {
                         if(data.success==true) {
-							window.location.href = "/wx/"+userType+"Center/" + userId + "/myInfo";
+							window.location.href = "/wx/"+userType+"Center/" + userId + "/myInfo_base";
                         }
                     },error:function () {
                         alert("出错了！");

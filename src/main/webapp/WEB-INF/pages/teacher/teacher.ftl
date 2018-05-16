@@ -302,12 +302,12 @@
         </div>
     </div>
     <div class="my-panel">
-        <div class="inline-wrapper pointable" onclick=location.href="/wx/teacher/${teacher.id}/info/recoveryHis">
+        <div class="inline-wrapper pointable" onclick=<#if (teacher.recoveryHis)??>location.href="/wx/teacher/${teacher.id}/info/recoveryHis"<#else>alert("该治疗师尚未填写")</#if>>
             <div class="my-panel-title">康复治疗经历</div>
             <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
         </div>
         <div class="gray-line"></div>
-        <div class="inline-wrapper pointable" onclick=location.href="/wx/teacher/${teacher.id}/info/successCase">
+        <div class="inline-wrapper pointable" onclick=<#if (teacher.recoveryHis)??>location.href="/wx/teacher/${teacher.id}/info/successCase"<#else>alert("该治疗师尚未填写")</#if>>
             <div class="my-panel-title">成功案例</div>
             <div class="glyphicon glyphicon-chevron-right" style="color: #999"></div>
         </div>
