@@ -515,5 +515,27 @@ public class ParentCenterServiceImpl implements ParentCenterService {
 
         return new Result(true,"提交成功，请耐心等待审核");
     }
+
+
+    @Override
+    public List<Message> getInformMessageByPage(HttpServletRequest request, Integer page) {
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+//        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
+        User user=userDao.getUserByOpenidStatus(openid,"0");
+        List<Message> messageList=messageDao.getReadInformByUid(user.getId(),(page-1)*10);
+
+        Date d = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+        String dateNowStr = sdf.format(d);
+        for(Message message:messageList){
+            if(message.getTime().split(" ")[0].equals(dateNowStr)){
+                message.setTime(message.getTime().split(" ")[1]);
+            }else{
+                message.setTime(message.getTime().split(" ")[0]);
+            }
+        }
+        return messageList;
+    }
 }
 

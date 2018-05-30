@@ -74,13 +74,7 @@ public class CommentServiceImpl implements CommentService {
         Message message=new Message();
         message.setUserId(order.getUidT());
         message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），家长（"+order.getPname()+"）已评论。"+
-                "</p>");
+        message.setMessage("您的订单（"+oid+"），家长（"+order.getPname()+"）已评论。");
 
         messageDao.addMessage(message);
     }
@@ -154,13 +148,7 @@ public class CommentServiceImpl implements CommentService {
         Message message=new Message();
         message.setUserId(order.getUidP());
         message.setTime(dateNowStr);
-        message.setMessage("<p>\n" +
-                "<span style=\"color:red;\">系统消息：</span>\n" +
-                "</p>\n" +
-                "<p>\n" +
-                "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                "    您的订单（"+oid+"），治疗师（"+order.getPname()+"）已回复。"+
-                "</p>");
+        message.setMessage("您的订单（"+oid+"），治疗师（"+order.getPname()+"）已回复。");
 
         messageDao.addMessage(message);
     }

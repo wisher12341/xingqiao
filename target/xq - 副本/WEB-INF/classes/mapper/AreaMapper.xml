@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.AreaDao">
+
+
+    <select id="getArea2" resultType="com.xq.model.Area2">
+      SELECT id,name FROM area_2
+    </select>
+
+    <select id="getArea3ByArea2Name" resultType="com.xq.model.Area3">
+        SELECT a3.id,a3.name FROM area_3 a3,area_2 a2
+        WHERE a3.a2_id=a2.id AND a2.name=#{name}
+    </select>
+
+
+</mapper>

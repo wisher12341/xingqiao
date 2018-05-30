@@ -556,5 +556,26 @@ public class ParentCenterController {
     public Result check(Integer uid){
         return parentCenterService.checkAccountReg(uid);
     }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/getInfromById/{mid}",method = RequestMethod.GET)
+    public Result getInfromById(@PathVariable Integer mid){
+        Message message=messageService.getInfromById(mid);
+        return new Result(true,message);
+    }
+
+
+    /**
+     * 获得第几页的消息
+     * @param page
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/getInformMessageByPage/{page}",method = RequestMethod.GET)
+    public List<Message> getInformMessageByPage(@PathVariable Integer page, HttpServletRequest request){
+        return parentCenterService.getInformMessageByPage(request,page);
+    }
 }
 

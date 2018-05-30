@@ -90,7 +90,11 @@
         <#else >
             <div class="buttonDiv_info" align="center">
                 <div class="info" align="center">
-                    <input name="value" type="text" class="title_input" maxlength="20" value="${(info.value=='none')?string('',info.value)}">
+                    <#if ctype=="period">
+                        <input name="value" type="text" class="title_input" maxlength="20" placeholder="自拟每节课时长（单位：分钟）" value="${(info.value=='none')?string('',info.value)}">
+                    <#else>
+                        <input name="value" type="text" class="title_input" maxlength="20" value="${(info.value=='none')?string('',info.value)}">
+                    </#if>
                 </div>
             </div>
             <div class="foot" align="center">

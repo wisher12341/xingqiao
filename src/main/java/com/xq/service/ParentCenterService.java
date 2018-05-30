@@ -66,4 +66,6 @@ public interface ParentCenterService {
     void changeInfo(Parent parent);
 
     Result checkAccountReg(Integer uid);
+
+    List<Message> getInformMessageByPage(HttpServletRequest request, Integer page);
 }

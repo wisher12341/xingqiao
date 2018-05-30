@@ -46,13 +46,55 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="wait">
-                <@orderlist param1=orders.orderList_wait />
+                <#if (orders.orderList_wait)?size==0>
+                    <div class="row" style="margin-top: 30%!important;width: 100%">
+                        <div class="col-xs-2">
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="/static/img/kong.png" width="150">
+                        </div>
+                        <div class="col-xs-6">
+                            <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                            <p style="font-size: 38px;color: grey;font-weight: bold">您还没有待处理的订单</p>
+                        </div>
+                    </div>
+                <#else >
+                    <@orderlist param1=orders.orderList_wait />
+                </#if>
             </div>
             <div class="tab-pane fade" id="doing">
-                <@orderlist param1=orders.orderList_doing />
+                <#if (orders.orderList_doing)?size==0>
+                    <div class="row" style="margin-top: 30%!important;width: 100%">
+                        <div class="col-xs-2">
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="/static/img/kong.png" width="150">
+                        </div>
+                        <div class="col-xs-6">
+                            <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                            <p style="font-size: 38px;color: grey;font-weight: bold">您还没有进行中的订单</p>
+                        </div>
+                    </div>
+                <#else >
+                    <@orderlist param1=orders.orderList_doing />
+                </#if>
             </div>
             <div class="tab-pane fade" id="history">
-                <@orderlist param1=orders.orderList_history />
+                <#if (orders.orderList_history)?size==0>
+                    <div class="row" style="margin-top: 30%!important;width: 100%">
+                        <div class="col-xs-2">
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="/static/img/kong.png" width="150">
+                        </div>
+                        <div class="col-xs-6">
+                            <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                            <p style="font-size: 38px;color: grey;font-weight: bold">您还没有历史订单</p>
+                        </div>
+                    </div>
+                <#else >
+                    <@orderlist param1=orders.orderList_history />
+                </#if>
             </div>
         </div>
     </div>

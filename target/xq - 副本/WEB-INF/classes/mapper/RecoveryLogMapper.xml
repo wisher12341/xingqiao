@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.RecoveryLogDao">
+
+    <select id="getLogByOrderId" resultType="com.xq.model.RecoveryLog">
+        SELECT id,order_id,time,confirm_time,confirm_status,content,remind_status,pic_urls FROM recovery_log WHERE order_id=#{id}
+        order by id DESC
+    </select>
+
+    <select id="getConfirmCountByOid" resultType="java.lang.Integer">
+        SELECT count(1) FROM recovery_log WHERE order_id=#{oid} AND confirm_status=1
+    </select>
+
+    <select id="getLogCountByOid" resultType="java.lang.Integer">
+        SELECT count(1) FROM recovery_log WHERE order_id=#{id}
+    </select>
+
+    <select id="add" parameterType="com.xq.model.RecoveryLog">
+        INSERT INTO recovery_log(order_id,time,content,pic_urls,index_class) VALUES(#{orderId},#{time},#{content},#{picUrls},#{indexClass})
+    </select>
+
+    <select id="getLogsByDto" resultType="com.xq.model.RecoveryLog" parameterType="com.xq.dto.RecoveryLogDto">
+        SELECT r.id,r.order_id,r.time,r.confirm_time,r.confirm_status,r.content,r.remind_status,t.name teacherName,o.recover_ob,r.pic_urls
+        FROM recovery_log r,orders o,teacher t
+        WHERE  o.demand_id=#{demand.id} AND o.id=r.order_id AND o.teacher_id=t.id AND o.recover_ob IN
+        <foreach collection="ob" item="item" index="index" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        <if test="teacher!=null and teacher.id!=null and teacher.id!=0">
+            AND o.teacher_id=#{teacher.id}
+        </if>
+        <if test="startTime!=null and startTime!='' and endTime!=null and endTime!=''">
+            AND r.time &gt;=#{startTime} AND r.time &lt;=#{endTime}
+        </if>
+        <if test="isConfirm!=null and isConfirm!=2">
+            AND r.confirm_status=#{isConfirm}
+        </if>
+        order by r.id DESC
+    </select>
+
+    <update id="allConfirmByOrderId">
+        UPDATE recovery_log SET confirm_status=1,confirm_time=#{time} WHERE order_id=#{oid}
+    </update>
+
+    <update id="confirmById">
+        UPDATE recovery_log SET confirm_status=1,confirm_time=#{time} WHERE id=#{id}
+    </update>
+
+    <update id="remind">
+        UPDATE recovery_log SET remind_status=1 WHERE id=#{lid}
+    </update>
+
+    <select id="getNoConfirmLogByOpenid" resultType="com.xq.model.RecoveryLog">
+         SELECT r.id,r.time,r.remind_status,t.name teacherName,d.name demandName,r.order_id,o.way,o.recover_ob,o.server_time,r.index_class FROM teacher t,recovery_log r,demand d,sysuser u,orders o,parent p
+        WHERE u.openid=#{openid} AND p.userId=u.id AND p.id=o.parent_id AND o.teacher_id=t.id AND o.demand_id=d.id AND r.order_id=o.id AND r.confirm_status=0
+  </select>
+
+    <select id="getLogByRid" resultType="com.xq.model.RecoveryLog">
+        SELECT r.id,r.time,r.content,r.pic_urls,t.name teacherName,d.name demandName,r.order_id FROM teacher t,recovery_log r,demand d,orders o,parent p
+        WHERE r.id=#{rid} AND p.id=o.parent_id AND o.teacher_id=t.id AND o.demand_id=d.id AND r.order_id=o.id
+    </select>
+</mapper>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xq.dao.TeacherDao">
+
+    <resultMap id="resultTeacher" type="com.xq.model.Teacher">
+        <id property="id" column="id"/>
+        <result property="name" column="tname"/>
+        <result property="way" column="way"/>
+        <result property="domain" column="domain"/>
+        <result property="question" column="question"/>
+        <result property="object" column="object"/>
+        <result property="experienceAge" column="experienceAge"/>
+        <result property="schedule" column="schedule"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid"/>
+            <result property="phone" column="phone"/>
+            <result property="email" column="email"/>
+            <result property="gender" column="gender"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+        <collection property="demandList" ofType="com.xq.model.Demand">
+            <id property="id" column="did"/>
+            <result property="name" column="name"/>
+            <result property="disease" column="disease"/>
+        </collection>
+    </resultMap>
+
+    <select id="getTeachersByUserId" resultMap="resultTeacher">
+        SELECT t.id,t.name tname,t.way,t.schedule,uu.id uid,uu.phone phone,uu.email email,uu.headimgurl
+        FROM teacher t LEFT JOIN sysuser uu on uu.id=t.user_id,sysuser u,orders o,parent p
+        WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id  AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
+    </select>
+
+    <select id="getTeacherDetail" resultMap="resultTeacher">
+        SELECT t.id,t.name tname,t.way,t.domain,t.question,t.object,t.experience_age experienceAge,t.schedule,u.id uid,u.phone phone,u.email email,u.gender gender,u.headimgurl headimgurl
+        FROM teacher t,sysuser u
+        WHERE t.id=#{teacherId} AND u.id=t.user_id
+    </select>
+
+    <select id="getMyTeachersByOpenid" resultType="com.xq.model.Teacher">
+        SELECT distinct t.id,t.name,uu.headimgurl
+        FROM teacher t,sysuser u,orders o,parent p,sysuser uu
+        WHERE u.openid=#{openid} AND o.teacher_id=t.id AND p.userId=u.id AND o.parent_id=p.id AND t.user_id=uu.id AND (o.status_t!=1 and o.status_t!=2 and o.status_t!=11 and o.status_t!=12 and o.status_t!=16)
+    </select>
+
+
+    <select id="getTeachers" resultType="com.xq.model.Teacher">
+        SELECT t.id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.price_min,t.price_max,t.price_mid,t.level,t.t_ground,t.s_ground,t.domain,
+        t.question,t.object,t.project,t.experience_age,t.way,u.gender,u.headimgurl
+        FROM teacher t,sysuser u WHERE t.user_id=u.id and u.user_status=2
+        <if test="teacher.object != null and teacher.object != '' and teacher.object != '不限'">
+            and (t.object like concat('%',#{teacher.object},'%') OR t.object='不限')
+        </if>
+        <if test="teacher.domain != null and teacher.domain != '' and teacher.domain != '不限' ">
+            and (t.domain like concat('%',#{teacher.domain},'%') OR t.domain='不限')
+        </if>
+        <if test="teacher.way != null and teacher.way != '' and teacher.way != '不限'">
+            and (t.way like concat('%',#{teacher.way},'%') OR t.way='不限')
+        </if>
+        <if test="teacher.question != null and teacher.question != '' and teacher.question != '不限'">
+            and (t.question like concat('%',#{teacher.question},'%') OR t.question='不限')
+        </if>
+        <if test="teacher.gender != null and teacher.gender != '不限'">
+            and u.gender=#{teacher.gender}
+        </if>
+        <if test="flag==1">
+            and t.price_t &gt;=#{minP} and  t.price_t &lt;=#{maxP}
+        </if>
+        <if test="flag==2">
+            and t.price_s &gt;=#{minP} and  t.price_s &lt;=#{maxP}
+        </if>
+        <if test="flag==3">
+            and t.price_o &gt;=#{minP} and  t.price_o &lt;=#{maxP}
+        </if>
+        <if test="minP != 0 and maxP!=0 and flag==0">
+            and ((t.price_min&gt;=#{minP} and t.price_min&lt;=#{maxP}) OR (t.price_max&gt;=#{minP} and t.price_max&lt;=#{maxP}) OR (t.price_mid&gt;=#{minP} and t.price_mid&lt;=#{maxP}))
+        </if>
+        <if test="minY != 0">
+            and t.experience_age &gt;= #{minY}
+        </if>
+        <if test="maxY != 0">
+            and t.experience_age &lt;= #{maxY}
+        </if>
+
+    </select>
+
+    <select id="getTeacher" resultType="com.xq.model.Teacher">
+        SELECT t.id,t.user_id,t.name,t.pid,t.address,t.unit,t.abstractTeacher,t.price_t,t.price_s,t.price_o,t.level,t.t_ground,t.s_ground,t.domain,
+        t.question,t.object,t.project,t.experience_age,t.way,u.gender,t.school,t.recovery_his,t.success_case,t.schedule,u.phone,u.email,u.headimgurl,t.period
+        FROM teacher t,sysuser u WHERE t.user_id=u.id AND t.id=#{id}
+    </select>
+
+    <select id="getTeacherByUid" resultType="com.xq.model.Teacher">
+        SELECT id,name,pid,address,unit,abstractTeacher,price_t,price_s,price_o,level,t_ground,s_ground,domain,
+        question,object,project,experience_age,way,pid_url_front,pid_url_back,school,award,certificate,recovery_his,success_case,detailAddress,people_pid_url
+        FROM teacher WHERE user_id=#{id}
+    </select>
+
+    <update id="subSave">
+        UPDATE teacher
+        <if test="type=='school'">
+            SET school=#{content}
+        </if>
+        <if test="type=='award'">
+            SET award=#{content}
+        </if>
+        <if test="type=='certificate'">
+            SET certificate=#{content}
+        </if>
+        <if test="type=='recovery_his'">
+            SET recovery_his=#{content}
+        </if>
+        <if test="type=='success_case'">
+            SET success_case=#{content}
+        </if>
+        WHERE id=#{id}
+    </update>
+
+    <update id="save">
+        UPDATE teacher SET price_max=#{priceMax},price_mid=#{priceMid},price_min=#{priceMin}
+        <if test="name!=null and name!=''">
+            ,name=#{name}
+        </if>
+        <if test="pid!=null and pid!=''">
+            ,pid=#{pid}
+        </if>
+        <if test="object!=null and object!=''">
+            ,object=#{object}
+        </if>
+        <if test="experienceAge!=null">
+            ,experience_age=#{experienceAge}
+        </if>
+        <if test="domain!=null and domain!=''">
+            ,domain=#{domain}
+        </if>
+        <if test="way!=null and way!=''">
+            ,way=#{way}
+        </if>
+        <if test="priceT!=null and priceT!=0">
+            ,price_t=#{priceT}
+        </if>
+        <if test="priceS!=null and priceS!=0">
+            ,price_s=#{priceS}
+        </if>
+        <if test="priceO!=null and priceO!=0">
+            ,price_o=#{priceO}
+        </if>
+        <if test="sGround!=null and sGround!=''">
+            ,s_ground=#{sGround}
+        </if>
+        <if test="tGround!=null and tGround!=''">
+            ,t_ground=#{tGround}
+        </if>
+        <if test="detailAddress!=null and detailAddress!=''">
+            ,detailAddress=#{detailAddress}
+        </if>
+        <if test="tGround!=null and tGround!=''">
+            ,t_ground=#{tGround}
+        </if>
+        WHERE id=#{id}
+    </update>
+
+
+    <select id="getTeachersByPid" resultMap="resultTeacher">
+        SELECT t.id,t.name tname,t.way,u.id uid,u.phone,d.id did,d.name,d.disease,t.schedule
+        FROM teacher t,sysuser u,demand d,orders o,parent p
+        WHERE u.id=#{id} AND o.teacher_id=t.id AND p.userId=u.id AND o.demand_id=d.id AND o.parent_id=p.id AND (o.status_t=3 or o.status_t=15)
+    </select>
+
+    <select id="getScheduleByUid" resultType="java.lang.String">
+        SELECT schedule FROM teacher WHERE user_id=#{id}
+    </select>
+    <select id="getScheduleByTid" resultType="java.lang.String">
+        SELECT schedule FROM teacher WHERE id=#{id}
+    </select>
+
+    <update id="editSchedule">
+        UPDATE teacher set schedule=#{schedule} WHERE user_id=#{id}
+    </update>
+
+
+</mapper>

@@ -65,7 +65,11 @@ public class OrderController {
     @RequestMapping(value = "/{oid}/cancel",method = RequestMethod.GET)
     public ModelAndView cancel(@PathVariable String oid){
         orderService.orderCancel(oid);
-        ModelAndView mv=new ModelAndView("redirect:/wx/order");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/order");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","已取消预约");
+        mv.addObject("url","/wx/order");
         return mv;
     }
 
@@ -90,7 +94,11 @@ public class OrderController {
     @RequestMapping(value = "/{oid}/stop",method = RequestMethod.POST)
     public ModelAndView stop(@PathVariable String oid, String reason){
         orderService.orderStop(oid,reason);
-        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已终止，待治疗师同意");
+        mv.addObject("url","/wx/order/"+oid+"/detail");
         return mv;
     }
 
@@ -102,7 +110,11 @@ public class OrderController {
     @RequestMapping(value = "/{oid}/agree",method = RequestMethod.GET)
     public ModelAndView stopAgree(@PathVariable String oid){
         orderService.agree(oid);
-        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已终止，正在审核中");
+        mv.addObject("url","/wx/order/"+oid+"/detail");
         return mv;
     }
 

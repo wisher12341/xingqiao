@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xq.dao.OrganizationDao">
+    <resultMap id="Organizations" type="com.xq.model.Organization">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="NumPeople" column="NumPeople"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="district" column="district"/>
+        <result property="abstractOrg" column="abstract"/>
+        <result property="introduce" column="introduce"/>
+    </resultMap>
+
+    <resultMap id="Organization" type="com.xq.model.Organization">
+        <result property="id" column="org_id"/>
+        <result property="abstractOrg" column="abstract"/>
+        <result property="course" column="course"/>
+        <result property="service" column="service"/>
+        <result property="hardware" column="hardware"/>
+        <result property="team" column="team"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="name" column="name" />
+        <collection property="organCommentList" ofType="com.xq.model.OrganComment">
+            <id property="id" column="id" />
+            <result property="time" column="time"/>
+            <result property="detail" column="detail"/>
+            <result property="picurls" column="pic_urls" />
+            <result property="isOpen" column="is_open" />
+            <result property="type" column="type"/>
+            <result property="good" column="good"/>
+            <result property="report" column="report"/>
+            <association property="user" javaType="com.xq.model.User">
+                <id property="id" column="uid" />
+                <result property="username" column="username"/>
+                <result property="headimgurl" column="headimgurl"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <select id="getOrganizations" resultMap="Organizations">
+        SELECT id,name,NumPeople,province,city,district,abstract,introduce FROM organization
+    </select>
+
+    <select id="getOrganization" resultMap="Organization">
+SELECT ora.name,orgintro.org_id,orgintro.abstract,orgintro.course,orgintro.service,orgintro.hardware,orgintro.team,orgintro.phone,orgintro.address,
+                        c.id,c.time,c.detail,c.pic_urls,c.is_open,c.type,c.good,c.report,
+        u.id uid,u.username,u.headimgurl
+                FROM orgintro RIGHT JOIN organization ora on orgintro.org_id=ora.id LEFT JOIN
+        organ_comment c on c.oid=ora.id AND c.type=1 LEFT JOIN sysuser u ON u.id=c.uid WHERE ora.id=1 ORDER BY c.time desc
+    </select>
+
+    <insert id="addComment" parameterType="com.xq.model.OrganComment">
+        INSERT INTO organ_comment(time,detail,is_open,type,pid,oid,uid,pic_urls) VALUES (#{time},#{detail},#{isOpen},#{type},#{pid},#{oid},#{uid},#{picurls})
+    </insert>
+</mapper>

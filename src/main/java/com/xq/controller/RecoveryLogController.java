@@ -72,8 +72,12 @@ public class RecoveryLogController {
      */
     @RequestMapping(value = "/confirm",method = RequestMethod.POST)
     public ModelAndView confirm(@RequestParam Integer rid,@RequestParam String oid){
-        ModelAndView mv=new ModelAndView("redirect:/wx/log/index");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/log/index");
         recoveryLogService.confirmById(rid,oid);
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","康复日志");
+        mv.addObject("content","康复日志已确认");
+        mv.addObject("url","/wx/log/index");
         return mv;
     }
 

@@ -361,9 +361,9 @@
 
     function showArea2() {
         $('#area2').show();
-//        $('#area2').animate({top:"0"},function () {
-//            $('#main').hide();
-//        });
+        $('#area2').animate({top:"0"},function () {
+            $('#main').hide();
+        });
     }
 
     function changeArea2(obj) {

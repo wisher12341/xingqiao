@@ -90,13 +90,7 @@ public class GoodReportServiceImpl implements GoodReportService {
                 //通知后台
                 Message message=new Message();
                 message.setTime(dateNowStr);
-                message.setMessage("<p>\n" +
-                        "<span style=\"color:red;\">系统消息：</span>\n" +
-                        "</p>\n" +
-                        "<p>\n" +
-                        "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                        "    机构评论（"+cid+"）被举报。举报理由："+reason+
-                        "</p>");
+                message.setMessage("机构评论（"+cid+"）被举报。举报理由："+reason);
                 messageDao.addMessageAdmin(message);
 
 
@@ -131,13 +125,7 @@ public class GoodReportServiceImpl implements GoodReportService {
                 //通知后台
                 Message message=new Message();
                 message.setTime(dateNowStr);
-                message.setMessage("<p>\n" +
-                        "<span style=\"color:red;\">系统消息：</span>\n" +
-                        "</p>\n" +
-                        "<p>\n" +
-                        "<span style=\"background-color: rgb(255, 255, 255);\"></span>\n" +
-                        "    治疗师评论（"+cid+"）被举报。举报理由："+reason+
-                        "</p>");
+                message.setMessage("治疗师评论（"+cid+"）被举报。举报理由："+reason);
                 messageDao.addMessageAdmin(message);
             }
 //            更新 点赞、举报数

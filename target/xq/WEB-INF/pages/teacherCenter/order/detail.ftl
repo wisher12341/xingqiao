@@ -64,7 +64,7 @@
                                     </script>
                                 </div>
                             </div>
-                            <div class="llend"><p  class="llend">下次服务时间：</p><span class="next_time llend">${(order.nextTime)!}</span></div>
+                            <div class="llend"><p  class="llend">下次服务时间：</p><span class="next_time llend">${(order.nextTime)!?replace("%","-")}</span></div>
                         </div>
                     </div>
                 </#if>
@@ -80,7 +80,7 @@
                             <p class="ptitle">服务详情</p>
                             <p class="ll">服务时间：<br>
                                 <#list order.order.serverTime?split('#') as time>
-                                    <br><span style="margin-left: 20px;line-height: 40px">${time}</span>
+                                    <br><span style="margin-left: 20px;line-height: 40px">${time?replace("%","-")}</span>
                                 </#list>
                             </p>
                             <p class="ll">康复项目：${(order.order.recoverOb)!}</p>
@@ -214,10 +214,10 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="log" style="font-size: 40px;min-height: 90%;background-color: white;margin-top: 30px">
-                <div style="background-color: white;width: 100%; height: 80px;">
-                    <div style="float: right; "><input onclick="location.href='${path}/wx/teacherCenter/${order.order.id}/updateLog'" class="btn btn-default"  style="float: right;margin-right: 20px;width: 40%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;" value="更新"></div>
-                </div>
-                <div class="track-list" style="width: 100%; border: solid 1px #e8e8e8; margin-bottom: 20px">
+                <#--<div style="background-color: white;width: 100%; height: 80px;">-->
+                    <#--<div style="float: right; "><input onclick="location.href='${path}/wx/teacherCenter/${order.order.id}/updateLog'" class="btn btn-default"  style="float: right;margin-right: 20px;width: 40%;margin-top: 6px;background-color: #b6a073;color: #fff;font-size: 40px;font-weight: 400;" value="更新"></div>-->
+                <#--</div>-->
+                <div class="track-list" style="width: 100%;  margin-bottom: 20px">
                     <ul style="margin-top: 10px" id="logUl">
                         <#if (order.recoveryLogList)??>
                             <#list order.recoveryLogList as log>

@@ -83,7 +83,10 @@ public class TeacherCenterOrderController {
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
 //        String openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+user.getId()+"/myLog");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","日志更新");
+        mv.addObject("content","更新日志成功");
+        mv.addObject("url","/wx/teacherCenter/"+user.getId()+"/myLog");
         return mv;
     }
     /**
@@ -105,7 +108,11 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{orderId}/affirm",method = RequestMethod.GET)
     public ModelAndView affirm(@PathVariable String orderId){
         orderTeacherService.orderAffirm(orderId);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+orderId+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+orderId+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已确认");
+        mv.addObject("url","/wx/teacherCenter/order/"+orderId+"/detail");
         return mv;
     }
 
@@ -134,7 +141,11 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{orderId}/reject",method = RequestMethod.POST)
     public ModelAndView reject(@PathVariable String orderId,String reason){
         orderTeacherService.orderReject(orderId,reason);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+orderId+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+orderId+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已拒绝");
+        mv.addObject("url","/wx/teacherCenter/order/"+orderId+"/detail");
         return mv;
     }
 
@@ -146,7 +157,11 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{oid}/finish",method = RequestMethod.GET)
     public ModelAndView finish(@PathVariable String oid){
         orderTeacherService.orderFinish(oid);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单完成");
+        mv.addObject("url","/wx/teacherCenter/order/"+oid+"/detail");
         return mv;
     }
 
@@ -173,7 +188,11 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{oid}/stop",method = RequestMethod.POST)
     public ModelAndView stop(@PathVariable String oid,String reason){
         orderTeacherService.orderStop(oid,reason);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已终止，待家长同意");
+        mv.addObject("url","/wx/teacherCenter/order/"+oid+"/detail");
         return mv;
     }
 
@@ -185,7 +204,11 @@ public class TeacherCenterOrderController {
     @RequestMapping(value = "/order/{oid}/agree",method = RequestMethod.GET)
     public ModelAndView stopAgree(@PathVariable String oid){
         orderTeacherService.agree(oid);
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/order/"+oid+"/detail");
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单已终止，正在审核中");
+        mv.addObject("url","/wx/teacherCenter/order/"+oid+"/detail");
         return mv;
     }
 

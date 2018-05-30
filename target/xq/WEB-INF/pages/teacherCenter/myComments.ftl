@@ -167,6 +167,25 @@
         }
         .emoji{
             width: 48px!important;
+        }.foot{
+             position: fixed;
+             width: 100%;
+             bottom: 0;
+             background-color: #f5f5f5;
+         }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
+        #main{
+            margin-bottom: 7%;
         }
     </style>
 </head>
@@ -186,14 +205,30 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade in active" id="reply">
-                <@commentlist  param1=comments.noReplyComments param2="reply"/>
+                <#if (comments.noReplyComments)?size==0>
+                    <div class="row" style="margin-top: 30%!important;width: 100%">
+                        <div class="col-xs-2">
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="/static/img/kong.png" width="150">
+                        </div>
+                        <div class="col-xs-6">
+                            <p style="font-size: 45px;color: dimgrey;font-weight: bold">抱歉</p>
+                            <p style="font-size: 38px;color: grey;font-weight: bold">您还没有待回复的评价</p>
+                        </div>
+                    </div>
+                <#else >
+                    <@commentlist  param1=comments.noReplyComments param2="reply"/>
+                </#if>
             </div>
             <div class="tab-pane fade" id="history">
                 <@commentlist  param1=comments.hisComments param2="his"/>
             </div>
         </div>
     </div>
-
+    <div class="foot" align="center">
+        <button style="width: 100% !important;" onclick=location.href="/wx/teacherCenter/${user.id}/my">回到个人中心</button>
+    </div>
 </body>
 <script>
     $(".input-22a").rating({

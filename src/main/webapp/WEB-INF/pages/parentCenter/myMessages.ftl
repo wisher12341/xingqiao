@@ -35,12 +35,13 @@
         }
 
         function pullUpAction () {
+            $(".more").show();
             setTimeout(function () {
                 var el, li, i;
                 el = document.getElementById('thelist');
                 $.ajax({
                     type: 'get',
-                    url: '/wx/teacherCenter/getInformMessageByPage/'+(page++),
+                    url: '/wx/parentCenter/getInformMessageByPage/'+(page++),
                     dataType: 'json',
                     success: function(data){
                         for (i=0; i<data.length; i++) {
@@ -171,10 +172,11 @@
                             })(Zepto);
                         }
                         myScroll.refresh();
+                        $(".more").hide();
                     }
                 });
 
-            }, 20);
+            }, 1000);
         }
 
         function loaded() {
@@ -399,6 +401,7 @@
             text-align: center;
             padding-top: 10px;
             color: dimgrey;
+            display: none;
         }
 
 
@@ -581,7 +584,13 @@
                                 </div>
                                 <div class="row" style="margin-top: 15px">
                                     <div class="col-xs-12">
-                                        <span style="color: grey;font-size: 40px">${(m.message)!}</span>
+                                        <span style="color: grey;font-size: 40px">
+                                            <#if (m.message)?length &gt; 20>
+                                            ${(m.message)?substring(0,20)}...
+                                            <#else >
+                                            ${(m.message)!}
+                                            </#if>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

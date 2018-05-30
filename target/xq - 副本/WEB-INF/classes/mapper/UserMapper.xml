@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.dao.UserDao">
+
+
+    <select id="getUserByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
+        SELECT id,headimgurl,nickname FROM sysuser WHERE openid=#{openid} AND status=#{status}
+    </select>
+
+    <select id="getParentByOpenid" resultType="com.xq.model.User" parameterType="java.lang.String">
+        SELECT * FROM sysuser WHERE openid=#{openid} and status=0
+    </select>
+
+
+    <select id="getUserByOpenidStatus" resultType="com.xq.model.User" parameterType="java.lang.String">
+        SELECT id,headimgurl,nickname,username,user_status,status FROM sysuser WHERE openid=#{openid} AND status=#{status}
+    </select>
+
+    <select id="getUserByUid" resultType="com.xq.model.User">
+        SELECT * FROM sysuser WHERE id=#{id}
+    </select>
+    <select id="getUserById" resultType="com.xq.model.User">
+        SELECT * FROM sysuser WHERE id=#{id}
+    </select>
+
+
+    <select id="findUserByNameType" resultType="com.xq.model.User">
+        select u.id, u.username , u.password,u.status,t.name tName,p.realName pName
+        from sysuser u LEFT join teacher t on t.user_id=u.id LEFT JOIN parent p on p.userId=u.id
+        where u.username = #{username} and u.status=#{type}
+    </select>
+
+    <select id="findUserByName" resultType="com.xq.model.User">
+        select u.id, u.username , u.password,u.status,t.name tName,p.realName pName
+        from sysuser u LEFT join teacher t on t.user_id=u.id LEFT JOIN parent p on p.userId=u.id
+        where u.username = #{username}
+    </select>
+
+    <select id="getParentNameById" resultType="java.lang.String">
+        select realName from parent where userId=#{id}
+    </select>
+
+    <select id="getTeacherNameById" resultType="java.lang.String">
+        select name from teacher where user_id=#{id}
+    </select>
+
+
+    <update id="save">
+        UPDATE sysuser SET id=id
+        <if test="username!=null and username!=''">
+            ,username=#{username}
+        </if>
+        <if test="gender!=null">
+            ,gender=#{gender}
+        </if>
+        <if test="phone!=null and phone!=''">
+            ,phone=#{phone}
+        </if>
+        <if test="email!=null and email!=''">
+            ,email=#{email}
+        </if>
+        WHERE id=#{id}
+    </update>
+
+    <update id="addOpenid" >
+      UPDATE sysuser set openid=#{openid} WHERE id=#{id}
+    </update>
+
+    <insert id="saveNewUser" parameterType="com.xq.model.WxUserInfo" useGeneratedKeys="true" keyProperty="id">
+        INSERT into sysuser(openid,gender,nickname,headimgurl,time,status,user_status) VALUES (#{openid},#{gender},#{nickname},#{headimgurl},#{time},0,0)
+    </insert>
+
+    <insert id="register" useGeneratedKeys="true" keyProperty="id">
+        INSERT into sysuser(username,password,status,user_status,time,openid) VALUES (#{username},#{password},#{status},#{userStatus},#{time},#{openid})
+    </insert>
+
+    <update id="clearOpenid">
+        UPDATE sysuser set openid='' WHERE openid=#{openid} AND status=#{status}
+    </update>
+
+    <update id="bindAccount" parameterType="com.xq.model.User">
+        UPDATE sysuser set username=#{username},password=#{password} WHERE openid=#{openid} AND status='0'
+    </update>
+
+
+    <update id="changeUserStatus">
+        UPDATE sysuser set user_status=#{userStatue} WHERE id=#{uid}
+    </update>
+
+    <update id="changeUserStatusByOpenid">
+        UPDATE sysuser set user_status=#{userStatue} WHERE openid=#{openid}
+        <if test="type=='parent'">
+            and status=0
+        </if>
+        <if test="type=='teacher'">
+            and status=1
+        </if>
+    </update>
+
+    <update id="changePassword">
+        UPDATE sysuser set password=#{password} WHERE openid=#{openid} AND status=#{status}
+    </update>
+</mapper>

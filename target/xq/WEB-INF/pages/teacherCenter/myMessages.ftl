@@ -35,6 +35,7 @@
         }
 
         function pullUpAction () {
+            $(".more").show();
             setTimeout(function () {
                 var el, li, i;
                 el = document.getElementById('thelist');
@@ -171,10 +172,11 @@
                             })(Zepto);
                         }
                         myScroll.refresh();
+                        $(".more").hide();
                     }
                 });
 
-            }, 20);
+            }, 1000);
         }
 
         function loaded() {
@@ -209,9 +211,9 @@
                         pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Release to refresh...';
                         this.minScrollY = 0;
                     }
+                    pullDownEl.className = '';
+                    pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
                     if (this.y < 0 && pullDownEl.className.match('flip')) {
-                        pullDownEl.className = '';
-                        pullDownEl.querySelector('.pullDownLabel').innerHTML = 'Pull down to refresh...';
                         this.minScrollY = -pullDownOffset;
                     }
 
@@ -399,6 +401,7 @@
             text-align: center;
             padding-top: 10px;
             color: dimgrey;
+            display: none;
         }
 
 
@@ -580,9 +583,13 @@
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 15px">
-                                    <div class="col-xs-12">
-                                        <span style="color: grey;font-size: 40px">${(m.message)!}</span>
-                                    </div>
+                                    <span style="color: grey;font-size: 40px">
+                                        <#if (m.message)?length &gt; 20>
+                                        ${(m.message)?substring(0,20)}...
+                                        <#else >
+                                        ${(m.message)!}
+                                        </#if>
+                                        </span>
                                 </div>
                             </div>
                         </div>

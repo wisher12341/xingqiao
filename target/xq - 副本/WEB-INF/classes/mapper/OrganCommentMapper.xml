@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xq.dao.OrganCommentDao">
+
+    <resultMap id="MainOrganizationComment" type="com.xq.model.OrganComment">
+        <id property="id" column="id" />
+        <result property="time" column="time"/>
+        <result property="detail" column="detail"/>
+        <result property="picurls" column="pic_urls" />
+        <result property="isOpen" column="is_open" />
+        <result property="type" column="type"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <result property="oid" column="oid"/>
+        <result property="pid" column="pid"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid" />
+            <result property="username" column="username"/>
+            <result property="nickname" column="nickname"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+    </resultMap>
+
+    <resultMap id="OrganComment" type="com.xq.model.OrganComment">
+        <id property="id" column="id" />
+        <result property="time" column="time"/>
+        <result property="detail" column="detail"/>
+        <result property="picurls" column="pic_urls" />
+        <result property="isOpen" column="is_open" />
+        <result property="type" column="type"/>
+        <result property="good" column="good"/>
+        <result property="report" column="report"/>
+        <result property="oid" column="oid"/>
+        <result property="pid" column="pid"/>
+        <association property="user" javaType="com.xq.model.User">
+            <id property="id" column="uid" />
+            <result property="username" column="username"/>
+            <result property="nickname" column="nickname"/>
+            <result property="headimgurl" column="headimgurl"/>
+        </association>
+        <collection property="organCommentChildList" ofType="com.xq.model.OrganComment">
+            <id property="id" column="cid" />
+            <result property="time" column="ctime"/>
+            <result property="detail" column="cdetail"/>
+            <result property="isOpen" column="cis_open" />
+            <result property="type" column="ctype"/>
+            <result property="good" column="cgood"/>
+            <result property="report" column="creport"/>
+            <result property="oid" column="coid"/>
+            <result property="pid" column="cpid"/>
+            <association property="user" javaType="com.xq.model.User">
+                <id property="id" column="cuid" />
+                <result property="username" column="cusername"/>
+                <result property="nickname" column="cnickname"/>
+                <result property="headimgurl" column="cheadimgurl"/>
+            </association>
+        </collection>
+    </resultMap>
+
+    <update id="updateGRCount" parameterType="com.xq.model.UserGoodReport">
+        UPDATE organ_comment SET good=good+#{good},report=report+#{report} WHERE id=#{id}
+    </update>
+
+    <select id="getCommentById" resultType="com.xq.model.OrganComment">
+        SELECT id,pic_urls FROM organ_comment WHERE id=#{cid}
+    </select>
+
+    <select id="getMainOrgCommentsByOid" resultMap="MainOrganizationComment">
+        SELECT organ_comment.*,sysuser.id,sysuser.username,sysuser.headimgurl,sysuser.nickname FROM organ_comment,sysuser WHERE organ_comment.oid=#{oid} AND organ_comment.type=1 AND organ_comment.uid=sysuser.id ORDER BY organ_comment.time DESC;
+    </select>
+
+    <select id="getOrgCommentByCid" resultMap="OrganComment">
+        SELECT c.*,
+        cc.id cid,cc.time ctime,cc.detail cdetail,cc.is_open cis_open,cc.type ctype,cc.pid cpid, cc.oid coid,cc.good cgood, cc.report creport,
+        sysuser.id,sysuser.username,sysuser.headimgurl,sysuser.nickname,
+        uu.id cuid,uu.username cusername,uu.headimgurl cheadimgurl,uu.nickname cnickname
+        FROM sysuser, organ_comment c left join organ_comment cc on cc.pid=c.id left join sysuser uu on uu.id=cc.uid
+        WHERE c.id=#{commentid} AND c.uid=sysuser.id
+        ORDER BY c.time DESC;
+    </select>
+    <select id="getMainOrgCommentsByOidAndPage" resultMap="MainOrganizationComment">
+        SELECT organ_comment.*,sysuser.id,sysuser.username,sysuser.headimgurl,sysuser.nickname FROM organ_comment,sysuser
+        WHERE organ_comment.oid=#{oid} AND organ_comment.type=1 AND organ_comment.uid=sysuser.id
+        ORDER BY organ_comment.time DESC limit #{start},#{size};
+    </select>
+</mapper>

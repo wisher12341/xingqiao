@@ -1,0 +1,223 @@
+html,
+body {
+  overflow-x: hidden; /* Prevent scroll on narrow devices */
+}
+body {
+  padding-top: 70px;
+}
+footer {
+  padding: 30px 0;
+}
+
+
+/*from user_order
+--------------------------------------------------*/
+
+.order-table {
+  margin-top: 20px;
+  width: 750px;
+
+}
+
+
+
+
+.title-span {
+    font-weight: 400;
+    font-size: 18px;
+    color: #999999;
+    margin-top: 8px;
+}
+
+.main-menu {
+  width: 180px;
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.way {
+  width: 100px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.confirm-td {
+  width: 173px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.detail-td {
+  width:150px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.dealtime {
+  float: left;
+  margin-left: 20px;
+  width: 265px;
+}
+
+.number {
+  float: left;
+  text-align: center;
+}
+
+.delete {
+  float: right;
+  margin-right: 20px;
+}
+
+td {
+  border: 1px solid #e8e8e8;
+}
+
+
+.head_table {
+  background-color: #f5f5f5;
+  height: 40px;
+  border: 1px solid #e8e8e8;
+}
+
+.head span {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.main-item {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.search_submit {
+  margin-left: -4px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  height: 28px;
+  margin-bottom: 0px;
+  font-size: 12px;
+  width: 51px;
+}
+
+.search_text {
+  font-weight: 200;
+  text-indent: 1em;
+  width: 170px;
+  border: 1px solid #ddd;
+  height: 28px;
+  float:left;
+
+}
+
+.search {
+  margin-left: 50px;
+  margin-top: 15px;
+}
+
+.infotab {
+  width:150px;
+  height: 40px;
+}
+
+.infotab a {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.infotab.active {
+  border-top-color: #b4a078;
+  border-top: 2px solid;
+  background-color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.menu-item {
+    display: block;
+    margin-bottom: 15px;
+    text-align: center;;
+}
+
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+
+.title {
+    background-color: #f5f5f5;
+    width: 750px;
+    height: 40px;
+}
+
+.title-content {
+    float: left;
+    margin-left: 20px;
+    width: 265px;
+
+}
+
+.title span {
+    font-weight: 400;
+    font-size: 14px;
+    color: #999999;
+    margin-top: 12px;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+  }
+
+  .row-offcanvas-right {
+    right: 0;
+  }
+
+  .row-offcanvas-left {
+    left: 0;
+  }
+
+  .row-offcanvas-right
+  .sidebar-offcanvas {
+    right: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -50%; /* 6 columns */
+  }
+
+  .row-offcanvas-right.active {
+    right: 50%; /* 6 columns */
+  }
+
+  .row-offcanvas-left.active {
+    left: 50%; /* 6 columns */
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 50%; /* 6 columns */
+  }
+}
+
+@media(max-width:767px) {
+  #langChange {
+    position: absolute;
+    top:0px;
+    right: 85px;
+  }
+}

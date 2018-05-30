@@ -541,7 +541,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/{uid}/mySchedule/del",method = RequestMethod.POST)
     public ModelAndView schedule_del(@PathVariable Integer uid,String time) throws ParseException {
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule");
+        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+uid+"/mySchedule/teacher");
         teacherCenterService.delSchedule(uid,time);
         return mv;
     }

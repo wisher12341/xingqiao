@@ -47,8 +47,12 @@ public class CommentController {
      */
     @RequestMapping(value = "/{oid}",method = RequestMethod.POST)
     public ModelAndView comment_post(Comment comment, @PathVariable String oid){
-        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/order/"+oid+"/detail");
         commentService.addComment(comment,oid);
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","订单评论成功");
+        mv.addObject("url","/wx/order/"+oid+"/detail");
         return mv;
     }
 
@@ -60,8 +64,12 @@ public class CommentController {
     public ModelAndView comment_reply(Comment comment, @PathVariable String oid, HttpServletRequest request){
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
 //        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
-        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+userService.getUserByOpenidStatus(openid,"1").getId()+"/myComments");
+//        ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/"+userService.getUserByOpenidStatus(openid,"1").getId()+"/myComments");
         commentService.addReply(comment,oid);
+        ModelAndView mv=new ModelAndView("redirect:/wx/common/success");
+        mv.addObject("title","订单");
+        mv.addObject("content","回应评论成功");
+        mv.addObject("url","/wx/teacherCenter/"+userService.getUserByOpenidStatus(openid,"1").getId()+"/myComments");
         return mv;
     }
 

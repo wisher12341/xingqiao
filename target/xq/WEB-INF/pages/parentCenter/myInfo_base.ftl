@@ -94,10 +94,10 @@
 
     <div class="buttonDiv_info">
         <div class="info row" >
-            <div class="col-xs-3">
+            <div class="col-xs-4">
                 <p class="text_p"> 用户ID</p>
             </div>
-            <div class="col-xs-8">
+            <div class="col-xs-7">
                 <p class="text_pp"> ${(user.id)!}</p>
             </div>
         </div>

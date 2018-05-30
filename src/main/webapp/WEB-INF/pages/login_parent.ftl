@@ -15,7 +15,7 @@
 </div>
 <div id="select" align="center">
     <button class="but" onclick="$('#select').hide();$('#accountBind').show()">已有账号</button>
-    <button class="but" onclick='location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41aea10976e1038a&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fnew&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect"'>我是新用户</button>
+    <button class="but" onclick='location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41aea10976e1038a&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fnew&response_type=code&scope=snsapi_userinfo&state=123#wechat_redirect"'>微信新用户登录</button>
 </div>
 
 <div id="accountBind" style="display: none" align="center">
