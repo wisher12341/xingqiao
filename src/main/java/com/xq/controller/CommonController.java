@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by netlab606 on 2018/5/29.
  */
@@ -21,8 +23,10 @@ public class CommonController {
      * @return
      */
     @RequestMapping("/success")
-    public ModelAndView success(@RequestParam String title,@RequestParam String content,@RequestParam String url){
+    public ModelAndView success(@RequestParam String title,@RequestParam String content,@RequestParam String url) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("success");
+        title=new String(title.getBytes("ISO8859-1"), "UTF-8");
+        content=new String(content.getBytes("ISO8859-1"), "UTF-8");
         mv.addObject("title",title);
         mv.addObject("content",content);
         mv.addObject("url",url);

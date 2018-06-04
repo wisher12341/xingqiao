@@ -48,6 +48,9 @@ public class TeacherCenterController {
         Teacher teacher=teacherCenterService.getTeacherByUserId(user.getId());
         mv.addObject("user",user);
         mv.addObject("teacher",teacher);
+
+        TeacherCenterCountDto teacherCenterCountDto=teacherCenterService.getCounts(user.getId(), "teacher");
+        mv.addObject("number",teacherCenterCountDto);
         return mv;
     }
 
@@ -285,7 +288,8 @@ public class TeacherCenterController {
      * @return
      */
     @RequestMapping(value = "/serviceInfo/{uid}/way/{type}/{ctype}",method =RequestMethod.POST)
-    public ModelAndView way_post(@PathVariable Integer uid, @PathVariable String type, Teacher teacher, String area1, String area2, @PathVariable String ctype){
+    public ModelAndView way_post(@PathVariable Integer uid, @PathVariable String type, Teacher teacher, String area1, String area2, @PathVariable String ctype) throws UnsupportedEncodingException {
+        type= new String(type.getBytes("ISO8859-1"), "UTF-8");
         teacherCenterService.editServiceInfoWay(uid,type,teacher,area1,area2,ctype);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/serviceInfo/"+uid+"/way@s_ground@t_ground@price_t@price_s@price_o@detailAddress");
         return mv;

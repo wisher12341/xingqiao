@@ -138,6 +138,8 @@
                     <button onclick="location.href='${path}/wx/order/wxpay/${order.order.id}'" style="width: 49.5% !important;">付款</button>
                 <#elseif order.order.statusP==3>
                     <button onclick="location.href='${path}/wx/order/${order.order.id}/stop'" style="width: 100% !important;">终止订单</button>
+                <#elseif order.order.statusT==7>
+                    <button onclick="location.href='${path}/wx/order/${order.order.id}/agree'" style="width: 100% !important;">同意家长终止订单</button>
                 <#--<#elseif order.order.cid!=0 && order.order.statusP==15>-->
                 <#--<button onclick="location.href='${path}/wx/comment/${order.order.id}/getCommentByOid/parent'" style="width: 100% !important;">查看评价</button>-->
                 <#elseif order.order.statusP==15>

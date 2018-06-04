@@ -265,10 +265,7 @@ public class OrderTeacherServiceImpl implements OrderTeacherService {
         Message messageP=new Message();
         messageP.setTime(dateNowStr);
         messageP.setUserId(order.getUidP());
-        messageP.setMessage("您的订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止，理由:"+reason+
-                "<a href='/wx/order/"+oid+"/agree'>同意" +
-                "</a>");
-
+        messageP.setMessage("您的订单（"+oid+"），治疗师（"+order.getTname()+"）申请终止，理由:"+reason);
         messageDao.addMessage(messageP);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@治疗师终止订单");
     }

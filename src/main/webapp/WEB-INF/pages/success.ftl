@@ -1,6 +1,7 @@
 <#include "order/common/const.ftl" />
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>${title}</title>
     <#include "order/common/head.ftl" />
     <link rel="stylesheet" href="${path}/static/css/jcy.css">

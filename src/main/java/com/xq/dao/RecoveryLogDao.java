@@ -28,4 +28,6 @@ public interface RecoveryLogDao {
     List<RecoveryLog> getNoConfirmLogByOpenid(String openid);
 
     RecoveryLog getLogByRid(Integer rid);
+
+    Integer getNeedCheckLogNumByUid(Integer id);
 }

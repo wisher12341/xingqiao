@@ -192,10 +192,7 @@ public class OrderServiceImpl implements OrderService {
         Message messageT=new Message();
         messageT.setTime(dateNowStr);
         messageT.setUserId(order.getUidT());
-        messageT.setMessage("您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason+
-                "<a href='${path}/teacher/order/"+oid+"/agree'>同意" +
-                "</a>");
-
+        messageT.setMessage("您的订单（"+oid+"），家长（"+order.getTname()+"）申请终止，理由:"+reason);
         messageDao.addMessage(messageT);
         orderDao.updateTrace(oid,"#"+dateNowStr+"@家长终止订单");
     }

@@ -148,7 +148,7 @@
             <p class="textarea" >${log.content}</p>
             <div id="pics">
                 <div class="ps" style="display: inline">
-                <#if (log.picUrls)??>
+                <#if (log.picUrls)?? && (log.picUrls)!="">
                     <#list (log.picUrls)?split("#") as pic>
                         <div class="picdiv">
                             <img class="addimg"  src="/${pic}">
