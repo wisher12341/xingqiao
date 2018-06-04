@@ -104,7 +104,7 @@
             <div class="row">
                 <div class="col-sm-11">
                     <p class="info-header-name"><span>
-                    ${(user.nickname)!}
+                    ${(parent.realName)!(user.nickname)!}
                     </span>
                   </p>
                         <#if user.userStatus==0>

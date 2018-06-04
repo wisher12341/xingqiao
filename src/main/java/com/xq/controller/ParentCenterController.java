@@ -52,10 +52,11 @@ public class ParentCenterController {
 
         User user=userService.getUserByOpenidStatus(openid,"0");
         // user.setInfoStatus(parentCenterService.myInfoStatus(user.getId()));
+        Parent parent=parentCenterService.getParentByUserId(user.getId());
         mv.addObject("user",user);
         TeacherCenterCountDto teacherCenterCountDto=teacherCenterService.getCounts(user.getId(),"parent");
         mv.addObject("number",teacherCenterCountDto);
-
+        mv.addObject("parent",parent);
         if(newUser!=null && newUser.equals("new")){
             mv.addObject("new","new");
         }

@@ -136,6 +136,8 @@
                     <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/reject'" style="width: 49.5% !important;">拒绝</button>
                 <#elseif order.order.statusT==3>
                     <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/stop'" style="width: 100% !important;">订单终止</button>
+                <#elseif order.order.statusT==8>
+                    <button onclick="location.href='${path}/wx/teacherCenter/order/${order.order.id}/agree'" style="width: 100% !important;">同意家长终止订单</button>
                 <#elseif order.order.comment?? && order.order.statusT==15>
                     <#if order.order.comment.teacherComment??>
                     <#else>
