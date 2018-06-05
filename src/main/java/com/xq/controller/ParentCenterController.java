@@ -38,6 +38,8 @@ public class ParentCenterController {
     TeacherCenterService teacherCenterService;
     @Autowired
     MessageService messageService;
+    @Autowired
+    RecoveryLogService recoveryLogService;
 
     /**
      * 个人中心首页
@@ -60,6 +62,10 @@ public class ParentCenterController {
         if(newUser!=null && newUser.equals("new")){
             mv.addObject("new","new");
         }
+
+        //用于提醒 家长有需要确认的康复日志
+        int needCkeckLogNum=recoveryLogService.getNeedCheckLogNumByUid(user.getId());
+        mv.addObject("needCkeckLogNum", needCkeckLogNum);
         return mv;
     }
 
@@ -496,6 +502,9 @@ public class ParentCenterController {
         Work work=parentCenterService.getWorkByUid(user.getId());
         mv.addObject("work",work);
         mv.addObject("user",teacherCenterService.getUserById(user.getId()));
+
+        int needCkeckLogNum=recoveryLogService.getNeedCheckLogNumByUid(user.getId());
+        mv.addObject("needCkeckLogNum", needCkeckLogNum);
         return mv;
     }
 

@@ -211,6 +211,18 @@
         .buttonDiv_info .row{
             margin: 0!important;
         }
+        .btn{
+            width: 49.4%;
+            height: 80px;
+        }
+        .modal-dialog{
+            margin-top: 150px;
+            width: 90%!important;
+        }
+        .modal-body{
+            font-size: 45px!important;
+            color: dimgrey;!important;
+        }
     </style>
 </head>
 
@@ -284,7 +296,24 @@
     </div>
 
 </div>
-
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                您有<span style="padding: 15px;color: red;font-size: 50px">${needCkeckLogNum}</span>条康复日志需要确认！
+            </div>
+            <div class="modal-footer">
+                <input type="button" onclick="$('#delModal').modal('hide')" class="btn" value="取消" style="background-color: orange!important;color: white!important;font-size: 40px!important;"/>
+                <input type="buttont" class="btn btn-primary" value="前往确认" style="background-color: #20b49a!important;font-size: 40px!important;border-color: white!important;"  onclick="location.href='${path}/wx/log/index'">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<#if (needCkeckLogNum) &gt;0>
+<script>
+    $('#delModal').modal();
+</script>
+</#if>
 </body>
 <script>
     function showCalendar() {

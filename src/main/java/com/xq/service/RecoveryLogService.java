@@ -26,4 +26,6 @@ public interface RecoveryLogService {
     void addRecovery(RecoveryLog recoveryLog);
 
     RecoveryLog getLogByRid(Integer rid);
+
+    Integer getNeedCheckLogNumByUid(Integer id);
 }

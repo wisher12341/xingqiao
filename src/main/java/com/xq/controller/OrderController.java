@@ -6,6 +6,10 @@ import com.xq.dto.Result;
 import com.xq.model.Order;
 import com.xq.model.User;
 import com.xq.service.OrderService;
+import com.xq.service.RecoveryLogService;
+import com.xq.service.UserService;
+import com.xq.util.Const;
+import com.xq.util.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +36,10 @@ public class OrderController {
 
     @Autowired
     OrderService orderService;
+    @Autowired
+    RecoveryLogService recoveryLogService;
+    @Autowired
+    UserService userService;
 
     /**
      * 我的订单 首页
@@ -42,6 +50,11 @@ public class OrderController {
         AllTypeOrder allTypeOrder=orderService.getAllOrder(request);
         ModelAndView mv=new ModelAndView("order/order");
         mv.addObject("orders",allTypeOrder);
+        //用于提醒 家长有需要确认的康复日志
+        String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
+        User user=userService.getUserByOpenidStatus(openid,"0");
+        int needCkeckLogNum=recoveryLogService.getNeedCheckLogNumByUid(user.getId());
+        mv.addObject("needCkeckLogNum", needCkeckLogNum);
         return mv;
     }
 

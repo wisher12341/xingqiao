@@ -234,4 +234,9 @@ public class RecoveryLogServiceImpl implements RecoveryLogService {
         RecoveryLog recoveryLog=recoveryLogDao.getLogByRid(rid);
         return recoveryLog;
     }
+
+    @Override
+    public Integer getNeedCheckLogNumByUid(Integer id) {
+        return recoveryLogDao.getNeedCheckLogNumByUid(id);
+    }
 }

@@ -59,4 +59,11 @@
         SELECT r.id,r.time,r.content,r.pic_urls,t.name teacherName,d.name demandName,r.order_id FROM teacher t,recovery_log r,demand d,orders o,parent p
         WHERE r.id=#{rid} AND p.id=o.parent_id AND o.teacher_id=t.id AND o.demand_id=d.id AND r.order_id=o.id
     </select>
+
+
+    <select id="getNeedCheckLogNumByUid" resultType="java.lang.Integer">
+        SELECT count(1)
+        FROM recovery_log r,orders o,parent p
+        WHERE  p.userId=#{id} AND p.id=o.parent_id AND r.order_id=o.id AND r.confirm_status=0
+    </select>
 </mapper>
