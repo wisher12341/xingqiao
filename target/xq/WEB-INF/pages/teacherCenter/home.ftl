@@ -91,7 +91,7 @@
             </div>
             <div class="modal-footer">
                 <input type="button" onclick="$('#delModal').modal('hide')" class="btn" value="取消" style="background-color: orange!important;color: white!important;font-size: 40px!important;"/>
-                <input type="buttont" class="btn btn-primary" value="前往确认" style="background-color: #20b49a!important;font-size: 40px!important;border-color: white!important;"  onclick="location.href='${path}/wx/${user.id}/myComments'">
+                <input type="buttont" class="btn btn-primary" value="前往确认" style="background-color: #20b49a!important;font-size: 40px!important;border-color: white!important;"  onclick="location.href='${path}/wx/teacherCenter/${user.id}/myLog'">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

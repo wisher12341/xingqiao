@@ -159,7 +159,7 @@
         }).error(function (data) {
 
         });
-
+        $("#sendCode").prop("disabled",true);
         timePromise=setInterval("daojishi()",1000,100);
     }
 
@@ -171,7 +171,7 @@
             second = 60;
             $('#sendCode').val("重发验证码");
             $('#sendCode').attr("class","btn btn-primary");
-
+            $("#sendCode").prop("disabled",false);
         }else{
             $('#sendCode').val(second + "秒后可重发");
             second--;

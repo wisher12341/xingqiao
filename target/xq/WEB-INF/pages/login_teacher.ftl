@@ -21,7 +21,7 @@
             height: 120px;
             padding-top: 25px;
             background-color: white;
-            margin: 4px 0;
+            border-bottom:3px solid #f5f5f5 ;
         }
         .text_p{
             font-size: 45px;
@@ -239,6 +239,7 @@
 
             });
 
+            $("#sendCode").prop("disabled",true);
             timePromise=setInterval("daojishi()",1000,100);
         }
 
@@ -250,7 +251,7 @@
             second = 60;
             $('#sendCode').val("重发验证码");
             $('#sendCode').attr("class","btn btn-primary");
-
+            $("#sendCode").prop("disabled",false);
         }else{
             $('#sendCode').val(second + "秒后可重发");
             second--;
