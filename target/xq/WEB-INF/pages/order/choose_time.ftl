@@ -18,7 +18,6 @@
         .glyphicon-calendar,.text_calendar{
             color: #20b49a!important;
         }
-
         /**
         日历插件 CSS修改
          */
@@ -49,7 +48,6 @@
             text-align: center;
         }
         .schedule_title{
-
             border: none;
         }
         .fc-content{
@@ -62,7 +60,6 @@
             margin-top: 50%;
             border-radius:100% ;
             text-align: center;
-
         }
         .fc-button{
             opacity: 100;
@@ -97,7 +94,6 @@
         .fc-event, .fc-event-dot{
             background-color: transparent!important;
         }
-
         /**
         今日安排
          */
@@ -163,23 +159,19 @@
             font-size: 36px;
             margin: 15px 0px;
         }
-
         .time-selector-title{
             font-size: 40px;
             font-weight: bold;
             color: #696969;
             text-align: center;
         }
-
         .orderN{
             background:url("${path}/static/img/tag.png") no-repeat right top;
         }
-
         .selected-time{
             font-size: 36px;
             text-align: center;
         }
-
         #btnNextStep{
             height: 100%;
             font-size: 40px;
@@ -187,18 +179,17 @@
             text-align: center;
             line-height: 120px;
         }
-
         #mobile-menu-selected{
             z-index: 9990;
             height: auto;
             padding-bottom: 120px;
             max-height: 60%;
         }
-        .time-item{
-            padding: 10px 30px;
+        #timePillContainerRemindText{
+            font-size: 36px;
+            text-align: center;
+            line-height: 100px;
         }
-
-
     </style>
 </head>
 
@@ -214,6 +205,9 @@
         </div>
         <br>
         <div class="row time-pill-container">
+        </div>
+        <div class="row" id="timePillContainerRemindText">
+            该日暂无可选时间
         </div>
     </div>
     <br>
@@ -259,7 +253,6 @@
 <script>
     $(function () {
         var selectTimeList = [];//用于记录选中的有安排的日期
-
         function addSelectTime(timeFormatted) {
             selectTimeList.push(timeFormatted);
             var old = $("#remainingTimes").data("remain");
@@ -268,7 +261,6 @@
             selectTimeList.sort();
             loadSelectedTimes();
         }
-
         function deleteSelectTime(timeFormatted) {
             for (var i=0; i<selectTimeList.length; i++){
                 if (selectTimeList[i] ==  timeFormatted){
@@ -282,8 +274,6 @@
                 }
             }
         }
-
-
         function isSelected(timeFormatted) {
             for (var i=0; i<selectTimeList.length; i++){
                 if (selectTimeList[i] == timeFormatted){
@@ -292,7 +282,6 @@
             }
             return false;
         }
-
         function loadSelectedTimes() {
             $("#selectedTimesContainer").html("");
             for (var i=0; i<selectTimeList.length; i++){
@@ -316,7 +305,6 @@
                 })
             })
         }
-
         $("#btnClear").click(function () {
             var old = $("#remainingTimes").data("remain");
             $("#remainingTimes").data("remain", old+selectTimeList.length);
@@ -325,7 +313,6 @@
             loadSelectedTimes();
             $(".border-pill-active").removeClass("border-pill-active").addClass("border-pill");
         });
-
         $("#btnShowList").click(function () {
             if ($("#mobile-menu-selected").hasClass("hide-nav-bottom")){
                 $("#mobile-menu-selected").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
@@ -335,21 +322,18 @@
                 $("#mask").hide();
             }
         });
-
         $("#mask").click(function () {
             if ($("#mobile-menu-selected").hasClass("show-nav-bottom")) {
                 $("#mobile-menu-selected").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                 $("#mask").hide();
             }
         });
-
         var events=[];
         var time = null;
-        <#list starts as day>
-            time = {start:"${day}",title:"",className:"schedule_title"};
-            events.push(time);
-        </#list>
-
+    <#list starts as day>
+        time = {start:"${day}",title:"",className:"schedule_title"};
+        events.push(time);
+    </#list>
         $('#calendar_month').fullCalendar({
             header: {
                 right: 'prev,next',
@@ -371,6 +355,14 @@
             dayNames: ["日", "一", "二", "三", "四", "五", "六"],
             dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"],
             today: ["今天"],
+            dayClick : function () {
+                alert
+                $(".time-selector-title > span").html("(" + $(this).data("date") + ")");
+                $(".time-pill-container").html("");
+                $("#timePillContainerRemindText").show();
+                $("td.fc-day").css("background","");
+                $(this).css("background","#eeeeee");
+            },
             eventClick : function( event ) {
                 var date=event.start.toString();
                 $.ajax({
@@ -387,12 +379,10 @@
                         var start = data.data.start;
                         var end = data.data.end;
                         var dataTime = day + ' ' + start[0].split("T")[1] + '%' + end[0].split("T")[1];
-                        $(".time-selector-title > span").html("(" + day + ")");
                         $(".time-pill-container").html("");
-
+                        $("#timePillContainerRemindText").hide();
                         for (var i=0; i<periods.length; i++){
                             dataTime = day + ' ' + start[i].split("T")[1] + '%' + end[i].split("T")[1];
-
                             var str = '<div class="col-xs-3">' +
                                     '<div class="border-pill';
                             if (isSelected(dataTime)){
@@ -404,7 +394,6 @@
                                     '</div>';
                             $(".time-pill-container").append(str);
                         }
-
                         $(".time-pill").click(function () {
                             if ($(this).hasClass("orderY") && !$(this).hasClass("border-pill-active")){
                                 if ($("#remainingTimes").data("remain") <= 0){
@@ -419,41 +408,39 @@
                 });
             }
         });
-
         $(".fc-day-number").click(function () {
-
             var target = -1;
             var day = $(this).text();
-
+            $(".time-selector-title > span").html("(" + $(this).parent().data("date") + ")");
+            $(".time-pill-container").html("");
+            $("#timePillContainerRemindText").show();
+            //找到点击的是这一行中第几个日历块
             $(this).parent().parent().children().each(function(index,element){
                 if (element.firstChild.innerText == day){
                     target = index;
                     return false;
                 }
             });
-            if (target > 0) {
-                $(this).parent().parent().parent().siblings('tbody').children().children().eq(target).children('a').click();
+            if (target >= 0) {
+                $(this).parents("table").eq(0).children('tbody').find("td").eq(target).children('a').click();
+                $("td.fc-day").css("background","");
+                $(this).parents(".fc-week").children(".fc-bg").find("td.fc-day").eq(target).css("background","#eeeeee");
             }
         });
-
         $("#btnNextStep").click(function () {
             if ($("#remainingTimes").data("remain") > 0){
                 alert("您的课时还没选完哦~");
                 return;
             }
-
             var serviceTimes = "";
             for (var i=0; i<selectTimeList.length; i++){
                 serviceTimes += selectTimeList[i] + "#";
             }
-
             if (serviceTimes.length>0 && serviceTimes.charAt(serviceTimes.length-1) == "#"){
                 serviceTimes = serviceTimes.slice(0,serviceTimes.length-1);
             }
-
             var pay = "${order.totalpay}";
             pay = pay.replace(/,/,"");
-
             $("input[name='teacher.id']").val(${order.teacher.id});
             $("input[name='teacher.userId']").val(${order.teacher.userId});
             $("input[name='teacher.name']").val("${order.teacher.name}");
@@ -467,11 +454,7 @@
             $("input[name='timeOpt']").val("${order.timeOpt}");
             $("input[name='serverTime']").val(serviceTimes);
             $("#toCheckTimeForm").submit();
-
         })
-
     });
-
-
 </script>
 </html>

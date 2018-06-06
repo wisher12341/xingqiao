@@ -18,13 +18,6 @@
     <script src="http://twemoji.maxcdn.com/twemoji.min.js"></script>
     <link rel="stylesheet" href="${base}/static/font-awesome-4.7.0/css/font-awesome.min.css" />
     <style>
-        .btn-xxs{
-            background: #20b49a;
-            color: #fff;
-            font-size: 12px;
-            padding: 5px 8px;
-            border-radius: 5px;
-        }
         #calendar_month,#calendar_day {
             max-width: 900px;
             margin: 0 auto;
@@ -34,58 +27,47 @@
             height: 100%;
             transition:all 0.3s ease-in;
             line-height: 1.4rem;
-
             position: fixed;
             overflow-y: hidden;
             bottom: 0;
             left: 0;
             width: 100%;
         }
-
         .fc-toolbar.fc-header-toolbar{
             margin-bottom: 0rem;
         }
-
         .fc-center > h2 {
             font-size: 1.6rem;
             line-height: 3rem;
         }
-
         .close-time{
             text-align: right;
             padding: 0.8rem;
             font-size: 2rem;
             color: #888888;
         }
-
         .fc-widget-header {
             padding: 0.6rem 0rem;
         }
-
         .fc-view-container{
             margin-top: 1rem;
         }
-
         .teacher-name-title{
             font-size: 1.4rem;
             color: #000000;
         }
-
         #remark{
             appearance: none;
             -webkit-appearance: none;   /*去除chrome浏览器的默认下拉图片*/
             -moz-appearance: none;  /*去除Firefox浏览器的默认下拉图片*/
             border: 0.1rem solid #aaaaaa;
         }
-
-
         .padding-5-10{
             padding: 5px 10px;
         }
         body{
             background-color: #f5f5f5;
         }
-
         .circle{
             position: relative;
             left: 30px;
@@ -113,14 +95,11 @@
             left: 24px;
             padding-bottom: 10px;
         }
-        .daySelect{
-            background-color: #e0e0e0;!important;
-        }
     </style>
 </head>
 <body style="height: 100%;" id="emoji">
 <div id="base" class="base" style="height: 100%;">
-    <div class="container my-panel" style="min-height: 20rem;margin-top: 0!important;" >
+    <div class="my-panel" style="min-height: 20rem;margin-top: 0!important;" >
         <div class="row" style="height: 100%">
             <div class="col-xs-5 text-center" style="height: 12rem;">
                 <img src="${(teacher.headimgurl?contains("wx.qlogo.cn")?string("${teacher.headimgurl}","/${teacher.headimgurl}"))!}" onerror='this.src="${base}/static/img/touxiang.svg;this.onerror=null"' class="headimg-lg">
@@ -205,18 +184,18 @@
                                 <td></td>
                             </tr>
                             </#if>
-                            <#if teacher.priceS gt 0>
+                            <#if (teacher.priceS)! gt 0>
                             <tr>
                                 <td>学生上门</td>
-                                <td>${teacher.priceS}</td>
-                                <td>${teacher.tGround}</td>
+                                <td>${(teacher.priceS)!}</td>
+                                <td>${(teacher.sGround)!}</td>
                             </tr>
                             </#if>
-                            <#if teacher.priceT gt 0>
+                            <#if (teacher.priceT)! gt 0>
                             <tr>
                                 <td>治疗师上门</td>
-                                <td>${teacher.priceT}</td>
-                                <td>${teacher.sGround}</td>
+                                <td>${(teacher.priceT)!}</td>
+                                <td>${(teacher.tGround)!}</td>
                             </tr>
                             </#if>
                         <#else>
@@ -224,14 +203,14 @@
                             <tr>
                                 <td>${str}</td>
                                 <#if str=="在线授课" && teacher.priceO gt 0>
-                                    <td>${teacher.priceO}</td>
+                                    <td>${(teacher.priceO)!}</td>
                                     <td></td>
                                 <#elseif str=="学生上门" && teacher.priceS gt 0>
                                     <td>${(teacher.priceS)!}</td>
-                                    <td>${(teacher.tGround)!}</td>
+                                    <td>${(teacher.sGround)!}</td>
                                 <#elseif str=="治疗师上门" && teacher.priceT gt 0>
                                     <td>${(teacher.priceT)!}</td>
-                                    <td>${(teacher.sGround)!}</td>
+                                    <td>${(teacher.tGround)!}</td>
                                 </#if>
                             </tr>
                             </#list>
@@ -262,12 +241,12 @@
         <div class="my-panel-title">毕业院校</div>
         <div class="gray-line"></div>
         <div class="my-panel-content">
-<#list (teacher.teacherInfoSchoolList)! as school>
+        <#list (teacher.teacherInfoSchoolList)! as school>
             <div style="background-color: white;position: relative;right: 15px" >
-            <#if school_index==0>
-                <div class="row" style="height: 2%;">
-                </div>
-            </#if>
+                <#if school_index==0>
+                    <div class="row" style="height: 2%;">
+                    </div>
+                </#if>
                 <div class="row" style="position: relative; ">
                     <div class="col-xs-1 circle">
                         <i class="fa fa-circle-thin fa-1x icon_fa"></i>
@@ -292,13 +271,13 @@
                         <p class="text_detail" style="padding-left:5px;color: #a0a0a0;margin-bottom: 0px!important;padding-bottom: 5px;${school_has_next?string('border-bottom:1px solid #ccc;','')}">${school.education}<span style="font-size: 25px;font-weight: bold;padding: 4px;position: relative;top: 2px">·</span>${school.major}</p>
                     </div>
                 </div>
-            <#if school_has_next>
-                <div class="row" style="border-left:2px solid #ccc;height: 10px;position: relative;left: 50px;width: 70%">
-                    <span style="color: white">dd</span>
-                </div>
-            </#if>
+                <#if school_has_next>
+                    <div class="row" style="border-left:2px solid #ccc;height: 10px;position: relative;left: 50px;width: 70%">
+                        <span style="color: white">dd</span>
+                    </div>
+                </#if>
             </div>
-</#list>
+        </#list>
         </div>
     </div>
     <div class="my-panel">
@@ -555,10 +534,7 @@
                             </div>
                         </div>
                         <div class="offset-20">
-                            <div class="text-left">
-                                需求简历：
-                                <span class="btn-xxs" onclick="javascript:location='${base}/wx/parentCenter/${(user.id)!}/addDemandPage'">+创建简历</span>
-                            </div>
+                            <div class="text-left">需求简历：</div>
                             <div id="demands" class="row offset-10">
                             </div>
                         <#--<select id="waySelect"></select>-->
@@ -578,15 +554,15 @@
                             <span class="amount_button" id="addBtn"><img style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/add.svg"/></span>
                         </div>
 
-                        <#--<div class="offset-20">-->
-                            <#--<div class="text-left">服务时间：</div>-->
-                            <#--<div id="time_div">-->
-                                <#--<div class="time-choose-div">-->
-                                    <#--<img onclick="selectTime($(this))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/>-->
-                                    <#--<span class="serviceTime" style="margin-left: 1rem;"></span>-->
-                                <#--</div>-->
-                            <#--</div>-->
-                        <#--</div>-->
+                    <#--<div class="offset-20">-->
+                    <#--<div class="text-left">服务时间：</div>-->
+                    <#--<div id="time_div">-->
+                    <#--<div class="time-choose-div">-->
+                    <#--<img onclick="selectTime($(this))" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/>-->
+                    <#--<span class="serviceTime" style="margin-left: 1rem;"></span>-->
+                    <#--</div>-->
+                    <#--</div>-->
+                    <#--</div>-->
 
                         <div class="offset-20">
                             <div class="text-left">备注：</div>
@@ -605,6 +581,7 @@
                 </button>
             </div>
             <form id="toSelectTimeForm" action="${base}/wx/teacher/toSelectTime" method="post">
+                <input hidden name="teacherId"/>
                 <input hidden name="teacher.userId"/>
                 <input hidden name="teacher.id"/>
                 <input hidden name="teacher.name"/>
@@ -619,10 +596,10 @@
             </form>
         </div>
     </div>
-<div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
-<div class="mask" id="mask" style="z-index:10000;display: none"></div>
-<div id="calendar_month" class="hide-nav-bottom"></div>
-<div id="calendar_day" class="hide-nav-bottom"></div>
+    <div class="mask" id="maskbehind" style="z-index:9998;display: none"></div>
+    <div class="mask" id="mask" style="z-index:10000;display: none"></div>
+    <div id="calendar_month" class="hide-nav-bottom"></div>
+    <div id="calendar_day" class="hide-nav-bottom"></div>
 
     <!--举报-->
     <div id="mobile-menu-report" class="mobile-nav mobile-menu-bottom-sm visible-xs visible-sm hide-nav-bottom" style="height: 100%;">
@@ -671,19 +648,15 @@
 
 </body>
 </html>
-<script src='${base}/static/js/jquery.cookie.js'></script>
 <script>
     var waySelect = null;
     var domainSelect = null;
     var demandSelect = null;
-    var serviceTimes = null;
     var editTimeDiv = null;
     var timeOpt = "day";
     var weekArray = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六");
-    var timeDayStr = '<div class="time-choose-div"><img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
-    var timeStr = '<div class="time-choose-div"><img class="calendar-icon" style="width:2.5rem;margin-left: 1rem;" src="${base}/static/img/calendar.svg"/> <span class="serviceTime" style="margin-left: 1rem;"></span> </div>'
     if(waySelect=="治疗师上门"){
-        $("#sumSpan").htmal(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").html(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="学生上门"){
         $("#sumSpan").html(parseInt("${(teacher.priceS)!}")*parseInt($("#countSpan").html()));
     }else if(waySelect=="在线授课"){
@@ -691,9 +664,7 @@
     }else{
         $("#sumSpan").html("0");
     }
-
     twemoji.parse(document.getElementById('emoji'), {size: 36});
-
     var original = document.documentElement.clientHeight;
     window.addEventListener("resize", function() {
         var resizeHeight = document.documentElement.clientHeight;
@@ -703,27 +674,6 @@
             $('.bottom-multiple-btn').css('display', '');
         }
     });
-
-    //    $("#mobile-nav-taggle").click(function () {
-    //        makeOrder();
-    //    });
-
-    function masking() {
-        $("#maskbehind").show();
-        $("#base").css("overflow-x","hidden");
-        $("#base").css("overflow-y","hidden");
-        $("#base").css("position","absolute");
-        //      $("#base").bind("touchmove",function(event){event.preventDefault();});
-    }
-
-    function unmasking() {
-        $("#maskbehind").hide();
-        $("#base").css("overflow-x","scroll");
-        $("#base").css("overflow-y","scroll");
-        $("#base").css("position","");
-        //      $("#base").unbind("touchmove");
-    }
-
     $(".mobile-nav-taggle,#mobile-nav-taggle").click(function () {
         if("${user!"no"}"!='no') {
             if('${(user.userStatus)!}'!='2') {
@@ -734,50 +684,30 @@
             alert('您还没有登录，请前往登录');
             location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx41aea10976e1038a&redirect_uri=http%3A%2F%2Fwww.yoocr.com%2Fwx%2fcallback%2Fopenid%2Fparent&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
         }
-
-
         var mobileMenu = $(this).next(".mobile-menu-bottom");//上拉框是下一个节点
         if (mobileMenu.hasClass("hide-nav-bottom")) {
             makeOrder(mobileMenu);
-//            if(makeOrder()==true) {
-//                setTimeout(function () {
-//                    masking();
-//                }, 500);
-     //       setTimeout(function () {
-//                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-//                $("#divContent").children(".container").height($("#mobile-menu-order").height-110);
-     //       }, 500);
-//            }else {
-//                alert("用户状态异常，无法预约");
-//            }
         }
         else {
-//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100)
-
         }
     });
-
     $(".mobile-close-taggle").click(function () {
         var mobileMenu = $(this).parents(".mobile-nav");
         if (mobileMenu.hasClass("hide-nav-bottom")) {
-//            masking();
             setTimeout(function () {
                 mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
             }, 100)
         }
         else {
-//            unmasking();
             setTimeout(function (){
                 mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
             }, 100);
         }
     });
-
     $('.border-pill').click(pillClick);
-
     function pillClick() {
         $(this).addClass("border-pill-active");
         if ($(this).hasClass("way")){
@@ -791,29 +721,11 @@
                 //该简历 第一次交易
                 $(".amount_button").unbind("click");
                 $("#countSpan").html("1");
+                setLessonAmountBtns(true);
             } else {
-                $("#addBtn").bind("click", add_function);
-                $("#subBtn").bind("click", subtract_function);
+                setLessonAmountBtns(false);
             }
         }
-//        } else if ($(this).hasClass("timeOption")){
-//            timeOpt = $(this).data("timeopt");
-//            $("#time_div").html("");
-//            var times = parseInt($("#countSpan").html());
-//            if (timeOpt == "day" && times > 1){
-//                for (var i=0; i<times; i++){
-//                    $("#time_div").append(timeDayStr);
-//                }
-//                $(".delete-btn").unbind("click");
-//                $(".delete-btn").bind("click", deleteTimeChoose);
-//            } else {
-//                $("#time_div").html(timeStr);
-//            }
-//
-//            $(".calendar-icon").unbind("click").click(function () {
-//               selectTime($(this));
-//            });
-//        }
         var sib = new Array();
         sib = $(this).parent().siblings().children(".border-pill-active");
         $.each(sib, function(key, val) {
@@ -821,19 +733,6 @@
         });
         calculateSum();
     }
-
-    function deleteTimeChoose() {
-        if($('#countSpan').html()!=1) {
-            $(this).parent().remove();
-            $('#countSpan').html(parseInt($('#countSpan').html()) - 1);
-            $('#sumSpan').html(parseInt($('#countSpan').html() * (parseInt($("#sumSpan").html()) / (parseInt($('#countSpan').html()) + 1))));
-        } else {
-            alert("课程数不能小于1");
-        }
-
-    }
-
-
     function calculateSum() {
         if(waySelect=="治疗师上门"){
             $("#sumSpan").html(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
@@ -845,80 +744,22 @@
             $("#sumSpan").html("0");
         }
     }
-
     function showFullComment(str,ele) {
         ele.previousElementSibling.innerText = str;
         ele.nextElementSibling.style.display = "";
         ele.style.display = "none";
     }
-
     function showBriefComment(str,ele) {
         ele.previousElementSibling.previousElementSibling.innerText = str.substr(0,60) + "……";
         ele.previousElementSibling.style.display = "";
         ele.style.display = "none";
     }
-
-    function showMorePics(ele) {
-        ele.previousElementSibling.style.display = "none";
-        ele.nextElementSibling.nextElementSibling.style.display = "";
-        ele.nextElementSibling.style.display = "";
-        ele.style.display = "none";
-    }
-
-    function hideMorePics(ele) {
-        ele.previousElementSibling.previousElementSibling.style.display = "";
-        ele.previousElementSibling.style.display = "";
-        ele.nextElementSibling.style.display = "none";
-        ele.style.display = "none";
-    }
-
     function reply(pid) {
         window.location.href="${base}/wx/teacher/toReply?teacherId=${teacher.id}&pid=" +pid;
-//        $("#mobile-menu-reply textarea[name='detail']").val("");
-////        $("#replyModal input[name='oid']").val(oid);
-//        $("#mobile-menu-reply input[name='pid']").val(pid);
-//        var mobileMenu = $("#mobile-menu-reply");
-//        if (mobileMenu.hasClass("hide-nav-bottom")) {
-//            setTimeout(function () {
-//                mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-//            }, 100)
-//        }
-//        else {
-//            setTimeout(function (){
-//                mobileMenu.addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-//            }, 100)
-//        }
     }
-
-
-    function addFn(){
-        for(var i=0;i<ALi.length;i++){
-            ALi[i].getElementsByTagName('input')[0].index=i;
-            ALi[i].getElementsByTagName('span')[0].index=i;
-            // 文件域改变后执行
-            ALi[i].getElementsByTagName('input')[0].onchange=function(){
-                ALi[this.index].getElementsByTagName('span')[0].style.display='block'; //删除按钮显示
-                var oImg = document.createElement('img'); // 创建img元素
-                ALi[this.index].getElementsByTagName('span')[0].appendChild(oImg);
-                oImg.src=getFileUrl(this);  //地址增加
-
-                setTimeout(function(){  //图片高度居中
-                    oImg.style.marginTop=-oImg.offsetHeight/2+'px';
-                }, 100);
-            };
-            // 删除按钮事件
-            ALi[i].getElementsByTagName('span')[0].onclick=function(){
-                ALi[this.index].innerHTML='<input type="file" class="upfile" name="pics"><span></span>';
-                addFn();
-            };
-        };
-
-    }
-
     var o;//用于存储当前被举报的 评论的 button
     //    g_r： 0赞  1举报      id:评论Id     type： 0增加点赞、举报   1取消点赞
     function changeCount(g_r,id,type,obj){
-
         if(type==0){
             //增加点赞、举报
             if(g_r==0) {
@@ -965,7 +806,6 @@
             });
         }
     }
-
     function doreport() {
         $.ajax({
             method: 'POST',
@@ -983,7 +823,6 @@
             }
         });
     }
-
     function makeOrder(mobileMenu) {
         $.ajax({
             method: 'POST',
@@ -1010,7 +849,6 @@
                         $('#domains').append($option);
                     }
                     domainSelect = domains[0];
-
                     $('#ways').html("");
                     var ways = "${teacher.way}".split("、");
                     if(ways[0]=='不限') {
@@ -1024,29 +862,22 @@
                     }
                     waySelect = ways[0];
                     var demands = data.data;
-                    $("#demands").html("");
                     if(demands.length<1){
-                        $("#demands").html("<div class='col-sm-12 col-xs-12' style='color:#FF7F00; padding: 10px; text-align:center'>您还未添加任何需求简历！</div>");
-                    } else {
-                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
-                        $('#demands').append($option);
-                        demandSelect=demands[0].id;
-                        for(var i=1;i<demands.length;i++){
-                            $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
-                            $('#demands').append($option);
-                        }
-                        var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
-                        if(isFirst=="yes"){
-                            //该简历 第一次交易
-                            $("#addBtn").unbind("click");
-                            $("#subBtn").unbind("click");
-                        } else {
-                            $("#addBtn").bind("click",add_function);
-                            $("#subBtn").bind("click",subtract_function);
-                        }
-                        $(".border-pill").bind("click", pillClick);
+                        alert("请先添加简历");
+                        return;
                     }
-
+                    $("#demands").html("");
+                    $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill border-pill-active" data-first="' + demands[0].id+'#'+demands[0].first + '">'+demands[0].name+'</div></div>');
+                    $('#demands').append($option);
+                    demandSelect=demands[0].id;
+                    for(var i=1;i<demands.length;i++){
+                        $option=$('<div class="col-xs-4 padding-5-10"><div class="demand border-pill" data-first="' + demands[i].id+'#'+demands[i].first + '">'+demands[i].name+'</div></div>');
+                        $('#demands').append($option);
+                    }
+                    var isFirst=$("#demands > .col-xs-4 > .border-pill-active").data("first").split("#")[1];
+                    //该简历 第一次交易
+                    setLessonAmountBtns(isFirst=="yes");
+                    $(".border-pill").bind("click", pillClick);
                     calculateSum();
                     mobileMenu.addClass("show-nav-bottom").removeClass("hide-nav-bottom");
                     $("#divContent").children(".container").height($("#mobile-menu-order").height()-120);
@@ -1061,248 +892,19 @@
             }
         });
     }
-
-
-    <#--function yuYue_fucntion(){-->
-        <#--var isFirst=$(".amount_button:disabled").size();-->
-        <#--if(isFirst>0){-->
-            <#--isFirst=1;-->
-        <#--}-->
-        <#--var ts = new Array();-->
-        <#--$(".serviceTime").each(function(){-->
-            <#--alert($(this).text());-->
-            <#--if ($(this).text()!=null && $(this).text()!=""){-->
-                <#--ts.push($(this).text());-->
-            <#--}-->
-        <#--});-->
-        <#--if (timeOpt=="day" && ts.length != parseInt($('#countSpan').html())){-->
-            <#--alert("请完善服务时间");-->
-            <#--return;-->
-        <#--}-->
-        <#--serviceTimes = "";-->
-        <#--for (var i=0; i<ts.length; i++){-->
-            <#--if (i>0){-->
-                <#--serviceTimes += "#";-->
-            <#--}-->
-            <#--var date = ts[i].split(" ")[0];-->
-            <#--var time = ts[i].split(" ")[1];-->
-            <#--serviceTimes += date+ " " + time.replace("-","%");-->
-        <#--}-->
-
-        <#--alert(serviceTimes);-->
-
-        <#--$.ajax({-->
-            <#--method: 'POST',-->
-            <#--url: '${base}/wx/order/submit',-->
-            <#--data: {-->
-                <#--'teacher.id': '${teacher.id}',-->
-                <#--'teacher.name':'${teacher.name}',-->
-                <#--'demandId':$(".demand.border-pill-active").data("first").split("#")[0],-->
-                <#--'way':waySelect,-->
-                <#--'recoverOb':domainSelect,-->
-                <#--'serverTime':serviceTimes,-->
-                <#--'remark':$('#remark').val(),-->
-                <#--'totalpay':$('#sumSpan').html(),-->
-                <#--'amount':$('#countSpan').html(),-->
-                <#--'isFirst':isFirst,-->
-                <#--'timeOpt':timeOpt-->
-            <#--},-->
-            <#--success:function (data, status, headers, config) {-->
-                <#--if (data.success==true) {-->
-                    <#--//alert(data['data']['order_id'])-->
-<#--//                    setCookie('order_id',data.data,1);//小时-->
-<#--//                    ipCookie('order_id', data['data']['order_id'], {path: '/', expires: 14});-->
-                    <#--document.location = '${base}/wx/order/'+data.data+'/success';-->
-                <#--} else{-->
-                    <#--alert('发生错误');-->
-                <#--}-->
-            <#--}-->
-        <#--});-->
-
-    <#--}-->
-
     function subtract_function() {
         if($('#countSpan').html()!=1) {
             $('#countSpan').html(parseInt($('#countSpan').html()) - 1);
             $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html())/(parseInt($('#countSpan').html())+1))));
-//            if (timeOpt == "day"){
-//                $("#time_div > .time-choose-div:last").remove();
-//            }
         }
     }
-
     function add_function() {
         $('#countSpan').html(parseInt($('#countSpan').html()) + 1);
         $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html()/($('#countSpan').html()-1)))));
-        <#--if (timeOpt == "day"){-->
-            <#--if (parseInt($('#countSpan').html())==2 && $(".time-choose-div:first").children("img.delete-btn").length==0){-->
-                <#--$("#time_div > .time-choose-div").prepend('<img class="delete-btn" style="width: 2rem;margin:0rem 1rem;" src="${base}/static/img/delete.svg">')-->
-            <#--}-->
-            <#--$("#time_div").append(timeDayStr);-->
-            <#--$(".calendar-icon").unbind("click").click(function(){-->
-                <#--selectTime($(this));-->
-            <#--});-->
-            <#--$(".delete-btn").unbind("click");-->
-            <#--$(".delete-btn").bind("click", deleteTimeChoose);-->
-        <#--}-->
     }
-
-
-    function selectTime(obj) {
-        editTimeDiv=obj.siblings(".serviceTime");
-        $("#mask").show();
-        if( $('#calendar_month').html().trim()!=""){
-            $("#calendar_month").remove();
-            $("body").append($("<div id='calendar_month' class='hide-nav-bottom'></div>"));
-        }
-        $.ajax({
-            type: "GET",
-            url: "${base}/wx/teacher/${teacher.id}/orderTime/month",
-            dataType: "json",
-            success: function (data) {
-                var events=[];
-                for(var i=0;i<data.data.length;i++){
-                    var time = {start:data.data[i],title:"可预约",className:"schedule_title"};
-                    events.push(time);
-                }
-                $('#calendar_month').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month'
-                    },
-                    navLinks: true, // can click day/week names to navigate views
-                    weekNumbers: true,
-                    weekNumbersWithinDays: true,
-                    weekNumberCalculation: 'ISO',
-                    eventLimit: true, // allow "more" link when too many events
-                    events: events,
-                    monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-                    monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-                    dayNames: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-                    dayNamesShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-                    today: ["今天"],
-                    eventClick : function( event ){
-                        var date=event.start.toString();
-                        $.ajax({
-                            type: "POST",
-                            url: "${base}/wx/teacher/${teacher.id}/orderTime/day",
-                            dataType: "json",
-                            data:{
-                                date:date
-                            },
-                            success: function (data) {
-                                $("#calendar_day").remove();
-                                $("body").append($("<div id='calendar_day' class='hide-nav-bottom'></div>"));
-                                var events_day=[];
-                                var defaultDate;
-                                for(var i=0;i<data.data.start.length;i++){
-                                    var time = {start:data.data.start[i],title:data.data.title[i],end:data.data.end[i],className:data.data.className[i]};
-                                    events_day.push(time);
-                                    if(0==i){
-                                        defaultDate=data.data.start[i].split("T")[0];
-                                    }
-                                }
-                                var day = $('#calendar_day');
-//                                alert(defaultDate);
-
-                                $('#calendar_day').fullCalendar({
-                                    header: {
-                                        left: 'prev,next today',
-                                        center: 'title',
-                                        right: 'agendaDay'
-                                    },
-                                    minTime:"07:00:00",
-                                    maxTime:"21:00:00",
-                                    navLinks: true, // can click day/week names to navigate views
-                                    weekNumbers: true,
-                                    defaultDate: defaultDate,
-                                    defaultView:"agendaDay",
-                                    weekNumbersWithinDays: true,
-                                    weekNumberCalculation: 'ISO',
-                                    eventLimit: true, // allow "more" link when too many events
-                                    events: events_day,
-                                    monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-                                    monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
-                                    dayNames: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-                                    dayNamesShort: ["周日", "周一", "周二", "周三", "周四", "周五", "周六"],
-                                    today: ["今天"],
-                                    timeFormat: 'HH:mm',
-                                    axisFormat: 'HH:mm',
-                                    eventClick: function (event) {
-                                        if(event.title=="可预约"){
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "${base}/wx/teacher/orderTime",
-                                                dataType: "json",
-                                                data:{
-                                                    start:event.start.toString(),
-                                                    end:event.end.toString()
-                                                },
-                                                success: function (data) {
-                                                    var resultMap = data.data;
-                                                    editTimeDiv.text(resultMap.date + " " + resultMap.time);
-                                                    if (timeOpt=="week"){
-                                                        var week = weekArray[new Date().getDay()];
-                                                        editTimeDiv.after("<span>&nbsp;起&nbsp;每周"+ resultMap.weekDay+"</span>")
-                                                    } else if (timeOpt=="month"){
-                                                        editTimeDiv.after("<span>&nbsp;起&nbsp;每月"+ resultMap.monthDay+"</span>")
-                                                    }
-
-                                                    $("#calendar_day").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-                                                    $("#mask").hide();
-                                                }});
-                                        }
-                                    }
-
-                                });
-
-                                $("#calendar_month").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-                                if (!$($("#calendar_day").children("div").get(0)).hasClass("close-time")) {
-                                    $("#calendar_day").prepend('<div class="close-time">×</div>');
-                                    $("#calendar_day > .close-time").bind("click", function () {
-                                        $("#calendar_day").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-                                        $("#mask").hide();
-                                        $("body").css("overflow-y","scroll");
-                                    });
-                                    //$(".fc-scroller").css("height", h+'px');
-                                }
-//                                $("#calendar_day").children(".fc-header-toolbar").children(".fc-right").css("float","left");
-//                                var ele = $("#calendar_day").children(".fc-header-toolbar").children(".fc-center");
-//                                $("#calendar_day").children(".fc-header-toolbar").after(ele);
-//                                $("#calendar_day").children(".fc-header-toolbar").remove(".fc-center");
-                                $("body").css("overflow-y","hidden");
-                                $("#calendar_day").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-                            }
-                        });
-                    }
-                });
-
-                //$(".fc-scroller").css("height",h+'px');
-                if (!$($("#calendar_month").children("div").get(0)).hasClass("close-time")) {
-                    $("#calendar_month").prepend('<div class="close-time">×</div>');
-                    $("#calendar_month > .close-time").bind("click",function () {
-                        $("#calendar_month").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-                        $("#mask").hide();
-                        $("body").css("overflow-y","scroll");
-                    });
-                }
-//                $("#calendar_month").children(".fc-header-toolbar").children(".fc-right").css("float","left");
-//                var ele = $("#calendar_month").children(".fc-header-toolbar").children(".fc-center");
-//                $("#calendar_month").children(".fc-header-toolbar").after(ele);
-//                $("#calendar_month").children(".fc-header-toolbar").remove(".fc-center");
-                $("body").css("overflow-y","hidden");
-                $("#calendar_month").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
-            }
-        });
+    function remind_cannot_change_amount() {
+        alert("第一次只能选择一节课哦~");
     }
-
-    function hideTime () {
-        $(this).parents("show-nav-bottom").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
-        $("#mask").hide();
-        $("body").css("overflow-y","scroll");
-    }
-
     function toSelectTime() {
         var isFirst=$(".amount_button:disabled").size();
         if(isFirst>0){
@@ -1312,23 +914,17 @@
             alert("显示错误，请刷新页面");
             return;
         }
-
-        if ($(".demand.border-pill-active").length == 0){
-            alert("您还没有添加简历哦~");
-            return;
-        }
-
         if (prepareOrderInfo(isFirst)){
             $("#toSelectTimeForm").submit();
         } else {
             alert("请先完善订单信息");
         }
     }
-
     function prepareOrderInfo(isFirst) {
         var amount = parseInt($('#countSpan').html());
         if (timeOpt != null && amount > 0){
             $("input[name='teacher.userId']").val(${teacher.userId});
+            $("input[name='teacherId']").val(${teacher.id});
             $("input[name='teacher.id']").val(${teacher.id});
             $("input[name='teacher.name']").val("${teacher.name}");
             $("input[name='demandId']").val($(".demand.border-pill-active").data("first").split("#")[0]);
@@ -1342,8 +938,18 @@
             return true;
         }
         return false;
-
     }
-
-
+    function setLessonAmountBtns(isFirstOrder) {
+        if (isFirstOrder){
+            $("#addBtn > img").attr("src","${base}/static/img/add-disabled.svg");
+            $("#subBtn > img").attr("src","${base}/static/img/sub-disabled.svg");
+            $("#addBtn").bind("click",remind_cannot_change_amount);
+            $("#subBtn").bind("click",remind_cannot_change_amount);
+        } else {
+            $("#addBtn > img").attr("src","${base}/static/img/add.svg");
+            $("#subBtn > img").attr("src","${base}/static/img/sub.svg");
+            $("#addBtn").bind("click",add_function);
+            $("#subBtn").bind("click",subtract_function);
+        }
+    }
 </script>

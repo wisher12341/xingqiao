@@ -18,7 +18,6 @@
         .glyphicon-calendar,.text_calendar{
             color: #20b49a!important;
         }
-
         /**
         日历插件 CSS修改
          */
@@ -49,7 +48,6 @@
             text-align: center;
         }
         .schedule_title{
-
             border: none;
         }
         .fc-content{
@@ -62,7 +60,6 @@
             margin-top: 50%;
             border-radius:100% ;
             text-align: center;
-
         }
         .fc-button{
             opacity: 100;
@@ -97,7 +94,6 @@
         .fc-event, .fc-event-dot{
             background-color: transparent!important;
         }
-
         /**
         今日安排
          */
@@ -163,23 +159,19 @@
             font-size: 36px;
             margin: 15px 0px;
         }
-
         .time-selector-title{
             font-size: 40px;
             font-weight: bold;
             color: #696969;
             text-align: center;
         }
-
         .orderN{
             background:url("${path}/static/img/tag.png") no-repeat right top;
         }
-
         .selected-time{
             font-size: 36px;
             text-align: center;
         }
-
         #btnNextStep{
             height: 100%;
             font-size: 40px;
@@ -187,7 +179,6 @@
             text-align: center;
             line-height: 120px;
         }
-
         #mobile-menu-selected{
             z-index: 9990;
             height: auto;
@@ -197,8 +188,6 @@
         .time-item{
             padding: 10px 30px;
         }
-
-
     </style>
 </head>
 
@@ -211,16 +200,16 @@
             </div>
         </div>
         <br>
-        <#assign weekdayStrs = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]>
-        <#list order.serverTime?split("#") as time>
-            <#assign weekdayIndex = time?substring(time?index_of("@")-1,time?index_of("@"))>
-            <#assign timestr = time?substring(time?index_of("@")+1)>
-            <div class="inline-wrapper time-item" data-time="${time}" data-timestr="${timestr}">
-                <div class="selected-time" style="color: #696969">${weekdayStrs[weekdayIndex?number]} &nbsp; ${timestr?replace("%","-")} </div>
-                <div class="selected-time date-text">点击查看可选日期</div>
-            </div>
-            <hr>
-        </#list>
+    <#assign weekdayStrs = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"]>
+    <#list order.serverTime?split("#") as time>
+        <#assign weekdayIndex = time?substring(time?index_of("@")-1,time?index_of("@"))>
+        <#assign timestr = time?substring(time?index_of("@")+1)>
+        <div class="inline-wrapper time-item" data-time="${time}" data-timestr="${timestr}">
+            <div class="selected-time" style="color: #696969">${weekdayStrs[weekdayIndex?number]} &nbsp; ${timestr?replace("%","-")} </div>
+            <div class="selected-time date-text">点击查看可选日期</div>
+        </div>
+        <hr>
+    </#list>
         <div class="row">
             <div class="col-xs-12 time-selector-title" >
                 可选日期<span></span>
@@ -252,7 +241,6 @@
 </body>
 <script>
     $(function () {
-
         $(".time-item").click(function () {
             if ($('#calendar_month').html() != null) {
                 $('#calendar_month').remove();
@@ -260,7 +248,6 @@
             }
             var condition = $(this).data("time");
             var dateTextDiv = $(this).children(".date-text");
-
             $.ajax({
                 method: 'POST',
                 url: '${path}/wx/teacher/getAvailableDateByWeekday',
@@ -276,7 +263,6 @@
                         time = {start: starts[i] ,title:"", className:"schedule_title"};
                         events.push(time);
                     }
-
                     $('#calendar_month').fullCalendar({
                         header: {
                             right: 'prev,next',
@@ -312,14 +298,10 @@
                             });
                         }
                     });
-
                 }
             });
         });
-
-
         $("#btnNextStep").click(function () {
-
             var isComplete = true;
             var serviceTimes = "";
             $(".time-item").each(function () {
@@ -333,18 +315,14 @@
                     serviceTimes += dateText + " " + $(this).data("timestr") + "#";
                 }
             });
-
             if (!isComplete){
                 return;
             }
-
             if (serviceTimes.length>0 && serviceTimes.charAt(serviceTimes.length-1) == "#"){
                 serviceTimes = serviceTimes.slice(0,serviceTimes.length-1);
             }
-
             var pay = "${order.totalpay}";
             pay = pay.replace(/,/,"");
-
             $("input[name='teacher.userId']").val(${order.teacher.userId});
             $("input[name='teacher.id']").val(${order.teacher.id});
             $("input[name='teacher.name']").val("${order.teacher.name}");
@@ -358,18 +336,12 @@
             $("input[name='timeOpt']").val("${order.timeOpt}");
             $("input[name='serverTime']").val(serviceTimes);
             $("#toCheckTimeForm").submit();
-
         })
-
     });
-
     function getWeekday(date) {
         var arys1 = date.split('-');     //日期为输入日期，格式为 2013-3-10
         var ssdate=new Date(arys1[0],parseInt(arys1[1]-1),arys1[2]);
         return ssdate.getDay();  //就是你要的星期几
     }
-
-
-
 </script>
 </html>

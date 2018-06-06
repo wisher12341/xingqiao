@@ -17,7 +17,6 @@
         font-size: 36px;
         text-align: center;
     }
-
     .bottom-btn-item{
         height: 100%;
         font-size: 40px;
@@ -25,41 +24,34 @@
         text-align: center;
         line-height: 120px;
     }
-
     .time-selector{
         padding: 20px 40px;
         margin: 0px;
         width: 100%;
         background-color: #FFFFFF;
     }
-
     .time-selector-title{
         font-size: 40px;
         font-weight: bold;
         color: #696969;
         text-align: center;
     }
-
     .weekday-pill{
         font-size: 36px;
         margin: 15px 0px;
         padding: 20px;
     }
-
     .time-pill{
         font-size: 36px;
         margin: 15px 0px;
     }
-
     .time-pills-container{
         display: none;
     }
-
     .selected-time{
         font-size: 36px;
         text-align: center;
     }
-
     #btnNextStep{
         height: 100%;
         font-size: 40px;
@@ -67,14 +59,12 @@
         text-align: center;
         line-height: 120px;
     }
-
     #mobile-menu-selected{
         z-index: 9990;
         height: auto;
         padding-bottom: 120px;
         max-height: 60%;
     }
-
     .time-item{
         padding: 10px 30px;
     }
@@ -110,17 +100,17 @@
         </div>
         <br>
         <br>
-        <#list schedule as times>
-            <#if times != "0">
-                <div class="row time-pills-container" id="pills${times_index}">
-                    <#list times?split("@") as t>
+    <#list schedule as times>
+        <#if times != "0">
+            <div class="row time-pills-container" id="pills${times_index}">
+                <#list times?split("@") as t>
                     <div class="col-xs-3">
                         <div class="border-pill time-pill" data-time="${times_index}@${t?replace("-","%")}">${t}</div>
                     </div>
-                    </#list>
-                </div>
-            </#if>
-        </#list>
+                </#list>
+            </div>
+        </#if>
+    </#list>
 
     </div>
 
@@ -170,7 +160,6 @@
     var timeChosen = 0;
     $(function () {
         var selectTimeList = [];//用于记录选中的有安排的日期 带weekday@start%end
-
         function addSelectTime(timeFormatted) {
             if (timeChosen < amount){
                 timeChosen++;
@@ -184,7 +173,6 @@
                 return false;
             }
         }
-
         function deleteSelectTime(timeFormatted) {
             for (var i=0; i<selectTimeList.length; i++){
                 if (selectTimeList[i] ==  timeFormatted){
@@ -197,7 +185,6 @@
                 }
             }
         }
-
         function isSelected(timeFormatted) {
             for (var i=0; i<selectTimeList.length; i++){
                 if (selectTimeList[i] == timeFormatted){
@@ -206,7 +193,6 @@
             }
             return false;
         }
-
         function loadSelectedTimes() {
             $("#selectedTimesContainer").html("");
             for (var i=0; i<selectTimeList.length; i++){
@@ -232,7 +218,6 @@
                 })
             })
         }
-
         $("#btnClear").click(function () {
             var old = $("#remainingTimes").data("remain");
             $("#remainingTimes").data("remain", old+selectTimeList.length);
@@ -241,7 +226,6 @@
             loadSelectedTimes();
             $(".time-pill.border-pill-active").removeClass("border-pill-active").addClass("border-pill");
         });
-
         $("#btnShowList").click(function () {
             if ($("#mobile-menu-selected").hasClass("hide-nav-bottom")){
                 $("#mobile-menu-selected").addClass("show-nav-bottom").removeClass("hide-nav-bottom");
@@ -251,27 +235,23 @@
                 $("#mask").hide();
             }
         });
-
         $("#mask").click(function () {
             if ($("#mobile-menu-selected").hasClass("show-nav-bottom")) {
                 $("#mobile-menu-selected").addClass("hide-nav-bottom").removeClass("show-nav-bottom");
                 $("#mask").hide();
             }
         });
-
         $(".weekday-pill").click(function () {
             if ($(this).hasClass("border-pill-active")){
                 $(this).removeClass("border-pill-active").addClass("border-pill");
             } else {
                 $(".weekday-pill.border-pill-active").removeClass("border-pill-active").addClass("border-pill");
                 $(this).removeClass("border-pill").addClass("border-pill-active");
-
                 $(".time-pills-container").hide();
                 var containerId = "#pills" + $(this).data("weekday");
                 $(containerId).show();
             }
         });
-
         $(".time-pill").click(function () {
             if ($(this).hasClass("border-pill-active")){
                 $(this).removeClass("border-pill-active").addClass("border-pill");
@@ -287,7 +267,6 @@
                 alert("您还未选择上课日哦~");
                 return;
             }
-
             var serviceTimes = "";
             for (var i=0; i<selectTimeList.length; i++){
                 serviceTimes += selectTimeList[i] + "#";
@@ -295,7 +274,6 @@
             serviceTimes = serviceTimes.slice(0,serviceTimes.length-1);
             var pay = "${order.totalpay}";
             pay = pay.replace(/,/,"");
-
             $("input[name='teacher.id']").val(${order.teacher.id});
             $("input[name='teacher.userId']").val(${order.teacher.userId});
             $("input[name='teacher.name']").val("${order.teacher.name}");
@@ -310,8 +288,6 @@
             $("input[name='serverTime']").val(serviceTimes);
             $("#toChooseFirstClassForm").submit();
         })
-
     });
-
 </script>
 </html>

@@ -145,7 +145,8 @@
                         <input type="text" class="title_input" name="rec.startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
                     </#if>
                     </div>
-<#if qetype?? && qetype=="edit">
+<#if parent?? && parent=="1">
+<#else >
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
                     </div>
@@ -162,7 +163,8 @@
                         <input type="text" class="title_input" name="rec.endTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
                     </#if>
                     </div>
-<#if qetype?? && qetype=="edit">
+<#if parent?? && parent=="1">
+<#else >
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-4x icon_fa"></i>
                     </div>
@@ -173,7 +175,8 @@
 
         <div class="buttonDiv_info" style="background-color: white">
             <textarea class="textarea" placeholder="描述您曾任职期间的具体教学内容，科研成果" name="rec.detail" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: #111!important;" </#if>><#if data??>${data.detail}</#if></textarea>
-<#if qetype?? && qetype=="edit">
+<#if parent?? && parent=="1">
+<#else >
             <p class="length">
             <#if data??>
                 ${200-(data!)?split("@")[1]?length}
@@ -184,11 +187,12 @@
 </#if>
         </div>
 
-        <#--<#if qetype?? && qetype=="edit">-->
+        <#if parent?? && parent=="1">
+        <#else >
             <div class="foot" align="center">
                 <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
             </div>
-        <#--</#if>-->
+        </#if>
 
     </form>
 </div>

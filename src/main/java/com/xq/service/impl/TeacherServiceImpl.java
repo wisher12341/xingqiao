@@ -4,12 +4,13 @@ import com.xq.dao.CommentDao;
 import com.xq.dao.OrderDao;
 import com.xq.dao.TeacherDao;
 import com.xq.dao.UserDao;
-import com.xq.dto.CalendarDto;
-import com.xq.dto.TeacherInfoSchool;
+import com.xq.dto.*;
 import com.xq.model.*;
 import com.xq.service.TeacherService;
 import com.xq.util.Const;
 import com.xq.util.CookieUtil;
+import com.xq.util.OrderUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -84,7 +85,7 @@ public class TeacherServiceImpl implements TeacherService{
 
 
 
-        List<Teacher> teacherList = teachersDao.getTeachers(teacher,minY,minP,maxP,maxY,flag);
+        List<Teacher> teacherList=teachersDao.getCheckedTeachers(teacher,minY,minP,maxP,maxY,flag);
         for(Teacher teacher1:teacherList){
             if(teacher1.getGender().equals("0")){
                 teacher1.setGender("男");
@@ -93,9 +94,10 @@ public class TeacherServiceImpl implements TeacherService{
             }
 
             //显示 价格区间
-            int max=teacher1.getPriceMax(),min=teacher1.getPriceMin();
+            Integer max = teacher1.getPriceMax();
+            Integer min = teacher1.getPriceMin();
 
-            if(max!=min){
+            if(max != null && min != null && max != min){
                 teacher1.setPrice(min+"-"+max);
             }else{
                 teacher1.setPrice(min+"");
@@ -192,8 +194,9 @@ public class TeacherServiceImpl implements TeacherService{
     }
 
     @Override
-    public List<String> order_time_month(Integer tid) {
+    public List<String> getAvailableDaysInAMonth(Integer tid) {
         List<String> starts=new ArrayList<String>();
+
         Teacher teacher=teachersDao.getTeacher(tid);
 
         Date today = new Date();
@@ -201,72 +204,37 @@ public class TeacherServiceImpl implements TeacherService{
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
 
+        ScheduleWeekDto scheduleWeekDto = OrderUtils.decodeScheduleWeek(teacher.getSchedule());
+        List<Order> onGoingOrders = orderDao.getOnGoingOrdersByTid(tid);
+
         //接下来一个月的时间
         for(int i=1;i<=30;i++){
-            String schedule=teacher.getSchedule();//获得治疗师一周安排表
-
+            //获得治疗师一周安排表
             c.setTime(today);
             c.add(Calendar.DAY_OF_MONTH,i);
-            Date day = c.getTime();
-            String dateNowStr = sdf.format(day);//该天日期
-
-            c.setTime(day);
-            int week=c.get(Calendar.DAY_OF_WEEK);//该天周几  1为周日
-            if(week==1){
-                week=7;
-            }else{
-                week=week-1;
-            }
-            String today_schedule=schedule.split("#")[week-1];//今日的工作安排
-            if(today_schedule.equals("0")){
-                //该天 一周安排表 未安排 时间
-                continue;
-            }
+            ScheduleDayDto todaySchedule = scheduleWeekDto.getScheduleByDay(OrderUtils.getWeekDayIndex(c));
 
             /**
              * 以课时为单位
              * 判断各个课时是否已被安排
              */
-
-
-            List<Order> orderList=orderDao.getTodayServiceTime(dateNowStr,teacher.getId());//获取当天 正在进行的订单 匹配日期
-            if(orderList.size()==0){
-                //该天没有 订单
-                starts.add(dateNowStr);
-                continue;
-            }
-            List<String> service_time=new ArrayList<String>(); //存储 当天已预约的 起%止  时间
-            //只取该天的  服务的时分
-            for(Order order:orderList){
-                for(String time:order.getServerTime().split("#")){
-                    if(time.split(" ")[0].equals(dateNowStr)){
-                        service_time.add(time.split(" ")[1]);
+            if (todaySchedule != null) {
+                for (String scheduleTime : todaySchedule.getTodaySchedule()){
+                    String serverTime = OrderUtils.scheduleToServerTime(scheduleTime, c.getTime());
+                    boolean isThisTimeAvailable = true;
+                    for (Order orderOnGoing : onGoingOrders){
+                        if (orderOnGoing.getServerTime().contains(serverTime)){
+                            isThisTimeAvailable = false;
+                            break;
+                        }
                     }
-                }
-            }
 
-            Boolean flag=false;//用于标记 今天是否可预约
-            //分析一周安排表中 当天的各个时间段  每个时间段是一课时 看订单是否 已安排的
-            for(String time:today_schedule.split("@")){
-//                Boolean f = false;//用于标记是否从内层循环break
-                for(String ser:service_time){
-//                    if(time.replace("-","%").equals(ser)){
-//                        //起止时间一致（期间没修改过一周安排表）
-//                        flag=false;
-//                        break;
-//                    }
-                    if(inTime(time,ser)){
-                        //起止时间不一致（期间修改过）  则分别判断 开始时间和结束时间  是否在该时间段内 只要有一个在 则该时间段 就不可预约
-                        flag=false;
+                    //一天中有一个时间空闲，就可以显示，结束循环
+                    if (isThisTimeAvailable){
+                        starts.add(sdf.format(c.getTime()));
                         break;
                     }
-                    flag=true;
                 }
-                if(flag) break; //只需要得到 至少有一次课时 没有占用 即可， 该天就可预约
-            }
-
-            if(flag){
-                starts.add(dateNowStr);
             }
 
         }
@@ -439,7 +407,7 @@ public class TeacherServiceImpl implements TeacherService{
     public List<String> getAvailableDateByWeekday(int tid, String condition){
         List<String> result = new ArrayList<>();
 
-        List<String> starts = order_time_month(tid);
+        List<String> starts = getAvailableDaysInAMonth(tid);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -447,7 +415,7 @@ public class TeacherServiceImpl implements TeacherService{
 
         for (String item : starts){
             try {
-                int dayOfWeek = getWeekDay(sdf.parse(item));
+                int dayOfWeek = OrderUtils.getWeekDay(sdf.parse(item));
                 if (dayOfWeek == 7){
                     dayOfWeek = 0;
                 }
@@ -481,17 +449,7 @@ public class TeacherServiceImpl implements TeacherService{
 
     }
 
-    private int getWeekDay(Date date){
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        int week = calendar.get(Calendar.DAY_OF_WEEK);
-        if(week==1){
-            week=7;
-        }else{
-            week=week-1;
-        }
-        return week;
-    }
+
 
     @Override
     public String formatDateAndTime(String gmt){
@@ -510,53 +468,65 @@ public class TeacherServiceImpl implements TeacherService{
     @Override
     public List<String> weekLoop(Order order){
         List<String> resultList = new ArrayList<>();
-        String serveTime = "";
-        String conflictTime = "";
-        SimpleDateFormat sfdate = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
 
-        String[] startDates = order.getServerTime().split("#");
-        String[] tmp = null;
+        List<OrderServerTimeDto> startServeTimes = OrderUtils.decodeServerTime(order.getServerTime());
+
         int amount = Integer.parseInt(order.getAmount());
 
-        try {
-            do {
-                tmp = new String[startDates.length];
-                for (int i = 0; i < startDates.length; i++){
-                    String date = startDates[i].substring(0, startDates[i].indexOf(" "));
-                    String timeCondition = startDates[i].substring(startDates[i].indexOf(" ")+1);
-
-                    CalendarDto calendarDto = order_time_day(order.getTeacher().getId(),date);
-                    if (canOrder(calendarDto, timeCondition)){
-                        serveTime += startDates[i] + "#";
-                        amount--;
-                        if (amount <= 0){
-                            if (serveTime.length() > 0){
-                                serveTime = serveTime.substring(0,serveTime.length()-1);
-                            }
-                            if (conflictTime.length() > 0){
-                                conflictTime = conflictTime.substring(0,conflictTime.length()-1);
-                            }
-                            resultList.add(serveTime);
-                            resultList.add(conflictTime);
-                            return resultList;
-                        }
-                    } else {
-                        conflictTime += startDates[i] + "#";
-                    }
-                    calendar.setTime(sfdate.parse(date));
-                    calendar.add(Calendar.DATE, 7);
-                    tmp[i] = sfdate.format(calendar.getTime()) + " " + timeCondition;
-                }
-
-                startDates = tmp;
-            } while (amount > 0);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        List<Order> onGoingOrders = orderDao.getOnGoingOrdersByTid(order.getTeacher().getId());
+        List<OrderServerTimeDto> onGoingServerTimes = new ArrayList<>();
+        for (Order orderOnGoing : onGoingOrders) {
+            onGoingServerTimes.addAll(OrderUtils.decodeServerTime(orderOnGoing.getServerTime()));
         }
 
-        resultList.add(serveTime);
-        resultList.add(conflictTime);
+        List<OrderServerTimeDto> availableTimes = new ArrayList<>();
+        List<OrderServerTimeDto> conflictTimes = new ArrayList<>();
+
+        do {
+            List<OrderServerTimeDto> tmp = new ArrayList<>();
+            for (int i = 0; i < startServeTimes.size(); i++){
+                OrderServerTimeDto currentServeTime = startServeTimes.get(i);
+
+                boolean isThisTimeAvailable = true;
+
+                if (CollectionUtils.isNotEmpty(onGoingOrders)){
+                    for (OrderServerTimeDto onGoingTime : onGoingServerTimes) {
+                        if (OrderUtils.isOrderTimeConflict(currentServeTime, onGoingTime)){
+                            isThisTimeAvailable = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (isThisTimeAvailable){
+                    availableTimes.add(currentServeTime);
+                    amount--;
+                    if (amount <= 0){
+                        resultList.add(OrderUtils.fromServerTime(availableTimes));
+                        resultList.add(OrderUtils.fromServerTime(conflictTimes));
+                        return resultList;
+                    }
+                } else {
+                    conflictTimes.add(currentServeTime);
+                }
+
+                OrderServerTimeDto nextWeek = new OrderServerTimeDto();
+                calendar.setTime(currentServeTime.getStart());
+                calendar.add(Calendar.DATE, 7);
+                nextWeek.setStart(calendar.getTime());
+                calendar.setTime(currentServeTime.getEnd());
+                calendar.add(Calendar.DATE, 7);
+                nextWeek.setEnd(calendar.getTime());
+
+                tmp.add(nextWeek);
+            }
+
+            startServeTimes = tmp;
+        } while (amount > 0);
+
+        resultList.add(OrderUtils.fromServerTime(availableTimes));
+        resultList.add(OrderUtils.fromServerTime(conflictTimes));
         return resultList;
 
     }

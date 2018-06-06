@@ -54,4 +54,6 @@ public interface OrderDao {
     List<Order> getAllDoingOrderByUid(Integer userId);
 
     List<Order> getAllDoingDayOrderByUid(@Param("uid") Integer uid, @Param("day") String day);
+
+    List<Order> getOnGoingOrdersByTid(@Param("teacherId") Integer teacherId);
 }

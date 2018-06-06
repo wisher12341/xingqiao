@@ -10,6 +10,7 @@ import com.xq.service.RecoveryLogService;
 import com.xq.service.UserService;
 import com.xq.util.Const;
 import com.xq.util.CookieUtil;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -139,8 +140,13 @@ public class OrderController {
     @ResponseBody
     @RequestMapping(value = "/submit",method = RequestMethod.POST)
     public Result submit(Order order, HttpServletRequest request){
-        String order_id=orderService.addOrder(order,request);
-        return new Result(true,order_id);
+        String orderId=orderService.addOrder(order,request);
+        Result result = new Result(true, orderId);
+        if (orderId == null || (StringUtils.equals(orderId, "-1") || StringUtils.equals(orderId, "-2"))){
+            result.setSuccess(false);
+            result.setError(orderId);
+        }
+        return result;
     }
 
     /**
@@ -150,9 +156,27 @@ public class OrderController {
     @RequestMapping(value = "/{orderId}/success",method = RequestMethod.GET)
     public ModelAndView success(@PathVariable("orderId") String orderId){
         OrderDto order=orderService.getOrderByOid(orderId);
-        ModelAndView mv=new ModelAndView("order/success");
+        ModelAndView mv=new ModelAndView("order/results/success");
         mv.addObject("order",order);
         return mv;
     }
+    /**
+     * 订单提交失败
+     * @return
+     */
+    @RequestMapping(value = "/failure",method = RequestMethod.GET)
+    public ModelAndView failure(){
+        ModelAndView mv=new ModelAndView("order/results/failure");
+        return mv;
+    }
 
+    /**
+     * 订单提交冲突
+     * @return
+     */
+    @RequestMapping(value = "/conflict",method = RequestMethod.GET)
+    public ModelAndView conflict(){
+        ModelAndView mv=new ModelAndView("order/results/conflict");
+        return mv;
+    }
 }
