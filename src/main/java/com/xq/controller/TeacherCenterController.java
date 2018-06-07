@@ -489,7 +489,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value="/{userId}/changeIconPage")
     public ModelAndView changeIconPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("teacherCenter/changeIcon");
+        ModelAndView mv=new ModelAndView("teacherCenter/teacherChangeIcon");
         mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }

@@ -456,7 +456,7 @@ public class ParentCenterController {
      */
     @RequestMapping(value="/{userId}/changeIconPage")
     public ModelAndView changeIconPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("parentCenter/changeIcon");
+        ModelAndView mv=new ModelAndView("parentCenter/parentChangeIcon");
         mv.addObject("user",parentCenterService.getUserById(userId));
         return mv;
     }
