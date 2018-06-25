@@ -226,6 +226,22 @@
             <#--<div class="addBtn" style="text-align: center" onclick=location.href="${path}/wx/parentCenter/${userId}/myDemands/${demand.id}/demandDetail/addRecoveryHis">添加康复史</div>-->
         <#--</div>-->
         <#--<div style="height: 30px;background-color: #dff0d8"></div>-->
+        <div class="addBtn" style="text-align: center;margin-bottom:120px;background-color: darkred;" onclick=deleteDemand("${demand.id}","${userId}")>删除简历</div>
+        <div class="addBtn" style="text-align: center" onclick=location.href="/wx/parentCenter/${userId}/myDemands">返回</div>
 </div>
 </body>
 </html>
+<script>
+    function deleteDemand(demandId,userId) {
+        $.ajax({
+            url: "/wx/parentCenter/deleteDemand/"+demandId,
+            type: 'post',
+            success: function () {
+                window.location.href = "/wx/parentCenter/"+userId+"/myDemands";
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>

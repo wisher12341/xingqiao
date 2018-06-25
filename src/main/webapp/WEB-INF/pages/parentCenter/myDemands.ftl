@@ -9,6 +9,7 @@
         body{
             background-color: #f5f5f5;
         }
+
         .buttonDiv_info{
             margin: 2% 0;
             border-bottom: 1px solid #ccc;
@@ -108,8 +109,9 @@
 </#if>
 
 </div>
-<div class="row col-sm-12"><p style="margin-top: 100px"> </p></div>
-<div class="addBtn" style="text-align: center" onclick=location.href="${path}/wx/parentCenter/${user.id}/addDemandPage">添加需求简历</div>
+
+
+<div class="addBtn" style="text-align: center;margin-bottom: 120px" onclick=location.href="${path}/wx/parentCenter/${user.id}/addDemandPage">添加需求简历</div>
 <div class="addBtn" style="text-align: center" onclick=location.href="/wx/parentCenter">回到个人中心</div>
 </body>
 </html>

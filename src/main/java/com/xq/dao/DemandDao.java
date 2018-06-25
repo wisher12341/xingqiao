@@ -2,6 +2,7 @@ package com.xq.dao;
 
 import com.xq.model.Demand;
 import com.xq.model.Parent;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -41,4 +42,6 @@ public interface DemandDao {
     void addDemand(@Param("userId") int userId,@Param("name") String name,@Param("gender") int gender, @Param("birthday") String birthday,
                    @Param("report") String report, @Param("diseaseHis") String diseaseHis, @Param("allergyHis") String allergyHis,@Param("remark") String remark);
 
+    @Delete("DELETE FROM demand WHERE id=#{demandId}")
+    void deleteDemand(@Param("demandId") int demandId);
 }

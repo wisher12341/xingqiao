@@ -46,6 +46,8 @@ public interface ParentCenterService {
     void addDemand(int userId, String name, int gender, String birthday, String report, String diseaseHis,
                    String allergyHis, String remark);
 
+    void deleteDemand(int demandId);
+
     //int myInfoStatus(int userId);
     void fillInfo(ParentInfoDto parentInfoDto);
 
