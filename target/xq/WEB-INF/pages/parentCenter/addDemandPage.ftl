@@ -63,7 +63,12 @@
 <script>
     function addDemand(userId) {
         var name=$("#name").val();
-        var gender=$("input[type='radio']:checked").val();
+        var gender;
+        if($("input[type='radio']:checked")===undefined) {
+            gender = "";
+        }else{
+            gender = $("input[type='radio']:checked").val();
+        }
         var birthday=$("#birthday").val();
         var report=$("#report").val();
         var diseaseHis=$("#diseaseHis").val();

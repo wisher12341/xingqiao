@@ -144,12 +144,28 @@ public class ParentCenterController {
      *添加简历
      */
     @RequestMapping(value = "/mydemands/{userId}/addDemand",method = RequestMethod.POST)
-    public ModelAndView addRecoveryHis(@PathVariable Integer userId, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
+    public ModelAndView addDemand(@PathVariable Integer userId, @RequestParam("name") String name, @RequestParam("gender") Integer gender,
                               @RequestParam("birthday") String birthday,@RequestParam("report") String report, @RequestParam("diseaseHis") String diseaseHis,
                               @RequestParam("allergyHis") String allergyHis, @RequestParam("remark") String remark){
         ModelAndView mv=new ModelAndView("redirect:/wx/parentCenter/"+userId+"/myDemands");
         parentCenterService.addDemand( userId,name,gender,birthday,report,diseaseHis,allergyHis,remark);
         return mv;
+    }
+
+    /**
+     * 删除简历
+     */
+    @RequestMapping(value="/deleteDemand/{demandId}",method = RequestMethod.POST)
+    @ResponseBody
+    public Result deleteDemand(@PathVariable Integer demandId){
+        try {
+            parentCenterService.deleteDemand(demandId);
+            return new Result(true);
+        }
+        catch (Exception e){
+            return new Result(false);
+        }
+
     }
 
 

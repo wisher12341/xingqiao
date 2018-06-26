@@ -114,6 +114,7 @@
             width: 100%;
         }
     </style>
+    <script src="/static/js/datePicker.js" ></script>
 </head>
 <body>
 
@@ -140,13 +141,13 @@
                     </div>
                     <div class="col-xs-8">
                         <#if data??>
-                                <input type="month" class="title_input" name="startTime" value="${data.startTime}" >
+                                <input type="text" id="demo1" class="title_input" name="startTime" value="${data.startTime}" >
                             <#else >
-                                <input type="text" class="title_input" name="startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                                <input type="text" id="demo1" class="title_input" name="startTime" placeholder="请选择时间">
                         </#if>
                     </div>
                     <div class="col-xs-1">
-                        <i class="fa fa-angle-right fa-4x icon_fa"></i>
+                        <i class="fa fa-angle-right fa-4x icon_fa" onclick=""></i>
                     </div>
                 </div>
                 <div class="info row" >
@@ -155,9 +156,9 @@
                     </div>
                     <div class="col-xs-8">
                         <#if data??>
-                            <input  type="month" class="title_input" name="endTime" value="${data.endTime}" >
+                            <input  type="text" id="demo2" class="title_input" name="endTime" value="${data.endTime}" >
                         <#else >
-                            <input type="text" class="title_input" name="endTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                            <input type="text" id="demo2" class="title_input" name="endTime" placeholder="请选择时间">
                         </#if>
                     </div>
                     <div class="col-xs-1">
@@ -234,5 +235,38 @@
 
     });
     </#if>
+
+    var calendar = new datePicker();
+    calendar.init({
+        'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+        'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':'2100-12-31',/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
+//    calendar.setDescendantFocusability(DatePicker.FOCUS_BLOCK_DESCENDANTS);
+    var calendar2 = new datePicker();
+    calendar2.init({
+        'trigger': '#demo2', /*按钮选择器，用于触发弹出插件*/
+        'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':'2100-12-31',/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
+
+    $("#demo1").focus(function(){
+        document.activeElement.blur();
+    });
+    $("#demo2").focus(function(){
+        document.activeElement.blur();
+    });
 </script>
 </html>

@@ -35,4 +35,6 @@ public interface UserDao {
     void changePassword(@Param("openid") String openid, @Param("status") String type, @Param("password") String password);
 
     void changeUserStatusByOpenid(@Param("openid") String openid, @Param("userStatue") Integer userStatus, @Param("type") String type);
+
+    void changePasswordByUsername(@Param("username")String username,@Param("status") String type, @Param("password")String password);
 }

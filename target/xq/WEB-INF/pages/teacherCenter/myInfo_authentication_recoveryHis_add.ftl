@@ -6,6 +6,7 @@
 <#include "common/head.ftl" />
     <link href="${path}/static/css/parentCenter/parentCenter.css" type="text/css" rel="stylesheet" />
     <link href="${path}/static/css/parentCenter/myInfo.css" type="text/css" rel="stylesheet" />
+    <script src="/static/js/datePicker.js" ></script>
     <style>
         body{
             background-color: #f5f5f5;
@@ -140,9 +141,9 @@
                     </div>
                     <div class="col-xs-8">
                     <#if data??>
-                        <input type="month" class="title_input" name="rec.startTime" value="${data.startTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
+                        <input type="text" id="demo1" class="title_input" name="rec.startTime" value="${data.startTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
                     <#else >
-                        <input type="text" class="title_input" name="rec.startTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                        <input type="text" id="demo1" class="title_input" name="rec.startTime" placeholder="请选择时间">
                     </#if>
                     </div>
 <#if parent?? && parent=="1">
@@ -158,9 +159,9 @@
                     </div>
                     <div class="col-xs-8">
                     <#if data??>
-                        <input type="month" class="title_input" name="rec.endTime" value="${data.endTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
+                        <input type="text" id="demo2" class="title_input" name="rec.endTime" value="${data.endTime}" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: dimgrey!important;"</#if>>
                     <#else >
-                        <input type="text" class="title_input" name="rec.endTime" placeholder="请选择时间" onfocus="$(this).attr('type','month')">
+                        <input type="text" id="demo2" class="title_input" name="rec.endTime" placeholder="请选择时间" >
                     </#if>
                     </div>
 <#if parent?? && parent=="1">
@@ -221,5 +222,37 @@
             alert("资料未填写完整");
         }
     }
+
+    var calendar = new datePicker();
+    calendar.init({
+        'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+        'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':'2100-12-31',/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
+    var calendar2 = new datePicker();
+    calendar2.init({
+        'trigger': '#demo2', /*按钮选择器，用于触发弹出插件*/
+        'type': 'ym',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':'2100-12-31',/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
+
+    $("#demo1").focus(function(){
+        document.activeElement.blur();
+    });
+    $("#demo2").focus(function(){
+        document.activeElement.blur();
+    });
 </script>
 </html>

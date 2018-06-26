@@ -31,4 +31,6 @@ public interface UserService {
     void changePassword(HttpServletRequest request, String password, String type);
 
     void changeUserStatus(Integer userStatus, String request, String parent);
+
+    void forgetChangePassword(String username, String password, String type);
 }

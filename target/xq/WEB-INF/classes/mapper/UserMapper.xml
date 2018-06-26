@@ -100,4 +100,8 @@
     <update id="changePassword">
         UPDATE sysuser set password=#{password} WHERE openid=#{openid} AND status=#{status}
     </update>
+
+    <update id="changePasswordByUsername">
+        UPDATE sysuser set password=#{password} WHERE username=#{username} AND status=#{status}
+    </update>
 </mapper>

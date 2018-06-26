@@ -184,4 +184,34 @@ public class LoginController {
         userService.changePassword(request,password,type);
         return mv;
     }
+
+
+    /**
+     * 忘记密码页面
+     * @param type 1治疗师  0家长
+     * @return
+     */
+    @RequestMapping(value = "/forget/changePwd/{type}",method = RequestMethod.GET)
+    public ModelAndView forgetpwd(@PathVariable String type){
+        ModelAndView mv=new ModelAndView("forgetPassword");
+        mv.addObject("type",type);
+        return mv;
+    }
+
+    /**
+     * 忘记密码的修改密码
+     * @param type 1治疗师  0家长
+     * @return
+     */
+    @RequestMapping(value = "/forget/changePwd/{type}",method = RequestMethod.POST)
+    public ModelAndView forgetpwd_post(String username,@PathVariable String type,String password){
+        ModelAndView mv;
+        if(type.equals("1")){
+            mv=new ModelAndView("redirect:/wx/teacherCenter");
+        }else{
+            mv=new ModelAndView("redirect:/wx/parentCenter");
+        }
+        userService.forgetChangePassword(username,password,type);
+        return mv;
+    }
 }

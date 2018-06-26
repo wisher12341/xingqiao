@@ -522,6 +522,7 @@ public class TeacherCenterController {
     public ModelAndView schedule(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/mySchedule");
         mv.addObject("uid",uid);
+        mv.addObject("period",teacherCenterService.getInfoByTypeName(uid,"period",""));
         mv.addObject("schedule",teacherCenterService.getInfoByTypeName(uid,"schedule",""));
         mv.addObject("period",teacherCenterService.getInfoByTypeName(uid,"period",""));
         mv.addObject("type",type);
