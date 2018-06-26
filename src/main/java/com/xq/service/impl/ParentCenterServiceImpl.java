@@ -537,5 +537,10 @@ public class ParentCenterServiceImpl implements ParentCenterService {
         }
         return messageList;
     }
+
+    @Override
+    public  void deleteDemand(int demandId){
+        demandDao.deleteDemand(demandId);
+    }
 }
 

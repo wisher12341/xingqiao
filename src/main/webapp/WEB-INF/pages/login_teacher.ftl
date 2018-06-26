@@ -14,7 +14,7 @@
         }
         .buttonDiv_info{
             margin: 4% 0;
-            border-bottom: 1px solid #ccc;
+            /*border-bottom: 1px solid #ccc;*/
             border-top: 1px solid #ccc;
         }
         .info{
@@ -124,6 +124,11 @@
                 </div>
                 <div class="col-xs-10">
                     <input placeholder="密码" type="password" class="textInput" name="password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12" style="text-align: left;width: 100%!important;">
+                    <label onclick=location.href="/wx/login/forget/changePwd/1" style="color: #00b0ff;font-size: 40px;padding:2% 5%">忘记密码</label>
                 </div>
             </div>
             <#if message??>

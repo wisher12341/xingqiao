@@ -26,6 +26,11 @@
         <div class="group">
             <span class="la">密码：</span><input type="password" name="password" class="textInput" placeholder="password"/>
         </div>
+        <div class="row">
+            <div class="col-xs-12" style="text-align: left;width: 100%!important;">
+                <label onclick=location.href="/wx/login/forget/changePwd/0" style="color: #00b0ff;font-size: 40px;padding:2% 5%">忘记密码</label>
+            </div>
+        </div>
         <div class="group">
             <span style="color: red;text-align: center">${message!}</span>
         </div>

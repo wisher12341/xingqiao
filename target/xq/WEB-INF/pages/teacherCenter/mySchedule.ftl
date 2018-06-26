@@ -8,6 +8,7 @@
     <link href='${path}/static/fullcalendar/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <script src='${path}/static/fullcalendar/moment.min.js'></script>
     <script src='${path}/static/fullcalendar/fullcalendar.js'></script>
+    <script src="/static/js/datePicker.js" ></script>
     <style>
         .fc-time-grid-container{
             height: 100%!important;
@@ -44,7 +45,7 @@
         }
 
         .foot{
-            position: fixed;
+            /*position: fixed;*/
             width: 100%;
             bottom: 0;
             background-color: #f5f5f5;
@@ -147,17 +148,27 @@
             /*-moz-appearance:none;*/
             /*-webkit-appearance:none;*/
         }
+        #main{
+            margin-bottom: 3%;
+        }
+        .ym_roll>div, .date_roll>div, .datetime_roll>div, .time_roll>div{
+            font-size: 1.2em;
+        }
+        .date_btn{
+            font-size: 1.3em;
+        }
     </style>
 </head>
 <body>
 <div id="main">
     <div id='calendar'></div>
-    <#if type=="teacher">
-        <div class="foot" align="center">
-            <input type="button" style="width: 100% !important;" value="添加" onclick="showAdd()">
-        </div>
-    </#if>
 </div>
+<#if type=="teacher">
+<div class="foot" align="center">
+    <input type="button" style="width: 49% !important;" value="添加" onclick="showAdd()">
+    <input type="button" style="width: 49% !important;" value="返回" onclick=location.href="/wx/teacherCenter/${uid}/my">
+</div>
+</#if>
 
 <div id="add">
     <form action="/wx/teacherCenter/${uid}/mySchedule/add" method="post" id="addForm">
@@ -187,7 +198,7 @@
                         <p class="text_p"> 具体时间</p>
                     </div>
                     <div class="col-xs-6">
-                        <input placeholder="选择时间" type="time" class="title_input" name="time" style="width: 100%">
+                        <input placeholder="选择时间" type="text" id="demo1" class="title_input" name="time" style="width: 100%">
                     </div>
                     <div class="col-xs-1">
                         <i class="fa fa-angle-right fa-2x icon_fa"></i>
@@ -236,6 +247,9 @@
                 var t=$("input[name='time']").val().split(":");
                 var hour=t[0];
                 var min=t[1];
+                if(hour<8){
+                    alert("课程开始时间不得早于8点，请重新填写");
+                }
                 var add=parseInt(min)+parseInt("${period!}");
                 var addh=add/60;
                 var addm=add%60;
@@ -373,5 +387,18 @@
                 $('#main').hide();
             });
         }
+
+    var calendar = new datePicker();
+    calendar.init({
+        'trigger': '#demo1', /*按钮选择器，用于触发弹出插件*/
+        'type': 'time',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+        'minDate':'1900-1-1',/*最小日期*/
+        'maxDate':'2100-12-31',/*最大日期*/
+        'onSubmit':function(){/*确认时触发事件*/
+            var theSelectData=calendar.value;
+        },
+        'onClose':function(){/*取消时触发事件*/
+        }
+    });
 </script>
 </html>

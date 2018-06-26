@@ -164,4 +164,9 @@ public class UserServiceImpl implements UserService {
     public void changeUserStatus(Integer userStatus, String openid, String type) {
         userDao.changeUserStatusByOpenid(openid,userStatus,type);
     }
+
+    @Override
+    public void forgetChangePassword(String username, String password, String type) {
+        userDao.changePasswordByUsername(username,type,password);
+    }
 }
