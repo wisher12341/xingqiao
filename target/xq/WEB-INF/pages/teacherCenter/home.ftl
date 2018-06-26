@@ -54,7 +54,7 @@
                 winHeight = document.documentElement.clientHeight;
                 winWidth = document.documentElement.clientWidth;
             }
-            $("#headPoster").css('height',winHeight/4);
+            $("#headPoster").css('height',winHeight/3.2);
         </script>
     </div>
 <div>
@@ -86,8 +86,8 @@
             <div class="index-icon-text">反馈信箱</div>
         </div>
         <script>
-            $(".index-panel-item").css('height',winHeight/5.8);
-            $(".index-icon").css("height",winHeight/6).css("width",winWidth/6);
+            $(".index-panel-item").css('height',winHeight/7.5);
+            $(".index-icon").css("height",winHeight/7).css("width",winWidth/7);
         </script>
     </div>
 </div>

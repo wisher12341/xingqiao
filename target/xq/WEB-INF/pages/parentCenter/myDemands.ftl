@@ -55,6 +55,26 @@
             border-radius: 50%;
             font-weight: bold;
         }
+        .foot{
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            background-color: #f5f5f5;
+        }
+        .foot button{
+            /*background-color:#94e6c8 ;*/
+            background-color: #20b49a;
+            color: white !important;
+            font-size: 45px;
+            font-weight: bold;
+            padding: 20px;
+            margin: 0 auto;
+            border-radius: 15px;
+            height:6%
+        }
+        #main{
+            margin-bottom: 8%;
+        }
     </style>
 </head>
 <body>
@@ -108,8 +128,13 @@
 </#if>
 
 </div>
-<div class="row col-sm-12"><p style="margin-top: 100px"> </p></div>
-<div class="addBtn" style="text-align: center" onclick=location.href="${path}/wx/parentCenter/${user.id}/addDemandPage">添加需求简历</div>
-<div class="addBtn" style="text-align: center" onclick=location.href="/wx/parentCenter">回到个人中心</div>
+<div class="foot" align="center">
+    <button style="width: 49.5% !important;" onclick=location.href="${path}/wx/parentCenter/${user.id}/addDemandPage" >添加需求简历</button>
+    <button style="width: 49.5% !important;" onclick=location.href="/wx/parentCenter" >回到个人中心</button>
+</div>
+
+<#--<div class="row col-sm-12"><p style="margin-top: 100px"> </p></div>-->
+<#--<div class="addBtn" style="text-align: center;width: 49.5%" onclick=location.href="${path}/wx/parentCenter/${user.id}/addDemandPage">添加需求简历</div>-->
+<#--<div class="addBtn" style="text-align: center;width: 49.5%" onclick=location.href="/wx/parentCenter">回到个人中心</div>-->
 </body>
 </html>

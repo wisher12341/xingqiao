@@ -200,7 +200,7 @@
                     <p class="text_p"> 课酬(元/课)</p>
                 </div>
                 <div class="col-xs-8">
-                    <input placeholder="请输入一课时的酬金" type="text" class="title_input" maxlength="10" style="padding-left: 20px"
+                    <input placeholder="请输入一课时的酬金" type="number" class="title_input" maxlength="10" style="padding-left: 20px"
                     <#if type=="学生上门">
                            value="${((teacher.priceS)??)?string((teacher.priceS)!,"")}" name="priceS"
                     <#elseif type=="治疗师上门">
@@ -302,10 +302,10 @@
         </div>
         </#if>
 
-        <div class="foot" align="center">
-            <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
-        </div>
     </form>
+    <div class="foot" align="center">
+        <button style="width: 100% !important;" onclick="val()">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+    </div>
 </div>
 
 
@@ -328,6 +328,25 @@
 </body>
 
 <script>
+    function val() {
+        var flag=0;
+        $(".title_input").each(function () {
+            if($.trim($(this).val())==""){
+                flag=1;
+            }
+        });
+        <#if type=="治疗师上门">
+            if($(".search_label").size()==0){
+                flag=1;
+            }
+        </#if>
+        if(flag==0){
+            $("form").submit();
+        }else{
+            alert("资料未填写完整");
+        }
+    }
+
     $(function () {
         <#if (teacher.tGround)?? && (teacher.tGround)!="">
             $(".selectArea1 option").each(function () {

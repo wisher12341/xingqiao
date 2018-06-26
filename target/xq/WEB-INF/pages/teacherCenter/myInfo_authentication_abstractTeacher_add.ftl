@@ -60,7 +60,7 @@
             bottom: 0;
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -114,7 +114,7 @@
         </div>
 
         <div class="foot" align="center">
-            <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+            <input type="button" onclick="val()" style="width: 100% !important;" value="${(user.userStatus!=0)?string("保存并提交审核","保存")}"/>
         </div>
     </form>
 
@@ -131,5 +131,13 @@
         count = 200 - $this.val().length;
         $(".length").text(count);
     });
+
+    function val() {
+        if($.trim($(".textarea").val())==""){
+            alert("内容不能为空");
+        }else{
+            $("form").submit();
+        }
+    }
 </script>
 </html>

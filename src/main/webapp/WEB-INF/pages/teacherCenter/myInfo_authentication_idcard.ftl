@@ -27,7 +27,7 @@
             background-color: #f5f5f5;
             margin-bottom: 20%;
         }
-        .foot button,.foot_back button{
+        .foot button,.foot_back input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -155,11 +155,11 @@
 
 
 <div class="foot_back" align="center">
-    <form action="/wx/${(teacher??)?string("teacherCenter","parentCenter")}/info/${user.id}/idcard" method="post" enctype="multipart/form-data">
-        <input type="file" name="pidUrlFront" style="display: none">
+    <form id="sub" action="/wx/${(teacher??)?string("teacherCenter","parentCenter")}/info/${user.id}/idcard" method="post" enctype="multipart/form-data">
+        <input type="file"  name="pidUrlFront" style="display: none">
         <input type="file" name="pidUrlBack" style="display: none">
         <input type="file" name="peoplePidUrl" style="display: none">
-        <button style="width: 95% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+        <input type="button" onclick="val()" style="width: 95% !important;" value="${(user.userStatus!=0)?string("保存并提交审核","保存")}"/>
     </form>
 </div>
 <div class="foot" align="center">
@@ -172,6 +172,14 @@
 </body>
 
 <script>
+    function val() {
+        if($(".addimg[src!='/static/img/touxiang.svg']").size()==3){
+            $("#sub").submit();
+        }else{
+            alert("未上传全");
+        }
+    }
+
     if($(".addimg").size()==3){
         $(".foot button").css("opacity",1);
     }

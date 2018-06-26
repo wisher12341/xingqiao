@@ -7,97 +7,747 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8096fa39-2683-4410-8529-ecf7826ba959" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/dto/OrderServerTimeDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleDayDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleWeekDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/OrderServerTimeDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleDayDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleWeekDto.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils$1.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/OrderServerTimeDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/ScheduleDayDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/ScheduleDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dto/ScheduleWeekDto.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/xq/util/OrderUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/conflict.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/failure.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/success.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher_noUse.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/results/conflict.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/results/failure.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/results/success.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher_noUse.ftl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/success.ftl" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/success.ftl" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/OrderController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/OrderController.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/img/info/parent/2018/6/12/1528791473042.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/6/12/1528779847054.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/6/12/1528779847068.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentChangeIcon.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/teacherChangeIcon.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/iconClip/PhotoClip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/iconClip/hammer.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/iconClip/iscroll-zoom-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/iconClip/lrz.all.bundle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentChangeIcon.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/teacherChangeIcon.ftl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/iconClip/PhotoClip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/iconClip/hammer.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/iconClip/iscroll-zoom-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/iconClip/lrz.all.bundle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/index.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/AreaController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/CommentController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/CommonController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/GoodReportController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/LoginController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/OrderController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/OrganizationController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/RecoveryLogController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ResourceLibController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TmpLogin.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/WxController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/WxPayController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/AreaDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/CommentDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/DemandDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/GoodReportDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/MessageDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderTeacherDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrganCommentDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrganizationDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/ParentCenterOrderDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/RecoveryLogDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/ReportReasonDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/TeacherCenterDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/TeacherDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/UserDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/AllTypeOrder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/CalendarDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/MessageDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ModifyPageDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/OrderDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/OrderServerTimeDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/PCommentsDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ParentInfoDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/RecoveryHisDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/RecoveryLogDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/Result.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleDayDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleWeekDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TCommentsDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherCenterCountDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherInfoAuthentication.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherInfoEdit.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherInfoRecoveryHis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherInfoSchool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/TeacherLogDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/Work.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/WorkDay.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/WorkDayDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/WorkMonth.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/interceptor/WxInterceptor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Area2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Area3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/CheckOrderFinish.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Demand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Message.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Order.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/OrganComment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Organization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Parent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Preferential.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/RecoveryHis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/RecoveryLog.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/ReportReason.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Teacher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/UserGoodReport.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/WxUserInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/AreaService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/CommentService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/GoodReportService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/MessageService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/OrderService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/OrderTeacherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/OrganizationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/RecoveryLogService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/SmsService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherCenterService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/WxPayService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/WxService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/AreaServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/GoodReportServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/MessageServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/SmsServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxPayServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/sms/SMSConstants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/sms/SMSParam.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/sms/SMSUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/Const.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/CookieUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/HttpRequestor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/config/WxConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/config/WxSendData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/IWXPayDomain$DomainInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/IWXPayDomain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/MP_verify_vQedx3pSA9taJkT9.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/AreaController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/CommentController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/GoodReportController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/LoginController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/OrderController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/OrganizationController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/RecoveryLogController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/TeacherCenterOrderController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/TeacherController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/TmpLogin.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/WxController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/controller/WxPayController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/AreaDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/CommentDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/DemandDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/GoodReportDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/MessageDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/OrderDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/OrderTeacherDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/OrganCommentDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/OrganizationDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/ParentCenterDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/ParentCenterOrderDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/RecoveryLogDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/ReportReasonDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/TeacherCenterDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/TeacherDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dao/UserDao.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/AllTypeOrder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/CalendarDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/MessageDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/ModifyPageDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/OrderDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/PCommentsDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/ParentInfoDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/RecoveryHisDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/RecoveryLogDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/Result.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TCommentsDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherCenterCountDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherInfoAuthentication.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherInfoEdit.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherInfoRecoveryHis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherInfoSchool.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/TeacherLogDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/Work.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/WorkDay.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/WorkDayDto.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/dto/WorkMonth.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/interceptor/WxInterceptor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Area2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Area3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/CheckOrderFinish.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Comment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Demand.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Message.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Order.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/OrganComment.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Organization.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Parent.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Preferential.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/RecoveryHis.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/RecoveryLog.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/ReportReason.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/Teacher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/UserGoodReport.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/model/WxUserInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/AreaService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/CommentService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/GoodReportService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/MessageService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/OrderService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/OrderTeacherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/OrganizationService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/ParentCenterService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/RecoveryLogService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/SmsService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/TeacherCenterService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/TeacherService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/UserService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/WxPayService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/WxService.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/AreaServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/GoodReportServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/MessageServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/OrganizationServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/SmsServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/WxPayServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/service/impl/WxServiceImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/sms/SMSConstants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/sms/SMSParam.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/sms/SMSUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/util/Const.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/util/CookieUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/util/FileUpload.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/util/HttpRequestor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/config/WxConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/config/WxSendData.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/sdk/IWXPayDomain$DomainInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/sdk/IWXPayDomain.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/com/xq/wxpay/sdk/WXPayUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/freemarker.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/jdbc.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/logback.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/AreaMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/CommentMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/DemandMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/GoodReportMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/MessageMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/OrderMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/OrderTeacherMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/OrganCommentMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/OrganizationMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/ParentCenterMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/ParentCenterOrderMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/RecoveryLogMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/ReportReasonMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/TeacherCenterMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/TeacherMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mapper/UserMapper.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/mybatis-config.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/spring/spring-dao.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/spring/spring-service.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/classes/spring/spring-web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/c3p0-0.9.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-beanutils-1.8.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-codec-1.9.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-collections-3.2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-fileupload-1.2.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-io-2.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-lang-2.5.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/commons-logging-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/ezmorph-1.0.6.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/fastjson-1.2.38.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/freemarker-2.3.20.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/httpclient-4.5.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/httpcore-4.4.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/jackson-annotations-2.5.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/jackson-core-2.5.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/jackson-databind-2.5.4.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/javax.servlet-api-3.1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/json-lib-2.4-jdk15.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/jstl-1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/logback-classic-1.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/logback-core-1.1.1.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/mybatis-3.3.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/mybatis-spring-1.2.3.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/mysql-connector-java-5.1.35.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/slf4j-api-1.7.12.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-aop-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-beans-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-context-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-context-support-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-core-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-expression-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-jdbc-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-test-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-tx-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-web-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/spring-webmvc-4.2.6.RELEASE.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/standard-1.1.2.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/lib/taobao-sdk-java-auto_1455552377940-20160607.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/info.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/log/log.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/log/log_confirm.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/login_parent.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/login_teacher.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/check_times.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/choose_time.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/choose_weekday.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/choose_weekday_first.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/comment.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/common/const.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/common/head.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/common/var.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/detail.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/order.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/success.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/order/wx_pay.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/organization/organ_comment_list.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/organization/organ_comment_single.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/organization/organintro.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/organization/organizations.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/addDemandPage.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/changeIcon.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/common/const.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/common/head.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/demandDetail.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/fillInfoPage.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/modifyPage.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myComments.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myDemands_recoveryHis.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myDemands_recoveryHis_edit.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myInfo_authentication.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myInfo_base.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myInfo_noUse.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myMessages.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myTeacher.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myTeacher_noUse.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/myWork.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/parentCenter_index.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/recoveryHisSingle.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parentCenter/teachersDetail_noUse.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/parent_bind.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/setting/changePwd.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/setting/setting.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacher/teacher.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacher/teacher_comment_list.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacher/teacher_comment_single.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacher/teachers.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/changeIcon.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/common/const.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/common/foot.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/common/head.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/common/var.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/demandDetail.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/fillInfoPage.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/home.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/modifyPage.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/modifyText.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myComments.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myDemands.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_award_slide_delete.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_experienceAge_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_name_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_pid_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_school.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_base.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service_domain.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service_object.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service_rule.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service_way.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myLevel.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myLog.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myMessages.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myStar.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/myWork.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/order/detail.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/order/order.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/pages/teacherCenter/teacherCenter.ftl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/WEB-INF/web.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/hello.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap-responsive.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/carousel.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/center.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/cover.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/offcanvas.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/order_detail.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/project.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/star-rating.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/user_info.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/user_message.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/user_order.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/css/user_patient.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/img/glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/js/img/glyphicons-halflings-white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/js/img/glyphicons-halflings.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/js/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/js/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/bootstrap/js/js/npm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/awesome-bootstrap-checkbox.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/awesome-bootstrap-checkbox.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/awesome-bootstrap-checkbox.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/bootstrap.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/build.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/build.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/build.less.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/box/build.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/calendar/css/calendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/calendar/css/mobiscroll.custom-2.17.1.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/calendar/js/date.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/calendar/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/calendar/js/mobiscroll.custom-2.17.1.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/iSlider.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/iscroll.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/slidedel/slideleft.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/slidedel/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/slidedel/zepto.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/common/zepto.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/common/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/index.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/jcy.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/jquery.circliful.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/loading.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/log/log.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/login.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/order/detail.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/order/order.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/order/star-rating.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/parentCenter/myDemands.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/parentCenter/myInfo.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/parentCenter/myMessages.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/parentCenter/myTeachers.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/parentCenter/parentCenter.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/teacher/mescroll.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/teacher/slider.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/teacherCenter/teacherCenter.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/css/teacherCenter/updateLog.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/error/404.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/error/500.jsp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/HELP-US-OUT.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/animated.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/core.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/icons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/larger.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/list.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/path.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/screen-reader.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_animated.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_screen-reader.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/font-awesome-4.7.0/scss/font-awesome.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar/fullcalendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar/fullcalendar.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar/fullcalendar.print.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar2/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar2/fullcalendar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/fullcalendar2/fullcalendar.print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/22.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/3/0.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/3/1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/3/2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/32.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/80.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/Smile.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/add.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/add.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/admintouxiang.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/bangongtouxiang.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/biji.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/biji1.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/calendar.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/camera.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/clear.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/delete.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/diannao.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/dot-line.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/down.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/duihuakuang.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/earth.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/earth_s.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/favorite.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/gongneng.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/gouxuan.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/guwen.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icon.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/doctor.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/expert.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/home.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/mailbox.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/order.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/patient.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/points.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/recovery-center.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/redpocket.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/rules.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/icons/schedual.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/idcard.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/jiantou.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/kong.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/list.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/log/icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/logo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/minus.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/mofabang.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/none.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/Submitonline.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/comment-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/done-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/line.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/line_no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/ontheway-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/pass.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/people.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/smile.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/order/waiting-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/organization/arrow-down-b.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/parentCenter/backIcon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/parentCenter/demandIcon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/parentCenter/parentIcon.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/parentCenter/teacherIcon.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/parentCenter/upload.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/pic.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/pingtaijieshao.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/poster.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/pull-icon@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/qingdan.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/renqun.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/reply.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/search.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/sf1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/sf2.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/sf3.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/shenfenrenzheng.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/shenfenxinxi.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/shouye1.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/shouye3.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/shouye4.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/star-empty.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/star-empty.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/star-full.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/star-full.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/sub.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/tag.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/teacher_male.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/touxiang.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/touxiang2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/touxiang3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/fuwu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/fuwu_no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/pingjia.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/pingjia_no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/wancheng.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/wancheng_no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/yuyue.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/trace/yuyue_no.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/tupiaozoushi.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/up.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/usertouxiang.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/zhiliaoshi.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/ziliao.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/common/angular-cookie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/common/angular.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/common/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/common/jquery-1.12.2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/jquery.circliful.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/log/log.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/login.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/order/detail.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/order/detail_teacher.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/order/star-rating.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/parentCenter/icon/jquery-2.0.3.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/parentCenter/icon/jquery.crop.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/parentCenter/icon/layer.m.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/parentCenter/icon/touch-0.2.14.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/parentCenter/parentCenter.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/teacher/autoresize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/js/teacher/mescroll.min.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/target/xq - 副本.zip" afterPath="$PROJECT_DIR$/classes/artifacts/xq_war/xq_war.war" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/target/xq - 副本/static/img/1508830624493.jpg" afterPath="$PROJECT_DIR$/target/xq/img/info/teacher/2018/6/12/1528779847032.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/target/xq.war" afterPath="$PROJECT_DIR$/classes/artifacts/xq_war/xq.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/OrderDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/TeacherDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/TeacherDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq.war" afterPath="$PROJECT_DIR$/target/xq.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/OrderController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/OrderController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/CommonController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/CommonController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/OrderDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/OrderDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/TeacherDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/TeacherDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleWeekDto.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleWeekDto.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/interceptor/WxInterceptor.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/interceptor/WxInterceptor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/AreaServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/AreaServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/SmsServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/SmsServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxPayServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxPayServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/HttpRequestor.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/HttpRequestor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils$1.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayUtil.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/xq_war.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/xq_war.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/OrderController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/OrderController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/CommonController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/CommonController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/OrderDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/OrderDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/TeacherDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/TeacherDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrderServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/check_times.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/check_times.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_time.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_time.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_weekday.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_weekday.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_weekday_first.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_weekday_first.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/SmsServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/SmsServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/changePwd.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/changePwd.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/index.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/TeacherMapper.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/fullcalendar/fullcalendar.min.css" afterPath="$PROJECT_DIR$/src/main/webapp/static/fullcalendar/fullcalendar.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/xq/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/OrderMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/OrderMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/TeacherMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/TeacherMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/check_times.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/check_times.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_time.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_time.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_weekday.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_weekday.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_weekday_first.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/choose_weekday_first.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/order/comment.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/parentCenter.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parent_bind.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parent_bind.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/setting/changePwd.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/setting/changePwd.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacher/teacher.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/home.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/home.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/index.css" afterPath="$PROJECT_DIR$/target/xq/static/css/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/css/jcy.css" afterPath="$PROJECT_DIR$/target/xq/static/css/jcy.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/static/fullcalendar/fullcalendar.min.css" afterPath="$PROJECT_DIR$/target/xq/static/fullcalendar/fullcalendar.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xq.iml" afterPath="$PROJECT_DIR$/xq.iml" />
     </list>
+    <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -106,141 +756,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="xq" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TeacherCenterController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13554">
-              <caret line="524" column="87" lean-forward="false" selection-start-line="524" selection-start-column="87" selection-end-line="524" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherCenterServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20115">
-              <caret line="772" column="56" lean-forward="false" selection-start-line="772" selection-start-column="56" selection-end-line="772" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mySchedule.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5508">
-              <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_authentication_successCase_add.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3726">
-              <caret line="138" column="14" lean-forward="false" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="68" column="69" lean-forward="false" selection-start-line="68" selection-start-column="69" selection-end-line="68" selection-end-column="109" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
-              <caret line="87" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1628" selection-end-column="10" />
-              <folding>
-                <element signature="e#21562#21566#0" expanded="true" />
-                <element signature="e#21577#21583#0" expanded="true" />
-                <element signature="e#21636#21642#0" expanded="true" />
-                <element signature="e#21642#21646#0" expanded="true" />
-                <element signature="e#21647#21651#0" expanded="true" />
-                <element signature="e#21656#21660#0" expanded="true" />
-                <element signature="e#21859#21865#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="JavaScript File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>oxsEYwlPAa-fVc9fVyzVBYBed9n8</find>
-      <find>&lt;span style=&quot;color: red;padding: 15px;position: relative;top: 8px;&quot;&gt;*&lt;/span&gt;</find>
-      <find>addDemand</find>
-      <find>demand</find>
-      <find>edit</find>
-      <find>o</find>
-      <find>opn</find>
-      <find>op</find>
-      <find>openid=</find>
-      <find>openid=&quot;</find>
-      <find>日程</find>
-      <find>我的日程安排</find>
-      <find>我的日程</find>
-      <find>myInfoEditPost</find>
-      <find>sched</find>
-      <find>康复</find>
-      <find>info</find>
-      <find>onclick</find>
-      <find>getInfromById</find>
-      <find>getInformMessageByPage</find>
-      <find>...</find>
-      <find>setMessage(</find>
-      <find>乱码</find>
-      <find>serviceInfo</find>
-      <find>editServiceInfoWay</find>
-      <find>getAllOrder</find>
-      <find>delModal</find>
-      <find>评价</find>
-      <find>addSchedule</find>
-      <find>mySchedule/add</find>
-    </findStrings>
-    <replaceStrings>
-      <replace />
-    </replaceStrings>
-    <dirStrings>
-      <dir>C:\sp\gitRepository\xingqiao</dir>
-    </dirStrings>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -253,57 +773,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/spring/spring-web.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/OrderMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/order/detail.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/comment.ftl" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/OrderTeacherMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/common/var.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_base.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myMessages.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myMessages.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/CommentServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_edit.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterOrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/CommentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/RecoveryLogController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/order.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myComments.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myComments.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/log/log_confirm.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/order/detail.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrderServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/detail.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrderTeacherServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/CommonController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/success.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/RecoveryLogService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/RecoveryLogServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/dao/RecoveryLogDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/RecoveryLogMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/OrderController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/order.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/parentCenter.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myWork.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/changePwd.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
-        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
       </list>
     </option>
   </component>
@@ -319,9 +789,6 @@
     <option name="FILTER_INFO" value="true" />
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -345,6 +812,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -522,37 +990,18 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="js.eslint.eslintPackage" value="" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.xq.controller" />
-      <recent name="com.xq.dto" />
-      <recent name="com.xq.service" />
-      <recent name="com.xq.service.impl" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages\parentCenter" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\WEB-INF\pages\teacherCenter" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\css" />
-      <recent name="C:\sp\gitRepository\xingqiao\src\main\webapp\static\js" />
-    </key>
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -586,22 +1035,6 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
-      <envs />
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
       <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -664,302 +1097,8 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="false" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Cold Fusion runner description" factoryName="Cold Fusion" custom_browser="" web_path="">
-      <method />
-    </configuration>
-    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="myFilePath" />
-      <option name="GLUE" />
-      <option name="myNameFilter" />
-      <option name="myGeneratedName" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
-      <option name="BCName" value="" />
-      <option name="IOSSimulatorSdkPath" value="" />
-      <option name="adlOptions" value="" />
-      <option name="airProgramParameters" value="" />
-      <option name="appDescriptorForEmulator" value="Android" />
-      <option name="debugTransport" value="USB" />
-      <option name="debuggerSdkRaw" value="BC SDK" />
-      <option name="emulator" value="NexusOne" />
-      <option name="emulatorAdlOptions" value="" />
-      <option name="fastPackaging" value="true" />
-      <option name="fullScreenHeight" value="0" />
-      <option name="fullScreenWidth" value="0" />
-      <option name="launchUrl" value="false" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="mobileRunTarget" value="Emulator" />
-      <option name="moduleName" value="" />
-      <option name="overriddenMainClass" value="" />
-      <option name="overriddenOutputFileName" value="" />
-      <option name="overrideMainClass" value="false" />
-      <option name="runTrusted" value="true" />
-      <option name="screenDpi" value="0" />
-      <option name="screenHeight" value="0" />
-      <option name="screenWidth" value="0" />
-      <option name="url" value="http://" />
-      <option name="usbDebugPort" value="7936" />
-      <method />
-    </configuration>
-    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
-      <option name="BCName" value="" />
-      <option name="launcherParameters">
-        <LauncherParameters>
-          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
-          <option name="launcherType" value="OSDefault" />
-          <option name="newPlayerInstance" value="false" />
-          <option name="playerPath" value="FlashPlayerDebugger.exe" />
-        </LauncherParameters>
-      </option>
-      <option name="moduleName" value="" />
-      <option name="trusted" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
-      <node-interpreter value="project" />
-      <working-dir value="" />
-      <envs />
-      <scope-kind value="ALL" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
-      <config-file value="" />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="xq" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run" />
-      <scripts />
-      <node-interpreter value="project" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
-      <method />
-    </configuration>
-    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
-      <method />
-    </configuration>
     <configuration name="xq" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\Program Files (x86)\Java\jdk1.8.0_144\jre">
-      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
-      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="xq:war exploded">
           <settings>
@@ -968,9 +1107,7 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="Unnamed_xq_3" />
-        <option name="HTTP_PORT" value="8081" />
-        <option name="JNDI_PORT" value="1091" />
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_xq_2" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -979,7 +1116,7 @@
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="57620" />
+        <option name="DEBUG_PORT" value="60138" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -1036,105 +1173,47 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8096fa39-2683-4410-8529-ecf7826ba959" name="Default" comment="" />
-      <created>1512544861194</created>
+      <created>1529993850093</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1512544861194</updated>
-      <workItem from="1512544865800" duration="1447000" />
-      <workItem from="1512634656659" duration="80249000" />
-      <workItem from="1513055670809" duration="30712000" />
-      <workItem from="1513325607868" duration="52735000" />
-      <workItem from="1514187598109" duration="69803000" />
-      <workItem from="1514879403903" duration="92337000" />
-      <workItem from="1515316659774" duration="247000" />
-      <workItem from="1515317169180" duration="2061000" />
-      <workItem from="1515394513131" duration="26332000" />
-      <workItem from="1515749428185" duration="61106000" />
-      <workItem from="1516167611683" duration="8539000" />
-      <workItem from="1516177028900" duration="47335000" />
-      <workItem from="1516690770656" duration="26485000" />
-      <workItem from="1517312867569" duration="2608000" />
-      <workItem from="1517914584253" duration="1025000" />
-      <workItem from="1519469681347" duration="2627000" />
-      <workItem from="1519625146190" duration="11857000" />
-      <workItem from="1520406018978" duration="104750000" />
-      <workItem from="1522582237202" duration="1367000" />
-      <workItem from="1522655487371" duration="14000" />
-      <workItem from="1522656166946" duration="36000" />
-      <workItem from="1522745007753" duration="1421000" />
-      <workItem from="1522826129850" duration="14484000" />
-      <workItem from="1523003818656" duration="25313000" />
-      <workItem from="1523172092854" duration="65000" />
-      <workItem from="1523276422776" duration="32834000" />
-      <workItem from="1523444076302" duration="16558000" />
-      <workItem from="1523519054548" duration="748000" />
-      <workItem from="1523682562162" duration="34239000" />
-      <workItem from="1523963015655" duration="4560000" />
-      <workItem from="1524018248673" duration="528000" />
-      <workItem from="1524136491296" duration="2159000" />
-      <workItem from="1524543804915" duration="2104000" />
-      <workItem from="1525794553879" duration="56000" />
-      <workItem from="1525822005556" duration="79000" />
-      <workItem from="1525845348186" duration="2683000" />
-      <workItem from="1526303145138" duration="8930000" />
-      <workItem from="1526381342397" duration="279000" />
-      <workItem from="1526381864442" duration="6331000" />
-      <workItem from="1526403306125" duration="7384000" />
-      <workItem from="1526988252536" duration="3047000" />
-      <workItem from="1527213778829" duration="1289000" />
-      <workItem from="1527580181570" duration="12789000" />
-      <workItem from="1528112708258" duration="2360000" />
-      <workItem from="1528119027606" duration="9300000" />
-      <workItem from="1528559986536" duration="2433000" />
-      <workItem from="1528646766219" duration="763000" />
-      <workItem from="1528905355272" duration="34000" />
-      <workItem from="1529117364571" duration="754000" />
-      <workItem from="1529295577547" duration="30000" />
-      <workItem from="1529372486146" duration="1502000" />
-      <workItem from="1529396524244" duration="486000" />
-      <workItem from="1529397229403" duration="1231000" />
-      <workItem from="1529399247885" duration="628000" />
-      <workItem from="1529942220795" duration="16000" />
-      <workItem from="1529993062467" duration="511000" />
+      <updated>1529993850093</updated>
+      <workItem from="1529993867640" duration="795000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="826742000" />
+    <option name="totallyTimeSpent" value="856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3415605" sideWeight="0.50158983" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30703625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294621" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3403241" sideWeight="0.49841017" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32793137" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31023455" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3403241" sideWeight="0.49841017" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1142,7 +1221,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32871652" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1163,12 +1241,7 @@
       </configuration>
     </watches-manager>
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/success.ftl" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/CommentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -1446,7 +1519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="17" column="25" lean-forward="false" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1454,7 +1526,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5211">
           <caret line="39" column="48" lean-forward="false" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1462,7 +1533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
           <caret line="204" column="41" lean-forward="false" selection-start-line="204" selection-start-column="41" selection-end-line="204" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1473,22 +1543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20115">
-          <caret line="772" column="56" lean-forward="false" selection-start-line="772" selection-start-column="56" selection-end-line="772" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13554">
-          <caret line="524" column="87" lean-forward="false" selection-start-line="524" selection-start-column="87" selection-end-line="524" selection-end-column="87" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parent_bind.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -1496,43 +1550,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5508">
-          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="-8154">
+          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl">
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3726">
-          <caret line="138" column="14" lean-forward="false" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
+        <state relative-caret-position="297">
+          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
+        <state relative-caret-position="27">
           <caret line="68" column="69" lean-forward="false" selection-start-line="68" selection-start-column="69" selection-end-line="68" selection-end-column="109" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_successCase_add.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="87" column="21" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="1628" selection-end-column="10" />
+        <state relative-caret-position="121">
+          <caret line="138" column="14" lean-forward="false" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
           <folding>
-            <element signature="e#21562#21566#0" expanded="true" />
-            <element signature="e#21577#21583#0" expanded="true" />
-            <element signature="e#21636#21642#0" expanded="true" />
-            <element signature="e#21642#21646#0" expanded="true" />
-            <element signature="e#21647#21651#0" expanded="true" />
-            <element signature="e#21656#21660#0" expanded="true" />
-            <element signature="e#21859#21865#0" expanded="true" />
+            <marker date="1529993642912" expanded="true" signature="4906:4915" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+          <folding>
+            <marker date="1529993646990" expanded="true" signature="8751:13427" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="772" column="56" lean-forward="false" selection-start-line="772" selection-start-column="56" selection-end-line="772" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="524" column="87" lean-forward="false" selection-start-line="524" selection-start-column="87" selection-end-line="524" selection-end-column="87" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1591,18 +1665,6 @@
       <state key="ModuleStructureConfigurable.UI">
         <settings>
           <last-edited>xq</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

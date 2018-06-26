@@ -16,7 +16,7 @@
             bottom: 0;
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -91,19 +91,37 @@
             <div class="buttonDiv_info" align="center">
                 <div class="info" align="center">
                     <#if ctype=="period">
-                        <input name="value" type="text" class="title_input" maxlength="20" placeholder="自拟每节课时长（单位：分钟）" value="${(info.value=='none')?string('',info.value)}">
+                        <input name="value" type="number" class="title_input" maxlength="20" placeholder="自拟每节课时长（单位：分钟）" value="${(info.value=='none')?string('',info.value)}">
                     <#else>
                         <input name="value" type="text" class="title_input" maxlength="20" value="${(info.value=='none')?string('',info.value)}">
                     </#if>
                 </div>
             </div>
             <div class="foot" align="center">
-                <button style="width: 100% !important;">${(info.isChangeStatus!=0)?string("保存并提交审核","保存")}</button>
+                <input style="width: 100% !important;" value="${(info.isChangeStatus!=0)?string("保存并提交审核","保存")}" type="button" onclick="val()"/>
             </div>
         </#if>
     </form>
 
 </div>
 </body>
-
+<script>
+    function val() {
+        <#if ctype=="period">
+            if($.trim($("input[name='value']").val())==""){
+                alert("内容不得为空");
+            }else if($.trim($("input[name='value']").val())<=30){
+                alert("课时至少30分钟");
+            }else{
+                $("form").submit();
+            }
+        <#else >
+            if($.trim($("input[name='value']").val())==""){
+                alert("内容不得为空");
+            }else{
+                $("form").submit();
+            }
+        </#if>
+    }
+</script>
 </html>

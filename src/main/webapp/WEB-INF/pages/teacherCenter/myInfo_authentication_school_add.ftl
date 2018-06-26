@@ -60,7 +60,7 @@
             bottom: 0;
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -201,13 +201,27 @@
 
 
         <div class="foot" align="center">
-            <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+            <input style="width: 100% !important;" type="button" value="${(user.userStatus!=0)?string("保存并提交审核","保存")}" onclick="val()"/>
         </div>
     </form>
 </div>
 </body>
 
 <script>
+    function val() {
+        var flag=0;
+        $(".title_input").each(function () {
+            if($.trim($(this).val())==""){
+                flag=1;
+            }
+        });
+        if(flag==0){
+            $("form").submit();
+        }else{
+            alert("资料未填写完整");
+        }
+    }
+
 <#if data??>
     $(function () {
         $("option").each(function () {

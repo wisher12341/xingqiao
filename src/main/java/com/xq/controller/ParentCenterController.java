@@ -242,9 +242,9 @@ public class ParentCenterController {
         mv.addObject("user",user);
 //        WxInterceptor.logger.info(user.toString());
         //解决中文乱码
-        if(ctype.equals("name")){
-            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
-        }
+//        if(ctype.equals("name")){
+//            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
+//        }
         TeacherInfoEdit teacherInfoEdit=parentCenterService.myInfoEdit(ftype,ctype,value,user.getUserStatus());
         mv.addObject("info",teacherInfoEdit);
         mv.addObject("parent","dd");//标志  是家长的请求
@@ -463,7 +463,7 @@ public class ParentCenterController {
      */
     @RequestMapping(value="/{userId}/changeIconPage")
     public ModelAndView changeIconPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("parentCenter/changeIcon");
+        ModelAndView mv=new ModelAndView("parentCenter/parentChangeIcon");
         mv.addObject("user",parentCenterService.getUserById(userId));
         return mv;
     }

@@ -160,7 +160,7 @@
 </div>
 
 <div id="add">
-    <form action="/wx/teacherCenter/${uid}/mySchedule/add" method="post">
+    <form action="/wx/teacherCenter/${uid}/mySchedule/add" method="post" id="addForm">
         <div class="buttonDiv_info" >
             <div class="info row" >
                 <div class="col-xs-4">
@@ -222,6 +222,35 @@
 
 </body>
 <script>
+    function val() {
+        var flag=0;
+        if("${period!}"==""){
+            alert("请前往康复服务，添加课程时间");
+        }else{
+            $(".title_input").each(function () {
+                if($.trim($(this).val())==""){
+                    flag=1;
+                }
+            });
+            if(flag==0){
+                var t=$("input[name='time']").val().split(":");
+                var hour=t[0];
+                var min=t[1];
+                var add=parseInt(min)+parseInt("${period!}");
+                var addh=add/60;
+                var addm=add%60;
+                hour=parseInt(hour)+parseInt(addh);
+                if(hour>21 || (hour==21 && addm>0)){
+                    alert("课程结束时间超过9点，请重新填写");
+                }else{
+                    //TODO 课程冲突检测
+                    $("#addForm").submit();
+                }
+            }else{
+                alert("资料未填写完整");
+            }
+        }
+    }
 
 
 

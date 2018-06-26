@@ -26,7 +26,9 @@
   </listener>
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/spring-*.xml</param-value>
+    <param-value>classpath:spring/spring-dao.xml
+      classpath:spring/spring-web.xml
+      classpath:spring/spring-service.xml</param-value>
   </context-param>
 
   <!--用maven创建的web-app需要修改servlet的版本为3.0-->
@@ -41,7 +43,9 @@
     -->
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:spring/spring-*.xml</param-value>
+      <param-value>classpath:spring/spring-dao.xml
+        classpath:spring/spring-web.xml
+        classpath:spring/spring-service.xml</param-value>
     </init-param>
   </servlet>
 

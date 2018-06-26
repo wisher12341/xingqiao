@@ -44,7 +44,7 @@
         .foot{
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -121,7 +121,7 @@
             <input type="hidden" name="openid" value="${openid!}">
         </div>
     <div class="foot" align="center">
-        <button style="width: 95% !important;" onclick="reg()">重置密码</button>
+        <input type="button" style="width: 95% !important;" onclick="reg()" value="重置密码">
     </div>
 
 
@@ -154,7 +154,7 @@
             if(data.success==true) {
                 number = data.data;
             }else{
-                alert("该手机号已注册");
+                alert(data.data);
             }
         }).error(function (data) {
 
@@ -198,7 +198,7 @@
             alert("两次密码不一致");
             return;
         }
-        $("#regForm").submit();
+        $("#regAccount").submit();
     }
 
 </script>

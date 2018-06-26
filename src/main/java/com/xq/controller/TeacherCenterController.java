@@ -289,7 +289,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value = "/serviceInfo/{uid}/way/{type}/{ctype}",method =RequestMethod.POST)
     public ModelAndView way_post(@PathVariable Integer uid, @PathVariable String type, Teacher teacher, String area1, String area2, @PathVariable String ctype) throws UnsupportedEncodingException {
-        type= new String(type.getBytes("ISO8859-1"), "UTF-8");
+//        type= new String(type.getBytes("ISO8859-1"), "UTF-8");
         teacherCenterService.editServiceInfoWay(uid,type,teacher,area1,area2,ctype);
         ModelAndView mv=new ModelAndView("redirect:/wx/teacherCenter/serviceInfo/"+uid+"/way@s_ground@t_ground@price_t@price_s@price_o@detailAddress");
         return mv;
@@ -497,7 +497,7 @@ public class TeacherCenterController {
      */
     @RequestMapping(value="/{userId}/changeIconPage")
     public ModelAndView changeIconPage(@PathVariable Integer userId){
-        ModelAndView mv=new ModelAndView("teacherCenter/changeIcon");
+        ModelAndView mv=new ModelAndView("teacherCenter/teacherChangeIcon");
         mv.addObject("user",teacherCenterService.getUserById(userId));
         return mv;
     }
@@ -524,6 +524,7 @@ public class TeacherCenterController {
         mv.addObject("uid",uid);
         mv.addObject("period",teacherCenterService.getInfoByTypeName(uid,"period",""));
         mv.addObject("schedule",teacherCenterService.getInfoByTypeName(uid,"schedule",""));
+        mv.addObject("period",teacherCenterService.getInfoByTypeName(uid,"period",""));
         mv.addObject("type",type);
         return mv;
     }
@@ -599,14 +600,15 @@ public class TeacherCenterController {
     public ModelAndView myInfo_edit(@PathVariable String ftype,@PathVariable String ctype,@PathVariable String value,HttpServletRequest request) throws UnsupportedEncodingException {
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_edit");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_TEACHER);
+
 //        openid="oxsEYwlPAa-fVc9fVyzVBYBed9n8";
         User user=userService.getUserByOpenidStatus(openid,"1");
         mv.addObject("user",user);
 
         //解决中文乱码
-        if(ctype.equals("name")){
-            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
-        }
+//        if(ctype.equals("name")){
+//            value= new String(value.getBytes("ISO8859-1"), "UTF-8");
+//        }
         TeacherInfoEdit teacherInfoEdit=teacherCenterService.myInfoEdit(ftype,ctype,value,user.getUserStatus());
         mv.addObject("info",teacherInfoEdit);
         return mv;
