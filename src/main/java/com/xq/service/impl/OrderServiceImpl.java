@@ -8,6 +8,8 @@ import com.xq.service.OrderService;
 import com.xq.service.RecoveryLogService;
 import com.xq.util.Const;
 import com.xq.util.CookieUtil;
+import com.xq.util.OrderUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -272,8 +274,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
 
+    // 下单失败:用户非正常操作“-1” 订单冲突“-2”
     @Transactional
-    public String addOrder(Order order, HttpServletRequest request) {
+    public String addOrder(Order order,HttpServletRequest request) {
         //User user = (User) session.getAttribute("USER");
         String openid= CookieUtil.checkCookie(request, Const.OPENID_PARENT);
         User user=userDao.getParentByOpenid(openid);
@@ -295,48 +298,41 @@ public class OrderServiceImpl implements OrderService {
         order.setStatusT(1);
         order.setTrace(dateNowStr+"@下预约单");
 
-//        try {
-//            if (!order.getTimeOpt().equals("day")){
-//                String timeStr = order.getServerTime();
-//                Date serveDate = sdfdate.parse(timeStr.split(" ")[0]);
-//                String timePeriod = timeStr.split(" ")[1];
-//                StringBuilder sb = new StringBuilder();
-//                Calendar calendar = Calendar.getInstance();
-//                calendar.setTime(serveDate);
-//                for (int i = 0; i < Integer.parseInt(order.getAmount()); i++) {
-//                    if (i>0){
-//                        sb.append("#");
-//                    }
-//                    sb.append(sdfdate.format(calendar.getTime())).append(" ").append(timePeriod);
-//                    if (order.getTimeOpt().equals("week")){
-//                        calendar.add(Calendar.DATE,7);
-//                    } else if (order.getTimeOpt().equals("month")){
-//                        calendar.add(Calendar.MONTH,1);
-//                    }
-//                }
-//
-//                order.setServerTime(sb.toString());
-//            }
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+        // check if conflict
+        boolean isOrderConflict = (order.getTeacher() == null);
+        if (isOrderConflict){
+            return String.valueOf(-1);
+        }
 
+        List<Order> ordersToCheck = orderDao.getOnGoingOrdersByTid(order.getTeacher().getId());
+        if (CollectionUtils.isNotEmpty(ordersToCheck)){
+            for (Order orderToCheck : ordersToCheck) {
+                if (OrderUtils.isOrderConflict(order, orderToCheck)){
+                    isOrderConflict = true;
+                    break;
+                }
+            }
+        }
 
-        orderDao.addOrder(order);
+        if (!isOrderConflict) {
+            orderDao.addOrder(order);
 
-        Message messageP=new Message();
-        messageP.setTime(dateNowStr);
-        messageP.setUserId(user.getId());
-        messageP.setMessage("您的预约单已发给治疗师（"+order.getTeacher().getName()+"），请耐心等待治疗师回复。");
+            Message messageP = new Message();
+            messageP.setTime(dateNowStr);
+            messageP.setUserId(user.getId());
+            messageP.setMessage("您的预约单已发给治疗师（" + order.getTeacher().getName() + "），请耐心等待治疗师回复");
 
-        messageDao.addMessage(messageP);
+            messageDao.addMessage(messageP);
 
-        Message messageT=new Message();
-        messageT.setTime(dateNowStr);
-        messageT.setUserId(orderDao.getUserIdByOid(order.getId()));
-        messageT.setMessage("您收到一份预约单。");
+            Message messageT = new Message();
+            messageT.setTime(dateNowStr);
+            messageT.setUserId(orderDao.getUserIdByOid(order.getId()));
+            messageT.setMessage("您收到一份预约单。");
 
-        messageDao.addMessage(messageT);
-        return order.getId();
+            messageDao.addMessage(messageT);
+            return order.getId();
+        }
+
+        return String.valueOf(-2);
     }
 }

@@ -156,7 +156,7 @@
         <ul>
             <#list ((data!)?split("#"))! as success>
             <li class="sl-li ui-border-b" >
-                <div class="sl-content" style="background-color: white"  onclick=location.href="${path}/wx/teacherCenter/info/${uid}/successCase/${success_index}/${(teacherList??)?string('query','edit')}">
+                <div class="sl-content" style="background-color: white"  onclick=location.href="${path}/wx/teacherCenter/info/${uid}/successCase/${success_index}/${(teacherList??)?string('query','edit')}?parent=${(teacherList??)?string("1","0")}">
                     <div class="row" style="height: 7%;padding-top:3.5% ">
                         <div class="col-xs-9">
                             <p class="text_p"> ${success?split("@")[0]}</p>

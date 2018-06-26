@@ -180,15 +180,19 @@ public class TeacherController {
     public ModelAndView toSelectTime(Order order){
         ModelAndView mv=new ModelAndView();
         switch (order.getTimeOpt()){
-            case "day": mv.setViewName("order/choose_time");break;
-            case "week": mv.setViewName("order/choose_weekday");break;
+            case "day":
+                mv.setViewName("order/choose_time");
+                mv.addObject("starts",teachersService.getAvailableDaysInAMonth(order.getTeacher().getId()));
+                break;
+            case "week":
+                mv.setViewName("order/choose_weekday");
+                mv.addObject("schedule",teachersService.getTeacherSchedule(order.getTeacher().getId()));
+                break;
             default:break;
         }
 
         mv.addObject("order",order);
-        List<String> starts=teachersService.order_time_month(order.getTeacher().getId());
-        mv.addObject("starts",starts);
-        mv.addObject("schedule",teachersService.getTeacherSchedule(order.getTeacher().getId()));
+
         return mv;
     }
 

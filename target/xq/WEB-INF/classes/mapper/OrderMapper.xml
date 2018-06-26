@@ -187,4 +187,10 @@
         FROM orders o,parent p,demand d,teacher t
         WHERE o.teacher_id=t.id AND p.userId=#{uid} AND p.id=o.parent_id AND d.id=o.demand_id AND status_t=3 AND o.server_time LIKE concat('%',#{day},'%')
     </select>
+
+    <select id="getOnGoingOrdersByTid" resultMap="resultOrder">
+        SELECT id, teacher_id, parent_id, demand_id, status_t, status_p,server_time
+        FROM orders
+        WHERE teacher_id=#{teacherId} AND status_t &lt; 11 AND status_p &lt; 11
+    </select>
 </mapper>

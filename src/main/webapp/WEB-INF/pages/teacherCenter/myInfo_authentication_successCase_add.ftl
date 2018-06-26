@@ -119,7 +119,9 @@
 
         <div class="buttonDiv_info" style="background-color: white">
             <textarea class="textarea" placeholder="描述您的成功案例" name="detail" <#if qetype?? && qetype=="query">disabled style="opacity: 1!important;color: #111!important;"</#if>><#if data??>${(data!)?split("@")[1]}</#if></textarea>
-<#if qetype?? && qetype=="edit">
+<#--<#if qetype?? && qetype=="edit">-->
+        <#if parent?? && parent=="1">
+        <#else >
             <p class="length">
                 <#if data??>
                     ${200-(data!)?split("@")[1]?length}
@@ -130,10 +132,12 @@
 </#if>
         </div>
 <#--<#if qetype?? && qetype=="edit">-->
+    <#if parent?? && parent=="1">
+    <#else >
         <div class="foot" align="center">
             <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
         </div>
-<#--</#if>-->
+</#if>
     </form>
 
 </div>

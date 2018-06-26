@@ -1,3 +1,6 @@
+text{
+	font-size: 22px;
+}
 .offset-10{
 	margin-top: 10px;
 }
@@ -19,35 +22,34 @@
 
 
 .green-line-vertical{
-	height: 14px;
+	height: 60px;
     max-height: 100%;
     width: 4px;
     margin: 3px 10px;
     background-color: #20b49a;
+
 }
 
 .index-panel-title-wrapper{
 	display: flex;
-    padding: 10px;
+    padding: 40px 20px 0px 20px;
 }
 
 .index-panel-title{
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 45px;
 	color: #000000;
 }
 
 .index-icon{
 	padding: 10px;
-	height: auto;
-	width: auto;
 	min-height: 66.65px;
 	max-height: 70%;
 	max-width: 70%;
 }
 .index-icon-text{
 	text-align: center;
-	font-size: 14px;
+	font-size: 45px;
 	color: #000000;
 }
 .index-bottom-icon-text{
@@ -67,9 +69,7 @@
 	width: 20%;
 	height: 100%;
 }
-#headPoster{
-	height: 200px;
-}
+
 #headPoster > img{
 	height: 100%;
     width: 100%;

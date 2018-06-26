@@ -145,7 +145,7 @@
         <ul>
             <#list data! as rec>
             <li class="sl-li ui-border-b" style="background-color: white">
-                <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/recoveryHis/${rec.index}/${(teacherList??)?string('query','edit')}">
+                <div class="sl-content" style="background-color: white" onclick=location.href="${path}/wx/teacherCenter/info/${uid}/recoveryHis/${rec.index}/${(teacherList??)?string('query','edit')}?parent=${(teacherList??)?string("1","0")}">
                 <#if rec_index==0>
                     <div class="row" style="height: 2%;">
                     </div>

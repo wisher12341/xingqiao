@@ -398,7 +398,7 @@ public class TeacherCenterController {
      * @return
      */
     @RequestMapping(value = "/info/{uid}/{type}/{index}/{qetype}",method = RequestMethod.GET)
-    public ModelAndView info_edit(@PathVariable int uid,@PathVariable String type,@PathVariable int index,@PathVariable String qetype){
+    public ModelAndView info_edit(@PathVariable int uid,@PathVariable String type,@PathVariable int index,@PathVariable String qetype,@RequestParam(required = false) String parent){
         ModelAndView mv=new ModelAndView("teacherCenter/myInfo_authentication_"+((type.equals("certificate")||type.equals("other_pic"))?"award":type)+"_add");
         Object data=teacherCenterService.getInfoByTypeNameIndex(uid,type,index);
         mv.addObject("data",data);
@@ -406,6 +406,10 @@ public class TeacherCenterController {
         mv.addObject("user",userService.getUserByUid(uid));
         mv.addObject("type",type);
         mv.addObject("qetype",qetype);
+
+        if(parent!=null){
+            mv.addObject("parent",parent);//标志是从 家长预约治疗师的 地方来
+        }
         return mv;
     }
 
@@ -518,6 +522,7 @@ public class TeacherCenterController {
     public ModelAndView schedule(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/mySchedule");
         mv.addObject("uid",uid);
+        mv.addObject("period",teacherCenterService.getInfoByTypeName(uid,"period",""));
         mv.addObject("schedule",teacherCenterService.getInfoByTypeName(uid,"schedule",""));
         mv.addObject("type",type);
         return mv;

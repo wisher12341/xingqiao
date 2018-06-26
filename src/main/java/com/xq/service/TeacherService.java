@@ -23,8 +23,6 @@ public interface TeacherService {
 
     List<String> getCommentPics(Integer cid, Integer index);
 
-    List<String> order_time_month(Integer tid);
-
     CalendarDto order_time_day(Integer tid, String date) throws ParseException;
 
     Map<String,String> order_time(String start, String end) throws ParseException;
@@ -42,4 +40,6 @@ public interface TeacherService {
     String formatDateAndTime(String gmt);
 
     List<String> weekLoop(Order order);
+
+    List<String> getAvailableDaysInAMonth(Integer tid);
 }

@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 /**
-
  * Created by 86761 on 2017/11/7.
  */
 public interface TeacherDao {
@@ -15,6 +14,8 @@ public interface TeacherDao {
     List<Teacher> getMyTeachersByOpenid(String openid);
 
     List<Teacher> getTeachers(@Param("teacher") Teacher teacher, @Param("minY") Integer minY, @Param("minP") Integer minP, @Param("maxP") Integer maxP, @Param("maxY") Integer maxY, @Param("flag") Integer y);
+
+    List<Teacher> getCheckedTeachers(@Param("teacher") Teacher teacher, @Param("minY") Integer minY, @Param("minP") Integer minP, @Param("maxP") Integer maxP, @Param("maxY") Integer maxY, @Param("flag") Integer y);
 
     Teacher getTeacherDetail(Integer teacherId);
     Teacher getTeacher(Integer id);

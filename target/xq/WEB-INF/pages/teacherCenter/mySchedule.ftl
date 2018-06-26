@@ -198,7 +198,7 @@
 
         <div class="foot" align="center">
             <input type="button" style="width: 49% !important;" onclick='$("#main").show();$("#add").animate({top:"100%"},function () {$("#add").hide();});' value="返回" />
-            <input type="submit" style="width: 49% !important;" value="添加" />
+            <input type="button" onclick="val()" style="width: 49% !important;" value="添加" />
         </div>
     </form>
 </div>
@@ -222,6 +222,9 @@
 
 </body>
 <script>
+
+
+
 
         var schedule="${schedule!}";
         var list=[[],[],[],[],[],[],[]];
