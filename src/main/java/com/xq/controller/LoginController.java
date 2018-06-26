@@ -69,9 +69,9 @@ public class LoginController {
     @ResponseBody
     @RequestMapping(value = "/getNumber/{type}",method = RequestMethod.POST)
     public Result getNumber(@RequestParam String phone, @PathVariable String type){
-        String number=smsService.getNumber(phone,type);
-        if(number==null) return new Result(false);
-        return new Result(true,number);
+        String numberOrErrorMessage=smsService.getNumber(phone,type);
+        if(!numberOrErrorMessage.matches("[0-9]+")) return new Result(false,numberOrErrorMessage);
+        return new Result(true,numberOrErrorMessage);
     }
 
     /**

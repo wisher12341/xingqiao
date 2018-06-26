@@ -775,7 +775,7 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         String data="";
         for(int i=0;i<s.length;i++){
             if((i+1)==Integer.parseInt(week)){
-                if(s[i].equals("")){
+                if(s[i].equals("0")){
                     data+="#"+time+"-"+getStartEndTime(time,(String)getInfoByTypeName(uid,"period",""));
                 }else{
                     data+="#"+s[i]+"@"+time+"-"+getStartEndTime(time,(String)getInfoByTypeName(uid,"period",""));

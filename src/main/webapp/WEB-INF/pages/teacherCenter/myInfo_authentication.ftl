@@ -12,7 +12,7 @@
             background-color: #f5f5f5;
         }
         #main{
-            margin-bottom: 7%;
+            margin-bottom: 10%;
         }
         .buttonDiv_info{
             margin: 4% 0;

@@ -22,11 +22,16 @@ public class SmsServiceImpl implements SmsService {
 
     @Override
     public String getNumber(String phone, String type) {
+
         if(type.equals("login")) {
+            String telRegex = "[1]\\d{10}";
+            if(!phone.matches(telRegex)){
+                return "请填写正确的手机号码";
+            }
             User user = userDao.findUserByName(phone);
             if (user != null) {
                 //手机号已注册
-                return null;
+                return "该手机号已被注册";
             }
         }
 

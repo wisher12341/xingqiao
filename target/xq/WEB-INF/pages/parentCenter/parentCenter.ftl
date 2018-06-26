@@ -104,10 +104,35 @@
             color: dimgrey;!important;
         }
     </style>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <script  src="/static/js/index.js"></script>
 </head>
-<body style="background-color: #f5f5f5">
-
-<div id="main">
+<body style="${(new??)?string("background-color: #20b49a","background-color: #f5f5f5")}">
+<#if new??>
+<#--<div id="facebook" style="margin-top: 60%">-->
+    <#--<div class="bar"></div>-->
+    <#--<div class="bar"></div>-->
+    <#--<div class="bar"></div>-->
+<#--</div>-->
+<h1 class="loadingtext" style="margin-top: 60%">
+    <span>正</span>
+    <span>在</span>
+    <span>读</span>
+    <span>取</span>
+    <span>微</span>
+    <span>信</span>
+    <span>资</span>
+    <span>料</span>
+</h1>
+<script>
+    setTimeout(function(){
+        $(".loadingtext").hide();
+        $("body").css("background-color","#f5f5f5");
+        $("#main").show();
+    },2000);
+</script>
+</#if>
+<div id="main" style="${(new??)?string("display:none","")}">
     <div class="info-header">
         <div class="info-header-img col-sm-4">
             <img src="${(user.headimgurl?contains("wx.qlogo.cn")?string("${user.headimgurl}","/${user.headimgurl}"))!}" class="img-circle">
@@ -116,7 +141,11 @@
             <div class="row">
                 <div class="col-sm-11">
                     <p class="info-header-name"><span>
-                    ${(parent.realName)!(user.nickname)!}
+                        <#if (parent.realName)?? && (parent.realName)!="">
+                            ${parent.realName}
+                        <#else >
+                            ${(user.nickname)!}
+                        </#if>
                     </span>
                   </p>
                         <#if user.userStatus==0>
@@ -282,17 +311,5 @@
 </script>
 </#if>
 
-<#if new??>
-<div class="fakeloader">aaa</div>
-<script>
-    $(".fakeloader").fakeLoader({
-        timeToHide:3000,
-        bgColor:"#20b49a",
-        spinner:"spinner6",
-        fadeDiv:"main"
-    });
-    $(".fakeloader").append("<div class='getInfo'>正在获取微信资料</div>");
-</script>
-</#if>
 </body>
 </html>

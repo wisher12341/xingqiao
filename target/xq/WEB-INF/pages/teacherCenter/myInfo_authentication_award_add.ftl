@@ -105,12 +105,13 @@
                 最多上传3张
             </p>
         </div>
+        <div class="foot" align="center">
+            <input type="button" onclick="sub()" value="${(user.userStatus!=0)?string("保存并提交审核","保存")}" style="width: 100% !important;" />
+        </div>
     </form>
         <input id="mulP" type="file" class="upfile"  multiple style="display: none">
 
-        <div class="foot" align="center">
-            <input type="button" onclick="submit()" value="${(user.userStatus!=0)?string("保存并提交审核","保存")}" style="width: 100% !important;">
-        </div>
+
 
 
 </div>
@@ -195,7 +196,10 @@
         return url;
     }
 
-    function submit() {
+    function sub() {
+        if($.trim($(".textarea").val())==""){
+            alert("内容不能为空");
+        }else{
             deleteImg += "#";  //保证形式 #id#id#
             setCookie("deleteImg", deleteImg, '0.001');//存到cookie中
             //先上传图片
@@ -213,6 +217,8 @@
                     $('input[name="deleteExitImg"]').val(deleteExitImg);
                     $("#form").submit();
                 },error:function () {}});
+        }
+
     }
 
     function setCookie(c_name,value,expiredays)

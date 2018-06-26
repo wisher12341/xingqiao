@@ -328,20 +328,6 @@
                                 ${comm.detail}
                                 </#if>
                             </div>
-                        <#--<div class="comment-pics">-->
-                        <#--<#if comm.picurls??>-->
-                        <#--<#assign picList = comm.picurls?split("#")>-->
-                        <#--<div class="img-wrap">-->
-                        <#--<img src="${base}/${picList[0]}">-->
-                        <#--<#if picList?size gt 1>-->
-                        <#--<img src="${base}/${picList[1]}">-->
-                        <#--</#if>-->
-                        <#--<#if picList?size gt 2>-->
-                        <#--<img src="${base}/${picList[2]}">-->
-                        <#--</#if>-->
-                        <#--</div>-->
-                        <#--</#if>-->
-                        <#--</div>-->
                         </div>
                         <div class="time">
                         ${comm.time}
@@ -391,20 +377,6 @@
                                 ${comm.detail}
                                 </#if>
                             </div>
-                        <#--<div class="comment-pics">-->
-                        <#--<#if comm.picurls??>-->
-                        <#--<#assign picList = comm.picurls?split("#")>-->
-                        <#--<div class="img-wrap">-->
-                        <#--<img src="${base}/${picList[0]}">-->
-                        <#--<#if picList?size gt 1>-->
-                        <#--<img src="${base}/${picList[1]}">-->
-                        <#--</#if>-->
-                        <#--<#if picList?size gt 2>-->
-                        <#--<img src="${base}/${picList[2]}">-->
-                        <#--</#if>-->
-                        <#--</div>-->
-                        <#--</#if>-->
-                        <#--</div>-->
                         </div>
                         <div class="time">
                         ${comm.time}
@@ -454,20 +426,7 @@
                                 ${comm.detail}
                                 </#if>
                             </div>
-                        <#--<div class="comment-pics">-->
-                        <#--<#if comm.picurls??>-->
-                        <#--<#assign picList = comm.picurls?split("#")>-->
-                        <#--<div class="img-wrap">-->
-                        <#--<img src="${base}/${picList[0]}">-->
-                        <#--<#if picList?size gt 1>-->
-                        <#--<img src="${base}/${picList[1]}">-->
-                        <#--</#if>-->
-                        <#--<#if picList?size gt 2>-->
-                        <#--<img src="${base}/${picList[2]}">-->
-                        <#--</#if>-->
-                        <#--</div>-->
-                        <#--</#if>-->
-                        <#--</div>-->
+
                         </div>
                         <div class="time">
                         ${comm.time}
@@ -612,39 +571,25 @@
                 onclick="javascript:$('#mobile-menu-report').addClass('hide-nav-bottom').removeClass('show-nav-bottom');">
             取消
         </button>
-    <#--<div class="container my-slider-container no-padding">-->
-    <#--<div class="slider-header">-->
-    <#--<div class="row">-->
-    <#--<div class="col-xs-3 col-md-3">-->
-    <#--<input style="display: inline;font-size: 10px;" type="radio" name="isOpen" id="open" checked value="1">公开<br>-->
-    <#--</div>-->
-    <#--<div class="col-xs-3 col-md-3">-->
-    <#--<input style="display: inline;" type="radio" name="isOpen"  id="anonymi" value="0">匿名<br>-->
-    <#--</div>-->
-    <#--<div class="col-xs-4 col-md-4"></div>-->
-    <#--<div class="col-xs-2 col-md-2">-->
-    <#--<button type="button" class="close mobile-close-taggle">-->
-    <#--&times;-->
-    <#--</button>-->
-    <#--</div>-->
-    <#--</div>-->
-    <#--</div>-->
-    <#--<div class="slider-body" id="divContent">-->
-    <#--<textarea class="my-textarea" style="height: 12rem;" placeholder="举报理由" name="reason"></textarea>-->
-    <#--<input type="hidden" name="cid" >-->
-    <#--<button class="bottom-single-btn" style="border: none; background-color: #ff0000" onclick="doreport()">-->
-    <#--举报-->
-    <#--</button>-->
-    <#--</div>-->
-    <#--</div>-->
     </div>
 
-    <!-- modal -->
 
 
 
 </div>
-
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                请先添加需求简历
+            </div>
+            <div class="modal-footer">
+                <input type="button" onclick="$('#modal').modal('hide')" class="btn" value="取消" style="width:45%;background-color: orange!important;color: white!important;font-size: 18px!important;"/>
+                <input type="buttont" class="btn btn-primary" value="前往" style="width:45%;background-color: #20b49a!important;font-size: 18px!important;border-color: white!important;"  onclick=location.href="/wx/parentCenter/${(user.id)!}/addDemandPage">
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
 </body>
 </html>
@@ -863,7 +808,7 @@
                     waySelect = ways[0];
                     var demands = data.data;
                     if(demands.length<1){
-                        alert("请先添加简历");
+                        $("#modal").modal();
                         return;
                     }
                     $("#demands").html("");

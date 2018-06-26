@@ -509,44 +509,76 @@ function selectOpen() {
 
     function submit(t) {
         if(t=="comment") {
-            deleteImg += "#";  //保证形式 #id#id#
-            setCookie("deleteImg", deleteImg, '0.001');//存到cookie中
-            //先上传图片
-            $.ajax({
-                type: "POST",
-                url:"/wx/comment/img",
-                data: fd,
-                //下面的一定要加
-                // 告诉jQuery不要去处理发送的数据
-                processData : false,
-                // 告诉jQuery不要去设置Content-Type请求头
-                contentType : false,
-                success: function (data) {
-                    if('${type}'=="order"){
-                        $('textarea[name="detail"]').val($("#textDiv").html());
-                        $('input[name="picUrls"]').val(data.data);
-                        $('input[name="isOpen"]').val($('input[name="open"]').val());
-                        $('input[name="level"]').val($('#input-22a').val());
-                    }else if('${type}'=="organ_comment"){
-                        $('textarea[name="detail"]').val($("#textDiv").html());
-                        $('input[name="picurls"]').val(data.data);
-                        $('input[name="isOpen"]').val($('input[name="open"]').val());
-                    }else{
-                        $('textarea[name="content"]').val($("#textDiv").html());
-                        $('input[name="picUrls"]').val(data.data);
-                    }
-                    $("#formComment").submit();
-                },error:function () {
+            var flag=0;
+            if('${type}'=="order"){
+                if($("#input-22a").val()==0){
+                    alert("请评星级");
+                    flag=1;
+                }
+            }else if('${type}'=="organ_comment"){
+                $('textarea[name="detail"]').val($("#textDiv").html());
+                if($.trim($('textarea[name="detail"]').val())==''){
+                    alert("内容不能为空");
+                    flag=1;
+                }
+            }else{
+                $('textarea[name="content"]').val($("#textDiv").html());
+                if($.trim($('textarea[name="content"]').val())==''){
+                    alert("内容不能为空");
+                    flag=1;
+                }
+            }
 
-                }});
+            if(flag==0){
+                deleteImg += "#";  //保证形式 #id#id#
+                setCookie("deleteImg", deleteImg, '0.001');//存到cookie中
+                //先上传图片
+                $.ajax({
+                    type: "POST",
+                    url:"/wx/comment/img",
+                    data: fd,
+                    //下面的一定要加
+                    // 告诉jQuery不要去处理发送的数据
+                    processData : false,
+                    // 告诉jQuery不要去设置Content-Type请求头
+                    contentType : false,
+                    success: function (data) {
+                        if('${type}'=="order"){
+                            $('textarea[name="detail"]').val($("#textDiv").html());
+                            $('input[name="picUrls"]').val(data.data);
+                            $('input[name="isOpen"]').val($('input[name="open"]').val());
+                            $('input[name="level"]').val($('#input-22a').val());
+                        }else if('${type}'=="organ_comment"){
+                            $('textarea[name="detail"]').val($("#textDiv").html());
+                            $('input[name="picurls"]').val(data.data);
+                            $('input[name="isOpen"]').val($('input[name="open"]').val());
+                        }else{
+                            $('textarea[name="content"]').val($("#textDiv").html());
+                            $('input[name="picUrls"]').val(data.data);
+                        }
+                        $("#formComment").submit();
+                    },error:function () {
+
+                    }});
+            }
+
         }else if(t=="reply"){
             $('textarea[name="detail"]').val($("#textDiv").html());
             if("${type}"!="order_reply"){
                 $('input[name="isOpen"]').val($('input[name="open"]').val());
             }
-            $("#formComment").submit();
+            if($.trim($('textarea[name="detail"]').val())==''){
+                alert("内容不能为空");
+            }else{
+                $("#formComment").submit();
+            }
         }else{
             $('textarea[name="reason"]').val($("#textDiv").html());
+            if($.trim($('textarea[name="reason"]').val())==''){
+                alert("内容不能为空");
+            }else{
+                $("#formComment").submit();
+            }
             $("#formComment").submit();
         }
 

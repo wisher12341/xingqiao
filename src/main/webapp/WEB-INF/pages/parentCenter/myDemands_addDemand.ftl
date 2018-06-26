@@ -191,102 +191,12 @@
             </div>
         </div>
         <div class="foot" align="center">
-            <button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>
+            <button style="width: 100% !important;">保存</button>
+            <#--<button style="width: 100% !important;">${(user.userStatus!=0)?string("保存并提交审核","保存")}</button>-->
         </div>
     </form>
 </div>
 
-
-<#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">姓名</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="name" >-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">性别</label>-->
-        <#--<div class="col-sm-9 radio-input">-->
-            <#--<input type="radio" name="optionsRadiosinline" value="1"> 男-->
-            <#--<input type="radio"  name="optionsRadiosinline" value="2"> 女-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">出生日期</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="birthday">-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">诊断报告</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="report" >-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">病史</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="diseaseHis" >-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">过敏史</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="allergyHis" >-->
-        <#--</div>-->
-    <#--</div>-->
-    <#--<div class="demandAddDiv">-->
-        <#--<label for="input" class="col-sm-3 control-label">备注</label>-->
-        <#--<div class="col-sm-9 text-input">-->
-            <#--<input type="text" class="form-control" id="remark" >-->
-        <#--</div>-->
-    <#--</div>-->
-
-    <#--<div class="saveBtn fa fa-save fa-4x" onclick="addDemand(${userId})">添加需求简历</div>-->
-
 </div>
 </body>
 </html>
-<#--<script>-->
-    <#--function addDemand(userId) {-->
-        <#--var name=$("#name").val();-->
-        <#--var gender=$("input[type='radio']:checked").val();-->
-        <#--var birthday=$("#birthday").val();-->
-        <#--var report=$("#report").val();-->
-        <#--var diseaseHis=$("#diseaseHis").val();-->
-        <#--var allergyHis=$("#allergyHis").val();-->
-        <#--var remark=$("#remark").val();-->
-        <#--if(name==""||gender==""||birthday==""||report==""||diseaseHis==""||allergyHis==""||remark=="") {-->
-            <#--if(name=="") alert("姓名不能为空！");-->
-            <#--else if(gender=="") alert("性别不能为空！");-->
-            <#--else if(birthday=="") alert("生日不能为空！");-->
-            <#--else if(report=="") alert("诊断报告不能为空！");-->
-            <#--else if(diseaseHis=="") alert("病史不能为空！");-->
-            <#--else if(allergyHis=="") alert("过敏史不能为空！");-->
-            <#--else if(remark=="") alert("备注不能为空！");-->
-
-        <#--}-->
-        <#--else {-->
-            <#--$.ajax({-->
-                <#--url: "/wx/parentCenter/addDemand",-->
-                <#--type: 'post',-->
-                <#--dataType: 'json',-->
-                <#--data: {-->
-                    <#--"userId": userId,-->
-                    <#--"name": name,-->
-                    <#--"gender": gender,-->
-                    <#--"birthday": birthday,-->
-                    <#--"report": report,-->
-                    <#--"diseaseHis": diseaseHis,-->
-                    <#--"allergyHis": allergyHis,-->
-                    <#--"remark": remark-->
-                <#--},-->
-                <#--success: function () {-->
-                    <#--window.location.href = document.referrer;-->
-                <#--},-->
-                <#--error: function () {-->
-
-                <#--}-->
-            <#--});-->
-        <#--}-->
-    <#--}-->
-<#--</script>-->

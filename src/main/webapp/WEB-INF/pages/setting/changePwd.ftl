@@ -43,7 +43,7 @@
         .foot{
             background-color: #f5f5f5;
         }
-        .foot button{
+        .foot input{
             /*background-color:#94e6c8 ;*/
             background-color: #20b49a;
             color: white !important;
@@ -121,7 +121,7 @@
     </div>
 </form>
     <div class="foot" align="center">
-        <button style="width: 95% !important;" onclick="reset()">重置密码</button>
+        <input style="width: 95% !important;" onclick="reset()" value="重置密码" />
     </div>
 
 
