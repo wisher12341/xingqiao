@@ -2,102 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8096fa39-2683-4410-8529-ecf7826ba959" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/forgetPassword.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/add-disabled.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/img/sub-disabled.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/datePicker.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/forgetPassword.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/img/add-disabled.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/img/sub-disabled.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/xq/static/js/datePicker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/xq_war/xq.war" afterPath="$PROJECT_DIR$/classes/artifacts/xq_war/xq.war" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/artifacts/xq_war/xq_war.war" afterPath="$PROJECT_DIR$/classes/artifacts/xq_war/xq_war.war" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/ParentCenterController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/DemandDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/DemandDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleWeekDto.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/dto/ScheduleWeekDto.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/interceptor/WxInterceptor.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/interceptor/WxInterceptor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/AreaServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/AreaServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/model/Teacher.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/model/Teacher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherCenterService.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/TeacherCenterService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/TeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxPayServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/service/impl/WxPayServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/HttpRequestor.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/HttpRequestor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils$1.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/util/OrderUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayConstants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayUtil.class" afterPath="$PROJECT_DIR$/target/classes/com/xq/wxpay/sdk/WXPayUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/ParentCenterController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/controller/TeacherCenterController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/DemandDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/DemandDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleWeekDto.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/dto/ScheduleWeekDto.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/interceptor/WxInterceptor.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/interceptor/WxInterceptor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/ParentCenterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/UserService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/AreaServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/AreaServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/CommentServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/OrderTeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/ParentCenterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/RecoveryLogServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/model/Teacher.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/model/Teacher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherCenterService.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/TeacherCenterService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherCenterServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/TeacherServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxPayServiceImpl.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/service/impl/WxPayServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/FileUpload.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/HttpRequestor.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/HttpRequestor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils$1.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/util/OrderUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants$SignType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayConstants.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayUtil.class" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/com/xq/wxpay/sdk/WXPayUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/ParentCenterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/DemandDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/DemandDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/dao/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/ParentCenterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/ParentCenterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/addDemandPage.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/addDemandPage.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/demandDetail.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/demandDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myTeacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myTeacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/target/xq/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/classes/mapper/UserMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_parent.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_parent.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/login_teacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/addDemandPage.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/addDemandPage.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/demandDetail.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/demandDetail.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myDemands.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myTeacher.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/parentCenter/myTeacher.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" afterPath="$PROJECT_DIR$/target/xq/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xq.iml" afterPath="$PROJECT_DIR$/xq.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,51 +50,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="login_parent.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
+      <file leaf-file-name="teacher.ftl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_authentication_school_add.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8712">
-              <caret line="264" column="4" lean-forward="false" selection-start-line="264" selection-start-column="4" selection-end-line="269" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myInfo_authentication_recoveryHis_add.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8250">
-              <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="252" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mySchedule.ftl" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="379" column="0" lean-forward="true" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4224">
-              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+            <state relative-caret-position="606">
+              <caret line="212" column="52" lean-forward="false" selection-start-line="212" selection-start-column="52" selection-end-line="212" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -188,10 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setCookie</find>
-      <find>OrderUtils</find>
-      <find>order_time_month</find>
-      <find>getAvailableDaysInAMonth</find>
       <find>timePillContainerRemindText</find>
       <find>$.ajax</find>
       <find>getNumber</find>
@@ -218,6 +99,10 @@
       <find>add</find>
       <find>mobile-nav-taggle</find>
       <find>${user.id}</find>
+      <find>我的课程</find>
+      <find>元</find>
+      <find>sumSpan</find>
+      <find>waySelect</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -237,8 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_weekday.ftl" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/jcy.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/conflict.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/failure.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/results/success.ftl" />
@@ -253,7 +136,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/OrderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/dao/TeacherDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/TeacherMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/choose_time.ftl" />
@@ -280,14 +162,17 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myDemands_addDemand.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/home.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl" />
+        <option value="$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl" />
       </list>
     </option>
   </component>
@@ -331,7 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -473,6 +357,202 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teacher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="order" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="teacher" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parentCenter" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -497,6 +577,100 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="impl" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xingqiao" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -569,6 +743,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1014,7 +1189,6 @@
       <method />
     </configuration>
     <configuration default="false" name="xq" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="C:\sp\progrom\jdk1.7.0_17\jre">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8084/" />
       <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -1026,8 +1200,8 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_xq_3" />
-        <option name="HTTP_PORT" value="8084" />
-        <option name="JNDI_PORT" value="1094" />
+        <option name="HTTP_PORT" value="8078" />
+        <option name="JNDI_PORT" value="1088" />
       </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
@@ -1161,12 +1335,15 @@
       <workItem from="1529407935592" duration="2214000" />
       <workItem from="1530010072977" duration="9000" />
       <workItem from="1530010333052" duration="2492000" />
-      <workItem from="1530012884287" duration="271000" />
+      <workItem from="1530012884287" duration="962000" />
+      <workItem from="1530018063216" duration="146000" />
+      <workItem from="1530171442922" duration="3346000" />
+      <workItem from="1530174826655" duration="2969000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="864144000" />
+    <option name="totallyTimeSpent" value="871296000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1184,7 +1361,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3415605" sideWeight="0.49841017" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3415605" sideWeight="0.49841017" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32882166" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1195,7 +1372,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3272293" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32961783" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1836248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18839428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1228,69 +1405,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/SmsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="11" lean-forward="false" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/setting/changePwd.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_idcard.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="180" column="5" lean-forward="true" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/resources/html5-schema/html5/web-forms.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="529" column="16" lean-forward="false" selection-start-line="529" selection-start-column="16" selection-end-line="529" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_award_add.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="198" column="20" lean-forward="false" selection-start-line="198" selection-start-column="20" selection-end-line="198" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_abstractTeacher_add.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="138" column="31" lean-forward="false" selection-start-line="138" selection-start-column="31" selection-end-line="138" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/parentCenter/myInfo_authentication_address.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="174" column="4" lean-forward="false" selection-start-line="174" selection-start-column="4" selection-end-line="186" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_name_add.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way_edit.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="340" column="13" lean-forward="true" selection-start-line="340" selection-start-column="13" selection-end-line="340" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_pid_add.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
@@ -1466,27 +1580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="774" column="23" lean-forward="true" selection-start-line="774" selection-start-column="23" selection-end-line="774" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1464">
-          <caret line="525" column="86" lean-forward="false" selection-start-line="525" selection-start-column="86" selection-end-line="525" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="634" column="9" lean-forward="true" selection-start-line="634" selection-start-column="9" selection-end-line="634" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/img/add.svg">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1539,22 +1632,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4224">
-          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_school_add.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8712">
@@ -1565,16 +1642,159 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_authentication_recoveryHis_add.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8250">
+        <state relative-caret-position="1122">
           <caret line="250" column="4" lean-forward="false" selection-start-line="250" selection-start-column="4" selection-end-line="252" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_parent.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="21" column="43" lean-forward="false" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/model/Teacher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="329" column="31" lean-forward="false" selection-start-line="329" selection-start-column="31" selection-end-line="329" selection-end-column="31" />
+          <folding>
+            <element signature="e#6505#6506#0" expanded="true" />
+            <element signature="e#6549#6550#0" expanded="true" />
+            <element signature="e#6585#6586#0" expanded="true" />
+            <element signature="e#6618#6619#0" expanded="true" />
+            <element signature="e#6647#6648#0" expanded="true" />
+            <element signature="e#6691#6692#0" expanded="true" />
+            <element signature="e#6727#6728#0" expanded="true" />
+            <element signature="e#6760#6761#0" expanded="true" />
+            <element signature="e#6789#6790#0" expanded="true" />
+            <element signature="e#6833#6834#0" expanded="true" />
+            <element signature="e#6869#6870#0" expanded="true" />
+            <element signature="e#6904#6905#0" expanded="true" />
+            <element signature="e#6935#6936#0" expanded="true" />
+            <element signature="e#6983#6984#0" expanded="true" />
+            <element signature="e#7023#7024#0" expanded="true" />
+            <element signature="e#7058#7059#0" expanded="true" />
+            <element signature="e#7089#7090#0" expanded="true" />
+            <element signature="e#7137#7138#0" expanded="true" />
+            <element signature="e#7177#7178#0" expanded="true" />
+            <element signature="e#7212#7213#0" expanded="true" />
+            <element signature="e#7243#7244#0" expanded="true" />
+            <element signature="e#7291#7292#0" expanded="true" />
+            <element signature="e#7331#7332#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/model/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-33">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myLevel.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/myInfo_service_way.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6072">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/teacher/autoresize.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1980">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/parentCenter/parentCenter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/TeacherCenterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="910">
+          <caret line="91" column="10" lean-forward="false" selection-start-line="91" selection-start-column="4" selection-end-line="91" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/controller/TeacherCenterController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="521" column="50" lean-forward="false" selection-start-line="521" selection-start-column="50" selection-end-line="521" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="97" column="18" lean-forward="false" selection-start-line="97" selection-start-column="18" selection-end-line="97" selection-end-column="18" />
+          <folding>
+            <element signature="e#6272#6280#0" expanded="true" />
+            <element signature="e#6564#6572#0" expanded="true" />
+            <element signature="e#8383#8391#0" expanded="true" />
+            <element signature="e#8437#8445#0" expanded="true" />
+            <element signature="e#8489#8497#0" expanded="true" />
+            <element signature="e#8547#8555#0" expanded="true" />
+            <element signature="e#9604#9612#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/xq/service/impl/TeacherCenterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="802" column="51" lean-forward="false" selection-start-line="802" selection-start-column="51" selection-end-line="802" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacherCenter/mySchedule.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="379" column="0" lean-forward="true" selection-start-line="379" selection-start-column="0" selection-end-line="379" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="261" column="36" lean-forward="true" selection-start-line="261" selection-start-column="36" selection-end-line="261" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/order/order.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1482">
+          <caret line="79" column="40" lean-forward="false" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/teacher/teacher.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="606">
+          <caret line="212" column="52" lean-forward="false" selection-start-line="212" selection-start-column="52" selection-end-line="212" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1638,7 +1858,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

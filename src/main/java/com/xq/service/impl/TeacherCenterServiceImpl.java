@@ -744,11 +744,11 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
     }
 
     private void caculatePrice(Teacher teacher) {
-        int priceO=(teacher.getPriceO()==null)?0:teacher.getPriceO();
-        int priceT=(teacher.getPriceT()==null)?0:teacher.getPriceT();
-        int priceS=(teacher.getPriceS()==null)?0:teacher.getPriceS();
-        int mid=0,max=0,min=0;
-        List<Integer> list=new ArrayList<>();
+        double priceO=(teacher.getPriceO()==null)?0:teacher.getPriceO();
+        double priceT=(teacher.getPriceT()==null)?0:teacher.getPriceT();
+        double priceS=(teacher.getPriceS()==null)?0:teacher.getPriceS();
+        double mid=0,max=0,min=0;
+        List<Double> list=new ArrayList<>();
         list.add(priceO);
         list.add(priceS);
         list.add(priceT);
@@ -787,6 +787,42 @@ public class TeacherCenterServiceImpl implements TeacherCenterService {
         teacherCenterDao.updateComplexInfo("schedule",data.substring(1),uid);
     }
 
+    @Override
+    public Result checkScheduleConflict(String week, String timeStart, HttpServletRequest httpServletRequest) throws ParseException {
+        Result result;
+        String openid=CookieUtil.checkCookie(httpServletRequest, Const.OPENID_TEACHER);
+        User user=userDao.getUserByOpenidStatus(openid,"1");
+        String schedule= (String) getInfoByTypeName(user.getId(),"schedule","");
+        String dayS=schedule.split("#")[Integer.parseInt(week)-1];
+        if(dayS!=null && !dayS.equals("")){
+            String[] dayTime=dayS.split("@");
+            for(int i=0;i<dayTime.length;i++){
+                String timeEnd=getStartEndTime(timeStart,(String)getInfoByTypeName(user.getId(),"period",""));
+                Boolean in=checkTimeIn(timeStart,timeEnd,dayTime[i]);
+                if(in){
+                    result=new Result(false,"课程冲突：该时间段已添加课程，请重新填写");
+                    return result;
+                }
+            }
+        }
+        result=new Result(true);
+        return result;
+    }
+
+    private Boolean checkTimeIn(String timeStart,String timeEnd, String s) {
+        String existStart=s.split("-")[0];
+        String existEnd=s.split("-")[1];
+        if(timeStart.compareTo(existStart)<0 && timeEnd.compareTo(existStart)>0){
+            return false;
+        }
+        if(timeStart.compareTo(existStart)>0 && timeStart.compareTo(existEnd)<0){
+            return false;
+        }
+        if(timeStart.equals(existStart) || timeEnd.equals(existEnd)){
+            return false;
+        }
+        return true;
+    }
 
     @Override
     public void delSchedule(Integer uid, String time) throws ParseException {

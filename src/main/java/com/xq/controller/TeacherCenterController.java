@@ -513,11 +513,23 @@ public class TeacherCenterController {
 
 
     /**
-     * 我的课程
-     * @param uid
-     * @param type  parent 表示  家长看的   teacher 表示治疗师自己看的
+     * 我的课程 检测冲突
      * @return
      */
+    @ResponseBody
+    @RequestMapping(value = "/mySchedule/checkConflict",method = RequestMethod.POST)
+    public Result schedule_check(@RequestParam String week,@RequestParam String time,HttpServletRequest httpServletRequest) throws ParseException {
+        Result result=teacherCenterService.checkScheduleConflict(week,time,httpServletRequest);
+        return result;
+    }
+
+    /**
+     *
+     * @param uid
+     * @param type
+     * @return
+     */
+    @ResponseBody
     @RequestMapping(value = "/{uid}/mySchedule/{type}",method = RequestMethod.GET)
     public ModelAndView schedule(@PathVariable Integer uid,@PathVariable String type){
         ModelAndView mv=new ModelAndView("teacherCenter/mySchedule");

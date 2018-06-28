@@ -207,10 +207,10 @@
                                     <td></td>
                                 <#elseif str=="学生上门" && teacher.priceS gt 0>
                                     <td>${(teacher.priceS)!}</td>
-                                    <td>${(teacher.sGround)!}</td>
+                                    <td>${(teacher.tGround)!}</td>
                                 <#elseif str=="治疗师上门" && teacher.priceT gt 0>
                                     <td>${(teacher.priceT)!}</td>
-                                    <td>${(teacher.tGround)!}</td>
+                                    <td>${(teacher.sGround)!}</td>
                                 </#if>
                             </tr>
                             </#list>
@@ -601,11 +601,12 @@
     var timeOpt = "day";
     var weekArray = new Array("周日", "周一", "周二", "周三", "周四", "周五", "周六");
     if(waySelect=="治疗师上门"){
-        $("#sumSpan").html(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").html(parseFloat("${(teacher.priceT)!}")*parseFloat($("#countSpan").html()));
     }else if(waySelect=="学生上门"){
-        $("#sumSpan").html(parseInt("${(teacher.priceS)!}")*parseInt($("#countSpan").html()));
+        alert("${(teacher.priceS)!}");
+        $("#sumSpan").html(parseFloat("${(teacher.priceS)!}")*parseFloat($("#countSpan").html()));
     }else if(waySelect=="在线授课"){
-        $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseInt($("#countSpan").html()));
+        $("#sumSpan").html(parseFloat("${(teacher.priceO)!}")*parseFloat($("#countSpan").html()));
     }else{
         $("#sumSpan").html("0");
     }
@@ -680,11 +681,11 @@
     }
     function calculateSum() {
         if(waySelect=="治疗师上门"){
-            $("#sumSpan").html(parseInt("${(teacher.priceT)!}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseFloat("${(teacher.priceT)!}")*parseFloat($("#countSpan").html()));
         }else if(waySelect=="学生上门"){
-            $("#sumSpan").html(parseInt("${(teacher.priceS)!}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseFloat("${(teacher.priceS)!}")*parseFloat($("#countSpan").html()));
         }else if(waySelect=="在线授课"){
-            $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseInt($("#countSpan").html()));
+            $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseFloat($("#countSpan").html()));
         }else{
             $("#sumSpan").html("0");
         }

@@ -94,8 +94,8 @@ public class TeacherServiceImpl implements TeacherService{
             }
 
             //显示 价格区间
-            Integer max = teacher1.getPriceMax();
-            Integer min = teacher1.getPriceMin();
+            Double max = teacher1.getPriceMax();
+            Double min = teacher1.getPriceMin();
 
             if(max != null && min != null && max != min){
                 teacher1.setPrice(min+"-"+max);

@@ -88,4 +88,6 @@ public interface TeacherCenterService {
     Integer getUidByTid(Integer tid);
 
     Result checkAccountReg(Integer uid);
+
+    Result checkScheduleConflict(String week, String time, HttpServletRequest httpServletRequest) throws ParseException;
 }

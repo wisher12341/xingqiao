@@ -258,7 +258,23 @@
                     alert("课程结束时间超过9点，请重新填写");
                 }else{
                     //TODO 课程冲突检测
-                    $("#addForm").submit();
+                    $.ajax({
+                        type: 'post',
+                        url: '/wx/teacherCenter/mySchedule/checkConflict',
+                        data:{
+                            week:$('select[name="week"]').val(),
+                            time:$('input[name="time"]').val()
+
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if(data.success==true){
+                                $("#addForm").submit();
+                            }else{
+                                alert(data.data);
+                            }
+                        }
+                    });
                 }
             }else{
                 alert("资料未填写完整");

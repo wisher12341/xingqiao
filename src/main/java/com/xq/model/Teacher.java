@@ -19,9 +19,9 @@ public class Teacher {
     private String address; //没用
     private String unit;
     private String abstractTeacher;
-    private Integer priceT;
-    private Integer priceS;
-    private Integer priceO;
+    private Double priceT;
+    private Double priceS;
+    private Double priceO;
     private String availableTime;
     private String level;
     private String tGround;
@@ -37,9 +37,9 @@ public class Teacher {
 
     private String gender;
 
-    private Integer priceMin;
-    private Integer priceMax;
-    private Integer priceMid;
+    private Double priceMin;
+    private Double priceMax;
+    private Double priceMid;
 
     private Integer isPass;
     private String pidUrlFront;
@@ -257,13 +257,6 @@ public class Teacher {
 
 
 
-    public Integer getPriceMin() {
-        return priceMin;
-    }
-
-    public void setPriceMin(Integer priceMin) {
-        this.priceMin = priceMin;
-    }
 
     public Integer getIsPass() {
         return isPass;
@@ -289,13 +282,7 @@ public class Teacher {
         this.price = price;
     }
 
-    public Integer getPriceMax() {
-        return priceMax;
-    }
 
-    public void setPriceMax(Integer priceMax) {
-        this.priceMax = priceMax;
-    }
 
     public String getName() {
         return name;
@@ -339,36 +326,53 @@ public class Teacher {
         this.abstractTeacher = abstractTeacher;
     }
 
-    public Integer getPriceMid() {
-        return priceMid;
-    }
 
-    public void setPriceMid(Integer priceMid) {
-        this.priceMid = priceMid;
-    }
-
-    public Integer getPriceT() {
+    public Double getPriceT() {
         return priceT;
     }
 
-    public void setPriceT(Integer priceT) {
+    public void setPriceT(Double priceT) {
         this.priceT = priceT;
     }
 
-    public Integer getPriceS() {
+    public Double getPriceS() {
         return priceS;
     }
 
-    public void setPriceS(Integer priceS) {
+    public void setPriceS(Double priceS) {
         this.priceS = priceS;
     }
 
-    public Integer getPriceO() {
+    public Double getPriceO() {
         return priceO;
     }
 
-    public void setPriceO(Integer priceO) {
+    public void setPriceO(Double priceO) {
         this.priceO = priceO;
+    }
+
+    public Double getPriceMin() {
+        return priceMin;
+    }
+
+    public void setPriceMin(Double priceMin) {
+        this.priceMin = priceMin;
+    }
+
+    public Double getPriceMax() {
+        return priceMax;
+    }
+
+    public void setPriceMax(Double priceMax) {
+        this.priceMax = priceMax;
+    }
+
+    public Double getPriceMid() {
+        return priceMid;
+    }
+
+    public void setPriceMid(Double priceMid) {
+        this.priceMid = priceMid;
     }
 
     public String getLevel() {
