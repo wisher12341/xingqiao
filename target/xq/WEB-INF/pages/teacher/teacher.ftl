@@ -685,7 +685,7 @@
         }else if(waySelect=="学生上门"){
             $("#sumSpan").html(parseFloat("${(teacher.priceS)!}")*parseFloat($("#countSpan").html()));
         }else if(waySelect=="在线授课"){
-            $("#sumSpan").html(parseInt("${(teacher.priceO)!}")*parseFloat($("#countSpan").html()));
+            $("#sumSpan").html(parseFloat("${(teacher.priceO)!}")*parseFloat($("#countSpan").html()));
         }else{
             $("#sumSpan").html("0");
         }
@@ -840,13 +840,13 @@
     }
     function subtract_function() {
         if($('#countSpan').html()!=1) {
-            $('#countSpan').html(parseInt($('#countSpan').html()) - 1);
-            $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html())/(parseInt($('#countSpan').html())+1))));
+            $('#countSpan').html(parseFloat($('#countSpan').html()) - 1);
+            $('#sumSpan').html(parseFloat($('#countSpan').html()*(parseFloat($("#sumSpan").html())/(parseFloat($('#countSpan').html())+1))));
         }
     }
     function add_function() {
-        $('#countSpan').html(parseInt($('#countSpan').html()) + 1);
-        $('#sumSpan').html(parseInt($('#countSpan').html()*(parseInt($("#sumSpan").html()/($('#countSpan').html()-1)))));
+        $('#countSpan').html(parseFloat($('#countSpan').html()) + 1);
+        $('#sumSpan').html(parseFloat($('#countSpan').html()*(parseFloat($("#sumSpan").html()/($('#countSpan').html()-1)))));
     }
     function remind_cannot_change_amount() {
         alert("第一次只能选择一节课哦~");
